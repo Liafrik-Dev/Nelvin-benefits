@@ -1,24 +1,27 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Globe, Menu, X } from "lucide-react";
+import { Globe, Menu, X, Check } from "lucide-react";
 import UserMenu from "@/components/nelvin/UserMenu";
 import NotificationBell from "@/components/nelvin/NotificationBell";
 import { useAuth } from "@/lib/AuthContext";
+import { LANGUAGES, useLanguage } from "@/lib/i18n";
 
 const links = [
-  { label: "Offers", to: "/offers" },
-  { label: "Countries", to: "/" },
-  { label: "Categories", to: "/" },
-  { label: "Membership", to: "/choose-plan" },
-  { label: "Corporate", to: "/corporate" },
-  { label: "For Business", to: "/partner" },
-  { label: "Support", to: "/#faq" },
+  { key: "nav.offers", to: "/offers" },
+  { key: "nav.countries", to: "/" },
+  { key: "nav.categories", to: "/" },
+  { key: "nav.membership", to: "/choose-plan" },
+  { key: "nav.corporate", to: "/corporate" },
+  { key: "nav.forBusiness", to: "/partner" },
+  { key: "nav.support", to: "/#faq" },
 ];
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
   const { isAuthenticated } = useAuth();
+  const { t, lang, setLang } = useLanguage();
 
   return (
     <motion.nav
@@ -48,7 +51,7 @@ export default function Navbar() {
               transition={{ duration: 0.4, delay: 0.15 + i * 0.05 }}
             >
               <Link to={link.to} className="relative inline-block text-white/90 hover:text-white text-xs font-medium whitespace-nowrap transition-all duration-200 group hover:-translate-y-0.5">
-                {link.label}
+                {t(link.key)}
                 <span className="absolute -bottom-1.5 left-0 w-0 h-px bg-amber-400 transition-all duration-300 group-hover:w-full" />
               </Link>
             </motion.div>
@@ -56,14 +59,43 @@ export default function Navbar() {
         </div>
 
         <div className="hidden lg:flex items-center gap-4">
-          <motion.button
-            whileHover={{ scale: 1.06 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-1.5 text-white/90 hover:text-white text-sm transition-colors"
-          >
-            <Globe className="w-4 h-4" />
-            EN
-          </motion.button>
+          <div className="relative">
+            <motion.button
+              whileHover={{ scale: 1.06 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setLangOpen(!langOpen)}
+              aria-label={t('nav.language')}
+              className="flex items-center gap-1.5 text-white/90 hover:text-white text-sm transition-colors"
+            >
+              <Globe className="w-4 h-4" />
+              <span className="uppercase font-semibold">{lang}</span>
+            </motion.button>
+            <AnimatePresence>
+              {langOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -6, scale: 0.96 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -6, scale: 0.96 }}
+                  transition={{ duration: 0.15 }}
+                  className="absolute right-0 mt-2 w-44 rounded-xl border border-slate-100 bg-white/95 backdrop-blur p-1.5 shadow-xl"
+                >
+                  {LANGUAGES.map((lng) => (
+                    <button
+                      key={lng.code}
+                      onClick={() => {
+                        setLang(lng.code)
+                        setLangOpen(false)
+                      }}
+                      className="flex w-full items-center justify-between rounded-lg px-2.5 py-1.5 text-left text-sm text-slate-700 hover:bg-slate-100 transition-colors"
+                    >
+                      <span>{lng.label}</span>
+                      {lang === lng.code && <Check className="h-3.5 w-3.5 text-amber-500" />}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
           {isAuthenticated && <NotificationBell />}
           <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
             <UserMenu />
@@ -104,7 +136,7 @@ export default function Navbar() {
                   transition={{ duration: 0.3, delay: i * 0.05 }}
                 >
                   <Link to={link.to} className="block text-white/90 hover:text-amber-400 hover:pl-1 py-3 border-b border-white/10 text-sm transition-all duration-200">
-                    {link.label}
+                    {t(link.key)}
                   </Link>
                 </motion.div>
               ))}

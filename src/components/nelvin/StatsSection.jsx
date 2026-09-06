@@ -1,25 +1,27 @@
 import React from "react";
 import { Building2, Tag, Globe, Users } from "lucide-react";
+import { useLanguage } from "@/lib/i18n";
 
 const stats = [
-  { icon: Building2, value: "20K", suffix: "+", label: "Partner Brands" },
-  { icon: Tag, value: "500K", suffix: "+", label: "Exclusive Offers", highlight: true },
-  { icon: Globe, value: "54", suffix: "", label: "African Countries" },
-  { icon: Users, value: "2.4M", suffix: "+", label: "Members Saving" },
+  { icon: Building2, value: "20K", suffix: "+", labelKey: "home.stats1" },
+  { icon: Tag, value: "500K", suffix: "+", labelKey: "home.stats2", highlight: true },
+  { icon: Globe, value: "54", suffix: "", labelKey: "home.stats3" },
+  { icon: Users, value: "2.4M", suffix: "+", labelKey: "home.stats4" },
 ];
 
 export default function StatsSection() {
+  const { t } = useLanguage();
   return (
     <section className="bg-[#faf8f5] py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto text-center mb-12">
         <p className="text-emerald-700 font-semibold text-xs tracking-[0.15em] uppercase mb-3">
-          Africa's Largest Savings Network
+          {t('home.eyebrow2')}
         </p>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-gray-900">
-          One membership. A continent of savings.
+          {t('home.title2')}
         </h2>
         <p className="text-gray-500 mt-4 max-w-xl mx-auto">
-          From street-food gems in Accra to five-star escapes in Cape Town — Nelvin unlocks it all.
+          {t('home.desc2')}
         </p>
       </div>
 
@@ -42,7 +44,7 @@ export default function StatsSection() {
               <span className="text-3xl sm:text-4xl font-bold font-heading text-gray-900">{stat.value}</span>
               <span className="text-2xl sm:text-3xl font-bold text-amber-500">{stat.suffix}</span>
             </div>
-            <p className="text-sm text-gray-500 mt-1">{stat.label}</p>
+            <p className="text-sm text-gray-500 mt-1">{t(stat.labelKey)}</p>
           </div>
         ))}
       </div>

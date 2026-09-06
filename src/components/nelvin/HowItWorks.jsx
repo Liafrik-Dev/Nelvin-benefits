@@ -1,20 +1,22 @@
 import React from "react";
 import { UserPlus, Search, QrCode, Wallet } from "lucide-react";
+import { useLanguage } from "@/lib/i18n";
 
 const steps = [
-  { num: "01", icon: UserPlus, title: "Join in seconds", desc: "Sign up free and pick the plan that fits your lifestyle.", color: "bg-emerald-700" },
-  { num: "02", icon: Search, title: "Discover offers", desc: "Browse thousands of hand-curated offers near you or across Africa.", color: "bg-rose-500" },
-  { num: "03", icon: QrCode, title: "Redeem instantly", desc: "Show your QR code in-store or apply your voucher online.", color: "bg-emerald-700" },
-  { num: "04", icon: Wallet, title: "Earn cashback", desc: "Watch your Nelvin wallet grow with every redemption and referral.", color: "bg-rose-500" },
+  { num: "01", icon: UserPlus, titleKey: "home.step1.title", descKey: "home.step1.desc", color: "bg-emerald-700" },
+  { num: "02", icon: Search, titleKey: "home.step2.title", descKey: "home.step2.desc", color: "bg-rose-500" },
+  { num: "03", icon: QrCode, titleKey: "home.step3.title", descKey: "home.step3.desc", color: "bg-emerald-700" },
+  { num: "04", icon: Wallet, titleKey: "home.step4.title", descKey: "home.step4.desc", color: "bg-rose-500" },
 ];
 
 export default function HowItWorks() {
+  const { t } = useLanguage();
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#faf8f5]">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <p className="text-emerald-700 font-semibold text-xs tracking-[0.15em] uppercase mb-3">How It Works</p>
-          <h2 className="text-3xl sm:text-4xl font-bold font-heading text-gray-900">Save in four simple steps.</h2>
+          <p className="text-emerald-700 font-semibold text-xs tracking-[0.15em] uppercase mb-3">{t('home.eyebrow')}</p>
+          <h2 className="text-3xl sm:text-4xl font-bold font-heading text-gray-900">{t('home.title')}</h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -26,8 +28,8 @@ export default function HowItWorks() {
                 </div>
                 <span className="text-4xl font-bold text-gray-100 font-heading">{step.num}</span>
               </div>
-              <h3 className="font-bold text-gray-900 text-lg mb-2">{step.title}</h3>
-              <p className="text-sm text-gray-500 leading-relaxed">{step.desc}</p>
+              <h3 className="font-bold text-gray-900 text-lg mb-2">{t(step.titleKey)}</h3>
+              <p className="text-sm text-gray-500 leading-relaxed">{t(step.descKey)}</p>
             </div>
           ))}
         </div>

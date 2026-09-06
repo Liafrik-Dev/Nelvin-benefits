@@ -3,19 +3,21 @@ import { db } from "@/services/api/base44Client";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Star, MapPin, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/lib/i18n";
 
 const categoryTabs = [
-  { label: "All", name: "" },
-  { label: "Restaurants", name: "Restaurants & Cafés" },
-  { label: "Hotels", name: "Hotels & Resorts" },
-  { label: "Spa & Beauty", name: "Beauty & Spa" },
-  { label: "Tours", name: "Travel & Airlines" },
-  { label: "Nightlife", name: "Entertainment" },
-  { label: "Fashion", name: "Shopping & Fashion" },
+  { labelKey: "deals.tab.all", name: "" },
+  { labelKey: "deals.tab.restaurants", name: "Restaurants & Cafés" },
+  { labelKey: "deals.tab.hotels", name: "Hotels & Resorts" },
+  { labelKey: "deals.tab.spa", name: "Beauty & Spa" },
+  { labelKey: "deals.tab.tours", name: "Travel & Airlines" },
+  { labelKey: "deals.tab.nightlife", name: "Entertainment" },
+  { labelKey: "deals.tab.fashion", name: "Shopping & Fashion" },
 ];
 
 export default function FeaturedDeals() {
-  const [active, setActive] = useState("All");
+  const { t } = useLanguage();
+  const [active, setActive] = useState("deals.tab.all");
   const [offers, setOffers] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -26,40 +28,40 @@ export default function FeaturedDeals() {
     });
   }, []);
 
-  const activeName = categoryTabs.find((c) => c.label === active)?.name || "";
+  const activeName = categoryTabs.find((c) => c.labelKey === active)?.name || "";
   const filtered = (activeName ? offers.filter((o) => o.category === activeName) : offers).slice(0, 6);
 
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
         <div>
-          <p className="text-emerald-700 font-semibold text-xs tracking-[0.15em] uppercase mb-2">Featured Offers</p>
-          <h2 className="text-3xl sm:text-4xl font-bold font-heading text-gray-900">Hand-picked drops this week</h2>
-          <p className="text-gray-500 mt-2 text-sm">New offers added daily from top brands across Africa.</p>
+          <p className="text-emerald-700 font-semibold text-xs tracking-[0.15em] uppercase mb-2">{t('deals.eyebrow')}</p>
+          <h2 className="text-3xl sm:text-4xl font-bold font-heading text-gray-900">{t('deals.title')}</h2>
+          <p className="text-gray-500 mt-2 text-sm">{t('deals.subtitle')}</p>
         </div>
         <Link to="/offers" className="text-emerald-700 font-semibold text-sm flex items-center gap-1 hover:underline whitespace-nowrap">
-          Browse all offers <ArrowRight className="w-4 h-4" />
+          {t('deals.browseAll')} <ArrowRight className="w-4 h-4" />
         </Link>
       </div>
 
       <div className="flex items-center gap-2 mb-8 overflow-x-auto pb-2">
         {categoryTabs.map((cat) => (
           <button
-            key={cat.label}
-            onClick={() => setActive(cat.label)}
+            key={cat.labelKey}
+            onClick={() => setActive(cat.labelKey)}
             className={`px-5 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all ${
-              active === cat.label ? "bg-gray-900 text-white" : "bg-white text-gray-600 border border-gray-200 hover:border-gray-300"
+              active === cat.labelKey ? "bg-gray-900 text-white" : "bg-white text-gray-600 border border-gray-200 hover:border-gray-300"
             }`}
           >
-            {cat.label}
+            {t(cat.labelKey)}
           </button>
         ))}
       </div>
 
       {loading ? (
-        <div className="text-center py-16 text-gray-400">Loading offers...</div>
+        <div className="text-center py-16 text-gray-400">{t('deals.loading')}</div>
       ) : filtered.length === 0 ? (
-        <div className="text-center py-16 text-gray-400">No offers yet in this category.</div>
+        <div className="text-center py-16 text-gray-400">{t('deals.empty')}</div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((deal) => (
@@ -99,7 +101,7 @@ export default function FeaturedDeals() {
                   </span>
                 </div>
                 <div className="bg-emerald-700 group-hover:bg-emerald-800 text-white py-2.5 rounded-full text-sm font-semibold text-center transition-colors">
-                  Redeem Now
+                  {t('deals.redeem')}
                 </div>
               </div>
             </Link>

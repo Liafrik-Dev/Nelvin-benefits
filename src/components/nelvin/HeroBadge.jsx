@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
+import { useLanguage } from "@/lib/i18n";
 
-const messages = [
-  "✨ New Offers Added This Week",
-  "🌍 Available Across Africa",
-  "🏨 New Hotels Now Available",
-  "🍽 New Restaurant Offers",
-  "🎉 Weekend Deals Live",
-  "💎 Premium Member Benefits",
-  "🔥 Flash Offers Available",
-  "⭐ Verified Businesses Only",
+const messageKeys = [
+  "hero.badge.0",
+  "hero.badge.1",
+  "hero.badge.2",
+  "hero.badge.3",
+  "hero.badge.4",
+  "hero.badge.5",
+  "hero.badge.6",
+  "hero.badge.7",
 ];
 
 export default function HeroBadge() {
+  const { t } = useLanguage();
   const [index, setIndex] = useState(0);
+  const messages = messageKeys.map((key) => t(key));
 
   useEffect(() => {
     const interval = setInterval(() => {

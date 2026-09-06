@@ -2,18 +2,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Check } from "lucide-react";
 import { PLANS as plans } from "@/lib/plansData";
+import { useLanguage } from "@/lib/i18n";
 
 export default function PricingSection() {
+  const { t } = useLanguage();
   return (
     <section id="pricing" className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <p className="text-gray-400 font-semibold text-xs tracking-[0.2em] uppercase mb-3">Membership</p>
+          <p className="text-gray-400 font-semibold text-xs tracking-[0.2em] uppercase mb-3">{t('pricing.eyebrow')}</p>
           <h2 className="text-4xl sm:text-5xl font-semibold font-heading text-gray-900 tracking-tight">
-            Choose your savings plan.
+            {t('pricing.title')}
           </h2>
           <p className="text-gray-500 mt-4 max-w-lg mx-auto text-base">
-            From casual weekend spenders to luxury travellers — there's a Nelvin plan built for you.
+            {t('pricing.subtitle')}
           </p>
         </div>
 
@@ -30,7 +32,7 @@ export default function PricingSection() {
               {plan.highlight && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                   <span className="bg-white text-gray-900 text-[11px] font-semibold px-4 py-1 rounded-full uppercase tracking-wider">
-                    Most Popular
+                    {t('pricing.mostPopular')}
                   </span>
                 </div>
               )}
