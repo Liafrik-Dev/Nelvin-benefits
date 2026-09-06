@@ -5,6 +5,14 @@ import { useLanguage } from "@/lib/i18n";
 const linkRoutes = { Partners: "/partner" };
 const mailtoLinks = { Contact: "mailto:Nelvin23@proton.me", "Contact Us": "mailto:Nelvin23@proton.me" };
 
+const labelKeyMap = {
+  About: "footer.about", Careers: "footer.careers", Partners: "footer.partners", Affiliates: "footer.affiliates", Investors: "footer.investors", News: "footer.news", Blog: "footer.blog", Contact: "footer.contact",
+  "Browse Offers": "footer.browse", Countries: "footer.countries", Cities: "footer.cities", Categories: "footer.categories", "Premium Brands": "footer.brands", Events: "footer.events",
+  Free: "footer.free", Premium: "footer.premium", VIP: "footer.vip", Family: "footer.family", Corporate: "footer.corporate", Enterprise: "footer.enterprise", Student: "footer.student",
+  "Help Center": "footer.help", FAQs: "footer.faqs", "Live Chat": "footer.livechat", "Contact Us": "footer.contactus", "Merchant Portal": "footer.merchant", Accessibility: "footer.accessibility",
+  "Privacy Policy": "footer.privacy", "Terms of Service": "footer.terms", "Refund Policy": "footer.refund", "Cookie Policy": "footer.cookie",
+};
+
 const footerLinks = {
   COMPANY: ["About", "Careers", "Partners", "Affiliates", "Investors", "News", "Blog", "Contact"],
   DISCOVER: ["Browse Offers", "Countries", "Cities", "Categories", "Premium Brands", "Events"],
@@ -14,6 +22,7 @@ const footerLinks = {
 };
 
 export default function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="bg-[#1a0a0a] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

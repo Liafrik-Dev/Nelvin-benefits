@@ -12,6 +12,7 @@ const faqs = [
 ];
 
 export default function FAQSection() {
+  const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
