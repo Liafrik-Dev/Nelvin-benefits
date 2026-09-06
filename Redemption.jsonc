@@ -1,0 +1,122 @@
+{
+  "name": "Redemption",
+  "type": "object",
+  "properties": {
+    "offer_id": {
+      "type": "string",
+      "description": "Reference to the redeemed Offer"
+    },
+    "offer_title": {
+      "type": "string"
+    },
+    "business_name": {
+      "type": "string"
+    },
+    "business_id": {
+      "type": "string"
+    },
+    "savings_amount": {
+      "type": "number"
+    },
+    "country": {
+      "type": "string"
+    },
+    "user_id": {
+      "type": "string",
+      "description": "The user who redeemed this offer"
+    },
+    "company_id": {
+      "type": "string",
+      "description": "Company the redeeming user belongs to (for corporate-scoped reports)"
+    },
+    "redemption_code": {
+      "type": "string",
+      "description": "Unique per-user redemption code tied to this redemption"
+    },
+    "code_used": {
+      "type": "boolean",
+      "default": false
+    },
+    "redeemed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "used_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "issued",
+        "used",
+        "expired",
+        "cancelled"
+      ],
+      "default": "issued"
+    }
+  },
+  "required": [
+    "offer_id",
+    "offer_title",
+    "user_id"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.user_id": "{{user.id}}"
+        },
+        {
+          "data.company_id": "{{user.data.company_id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.user_id": "{{user.id}}"
+        },
+        {
+          "data.company_id": "{{user.data.company_id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.user_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

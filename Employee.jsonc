@@ -1,0 +1,200 @@
+{
+  "name": "Employee",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "Reference to the linked User after the employee joins (null while only invited)"
+    },
+    "user_email": {
+      "type": "string",
+      "description": "Lowercased email used for invites and domain matching"
+    },
+    "user_name": {
+      "type": "string",
+      "description": "Display name (filled when the employee joins)"
+    },
+    "photo_url": {
+      "type": "string",
+      "description": "Employee photo for the digital membership card and HR directory"
+    },
+    "company_id": {
+      "type": "string",
+      "description": "Company the employee belongs to"
+    },
+    "company_name": {
+      "type": "string"
+    },
+    "department": {
+      "type": "string"
+    },
+    "department_id": {
+      "type": "string",
+      "description": "Reference to Department entity"
+    },
+    "office": {
+      "type": "string",
+      "description": "Office / location (e.g. Lagos HQ, Remote)"
+    },
+    "manager_id": {
+      "type": "string",
+      "description": "Reference to another Employee who is this employee's manager"
+    },
+    "manager_name": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "member",
+        "admin"
+      ],
+      "default": "member"
+    },
+    "subscriber_id": {
+      "type": "string",
+      "description": "Permanent Subscriber ID issued to this employee (NV-XXXXXXXX). Survives deletion."
+    },
+    "employee_id": {
+      "type": "string",
+      "description": "Internal company employee number (HR-defined)"
+    },
+    "country": {
+      "type": "string"
+    },
+    "membership_tier": {
+      "type": "string",
+      "description": "Membership tier this employee has access to (caches company.membership_tier)"
+    },
+    "total_savings": {
+      "type": "number",
+      "default": 0,
+      "description": "Cumulative tracked savings across this employee's redemptions (USD)"
+    },
+    "redemptions_count": {
+      "type": "number",
+      "default": 0
+    },
+    "favorite_categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "last_login": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "invited",
+        "active",
+        "suspended",
+        "removed"
+      ],
+      "default": "invited"
+    },
+    "joined_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "user_email",
+    "company_id"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.company_id": "{{user.data.company_id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "founder"
+          }
+        }
+      ]
+    },
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.user_id": "{{user.id}}"
+        },
+        {
+          "data.company_id": "{{user.data.company_id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "founder"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "staff"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.user_id": "{{user.id}}"
+        },
+        {
+          "data.company_id": "{{user.data.company_id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "founder"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.company_id": "{{user.data.company_id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "founder"
+          }
+        }
+      ]
+    }
+  }
+}

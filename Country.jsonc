@@ -1,0 +1,57 @@
+{
+  "name": "Country",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "flag": {
+      "type": "string",
+      "description": "Emoji flag"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "country_code": {
+      "type": "string",
+      "description": "ISO 3166-1 alpha-2"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "is_african": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "name",
+    "slug"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": null,
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

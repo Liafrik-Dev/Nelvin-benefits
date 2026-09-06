@@ -1,0 +1,182 @@
+{
+  "name": "Offer",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "business_name": {
+      "type": "string"
+    },
+    "business_id": {
+      "type": "string",
+      "description": "Reference to VendorApplication (business) that owns this offer"
+    },
+    "description": {
+      "type": "string"
+    },
+    "image_url": {
+      "type": "string"
+    },
+    "gallery_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "discount_label": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "rating": {
+      "type": "number"
+    },
+    "reviews": {
+      "type": "number"
+    },
+    "original_price": {
+      "type": "number"
+    },
+    "discount_price": {
+      "type": "number"
+    },
+    "savings_amount": {
+      "type": "number"
+    },
+    "expires_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "tag": {
+      "type": "string",
+      "enum": [
+        "Popular",
+        "VIP",
+        "Cashback",
+        "Trending",
+        "New",
+        "Limited Time",
+        "Exclusive"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive",
+        "pending",
+        "rejected",
+        "archived",
+        "hidden"
+      ],
+      "default": "pending"
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "is_published": {
+      "type": "boolean",
+      "default": false
+    },
+    "is_archived": {
+      "type": "boolean",
+      "default": false
+    },
+    "membership_requirement": {
+      "type": "string",
+      "enum": [
+        "Free",
+        "Silver",
+        "Gold",
+        "Platinum",
+        "Enterprise",
+        "All"
+      ],
+      "default": "All"
+    },
+    "max_redemptions_per_user": {
+      "type": "number",
+      "default": 1
+    },
+    "total_redemption_limit": {
+      "type": "number",
+      "description": "Optional cap on aggregate redemptions across all users"
+    },
+    "total_redemptions_count": {
+      "type": "number",
+      "default": 0
+    },
+    "rejection_reason": {
+      "type": "string"
+    },
+    "review_notes": {
+      "type": "string"
+    },
+    "submitted_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "title",
+    "business_name",
+    "category",
+    "country"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "read": null,
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

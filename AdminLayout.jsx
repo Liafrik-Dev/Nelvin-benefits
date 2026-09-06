@@ -1,0 +1,173 @@
+import React, { useState } from "react";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
+import {
+  LayoutDashboard,
+  Users,
+  Building2,
+  Store,
+  Clock,
+  Tag,
+  Globe2,
+  Crown,
+  Star,
+  Bell,
+  CreditCard,
+  LifeBuoy,
+  BarChart3,
+  Settings,
+  ShieldCheck,
+  ScrollText,
+  DatabaseBackup,
+  Menu,
+  X,
+  ChevronLeft,
+} from "lucide-react";
+import { useAuth } from "@/lib/AuthContext";
+import Avatar from "@/components/nelvin/Avatar";
+
+const NAV = [
+  { label: "Dashboard", path: "/admin", icon: LayoutDashboard, end: true },
+  { label: "Users", path: "/admin/users", icon: Users },
+  { label: "Companies", path: "/admin/companies", icon: Building2 },
+  { label: "Businesses", path: "/admin/businesses", icon: Store },
+  { label: "Pending Businesses", path: "/admin/pending-businesses", icon: Clock },
+  { label: "Offers", path: "/admin/offers", icon: Tag },
+  { label: "Pending Offers", path: "/admin/pending-offers", icon: Clock },
+  { label: "Categories", path: "/admin/categories", icon: LayoutDashboard },
+  { label: "Countries", path: "/admin/countries", icon: Globe2 },
+  { label: "Membership Plans", path: "/admin/membership-plans", icon: Crown },
+  { label: "Reviews", path: "/admin/reviews", icon: Star, phase: "Phase 2" },
+  { label: "Notifications", path: "/admin/notifications", icon: Bell, phase: "Phase 2" },
+  { label: "Payments", path: "/admin/payments", icon: CreditCard },
+  { label: "Support Tickets", path: "/admin/support", icon: LifeBuoy, phase: "Phase 2" },
+  { label: "Analytics", path: "/admin/analytics", icon: BarChart3, phase: "Phase 3" },
+  { label: "Settings", path: "/admin/settings", icon: Settings },
+  { label: "Admin Roles & Permissions", path: "/admin/roles", icon: ShieldCheck, phase: "Phase 3" },
+  { label: "Audit Logs", path: "/admin/audit-logs", icon: ScrollText, phase: "Phase 3" },
+  { label: "Backups", path: "/admin/backups", icon: DatabaseBackup, phase: "Phase 3" },
+];
+
+function adminAllowed(user) {
+  const r = (user?.role || "").toLowerCase();
+  return r === "admin" || r === "founder" || r === "staff";
+}
+
+export default function AdminLayout() {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  if (!adminAllowed(user)) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+        <div className="text-center max-w-md">
+          <ShieldCheck className="w-10 h-10 text-gray-300 mx-auto mb-3" />
+          <h1 className="text-xl font-bold text-gray-900 mb-2">Admin access required</h1>
+          <p className="text-sm text-gray-500 mb-4">
+            Your account does not have permission to view the admin backend.
+          </p>
+          <Link to="/" className="inline-flex items-center gap-1 text-sm text-emerald-700 font-semibold">
+            <ChevronLeft className="w-4 h-4" /> Back to site
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-[#faf8f5] flex">
+      {/* Sidebar */}
+      <aside
+        className={`fixed lg:sticky top-0 z-40 lg:z-10 h-screen w-72 bg-white border-r border-gray-100 flex-shrink-0 transition-transform duration-200 ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+        }`}
+      >
+        <div className="h-16 px-5 flex items-center justify-between border-b border-gray-100">
+          <Link to="/admin" className="flex items-center gap-2" onClick={() => setSidebarOpen(false)}>
+            <div className="w-8 h-8 bg-amber-500 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-sm">N</span>
+            </div>
+            <span className="font-bold text-gray-900 font-heading">Nelvin Admin</span>
+          </Link>
+          <button className="lg:hidden text-gray-400" onClick={() => setSidebarOpen(false)}>
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+        <nav className="px-3 py-4 overflow-y-auto h-[calc(100vh-4rem)] scrollbar-hide">
+          {NAV.map((item) => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              end={item.end}
+              onClick={() => setSidebarOpen(false)}
+              className={({ isActive }) =>
+                `flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-sm mb-0.5 transition-colors ${
+                  isActive
+                    ? "bg-emerald-50 text-emerald-700 font-semibold"
+                    : "text-gray-600 hover:bg-gray-50"
+                }`
+              }
+            >
+              <span className="flex items-center gap-2.5">
+                <item.icon className="w-4 h-4" />
+                {item.label}
+              </span>
+              {item.phase && (
+                <span className="text-[10px] uppercase tracking-wide text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded">
+                  {item.phase}
+                </span>
+              )}
+            </NavLink>
+          ))}
+        </nav>
+      </aside>
+
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/40 z-30 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      {/* Main */}
+      <div className="flex-1 min-w-0 flex flex-col">
+        <header className="sticky top-0 z-20 bg-white border-b border-gray-100 h-16 px-4 sm:px-6 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <button
+              className="lg:hidden text-gray-600"
+              onClick={() => setSidebarOpen(true)}
+              aria-label="Open navigation"
+            >
+              <Menu className="w-6 h-6" />
+            </button>
+            <Link to="/" className="text-sm text-gray-500 hover:text-gray-700 flex items-center gap-1">
+              <ChevronLeft className="w-4 h-4" /> View site
+            </Link>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="text-right hidden sm:block">
+              <p className="text-sm font-semibold text-gray-900 leading-tight">
+                {user?.full_name || "Admin"}
+              </p>
+              <p className="text-xs text-gray-400 capitalize">{user?.role || ""}</p>
+            </div>
+            <Avatar
+              user={user}
+              className="w-9 h-9"
+              fallbackClassName="bg-emerald-700 text-white font-semibold text-sm"
+            />
+            <button
+              onClick={() => logout(true)}
+              className="text-xs text-gray-500 hover:text-rose-600 ml-1"
+            >
+              Sign out
+            </button>
+          </div>
+        </header>
+        <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-[1400px] w-full mx-auto">
+          <Outlet />
+        </main>
+      </div>
+    </div>
+  );
+}

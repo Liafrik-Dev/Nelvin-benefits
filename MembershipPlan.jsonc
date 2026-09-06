@@ -1,0 +1,90 @@
+{
+  "name": "MembershipPlan",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "enum": [
+        "Free",
+        "Silver",
+        "Gold",
+        "Platinum",
+        "Enterprise"
+      ]
+    },
+    "tier": {
+      "type": "string",
+      "description": "Slug used for matching to requirements (free, silver, gold, platinum, enterprise)"
+    },
+    "price_monthly": {
+      "type": "number",
+      "default": 0
+    },
+    "price_yearly": {
+      "type": "number",
+      "default": 0
+    },
+    "currency": {
+      "type": "string",
+      "default": "USD"
+    },
+    "description": {
+      "type": "string"
+    },
+    "benefits": {
+      "type": "string",
+      "description": "Comma or newline separated list of included benefits"
+    },
+    "features": {
+      "type": "string"
+    },
+    "max_redemptions_per_day": {
+      "type": "number",
+      "default": 0
+    },
+    "is_corporate": {
+      "type": "boolean",
+      "default": false
+    },
+    "seats_included": {
+      "type": "number",
+      "default": 0
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "display_order": {
+      "type": "number",
+      "default": 0
+    },
+    "color": {
+      "type": "string",
+      "description": "Optional hex/class accent for UI"
+    },
+    "icon": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": null,
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

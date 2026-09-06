@@ -1,0 +1,268 @@
+{
+  "name": "Company",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "industry": {
+      "type": "string"
+    },
+    "billing_contact_name": {
+      "type": "string"
+    },
+    "billing_contact_email": {
+      "type": "string"
+    },
+    "billing_contact_phone": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "logo_url": {
+      "type": "string"
+    },
+    "email_domain": {
+      "type": "string",
+      "description": "Company email domain (lowercase, no @) used for domain-based employee auto-join"
+    },
+    "employee_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Reported total employees who will use Nelvin"
+    },
+    "is_corporate_lead": {
+      "type": "boolean",
+      "default": false,
+      "description": "True for self-serve signups with 10+ employees that need a sales call before activation"
+    },
+    "lead_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "contacted",
+        "qualified",
+        "converted",
+        "lost"
+      ],
+      "default": "pending"
+    },
+    "membership_plan_id": {
+      "type": "string",
+      "description": "Reference to MembershipPlan for this corporate account"
+    },
+    "membership_tier": {
+      "type": "string",
+      "description": "Cached label: Enterprise, custom plan name, or tier slug"
+    },
+    "branding_logo_url": {
+      "type": "string"
+    },
+    "branding_primary_color": {
+      "type": "string"
+    },
+    "branding_welcome_message": {
+      "type": "string"
+    },
+    "support_email": {
+      "type": "string"
+    },
+    "sso_provider": {
+      "type": "string",
+      "enum": [
+        "none",
+        "microsoft_entra",
+        "google_workspace",
+        "okta"
+      ],
+      "default": "none"
+    },
+    "sso_tenant_id": {
+      "type": "string"
+    },
+    "sso_client_id": {
+      "type": "string"
+    },
+    "sso_status": {
+      "type": "string",
+      "enum": [
+        "disabled",
+        "configured",
+        "active"
+      ],
+      "default": "disabled"
+    },
+    "seats_purchased": {
+      "type": "number",
+      "default": 0
+    },
+    "seats_used": {
+      "type": "number",
+      "default": 0
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "suspended",
+        "rejected",
+        "deleted"
+      ],
+      "default": "pending"
+    },
+    "dashboard_access": {
+      "type": "boolean",
+      "default": false,
+      "description": "Dedicated gate for dashboard access. Separate from status/payment \u2014 must be true to load the HR dashboard. Flipped to true by admin payment-confirmation (self-serve) or application-approval (custom pricing)."
+    },
+    "activation_type": {
+      "type": "string",
+      "enum": [
+        "self_serve",
+        "custom_pricing"
+      ],
+      "default": "self_serve",
+      "description": "Which activation flow this company used: self_serve (1-9 employees) or custom_pricing (10+ employees)"
+    },
+    "application_status": {
+      "type": "string",
+      "enum": [
+        "pending_approval",
+        "in_review",
+        "approved",
+        "rejected"
+      ],
+      "default": "pending_approval",
+      "description": "Review state for custom-pricing (10+) applications"
+    },
+    "invoice_number": {
+      "type": "string"
+    },
+    "payment_link_url": {
+      "type": "string",
+      "description": "External payment link sent for custom-pricing invoice"
+    },
+    "custom_pricing_quote_amount": {
+      "type": "number",
+      "description": "Quoted amount for custom-pricing (10+) companies"
+    },
+    "custom_pricing_notes": {
+      "type": "string"
+    },
+    "rejection_reason": {
+      "type": "string"
+    },
+    "billing_start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "billing_end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "next_renewal_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "billing_period": {
+      "type": "string",
+      "enum": [
+        "monthly",
+        "yearly",
+        "custom"
+      ]
+    },
+    "billing_method": {
+      "type": "string",
+      "enum": [
+        "card",
+        "invoice",
+        "manual"
+      ],
+      "default": "card"
+    },
+    "subscription_status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "trialing",
+        "past_due",
+        "canceled",
+        "pending"
+      ],
+      "default": "pending"
+    }
+  },
+  "required": [
+    "name",
+    "billing_contact_email",
+    "country"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.status": "approved"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
+}

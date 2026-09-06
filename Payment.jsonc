@@ -1,0 +1,161 @@
+{
+  "name": "Payment",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "membership",
+        "business",
+        "refund"
+      ],
+      "default": "membership"
+    },
+    "account_type": {
+      "type": "string",
+      "enum": [
+        "individual",
+        "corporate",
+        "business"
+      ],
+      "description": "Whether payment is from an individual user or company (mutually exclusive)"
+    },
+    "user_id": {
+      "type": "string",
+      "description": "Populated when account_type = individual"
+    },
+    "user_name": {
+      "type": "string"
+    },
+    "user_email": {
+      "type": "string"
+    },
+    "company_id": {
+      "type": "string",
+      "description": "Populated when account_type = corporate"
+    },
+    "company_name": {
+      "type": "string"
+    },
+    "business_id": {
+      "type": "string",
+      "description": "Populated when type = business"
+    },
+    "business_name": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "number"
+    },
+    "currency": {
+      "type": "string",
+      "default": "USD"
+    },
+    "payment_method": {
+      "type": "string",
+      "description": "Card, Bank Transfer, Mobile Money, etc."
+    },
+    "reference": {
+      "type": "string",
+      "description": "External gateway reference"
+    },
+    "invoice_number": {
+      "type": "string"
+    },
+    "receipt_url": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "membership_plan_id": {
+      "type": "string"
+    },
+    "membership_plan_name": {
+      "type": "string"
+    },
+    "seats": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "completed",
+        "failed",
+        "refunded",
+        "cancelled"
+      ],
+      "default": "pending"
+    },
+    "refund_amount": {
+      "type": "number"
+    },
+    "refund_reason": {
+      "type": "string"
+    },
+    "billing_period_start": {
+      "type": "string",
+      "format": "date"
+    },
+    "billing_period_end": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "type",
+    "amount"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.user_id": "{{user.id}}"
+        },
+        {
+          "data.company_id": "{{user.data.company_id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.user_id": "{{user.id}}"
+        },
+        {
+          "data.user_email": "{{user.email}}"
+        },
+        {
+          "data.company_id": "{{user.data.company_id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "name": "User",
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string",
+      "description": "Platform role. Founder/Admin/Staff are platform-wide. HR Admin is scoped to one company. Vendor manages their own business. Subscriber covers both individual subscribers and corporate employees \u2014 company_id distinguishes them.",
+      "enum": [
+        "founder",
+        "admin",
+        "staff",
+        "hr_admin",
+        "vendor",
+        "subscriber"
+      ],
+      "default": "subscriber"
+    },
+    "first_name": {
+      "type": "string",
+      "description": "First name collected at registration (individual subscribers)"
+    },
+    "last_name": {
+      "type": "string",
+      "description": "Last name collected at registration (individual subscribers)"
+    },
+    "subscriber_id": {
+      "type": "string",
+      "description": "Permanent, unique, human-readable Subscriber ID (e.g. NV-00012345). Issued on first membership/issue-card. Never reused \u2014 survives deletion of the underlying user."
+    },
+    "photo_url": {
+      "type": "string",
+      "description": "User's uploaded profile photo (data URL or hosted URL). Displayed as a circular avatar throughout the app."
+    },
+    "account_type": {
+      "type": "string",
+      "description": "Whether the user is an individual subscriber or belongs to a corporate company",
+      "enum": [
+        "individual",
+        "corporate"
+      ],
+      "default": "individual"
+    },
+    "company_id": {
+      "type": "string",
+      "description": "Reference to Company entity if user belongs to a corporate account (HR admin OR employee)"
+    },
+    "membership_plan_id": {
+      "type": "string",
+      "description": "Active membership plan for individual subscribers"
+    },
+    "membership_status": {
+      "type": "string",
+      "description": "Status of the user's membership",
+      "enum": [
+        "active",
+        "expired",
+        "suspended",
+        "none",
+        "pending"
+      ],
+      "default": "none"
+    },
+    "membership_start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "membership_end_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "plan_tier": {
+      "type": "string",
+      "description": "Cached tier label for fast filtering (Free, Silver, Gold, Platinum)"
+    },
+    "is_suspended": {
+      "type": "boolean",
+      "default": false
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "suspended",
+        "deleted"
+      ],
+      "default": "active"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "role"
+  ]
+}

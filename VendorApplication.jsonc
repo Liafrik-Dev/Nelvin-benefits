@@ -1,0 +1,175 @@
+{
+  "name": "VendorApplication",
+  "type": "object",
+  "properties": {
+    "business_name": {
+      "type": "string"
+    },
+    "contact_name": {
+      "type": "string"
+    },
+    "owner_id": {
+      "type": "string",
+      "description": "User id of the vendor that owns this business"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "business_address": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "business_image_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "document_type": {
+      "type": "string",
+      "enum": [
+        "registration_certificate",
+        "trading_license",
+        "tax_certificate",
+        "other"
+      ]
+    },
+    "document_url": {
+      "type": "string"
+    },
+    "id_document_url": {
+      "type": "string"
+    },
+    "logo_url": {
+      "type": "string"
+    },
+    "selfie_url": {
+      "type": "string"
+    },
+    "authorized_confirmation": {
+      "type": "boolean",
+      "default": false
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected"
+      ],
+      "default": "pending"
+    },
+    "published_offer_id": {
+      "type": "string"
+    },
+    "rejection_reason": {
+      "type": "string"
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "is_suspended": {
+      "type": "boolean",
+      "default": false
+    },
+    "verification_status": {
+      "type": "string",
+      "enum": [
+        "unverified",
+        "verified",
+        "rejected"
+      ],
+      "default": "unverified"
+    },
+    "membership_type": {
+      "type": "string",
+      "description": "Vendor membership tier (Free, Silver, Gold, Platinum)"
+    },
+    "review_notes": {
+      "type": "string"
+    },
+    "requested_changes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "business_name",
+    "contact_name",
+    "email",
+    "category",
+    "country"
+  ],
+  "rls": {
+    "create": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.owner_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.owner_id": "{{user.id}}"
+        },
+        {
+          "data.email": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.owner_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
