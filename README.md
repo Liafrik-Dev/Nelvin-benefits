@@ -109,7 +109,7 @@ Le frontend ne dépend pas directement du runtime Base44**: tout passe par `src/
 
 # LIAFRIK
 
-**LIAFRIK** est un projet porté par **Vincent Nogue, CEO de LIAFRIK**.
+ **Vincent Nogue, CEO de LIAFRIK**. Software and Saas dev
 
 Nous développons une plateforme pensée pour construire et proposer des solutions numériques adaptées aux besoins du marché africain, avec l'ambition de créer une experience moderne, accessible et évolutive.
 
