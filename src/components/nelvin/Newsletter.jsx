@@ -1,36 +1,56 @@
 import React, { useState } from "react";
-import { Mail } from "lucide-react";
-import { useLanguage } from "@/lib/i18n";
+import { Mail, Check } from "lucide-react";
 
 export default function Newsletter() {
-  const { t } = useLanguage();
   const [email, setEmail] = useState("");
+  const [done, setDone] = useState(false);
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#faf8f5]">
-      <div className="max-w-2xl mx-auto">
-        <div className="bg-rose-50 rounded-3xl p-8 sm:p-12 text-center border border-rose-100">
-          <div className="w-12 h-12 bg-rose-400 rounded-xl flex items-center justify-center mx-auto mb-6">
-            <Mail className="w-6 h-6 text-white" />
+    <section className="bg-white py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-3xl mx-auto">
+        <div className="rounded-[2rem] border-2 border-[#180126]/10 p-8 sm:p-12 text-center bg-[#F7F3ED]">
+          <div className="w-12 h-12 bg-[#7637E3] rounded-2xl flex items-center justify-center mx-auto mb-5">
+            <Mail className="w-5 h-5 text-white" />
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold font-heading text-gray-900 mb-3">{t('home.news.title')}</h2>
-          <p className="text-gray-500 text-sm mb-8">
-            {t('home.news.desc')}
+          <h2 className="text-2xl sm:text-3xl font-bold font-heading text-[#180126] mb-3">
+            Never miss a drop.
+
+          </h2>
+          <p className="text-[#180126]/60 text-sm mb-8">
+            Get the week's best offers, cashback drops,and luxury reveals — straight to your inbox.
+
           </p>
-          <div className="flex items-center gap-2 max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder={t('home.news.placeholder')}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 bg-white rounded-full px-5 py-3 text-sm outline-none border border-gray-200 focus:border-emerald-300 focus:ring-2 focus:ring-emerald-100"
-            />
-            <button className="bg-emerald-700 hover:bg-emerald-800 text-white px-6 py-3 rounded-full font-semibold text-sm transition-colors whitespace-nowrap">
-              {t('home.news.cta')}
-            </button>
-          </div>
-          <p className="text-xs text-gray-400 mt-4">
-            {t('home.news.legal')}
+          {done ? (
+            <p className="inline-flex items-center gap-2 bg-[#B8FF00] text-[#082F24] font-bold text-sm rounded-full px-6 py-3">
+              <Check className="w-4 h-4" /> Thank you! You are subscribed.
+
+            </p>
+          ) : (
+            <form
+              onSubmit={(e) => { e.preventDefault(); if (email) setDone(true); }}
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 max-w-md mx-auto"
+            >
+              <input
+                type="email"
+                required
+                placeholder="Your best email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="flex-1 bg-white rounded-full px-5 py-3 text-sm text-[#180126] outline-none border border-[#180126]/20 focus:border-[#00BD00] placeholder:text-[#D1CCD4]"
+              />
+              <button
+                type="submit"
+                className="group bg-[#082F24] hover:bg-[#0d4636] text-white px-6 py-3 rounded-full font-bold text-sm transition-colors whitespace-nowrap inline-flex items-center justify-center gap-2"
+              >
+                Subscribe
+                <span className="w-4 h-4 rounded-full bg-[#B8FF00] flex items-center justify-center text-[#082F24] text-[10px] font-extrabold">→</span>
+              </button>
+            </form>
+          )}
+          <p className="text-xs text-[#180126]/40 mt-4">
+            By subscribing you agree to Nelvin's Privacy Policy. Unsubscribe anytime.
+
+
           </p>
         </div>
       </div>

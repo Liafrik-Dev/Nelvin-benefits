@@ -1,52 +1,71 @@
 import React from "react";
-import { Building2, Tag, Globe, Users } from "lucide-react";
-import { useLanguage } from "@/lib/i18n";
+import { Quote } from "lucide-react";
 
 const stats = [
-  { icon: Building2, value: "20K", suffix: "+", labelKey: "home.stats1" },
-  { icon: Tag, value: "500K", suffix: "+", labelKey: "home.stats2", highlight: true },
-  { icon: Globe, value: "54", suffix: "", labelKey: "home.stats3" },
-  { icon: Users, value: "2.4M", suffix: "+", labelKey: "home.stats4" },
+  { value: "5m", label: "Employees supported" },
+  { value: "126", label: "Countries" },
+  { value: "3000+", label: "Customers" },
+  { value: "4x", label: "Increase in engagement in benefits" },
+];
+
+const testimonials = [
+  {
+    quote: "You've made our international benefits dreams come true! We're able to showcase benefits in a way we've never done before.",
+    name: "Samantha Sergent",
+    role: "Director of International Benefits",
+    logo: "/images/benifex/logos/microsoft-logo.png",
+  },
+  {
+    quote: "We wanted a platform that could be a single source of truth... We went from very manual processes to complete digital transformation.",
+    name: "Jennifer Burnett",
+    role: "Director of US Benefits",
+    logo: "/images/benifex/logos/snowflake-logo.png",
+  },
 ];
 
 export default function StatsSection() {
-  const { t } = useLanguage();
   return (
-    <section className="bg-[#faf8f5] py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto text-center mb-12">
-        <p className="text-emerald-700 font-semibold text-xs tracking-[0.15em] uppercase mb-3">
-          {t('home.eyebrow2')}
-        </p>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-gray-900">
-          {t('home.title2')}
-        </h2>
-        <p className="text-gray-500 mt-4 max-w-xl mx-auto">
-          {t('home.desc2')}
-        </p>
-      </div>
+    <section className="bg-[#180126] py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <div
+        className="absolute inset-0 opacity-10"
+        style={{
+          backgroundImage: "radial-gradient(circle at 20% 20%, #7637E3 0, transparent 40%), radial-gradient(circle at 80% 80%, #00BD00 0, transparent 40%)",
+        }}
+      />
+      <div className="max-w-6xl mx-auto relative z-10">
+        <div className="text-center mb-16">
+          <p className="text-[#B8FF00] font-semibold text-xs tracking-[0.2em] uppercase mb-3">The Nelvin platform</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-white tracking-tight max-w-3xl mx-auto leading-tight">
+            Create remarkable rewards and benefits experiences with a global platform
+          </h2>
+        </div>
 
-      <div className="max-w-5xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {stats.map((stat, i) => (
-          <div
-            key={i}
-            className={`rounded-2xl p-6 text-left ${
-              stat.highlight
-                ? "border-2 border-emerald-200 bg-white"
-                : "bg-white border border-gray-100"
-            }`}
-          >
-            <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 ${
-              stat.highlight ? "bg-emerald-700" : "bg-emerald-700"
-            }`}>
-              <stat.icon className="w-5 h-5 text-white" />
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-20">
+          {stats.map((stat) => (
+            <div key={stat.label} className="bg-white/5 border border-white/10 rounded-3xl p-8 text-center">
+              <p className="text-4xl sm:text-5xl font-extrabold font-heading text-[#B8FF00]">{stat.value}</p>
+              <p className="text-white/60 text-sm mt-2 font-medium">{stat.label}</p>
             </div>
-            <div className="flex items-baseline gap-0.5">
-              <span className="text-3xl sm:text-4xl font-bold font-heading text-gray-900">{stat.value}</span>
-              <span className="text-2xl sm:text-3xl font-bold text-amber-500">{stat.suffix}</span>
-            </div>
-            <p className="text-sm text-gray-500 mt-1">{t(stat.labelKey)}</p>
-          </div>
-        ))}
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {testimonials.map((t) => (
+            <figure key={t.name} className="border-2 border-[#B8FF00] rounded-3xl p-8">
+              <Quote className="w-8 h-8 text-[#7637E3]" />
+              <blockquote className="mt-4 text-white/90 text-base sm:text-lg leading-relaxed">
+                "{t.quote}"
+              </blockquote>
+              <figcaption className="mt-6 flex items-center gap-4">
+                <img src={t.logo} alt={t.name} className="h-10 w-auto max-w-32 object-contain brightness-200" />
+                <div>
+                  <p className="font-bold text-white text-sm">{t.name}</p>
+                  <p className="text-white/50 text-xs">{t.role}</p>
+                </div>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
       </div>
     </section>
   );

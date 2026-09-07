@@ -1,56 +1,34 @@
 import React from "react";
-import { Star } from "lucide-react";
-import { useLanguage } from "@/lib/i18n";
+import { Star, Quote } from "lucide-react";
 
-const testimonialsData = [
-  {
-    quoteKey: "testimonials.quote1",
-    nameKey: "testimonials.name1",
-    roleKey: "testimonials.role1",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80",
-  },
-  {
-    quoteKey: "testimonials.quote2",
-    nameKey: "testimonials.name2",
-    roleKey: "testimonials.role2",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80",
-  },
-  {
-    quoteKey: "testimonials.quote3",
-    nameKey: "testimonials.name3",
-    roleKey: "testimonials.role3",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&q=80",
-  },
-];
+const testimonial = {
+  quote: "Nelvin transformed how we reward and engage our people across Africa. One platform, one home for everything at work — our members finally feel the value of every benefit we offer.",
+  name: "Amina Yusuf",
+  role: "Head of People, Pan-African Group",
+  avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a?w=120&q=80",
+};
 
 export default function Testimonials() {
-  const { t } = useLanguage();
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#faf8f5]">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <p className="text-emerald-700 font-semibold text-xs tracking-[0.15em] uppercase mb-3">{t('testimonials.eyebrow')}</p>
-          <h2 className="text-3xl sm:text-4xl font-bold font-heading text-gray-900">{t('testimonials.title')}</h2>
+    <section className="bg-[#F7F3ED] py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto text-center">
+        <div className="w-12 h-12 rounded-full bg-[#7637E3] flex items-center justify-center mx-auto mb-6">
+          <Quote className="w-5 h-5 text-white" />
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonialsData.map((testimonial, i) => (
-            <div key={i} className="bg-white rounded-2xl p-6 border border-gray-100">
-              <div className="flex gap-0.5 mb-4">
-                {[...Array(5)].map((_, j) => (
-                  <Star key={j} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                ))}
-              </div>
-              <p className="text-gray-800 text-sm leading-relaxed mb-6">{t(testimonial.quoteKey)}</p>
-              <div className="flex items-center gap-3">
-                <img src={testimonial.avatar} alt={t(testimonial.nameKey)} className="w-10 h-10 rounded-full object-cover" />
-                <div>
-                  <p className="font-semibold text-sm text-gray-900">{t(testimonial.nameKey)}</p>
-                  <p className="text-xs text-gray-400">{t(testimonial.roleKey)}</p>
-                </div>
-              </div>
-            </div>
+        <div className="flex justify-center gap-1 mb-6">
+          {[...Array(5)].map((_, j) => (
+            <Star key={j} className="w-5 h-5 fill-[#B8FF00] text-[#B8FF00]" />
           ))}
+        </div>
+        <blockquote className="text-xl sm:text-2xl md:text-3xl font-bold font-heading text-[#180126] leading-snug max-w-3xl mx-auto">
+          "{testimonial.quote}"
+        </blockquote>
+        <div className="mt-8 flex items-center justify-center gap-4">
+          <img src={testimonial.avatar} alt={testimonial.name} className="w-14 h-14 rounded-full object-cover ring-4 ring-white" />
+          <div className="text-left">
+            <p className="font-bold text-[#180126]">{testimonial.name}</p>
+            <p className="text-sm text-[#180126]/60">{testimonial.role}</p>
+          </div>
         </div>
       </div>
     </section>

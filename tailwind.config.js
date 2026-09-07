@@ -5,10 +5,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Jakarta Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
-        heading: ['"Jakarta Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
-        body: ['"Jakarta Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
-        display: ['"Jakarta Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
+        sans: ['"Plus Jakarta Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
+        heading: ['"Plus Jakarta Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
+        body: ['"Plus Jakarta Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ['"Plus Jakarta Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
         mono: ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
       },
       colors: {

@@ -1,69 +1,76 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Check } from "lucide-react";
-import { PLANS as plans } from "@/lib/plansData";
-import { useLanguage } from "@/lib/i18n";
+import { ArrowRight, Check } from "lucide-react";
 
 export default function PricingSection() {
-  const { t } = useLanguage();
-  return (
-    <section id="pricing" className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16">
-          <p className="text-gray-400 font-semibold text-xs tracking-[0.2em] uppercase mb-3">{t('pricing.eyebrow')}</p>
-          <h2 className="text-4xl sm:text-5xl font-semibold font-heading text-gray-900 tracking-tight">
-            {t('pricing.title')}
-          </h2>
-          <p className="text-gray-500 mt-4 max-w-lg mx-auto text-base">
-            {t('pricing.subtitle')}
-          </p>
-        </div>
+  const [submitted, setSubmitted] = useState(false);
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-start">
-          {plans.map((plan) => (
-            <div
-              key={plan.slug}
-              className={`rounded-[28px] p-8 relative transition-shadow duration-300 ${
-                plan.highlight
-                  ? "bg-gray-900 text-white shadow-xl md:-mt-4 md:pb-10"
-                  : "bg-[#f5f5f7] border border-gray-100 hover:shadow-md"
-              }`}
-            >
-              {plan.highlight && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="bg-white text-gray-900 text-[11px] font-semibold px-4 py-1 rounded-full uppercase tracking-wider">
-                    {t('pricing.mostPopular')}
-                  </span>
-                </div>
-              )}
-              <p className={`font-semibold text-xs tracking-[0.15em] mb-5 ${plan.highlight ? "text-white/60" : "text-gray-400"}`}>
-                {plan.name}
+  return (
+    <section className="bg-[#F7F3ED] py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto">
+        <div className="relative rounded-[2rem] overflow-hidden">
+          <img src="/images/benifex/footer-banner-v2.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-[#082F24]/85" />
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 p-8 sm:p-14 items-center">
+            <div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-white tracking-tight leading-tight">
+                Ready to connect your employee experience?
+              </h2>
+              <p className="text-white/70 mt-4 max-w-md text-base leading-relaxed">
+                Join the remarkable organisations putting people at the heart of what they do.
+                A global community of changemakers.
+ Book a free demo today.
+
               </p>
-              <div className="flex items-baseline gap-1 mb-1">
-                <span className="text-5xl font-semibold font-heading tracking-tight">{plan.price}</span>
-                <span className={`text-sm ${plan.highlight ? "text-white/50" : "text-gray-400"}`}>{plan.period}</span>
-              </div>
-              <p className={`text-sm mb-8 ${plan.highlight ? "text-white/60" : "text-gray-500"}`}>{plan.desc}</p>
-              <ul className="space-y-3.5 mb-10">
-                {plan.features.map((f, j) => (
-                  <li key={j} className="flex items-start gap-2.5 text-sm">
-                    <Check className={`w-4 h-4 mt-0.5 flex-shrink-0 ${plan.highlight ? "text-white/70" : "text-gray-400"}`} />
-                    <span className={plan.highlight ? "text-white/90" : "text-gray-700"}>{f}</span>
-                  </li>
-                ))}
-              </ul>
-              <Link
-                to={`/choose-plan?plan=${plan.slug}`}
-                className={`w-full py-3.5 rounded-full font-medium text-sm transition-all block text-center ${
-                  plan.highlight
-                    ? "bg-white text-gray-900 hover:bg-gray-100"
-                    : "bg-gray-900 text-white hover:bg-gray-800"
-                }`}
-              >
-                {plan.cta}
-              </Link>
             </div>
-          ))}
+
+            <div className="bg-white rounded-3xl p-8 shadow-xl">
+              {submitted ? (
+                <div className="text-center py-10">
+                  <div className="w-14 h-14 rounded-full bg-[#B8FF00] flex items-center justify-center mx-auto mb-4">
+                    <Check className="w-7 h-7 text-[#082F24]" />
+                  </div>
+                  <h3 className="text-xl font-bold text-[#180126] mb-2">Thank you!</h3>
+                  <p className="text-sm text-[#180126]/60">We'll be in touch shortly to arrange your demo.</p>
+                </div>
+              ) : (
+                <form
+                  onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
+                  className="space-y-4"
+                >
+                  <h3 className="text-lg font-bold text-[#180126]">Book a free demo</h3>
+                  <div className="grid grid-cols-2 gap-4">
+                    <input
+                      required
+                      placeholder="First Name"
+                      className="border border-[#180126]/30 rounded-lg px-4 py-2.5 text-sm text-[#180126] outline-none focus:border-[#180126] placeholder:text-[#D1CCD4]"
+                    />
+                    <input
+                      required
+                      placeholder="Surname"
+                      className="border border-[#180126]/30 rounded-lg px-4 py-2.5 text-sm text-[#180126] outline-none focus:border-[#180126] placeholder:text-[#D1CCD4]"
+                    />
+                  </div>
+                  <input
+                    required
+                    type="email"
+                    placeholder="Email"
+                    className="w-full border border-[#180126]/30 rounded-lg px-4 py-2.5 text-sm text-[#180126] outline-none focus:border-[#180126] placeholder:text-[#D1CCD4]"
+                  />
+                  <button
+                    type="submit"
+                    className="group w-full inline-flex items-center justify-center gap-3 bg-[#180126] hover:bg-[#2b0140] text-white font-bold text-sm h-11 rounded-[23px] transition-colors"
+                  >
+                    <span className="transition-transform group-hover:-translate-x-1">Submit</span>
+                    <span className="w-4 h-4 rounded-full bg-[#B8FF00] flex items-center justify-center text-[#180126] text-xs">→</span>
+                  </button>
+                  <p className="text-[10px] text-[#180126]/50 leading-relaxed">
+                    Nelvin will use your personal information to contact you from time to time about other products, services and events that we feel may be of interest to you.
+                  </p>
+                </form>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </section>
