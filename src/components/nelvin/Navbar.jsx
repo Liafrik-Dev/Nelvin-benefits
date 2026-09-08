@@ -45,9 +45,18 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [menuKey, setMenuKey] = useState(null);
+  const [scrolled, setScrolled] = useState(false);
   const dropdownRef = useRef(null);
+  const isHome = window.location.pathname === "/";
   const { isAuthenticated } = useAuth();
   const { t, lang, setLang } = useLanguage();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const onAway = (e) => {
@@ -71,12 +80,16 @@ export default function Navbar() {
       initial={{ opacity: 0, y: -16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-4 left-4 right-4 sm:top-6 sm:left-6 sm:right-6 z-50"
+      className={`fixed ${isHome ? "top-4" : "top-0"} left-0 right-0 z-50 transition-colors duration-300 ${
+        !isHome || scrolled ? "bg-[#082F24]/90 backdrop-blur-xl shadow-lg shadow-[#180126]/20" : "bg-transparent"
+      }`}
     >
-      <div className="max-w-5xl mx-auto">
+      <div className={`mx-auto transition-all duration-300 ${isHome ? "max-w-6xl px-4 sm:px-6" : "max-w-6xl px-4 sm:px-6"}`}>
         <div
-          className={`rounded-full bg-[#082F24] text-white shadow-lg transition-all duration-200 ${
-            menuKey ? "rounded-b-none lg:rounded-b-[38px]" : ""
+          className={`text-white transition-all duration-300 ${
+            isHome && !scrolled ? "mt-3 rounded-full bg-[#082F24]/95 backdrop-blur border border-white/10" : "bg-transparent border-transparent"
+          } ${
+            menuKey ? "rounded-b-none lg:rounded-b-3xl" : ""
           }`}
         >
           <div className="h-16 px-4 sm:px-6 flex items-center gap-1 sm:gap-3">
