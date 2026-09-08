@@ -1,0 +1,15 @@
+{
+  "name": "WalletTransaction",
+  "type": "object",
+  "properties": {
+    "wallet_id": { "type": "string" },
+    "user_id": { "type": "string" },
+    "type": { "type": "string", "enum": ["top_up", "redemption", "cashback_earned", "allowance_refill", "refund"] },
+    "amount": { "type": "number", "default": 0 },
+    "currency": { "type": "string", "default": "USD" },
+    "description": { "type": "string" },
+    "reference": { "type": "string" },
+    "status": { "type": "string", "enum": ["completed", "pending", "failed"], "default": "completed" }
+  },
+  "required": ["wallet_id", "user_id", "type", "amount"]
+}

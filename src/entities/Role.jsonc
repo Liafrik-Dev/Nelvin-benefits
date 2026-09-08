@@ -1,0 +1,12 @@
+{
+  "name": "Role",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "scope": { "type": "string", "enum": ["platform", "company", "business"], "default": "company" },
+    "scope_id": { "type": "string" },
+    "permissions": { "type": "array", "items": { "type": "string" } },
+    "is_default": { "type": "boolean", "default": false }
+  },
+  "required": ["name", "scope"]
+}

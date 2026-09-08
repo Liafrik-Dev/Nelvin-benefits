@@ -1,0 +1,15 @@
+{
+  "name": "Team",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "company_id": { "type": "string" },
+    "department_id": { "type": "string" },
+    "lead_employee_id": { "type": "string" },
+    "lead_name": { "type": "string" },
+    "description": { "type": "string" },
+    "member_count": { "type": "number", "default": 0 },
+    "status": { "type": "string", "enum": ["active", "inactive"], "default": "active" }
+  },
+  "required": ["name", "company_id"]
+}

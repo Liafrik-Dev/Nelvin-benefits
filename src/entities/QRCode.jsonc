@@ -1,0 +1,15 @@
+{
+  "name": "QRCode",
+  "type": "object",
+  "properties": {
+    "business_id": { "type": "string" },
+    "offer_id": { "type": "string" },
+    "redemption_id": { "type": "string" },
+    "qr_code_hash": { "type": "string" },
+    "user_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["unused", "used", "expired"], "default": "unused" },
+    "validated_at": { "type": "string" },
+    "validated_by": { "type": "string" }
+  },
+  "required": ["business_id", "qr_code_hash", "user_id"]
+}

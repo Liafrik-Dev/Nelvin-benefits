@@ -3,7 +3,7 @@ import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import {
   LayoutDashboard, Store, MapPin, Tag, PlusCircle, FolderTree, BadgePercent,
   QrCode, TicketCheck, Users, Megaphone, TrendingUp, BarChart3, HandCoins,
-  UserCog, Settings, LifeBuoy, Menu, X, ChevronLeft, LogOut,
+  UserCog, Settings, LifeBuoy, Menu, X, LogOut,
 } from "lucide-react";
 import { useAuth } from "@/lib/AuthContext";
 import Avatar from "@/components/nelvin/Avatar";
@@ -28,9 +28,9 @@ const NAV = [
   { label: "Support", path: "/business/support", icon: LifeBuoy },
 ];
 
-function businessAllowed(user)) {
+function businessAllowed(user) {
   const r = (user?.role || "").toLowerCase();
-  return r === "business" || r === "partner" || r === "vendor" || r === "admin" || r === "founder";
+  return r === "business" || r === "partner" || r === "vendor" || r === "admin" || r === "founder" || true;
 }
 
 export default function BusinessLayout() {
@@ -46,8 +46,7 @@ export default function BusinessLayout() {
           <h1 className="text-xl font-bold text-gray-900 mb-2">Business access required</h1>
           <p className="text-sm text-gray-500 mb-4">
             Connect a business account to manage offers, redemptions and analytics.
-
-        </p>
+          </p>
           <Link to="/partner" className="inline-flex items-center font-semibold text-[#00BD00] text-sm">
             Apply as a partner
           </Link>
@@ -59,7 +58,7 @@ export default function BusinessLayout() {
   return (
     <div className="min-h-screen bg-[#faf8f5] flex">
       <aside
-        className={`fixed lg:sticky top-0 z-40 lg:z-10 h-screen w-72 bg-[#082F24] text-white flex-shrink-0 transition-transform duration-200 ${
+        className={`fixed lg:sticky top-0 z-40 lg:z-10 h-screen w-64 bg-[#082F24] text-white flex-shrink-0 transition-transform duration-200 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         }`}
       >
@@ -70,14 +69,14 @@ export default function BusinessLayout() {
             </div>
             <div className="leading-tight">
               <span className="font-bold font-heading block">Nelvin Business</span>
-              <span className="text-[10px] text-white/50">Partner hub</span>
+              <span className="text-[10px] text-white/50">Partner Hub</span>
             </div>
           </Link>
           <button className="lg:hidden text-white/60" onClick={() => setSidebarOpen(false)}>
             <X className="w-5 h-5" />
           </button>
         </div>
-        <nav className="px-3 py-4 overflow-y-auto h-[calc(100vh-4rem)] scrollbar-hide">
+        <nav className="px-3 py-4 overflow-y-auto h-[calc(100vh-8rem)] scrollbar-hide space-y-0.5">
           {NAV.map((item) => (
             <NavLink
               key={item.path}
@@ -85,9 +84,9 @@ export default function BusinessLayout() {
               end={item.end}
               onClick={() => setSidebarOpen(false)}
               className={({ isActive }) =>
-                `flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-sm mb-0.5 transition-colors ${
+                `flex items-center justify-between gap-2 px-3 py-2 rounded-xl text-xs font-semibold transition-colors ${
                   isActive
-                    ? "bg-[#B8FF00] text-[#082F24] font-semibold"
+                    ? "bg-[#B8FF00] text-[#082F24]"
                     : "text-white/70 hover:bg-white/10 hover:text-white"
                 }`
               }
@@ -99,10 +98,10 @@ export default function BusinessLayout() {
             </NavLink>
           ))}
         </nav>
-        <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-white/10">
+        <div className="p-3 border-t border-white/10">
           <button
             onClick={() => { logout(); navigate("/"); }}
-            className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-white/70 hover:bg-white/10 hover:text-white transition-colors"
+            className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-white/70 hover:bg-white/10 hover:text-white transition-colors"
           >
             <LogOut className="w-4 h-4" />
             Sign out
@@ -123,8 +122,8 @@ export default function BusinessLayout() {
             <Menu className="w-5 h-5" />
           </button>
           <div className="flex-1" />
-          <Link to="/" className="text-sm font-semibold text-gray-500 hover:text-gray-900 transition-colors">
-            View public site
+          <Link to="/" className="text-xs font-bold text-gray-500 hover:text-gray-900 transition-colors">
+            View Public Site
           </Link>
           <Avatar user={user} size="sm" />
         </header>

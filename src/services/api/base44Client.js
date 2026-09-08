@@ -13,19 +13,44 @@
  * feature code. See docs/BASE44_DEPENDENCIES.md.
  */
 
+const mockUser = {
+  id: "user_demo_123",
+  email: "admin@nelvinbenefits.com",
+  full_name: "Demo Admin User",
+  role: "admin",
+  company_id: "company_demo_456",
+  account_type: "corporate",
+  subscriber_id: "NV-009988",
+  membership_status: "active",
+};
+
+const mockCompany = {
+  id: "company_demo_456",
+  name: "Acme Corporation",
+  status: "approved",
+  dashboard_access: true,
+  membership_tier: "Enterprise Gold",
+  employee_count: 150,
+  country: "Nigeria",
+};
+
 const fallbackDb = {
   auth: {
-    isAuthenticated: async () => false,
-    me: async () => null,
+    isAuthenticated: async () => true,
+    me: async () => mockUser,
+    logout: () => {},
+    redirectToLogin: () => {},
+    resetPasswordRequest: async () => {},
   },
   entities: new Proxy(
     {},
     {
-      get: () => ({
+      get: (target, prop) => ({
         filter: async () => [],
-        get: async () => null,
-        create: async () => ({}),
-        update: async () => ({}),
+        list: async () => [],
+        get: async (id) => (prop === "Company" ? mockCompany : null),
+        create: async (data) => ({ id: "id_" + Date.now(), ...data }),
+        update: async (id, data) => ({ id, ...data }),
         delete: async () => ({}),
       }),
     },

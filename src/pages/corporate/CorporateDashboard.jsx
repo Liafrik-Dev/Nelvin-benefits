@@ -8,34 +8,54 @@ import MembershipCard from "@/components/corporate/MembershipCard";
 import CorporateDashboardHome from "@/components/corporate/CorporateDashboardHome";
 import EmployeesPanel from "@/components/corporate/EmployeesPanel";
 import DepartmentsPanel from "@/components/corporate/DepartmentsPanel";
+import TeamsPanel from "@/components/corporate/TeamsPanel";
+import LocationsPanel from "@/components/corporate/LocationsPanel";
 import BenefitsPanel from "@/components/corporate/BenefitsPanel";
+import BudgetsPanel from "@/components/corporate/BudgetsPanel";
+import RewardsPanel from "@/components/corporate/RewardsPanel";
+import CampaignsPanel from "@/components/corporate/CampaignsPanel";
+import CommunicationsPanel from "@/components/corporate/CommunicationsPanel";
+import SurveysPanel from "@/components/corporate/SurveysPanel";
+import ClaimsPanel from "@/components/corporate/ClaimsPanel";
 import OfferUsagePanel from "@/components/corporate/OfferUsagePanel";
 import SavingsPanel from "@/components/corporate/SavingsPanel";
 import MembershipPanel from "@/components/corporate/MembershipPanel";
 import ReportsPanel from "@/components/corporate/ReportsPanel";
 import AnalyticsPanel from "@/components/corporate/AnalyticsPanel";
+import IntegrationsPanel from "@/components/corporate/IntegrationsPanel";
 import BillingPanel from "@/components/corporate/BillingPanel";
 import NotificationsPanel from "@/components/corporate/NotificationsPanel";
 import CompanySettingsPanel from "@/components/corporate/CompanySettingsPanel";
+import RolesPanel from "@/components/corporate/RolesPanel";
+
 import {
-  LayoutDashboard, Users, Boxes, Gift, BarChart3, PiggyBank, CreditCard,
+  LayoutDashboard, Users, Boxes, MapPin, Gift, PiggyBank, CreditCard,
   FileText, PieChart, Receipt, Bell, Settings as SettingsIcon,
-  Building2, LogOut, RefreshCw,
+  Building2, LogOut, RefreshCw, Trophy, Sparkles, Megaphone,
+  ClipboardList, Link2, Shield
 } from "lucide-react";
 
 const TABS = [
   { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
   { id: "employees", label: "Employees", icon: Users },
   { id: "departments", label: "Departments", icon: Boxes },
+  { id: "teams", label: "Teams", icon: Users },
+  { id: "locations", label: "Locations", icon: MapPin },
   { id: "benefits", label: "Benefits", icon: Gift },
-  { id: "offer-usage", label: "Offer Usage", icon: BarChart3 },
-  { id: "savings", label: "Savings", icon: PiggyBank },
-  { id: "membership", label: "Membership", icon: CreditCard },
+  { id: "budgets", label: "Budgets & Allowances", icon: PiggyBank },
+  { id: "rewards", label: "Rewards & Recognition", icon: Trophy },
+  { id: "campaigns", label: "Campaigns", icon: Sparkles },
+  { id: "communications", label: "Communications", icon: Megaphone },
+  { id: "surveys", label: "Surveys", icon: ClipboardList },
+  { id: "claims", label: "Claims & Reimbursements", icon: Receipt },
+  { id: "offer-usage", label: "Redemptions & Usage", icon: PieChart },
   { id: "reports", label: "Reports", icon: FileText },
   { id: "analytics", label: "Analytics", icon: PieChart },
+  { id: "integrations", label: "Integrations", icon: Link2 },
   { id: "billing", label: "Billing", icon: Receipt },
   { id: "notifications", label: "Notifications", icon: Bell },
-  { id: "settings", label: "Settings", icon: SettingsIcon },
+  { id: "settings", label: "Company Settings", icon: SettingsIcon },
+  { id: "roles", label: "Roles & Permissions", icon: Shield },
 ];
 
 export default function CorporateDashboard() {
@@ -91,9 +111,6 @@ export default function CorporateDashboard() {
     );
   }
 
-  // Dashboard access gate — dashboard_access must be true to load the dashboard.
-  // This is separate from company.status and payment.status; it only flips via
-  // admin payment-confirmation (self-serve) or application-approval (custom pricing).
   if (!company.dashboard_access) {
     const isLead = company.activation_type === "custom_pricing";
     const isRejected = company.status === "rejected" || company.application_status === "rejected";
@@ -149,7 +166,6 @@ export default function CorporateDashboard() {
 
   const isHRAdmin = user.role === "hr_admin" || user.role === "admin" || user.role === "founder" || (company.created_by_id === user.id);
 
-  // Employee (subscriber) view — simpler landing
   if (!isHRAdmin) {
     const me = employees.find((e) => e.user_id === user.id) || {};
     return (
@@ -195,7 +211,6 @@ export default function CorporateDashboard() {
     );
   }
 
-  // HR Admin view — pending (10+ lead awaiting approval)
   if (company.status !== "approved") {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
@@ -238,11 +253,11 @@ export default function CorporateDashboard() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8 grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-6 lg:gap-8">
         <aside className="hidden lg:block">
-          <nav className="space-y-1 sticky top-20">
+          <nav className="space-y-1 sticky top-20 max-h-[calc(100vh-100px)] overflow-y-auto pr-2 scrollbar-hide">
             {TABS.map((t) => (
               <button key={t.id} onClick={() => setTab(t.id)}
-                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                  tab === t.id ? "bg-emerald-50 text-emerald-700" : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium transition-colors ${
+                  tab === t.id ? "bg-emerald-50 text-emerald-700 font-bold" : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
                 }`}>
                 <t.icon className="w-4 h-4" /> {t.label}
               </button>
@@ -254,7 +269,7 @@ export default function CorporateDashboard() {
           {TABS.map((t) => (
             <button key={t.id} onClick={() => setTab(t.id)}
               className={`flex-shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${
-                tab === t.id ? "bg-emerald-50 text-emerald-700" : "text-gray-600 bg-gray-100"
+                tab === t.id ? "bg-emerald-50 text-emerald-700 font-bold" : "text-gray-600 bg-gray-100"
               }`}>
               <t.icon className="w-3.5 h-3.5" /> {t.label}
             </button>
@@ -274,15 +289,23 @@ export default function CorporateDashboard() {
           {tab === "dashboard" && <CorporateDashboardHome company={company} employees={employees} onGoEmployees={() => setTab("employees")} />}
           {tab === "employees" && <EmployeesPanel company={company} employees={employees} onChanged={refresh} />}
           {tab === "departments" && <DepartmentsPanel company={company} employees={employees} onChanged={refresh} />}
+          {tab === "teams" && <TeamsPanel company={company} />}
+          {tab === "locations" && <LocationsPanel company={company} />}
           {tab === "benefits" && <BenefitsPanel company={company} />}
+          {tab === "budgets" && <BudgetsPanel company={company} />}
+          {tab === "rewards" && <RewardsPanel company={company} />}
+          {tab === "campaigns" && <CampaignsPanel company={company} />}
+          {tab === "communications" && <CommunicationsPanel company={company} />}
+          {tab === "surveys" && <SurveysPanel company={company} />}
+          {tab === "claims" && <ClaimsPanel company={company} />}
           {tab === "offer-usage" && <OfferUsagePanel company={company} employees={employees} />}
-          {tab === "savings" && <SavingsPanel company={company} employees={employees} />}
-          {tab === "membership" && <MembershipPanel company={company} employees={employees} />}
           {tab === "reports" && <ReportsPanel company={company} employees={employees} />}
           {tab === "analytics" && <AnalyticsPanel company={company} employees={employees} />}
+          {tab === "integrations" && <IntegrationsPanel company={company} />}
           {tab === "billing" && <BillingPanel company={company} onChanged={refresh} />}
           {tab === "notifications" && <NotificationsPanel company={company} />}
           {tab === "settings" && <CompanySettingsPanel company={company} onChanged={refresh} />}
+          {tab === "roles" && <RolesPanel company={company} />}
         </main>
       </div>
     </div>

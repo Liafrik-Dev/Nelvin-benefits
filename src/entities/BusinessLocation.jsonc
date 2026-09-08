@@ -1,0 +1,18 @@
+{
+  "name": "BusinessLocation",
+  "type": "object",
+  "properties": {
+    "business_id": { "type": "string" },
+    "business_name": { "type": "string" },
+    "name": { "type": "string" },
+    "address": { "type": "string" },
+    "city": { "type": "string" },
+    "country": { "type": "string" },
+    "phone": { "type": "string" },
+    "latitude": { "type": "number" },
+    "longitude": { "type": "number" },
+    "is_primary": { "type": "boolean", "default": false },
+    "status": { "type": "string", "enum": ["active", "inactive"], "default": "active" }
+  },
+  "required": ["business_id", "name", "address", "city", "country"]
+}

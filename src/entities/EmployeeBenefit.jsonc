@@ -1,0 +1,15 @@
+{
+  "name": "EmployeeBenefit",
+  "type": "object",
+  "properties": {
+    "company_id": { "type": "string" },
+    "employee_id": { "type": "string" },
+    "benefit_id": { "type": "string" },
+    "allocated_amount": { "type": "number", "default": 0 },
+    "used_amount": { "type": "number", "default": 0 },
+    "remaining_amount": { "type": "number", "default": 0 },
+    "status": { "type": "string", "enum": ["active", "suspended", "expired"], "default": "active" },
+    "renewal_date": { "type": "string", "format": "date" }
+  },
+  "required": ["company_id", "employee_id", "benefit_id"]
+}

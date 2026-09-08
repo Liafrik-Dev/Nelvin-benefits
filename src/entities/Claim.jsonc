@@ -1,0 +1,20 @@
+{
+  "name": "Claim",
+  "type": "object",
+  "properties": {
+    "company_id": { "type": "string" },
+    "employee_id": { "type": "string" },
+    "employee_name": { "type": "string" },
+    "category": { "type": "string" },
+    "amount": { "type": "number" },
+    "currency": { "type": "string", "default": "USD" },
+    "merchant_name": { "type": "string" },
+    "expense_date": { "type": "string", "format": "date" },
+    "receipt_url": { "type": "string" },
+    "description": { "type": "string" },
+    "status": { "type": "string", "enum": ["pending", "approved", "rejected", "reimbursed"], "default": "pending" },
+    "rejection_reason": { "type": "string" },
+    "reviewed_by": { "type": "string" }
+  },
+  "required": ["company_id", "employee_id", "amount", "merchant_name"]
+}

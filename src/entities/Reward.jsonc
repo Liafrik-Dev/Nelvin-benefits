@@ -1,0 +1,14 @@
+{
+  "name": "Reward",
+  "type": "object",
+  "properties": {
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "points_required": { "type": "number" },
+    "image_url": { "type": "string" },
+    "category": { "type": "string" },
+    "stock": { "type": "number", "default": 100 },
+    "status": { "type": "string", "enum": ["active", "out_of_stock", "disabled"], "default": "active" }
+  },
+  "required": ["title", "points_required"]
+}
