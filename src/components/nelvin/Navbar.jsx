@@ -77,26 +77,22 @@ export default function Navbar() {
 
   return (
     <motion.header
-      initial={{ opacity: 0, y: -16 }}
+      initial={{ opacity: 0, y: -12 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed ${isHome ? "top-4" : "top-0"} left-0 right-0 z-50 transition-colors duration-300 ${
-        !isHome || scrolled ? "bg-[#082F24]/90 backdrop-blur-xl shadow-lg shadow-[#180126]/20" : "bg-transparent"
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled || !isHome ? "top-0 bg-[#082F24]/90 backdrop-blur-xl shadow-md shadow-[#180126]/15" : "top-0 bg-transparent"
       }`}
     >
-      <div className={`mx-auto transition-all duration-300 ${isHome ? "max-w-6xl px-4 sm:px-6" : "max-w-6xl px-4 sm:px-6"}`}>
-        <div
-          className={`text-white transition-all duration-300 ${
-            isHome && !scrolled ? "mt-3 rounded-full bg-[#082F24]/95 backdrop-blur border border-white/10" : "bg-transparent border-transparent"
-          } ${
-            menuKey ? "rounded-b-none lg:rounded-b-3xl" : ""
-          }`}
-        >
-          <div className="h-16 px-4 sm:px-6 flex items-center gap-1 sm:gap-3">
-            <Link to="/" className="flex items-center gap-2 mr-2 sm:mr-4">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className={`text-white transition-all duration-300 ${
+          menuKey ? "" : ""
+        }`}>
+          <div className="h-16 sm:h-18 px-2 sm:px-4 flex items-center gap-1 sm:gap-2">
+            <Link to="/" className="flex items-center gap-2 mr-2 sm:mr-6">
               <motion.div
-                whileHover={{ scale: 1.06, rotate: -3 }}
-                transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                whileHover={{ scale: 1.04 }}
+                transition={{ type: "spring", stiffness: 300, damping: 18 }}
                 className="w-8 h-8 bg-[#B8FF00] rounded-xl flex items-center justify-center"
               >
                 <span className="text-[#082F24] font-extrabold text-sm">N</span>
