@@ -1,70 +1,59 @@
 import React from "react";
-import { Quote } from "lucide-react";
-
-const stats = [
-  { value: "5m", label: "Employees supported" },
-  { value: "126", label: "Countries" },
-  { value: "3000+", label: "Customers" },
-  { value: "4x", label: "Increase in engagement in benefits" },
-];
-
-const testimonials = [
-  {
-    quote: "You've made our international benefits dreams come true! We're able to showcase benefits in a way we've never done before.",
-    name: "Samantha Sergent",
-    role: "Director of International Benefits",
-    logo: "/images/benifex/logos/microsoft-logo.png",
-  },
-  {
-    quote: "We wanted a platform that could be a single source of truth... We went from very manual processes to complete digital transformation.",
-    name: "Jennifer Burnett",
-    role: "Director of US Benefits",
-    logo: "/images/benifex/logos/snowflake-logo.png",
-  },
-];
+import { Star, Quote } from "lucide-react";
+import { LANDING_STATS } from "@/lib/landingData";
 
 export default function StatsSection() {
   return (
-    <section className="bg-[#180126] py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section className="bg-[#180126] py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <div
-        className="absolute inset-0 opacity-10"
-        style={{
-          backgroundImage: "radial-gradient(circle at 20% 20%, #7637E3 0, transparent 40%), radial-gradient(circle at 80% 80%, #00BD00 0, transparent 40%)",
-        }}
+        className="absolute inset-0 opacity-20"
+        style={{ backgroundImage: "radial-gradient(55% 55% at 15% 20%, rgba(184,255,0,0.2)) 0%, transparent 60%), radial-gradient(45% 45% at 90% 85%, rgba(118,55,227,0.4)) 0%, transparent 55%)" }}
       />
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-16">
-          <p className="text-[#B8FF00] font-semibold text-xs tracking-[0.2em] uppercase mb-3">The Nelvin platform</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-white tracking-tight max-w-3xl mx-auto leading-tight">
-            Create remarkable rewards and benefits experiences with a global platform
+      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+        <div>
+          <p className="text-[#B8FF00] font-bold text-xs tracking-[0.2em] uppercase mb-3">The numbers</p>
+          <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-white tracking-tight leading-tight max-w-lg">
+            Trusted by HR teams and loved by millions.
           </h2>
-        </div>
-
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-20">
-          {stats.map((stat) => (
-            <div key={stat.label} className="bg-white/5 border border-white/10 rounded-3xl p-8 text-center">
-              <p className="text-4xl sm:text-5xl font-extrabold font-heading text-[#B8FF00]">{stat.value}</p>
-              <p className="text-white/60 text-sm mt-2 font-medium">{stat.label}</p>
+          <div className="mt-10 grid grid-cols-2 gap-5">
+            {LANDING_STATS.map((s) => (
+              <div key={s.label} className="bg-white/5 backdrop-blur rounded-2xl p-5 ring-1 ring-white/10">
+                <p className="text-2xl sm:text-3xl font-extrabold font-heading text-[#B8FF00]">{s.value}</p>
+                <p className="mt-1 text-[11px] text-white/55 font-semibold leading-snug">{s.label}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10 flex items-center gap-4">
+            <img
+              src="https://randomuser.me/api/portraits/women/79.jpg"
+              alt=""
+              className="w-12 h-12 rounded-full object-cover ring-2 ring-[#B8FF00]"
+            />
+            <div>
+              <div className="flex items-center gap-1">{[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-3.5 h-3.5 fill-[#FFC107] text-[#FFC107]" />
+              ))}</div>
+              <p className="mt-1 text-[11px] text-white/55 max-w-xs">
+                "The easiest rollout we've ever done — our members adopted it in days, not months."
+              </p>
             </div>
-          ))}
+          </div>
         </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {testimonials.map((t) => (
-            <figure key={t.name} className="border-2 border-[#B8FF00] rounded-3xl p-8">
-              <Quote className="w-8 h-8 text-[#7637E3]" />
-              <blockquote className="mt-4 text-white/90 text-base sm:text-lg leading-relaxed">
-                "{t.quote}"
-              </blockquote>
-              <figcaption className="mt-6 flex items-center gap-4">
-                <img src={t.logo} alt={t.name} className="h-10 w-auto max-w-32 object-contain brightness-200" />
-                <div>
-                  <p className="font-bold text-white text-sm">{t.name}</p>
-                  <p className="text-white/50 text-xs">{t.role}</p>
-                </div>
-              </figcaption>
-            </figure>
-          ))}
+        <div className="relative">
+          <div className="rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-white/10">
+            <img
+              src="https://images.unsplash.com/photo-1521737711867-e3b97325c3e?w=1000&q=80"
+              alt="People celebrating"
+              className="w-full h-96 object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#180126]/70 to-transparent" />
+            <div className="absolute bottom-5 left-5 right-5 bg-[#B8FF00] rounded-2xl p-4 flex items-center gap-3">
+              <Quote className="w-6 h-6 text-[#082F24] flex-shrink-0" />
+              <p className="text-sm font-extrabold text-[#082F24] leading-snug">
+                "Nelvin cut our benefits admin time by 80%- while engagement tripled."
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

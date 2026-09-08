@@ -1,56 +1,46 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Award } from "lucide-react";
-
-const awards = [
-  {
-    year: "2026 shortlisted",
-    org: "Employee Benefits Awards",
-    title: "Best Motivation &amp; Recognition Scheme",
-    badge: "/images/benifex/8.png",
-  },
-  {
-    year: "2026 shortlisted",
-    org: "Employee Benefits Awards",
-    title: "Best Healthcare and Wellbeing Benefits",
-    badge: "/images/benifex/9.png",
-  },
-  {
-    year: "2026 shortlisted",
-    org: "Corporate Adviser Awards",
-    title: "Best Employee Benefits Technology Platform",
-    badge: "/images/benifex/8.png",
-  },
-];
+import LIcon from "@/components/nelvin/LandingIcons";
+import { LANDING_HOWITWORKS } from "@/lib/landingData";
 
 export default function HowItWorks() {
   return (
-    <section id="awards" className="bg-white py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-14">
-          <div>
-            <p className="text-[#180126]/50 font-semibold text-xs tracking-[0.2em] uppercase mb-3">Recognition</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-[#180126] tracking-tight max-w-2xl leading-tight">
-              Leading the charge against bland benefits and outdated platforms
-            </h2>
-          </div>
-          <Link to="/corporate" className="group inline-flex items-center gap-2 text-[#180126] font-bold text-sm whitespace-nowrap">
-            <span className="transition-transform group-hover:-translate-x-1">See all awards</span>
-            <span className="w-6 h-6 rounded-full border-2 border-[#180126] flex items-center justify-center text-xs transition-colors group-hover:bg-[#180126] group-hover:text-white">→</span>
-          </Link>
+    <section id="how-it-works" className="bg-[#F7F3ED] py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <p className="text-[#00BD00] font-bold text-xs tracking-[0.2em] uppercase mb-3">How it works</p>
+          <h2 className="text-3xl sm:text-4xl xl:text-5xl font-extrabold font-heading text-[#180126] tracking-tight leading-tight">
+            Live in weeks,{" "}
+            <span className="bg-[#B8FF00] px-2 rounded-2xl">not years.</span>
+          </h2>
+          <p className="mt-4 text-[#180126]/60 leading-relaxed max-w-xl mx-auto">
+            From sign-up to first redemption in four simple steps — we handle the heavy lifting.
+
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {awards.map((a) => (
-            <div key={a.title} className="group border-2 border-[#180126]/10 hover:border-[#00BD00] rounded-3xl p-8 transition-colors relative overflow-hidden">
-              <div className="absolute top-6 right-6 w-14 h-14 rounded-full bg-[#F7F3ED] flex items-center justify-center">
-                <Award className="w-6 h-6 text-[#7637E3]" />
+        <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="hidden lg:block absolute top-12 left-[12%] right-[12%] h-px bg-[#180126]/10" />
+          {LANDING_HOWITWORKS.map((step, i) => (
+            <div key={step.num} className="relative bg-white rounded-3xl p-7 ring-1 ring-[#180126]/8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <div className="flex items-center justify-between mb-5">
+                <span className={`w-14 h-14 rounded-2xl flex items-center justify-center ${i === 3 ? "bg-[#7637E3] text-white" : "bg-[#180126] text-[#B8FF00]"}`}>
+                  <LIcon name={step.icon} className="w-6 h-6" />
+                </span>
+                <span className="text-4xl font-extrabold font-heading text-[#180126]/10">{step.num}</span>
               </div>
-              <p className="text-xs font-bold uppercase tracking-widest text-[#180126]/50 mb-2">{a.year}</p>
-              <h4 className="text-[11px] font-extrabold uppercase tracking-widest text-[#180126] mb-3">{a.org}</h4>
-              <p className="text-lg font-bold text-[#180126] leading-snug">{a.title}</p>
+              <h3 className="text-base font-extrabold font-heading text-[#180126]">{step.title}</h3>
+              <p className="mt-2 text-xs text-[#180126]/60 leading-relaxed">{step.desc}</p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <Link to="/register" className="inline-flex items-center justify-center gap-2.5 bg-[#180126] hover:bg-[#2b0140] text-white font-bold text-sm h-12 px-8 rounded-[24px] hover:shadow-xl hover:-translate-y-0.5 transition-all">
+            Start free today
+            <span className="w-5 h-5 rounded-full bg-[#B8FF00] flex items-center justify-center text-[#180126] text-xs font-extrabold">→</span>
+          </Link>
+          <p className="mt-3 text-[11px] text-[#180126]/45">No credit card required · 14-day free trial</p>
         </div>
       </div>
     </section>

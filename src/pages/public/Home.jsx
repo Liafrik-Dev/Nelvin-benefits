@@ -2,14 +2,18 @@ import React from "react";
 import Navbar from "@/components/nelvin/Navbar";
 import HeroSection from "@/components/nelvin/HeroSection";
 import TrustedBrands from "@/components/nelvin/TrustedBrands";
-import FeaturedDeals from "@/components/nelvin/FeaturedDeals";
 import CategoriesGrid from "@/components/nelvin/CategoriesGrid";
-import StatsSection from "@/components/nelvin/StatsSection";
-import CountriesSection from "@/components/nelvin/CountriesSection";
+import OnePlatformExperiences from "@/components/nelvin/OnePlatformExperiences";
+import PowerfulModules from "@/components/nelvin/PowerfulModules";
+import AfricaMena from "@/components/nelvin/AfricaMena";
+import AudiencesSection from "@/components/nelvin/AudiencesSection";
 import HowItWorks from "@/components/nelvin/HowItWorks";
-import PricingSection from "@/components/nelvin/PricingSection";
+import FeatureShowcase from "@/components/nelvin/FeatureShowcase";
+import StatsSection from "@/components/nelvin/StatsSection";
 import Testimonials from "@/components/nelvin/Testimonials";
+import FeaturedDeals from "@/components/nelvin/FeaturedDeals";
 import GetTheApp from "@/components/nelvin/GetTheApp";
+import PricingSection from "@/components/nelvin/PricingSection";
 import Newsletter from "@/components/nelvin/Newsletter";
 import FAQSection from "@/components/nelvin/FAQSection";
 import Footer from "@/components/nelvin/Footer";
@@ -20,13 +24,17 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <TrustedBrands />
-      <FeaturedDeals />
       <CategoriesGrid />
-      <StatsSection />
-      <CountriesSection />
+      <OnePlatformExperiences />
+      <PowerfulModules />
+      <AfricaMena />
+      <AudiencesSection />
       <HowItWorks />
-      <GetTheApp />
+      <FeatureShowcase />
+      <StatsSection />
       <Testimonials />
+      <FeaturedDeals />
+      <GetTheApp />
       <PricingSection />
       <Newsletter />
       <FAQSection />
