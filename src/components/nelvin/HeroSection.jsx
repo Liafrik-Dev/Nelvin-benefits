@@ -16,15 +16,15 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#F7F3ED]/80 via-[#F7F3ED]/90 to-[#F7F3ED]" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 lg:pt-16 lg:pb-28 grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 lg:pt-44 pb-20 lg:pb-28 grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
         {/* copy */}
         <div>
           <div className="inline-flex items-center gap-2 bg-white border border-[#180126]/10 rounded-full pl-1 pr-4 py-1 mb-6 shadow-sm">
-            <span className="bg-[#B8FF00] text-[#082F24] text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-full">New</span>
+            <span className="bg-[#B8FF00] text-[#082F24] text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full">New</span>
             <span className="text-xs font-semibold text-[#180126]/70">The all-in-one Employee Benefits platform for Africa &amp; MENA</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl xl:text-6xl font-extrabold font-heading text-[#180126] tracking-tight leading-[1.05]">
+          <h1 className="text-4xl sm:text-5xl xl:text-6xl font-bold font-heading text-[#180126] tracking-tight leading-[1.08]">
             One platform for{" "}
             <span className="relative inline-block">
               <span className="relative z-10 bg-[#B8FF00] px-2 rounded-2xl">everything</span>

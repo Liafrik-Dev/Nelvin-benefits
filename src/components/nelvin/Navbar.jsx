@@ -77,19 +77,15 @@ export default function Navbar() {
 
   return (
     <motion.header
-      initial={{ opacity: 0, y: -12 }}
+      initial={{ opacity: 0, y: -16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled || !isHome ? "top-0 bg-[#082F24]/90 backdrop-blur-xl shadow-md shadow-[#180126]/15" : "top-0 bg-transparent"
-      }`}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="fixed top-4 left-4 right-4 sm:top-6 sm:left-6 sm:right-6 z-50"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className={`text-white transition-all duration-300 ${
-          menuKey ? "" : ""
-        }`}>
-          <div className="h-16 sm:h-18 px-2 sm:px-4 flex items-center gap-1 sm:gap-2">
-            <Link to="/" className="flex items-center gap-2 mr-2 sm:mr-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="rounded-full bg-[#082F24] text-white shadow-lg shadow-[#180126]/20 transition-all duration-300">
+          <div className="h-16 px-4 sm:px-6 flex items-center gap-1 sm:gap-2">
+            <Link to="/" className="flex items-center gap-2 mr-2 sm:mr-4">
               <motion.div
                 whileHover={{ scale: 1.04 }}
                 transition={{ type: "spring", stiffness: 300, damping: 18 }}
