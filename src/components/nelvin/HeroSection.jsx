@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Play, Star, ShieldCheck, TrendingUp, Sparkles, Video } from "lucide-react";
-import { LANDING_STATS } from "@/lib/landingData";
+import { ArrowRight, Play, ShieldCheck, TrendingUp, Sparkles, Video } from "lucide-react";
 
 const HERO_VIDEOS = [
   { id: "team", title: "Corporate Teams", url: "https://assets.mixkit.co/videos/preview/mixkit-business-people-working-together-in-an-office-42861-large.mp4" },
@@ -104,18 +103,18 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Visual Showcase Card */}
+        {/* Visual Showcase Card utilizing attached luxury hotel image */}
         <div className="relative">
           <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border border-white/20">
             <img
-              src="https://images.unsplash.com/photo-1521737711867-e3b97325c3e4?w=1100&q=80"
-              alt="Professional team"
+              src="/images/assets/b1-foto-hotel-1643982_1920.jpg"
+              alt="Luxury Hotel Benefit Showcase"
               className="w-full h-[420px] sm:h-[480px] object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#082F24] via-transparent to-transparent" />
             <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur rounded-2xl p-4 shadow-xl text-gray-900 flex items-center justify-between">
               <div>
-                <p className="text-[10px] uppercase tracking-widest text-emerald-700 font-bold">Total Member Savings</p>
+                <p className="text-[10px] uppercase tracking-widest text-emerald-700 font-bold">Featured Luxury Stays</p>
                 <p className="text-base font-extrabold font-heading text-gray-900">$2.4M Saved This Quarter</p>
               </div>
               <div className="flex -space-x-2">
