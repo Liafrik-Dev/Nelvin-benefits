@@ -20,45 +20,43 @@ import GoogleIcon from "@/components/shared/GoogleIcon";
 
 const footerColumns = [
   {
-    title: "Product",
+    title: "Employee Portal",
     links: [
-      { label: "Platform overview", to: "/offers" },
-      { label: "Benefits", to: "/benefits" },
-      { label: "Reward & recognition", to: "/corporate" },
-      { label: "Wellbeing", to: "/benefits" },
-      { label: "Discounts", to: "/offers" },
-      { label: "Wallet", to: "/choose-plan" },
-      { label: "Mobile", to: "/" },
+      { label: "Explore Perks", to: "/explore" },
+      { label: "Categories", to: "/categories" },
+      { label: "Marketplace", to: "/marketplace" },
+      { label: "My Wallet & Cashback", to: "/wallet" },
+      { label: "Rewards & Praise", to: "/rewards" },
+      { label: "Wellness Benefits", to: "/wellness" },
     ],
   },
   {
-    title: "Resources",
+    title: "HR & Employer",
     links: [
-      { label: "Free downloads", to: "/#faq" },
-      { label: "Customer stories", to: "/#testimonials" },
-      { label: "Events and webinars", to: "/#events" },
-      { label: "Articles and news", to: "/#events" },
-      { label: "Videos", to: "/#events" },
-      { label: "All Nelvin resources", to: "/#events" },
+      { label: "HR Dashboard", to: "/corporate-dashboard" },
+      { label: "Employee Management", to: "/corporate-dashboard" },
+      { label: "Budgets & Allowances", to: "/corporate-dashboard" },
+      { label: "Corporate Sign Up", to: "/corporate-signup" },
+      { label: "HRIS & SSO Integrations", to: "/corporate-dashboard" },
     ],
   },
   {
-    title: "Careers",
+    title: "Business Partners",
     links: [
-      { label: "Nelvin careers", to: "/corporate" },
-      { label: "Life at Nelvin", to: "/corporate" },
-      { label: "Open roles", to: "/corporate" },
+      { label: "Business Dashboard", to: "/business" },
+      { label: "Merchant Onboarding", to: "/partner" },
+      { label: "Manage Offers", to: "/business/offers" },
+      { label: "QR Code Validator", to: "/business/qr-codes" },
+      { label: "Earnings & Payouts", to: "/business/payouts" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About us", to: "/corporate" },
-      { label: "Awards", to: "/#awards" },
-      { label: "Sustainability & Impact", to: "/corporate" },
-      { label: "Get in touch", to: "/#faq" },
-      { label: "Partner enquiries", to: "/partner" },
-      { label: "Reseller enquiries", to: "/partner" },
+      { label: "About Nelvin", to: "/corporate" },
+      { label: "Awards & Impact", to: "/#awards" },
+      { label: "Partner Enquiries", to: "/partner" },
+      { label: "Contact Support", to: "/support" },
     ],
   },
   {
@@ -92,7 +90,7 @@ export default function Footer() {
               <span className="font-bold text-xl font-heading">Nelvin</span>
             </div>
             <p className="text-[#180126]/60 text-xs leading-relaxed mb-6">
-              Africa's savings super app. Unlock exclusive offers, cashback,and premium experiences across all 54 countries.
+              Africa's savings super app. Unlock exclusive offers, cashback, and corporate experiences across all 54 countries.
             </p>
             <div className="flex flex-col gap-2">
               <button className="bg-white hover:bg-[#082F24] hover:text-white text-[#180126] rounded-lg px-3 py-2 flex items-center gap-2 text-xs transition-colors w-fit border border-[#180126]/10">
