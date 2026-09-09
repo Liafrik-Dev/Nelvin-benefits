@@ -1,0 +1,15 @@
+{
+  "name": "Reimbursement",
+  "type": "object",
+  "properties": {
+    "claim_id": { "type": "string" },
+    "company_id": { "type": "string" },
+    "employee_id": { "type": "string" },
+    "amount": { "type": "number" },
+    "payout_method": { "type": "string", "enum": ["payroll", "bank_transfer", "wallet"], "default": "payroll" },
+    "payout_reference": { "type": "string" },
+    "status": { "type": "string", "enum": ["processing", "completed", "failed"], "default": "completed" },
+    "paid_at": { "type": "string" }
+  },
+  "required": ["claim_id", "company_id", "employee_id", "amount"]
+}

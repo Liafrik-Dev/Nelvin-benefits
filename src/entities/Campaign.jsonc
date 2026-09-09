@@ -1,0 +1,16 @@
+{
+  "name": "Campaign",
+  "type": "object",
+  "properties": {
+    "title": { "type": "string" },
+    "owner_type": { "type": "string", "enum": ["company", "business", "platform"], "default": "company" },
+    "owner_id": { "type": "string" },
+    "description": { "type": "string" },
+    "banner_url": { "type": "string" },
+    "start_date": { "type": "string", "format": "date" },
+    "end_date": { "type": "string", "format": "date" },
+    "target_audience": { "type": "string" },
+    "status": { "type": "string", "enum": ["draft", "active", "completed", "paused"], "default": "active" }
+  },
+  "required": ["title", "owner_type", "owner_id"]
+}

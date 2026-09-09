@@ -1,0 +1,70 @@
+import React, { useState, useEffect } from "react";
+import { db } from "@/services/api/base44Client";
+import Navbar from "@/components/nelvin/Navbar";
+import Footer from "@/components/nelvin/Footer";
+import EmployeeNav from "@/components/shared/EmployeeNav";
+import OfferCard from "@/components/nelvin/OfferCard";
+import { HeartPulse, Dumbbell, ShieldAlert, Activity } from "lucide-react";
+
+export default function Wellness() {
+  const [wellnessOffers, setWellnessOffers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    db.entities.Offer.filter({ category: "Health & Wellness", is_published: true, status: "active" }, "-created_date", 20)
+      .then((data) => {
+        setWellnessOffers(data || []);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-[#faf8f5]">
+      <div className="relative bg-[#082F24] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
+        <Navbar />
+      </div>
+      <EmployeeNav />
+
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+        <div className="bg-white rounded-3xl border border-gray-100 p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-2 max-w-xl">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 text-rose-700 text-xs font-bold uppercase">
+              <HeartPulse className="w-3.5 h-3.5 text-rose-500" /> Employee Well-being Portal
+            </div>
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 font-heading">
+              Health, Gyms & Mental Wellness
+            </h1>
+            <p className="text-gray-500 text-sm">
+              Access subsidized gym passes, telemedicine consultations, mental health support, and spa packages.
+            </p>
+          </div>
+          <div className="flex gap-3">
+            <div className="p-4 bg-emerald-50 rounded-2xl text-center">
+              <Dumbbell className="w-6 h-6 text-emerald-700 mx-auto mb-1" />
+              <p className="text-xs font-bold text-gray-900">Gym Access</p>
+              <p className="text-[10px] text-gray-500">250+ Venues</p>
+            </div>
+            <div className="p-4 bg-indigo-50 rounded-2xl text-center">
+              <Activity className="w-6 h-6 text-indigo-700 mx-auto mb-1" />
+              <p className="text-xs font-bold text-gray-900">Telehealth</p>
+              <p className="text-[10px] text-gray-500">24/7 On-Call</p>
+            </div>
+          </div>
+        </div>
+
+        {loading ? (
+          <div className="h-64 flex items-center justify-center text-gray-400">Loading wellness perks...</div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {wellnessOffers.map((offer) => (
+              <OfferCard key={offer.id || offer.title} offer={offer} />
+            ))}
+          </div>
+        )}
+      </main>
+
+      <Footer />
+    </div>
+  );
+}

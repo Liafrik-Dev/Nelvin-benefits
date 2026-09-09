@@ -1,0 +1,13 @@
+{
+  "name": "Survey",
+  "type": "object",
+  "properties": {
+    "company_id": { "type": "string" },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "questions": { "type": "array", "items": { "type": "string" } },
+    "response_count": { "type": "number", "default": 0 },
+    "status": { "type": "string", "enum": ["active", "closed", "draft"], "default": "active" }
+  },
+  "required": ["company_id", "title"]
+}

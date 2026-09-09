@@ -1,0 +1,198 @@
+import React, { useState, useEffect } from "react";
+import { db } from "@/services/api/base44Client";
+import { useAuth } from "@/lib/AuthContext";
+import Navbar from "@/components/nelvin/Navbar";
+import Footer from "@/components/nelvin/Footer";
+import EmployeeNav from "@/components/shared/EmployeeNav";
+import { Wallet as WalletIcon, CreditCard, ArrowDownRight, ArrowUpRight, Plus, RefreshCw, CheckCircle2 } from "lucide-react";
+
+export default function Wallet() {
+  const { user } = useAuth();
+  const [balance, setBalance] = useState(350.0);
+  const [cashback, setCashback] = useState(48.5);
+  const [allowance, setAllowance] = useState(150.0);
+  const [topUpModal, setTopUpModal] = useState(false);
+  const [topUpAmount, setTopUpAmount] = useState(50);
+  const [successMsg, setSuccessMsg] = useState("");
+
+  const transactions = [
+    { id: "1", type: "cashback_earned", label: "Cashback - Nike Store Purchase", amount: "+$12.50", date: "Today, 2:15 PM", status: "Completed" },
+    { id: "2", type: "allowance_refill", label: "Monthly Meal Allowance - Company Refill", amount: "+$150.00", date: "1st May 2026", status: "Completed" },
+    { id: "3", type: "redemption", label: "Uber Ride Voucher Redemption", amount: "-$15.00", date: "28th Apr 2026", status: "Completed" },
+    { id: "4", type: "top_up", label: "Card Top-Up (Visa ending 4242)", amount: "+$100.00", date: "20th Apr 2026", status: "Completed" },
+  ];
+
+  const handleTopUp = (e) => {
+    e.preventDefault();
+    setBalance((prev) => prev + Number(topUpAmount));
+    setTopUpModal(false);
+    setSuccessMsg(`Successfully added $${topUpAmount} to your Nelvin Wallet!`);
+    setTimeout(() => setSuccessMsg(""), 4000);
+  };
+
+  return (
+    <div className="min-h-screen bg-[#faf8f5]">
+      <div className="relative bg-[#082F24] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
+        <Navbar />
+      </div>
+      <EmployeeNav />
+
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+        {/* Header summary */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-white rounded-3xl border border-gray-100 p-6 sm:p-8 shadow-sm">
+          <div className="space-y-2">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold uppercase">
+              <WalletIcon className="w-3.5 h-3.5 text-emerald-600" /> Digital Wallet & Allowance Card
+            </div>
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 font-heading">
+              My Wallet & Cashback
+            </h1>
+            <p className="text-gray-500 text-sm">Manage personal top-ups, corporate stipends, and earned cashback.</p>
+          </div>
+
+          <button
+            onClick={() => setTopUpModal(true)}
+            className="bg-[#082F24] text-[#B8FF00] font-bold px-6 py-3 rounded-full text-sm hover:bg-emerald-950 transition-colors shadow-sm flex items-center gap-2"
+          >
+            <Plus className="w-4 h-4" /> Top Up Balance
+          </button>
+        </div>
+
+        {successMsg && (
+          <div className="bg-emerald-50 border border-emerald-200 text-emerald-800 p-4 rounded-2xl flex items-center gap-3 text-sm font-semibold">
+            <CheckCircle2 className="w-5 h-5 text-emerald-600" /> {successMsg}
+          </div>
+        )}
+
+        {/* Balance cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-[#082F24] rounded-3xl p-6 text-white space-y-4 shadow-sm">
+            <div className="flex items-center justify-between">
+              <span className="text-xs uppercase font-bold text-white/60 tracking-wider">Total Balance</span>
+              <CreditCard className="w-5 h-5 text-[#B8FF00]" />
+            </div>
+            <div>
+              <p className="text-3xl font-black font-heading text-[#B8FF00]">${balance.toFixed(2)}</p>
+              <p className="text-xs text-white/60 mt-1">Ready for redemption</p>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-3xl border border-gray-100 p-6 space-y-4 shadow-sm">
+            <div className="flex items-center justify-between">
+              <span className="text-xs uppercase font-bold text-gray-400 tracking-wider">Cashback Earned</span>
+              <ArrowDownRight className="w-5 h-5 text-emerald-600" />
+            </div>
+            <div>
+              <p className="text-3xl font-black font-heading text-gray-900">${cashback.toFixed(2)}</p>
+              <p className="text-xs text-emerald-700 font-semibold mt-1">Available to spend</p>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-3xl border border-gray-100 p-6 space-y-4 shadow-sm">
+            <div className="flex items-center justify-between">
+              <span className="text-xs uppercase font-bold text-gray-400 tracking-wider">Company Allowance</span>
+              <ArrowUpRight className="w-5 h-5 text-amber-500" />
+            </div>
+            <div>
+              <p className="text-3xl font-black font-heading text-gray-900">${allowance.toFixed(2)}</p>
+              <p className="text-xs text-gray-500 mt-1">Refills on the 1st of every month</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Transactions Table */}
+        <div className="bg-white rounded-3xl border border-gray-100 p-6 shadow-sm space-y-4">
+          <h2 className="text-lg font-bold text-gray-900 font-heading">Recent Wallet Transactions</h2>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr className="border-b border-gray-100 text-gray-400 font-semibold">
+                  <th className="py-3 px-2">Type</th>
+                  <th className="py-3 px-2">Description</th>
+                  <th className="py-3 px-2">Date</th>
+                  <th className="py-3 px-2">Status</th>
+                  <th className="py-3 px-2 text-right">Amount</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-50">
+                {transactions.map((tx) => (
+                  <tr key={tx.id} className="hover:bg-gray-50 transition-colors">
+                    <td className="py-3.5 px-2 font-bold capitalize text-gray-800">{tx.type.replace("_", " ")}</td>
+                    <td className="py-3.5 px-2 font-medium text-gray-900">{tx.label}</td>
+                    <td className="py-3.5 px-2 text-gray-500">{tx.date}</td>
+                    <td className="py-3.5 px-2">
+                      <span className="bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-full font-bold text-[10px]">
+                        {tx.status}
+                      </span>
+                    </td>
+                    <td className={`py-3.5 px-2 text-right font-extrabold ${tx.amount.startsWith("+") ? "text-emerald-700" : "text-gray-900"}`}>
+                      {tx.amount}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+
+      {/* Top Up Modal */}
+      {topUpModal && (
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full space-y-6 shadow-xl">
+            <h3 className="text-xl font-bold text-gray-900 font-heading">Top Up Wallet Balance</h3>
+            <form onSubmit={handleTopUp} className="space-y-4">
+              <div>
+                <label className="block text-xs font-bold text-gray-700 mb-2">Select Amount ($)</label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[20, 50, 100].map((amt) => (
+                    <button
+                      type="button"
+                      key={amt}
+                      onClick={() => setTopUpAmount(amt)}
+                      className={`py-2.5 rounded-xl font-bold text-sm border ${
+                        topUpAmount === amt ? "bg-[#082F24] text-[#B8FF00] border-[#082F24]" : "bg-gray-50 border-gray-200 text-gray-800"
+                      }`}
+                    >
+                      ${amt}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-gray-700 mb-1">Custom Amount</label>
+                <input
+                  type="number"
+                  min="5"
+                  value={topUpAmount}
+                  onChange={(e) => setTopUpAmount(Number(e.target.value))}
+                  className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm font-bold text-gray-900"
+                />
+              </div>
+
+              <div className="flex justify-end gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setTopUpModal(false)}
+                  className="px-5 py-2.5 rounded-full text-xs font-bold text-gray-500 hover:bg-gray-100"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="bg-[#082F24] text-[#B8FF00] px-6 py-2.5 rounded-full text-xs font-bold hover:bg-emerald-950"
+                >
+                  Confirm & Pay
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      <Footer />
+    </div>
+  );
+}

@@ -1,0 +1,17 @@
+{
+  "name": "PromoCode",
+  "type": "object",
+  "properties": {
+    "business_id": { "type": "string" },
+    "offer_id": { "type": "string" },
+    "code": { "type": "string" },
+    "discount_percentage": { "type": "number" },
+    "discount_amount": { "type": "number" },
+    "max_uses": { "type": "number", "default": 100 },
+    "current_uses": { "type": "number", "default": 0 },
+    "start_date": { "type": "string", "format": "date" },
+    "expires_at": { "type": "string", "format": "date" },
+    "status": { "type": "string", "enum": ["active", "expired", "disabled"], "default": "active" }
+  },
+  "required": ["business_id", "code"]
+}

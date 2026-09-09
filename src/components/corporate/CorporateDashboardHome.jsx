@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 
 import { useAuth } from "@/lib/AuthContext";
 import {
-  Users, UserCheck, Gift, TrendingUp, UserPlus, ArrowRight, Globe, Wallet,
+  Users, UserCheck, Gift, TrendingUp, UserPlus, ArrowRight, Globe, Wallet, Building2, Sparkles
 } from "lucide-react";
 import {
   ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,
-  BarChart, Bar, Cell,
+  BarChart, Bar
 } from "recharts";
 
 function StatCard({ icon: Icon, label, value, sub, accent }) {
@@ -55,7 +55,6 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
   const totalSavings = redemptions.reduce((s, r) => s + (r.savings_amount || 0), 0);
   const countriesTouched = new Set(redemptions.map((r) => r.country).filter(Boolean)).size + 1;
 
-  // Monthly usage chart (last 6 months)
   const months = [];
   const today = new Date();
   for (let i = 5; i >= 0; i--) {
@@ -69,7 +68,6 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
     months.push({ label, count });
   }
 
-  // Savings by department
   const depMap = {};
   redemptions.forEach((r) => {
     const emp = employees.find((e) => e.user_id === r.user_id);
@@ -79,10 +77,35 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
   const depData = Object.entries(depMap).map(([name, value]) => ({ name, value })).slice(0, 6);
 
   return (
-    <div>
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold font-heading text-gray-900">Welcome back, {user?.full_name?.split(" ")[0] || "Admin"}.</h1>
-        <p className="text-sm text-gray-500 mt-1">Here's how {company.name} is doing on Nelvin this month.</p>
+    <div className="space-y-6">
+      {/* Company Banner Header */}
+      <div className="relative rounded-3xl overflow-hidden bg-[#082F24] text-white p-6 sm:p-8 shadow-sm">
+        <div className="absolute inset-0 opacity-20">
+          <img
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80"
+            alt="Corporate Banner"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="space-y-2">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-[#B8FF00] text-xs font-bold uppercase tracking-wider">
+              <Building2 className="w-3.5 h-3.5" /> {company.name} Corporate Benefits Hub
+            </div>
+            <h1 className="text-2xl sm:text-3xl font-extrabold font-heading">
+              Welcome back, {user?.full_name?.split(" ")[0] || "Admin"}.
+            </h1>
+            <p className="text-white/70 text-xs sm:text-sm">
+              Empowering {company.employee_count || total || 0} employees across {company.country || "Africa"} with premium benefits.
+            </p>
+          </div>
+          <button
+            onClick={onGoEmployees}
+            className="bg-[#B8FF00] text-[#082F24] font-extrabold px-5 py-2.5 rounded-full text-xs hover:bg-emerald-300 transition-colors shadow-sm flex items-center gap-2"
+          >
+            <UserPlus className="w-4 h-4" /> Invite Employees
+          </button>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
@@ -94,7 +117,7 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
         <StatCard icon={Globe} label="Countries" value={loading ? "—" : countriesTouched} accent="bg-sky-100 text-sky-700" />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-white rounded-2xl border border-gray-100 p-6">
           <div className="flex items-start justify-between mb-4">
             <div>
@@ -132,7 +155,7 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-white rounded-2xl border border-gray-100 p-6">
           <div className="flex items-start justify-between mb-4">
             <div>

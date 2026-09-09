@@ -1,0 +1,14 @@
+{
+  "name": "Wallet",
+  "type": "object",
+  "properties": {
+    "user_id": { "type": "string" },
+    "user_email": { "type": "string" },
+    "currency": { "type": "string", "default": "USD" },
+    "balance": { "type": "number", "default": 0 },
+    "cashback_balance": { "type": "number", "default": 0 },
+    "company_allowance_balance": { "type": "number", "default": 0 },
+    "status": { "type": "string", "enum": ["active", "frozen"], "default": "active" }
+  },
+  "required": ["user_id"]
+}

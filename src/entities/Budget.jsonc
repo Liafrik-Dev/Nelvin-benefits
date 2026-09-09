@@ -1,0 +1,15 @@
+{
+  "name": "Budget",
+  "type": "object",
+  "properties": {
+    "company_id": { "type": "string" },
+    "department_id": { "type": "string" },
+    "category": { "type": "string" },
+    "allocated_amount": { "type": "number", "default": 0 },
+    "spent_amount": { "type": "number", "default": 0 },
+    "currency": { "type": "string", "default": "USD" },
+    "fiscal_year": { "type": "string" },
+    "period": { "type": "string", "enum": ["monthly", "quarterly", "yearly"], "default": "monthly" }
+  },
+  "required": ["company_id", "allocated_amount"]
+}

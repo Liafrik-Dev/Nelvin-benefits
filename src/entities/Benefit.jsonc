@@ -1,0 +1,16 @@
+{
+  "name": "Benefit",
+  "type": "object",
+  "properties": {
+    "title": { "type": "string" },
+    "company_id": { "type": "string" },
+    "category": { "type": "string", "enum": ["Meal", "Transport", "Health & Wellness", "Financial Wellness", "Family & Lifestyle", "Flexible Benefits", "Rewards"] },
+    "description": { "type": "string" },
+    "monthly_allowance": { "type": "number", "default": 0 },
+    "currency": { "type": "string", "default": "USD" },
+    "status": { "type": "string", "enum": ["active", "inactive", "draft"], "default": "active" },
+    "eligibility_rules": { "type": "string" },
+    "icon": { "type": "string" }
+  },
+  "required": ["title", "company_id", "category"]
+}

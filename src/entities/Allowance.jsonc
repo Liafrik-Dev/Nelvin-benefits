@@ -1,0 +1,14 @@
+{
+  "name": "Allowance",
+  "type": "object",
+  "properties": {
+    "company_id": { "type": "string" },
+    "name": { "type": "string" },
+    "category": { "type": "string" },
+    "amount": { "type": "number", "default": 0 },
+    "frequency": { "type": "string", "enum": ["monthly", "quarterly", "one_time"], "default": "monthly" },
+    "eligible_departments": { "type": "array", "items": { "type": "string" } },
+    "auto_refill": { "type": "boolean", "default": true }
+  },
+  "required": ["company_id", "name", "amount"]
+}

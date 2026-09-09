@@ -1,0 +1,15 @@
+{
+  "name": "RewardTransaction",
+  "type": "object",
+  "properties": {
+    "user_id": { "type": "string" },
+    "company_id": { "type": "string" },
+    "points": { "type": "number" },
+    "type": { "type": "string", "enum": ["earned_recognition", "peer_praise", "milestone_bonus", "redeemed_item"] },
+    "sender_id": { "type": "string" },
+    "sender_name": { "type": "string" },
+    "reason": { "type": "string" },
+    "reward_id": { "type": "string" }
+  },
+  "required": ["user_id", "points", "type"]
+}
