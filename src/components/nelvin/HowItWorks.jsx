@@ -24,7 +24,7 @@ export default function HowItWorks() {
           {LANDING_HOWITWORKS.map((step, i) => (
             <div key={step.num} className="relative bg-white rounded-3xl p-7 ring-1 ring-[#180126]/8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
               <div className="flex items-center justify-between mb-5">
-                <span className={`w-14 h-14 rounded-2xl flex items-center justify-center ${i === 3 ? "bg-[#7637E3] text-white" : "bg-[#180126] text-[#B8FF00]"}`}>
+                <span className={`w-14 h-14 rounded-2xl flex items-center justify-center ${i === 3 ? "bg-[#082F24] text-[#B8FF00]" : "bg-[#180126] text-[#B8FF00]"}`}>
                   <LIcon name={step.icon} className="w-6 h-6" />
                 </span>
                 <span className="text-4xl font-extrabold font-heading text-[#180126]/10">{step.num}</span>
