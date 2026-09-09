@@ -14,21 +14,40 @@ export default function Wallet() {
   const [topUpModal, setTopUpModal] = useState(false);
   const [topUpAmount, setTopUpAmount] = useState(50);
   const [successMsg, setSuccessMsg] = useState("");
+  const [txFilter, setTxFilter] = useState("all");
 
-  const transactions = [
+  const [transactions, setTransactions] = useState([
     { id: "1", type: "cashback_earned", label: "Cashback - Nike Store Purchase", amount: "+$12.50", date: "Today, 2:15 PM", status: "Completed" },
     { id: "2", type: "allowance_refill", label: "Monthly Meal Allowance - Company Refill", amount: "+$150.00", date: "1st May 2026", status: "Completed" },
     { id: "3", type: "redemption", label: "Uber Ride Voucher Redemption", amount: "-$15.00", date: "28th Apr 2026", status: "Completed" },
     { id: "4", type: "top_up", label: "Card Top-Up (Visa ending 4242)", amount: "+$100.00", date: "20th Apr 2026", status: "Completed" },
-  ];
+  ]);
 
   const handleTopUp = (e) => {
     e.preventDefault();
-    setBalance((prev) => prev + Number(topUpAmount));
+    const added = Number(topUpAmount);
+    setBalance((prev) => prev + added);
+    setTransactions([
+      {
+        id: `${Date.now()}`,
+        type: "top_up",
+        label: "Direct Wallet Top-Up",
+        amount: `+$${added.toFixed(2)}`,
+        date: "Just now",
+        status: "Completed",
+      },
+      ...transactions,
+    ]);
     setTopUpModal(false);
-    setSuccessMsg(`Successfully added $${topUpAmount} to your Nelvin Wallet!`);
+    setSuccessMsg(`Successfully added $${added.toFixed(2)} to your Nelvin Wallet!`);
     setTimeout(() => setSuccessMsg(""), 4000);
   };
+
+  const filteredTx = transactions.filter((tx) => {
+    if (txFilter === "credits") return tx.amount.startsWith("+");
+    if (txFilter === "debits") return tx.amount.startsWith("-");
+    return true;
+  });
 
   return (
     <div className="min-h-screen bg-[#faf8f5]">
@@ -102,7 +121,22 @@ export default function Wallet() {
 
         {/* Transactions Table */}
         <div className="bg-white rounded-3xl border border-gray-100 p-6 shadow-sm space-y-4">
-          <h2 className="text-lg font-bold text-gray-900 font-heading">Recent Wallet Transactions</h2>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-gray-100 pb-4">
+            <h2 className="text-lg font-bold text-gray-900 font-heading">Recent Wallet Transactions</h2>
+            <div className="flex items-center gap-2">
+              {["all", "credits", "debits"].map((f) => (
+                <button
+                  key={f}
+                  onClick={() => setTxFilter(f)}
+                  className={`px-3 py-1 rounded-full text-xs font-bold uppercase transition-all ${
+                    txFilter === f ? "bg-[#082F24] text-[#B8FF00]" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                  }`}
+                >
+                  {f}
+                </button>
+              ))}
+            </div>
+          </div>
 
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs">
@@ -116,7 +150,7 @@ export default function Wallet() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
-                {transactions.map((tx) => (
+                {filteredTx.map((tx) => (
                   <tr key={tx.id} className="hover:bg-gray-50 transition-colors">
                     <td className="py-3.5 px-2 font-bold capitalize text-gray-800">{tx.type.replace("_", " ")}</td>
                     <td className="py-3.5 px-2 font-medium text-gray-900">{tx.label}</td>

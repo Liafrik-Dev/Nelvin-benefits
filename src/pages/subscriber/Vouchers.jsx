@@ -4,13 +4,14 @@ import { useAuth } from "@/lib/AuthContext";
 import Navbar from "@/components/nelvin/Navbar";
 import Footer from "@/components/nelvin/Footer";
 import EmployeeNav from "@/components/shared/EmployeeNav";
-import { Ticket, QrCode, Copy, Check, Calendar } from "lucide-react";
+import { Ticket, QrCode, Copy, Check, Calendar, X, Eye } from "lucide-react";
 
 export default function Vouchers() {
   const { user } = useAuth();
   const [redemptions, setRedemptions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [copiedId, setCopiedId] = useState(null);
+  const [activeQRModal, setActiveQRModal] = useState(null);
 
   useEffect(() => {
     db.entities.Redemption.list("-created_date", 100)
@@ -92,9 +93,12 @@ export default function Vouchers() {
                 </div>
 
                 <div className="flex items-center justify-between text-xs text-gray-500 pt-2 border-t border-gray-50">
-                  <span className="flex items-center gap-1">
-                    <Calendar className="w-3.5 h-3.5 text-gray-400" /> Valid until: {v.expiry || v.created_date || "31 Dec 2026"}
-                  </span>
+                  <button
+                    onClick={() => setActiveQRModal(v)}
+                    className="font-bold text-[#082F24] hover:underline flex items-center gap-1"
+                  >
+                    <Eye className="w-3.5 h-3.5" /> View Barcode QR
+                  </button>
                   <span className={`font-bold capitalize ${v.status === "active" ? "text-emerald-700" : "text-gray-400"}`}>
                     {v.status || "Active"}
                   </span>
@@ -104,6 +108,37 @@ export default function Vouchers() {
           </div>
         )}
       </main>
+
+      {/* QR Code Reveal Modal */}
+      {activeQRModal && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-sm w-full text-center space-y-5 shadow-2xl relative">
+            <button
+              onClick={() => setActiveQRModal(null)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <div>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">
+                {activeQRModal.merchant || activeQRModal.business_name || "Partner Store"}
+              </span>
+              <h3 className="font-extrabold text-gray-900 text-lg mt-2 font-heading">
+                {activeQRModal.offer_title || "Perk Voucher"}
+              </h3>
+            </div>
+
+            <div className="bg-[#082F24] p-6 rounded-2xl flex flex-col items-center justify-center space-y-3">
+              <QrCode className="w-32 h-32 text-[#B8FF00]" />
+              <p className="font-mono text-sm font-extrabold text-white tracking-widest">
+                {activeQRModal.promo_code || "NV-PROMO-77"}
+              </p>
+            </div>
+
+            <p className="text-xs text-gray-500">Scan this code directly at checkout or terminal.</p>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </div>
