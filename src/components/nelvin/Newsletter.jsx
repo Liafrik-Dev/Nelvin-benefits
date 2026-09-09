@@ -9,8 +9,8 @@ export default function Newsletter() {
     <section className="bg-white py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
         <div className="rounded-[2rem] border-2 border-[#180126]/10 p-8 sm:p-12 text-center bg-[#F7F3ED]">
-          <div className="w-12 h-12 bg-[#7637E3] rounded-2xl flex items-center justify-center mx-auto mb-5">
-            <Mail className="w-5 h-5 text-white" />
+          <div className="w-12 h-12 bg-[#082F24] rounded-2xl flex items-center justify-center mx-auto mb-5">
+            <Mail className="w-5 h-5 text-[#B8FF00]" />
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold font-heading text-[#180126] mb-3">
             Never miss a drop.
