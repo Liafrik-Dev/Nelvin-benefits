@@ -2,7 +2,6 @@ import { db } from "@/services/api/base44Client";
 
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,15 +13,15 @@ import AppleIcon from "@/components/shared/AppleIcon";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 import { toast } from "@/components/ui/use-toast";
 import { useAuth } from "@/lib/AuthContext";
-import { setPendingPlan, getPendingPlan, resolvePostAuthPath } from "@/lib/planPersistence";
+import { setPendingPlan, resolvePostAuthPath } from "@/lib/planPersistence";
 
 export default function AuthForm({ mode = "login" }) {
   const isRegister = mode === "register";
   const navigate = useNavigate();
   const { isAuthenticated, isLoadingAuth } = useAuth();
 
-  const [activeTab, setActiveTab] = useState("subscriber"); // 'subscriber', 'hr_admin', 'business'
-  const [activeAction, setActiveAction] = useState(isRegister ? "signup" : "login"); // 'login', 'signup'
+  const [activeTab, setActiveTab] = useState("subscriber");
+  const [activeAction, setActiveAction] = useState(isRegister ? "signup" : "login");
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -121,9 +120,9 @@ export default function AuthForm({ mode = "login" }) {
   if (showOtp) {
     return (
       <AuthLayout>
-        <div className="max-w-md mx-auto bg-white p-8 rounded-3xl shadow-xl border border-slate-100 text-center space-y-6">
-          <h2 className="text-2xl font-bold text-slate-900 font-heading">Verify Your Email</h2>
-          <p className="text-slate-500 text-sm">We sent a 6-digit confirmation code to <strong className="text-slate-800">{email}</strong></p>
+        <div className="max-w-md mx-auto bg-white p-8 rounded-3xl shadow-xl text-gray-900 text-center space-y-6">
+          <h2 className="text-2xl font-bold font-heading">Verify Your Email</h2>
+          <p className="text-gray-600 text-sm">We sent a 6-digit confirmation code to <strong>{email}</strong></p>
           {serverError && <div className="p-3 bg-rose-50 text-rose-700 text-xs font-bold rounded-xl">{serverError}</div>}
           <div className="flex justify-center">
             <InputOTP maxLength={6} value={otpCode} onChange={setOtpCode}>
@@ -132,7 +131,7 @@ export default function AuthForm({ mode = "login" }) {
               </InputOTPGroup>
             </InputOTP>
           </div>
-          <Button className="w-full h-12 bg-[#7637E3] hover:bg-[#6229c3] text-white font-bold rounded-full" onClick={handleVerify} disabled={loading || otpCode.length < 6}>
+          <Button className="w-full h-12 bg-[#082F24] hover:bg-emerald-950 text-[#B8FF00] font-bold rounded-full" onClick={handleVerify} disabled={loading || otpCode.length < 6}>
             {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Verify & Access Portal"}
           </Button>
         </div>
@@ -142,86 +141,71 @@ export default function AuthForm({ mode = "login" }) {
 
   return (
     <AuthLayout>
-      <div className="space-y-10">
+      <div className="space-y-8">
         {/* Title and Subtitle Header */}
-        <div className="text-center space-y-3">
-          <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight font-heading">
+        <div className="text-center space-y-2">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-heading">
             Choose Your Access Portal
           </h1>
-          <p className="text-slate-500 text-sm sm:text-base font-medium max-w-xl mx-auto">
+          <p className="text-white/80 text-sm sm:text-base font-medium max-w-xl mx-auto">
             Select the appropriate portal based on your role to access MyBenefits platform.
           </p>
         </div>
 
-        {/* Access Portal Selector Tabs matching screenshot */}
+        {/* Access Portal Selector Tabs matching brand palette */}
         <div className="flex justify-center">
-          <div className="inline-flex bg-slate-100/80 p-1.5 rounded-full border border-slate-200/60 shadow-inner max-w-md w-full">
+          <div className="inline-flex bg-white/10 p-1.5 rounded-full border border-white/20 backdrop-blur max-w-md w-full">
             <button
               type="button"
               onClick={() => setActiveTab("subscriber")}
-              className={`flex-1 py-2.5 px-4 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 ${
+              className={`flex-1 py-2 px-3 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 ${
                 activeTab === "subscriber"
-                  ? "bg-white text-slate-900 shadow-md"
-                  : "text-slate-600 hover:text-slate-900"
+                  ? "bg-[#B8FF00] text-[#082F24] shadow-md"
+                  : "text-white/80 hover:text-white"
               }`}
             >
-              <User className="w-4 h-4 text-[#7637E3]" /> Users
+              <User className="w-4 h-4" /> Users
             </button>
             <button
               type="button"
               onClick={() => setActiveTab("hr_admin")}
-              className={`flex-1 py-2.5 px-4 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 ${
+              className={`flex-1 py-2 px-3 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 ${
                 activeTab === "hr_admin"
-                  ? "bg-white text-slate-900 shadow-md"
-                  : "text-slate-600 hover:text-slate-900"
+                  ? "bg-[#B8FF00] text-[#082F24] shadow-md"
+                  : "text-white/80 hover:text-white"
               }`}
             >
-              <Building2 className="w-4 h-4 text-[#7637E3]" /> HR Teams
+              <Building2 className="w-4 h-4" /> HR Teams
             </button>
             <button
               type="button"
               onClick={() => setActiveTab("business")}
-              className={`flex-1 py-2.5 px-4 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 ${
+              className={`flex-1 py-2 px-3 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 ${
                 activeTab === "business"
-                  ? "bg-white text-slate-900 shadow-md"
-                  : "text-slate-600 hover:text-slate-900"
+                  ? "bg-[#B8FF00] text-[#082F24] shadow-md"
+                  : "text-white/80 hover:text-white"
               }`}
             >
-              <Store className="w-4 h-4 text-[#7637E3]" /> Partners
+              <Store className="w-4 h-4" /> Partners
             </button>
           </div>
         </div>
 
-        {/* Portal Role Context Header */}
-        <div className="space-y-1">
-          <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2 font-heading">
-            <User className="w-5 h-5 text-[#7637E3]" />
-            For {activeTab === "subscriber" ? "Users" : activeTab === "hr_admin" ? "HR Teams & Employers" : "Partners & Merchants"}
-          </h2>
-          <p className="text-xs sm:text-sm text-slate-500">
-            {activeTab === "subscriber"
-              ? "Access your employee benefits and exclusive discounts through our web application or mobile app."
-              : activeTab === "hr_admin"
-              ? "Manage company benefits, employee eligibility, communications, and analytics in real-time."
-              : "Publish deals, issue vouchers, verify redemptions, and scale audience reach across member companies."}
-          </p>
-        </div>
-
-        {/* 3 Main Action Cards matching screenshot */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* 3 Main Action Cards matching brand green colors */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {/* Card 1: Log in */}
           <div
             onClick={() => setActiveAction("login")}
-            className={`group cursor-pointer rounded-3xl bg-white border-2 p-6 sm:p-8 flex flex-col items-center text-center transition-all shadow-sm hover:shadow-xl relative overflow-hidden ${
-              activeAction === "login" ? "border-[#7637E3] ring-2 ring-[#7637E3]/20" : "border-slate-100 hover:border-slate-300"
+            className={`group cursor-pointer rounded-3xl bg-white text-gray-900 border-2 p-6 flex flex-col items-center text-center transition-all shadow-lg hover:shadow-2xl relative overflow-hidden ${
+              activeAction === "login" ? "border-[#B8FF00] ring-4 ring-[#B8FF00]/30" : "border-white/20"
             }`}
           >
-            <div className="w-full h-1.5 bg-gradient-to-r from-pink-500 to-purple-600 absolute top-0 left-0" />
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-purple-600 text-white flex items-center justify-center mb-6 shadow-md group-hover:scale-105 transition-transform">
-              <LogIn className="w-7 h-7" />
+            <div className="w-full h-1.5 bg-[#00BD00] absolute top-0 left-0" />
+            <div className="w-12 h-12 rounded-2xl bg-[#082F24] text-[#B8FF00] flex items-center justify-center mb-4 shadow-md group-hover:scale-105 transition-transform">
+              <LogIn className="w-6 h-6" />
             </div>
-            <h3 className="text-lg font-bold text-slate-900 mb-2 font-heading">Log in to Web App</h3>
-            <p className="text-xs text-slate-500 leading-relaxed">
+            <h3 className="text-base font-extrabold mb-1 font-heading">Log in to Web App</h3>
+            <p className="text-xs text-gray-600 leading-relaxed">
               Access your benefits & discounts through the web application
             </p>
           </div>
@@ -229,16 +213,16 @@ export default function AuthForm({ mode = "login" }) {
           {/* Card 2: Sign up */}
           <div
             onClick={() => setActiveAction("signup")}
-            className={`group cursor-pointer rounded-3xl bg-white border-2 p-6 sm:p-8 flex flex-col items-center text-center transition-all shadow-sm hover:shadow-xl relative overflow-hidden ${
-              activeAction === "signup" ? "border-[#7637E3] ring-2 ring-[#7637E3]/20" : "border-slate-100 hover:border-slate-300"
+            className={`group cursor-pointer rounded-3xl bg-white text-gray-900 border-2 p-6 flex flex-col items-center text-center transition-all shadow-lg hover:shadow-2xl relative overflow-hidden ${
+              activeAction === "signup" ? "border-[#B8FF00] ring-4 ring-[#B8FF00]/30" : "border-white/20"
             }`}
           >
-            <div className="w-full h-1.5 bg-gradient-to-r from-blue-500 to-indigo-600 absolute top-0 left-0" />
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white flex items-center justify-center mb-6 shadow-md group-hover:scale-105 transition-transform">
-              <UserPlus className="w-7 h-7" />
+            <div className="w-full h-1.5 bg-[#B8FF00] absolute top-0 left-0" />
+            <div className="w-12 h-12 rounded-2xl bg-[#082F24] text-[#B8FF00] flex items-center justify-center mb-4 shadow-md group-hover:scale-105 transition-transform">
+              <UserPlus className="w-6 h-6" />
             </div>
-            <h3 className="text-lg font-bold text-slate-900 mb-2 font-heading">Sign up as New User</h3>
-            <p className="text-xs text-slate-500 leading-relaxed">
+            <h3 className="text-base font-extrabold mb-1 font-heading">Sign up as New User</h3>
+            <p className="text-xs text-gray-600 leading-relaxed">
               Create a new account to access benefits through the web application
             </p>
           </div>
@@ -246,61 +230,55 @@ export default function AuthForm({ mode = "login" }) {
           {/* Card 3: Mobile App */}
           <div
             onClick={() => toast({ title: "Mobile App", description: "Download link sent or available on App Store & Google Play." })}
-            className="group cursor-pointer rounded-3xl bg-white border-2 border-slate-100 p-6 sm:p-8 flex flex-col items-center text-center transition-all shadow-sm hover:shadow-xl hover:border-slate-300 relative overflow-hidden"
+            className="group cursor-pointer rounded-3xl bg-white text-gray-900 border-2 border-white/20 p-6 flex flex-col items-center text-center transition-all shadow-lg hover:shadow-2xl relative overflow-hidden"
           >
-            <div className="w-full h-1.5 bg-gradient-to-r from-emerald-500 to-teal-600 absolute top-0 left-0" />
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white flex items-center justify-center mb-6 shadow-md group-hover:scale-105 transition-transform">
-              <Smartphone className="w-7 h-7" />
+            <div className="w-full h-1.5 bg-[#082F24] absolute top-0 left-0" />
+            <div className="w-12 h-12 rounded-2xl bg-[#082F24] text-[#B8FF00] flex items-center justify-center mb-4 shadow-md group-hover:scale-105 transition-transform">
+              <Smartphone className="w-6 h-6" />
             </div>
-            <h3 className="text-lg font-bold text-slate-900 mb-2 font-heading">Download Mobile App</h3>
-            <p className="text-xs text-slate-500 leading-relaxed">
+            <h3 className="text-base font-extrabold mb-1 font-heading">Download Mobile App</h3>
+            <p className="text-xs text-gray-600 leading-relaxed">
               Get the MyBenefits app on your mobile device for iOS & Android
             </p>
           </div>
         </div>
 
-        {/* Embedded Interactive Auth Form Container */}
-        <div className="max-w-xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-lg space-y-6">
-          <div className="flex items-center justify-between border-b border-slate-100 pb-4">
-            <h3 className="text-base font-bold text-slate-900 font-heading">
+        {/* Form Box */}
+        <div className="max-w-lg mx-auto bg-white text-gray-900 rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/20 space-y-5">
+          <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+            <h3 className="text-base font-extrabold font-heading">
               {activeAction === "signup" ? "Create Account" : "Log In"} — {activeTab === "subscriber" ? "Member" : activeTab === "hr_admin" ? "HR Employer" : "Partner"}
             </h3>
-            <span className="text-xs font-semibold text-[#7637E3] bg-[#7637E3]/10 px-3 py-1 rounded-full">
-              {activeTab.toUpperCase()}
+            <span className="text-[10px] font-extrabold text-[#082F24] bg-[#B8FF00] px-2.5 py-1 rounded-full uppercase">
+              {activeTab}
             </span>
           </div>
 
           {serverError && (
-            <div className="p-3.5 bg-rose-50 border border-rose-200 text-rose-700 text-xs font-bold rounded-2xl">
+            <div className="p-3 bg-rose-50 text-rose-700 text-xs font-bold rounded-xl">
               {serverError}
             </div>
           )}
 
-          {/* Social OAuth options */}
           <div className="grid grid-cols-2 gap-3">
-            <Button variant="outline" className="h-11 rounded-2xl border-slate-200 text-xs font-bold" onClick={() => handleProvider("google")}>
+            <Button variant="outline" className="h-10 rounded-xl border-gray-200 text-xs font-bold" onClick={() => handleProvider("google")}>
               <GoogleIcon className="w-4 h-4 mr-2" /> Google
             </Button>
-            <Button variant="outline" className="h-11 rounded-2xl border-slate-200 text-xs font-bold" onClick={() => handleProvider("apple")}>
+            <Button variant="outline" className="h-10 rounded-xl border-gray-200 text-xs font-bold" onClick={() => handleProvider("apple")}>
               <AppleIcon className="w-4 h-4 mr-2" /> Apple
             </Button>
           </div>
 
-          <div className="relative my-2">
-            <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-slate-200" /></div>
-            <div className="relative flex justify-center text-[10px] uppercase font-bold tracking-wider"><span className="bg-white px-3 text-slate-400">or continue with email</span></div>
-          </div>
-
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-3">
             {activeAction === "signup" && (
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-1">
-                  <Label className="text-xs font-bold text-slate-700">First Name</Label>
+                  <Label className="text-xs font-bold text-gray-700">First Name</Label>
                   <Input placeholder="Jane" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="h-10 text-xs rounded-xl" />
                   {errors.firstName && <p className="text-[10px] text-rose-600 font-bold">{errors.firstName}</p>}
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-xs font-bold text-slate-700">Last Name</Label>
+                  <Label className="text-xs font-bold text-gray-700">Last Name</Label>
                   <Input placeholder="Doe" value={lastName} onChange={(e) => setLastName(e.target.value)} className="h-10 text-xs rounded-xl" />
                   {errors.lastName && <p className="text-[10px] text-rose-600 font-bold">{errors.lastName}</p>}
                 </div>
@@ -308,20 +286,20 @@ export default function AuthForm({ mode = "login" }) {
             )}
 
             <div className="space-y-1">
-              <Label className="text-xs font-bold text-slate-700">Email Address</Label>
+              <Label className="text-xs font-bold text-gray-700">Email Address</Label>
               <Input type="email" placeholder="you@company.com" value={email} onChange={(e) => setEmail(e.target.value)} className="h-10 text-xs rounded-xl" />
               {errors.email && <p className="text-[10px] text-rose-600 font-bold">{errors.email}</p>}
             </div>
 
             <div className="space-y-1">
-              <Label className="text-xs font-bold text-slate-700">Password</Label>
+              <Label className="text-xs font-bold text-gray-700">Password</Label>
               <Input type="password" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} className="h-10 text-xs rounded-xl" />
               {errors.password && <p className="text-[10px] text-rose-600 font-bold">{errors.password}</p>}
             </div>
 
             {activeAction === "signup" && (
               <div className="space-y-1">
-                <Label className="text-xs font-bold text-slate-700">Confirm Password</Label>
+                <Label className="text-xs font-bold text-gray-700">Confirm Password</Label>
                 <Input type="password" placeholder="••••••••" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="h-10 text-xs rounded-xl" />
                 {errors.confirmPassword && <p className="text-[10px] text-rose-600 font-bold">{errors.confirmPassword}</p>}
               </div>
@@ -330,7 +308,7 @@ export default function AuthForm({ mode = "login" }) {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full h-12 bg-[#7637E3] hover:bg-[#6229c3] text-white font-bold text-sm rounded-2xl shadow-md transition-all"
+              className="w-full h-11 bg-[#082F24] hover:bg-emerald-950 text-[#B8FF00] font-extrabold text-xs rounded-2xl shadow-md transition-all"
             >
               {loading ? (
                 <Loader2 className="w-4 h-4 animate-spin" />
