@@ -37,29 +37,29 @@ export default function HeroSection() {
             <span className="text-xs font-semibold text-white/90">The All-in-One Benefits Super App for Africa & MENA</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl xl:text-6xl font-bold font-heading tracking-tight leading-[1.08]">
+          <h1 className="text-4xl sm:text-5xl xl:text-6xl font-extrabold font-heading tracking-tight leading-[1.08]">
             One platform for{" "}
             <span className="relative inline-block">
-              <span className="relative z-10 text-[#082F24] bg-[#B8FF00] px-2 rounded-2xl">everything</span>
+              <span className="relative z-10 text-[#082F24] bg-[#B8FF00] px-3 rounded-2xl">everything</span>
             </span>{" "}
             your workforce needs
           </h1>
 
-          <p className="mt-6 text-base sm:text-lg text-white/80 leading-relaxed max-w-xl">
+          <p className="mt-6 text-base sm:text-lg text-white/85 leading-relaxed max-w-xl font-medium">
             Exclusive corporate discounts, flexible stipends, peer rewards, digital wallet, and mental wellness — delivered in one seamless experience.
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-3.5">
             <Link
               to="/register"
-              className="group inline-flex items-center justify-center gap-2.5 bg-[#B8FF00] text-[#082F24] font-extrabold text-sm h-12 px-7 rounded-[24px] transition-all hover:bg-emerald-300 shadow-lg"
+              className="group inline-flex items-center justify-center gap-2.5 bg-[#B8FF00] hover:bg-[#a2e600] text-[#082F24] font-extrabold text-sm h-12 px-7 rounded-[24px] transition-all shadow-lg hover:shadow-xl"
             >
               Get Started Free
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               to="/corporate"
-              className="group inline-flex items-center justify-center gap-2.5 bg-white/10 backdrop-blur border border-white/30 hover:border-white text-white font-bold text-sm h-12 px-7 rounded-[24px] transition-all"
+              className="group inline-flex items-center justify-center gap-2.5 bg-white/10 hover:bg-white/20 backdrop-blur border border-white/30 hover:border-white text-white font-bold text-sm h-12 px-7 rounded-[24px] transition-all"
             >
               <Play className="w-4 h-4 fill-current text-[#B8FF00]" />
               Book Corporate Demo

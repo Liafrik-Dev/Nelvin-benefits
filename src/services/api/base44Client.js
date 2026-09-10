@@ -36,9 +36,34 @@ const mockCompany = {
 
 const fallbackDb = {
   auth: {
-    isAuthenticated: async () => true,
-    me: async () => mockUser,
-    logout: () => {},
+    isAuthenticated: async () => {
+      return !!localStorage.getItem("nv_auth_token");
+    },
+    me: async () => {
+      const token = localStorage.getItem("nv_auth_token");
+      return token ? mockUser : null;
+    },
+    loginViaEmailPassword: async (email, password) => {
+      localStorage.setItem("nv_auth_token", "demo_session_token");
+      return { user: mockUser };
+    },
+    loginWithProvider: (provider, redirectPath) => {
+      localStorage.setItem("nv_auth_token", "demo_session_token");
+      window.location.href = redirectPath || "/";
+    },
+    register: async ({ email, password, role }) => {
+      localStorage.setItem("nv_auth_token", "demo_session_token");
+      return { email };
+    },
+    verifyOtp: async ({ email, otpCode }) => {
+      return { access_token: "demo_session_token" };
+    },
+    setToken: (token) => {
+      localStorage.setItem("nv_auth_token", token);
+    },
+    logout: () => {
+      localStorage.removeItem("nv_auth_token");
+    },
     redirectToLogin: () => {},
     resetPasswordRequest: async () => {},
   },
