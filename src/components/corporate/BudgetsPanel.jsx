@@ -1,22 +1,47 @@
 import React, { useState } from "react";
-import { PiggyBank, Plus, DollarSign, ArrowUpRight } from "lucide-react";
+import { PiggyBank, Plus, DollarSign, ArrowUpRight, X, Check } from "lucide-react";
 
 export default function BudgetsPanel({ company }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [dept, setDept] = useState("");
+  const [amount, setAmount] = useState("");
+
   const [budgets, setBudgets] = useState([
     { id: "b1", department: "Engineering", allocated: 12000, spent: 7800, period: "Monthly" },
     { id: "b2", department: "Marketing & Growth", allocated: 8000, spent: 4200, period: "Monthly" },
     { id: "b3", department: "Operations", allocated: 5000, spent: 3100, period: "Monthly" },
   ]);
 
+  const handleAddRule = (e) => {
+    e.preventDefault();
+    if (!dept || !amount) return;
+    setBudgets([
+      ...budgets,
+      {
+        id: `b${Date.now()}`,
+        department: dept,
+        allocated: parseFloat(amount),
+        spent: 0,
+        period: "Monthly",
+      },
+    ]);
+    setDept("");
+    setAmount("");
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold font-heading text-gray-900">Budgets & Allowances</h1>
+          <h1 className="text-2xl font-bold font-heading text-[#082F24]">Budgets & Allowances</h1>
           <p className="text-sm text-gray-500 mt-1">Set monthly benefit spending caps and allowance limits per department.</p>
         </div>
-        <button className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold px-4 py-2 rounded-xl shadow-sm">
-          <Plus className="w-4 h-4" /> Add Budget Rule
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="inline-flex items-center gap-2 bg-[#082F24] hover:bg-[#0d4636] text-[#B8FF00] text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm transition-colors"
+        >
+          <Plus className="w-4 h-4 text-[#B8FF00]" /> Add Budget Rule
         </button>
       </div>
 
@@ -34,12 +59,53 @@ export default function BudgetsPanel({ company }) {
                 <p className="text-2xl font-black text-gray-900 mt-1">${b.spent.toLocaleString()} / <span className="text-gray-400">${b.allocated.toLocaleString()}</span></p>
               </div>
               <div className="w-full bg-gray-100 rounded-full h-2">
-                <div className="bg-emerald-600 h-2 rounded-full" style={{ width: `${pct}%` }} />
+                <div className="bg-[#00BD00] h-2 rounded-full" style={{ width: `${pct}%` }} />
               </div>
             </div>
           );
         })}
       </div>
+
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl p-6 max-w-md w-full shadow-2xl space-y-4">
+            <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+              <h3 className="font-bold text-lg text-[#082F24]">Create Department Budget</h3>
+              <button onClick={() => setIsModalOpen(false)} className="text-gray-400 hover:text-gray-600"><X className="w-5 h-5" /></button>
+            </div>
+            <form onSubmit={handleAddRule} className="space-y-4">
+              <div>
+                <label className="block text-xs font-bold text-gray-600 uppercase mb-1">Department Name</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g. Sales & Support"
+                  value={dept}
+                  onChange={(e) => setDept(e.target.value)}
+                  className="w-full text-xs p-3 border border-gray-200 rounded-xl focus:border-[#00BD00] focus:outline-none"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-bold text-gray-600 uppercase mb-1">Monthly Budget Cap ($)</label>
+                <input
+                  type="number"
+                  required
+                  placeholder="10000"
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
+                  className="w-full text-xs p-3 border border-gray-200 rounded-xl focus:border-[#00BD00] focus:outline-none"
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-[#082F24] hover:bg-[#0d4636] text-[#B8FF00] font-bold text-xs py-3 rounded-xl shadow-sm transition-colors"
+              >
+                Save Budget Rule
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

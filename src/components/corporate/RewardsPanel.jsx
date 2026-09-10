@@ -1,21 +1,49 @@
 import React, { useState } from "react";
-import { Gift, Award, Trophy, Plus, Star } from "lucide-react";
+import { Gift, Award, Trophy, Plus, Star, X } from "lucide-react";
 
 export default function RewardsPanel({ company }) {
-  const [feed] = useState([
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [recipient, setRecipient] = useState("");
+  const [points, setPoints] = useState("");
+  const [reason, setReason] = useState("");
+
+  const [feed, setFeed] = useState([
     { id: "1", sender: "Sarah Connor (HR)", recipient: "Pamela A.", points: 250, reason: "Excellent client presentation in Q1", date: "Yesterday" },
     { id: "2", sender: "David Kim", recipient: "Michael S.", points: 100, reason: "Helped onboard the engineering team", date: "3 days ago" },
   ]);
+
+  const handleIssuePoints = (e) => {
+    e.preventDefault();
+    if (!recipient || !points || !reason) return;
+    setFeed([
+      {
+        id: `${Date.now()}`,
+        sender: "HR Admin",
+        recipient,
+        points: parseInt(points, 10),
+        reason,
+        date: "Just now",
+      },
+      ...feed,
+    ]);
+    setRecipient("");
+    setPoints("");
+    setReason("");
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold font-heading text-gray-900">Rewards & Recognition</h1>
+          <h1 className="text-2xl font-bold font-heading text-[#082F24]">Rewards & Recognition</h1>
           <p className="text-sm text-gray-500 mt-1">Manage peer praise point allocations, milestone awards, and company gift cards.</p>
         </div>
-        <button className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold px-4 py-2 rounded-xl shadow-sm">
-          <Plus className="w-4 h-4" /> Issue Points
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="inline-flex items-center gap-2 bg-[#082F24] hover:bg-[#0d4636] text-[#B8FF00] text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm transition-colors"
+        >
+          <Plus className="w-4 h-4 text-[#B8FF00]" /> Issue Points
         </button>
       </div>
 
@@ -47,14 +75,66 @@ export default function RewardsPanel({ company }) {
           {feed.map((item) => (
             <div key={item.id} className="p-4 bg-gray-50 rounded-xl flex items-center justify-between text-xs">
               <div>
-                <p className="font-bold text-gray-900"><span className="text-emerald-700">{item.sender}</span> awarded <span className="text-emerald-700">{item.recipient}</span></p>
+                <p className="font-bold text-gray-900"><span className="text-[#00BD00] font-extrabold">{item.sender}</span> awarded <span className="text-[#082F24] font-extrabold">{item.recipient}</span></p>
                 <p className="text-gray-500 italic mt-0.5">"{item.reason}"</p>
               </div>
-              <span className="bg-amber-100 text-amber-800 font-bold px-2.5 py-1 rounded-full">{item.points} Pts</span>
+              <span className="bg-[#B8FF00] text-[#082F24] font-bold px-3 py-1 rounded-full">{item.points} Pts</span>
             </div>
           ))}
         </div>
       </div>
+
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl p-6 max-w-md w-full shadow-2xl space-y-4">
+            <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+              <h3 className="font-bold text-lg text-[#082F24]">Issue Reward Points</h3>
+              <button onClick={() => setIsModalOpen(false)} className="text-gray-400 hover:text-gray-600"><X className="w-5 h-5" /></button>
+            </div>
+            <form onSubmit={handleIssuePoints} className="space-y-4">
+              <div>
+                <label className="block text-xs font-bold text-gray-600 uppercase mb-1">Recipient Employee</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g. John Doe"
+                  value={recipient}
+                  onChange={(e) => setRecipient(e.target.value)}
+                  className="w-full text-xs p-3 border border-gray-200 rounded-xl focus:border-[#00BD00] focus:outline-none"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-bold text-gray-600 uppercase mb-1">Points Amount</label>
+                <input
+                  type="number"
+                  required
+                  placeholder="250"
+                  value={points}
+                  onChange={(e) => setPoints(e.target.value)}
+                  className="w-full text-xs p-3 border border-gray-200 rounded-xl focus:border-[#00BD00] focus:outline-none"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-bold text-gray-600 uppercase mb-1">Reason / Praise Note</label>
+                <textarea
+                  required
+                  placeholder="Great teamwork on launch week!"
+                  value={reason}
+                  onChange={(e) => setReason(e.target.value)}
+                  className="w-full text-xs p-3 border border-gray-200 rounded-xl focus:border-[#00BD00] focus:outline-none"
+                  rows={2}
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-[#082F24] hover:bg-[#0d4636] text-[#B8FF00] font-bold text-xs py-3 rounded-xl shadow-sm transition-colors"
+              >
+                Send Reward Points
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

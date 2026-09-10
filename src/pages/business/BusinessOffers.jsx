@@ -19,22 +19,31 @@ export default function BusinessOffers() {
   const sampleOffers = [
     { id: "o1", title: "25% Off Nike Footwear", category: "Shopping & Fashion", discount_label: "25% OFF", status: "active", total_redemptions_count: 84 },
     { id: "o2", title: "Buy 1 Get 1 Free Running Tees", category: "Shopping & Fashion", discount_label: "BOGO", status: "active", total_redemptions_count: 58 },
+    { id: "o3", title: "10% VIP Fitness Pass Discount", category: "Health & Fitness", discount_label: "10% OFF", status: "paused", total_redemptions_count: 12 },
   ];
 
-  const list = offers.length > 0 ? offers : sampleOffers;
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    setItems(offers.length > 0 ? offers : sampleOffers);
+  }, [offers]);
+
+  const toggleStatus = (id) => {
+    setItems(items.map((o) => (o.id === id ? { ...o, status: o.status === "active" ? "paused" : "active" } : o)));
+  };
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold font-heading text-gray-900">Manage Store Offers</h1>
+          <h1 className="text-2xl font-bold font-heading text-[#082F24]">Manage Store Offers</h1>
           <p className="text-sm text-gray-500 mt-1">Create, edit, pause, or archive promotional deals for corporate subscribers.</p>
         </div>
         <Link
           to="/business/offers/new"
-          className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2 rounded-xl flex items-center gap-2 shadow-sm"
+          className="bg-[#082F24] hover:bg-[#0d4636] text-[#B8FF00] font-bold text-xs px-4 py-2.5 rounded-xl flex items-center gap-2 shadow-sm transition-colors"
         >
-          <Plus className="w-4 h-4" /> Create New Offer
+          <Plus className="w-4 h-4 text-[#B8FF00]" /> Create New Offer
         </Link>
       </div>
 
@@ -51,22 +60,29 @@ export default function BusinessOffers() {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
-            {list.map((o) => (
+            {items.map((o) => (
               <tr key={o.id} className="hover:bg-gray-50 transition-colors">
                 <td className="px-6 py-4 font-bold text-gray-900 flex items-center gap-2">
-                  <Tag className="w-4 h-4 text-emerald-600" /> {o.title}
+                  <Tag className="w-4 h-4 text-[#00BD00]" /> {o.title}
                 </td>
                 <td className="px-6 py-4 text-gray-600">{o.category}</td>
-                <td className="px-6 py-4 font-extrabold text-emerald-700">{o.discount_label}</td>
+                <td className="px-6 py-4 font-extrabold text-[#00BD00]">{o.discount_label}</td>
                 <td className="px-6 py-4 font-bold text-gray-900">{o.total_redemptions_count || 0}</td>
                 <td className="px-6 py-4">
-                  <span className="bg-emerald-50 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase">
+                  <span className={`text-xs font-bold px-2.5 py-1 rounded-full uppercase ${
+                    o.status === "active" ? "bg-emerald-50 text-emerald-700" : "bg-amber-50 text-amber-700"
+                  }`}>
                     {o.status || "Active"}
                   </span>
                 </td>
                 <td className="px-6 py-4 text-right space-x-2">
-                  <Link to={`/offer/${o.id}`} className="text-xs font-bold text-gray-600 hover:underline">View</Link>
-                  <button className="text-xs font-bold text-emerald-700 hover:underline">Edit</button>
+                  <button
+                    onClick={() => toggleStatus(o.id)}
+                    className="text-xs font-bold text-[#082F24] hover:underline"
+                  >
+                    {o.status === "active" ? "Pause" : "Activate"}
+                  </button>
+                  <Link to={`/offer/${o.id}`} className="text-xs font-bold text-gray-500 hover:underline">View</Link>
                 </td>
               </tr>
             ))}
