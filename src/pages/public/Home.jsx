@@ -14,7 +14,6 @@ import Testimonials from "@/components/nelvin/Testimonials";
 import FeaturedDeals from "@/components/nelvin/FeaturedDeals";
 import GetTheApp from "@/components/nelvin/GetTheApp";
 import PricingSection from "@/components/nelvin/PricingSection";
-import Newsletter from "@/components/nelvin/Newsletter";
 import FAQSection from "@/components/nelvin/FAQSection";
 import Footer from "@/components/nelvin/Footer";
 
@@ -36,7 +35,6 @@ export default function Home() {
       <FeaturedDeals />
       <GetTheApp />
       <PricingSection />
-      <Newsletter />
       <FAQSection />
       <Footer />
     </div>
