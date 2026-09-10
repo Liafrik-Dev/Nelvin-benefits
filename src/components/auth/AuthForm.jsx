@@ -153,14 +153,14 @@ export default function AuthForm({ mode = "login" }) {
         </div>
 
         {/* Single Unified Form Box */}
-        <div className="max-w-md mx-auto bg-white text-gray-900 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-5">
+        <div className="max-w-md mx-auto bg-white text-gray-900 rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/20 space-y-5">
           {/* Role Tabs */}
-          <div className="grid grid-cols-3 gap-1 p-1 bg-gray-100 rounded-2xl text-xs font-bold text-center">
+          <div className="grid grid-cols-3 gap-1.5 p-1.5 bg-[#F7F3ED] rounded-2xl text-xs font-extrabold text-center border border-gray-200">
             <button
               type="button"
               onClick={() => setActiveTab("subscriber")}
-              className={`py-2 rounded-xl transition-all flex items-center justify-center gap-1 ${
-                activeTab === "subscriber" ? "bg-[#082F24] text-[#B8FF00] shadow-sm" : "text-gray-600 hover:text-gray-900"
+              className={`py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 ${
+                activeTab === "subscriber" ? "bg-[#082F24] text-[#B8FF00] shadow-md" : "text-gray-600 hover:text-gray-900"
               }`}
             >
               <User className="w-3.5 h-3.5" /> Member
@@ -168,8 +168,8 @@ export default function AuthForm({ mode = "login" }) {
             <button
               type="button"
               onClick={() => setActiveTab("hr_admin")}
-              className={`py-2 rounded-xl transition-all flex items-center justify-center gap-1 ${
-                activeTab === "hr_admin" ? "bg-[#082F24] text-[#B8FF00] shadow-sm" : "text-gray-600 hover:text-gray-900"
+              className={`py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 ${
+                activeTab === "hr_admin" ? "bg-[#082F24] text-[#B8FF00] shadow-md" : "text-gray-600 hover:text-gray-900"
               }`}
             >
               <Building2 className="w-3.5 h-3.5" /> HR Team
@@ -177,8 +177,8 @@ export default function AuthForm({ mode = "login" }) {
             <button
               type="button"
               onClick={() => setActiveTab("business")}
-              className={`py-2 rounded-xl transition-all flex items-center justify-center gap-1 ${
-                activeTab === "business" ? "bg-[#082F24] text-[#B8FF00] shadow-sm" : "text-gray-600 hover:text-gray-900"
+              className={`py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 ${
+                activeTab === "business" ? "bg-[#082F24] text-[#B8FF00] shadow-md" : "text-gray-600 hover:text-gray-900"
               }`}
             >
               <Store className="w-3.5 h-3.5" /> Partner
@@ -186,12 +186,12 @@ export default function AuthForm({ mode = "login" }) {
           </div>
 
           {/* Action Toggle (Login vs Signup) */}
-          <div className="flex items-center justify-between border-b border-gray-100 pb-3">
-            <div className="flex gap-4">
+          <div className="flex items-center justify-between border-b border-gray-100 pb-3 pt-1">
+            <div className="flex gap-5">
               <button
                 type="button"
                 onClick={() => setActiveAction("login")}
-                className={`text-sm font-extrabold font-heading pb-1 border-b-2 transition-all ${
+                className={`text-sm font-black font-heading pb-1 border-b-2 transition-all ${
                   activeAction === "login" ? "border-[#00BD00] text-[#082F24]" : "border-transparent text-gray-400 hover:text-gray-600"
                 }`}
               >
@@ -200,15 +200,15 @@ export default function AuthForm({ mode = "login" }) {
               <button
                 type="button"
                 onClick={() => setActiveAction("signup")}
-                className={`text-sm font-extrabold font-heading pb-1 border-b-2 transition-all ${
+                className={`text-sm font-black font-heading pb-1 border-b-2 transition-all ${
                   activeAction === "signup" ? "border-[#00BD00] text-[#082F24]" : "border-transparent text-gray-400 hover:text-gray-600"
                 }`}
               >
-                Sign Up
+                Create Account
               </button>
             </div>
-            <span className="text-[10px] font-extrabold text-[#082F24] bg-[#B8FF00] px-2.5 py-0.5 rounded-full uppercase">
-              {activeTab}
+            <span className="text-[10px] font-black text-[#082F24] bg-[#B8FF00] px-3 py-1 rounded-full uppercase tracking-wider">
+              {activeTab === "subscriber" ? "Member Portal" : activeTab === "hr_admin" ? "HR Portal" : "Partner Portal"}
             </span>
           </div>
 
