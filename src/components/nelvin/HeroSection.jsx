@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { ArrowRight, Play, ShieldCheck, TrendingUp, Sparkles, Video } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { ArrowRight, Play, ShieldCheck, TrendingUp, Sparkles, Video, Search, MapPin, Tag } from "lucide-react";
 
 const HERO_VIDEOS = [
   { id: "team", title: "Corporate Teams", url: "https://assets.mixkit.co/videos/preview/mixkit-business-people-working-together-in-an-office-42861-large.mp4" },
@@ -11,6 +11,19 @@ const HERO_VIDEOS = [
 
 export default function HeroSection() {
   const [activeVideoIndex, setActiveVideoIndex] = useState(0);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [category, setCategory] = useState("");
+  const [city, setCity] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    const params = new URLSearchParams();
+    if (searchQuery) params.set("q", searchQuery);
+    if (category) params.set("category", category);
+    if (city) params.set("city", city);
+    navigate(`/search?${params.toString()}`);
+  };
 
   return (
     <section className="relative overflow-hidden bg-[#082F24] text-white min-h-[90vh] flex items-center">
@@ -38,30 +51,64 @@ export default function HeroSection() {
           </div>
 
           <h1 className="text-4xl sm:text-5xl xl:text-6xl font-extrabold font-heading tracking-tight leading-[1.08]">
-            One platform for{" "}
-            <span className="relative inline-block">
-              <span className="relative z-10 text-[#082F24] bg-[#B8FF00] px-3 rounded-2xl">everything</span>
-            </span>{" "}
-            your workforce needs
+            One platform for <span className="text-[#B8FF00]">everything</span> your workforce needs
           </h1>
 
           <p className="mt-6 text-base sm:text-lg text-white/85 leading-relaxed max-w-xl font-medium">
             Exclusive corporate discounts, flexible stipends, peer rewards, digital wallet, and mental wellness — delivered in one seamless experience.
           </p>
 
-          <div className="mt-8 flex flex-col sm:flex-row gap-3.5">
-            <Link
-              to="/register"
-              className="group inline-flex items-center justify-center gap-2.5 bg-[#B8FF00] hover:bg-[#a2e600] text-[#082F24] font-extrabold text-sm h-12 px-7 rounded-[24px] transition-all shadow-lg hover:shadow-xl"
+          {/* Horizontal Search Bar for Individual Users */}
+          <form onSubmit={handleSearchSubmit} className="mt-8 bg-white/95 backdrop-blur p-2 rounded-2xl sm:rounded-full shadow-2xl border border-white/40 flex flex-col sm:flex-row items-center gap-2 text-gray-900">
+            <div className="flex items-center gap-2 px-3 py-1.5 flex-1 w-full border-b sm:border-b-0 sm:border-r border-gray-200">
+              <Search className="w-4 h-4 text-gray-400 shrink-0" />
+              <input
+                type="text"
+                placeholder="Search deals (e.g. Nike, Uber, Gym)..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full text-xs font-semibold bg-transparent focus:outline-none placeholder:text-gray-400"
+              />
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 w-full sm:w-36 border-b sm:border-b-0 sm:border-r border-gray-200">
+              <Tag className="w-4 h-4 text-gray-400 shrink-0" />
+              <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                className="w-full text-xs font-semibold bg-transparent focus:outline-none text-gray-700"
+              >
+                <option value="">Category</option>
+                <option value="dining">Dining</option>
+                <option value="wellness">Wellness</option>
+                <option value="travel">Travel</option>
+                <option value="shopping">Shopping</option>
+              </select>
+            </div>
+            <div className="flex items-center gap-2 px-3 py-1.5 w-full sm:w-32">
+              <MapPin className="w-4 h-4 text-gray-400 shrink-0" />
+              <input
+                type="text"
+                placeholder="City / Country"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                className="w-full text-xs font-semibold bg-transparent focus:outline-none placeholder:text-gray-400"
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full sm:w-auto bg-[#082F24] hover:bg-emerald-950 text-[#B8FF00] font-extrabold text-xs px-6 py-3 rounded-full transition-all shadow-md shrink-0 flex items-center justify-center gap-1.5"
             >
-              Get Started Free
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Link>
+              Find Offers
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </form>
+
+          <div className="mt-6 flex flex-col sm:flex-row gap-3.5">
             <Link
               to="/corporate"
-              className="group inline-flex items-center justify-center gap-2.5 bg-white/10 hover:bg-white/20 backdrop-blur border border-white/30 hover:border-white text-white font-bold text-sm h-12 px-7 rounded-[24px] transition-all"
+              className="group inline-flex items-center justify-center gap-2.5 bg-white/10 hover:bg-white/20 backdrop-blur border border-white/30 hover:border-white text-white font-bold text-xs h-10 px-6 rounded-full transition-all"
             >
-              <Play className="w-4 h-4 fill-current text-[#B8FF00]" />
+              <Play className="w-3.5 h-3.5 fill-current text-[#B8FF00]" />
               Book Corporate Demo
             </Link>
           </div>
