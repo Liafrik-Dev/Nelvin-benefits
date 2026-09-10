@@ -4,88 +4,88 @@ import { ArrowRight, CheckCircle2, Sparkles, Smartphone, ShieldCheck, Zap, Layer
 
 const MODULE_TABS = [
   {
-    id: "discounts",
-    label: "Discounts & Perks",
-    title: "Global Corporate Discounts",
-    subtitle: "Deliver instant purchasing power to your workforce with 20,000+ brand deals.",
+    id: "ai",
+    label: "AI Intelligence",
+    title: "Automated Benefit Personalization",
+    subtitle: "AI-driven recommendation engines that surface the exact perks employees value most.",
     points: [
-      "Exclusive negotiated rates across retail, dining, travel & entertainment",
-      "Instant voucher issuance and in-store QR code redemptions",
-      "Geofenced local store discovery and personalized recommendations",
-      "Direct integration with employer allowance wallets and payroll"
+      "Predictive perk discovery based on employee spending and lifestyle habits",
+      "Smart budget allocation optimization for HR teams",
+      "Automated fraud detection on claim receipts",
+      "Localized merchant matching across Africa and MENA regions"
     ],
-    link: "/offers",
+    link: "/explore",
     image: "/images/assets/From Klickpin.com- 4603664114519569792-pin-id-4603664114519569792.jpg"
   },
   {
-    id: "wallet",
-    label: "Digital Wallet",
-    title: "Flexible Benefit Wallets",
-    subtitle: "Empower members with card-based allowances and instant cashback rewards.",
-    points: [
-      "Multi-currency digital wallet with automatic stipend allocation",
-      "Real-time transaction tracking and receipt upload for tax compliance",
-      "Cashback accumulation with auto-redeem capabilities",
-      "Integrated virtual employee cards for seamless offline purchases"
-    ],
-    link: "/wallet",
-    image: "/images/assets/9616fb85452ebcfd3225f75064f4c008.jpg"
-  },
-  {
-    id: "benefits",
-    label: "Flexible Benefits",
-    title: "Custom Benefit Schemes",
-    subtitle: "Let employees choose the benefits that matter most to their lifestyle.",
-    points: [
-      "Health, wellness, transport, food and lifestyle stipend categories",
-      "Automated eligibility criteria based on team, level, or location",
-      "Flexible points allocation system with year-end rollover options",
-      "Self-service reimbursement requests with automated HR approval"
-    ],
-    link: "/benefits",
-    image: "/images/assets/e3077f45ddb74207c4d4fcb10af9d7df.jpg"
-  },
-  {
-    id: "analytics",
-    label: "HR Analytics",
-    title: "Enterprise Audience Insights",
-    subtitle: "Real-time engagement telemetry and return on benefit investment.",
-    points: [
-      "Live adoption metrics across departments and regional offices",
-      "Budget utilization heatmaps and automated cost forecasts",
-      "Exportable CSV/PDF reports for executive leadership",
-      "Employee satisfaction surveys and sentiment tracking"
-    ],
-    link: "/corporate-dashboard",
-    image: "/images/assets/From Klickpin.com- 492229434296406338-pin-id-492229434296406338.jpg"
-  },
-  {
     id: "rewards",
-    label: "Peer Recognition",
-    title: "Social Rewards & Kudos",
-    subtitle: "Foster a culture of appreciation with instant peer-to-peer rewards.",
+    label: "Rewards & Loyalty",
+    title: "Peer Praise & Milestone Recognition",
+    subtitle: "Foster a culture of high performance and appreciation with instant point allocations.",
     points: [
-      "Public applause feed with corporate values tagging",
-      "Monthly reward points budgets for managers and team leads",
-      "Gift card and experience catalog redemptions",
-      "Milestone celebrations for anniversaries and onboarding"
+      "Peer-to-peer kudos feed with company core values tagging",
+      "Automated work anniversary and birthday reward drops",
+      "Redeemable point store for gift cards, tech gadgets, and flights",
+      "Managerial recognition budgets with real-time telemetry"
     ],
     link: "/rewards",
     image: "/images/assets/From Klickpin.com- 1024498615375273129-pin-id-1024498615375273129.jpg"
   },
   {
-    id: "communications",
-    label: "Communications",
-    title: "Targeted Employee Pulse",
-    subtitle: "Keep your workforce aligned with targeted announcements and campaigns.",
+    id: "wallet",
+    label: "Wallet & Payments",
+    title: "Digital Stipends & Virtual Cards",
+    subtitle: "Multi-currency digital wallet for stipends, out-of-pocket reimbursements, and instant cashback.",
     points: [
-      "Targeted announcements by department, city, or employment tier",
-      "Interactive pulse surveys with real-time analytics",
-      "Push notifications for new perks, events, and company news",
-      "Integrated feedback loops for continuous platform tuning"
+      "Instant corporate allowance refills (Meal, Transport, Wellness)",
+      "Virtual Visa/Mastercard generation for employee online checkout",
+      "Instant cashback auto-credited into spendable balance",
+      "Multi-currency support across NGN, KES, EGP, AED, and USD"
+    ],
+    link: "/wallet",
+    image: "/images/assets/9616fb85452ebcfd3225f75064f4c008.jpg"
+  },
+  {
+    id: "analytics",
+    label: "Analytics & Reporting",
+    title: "Executive Engagement Telemetry",
+    subtitle: "Real-time visibility into benefit adoption, budget utilization, and program ROI.",
+    points: [
+      "Departmental spending heatmaps and cost forecast models",
+      "Live redemption tracking and perk popularity indexes",
+      "One-click CSV/PDF export for C-suite and finance reviews",
+      "Employee satisfaction survey integration and eNPS tracking"
+    ],
+    link: "/corporate-dashboard",
+    image: "/images/assets/From Klickpin.com- 492229434296406338-pin-id-492229434296406338.jpg"
+  },
+  {
+    id: "developer",
+    label: "Developer / API & Integrations",
+    title: "Seamless HRIS & Payroll Sync",
+    subtitle: "Connect Nelvin directly with your existing HR technology stack in minutes.",
+    points: [
+      "Bi-directional sync with BambooHR, Workday, Deel, and Personio",
+      "REST & GraphQL APIs with webhook triggers for custom workflows",
+      "Single Sign-On (SSO) via Okta, Azure AD, Google Workspace, and SAML",
+      "Automated employee onboarding and offboarding roster sync"
     ],
     link: "/corporate-dashboard",
     image: "/images/assets/From Klickpin.com- 122160208638482683-pin-id-122160208638482683.jpg"
+  },
+  {
+    id: "security",
+    label: "Security & Compliance",
+    title: "Enterprise Bank-Grade Security",
+    subtitle: "Top-tier data privacy and regulatory compliance built into every transaction.",
+    points: [
+      "ISO 27001 & SOC 2 Type II certified infrastructure",
+      "Full GDPR & NDPR data compliance with local data residency",
+      "End-to-end 256-bit AES encryption for wallet and personal data",
+      "Comprehensive audit logs and role-based access controls (RBAC)"
+    ],
+    link: "/settings",
+    image: "/images/assets/e3077f45ddb74207c4d4fcb10af9d7df.jpg"
   }
 ];
 
