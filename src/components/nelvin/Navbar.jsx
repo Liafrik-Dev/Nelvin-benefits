@@ -76,37 +76,28 @@ export default function Navbar() {
   const toggleMenu = (key) => setMenuKey((k) => (k === key ? null : key));
 
   return (
-    <motion.header
-      initial={{ opacity: 0, y: -16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-4 left-4 right-4 sm:top-6 sm:left-6 sm:right-6 z-50"
-    >
+    <header className="fixed top-4 left-4 right-4 sm:top-6 sm:left-6 sm:right-6 z-50">
       <div className="max-w-5xl mx-auto">
-        <div className="rounded-full bg-[#082F24] text-white shadow-lg shadow-[#180126]/20 transition-all duration-300">
+        <div className="rounded-full bg-[#082F24] text-white shadow-lg border border-white/10">
           <div className="h-16 px-4 sm:px-6 flex items-center gap-1 sm:gap-2">
             <Link to="/" className="flex items-center gap-2 mr-2 sm:mr-4">
-              <motion.div
-                whileHover={{ scale: 1.04 }}
-                transition={{ type: "spring", stiffness: 300, damping: 18 }}
-                className="w-8 h-8 bg-[#B8FF00] rounded-xl flex items-center justify-center"
-              >
+              <div className="w-8 h-8 bg-[#B8FF00] rounded-xl flex items-center justify-center shadow-sm">
                 <span className="text-[#082F24] font-extrabold text-sm">N</span>
-              </motion.div>
+              </div>
               <span className="font-bold text-lg font-heading tracking-tight hidden sm:block">Nelvin</span>
             </Link>
 
-            <nav className="hidden lg:flex items-center">
+            <nav className="hidden lg:flex items-center gap-1">
               {Object.keys(menus).map((key) => (
                 <button
                   key={key}
                   onClick={() => toggleMenu(key)}
-                  className={`flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-semibold transition-colors hover:text-[#B8FF00] ${
-                    menuKey === key ? "text-[#B8FF00]" : "text-white/90"
+                  className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs sm:text-sm font-extrabold transition-colors hover:text-[#B8FF00] ${
+                    menuKey === key ? "text-[#B8FF00] bg-white/10" : "text-white/90"
                   }`}
                 >
                   {key.charAt(0).toUpperCase() + key.slice(1)}
-                  <ChevronDown className={`w-3.5 h-3.5 transition-transform ${menuKey === key ? "rotate-180" : ""}`} />
+                  <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${menuKey === key ? "rotate-180" : ""}`} />
                 </button>
               ))}
             </nav>
@@ -176,44 +167,21 @@ export default function Navbar() {
           </div>
 
           {menuKey && (
-            <div ref={dropdownRef} className="hidden lg:block px-6 pb-6 rounded-b-[38px] bg-[#082F24]">
-              <div className="border-t border-white/10 pt-5">
-                {menuKey === "resources" ? (
-                  <div className="grid grid-cols-3 gap-3">
-                    {menus[menuKey].map((item) => (
-                      <Link
-                        key={item.title}
-                        to={item.to}
-                        onClick={() => setMenuKey(null)}
-                        className="group border-2 border-[#F7F3ED]/20 hover:border-[#00BD00] rounded-3xl p-4 transition-colors"
-                      >
-                        <h4 className="font-bold mb-1 text-white group-hover:text-[#B8FF00] transition-colors">{item.title}</h4>
-                        <p className="text-white/60 text-xs leading-relaxed">{item.desc}</p>
-                      </Link>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                    {menus[menuKey].map((item, i) => (
-                      <Link
-                        key={item.title}
-                        to={item.to}
-                        onClick={() => setMenuKey(null)}
-                        className={`group rounded-3xl overflow-hidden border-2 border-[#F7F3ED]/20 hover:border-[#00BD00] transition-colors flex flex-col ${
-                          menuKey === "product" && i === 4 ? "col-span-2" : ""
-                        }`}
-                      >
-                        <div className="h-28 overflow-hidden">
-                          <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                        </div>
-                        <div className="p-4">
-                          <h4 className="font-bold mb-1 text-white group-hover:text-[#B8FF00] transition-colors">{item.title}</h4>
-                          <p className="text-white/60 text-xs leading-relaxed">{item.desc}</p>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                )}
+            <div ref={dropdownRef} className="hidden lg:block px-6 pb-6 rounded-3xl bg-[#082F24] border border-white/10 shadow-2xl mt-2">
+              <div className="pt-4">
+                <div className="grid grid-cols-3 gap-3">
+                  {menus[menuKey].map((item) => (
+                    <Link
+                      key={item.title}
+                      to={item.to}
+                      onClick={() => setMenuKey(null)}
+                      className="group border border-white/10 hover:border-[#00BD00] bg-white/5 hover:bg-white/10 rounded-2xl p-4 transition-all"
+                    >
+                      <h4 className="font-extrabold text-sm mb-1 text-white group-hover:text-[#B8FF00] transition-colors">{item.title}</h4>
+                      <p className="text-white/70 text-xs leading-relaxed">{item.desc}</p>
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           )}
@@ -265,6 +233,6 @@ export default function Navbar() {
           )}
         </AnimatePresence>
       </div>
-    </motion.header>
+    </header>
   );
 }

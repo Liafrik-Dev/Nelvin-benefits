@@ -54,7 +54,7 @@ const footerColumns = [
     title: "Company",
     links: [
       { label: "About Nelvin", to: "/corporate" },
-      { label: "Awards & Impact", to: "/#awards" },
+      { label: "Awards & Impact", to: "/corporate" },
       { label: "Partner Enquiries", to: "/partner" },
       { label: "Contact Support", to: "/support" },
     ],
@@ -62,9 +62,9 @@ const footerColumns = [
   {
     title: "Legal",
     links: [
-      { label: "Terms & conditions", to: "/#faq" },
-      { label: "Cookie policy", to: "/#faq" },
-      { label: "Privacy notice", to: "/#faq" },
+      { label: "Terms & conditions", to: "/support" },
+      { label: "Cookie policy", to: "/support" },
+      { label: "Privacy notice", to: "/support" },
     ],
   },
 ];
