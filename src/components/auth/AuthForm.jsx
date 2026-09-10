@@ -142,114 +142,72 @@ export default function AuthForm({ mode = "login" }) {
   return (
     <AuthLayout>
       <div className="space-y-8">
-        {/* Title and Subtitle Header */}
+        {/* Title Header */}
         <div className="text-center space-y-2">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-heading">
-            Choose Your Access Portal
+            Welcome to Nelvin
           </h1>
-          <p className="text-white/80 text-sm sm:text-base font-medium max-w-xl mx-auto">
-            Select the appropriate portal based on your role to access MyBenefits platform.
+          <p className="text-white/80 text-sm font-medium max-w-md mx-auto">
+            Access your account across Member, HR, or Partner portals in one place.
           </p>
         </div>
 
-        {/* Access Portal Selector Tabs matching brand palette */}
-        <div className="flex justify-center">
-          <div className="inline-flex bg-white/10 p-1.5 rounded-full border border-white/20 backdrop-blur max-w-md w-full">
+        {/* Single Unified Form Box */}
+        <div className="max-w-md mx-auto bg-white text-gray-900 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-5">
+          {/* Role Tabs */}
+          <div className="grid grid-cols-3 gap-1 p-1 bg-gray-100 rounded-2xl text-xs font-bold text-center">
             <button
               type="button"
               onClick={() => setActiveTab("subscriber")}
-              className={`flex-1 py-2 px-3 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 ${
-                activeTab === "subscriber"
-                  ? "bg-[#B8FF00] text-[#082F24] shadow-md"
-                  : "text-white/80 hover:text-white"
+              className={`py-2 rounded-xl transition-all flex items-center justify-center gap-1 ${
+                activeTab === "subscriber" ? "bg-[#082F24] text-[#B8FF00] shadow-sm" : "text-gray-600 hover:text-gray-900"
               }`}
             >
-              <User className="w-4 h-4" /> Users
+              <User className="w-3.5 h-3.5" /> Member
             </button>
             <button
               type="button"
               onClick={() => setActiveTab("hr_admin")}
-              className={`flex-1 py-2 px-3 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 ${
-                activeTab === "hr_admin"
-                  ? "bg-[#B8FF00] text-[#082F24] shadow-md"
-                  : "text-white/80 hover:text-white"
+              className={`py-2 rounded-xl transition-all flex items-center justify-center gap-1 ${
+                activeTab === "hr_admin" ? "bg-[#082F24] text-[#B8FF00] shadow-sm" : "text-gray-600 hover:text-gray-900"
               }`}
             >
-              <Building2 className="w-4 h-4" /> HR Teams
+              <Building2 className="w-3.5 h-3.5" /> HR Team
             </button>
             <button
               type="button"
               onClick={() => setActiveTab("business")}
-              className={`flex-1 py-2 px-3 rounded-full text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-1.5 ${
-                activeTab === "business"
-                  ? "bg-[#B8FF00] text-[#082F24] shadow-md"
-                  : "text-white/80 hover:text-white"
+              className={`py-2 rounded-xl transition-all flex items-center justify-center gap-1 ${
+                activeTab === "business" ? "bg-[#082F24] text-[#B8FF00] shadow-sm" : "text-gray-600 hover:text-gray-900"
               }`}
             >
-              <Store className="w-4 h-4" /> Partners
+              <Store className="w-3.5 h-3.5" /> Partner
             </button>
           </div>
-        </div>
 
-        {/* 3 Main Action Cards matching brand green colors */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {/* Card 1: Log in */}
-          <div
-            onClick={() => setActiveAction("login")}
-            className={`group cursor-pointer rounded-3xl bg-white text-gray-900 border-2 p-6 flex flex-col items-center text-center transition-all shadow-lg hover:shadow-2xl relative overflow-hidden ${
-              activeAction === "login" ? "border-[#B8FF00] ring-4 ring-[#B8FF00]/30" : "border-white/20"
-            }`}
-          >
-            <div className="w-full h-1.5 bg-[#00BD00] absolute top-0 left-0" />
-            <div className="w-12 h-12 rounded-2xl bg-[#082F24] text-[#B8FF00] flex items-center justify-center mb-4 shadow-md group-hover:scale-105 transition-transform">
-              <LogIn className="w-6 h-6" />
-            </div>
-            <h3 className="text-base font-extrabold mb-1 font-heading">Log in to Web App</h3>
-            <p className="text-xs text-gray-600 leading-relaxed">
-              Access your benefits & discounts through the web application
-            </p>
-          </div>
-
-          {/* Card 2: Sign up */}
-          <div
-            onClick={() => setActiveAction("signup")}
-            className={`group cursor-pointer rounded-3xl bg-white text-gray-900 border-2 p-6 flex flex-col items-center text-center transition-all shadow-lg hover:shadow-2xl relative overflow-hidden ${
-              activeAction === "signup" ? "border-[#B8FF00] ring-4 ring-[#B8FF00]/30" : "border-white/20"
-            }`}
-          >
-            <div className="w-full h-1.5 bg-[#B8FF00] absolute top-0 left-0" />
-            <div className="w-12 h-12 rounded-2xl bg-[#082F24] text-[#B8FF00] flex items-center justify-center mb-4 shadow-md group-hover:scale-105 transition-transform">
-              <UserPlus className="w-6 h-6" />
-            </div>
-            <h3 className="text-base font-extrabold mb-1 font-heading">Sign up as New User</h3>
-            <p className="text-xs text-gray-600 leading-relaxed">
-              Create a new account to access benefits through the web application
-            </p>
-          </div>
-
-          {/* Card 3: Mobile App */}
-          <div
-            onClick={() => toast({ title: "Mobile App", description: "Download link sent or available on App Store & Google Play." })}
-            className="group cursor-pointer rounded-3xl bg-white text-gray-900 border-2 border-white/20 p-6 flex flex-col items-center text-center transition-all shadow-lg hover:shadow-2xl relative overflow-hidden"
-          >
-            <div className="w-full h-1.5 bg-[#082F24] absolute top-0 left-0" />
-            <div className="w-12 h-12 rounded-2xl bg-[#082F24] text-[#B8FF00] flex items-center justify-center mb-4 shadow-md group-hover:scale-105 transition-transform">
-              <Smartphone className="w-6 h-6" />
-            </div>
-            <h3 className="text-base font-extrabold mb-1 font-heading">Download Mobile App</h3>
-            <p className="text-xs text-gray-600 leading-relaxed">
-              Get the MyBenefits app on your mobile device for iOS & Android
-            </p>
-          </div>
-        </div>
-
-        {/* Form Box */}
-        <div className="max-w-lg mx-auto bg-white text-gray-900 rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/20 space-y-5">
+          {/* Action Toggle (Login vs Signup) */}
           <div className="flex items-center justify-between border-b border-gray-100 pb-3">
-            <h3 className="text-base font-extrabold font-heading">
-              {activeAction === "signup" ? "Create Account" : "Log In"} — {activeTab === "subscriber" ? "Member" : activeTab === "hr_admin" ? "HR Employer" : "Partner"}
-            </h3>
-            <span className="text-[10px] font-extrabold text-[#082F24] bg-[#B8FF00] px-2.5 py-1 rounded-full uppercase">
+            <div className="flex gap-4">
+              <button
+                type="button"
+                onClick={() => setActiveAction("login")}
+                className={`text-sm font-extrabold font-heading pb-1 border-b-2 transition-all ${
+                  activeAction === "login" ? "border-[#00BD00] text-[#082F24]" : "border-transparent text-gray-400 hover:text-gray-600"
+                }`}
+              >
+                Log In
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveAction("signup")}
+                className={`text-sm font-extrabold font-heading pb-1 border-b-2 transition-all ${
+                  activeAction === "signup" ? "border-[#00BD00] text-[#082F24]" : "border-transparent text-gray-400 hover:text-gray-600"
+                }`}
+              >
+                Sign Up
+              </button>
+            </div>
+            <span className="text-[10px] font-extrabold text-[#082F24] bg-[#B8FF00] px-2.5 py-0.5 rounded-full uppercase">
               {activeTab}
             </span>
           </div>

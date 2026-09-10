@@ -1,7 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import LIcon from "@/components/nelvin/LandingIcons";
 import { LANDING_HOWITWORKS } from "@/lib/landingData";
+
+function HowItWorksMultiTab() {
+  const [activeStep, setActiveStep] = useState(0);
+  const current = LANDING_HOWITWORKS[activeStep];
+
+  return (
+    <div className="bg-white rounded-3xl border border-[#180126]/10 p-6 sm:p-8 shadow-sm space-y-6 max-w-4xl mx-auto">
+      {/* Tabs */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 bg-[#F7F3ED] p-1.5 rounded-2xl">
+        {LANDING_HOWITWORKS.map((step, idx) => (
+          <button
+            key={step.num}
+            onClick={() => setActiveStep(idx)}
+            className={`py-2.5 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 ${
+              activeStep === idx
+                ? "bg-[#082F24] text-[#B8FF00] shadow-sm"
+                : "text-[#180126]/70 hover:text-[#180126]"
+            }`}
+          >
+            <span className="font-extrabold">{step.num}.</span>
+            <span className="truncate">{step.title}</span>
+          </button>
+        ))}
+      </div>
+
+      {/* Tab Content */}
+      <div className="flex flex-col md:flex-row items-center gap-6 pt-2">
+        <div className="w-16 h-16 rounded-2xl bg-[#082F24] text-[#B8FF00] flex items-center justify-center flex-shrink-0 shadow-md">
+          <LIcon name={current.icon} className="w-8 h-8" />
+        </div>
+        <div className="space-y-2 text-center md:text-left flex-1">
+          <div className="flex items-center justify-center md:justify-start gap-2">
+            <span className="text-xs font-extrabold uppercase bg-[#B8FF00] text-[#082F24] px-2.5 py-0.5 rounded-full">
+              Step {current.num}
+            </span>
+            <h3 className="text-xl font-extrabold font-heading text-[#180126]">{current.title}</h3>
+          </div>
+          <p className="text-sm text-[#180126]/70 leading-relaxed">{current.desc}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function HowItWorks() {
   return (
@@ -19,21 +62,7 @@ export default function HowItWorks() {
           </p>
         </div>
 
-        <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="hidden lg:block absolute top-12 left-[12%] right-[12%] h-px bg-[#180126]/10" />
-          {LANDING_HOWITWORKS.map((step, i) => (
-            <div key={step.num} className="relative bg-white rounded-3xl p-7 ring-1 ring-[#180126]/8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-              <div className="flex items-center justify-between mb-5">
-                <span className={`w-14 h-14 rounded-2xl flex items-center justify-center ${i === 3 ? "bg-[#082F24] text-[#B8FF00]" : "bg-[#180126] text-[#B8FF00]"}`}>
-                  <LIcon name={step.icon} className="w-6 h-6" />
-                </span>
-                <span className="text-4xl font-extrabold font-heading text-[#180126]/10">{step.num}</span>
-              </div>
-              <h3 className="text-base font-extrabold font-heading text-[#180126]">{step.title}</h3>
-              <p className="mt-2 text-xs text-[#180126]/60 leading-relaxed">{step.desc}</p>
-            </div>
-          ))}
-        </div>
+        <HowItWorksMultiTab />
 
         <div className="mt-12 text-center">
           <Link to="/register" className="inline-flex items-center justify-center gap-2.5 bg-[#180126] hover:bg-[#2b0140] text-white font-bold text-sm h-12 px-8 rounded-[24px] hover:shadow-xl hover:-translate-y-0.5 transition-all">
