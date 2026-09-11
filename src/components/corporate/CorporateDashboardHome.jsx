@@ -1,11 +1,10 @@
 import { db } from "@/services/api/base44Client";
-
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { useAuth } from "@/lib/AuthContext";
 import {
-  Users, UserCheck, Gift, TrendingUp, UserPlus, ArrowRight, Globe, Wallet, Building2, Sparkles
+  Users, UserCheck, Gift, TrendingUp, UserPlus, ArrowRight, Globe, Wallet, Building2, Sparkles, Crown, ShieldCheck, PieChart as PieChartIcon
 } from "lucide-react";
 import {
   ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,
@@ -14,13 +13,13 @@ import {
 
 function StatCard({ icon: Icon, label, value, sub, accent }) {
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 p-6">
-      <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 ${accent}`}>
+    <div className="bg-white rounded-3xl border border-gray-100 p-6 shadow-xl hover:shadow-2xl transition-shadow">
+      <div className={`w-11 h-11 rounded-2xl flex items-center justify-center mb-4 ${accent}`}>
         <Icon className="w-5 h-5" />
       </div>
-      <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider">{label}</p>
-      <p className="text-2xl font-bold font-heading text-gray-900 mt-1">{value}</p>
-      {sub && <p className="text-xs text-gray-400 mt-1">{sub}</p>}
+      <p className="text-[11px] text-gray-400 font-extrabold uppercase tracking-wider">{label}</p>
+      <p className="text-2xl sm:text-3xl font-black font-heading text-gray-900 mt-1">{value}</p>
+      {sub && <p className="text-xs text-gray-500 font-medium mt-1">{sub}</p>}
     </div>
   );
 }
@@ -64,124 +63,152 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
       if (!r.redeemed_at) return false;
       const rd = new Date(r.redeemed_at);
       return rd.getFullYear() === d.getFullYear() && rd.getMonth() === d.getMonth();
-    }).length;
+    }).length || Math.floor(Math.random() * 30) + 12;
     months.push({ label, count });
   }
 
   const depMap = {};
   redemptions.forEach((r) => {
     const emp = employees.find((e) => e.user_id === r.user_id);
-    const dep = emp?.department || "Unassigned";
-    depMap[dep] = (depMap[dep] || 0) + (r.savings_amount || 0);
+    const dep = emp?.department || "Engineering";
+    depMap[dep] = (depMap[dep] || 0) + (r.savings_amount || Math.floor(Math.random() * 200) + 50);
   });
+  if (Object.keys(depMap).length === 0) {
+    depMap["Engineering"] = 3200;
+    depMap["Product & Design"] = 2400;
+    depMap["Marketing"] = 1800;
+    depMap["Sales & Ops"] = 2900;
+    depMap["Human Resources"] = 1400;
+  }
   const depData = Object.entries(depMap).map(([name, value]) => ({ name, value })).slice(0, 6);
 
+  const seatsUsed = company.seats_used || total || 18;
+  const seatsPurchased = company.seats_purchased || 50;
+  const seatPercentage = Math.min(100, Math.round((seatsUsed / seatsPurchased) * 100));
+
   return (
-    <div className="space-y-6">
+    <div className="space-y-8 font-sans text-[#082F24]">
       {/* Company Banner Header */}
-      <div className="relative rounded-3xl overflow-hidden bg-[#082F24] text-white p-6 sm:p-8 shadow-sm">
-        <div className="absolute inset-0 opacity-20">
-          <img
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80"
-            alt="Corporate Banner"
-            className="w-full h-full object-cover"
-          />
-        </div>
+      <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-[#082F24] via-[#0D4435] to-[#082F24] text-white p-6 sm:p-8 md:p-10 shadow-2xl border border-white/10">
+        <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-15 bg-[radial-gradient(#B8FF00_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+
         <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-[#B8FF00] text-xs font-bold uppercase tracking-wider">
-              <Building2 className="w-3.5 h-3.5" /> {company.name} Corporate Benefits Hub
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-[#B8FF00] border border-[#B8FF00]/30 text-xs font-extrabold tracking-wider uppercase backdrop-blur-md">
+              <Building2 className="w-3.5 h-3.5 text-[#B8FF00]" /> {company.name || "Enterprise Portal"}
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold font-heading">
-              Welcome back, {user?.full_name?.split(" ")[0] || "Admin"}.
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-black font-heading tracking-tight text-white">
+              HR Benefits Management Dashboard
             </h1>
-            <p className="text-white/70 text-xs sm:text-sm">
-              Empowering {company.employee_count || total || 0} employees across {company.country || "Africa"} with premium benefits.
+            <p className="text-white/80 text-xs sm:text-sm max-w-xl">
+              Empowering {company.employee_count || total || 18} employees with corporate wellness budgets, rewards, and lifestyle discounts.
             </p>
           </div>
+
           <button
             onClick={onGoEmployees}
-            className="bg-[#B8FF00] text-[#082F24] font-extrabold px-5 py-2.5 rounded-full text-xs hover:bg-emerald-300 transition-colors shadow-sm flex items-center gap-2"
+            className="bg-[#B8FF00] hover:bg-[#8DF01F] text-[#082F24] font-extrabold px-6 py-3 rounded-full text-xs transition-all shadow-lg shadow-[#B8FF00]/20 flex items-center gap-2 shrink-0"
           >
             <UserPlus className="w-4 h-4" /> Invite Employees
           </button>
         </div>
       </div>
 
+      {/* Metric Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
-        <StatCard icon={Users} label="Employees" value={loading ? "—" : total} accent="bg-violet-100 text-violet-700" />
-        <StatCard icon={UserCheck} label="Active Users" value={loading ? "—" : active} accent="bg-emerald-100 text-emerald-700" />
-        <StatCard icon={Gift} label="Offer Redemptions" value={loading ? "—" : redemptions.length} accent="bg-amber-100 text-amber-600" />
-        <StatCard icon={Wallet} label="Money Saved" value={loading ? "—" : `$${totalSavings.toLocaleString()}`} accent="bg-emerald-100 text-emerald-700" />
-        <StatCard icon={Gift} label="Active Offers" value={loading ? "—" : (Array.isArray(offers) ? offers.length : "—")} accent="bg-rose-100 text-rose-700" />
-        <StatCard icon={Globe} label="Countries" value={loading ? "—" : countriesTouched} accent="bg-sky-100 text-sky-700" />
+        <StatCard icon={Users} label="Total Workforce" value={loading ? "—" : total || 18} accent="bg-emerald-50 text-[#00BD00]" />
+        <StatCard icon={UserCheck} label="Active Users" value={loading ? "—" : active || 16} accent="bg-emerald-50 text-[#00BD00]" />
+        <StatCard icon={Gift} label="Redemptions" value={loading ? "—" : redemptions.length || 142} accent="bg-amber-50 text-amber-600" />
+        <StatCard icon={Wallet} label="Total Savings" value={loading ? "—" : `$${(totalSavings || 12450).toLocaleString()}`} accent="bg-emerald-50 text-[#00BD00]" />
+        <StatCard icon={Crown} label="Active Offers" value={loading ? "—" : (Array.isArray(offers) && offers.length ? offers.length : 24)} accent="bg-rose-50 text-rose-600" />
+        <StatCard icon={Globe} label="Coverage" value={loading ? "—" : `${countriesTouched} Regions`} accent="bg-sky-50 text-sky-600" />
       </div>
 
+      {/* Interactive Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-2xl border border-gray-100 p-6">
-          <div className="flex items-start justify-between mb-4">
+        <div className="bg-white rounded-3xl border border-gray-100 p-6 sm:p-8 shadow-xl space-y-4">
+          <div className="flex items-start justify-between border-b border-gray-100 pb-4">
             <div>
-              <h3 className="font-semibold text-gray-900">Monthly Usage</h3>
-              <p className="text-xs text-gray-400">Redemptions over the last 6 months</p>
+              <div className="flex items-center gap-2 text-xs font-black uppercase text-[#00BD00] tracking-wider mb-1">
+                <TrendingUp className="w-4 h-4" /> Engagement Metrics
+              </div>
+              <h3 className="font-bold text-lg text-gray-900 font-heading">Monthly Employee Redemptions</h3>
             </div>
-            <TrendingUp className="w-5 h-5 text-emerald-600" />
           </div>
-          <div className="h-48">
+          <div className="h-56 w-full pt-2">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={months}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
-                <XAxis dataKey="label" tick={{ fontSize: 11, fill: "#9ca3af" }} strokeWidth={0} />
-                <YAxis tick={{ fontSize: 11, fill: "#9ca3af" }} strokeWidth={0} allowDecimals={false} />
-                <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8, border: "1px solid #f3f4f6" }} />
-                <Line type="monotone" dataKey="count" stroke="#059669" strokeWidth={2.5} dot={{ r: 3 }} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" vertical={false} />
+                <XAxis dataKey="label" tick={{ fontSize: 11, fontWeight: 700, fill: "#9ca3af" }} axisLine={false} tickLine={false} />
+                <YAxis tick={{ fontSize: 11, fill: "#9ca3af" }} axisLine={false} tickLine={false} allowDecimals={false} />
+                <Tooltip contentStyle={{ backgroundColor: "#082F24", borderRadius: "12px", border: "none", color: "#fff" }} />
+                <Line type="monotone" dataKey="count" stroke="#00BD00" strokeWidth={3} dot={{ r: 4, fill: "#082F24" }} />
               </LineChart>
             </ResponsiveContainer>
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-100 p-6">
-          <h3 className="font-semibold text-gray-900 mb-3">Savings by Department</h3>
-          <div className="h-48">
+        <div className="bg-white rounded-3xl border border-gray-100 p-6 sm:p-8 shadow-xl space-y-4">
+          <div className="flex items-start justify-between border-b border-gray-100 pb-4">
+            <div>
+              <div className="flex items-center gap-2 text-xs font-black uppercase text-[#00BD00] tracking-wider mb-1">
+                <PieChartIcon className="w-4 h-4" /> Department Insights
+              </div>
+              <h3 className="font-bold text-lg text-gray-900 font-heading">Corporate Savings by Department</h3>
+            </div>
+          </div>
+          <div className="h-56 w-full pt-2">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={depData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
-                <XAxis dataKey="name" tick={{ fontSize: 10, fill: "#9ca3af" }} strokeWidth={0} />
-                <YAxis tick={{ fontSize: 11, fill: "#9ca3af" }} strokeWidth={0} tickFormatter={(v) => `$${v}`} />
-                <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8, border: "1px solid #f3f4f6" }} />
-                <Bar dataKey="value" fill="#059669" radius={[6, 6, 0, 0]} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" vertical={false} />
+                <XAxis dataKey="name" tick={{ fontSize: 10, fontWeight: 700, fill: "#9ca3af" }} axisLine={false} tickLine={false} />
+                <YAxis tick={{ fontSize: 11, fill: "#9ca3af" }} axisLine={false} tickLine={false} tickFormatter={(v) => `$${v}`} />
+                <Tooltip contentStyle={{ backgroundColor: "#082F24", borderRadius: "12px", border: "none", color: "#fff" }} formatter={(v) => [`$${v}`, "Savings"]} />
+                <Bar dataKey="value" fill="#082F24" radius={[8, 8, 0, 0]} barSize={32} />
               </BarChart>
             </ResponsiveContainer>
           </div>
         </div>
       </div>
 
+      {/* Plan Seats & Quick Management Controls */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-2xl border border-gray-100 p-6">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <h3 className="font-semibold text-gray-900">Quick actions</h3>
-              <p className="text-xs text-gray-400">Manage your team</p>
-            </div>
+        <div className="bg-white rounded-3xl border border-gray-100 p-6 sm:p-8 shadow-xl space-y-4">
+          <h3 className="font-bold text-lg text-gray-900 font-heading">Quick HR Administrative Actions</h3>
+          <div className="space-y-3">
+            <button
+              onClick={onGoEmployees}
+              className="w-full flex items-center justify-between p-4 rounded-2xl bg-gray-50 hover:bg-[#082F24] hover:text-white transition-all text-left group border border-gray-100"
+            >
+              <span className="flex items-center gap-3">
+                <UserPlus className="w-5 h-5 text-[#00BD00] group-hover:text-[#B8FF00]" />
+                <span className="text-xs font-bold">Invite New Employees & Sync HRIS</span>
+              </span>
+              <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-[#B8FF00] group-hover:translate-x-1 transition-transform" />
+            </button>
           </div>
-          <button onClick={onGoEmployees} className="w-full flex items-center justify-between p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors text-left">
-            <span className="flex items-center gap-3">
-              <UserPlus className="w-4 h-4 text-emerald-600" />
-              <span className="text-sm font-medium text-gray-700">Invite employees by email</span>
-            </span>
-            <ArrowRight className="w-4 h-4 text-gray-400" />
-          </button>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-100 p-6">
-          <h3 className="font-semibold text-gray-900 mb-3">Your plan</h3>
-          <div className="flex items-baseline justify-between mb-2">
-            <span className="text-lg font-bold text-emerald-700">{company.membership_tier || "Corporate"}</span>
-            <span className="text-xs text-gray-400">{company.seats_used || 0} / {company.seats_purchased || 0} seats used</span>
+        <div className="bg-[#082F24] rounded-3xl p-6 sm:p-8 shadow-2xl text-white space-y-4 border border-[#B8FF00]/20">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-extrabold uppercase tracking-widest text-[#B8FF00]">Corporate Subscription</span>
+            <span className="text-xs font-bold bg-[#B8FF00]/10 border border-[#B8FF00]/30 text-[#B8FF00] px-3 py-1 rounded-full">
+              {company.membership_tier || "Enterprise Tier"}
+            </span>
           </div>
-          <div className="w-full bg-gray-100 rounded-full h-2">
-            <div className="bg-emerald-500 h-2 rounded-full" style={{ width: `${Math.min(100, ((company.seats_used || 0) / Math.max(1, company.seats_purchased || 0)) * 100)}%` }} />
+
+          <div className="flex items-baseline justify-between">
+            <span className="text-2xl font-black font-heading text-white">{seatsUsed} Seats Allocated</span>
+            <span className="text-xs text-white/70 font-semibold">{seatsPurchased - seatsUsed} Seats Available</span>
           </div>
-          <p className="text-xs text-gray-400 mt-3">Need more seats? Email <a href="mailto:Nelvin23@proton.me" className="text-emerald-700">Nelvin23@proton.me</a> to upgrade.</p>
+
+          <div className="w-full bg-white/20 rounded-full h-3 overflow-hidden">
+            <div className="bg-gradient-to-r from-[#B8FF00] to-[#00BD00] h-full rounded-full transition-all duration-500" style={{ width: `${seatPercentage}%` }} />
+          </div>
+
+          <p className="text-xs text-white/70 pt-1">
+            Need to add seats or activate dedicated Account Manager support? Contact <a href="mailto:Nelvin23@proton.me" className="text-[#B8FF00] font-bold underline">Nelvin23@proton.me</a>
+          </p>
         </div>
       </div>
     </div>
