@@ -5,6 +5,7 @@ import Navbar from "@/components/nelvin/Navbar";
 import Footer from "@/components/nelvin/Footer";
 import EmployeeNav from "@/components/shared/EmployeeNav";
 import { Gift, Award, Sparkles, Send, Trophy, History } from "lucide-react";
+import GamificationHub from "@/components/subscriber/GamificationHub";
 
 export default function Rewards() {
   const { user } = useAuth();
@@ -47,6 +48,9 @@ export default function Rewards() {
       <EmployeeNav />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+        {/* Extended Gamification Module */}
+        <GamificationHub />
+
         {/* Header KPI */}
         <div className="bg-gradient-to-r from-[#082F24] to-emerald-900 rounded-3xl p-6 sm:p-8 text-white shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2">

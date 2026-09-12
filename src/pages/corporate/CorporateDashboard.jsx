@@ -27,12 +27,13 @@ import BillingPanel from "@/components/corporate/BillingPanel";
 import NotificationsPanel from "@/components/corporate/NotificationsPanel";
 import CompanySettingsPanel from "@/components/corporate/CompanySettingsPanel";
 import RolesPanel from "@/components/corporate/RolesPanel";
+import HRAssistantDrawer from "@/components/corporate/HRAssistantDrawer";
 
 import {
   LayoutDashboard, Users, Boxes, MapPin, Gift, PiggyBank, CreditCard,
   FileText, PieChart, Receipt, Bell, Settings as SettingsIcon,
   Building2, LogOut, RefreshCw, Trophy, Sparkles, Megaphone,
-  ClipboardList, Link2, Shield
+  ClipboardList, Link2, Shield, Bot
 } from "lucide-react";
 
 const TABS = [
@@ -66,6 +67,7 @@ export default function CorporateDashboard() {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(true);
   const [refreshKey, setRefreshKey] = useState(0);
+  const [isAssistantOpen, setIsAssistantOpen] = useState(false);
   const [showWelcome, setShowWelcome] = useState(() => {
     try { return !sessionStorage.getItem("nelvin_corporate_welcomed"); } catch { return false; }
   });
@@ -244,6 +246,12 @@ export default function CorporateDashboard() {
             </div>
           </div>
           <div className="flex items-center gap-2">
+            <button
+              onClick={() => setIsAssistantOpen(true)}
+              className="inline-flex items-center gap-1.5 bg-[#082F24] hover:bg-[#082F24]/90 text-[#B8FF00] px-3 py-1.5 rounded-lg text-xs font-bold transition-all shadow-sm"
+            >
+              <Bot className="w-4 h-4" /> Smart Copilot
+            </button>
             <button onClick={refresh} title="Refresh" className="p-2 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100"><RefreshCw className="w-4 h-4" /></button>
             <Link to="/" className="text-xs text-gray-500 hover:text-gray-800 px-3 py-1">View site</Link>
             <button onClick={() => logout(true)} className="text-xs text-gray-500 hover:text-gray-800 flex items-center gap-1 px-2 py-1"><LogOut className="w-3.5 h-3.5" /> Sign out</button>
@@ -308,6 +316,8 @@ export default function CorporateDashboard() {
           {tab === "roles" && <RolesPanel company={company} />}
         </main>
       </div>
+
+      <HRAssistantDrawer isOpen={isAssistantOpen} onClose={() => setIsAssistantOpen(false)} />
     </div>
   );
 }
