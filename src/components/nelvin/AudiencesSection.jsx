@@ -25,7 +25,7 @@ export default function AudiencesSection() {
 
         {/* Compact Audience Multi-Tab Block */}
         <div className="max-w-4xl mx-auto bg-[#F7F3ED] rounded-3xl p-6 sm:p-8 border border-[#180126]/10 shadow-sm space-y-6">
-          <div className="grid grid-cols-3 gap-2 bg-white p-1.5 rounded-2xl border border-gray-200">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 bg-white p-1.5 rounded-2xl border border-gray-200">
             {LANDING_AUDIENCES.map((aud, idx) => (
               <button
                 key={aud.title}
@@ -36,7 +36,7 @@ export default function AudiencesSection() {
                     : "text-[#180126]/70 hover:text-[#180126]"
                 }`}
               >
-                {aud.title}
+                {aud.kicker}
               </button>
             ))}
           </div>

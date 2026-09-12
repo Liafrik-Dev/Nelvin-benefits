@@ -163,7 +163,7 @@ export default function AuthForm({ mode = "login" }) {
                 activeTab === "subscriber" ? "bg-[#082F24] text-[#B8FF00] shadow-md" : "text-gray-600 hover:text-gray-900"
               }`}
             >
-              <User className="w-3.5 h-3.5" /> Member
+              <User className="w-3.5 h-3.5" /> Particulier
             </button>
             <button
               type="button"
@@ -208,7 +208,7 @@ export default function AuthForm({ mode = "login" }) {
               </button>
             </div>
             <span className="text-[10px] font-black text-[#082F24] bg-[#B8FF00] px-3 py-1 rounded-full uppercase tracking-wider">
-              {activeTab === "subscriber" ? "Member Portal" : activeTab === "hr_admin" ? "HR Portal" : "Partner Portal"}
+              {activeTab === "subscriber" ? "Particulier / Personal" : activeTab === "hr_admin" ? "HR Portal" : "Partner Portal"}
             </span>
           </div>
 

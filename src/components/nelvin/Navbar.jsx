@@ -145,7 +145,7 @@ export default function Navbar() {
                   }`}
                 >
                   <UserCheck className="w-3 h-3" />
-                  <span>Individuals</span>
+                  <span>Particuliers</span>
                 </Link>
 
                 <Link
