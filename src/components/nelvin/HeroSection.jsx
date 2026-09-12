@@ -27,7 +27,7 @@ export default function HeroSection() {
 
   return (
     <section className="relative overflow-hidden bg-[#082F24] text-white min-h-[90vh] flex items-center">
-      {/* 4 Background Video Loop */}
+      {/* 4 Background Video Loop with 95% Opacity */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <video
           key={HERO_VIDEOS[activeVideoIndex].url}
@@ -35,27 +35,27 @@ export default function HeroSection() {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover opacity-25 scale-105 transition-opacity duration-1000"
+          className="w-full h-full object-cover opacity-95 scale-105 transition-opacity duration-1000"
         >
           <source src={HERO_VIDEOS[activeVideoIndex].url} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#082F24] via-[#082F24]/85 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#082F24]/90 via-[#082F24]/75 to-[#082F24]/60" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 lg:pt-40 pb-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Copy */}
         <div>
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 rounded-full pl-1 pr-4 py-1 mb-6 shadow-sm">
-            <span className="bg-[#B8FF00] text-[#082F24] text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-full">New</span>
-            <span className="text-xs font-semibold text-white/90">The All-in-One Benefits Super App for Africa & MENA</span>
+            <span className="bg-[#B8FF00] text-[#082F24] text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-full">Open To All</span>
+            <span className="text-xs font-semibold text-white/90">For Individuals, Particulars, HR Teams & Merchants</span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl xl:text-6xl font-extrabold font-heading tracking-tight leading-[1.08]">
-            One platform for <span className="text-[#B8FF00]">everything</span> your workforce needs
+            Perks & Savings built for <span className="text-[#B8FF00]">Everyone</span>
           </h1>
 
           <p className="mt-6 text-base sm:text-lg text-white/85 leading-relaxed max-w-xl font-medium">
-            Exclusive corporate discounts, flexible stipends, peer rewards, digital wallet, and mental wellness — delivered in one seamless experience.
+            Whether you are an individual looking for daily discounts, an HR team managing company benefits, or a business growing your customer base — Nelvin connects everyone in one place.
           </p>
 
           {/* Horizontal Search Bar for Individual Users */}

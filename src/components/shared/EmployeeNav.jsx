@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import CurrencySelector from "@/components/shared/CurrencySelector";
 import {
   LayoutDashboard, Compass, Grid, ShoppingBag, Search, Heart,
   MapPin, Gift, Wallet, Ticket, ShieldCheck, Sparkles, HeartPulse,
@@ -32,8 +33,8 @@ export default function EmployeeNav() {
 
   return (
     <div className="bg-white border-b border-gray-100 shadow-sm sticky top-[72px] z-30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-1 overflow-x-auto py-2.5 scrollbar-hide">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
+        <div className="flex items-center gap-1 overflow-x-auto py-2.5 scrollbar-hide flex-1">
           {EMPLOYEE_NAV_ITEMS.map((item) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.path;
@@ -53,6 +54,7 @@ export default function EmployeeNav() {
             );
           })}
         </div>
+        <CurrencySelector className="shrink-0 bg-[#082F24] border-none" />
       </div>
     </div>
   );

@@ -8,7 +8,6 @@ import PowerfulModules from "@/components/nelvin/PowerfulModules";
 import AfricaMena from "@/components/nelvin/AfricaMena";
 import AudiencesSection from "@/components/nelvin/AudiencesSection";
 import HowItWorks from "@/components/nelvin/HowItWorks";
-import FeatureShowcase from "@/components/nelvin/FeatureShowcase";
 import StatsSection from "@/components/nelvin/StatsSection";
 import Testimonials from "@/components/nelvin/Testimonials";
 import FeaturedDeals from "@/components/nelvin/FeaturedDeals";
@@ -29,7 +28,6 @@ export default function Home() {
       <AfricaMena />
       <AudiencesSection />
       <HowItWorks />
-      <FeatureShowcase />
       <StatsSection />
       <Testimonials />
       <FeaturedDeals />

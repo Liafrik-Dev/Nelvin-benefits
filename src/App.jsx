@@ -22,6 +22,7 @@ import ChoosePlan from '@/pages/public/ChoosePlan';
 import Corporate from '@/pages/public/Corporate';
 import AdminLayout from '@/components/admin/AdminLayout';
 import BusinessLayout from '@/components/business/BusinessLayout';
+import { PlatformWorkflowProvider } from '@/context/PlatformWorkflowContext';
 
 // Subscriber / Employee Pages
 const VendorOnboarding = lazy(() => import('@/pages/vendor/VendorOnboarding'));
@@ -213,15 +214,17 @@ const AuthenticatedApp = () => {
 function App() {
   return (
     <LanguageProvider>
-      <AuthProvider>
-        <QueryClientProvider client={queryClientInstance}>
-          <Router>
-            <ScrollToTop />
-            <AuthenticatedApp />
-          </Router>
-          <Toaster />
-        </QueryClientProvider>
-      </AuthProvider>
+      <PlatformWorkflowProvider>
+        <AuthProvider>
+          <QueryClientProvider client={queryClientInstance}>
+            <Router>
+              <ScrollToTop />
+              <AuthenticatedApp />
+            </Router>
+            <Toaster />
+          </QueryClientProvider>
+        </AuthProvider>
+      </PlatformWorkflowProvider>
     </LanguageProvider>
   )
 }
