@@ -83,17 +83,26 @@ export const LANDING_AFRICA_POINTS = [
 
 export const LANDING_AUDIENCES = [
   {
+    title: "Perks for Particuliers & Individuals",
+    kicker: "Particuliers",
+    desc: "Anyone can create a free account to unlock daily savings, cashbacks, voucher deals, and smart digital wallet tools.",
+    points: ["Open to everyone for free", "Instant merchant cashbacks", "Daily local & online deals", "Personal digital wallet"],
+    to: "/register",
+    cta: "Join as Particulier",
+    img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=900&q=80",
+  },
+  {
     title: "Benefits for Employees",
-    kicker: "Members",
-    desc: "Everything your people need to feel valued: exclusive deals, flexible benefits, rewards, wallet and wellbeing toolkit.",
-    points: ["Exclusive member deals", "Flexible benefits pot", "Rewards & cashback", "Digital wallet & payments"],
+    kicker: "Employees",
+    desc: "Everything your workforce needs: company stipends, rewards, flexible allowances, and mental health support.",
+    points: ["Corporate exclusive deals", "Flexible benefit stipends", "Peer rewards & kudos", "Mental & health wellness"],
     to: "/explore",
-    cta: "Explore member app",
+    cta: "Explore employee portal",
     img: "https://images.unsplash.com/photo-1521737711867-e3b97325c3e4?w=900&q=80",
   },
   {
     title: "Benefits for Employers",
-    kicker: "Organisations",
+    kicker: "HR & Companies",
     desc: "One home for admin, budgets, eligibility and analytics — so HR focusses on people, not spreadsheets.",
     points: ["Effortless administration", "Budgets & eligibility", "Engagement analytics", "Local & global roll-out"],
     to: "/corporate-dashboard",
