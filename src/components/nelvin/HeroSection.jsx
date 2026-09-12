@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ArrowRight, Play, ShieldCheck, TrendingUp, Sparkles, Video, Search, MapPin, Tag } from "lucide-react";
+import { ArrowRight, Play, ShieldCheck, TrendingUp, Sparkles, Video, Search, MapPin, Tag, Utensils, Hotel, Dumbbell, Sparkle } from "lucide-react";
 
 const HERO_VIDEOS = [
   { id: "team", title: "Corporate Teams", url: "https://assets.mixkit.co/videos/preview/mixkit-business-people-working-together-in-an-office-42861-large.mp4" },
@@ -9,8 +9,22 @@ const HERO_VIDEOS = [
   { id: "tech", title: "Digital Wallet", url: "https://assets.mixkit.co/videos/preview/mixkit-hands-holding-a-smartphone-over-a-wooden-table-41525-large.mp4" },
 ];
 
+const LEISURE_PHOTOS = [
+  { title: "Luxury Hotels & Stays", discount: "Up to 35% OFF", img: "/images/assets/b1-foto-hotel-1643982_1920.jpg", icon: Hotel },
+  { title: "Gourmet Dining & Cafés", discount: "2-for-1 Specials", img: "/images/benifex/cat/food-dining.jpg", icon: Utensils },
+  { title: "Sports & Fitness Clubs", discount: "Free Trial Pass", img: "/images/benifex/cat/fitness-sports.jpg", icon: Dumbbell },
+];
+
 export default function HeroSection() {
   const [activeVideoIndex, setActiveVideoIndex] = useState(0);
+  const [activePhotoIndex, setActivePhotoIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveVideoIndex((prev) => (prev + 1) % HERO_VIDEOS.length);
+    }, 8000);
+    return () => clearInterval(interval);
+  }, []);
   const [searchQuery, setSearchQuery] = useState("");
   const [category, setCategory] = useState("");
   const [city, setCity] = useState("");
@@ -150,19 +164,25 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Visual Showcase Card utilizing attached luxury hotel image */}
-        <div className="relative">
-          <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border border-white/20">
+        {/* Visual Showcase Gallery with Multiple Leisure Photos */}
+        <div className="relative space-y-3">
+          <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20 group">
             <img
-              src="/images/assets/b1-foto-hotel-1643982_1920.jpg"
-              alt="Luxury Hotel Benefit Showcase"
-              className="w-full h-[420px] sm:h-[480px] object-cover"
+              src={LEISURE_PHOTOS[activePhotoIndex].img}
+              alt={LEISURE_PHOTOS[activePhotoIndex].title}
+              className="w-full h-[420px] sm:h-[460px] object-cover transition-all duration-700 scale-105 group-hover:scale-100"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#082F24] via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#082F24] via-[#082F24]/20 to-transparent" />
+
+            <div className="absolute top-4 left-4 bg-black/40 backdrop-blur border border-white/20 text-white px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#B8FF00] animate-pulse" />
+              <span>{LEISURE_PHOTOS[activePhotoIndex].title}</span>
+            </div>
+
             <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur rounded-2xl p-4 shadow-xl text-gray-900 flex items-center justify-between">
               <div>
-                <p className="text-[10px] uppercase tracking-widest text-emerald-700 font-bold">Featured Luxury Stays</p>
-                <p className="text-base font-extrabold font-heading text-gray-900">$2.4M Saved This Quarter</p>
+                <p className="text-[10px] uppercase tracking-widest text-emerald-800 font-bold">Exclusive Perk</p>
+                <p className="text-base font-extrabold font-heading text-gray-900">{LEISURE_PHOTOS[activePhotoIndex].discount}</p>
               </div>
               <div className="flex -space-x-2">
                 {["https://randomuser.me/api/portraits/women/44.jpg", "https://randomuser.me/api/portraits/men/32.jpg", "https://randomuser.me/api/portraits/women/68.jpg"].map((u) => (
@@ -171,6 +191,27 @@ export default function HeroSection() {
                 <span className="w-8 h-8 rounded-full bg-[#B8FF00] text-[#082F24] text-[10px] font-black flex items-center justify-center border-2 border-white">+50K</span>
               </div>
             </div>
+          </div>
+
+          {/* Leisure Photo Switcher Chips */}
+          <div className="grid grid-cols-3 gap-2">
+            {LEISURE_PHOTOS.map((p, i) => {
+              const IconComp = p.icon;
+              return (
+                <button
+                  key={p.title}
+                  onClick={() => setActivePhotoIndex(i)}
+                  className={`p-2.5 rounded-xl border text-left transition-all flex items-center gap-2 ${
+                    activePhotoIndex === i
+                      ? "bg-[#B8FF00] border-[#B8FF00] text-[#082F24] font-extrabold shadow-md scale-105"
+                      : "bg-white/10 border-white/15 text-white/80 hover:bg-white/20"
+                  }`}
+                >
+                  <IconComp className="w-4 h-4 shrink-0" />
+                  <span className="text-[10px] leading-tight truncate block">{p.title}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>

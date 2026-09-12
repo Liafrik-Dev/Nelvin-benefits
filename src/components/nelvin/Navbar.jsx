@@ -246,45 +246,39 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mega Dropdown Menu Container */}
-          <AnimatePresence>
-            {menuKey && (
-              <motion.div
-                ref={dropdownRef}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 10 }}
-                transition={{ duration: 0.2 }}
-                className="hidden lg:block px-6 pb-6 pt-2 border-t border-white/10 mt-2"
-              >
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                  {menus[menuKey].items.map((item) => {
-                    const ItemIcon = item.icon || Compass;
-                    return (
-                      <Link
-                        key={item.title}
-                        to={item.to}
-                        onClick={() => setMenuKey(null)}
-                        className="group flex items-start gap-3 border border-white/10 hover:border-[#B8FF00]/40 bg-white/5 hover:bg-white/10 rounded-2xl p-3.5 transition-all duration-200"
-                      >
-                        <div className="w-8 h-8 rounded-xl bg-[#B8FF00]/10 border border-[#B8FF00]/20 flex items-center justify-center shrink-0 group-hover:bg-[#B8FF00] group-hover:text-[#082F24] transition-colors">
-                          <ItemIcon className="w-4 h-4 text-[#B8FF00] group-hover:text-[#082F24]" />
-                        </div>
-                        <div>
-                          <h4 className="font-extrabold text-xs text-white group-hover:text-[#B8FF00] transition-colors">
-                            {item.title}
-                          </h4>
-                          <p className="text-white/60 text-[11px] leading-tight mt-1 line-clamp-2">
-                            {item.desc}
-                          </p>
-                        </div>
-                      </Link>
-                    );
-                  })}
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {/* Static Unanimated Dropdown Panel */}
+          {menuKey && (
+            <div
+              ref={dropdownRef}
+              className="hidden lg:block absolute left-0 right-0 top-full mt-3 bg-[#082F24] text-white rounded-3xl p-6 shadow-2xl border border-white/15 z-50 backdrop-blur-xl"
+            >
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                {menus[menuKey].items.map((item) => {
+                  const ItemIcon = item.icon || Compass;
+                  return (
+                    <Link
+                      key={item.title}
+                      to={item.to}
+                      onClick={() => setMenuKey(null)}
+                      className="group flex items-start gap-3 border border-white/10 hover:border-[#B8FF00]/40 bg-white/5 hover:bg-white/10 rounded-2xl p-3.5 transition-all duration-150"
+                    >
+                      <div className="w-8 h-8 rounded-xl bg-[#B8FF00]/10 border border-[#B8FF00]/20 flex items-center justify-center shrink-0 group-hover:bg-[#B8FF00] group-hover:text-[#082F24] transition-colors">
+                        <ItemIcon className="w-4 h-4 text-[#B8FF00] group-hover:text-[#082F24]" />
+                      </div>
+                      <div>
+                        <h4 className="font-extrabold text-xs text-white group-hover:text-[#B8FF00] transition-colors">
+                          {item.title}
+                        </h4>
+                        <p className="text-white/60 text-[11px] leading-tight mt-1 line-clamp-2">
+                          {item.desc}
+                        </p>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Mobile Navigation Drawer */}
