@@ -97,7 +97,7 @@ export default function Navbar() {
   return (
     <header className="fixed top-3 left-3 right-3 sm:top-5 sm:left-5 sm:right-5 z-50">
       <div className="max-w-6xl mx-auto">
-        <div className={`rounded-3xl bg-[#082F24]/95 backdrop-blur-xl text-white shadow-2xl border border-white/15 transition-all duration-300 ${scrolled ? "py-1 shadow-[#082F24]/30" : "py-1.5"}`}>
+        <div className={`rounded-full bg-[#082F24]/95 backdrop-blur-xl text-white shadow-2xl border border-white/15 transition-all duration-300 ${scrolled ? "py-1 shadow-[#082F24]/40" : "py-1.5"}`}>
           <div className="h-14 sm:h-16 px-4 sm:px-6 flex items-center justify-between gap-2 sm:gap-4">
 
             {/* Brand Logo & Tag */}
@@ -111,7 +111,7 @@ export default function Navbar() {
                     Nelvin<span className="text-[#B8FF00]">.</span>
                   </span>
                   <span className="text-[10px] font-bold text-[#B8FF00] tracking-widest uppercase hidden sm:block">
-                    Benefits & Perks
+                    Perks for Everyone
                   </span>
                 </div>
               </Link>
@@ -145,7 +145,7 @@ export default function Navbar() {
                   }`}
                 >
                   <UserCheck className="w-3 h-3" />
-                  <span>Member</span>
+                  <span>Individuals</span>
                 </Link>
 
                 <Link
