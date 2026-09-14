@@ -43,7 +43,7 @@ const MODULE_TABS = [
       "Multi-currency support across NGN, KES, EGP, AED, and USD"
     ],
     link: "/wallet",
-    image: "/images/assets/9616fb85452ebcfd3225f75064f4c008.jpg"
+    image: "/images/benifex/africa/nigeria.jpg"
   },
   {
     id: "analytics",
@@ -85,7 +85,7 @@ const MODULE_TABS = [
       "Comprehensive audit logs and role-based access controls (RBAC)"
     ],
     link: "/settings",
-    image: "/images/assets/e3077f45ddb74207c4d4fcb10af9d7df.jpg"
+    image: "/images/benifex/africa/morocco.jpg"
   }
 ];
 
@@ -94,24 +94,24 @@ export default function PowerfulModules() {
   const activeTab = MODULE_TABS.find((t) => t.id === activeTabId) || MODULE_TABS[0];
 
   return (
-    <section id="modules" className="bg-[#F8FAFC] py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-y border-slate-200/60">
+    <section id="modules" className="bg-forest-secondary py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-y border-white/10">
       <div className="max-w-7xl mx-auto space-y-10">
         {/* Title */}
         <div className="text-center space-y-3 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 bg-[#7637E3]/10 text-[#7637E3] px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 bg-[#D6B56D]/10 text-[#D6B56D] border border-[#D6B56D]/25 px-3 py-1 rounded-lg text-xs font-extrabold uppercase tracking-widest">
             <Layers className="w-3.5 h-3.5" /> All-In-One Unified Engine
           </div>
-          <h2 className="text-3xl sm:text-4xl xl:text-5xl font-black font-heading text-slate-900 tracking-tight">
-            Everything a modern benefits platform needs — <span className="text-[#7637E3]">built in</span>.
+          <h2 className="text-3xl sm:text-4xl xl:text-5xl font-semibold font-heading text-ivory tracking-tight">
+            Everything a modern benefits platform needs — <span className="text-[#D6B56D]">built in</span>.
           </h2>
-          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+          <p className="text-ivory-muted text-sm sm:text-base leading-relaxed">
             Consolidate your entire benefits ecosystem into a single compressed, multi-layered experience.
           </p>
         </div>
 
         {/* Tab Navigation Bar - Styled like attached POS screenshot */}
         <div className="overflow-x-auto pb-2 scrollbar-none">
-          <div className="flex items-center justify-between min-w-max border-b border-slate-200 gap-2 px-2">
+          <div className="flex items-center justify-between min-w-max border-b border-white/10 gap-2 px-2">
             {MODULE_TABS.map((tab) => {
               const isActive = tab.id === activeTabId;
               return (
@@ -120,8 +120,8 @@ export default function PowerfulModules() {
                   onClick={() => setActiveTabId(tab.id)}
                   className={`py-4 px-5 text-sm sm:text-base font-bold transition-all relative whitespace-nowrap flex items-center gap-2 ${
                     isActive
-                      ? "text-slate-900 border-2 border-slate-900 rounded-t-2xl bg-white shadow-sm -mb-[2px] z-10"
-                      : "text-slate-500 hover:text-slate-900 hover:bg-slate-100/60 rounded-t-xl"
+                      ? "text-[#D6B56D] border-b-2 border-[#D6B56D] rounded-t-lg bg-emerald-black/90 shadow-sm -mb-[2px] z-10"
+                      : "text-ivory-dim hover:text-ivory hover:bg-white/5 rounded-t-lg"
                   }`}
                 >
                   {tab.label}
@@ -132,28 +132,28 @@ export default function PowerfulModules() {
         </div>
 
         {/* Compressed Multi-Layer Content Card */}
-        <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center relative overflow-hidden">
+        <div className="bg-emerald-black/90 rounded-xl ring-1 ring-white/10 border border-white/10 p-6 sm:p-10 shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center relative overflow-hidden">
           {/* Subtle Layered Glow Background */}
-          <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-[#7637E3]/10 blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-[#B8FF00]/20 blur-3xl pointer-events-none" />
+          <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-[#0A3A2F]/10 blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-[#D6B56D]/10 blur-3xl pointer-events-none" />
 
           {/* Left Side: Multi-device Showcase Mockup */}
           <div className="lg:col-span-6 relative flex items-center justify-center">
-            <div className="relative w-full max-w-md aspect-[4/3] sm:aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl border-4 border-slate-900 bg-slate-900 group">
+            <div className="relative w-full max-w-md aspect-[4/3] sm:aspect-[16/10] rounded-xl overflow-hidden shadow-2xl border border-white/10 bg-[#103F35] group">
               <img
                 src={activeTab.image}
                 alt={activeTab.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#062B23]/90 via-[#062B23]/20 to-transparent" />
 
               {/* Overlay Badge */}
-              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur rounded-2xl p-4 shadow-lg border border-white/40 flex items-center justify-between">
+              <div className="absolute bottom-4 left-4 right-4 bg-emerald-black/95 backdrop-blur rounded-lg p-4 shadow-lg border border-white/15 flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] uppercase font-bold text-[#7637E3] tracking-wider block">Live Platform View</span>
-                  <p className="text-xs sm:text-sm font-extrabold text-slate-900 font-heading">{activeTab.title}</p>
+                  <span className="text-[10px] uppercase font-bold text-[#D6B56D] tracking-wider block">Live Platform View</span>
+                  <p className="text-xs sm:text-sm font-bold text-ivory font-heading">{activeTab.title}</p>
                 </div>
-                <div className="w-8 h-8 rounded-full bg-[#7637E3] text-white flex items-center justify-center font-bold text-xs shadow-md">
+                <div className="w-8 h-8 rounded-full bg-[#0A3A2F] text-white flex items-center justify-center font-bold text-xs shadow-md">
                   <Zap className="w-4 h-4" />
                 </div>
               </div>
@@ -163,18 +163,18 @@ export default function PowerfulModules() {
           {/* Right Side: Feature Details & Bullet Points */}
           <div className="lg:col-span-6 space-y-6">
             <div>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-heading tracking-tight mb-2">
+              <h3 className="text-2xl sm:text-3xl font-semibold text-ivory font-heading tracking-tight mb-2">
                 {activeTab.title}
               </h3>
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+              <p className="text-ivory-muted text-sm sm:text-base leading-relaxed">
                 {activeTab.subtitle}
               </p>
             </div>
 
             <ul className="space-y-3">
               {activeTab.points.map((pt, idx) => (
-                <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-slate-700 font-medium">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-ivory-muted font-medium">
+                  <CheckCircle2 className="w-5 h-5 text-[#D6B56D] shrink-0 mt-0.5" />
                   <span>{pt}</span>
                 </li>
               ))}
@@ -183,7 +183,7 @@ export default function PowerfulModules() {
             <div className="pt-2">
               <Link
                 to={activeTab.link}
-                className="inline-flex items-center gap-2 text-[#7637E3] font-extrabold text-sm hover:text-[#5a25bb] transition-colors group"
+                className="inline-flex items-center gap-2 text-[#D6B56D] font-bold text-sm hover:text-[#E5C77A] transition-colors group"
               >
                 Explore {activeTab.label}
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

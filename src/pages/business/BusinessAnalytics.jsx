@@ -9,21 +9,21 @@ export default function BusinessAnalytics() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold font-heading text-gray-900">Partner Sales Analytics</h1>
-          <p className="text-sm text-gray-500 mt-1">Deep insights into revenue generated, top selling items, and peak redemption days.</p>
+          <h1 className="text-2xl font-bold font-heading text-ivory">Partner Sales Analytics</h1>
+          <p className="text-sm text-ivory-muted mt-1">Deep insights into revenue generated, top selling items, and peak redemption days.</p>
         </div>
         <button
           onClick={() => setIsCalcOpen(true)}
-          className="bg-[#082F24] hover:bg-[#082F24]/90 text-[#B8FF00] font-bold text-xs px-4 py-2.5 rounded-xl inline-flex items-center gap-2 shadow-sm transition-all"
+          className="bg-[#062B23] hover:bg-[#062B23]/90 text-[#D6B56D] font-bold text-xs px-4 py-2.5 rounded-xl inline-flex items-center gap-2 shadow-sm transition-all"
         >
           <Calculator className="w-4 h-4" /> Simulate Partner ROI
         </button>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm text-center space-y-3">
-        <BarChart3 className="w-12 h-12 text-emerald-600 mx-auto" />
-        <h3 className="text-lg font-bold font-heading text-gray-900">Total GMV Generated: $48,200.00</h3>
-        <p className="text-xs text-gray-500">Over 1,200 corporate redemptions processed in the last 12 months across all store branches.</p>
+      <div className="bg-white rounded-lg border border-white/10 p-8 shadow-sm text-center space-y-3">
+        <BarChart3 className="w-12 h-12 text-[#D6B56D] mx-auto" />
+        <h3 className="text-lg font-bold font-heading text-ivory">Total GMV Generated: $48,200.00</h3>
+        <p className="text-xs text-ivory-muted">Over 1,200 corporate redemptions processed in the last 12 months across all store branches.</p>
       </div>
 
       <ROICalculatorModal isOpen={isCalcOpen} onClose={() => setIsCalcOpen(false)} />

@@ -90,8 +90,8 @@ export default function VendorOnboarding() {
       };
 
   return (
-    <div className="min-h-screen bg-[#faf8f5]">
-      <div className="relative bg-gray-900 pt-24 pb-14 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-forest">
+      <div className="relative bg-[#062B23] pt-24 pb-14 px-4 sm:px-6 lg:px-8">
         <Navbar />
         <div className="max-w-2xl mx-auto text-center">
           <div className="w-12 h-12 bg-amber-500 rounded-xl flex items-center justify-center mx-auto mb-4">
@@ -103,7 +103,7 @@ export default function VendorOnboarding() {
       </div>
 
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 pb-20">
-        <div className="bg-white rounded-[24px] border border-gray-100 p-6 sm:p-10 shadow-sm">
+        <div className="bg-white rounded-[24px] border border-white/10 p-6 sm:p-10 shadow-sm">
           {!submitted && <OnboardingProgressBar step={step} complete={false} />}
           <AnimatePresence mode="wait">
             {submitted ? (

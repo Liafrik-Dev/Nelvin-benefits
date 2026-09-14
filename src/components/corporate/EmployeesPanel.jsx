@@ -13,11 +13,11 @@ import {
 function StatusPill({ status }) {
   const map = {
     invited: "bg-amber-100 text-amber-700",
-    active: "bg-emerald-100 text-emerald-700",
+    active: "bg-[#103F35]/60 text-[#D6B56D] ring-1 ring-[#D6B56D]/25",
     suspended: "bg-rose-100 text-rose-700",
-    removed: "bg-gray-100 text-gray-500",
+    removed: "bg-white/5 text-ivory-muted",
   };
-  return <span className={`text-xs font-semibold px-2.5 py-1 rounded-full capitalize ${map[status] || "bg-gray-100"}`}>{status}</span>;
+  return <span className={`text-xs font-semibold px-2.5 py-1 rounded-full capitalize ${map[status] || "bg-white/5"}`}>{status}</span>;
 }
 
 export default function EmployeesPanel({ company, employees, onChanged }) {
@@ -194,30 +194,30 @@ export default function EmployeesPanel({ company, employees, onChanged }) {
     <div>
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
         <div>
-          <h1 className="text-2xl font-bold font-heading text-gray-900">Employees</h1>
-          <p className="text-sm text-gray-500 mt-1">{items.length} total · {items.filter((e) => e.status === "active").length} active</p>
+          <h1 className="text-2xl font-bold font-heading text-ivory">Employees</h1>
+          <p className="text-sm text-ivory-muted mt-1">{items.length} total · {items.filter((e) => e.status === "active").length} active</p>
         </div>
         <div className="flex gap-2 flex-wrap">
-          <button onClick={() => setShowInvite(true)} className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold px-4 py-2 rounded-lg"><UserPlus className="w-4 h-4" /> Invite</button>
-          <button onClick={() => setCsvMode(true)} className="inline-flex items-center gap-2 bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 text-sm font-semibold px-4 py-2 rounded-lg"><Upload className="w-4 h-4" /> CSV</button>
-          <button onClick={exportCsv} className="inline-flex items-center gap-2 bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 text-sm font-semibold px-4 py-2 rounded-lg"><Download className="w-4 h-4" /> Export</button>
+          <button onClick={() => setShowInvite(true)} className="inline-flex items-center gap-2 bg-[#D6B56D] hover:bg-[#E5C77A] text-[#062B23] text-sm font-semibold px-4 py-2 rounded-lg"><UserPlus className="w-4 h-4" /> Invite</button>
+          <button onClick={() => setCsvMode(true)} className="inline-flex items-center gap-2 bg-white border border-white/12 hover:bg-forest-secondary/60 text-ivory text-sm font-semibold px-4 py-2 rounded-lg"><Upload className="w-4 h-4" /> CSV</button>
+          <button onClick={exportCsv} className="inline-flex items-center gap-2 bg-white border border-white/12 hover:bg-forest-secondary/60 text-ivory text-sm font-semibold px-4 py-2 rounded-lg"><Download className="w-4 h-4" /> Export</button>
         </div>
       </div>
 
       <div className="relative mb-4">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ivory-dim" />
         <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search name, email, department, or NV-ID..."
-          className="w-full pl-10 pr-4 py-2.5 text-sm border border-gray-200 rounded-lg outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-50" />
+          className="w-full pl-10 pr-4 py-2.5 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40 focus:ring-2 focus:ring-white/10" />
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden overflow-x-auto">
+      <div className="bg-white rounded-lg border border-white/10 overflow-hidden overflow-x-auto">
         {loading ? (
-          <div className="p-8 text-center text-sm text-gray-400">Loading employees…</div>
+          <div className="p-8 text-center text-sm text-ivory-dim">Loading employees…</div>
         ) : filtered.length === 0 ? (
-          <div className="p-8 text-center text-sm text-gray-400">No employees yet. Invite your first team member above.</div>
+          <div className="p-8 text-center text-sm text-ivory-dim">No employees yet. Invite your first team member above.</div>
         ) : (
           <table className="w-full text-sm min-w-[760px]">
-            <thead className="bg-gray-50 text-gray-500 text-xs uppercase tracking-wider">
+            <thead className="bg-forest-secondary/60 text-ivory-muted text-xs uppercase tracking-wider">
               <tr>
                 <th className="text-left font-semibold px-4 py-3">Member</th>
                 <th className="text-left font-semibold px-4 py-3">NV-ID</th>
@@ -229,29 +229,29 @@ export default function EmployeesPanel({ company, employees, onChanged }) {
                 <th className="px-4 py-3"></th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-100">
+            <tbody className="divide-y divide-white/10">
               {filtered.map((e) => (
-                <tr key={e.id} className="hover:bg-gray-50">
+                <tr key={e.id} className="hover:bg-forest-secondary/60">
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-2">
                       {e.photo_url ? (
                         <img src={e.photo_url} alt="" className="w-8 h-8 rounded-full object-cover" />
                       ) : (
-                        <div className="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-bold">
+                        <div className="w-8 h-8 rounded-full bg-[#103F35]/60 text-[#D6B56D] ring-1 ring-[#D6B56D]/25 flex items-center justify-center text-xs font-bold">
                           {(e.user_name || e.user_email || "?").slice(0, 1).toUpperCase()}
                         </div>
                       )}
                       <div className="min-w-0">
-                        <p className="font-medium text-gray-900 truncate">{e.user_name || "—"}</p>
-                        <p className="text-xs text-gray-400 truncate">{e.user_email}</p>
+                        <p className="font-medium text-ivory truncate">{e.user_name || "—"}</p>
+                        <p className="text-xs text-ivory-dim truncate">{e.user_email}</p>
                       </div>
                     </div>
                   </td>
-                  <td className="px-4 py-3"><span className="font-mono text-xs text-gray-600">{e.subscriber_id || "—"}</span></td>
-                  <td className="px-4 py-3 text-gray-600">{e.department || "—"}</td>
-                  <td className="px-4 py-3 text-gray-600">{e.office || "—"}</td>
-                  <td className="px-4 py-3 text-gray-600">${(e.total_savings || 0).toLocaleString()}</td>
-                  <td className="px-4 py-3 text-gray-600">{e.redemptions_count || 0}</td>
+                  <td className="px-4 py-3"><span className="font-mono text-xs text-ivory-muted">{e.subscriber_id || "—"}</span></td>
+                  <td className="px-4 py-3 text-ivory-muted">{e.department || "—"}</td>
+                  <td className="px-4 py-3 text-ivory-muted">{e.office || "—"}</td>
+                  <td className="px-4 py-3 text-ivory-muted">${(e.total_savings || 0).toLocaleString()}</td>
+                  <td className="px-4 py-3 text-ivory-muted">{e.redemptions_count || 0}</td>
                   <td className="px-4 py-3"><StatusPill status={e.status} /></td>
                   <td className="px-4 py-3 text-right">
                     <RowMenu
@@ -275,21 +275,21 @@ export default function EmployeesPanel({ company, employees, onChanged }) {
             <Field label="Work email">
               <input type="email" required value={invite.email}
                 onChange={(e) => setInvite((s) => ({ ...s, email: e.target.value }))}
-                placeholder="ada@acme.com" className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-50" />
+                placeholder="ada@acme.com" className="w-full px-3 py-2 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40 focus:ring-2 focus:ring-white/10" />
             </Field>
             <Field label="Department (optional)">
               <input list="dept-options" value={invite.department}
                 onChange={(e) => setInvite((s) => ({ ...s, department: e.target.value }))}
-                placeholder="Engineering" className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-50" />
+                placeholder="Engineering" className="w-full px-3 py-2 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40 focus:ring-2 focus:ring-white/10" />
               <datalist id="dept-options">{departments.map((d) => <option key={d.id} value={d.name} />)}</datalist>
             </Field>
             <Field label="Office (optional)">
               <input value={invite.office}
                 onChange={(e) => setInvite((s) => ({ ...s, office: e.target.value }))}
-                placeholder="Lagos HQ / Remote" className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-50" />
+                placeholder="Lagos HQ / Remote" className="w-full px-3 py-2 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40 focus:ring-2 focus:ring-white/10" />
             </Field>
-            <p className="text-xs text-gray-400">They'll get a Nelvin invite and auto-join this company when they sign up with their email. A subscriber ID is auto-issued for them.</p>
-            <button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 rounded-lg text-sm">Send invitation</button>
+            <p className="text-xs text-ivory-dim">They'll get a Nelvin invite and auto-join this company when they sign up with their email. A subscriber ID is auto-issued for them.</p>
+            <button type="submit" className="w-full bg-[#D6B56D] hover:bg-[#E5C77A] text-[#062B23] font-semibold py-2.5 rounded-lg text-sm">Send invitation</button>
           </form>
         </Modal>
       )}
@@ -297,11 +297,11 @@ export default function EmployeesPanel({ company, employees, onChanged }) {
       {csvMode && (
         <Modal title="Upload employee CSV" onClose={() => setCsvMode(false)}>
           <div className="space-y-3">
-            <div className="bg-emerald-50 text-emerald-700 rounded-lg p-3 text-xs flex gap-2">
+            <div className="bg-[#0A3A2F] text-ivory rounded-lg p-3 text-xs flex gap-2">
               <FileSpreadsheet className="w-4 h-4 mt-0.5 flex-shrink-0" />
               <span>Columns: <code className="font-mono bg-white px-1 rounded">email, department, office</code> (office optional). One row per employee.</span>
             </div>
-            <input type="file" accept=".csv" onChange={handleCsvUpload} className="block w-full text-sm text-gray-600 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-emerald-50 file:text-emerald-700 file:font-semibold" />
+            <input type="file" accept=".csv" onChange={handleCsvUpload} className="block w-full text-sm text-ivory-muted file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-[#0A3A2F] file:text-[#D6B56D] file:font-semibold" />
           </div>
         </Modal>
       )}
@@ -309,15 +309,15 @@ export default function EmployeesPanel({ company, employees, onChanged }) {
       {edit && (
         <Modal title="Edit employee" onClose={() => setEdit(null)}>
           <div className="space-y-3">
-            <Field label="Name"><input value={edit.user_name || ""} onChange={(e) => setEdit({ ...edit, user_name: e.target.value })} className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg outline-none focus:border-emerald-400" /></Field>
+            <Field label="Name"><input value={edit.user_name || ""} onChange={(e) => setEdit({ ...edit, user_name: e.target.value })} className="w-full px-3 py-2 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40" /></Field>
             <div className="grid grid-cols-2 gap-3">
-              <Field label="Department"><input list="dept-options2" value={edit.department || ""} onChange={(e) => setEdit({ ...edit, department: e.target.value })} className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg outline-none focus:border-emerald-400" /><datalist id="dept-options2">{departments.map((d) => <option key={d.id} value={d.name} />)}</datalist></Field>
-              <Field label="Office"><input value={edit.office || ""} onChange={(e) => setEdit({ ...edit, office: e.target.value })} className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg outline-none focus:border-emerald-400" /></Field>
-              <Field label="Country"><input value={edit.country || ""} onChange={(e) => setEdit({ ...edit, country: e.target.value })} className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg outline-none focus:border-emerald-400" /></Field>
-              <Field label="Manager name"><input value={edit.manager_name || ""} onChange={(e) => setEdit({ ...edit, manager_name: e.target.value })} className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg outline-none focus:border-emerald-400" /></Field>
-              <Field label="Employee ID (internal)"><input value={edit.employee_id || ""} onChange={(e) => setEdit({ ...edit, employee_id: e.target.value })} className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg outline-none focus:border-emerald-400" /></Field>
+              <Field label="Department"><input list="dept-options2" value={edit.department || ""} onChange={(e) => setEdit({ ...edit, department: e.target.value })} className="w-full px-3 py-2 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40" /><datalist id="dept-options2">{departments.map((d) => <option key={d.id} value={d.name} />)}</datalist></Field>
+              <Field label="Office"><input value={edit.office || ""} onChange={(e) => setEdit({ ...edit, office: e.target.value })} className="w-full px-3 py-2 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40" /></Field>
+              <Field label="Country"><input value={edit.country || ""} onChange={(e) => setEdit({ ...edit, country: e.target.value })} className="w-full px-3 py-2 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40" /></Field>
+              <Field label="Manager name"><input value={edit.manager_name || ""} onChange={(e) => setEdit({ ...edit, manager_name: e.target.value })} className="w-full px-3 py-2 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40" /></Field>
+              <Field label="Employee ID (internal)"><input value={edit.employee_id || ""} onChange={(e) => setEdit({ ...edit, employee_id: e.target.value })} className="w-full px-3 py-2 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40" /></Field>
             </div>
-            <button onClick={saveEdit} className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 rounded-lg text-sm">Save</button>
+            <button onClick={saveEdit} className="w-full bg-[#D6B56D] hover:bg-[#E5C77A] text-[#062B23] font-semibold py-2.5 rounded-lg text-sm">Save</button>
           </div>
         </Modal>
       )}
@@ -329,16 +329,16 @@ function RowMenu({ onEdit, onSuspend, onActivate, onReset, onRemove }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="relative inline-block">
-      <button onClick={() => setOpen((o) => !o)} className="p-1.5 rounded hover:bg-gray-100"><MoreVertical className="w-4 h-4 text-gray-500" /></button>
+      <button onClick={() => setOpen((o) => !o)} className="p-1.5 rounded hover:bg-white/5"><MoreVertical className="w-4 h-4 text-ivory-muted" /></button>
       {open && (
         <>
           <div className="fixed inset-0 z-10" onClick={() => setOpen(false)} />
-          <div className="absolute right-0 top-8 z-20 w-52 bg-white rounded-lg shadow-xl border border-gray-100 py-1 text-sm">
-            <button onClick={() => { setOpen(false); onEdit(); }} className="w-full text-left px-3 py-2 hover:bg-gray-50 text-gray-700 flex items-center gap-2"><TagIcon className="w-3.5 h-3.5" /> Edit</button>
-            {onActivate && <button onClick={() => { setOpen(false); onActivate(); }} className="w-full text-left px-3 py-2 hover:bg-gray-50 text-gray-700 flex items-center gap-2"><RotateCcw className="w-3.5 h-3.5" /> Activate</button>}
-            {onSuspend && <button onClick={() => { setOpen(false); onSuspend(); }} className="w-full text-left px-3 py-2 hover:bg-gray-50 text-amber-700 flex items-center gap-2"><Ban className="w-3.5 h-3.5" /> Suspend</button>}
-            <button onClick={() => { setOpen(false); onReset(); }} className="w-full text-left px-3 py-2 hover:bg-gray-50 text-emerald-700 flex items-center gap-2"><Key className="w-3.5 h-3.5" /> Reset password</button>
-            <button onClick={() => { setOpen(false); onRemove(); }} className="w-full text-left px-3 py-2 hover:bg-gray-50 text-rose-700 flex items-center gap-2"><Trash2 className="w-3.5 h-3.5" /> Remove</button>
+          <div className="absolute right-0 top-8 z-20 w-52 bg-white rounded-lg shadow-xl border border-white/10 py-1 text-sm">
+            <button onClick={() => { setOpen(false); onEdit(); }} className="w-full text-left px-3 py-2 hover:bg-forest-secondary/60 text-ivory flex items-center gap-2"><TagIcon className="w-3.5 h-3.5" /> Edit</button>
+            {onActivate && <button onClick={() => { setOpen(false); onActivate(); }} className="w-full text-left px-3 py-2 hover:bg-forest-secondary/60 text-ivory flex items-center gap-2"><RotateCcw className="w-3.5 h-3.5" /> Activate</button>}
+            {onSuspend && <button onClick={() => { setOpen(false); onSuspend(); }} className="w-full text-left px-3 py-2 hover:bg-forest-secondary/60 text-amber-700 flex items-center gap-2"><Ban className="w-3.5 h-3.5" /> Suspend</button>}
+            <button onClick={() => { setOpen(false); onReset(); }} className="w-full text-left px-3 py-2 hover:bg-forest-secondary/60 text-[#D6B56D] flex items-center gap-2"><Key className="w-3.5 h-3.5" /> Reset password</button>
+            <button onClick={() => { setOpen(false); onRemove(); }} className="w-full text-left px-3 py-2 hover:bg-forest-secondary/60 text-rose-700 flex items-center gap-2"><Trash2 className="w-3.5 h-3.5" /> Remove</button>
           </div>
         </>
       )}
@@ -349,7 +349,7 @@ function RowMenu({ onEdit, onSuspend, onActivate, onReset, onRemove }) {
 function Field({ label, children }) {
   return (
     <div>
-      <label className="block text-xs font-semibold text-gray-600 mb-1">{label}</label>
+      <label className="block text-xs font-semibold text-ivory-muted mb-1">{label}</label>
       {children}
     </div>
   );
@@ -359,10 +359,10 @@ function Modal({ title, children, onClose }) {
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/40" onClick={onClose} />
-      <div className="relative bg-white rounded-2xl shadow-2xl border border-gray-100 w-full max-w-md p-6 max-h-[85vh] overflow-y-auto">
+      <div className="relative bg-white rounded-lg shadow-2xl border border-white/10 w-full max-w-md p-6 max-h-[85vh] overflow-y-auto">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-bold text-gray-900 text-lg">{title}</h3>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-700">×</button>
+          <h3 className="font-bold text-ivory text-lg">{title}</h3>
+          <button onClick={onClose} className="text-ivory-dim hover:text-ivory">×</button>
         </div>
         {children}
       </div>

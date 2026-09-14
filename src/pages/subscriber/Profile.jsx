@@ -77,22 +77,22 @@ export default function Profile() {
   };
 
   return (
-    <div className="min-h-screen bg-[#faf8f5]">
-      <div className="relative bg-gray-900 pt-24 pb-10 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-forest">
+      <div className="relative bg-[#062B23] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
         <Navbar />
       </div>
       <div className="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 pb-16">
-        <div className="bg-white rounded-2xl border border-gray-100 p-8">
-          <h1 className="text-2xl font-bold font-heading text-gray-900 mb-6">Profile</h1>
+        <div className="bg-white rounded-lg border border-white/10 p-8">
+          <h1 className="text-2xl font-bold font-heading text-ivory mb-6">Profile</h1>
           <div className="space-y-4">
             <div className="flex items-center gap-4">
-              <Avatar user={user} className="w-20 h-20" fallbackClassName="bg-emerald-600 text-white font-bold text-2xl" />
+              <Avatar user={user} className="w-20 h-20" fallbackClassName="bg-[#D6B56D] text-white font-bold text-2xl" />
               <div className="flex flex-col gap-2">
                 <input ref={fileRef} type="file" accept="image/jpeg,image/png,image/webp" onChange={handleFile} className="hidden" />
                 <button
                   onClick={() => fileRef.current?.click()}
                   disabled={uploading}
-                  className="bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full px-4 py-2 text-sm font-medium flex items-center gap-2 disabled:opacity-50"
+                  className="bg-white/5 hover:bg-white/10 text-ivory rounded-full px-4 py-2 text-sm font-medium flex items-center gap-2 disabled:opacity-50"
                 >
                   <Camera className="w-4 h-4" /> {uploading ? "Saving..." : "Upload photo"}
                 </button>
@@ -107,23 +107,23 @@ export default function Profile() {
                 )}
               </div>
             </div>
-            <p className="text-xs text-gray-400">JPG, PNG or WebP. Image is auto-cropped to a square and shown everywhere your avatar appears.</p>
+            <p className="text-xs text-ivory-dim">JPG, PNG or WebP. Image is auto-cropped to a square and shown everywhere your avatar appears.</p>
             <div>
-              <label className="text-sm font-medium text-gray-700 block mb-1.5">Full Name</label>
+              <label className="text-sm font-medium text-ivory block mb-1.5">Full Name</label>
               <input
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-emerald-200"
+                className="w-full border border-white/12 rounded-xl px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-[#D6B56D]/25"
               />
             </div>
             <div>
-              <label className="text-sm font-medium text-gray-700 block mb-1.5">Email</label>
-              <input value={user?.email || ""} disabled className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm bg-gray-50 text-gray-400" />
+              <label className="text-sm font-medium text-ivory block mb-1.5">Email</label>
+              <input value={user?.email || ""} disabled className="w-full border border-white/12 rounded-xl px-4 py-2.5 text-sm bg-forest-secondary/60 text-ivory-dim" />
             </div>
             <button
               onClick={handleSave}
               disabled={saving}
-              className="bg-emerald-700 hover:bg-emerald-800 text-white rounded-full px-6 py-2.5 text-sm font-semibold flex items-center gap-2"
+              className="bg-[#D6B56D] hover:bg-[#E5C77A] text-white rounded-full px-6 py-2.5 text-sm font-semibold flex items-center gap-2"
             >
               {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
               {saved ? "Saved!" : "Save changes"}

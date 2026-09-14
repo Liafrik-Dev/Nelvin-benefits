@@ -18,7 +18,7 @@ import Footer from "@/components/nelvin/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#F7F3ED] font-sans">
+    <div className="min-h-screen bg-forest-secondary font-sans">
       <Navbar />
       <HeroSection />
       <TrustedBrands />

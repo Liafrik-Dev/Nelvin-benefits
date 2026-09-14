@@ -91,66 +91,66 @@ export default function NotificationsPanel({ company }) {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold font-heading text-gray-900">Notifications</h1>
-        <p className="text-sm text-gray-500 mt-1">Send announcements, benefit alerts, or reminders to your team.</p>
+        <h1 className="text-2xl font-bold font-heading text-ivory">Notifications</h1>
+        <p className="text-sm text-ivory-muted mt-1">Send announcements, benefit alerts, or reminders to your team.</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6">
-        <form onSubmit={submit} className="bg-white rounded-2xl border border-gray-100 p-6 space-y-4">
+        <form onSubmit={submit} className="bg-white rounded-lg border border-white/10 p-6 space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Field label="Type">
-              <select value={form.type} onChange={(e) => setForm((s) => ({ ...s, type: e.target.value }))} className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg outline-none focus:border-emerald-400">
+              <select value={form.type} onChange={(e) => setForm((s) => ({ ...s, type: e.target.value }))} className="w-full px-3 py-2 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40">
                 {TYPES.map((t) => <option key={t.id} value={t.id}>{t.label}</option>)}
               </select>
             </Field>
             <Field label="Audience">
-              <select value={form.audience} onChange={(e) => setForm((s) => ({ ...s, audience: e.target.value }))} className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg outline-none focus:border-emerald-400">
+              <select value={form.audience} onChange={(e) => setForm((s) => ({ ...s, audience: e.target.value }))} className="w-full px-3 py-2 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40">
                 {AUDIENCES.map((a) => <option key={a.id} value={a.id}>{a.label}</option>)}
               </select>
             </Field>
           </div>
 
           {form.audience === "company" && (
-            <p className="text-xs text-gray-500">Will be delivered to every active employee in {company.name}.</p>
+            <p className="text-xs text-ivory-muted">Will be delivered to every active employee in {company.name}.</p>
           )}
           {form.audience === "department" && (
             <Field label="Department">
-              <select value={form.department} onChange={(e) => setForm((s) => ({ ...s, department: e.target.value }))} className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg outline-none focus:border-emerald-400">
+              <select value={form.department} onChange={(e) => setForm((s) => ({ ...s, department: e.target.value }))} className="w-full px-3 py-2 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40">
                 <option value="">Select department</option>
               </select>
             </Field>
           )}
           {form.audience === "specific" && (
             <Field label="Specific employees (emails, comma or newline separated)">
-              <textarea rows={3} value={form.recipient_emails} onChange={(e) => setForm((s) => ({ ...s, recipient_emails: e.target.value }))} placeholder="ada@acme.com, john@acme.com" className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg outline-none focus:border-emerald-400" />
+              <textarea rows={3} value={form.recipient_emails} onChange={(e) => setForm((s) => ({ ...s, recipient_emails: e.target.value }))} placeholder="ada@acme.com, john@acme.com" className="w-full px-3 py-2 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40" />
             </Field>
           )}
 
           <Field label="Title">
-            <input value={form.title} onChange={(e) => setForm((s) => ({ ...s, title: e.target.value }))} placeholder="New wellness week benefits just dropped!" className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg outline-none focus:border-emerald-400" />
+            <input value={form.title} onChange={(e) => setForm((s) => ({ ...s, title: e.target.value }))} placeholder="New wellness week benefits just dropped!" className="w-full px-3 py-2 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40" />
           </Field>
           <Field label="Message">
-            <textarea rows={4} value={form.message} onChange={(e) => setForm((s) => ({ ...s, message: e.target.value }))} placeholder="Tell your team what they should know..." className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg outline-none focus:border-emerald-400" />
+            <textarea rows={4} value={form.message} onChange={(e) => setForm((s) => ({ ...s, message: e.target.value }))} placeholder="Tell your team what they should know..." className="w-full px-3 py-2 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40" />
           </Field>
 
           <div className="flex items-center justify-between">
-            <p className="text-xs text-gray-400">Delivered in-app to all matching employees. Email delivery resumes when workspace credits reset (currently blocked).</p>
-            <button type="submit" disabled={sending} className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-70 text-white text-sm font-semibold px-5 py-2.5 rounded-lg">
+            <p className="text-xs text-ivory-dim">Delivered in-app to all matching employees. Email delivery resumes when workspace credits reset (currently blocked).</p>
+            <button type="submit" disabled={sending} className="inline-flex items-center gap-2 bg-[#D6B56D] hover:bg-[#E5C77A] disabled:opacity-70 text-white text-sm font-semibold px-5 py-2.5 rounded-lg">
               <Send className="w-4 h-4" /> {sending ? "Sending…" : "Send"}
             </button>
           </div>
         </form>
 
-        <div className="bg-white rounded-2xl border border-gray-100 p-6 h-fit">
-          <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2"><Bell className="w-4 h-4 text-emerald-600" /> Recently sent</h3>
+        <div className="bg-white rounded-lg border border-white/10 p-6 h-fit">
+          <h3 className="font-semibold text-ivory mb-3 flex items-center gap-2"><Bell className="w-4 h-4 text-[#D6B56D]" /> Recently sent</h3>
           {sent.length === 0 ? (
-            <p className="text-sm text-gray-400">No notifications sent yet in this session.</p>
+            <p className="text-sm text-ivory-dim">No notifications sent yet in this session.</p>
           ) : (
             <div className="space-y-2">
               {sent.map((s, i) => (
-                <div key={i} className="p-3 rounded-lg bg-gray-50">
-                  <p className="text-sm font-medium text-gray-900 truncate">{s.title}</p>
-                  <p className="text-xs text-gray-400">{s.count} recipients · {new Date(s.ts).toLocaleString()}</p>
+                <div key={i} className="p-3 rounded-lg bg-forest-secondary/60">
+                  <p className="text-sm font-medium text-ivory truncate">{s.title}</p>
+                  <p className="text-xs text-ivory-dim">{s.count} recipients · {new Date(s.ts).toLocaleString()}</p>
                 </div>
               ))}
             </div>
@@ -164,7 +164,7 @@ export default function NotificationsPanel({ company }) {
 function Field({ label, children }) {
   return (
     <div>
-      <label className="block text-xs font-semibold text-gray-600 mb-1">{label}</label>
+      <label className="block text-xs font-semibold text-ivory-muted mb-1">{label}</label>
       {children}
     </div>
   );

@@ -6,12 +6,30 @@ export default {
     extend: {
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
-        heading: ['"Plus Jakarta Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
+        heading: ['"Cormorant Garamond"', "Georgia", "ui-serif", "serif"],
         body: ['"Plus Jakarta Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
-        display: ['"Plus Jakarta Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ['"Cormorant Garamond"', "Georgia", "ui-serif", "serif"],
+        serif: ['"Cormorant Garamond"', "Georgia", "ui-serif", "serif"],
         mono: ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
       },
       colors: {
+        forest: {
+          DEFAULT: "#062B23",
+          midnight: "#062B23",
+          secondary: "#0A3A2F",
+        },
+        "emerald-black": {
+          DEFAULT: "#103F35",
+        },
+        champagne: {
+          DEFAULT: "#D6B56D",
+          gold: "#D6B56D",
+          soft: "#E5C77A",
+        },
+        ivory: {
+          DEFAULT: "#F5F1E8",
+          warm: "#F5F1E8",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

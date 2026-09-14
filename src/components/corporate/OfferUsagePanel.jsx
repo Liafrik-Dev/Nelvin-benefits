@@ -57,24 +57,24 @@ export default function OfferUsagePanel({ company, employees }) {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold font-heading text-gray-900">Offer Usage</h1>
-        <p className="text-sm text-gray-500 mt-1">Where your employees are actually redeeming benefits.</p>
+        <h1 className="text-2xl font-bold font-heading text-ivory">Offer Usage</h1>
+        <p className="text-sm text-ivory-muted mt-1">Where your employees are actually redeeming benefits.</p>
       </div>
 
       {loading ? (
-        <div className="bg-white rounded-2xl border border-gray-100 p-12 text-center text-sm text-gray-400">Loading offer usage…</div>
+        <div className="bg-white rounded-lg border border-white/10 p-12 text-center text-sm text-ivory-dim">Loading offer usage…</div>
       ) : redemptions.length === 0 ? (
-        <div className="bg-white rounded-2xl border border-gray-100 p-12 text-center">
-          <BarChart3 className="w-10 h-10 text-gray-300 mx-auto mb-3" />
-          <p className="text-sm text-gray-500">No redemptions yet from your team. As employees start using offers, you'll see category and brand breakdowns here.</p>
+        <div className="bg-white rounded-lg border border-white/10 p-12 text-center">
+          <BarChart3 className="w-10 h-10 text-ivory/60 mx-auto mb-3" />
+          <p className="text-sm text-ivory-muted">No redemptions yet from your team. As employees start using offers, you'll see category and brand breakdowns here.</p>
         </div>
       ) : (
         <>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-white rounded-2xl border border-gray-100 p-6">
+            <div className="bg-white rounded-lg border border-white/10 p-6">
               <div className="flex items-center gap-2 mb-3">
-                <TrendingUp className="w-4 h-4 text-emerald-600" />
-                <h3 className="font-semibold text-gray-900">Top Categories</h3>
+                <TrendingUp className="w-4 h-4 text-[#D6B56D]" />
+                <h3 className="font-semibold text-ivory">Top Categories</h3>
               </div>
               <div className="h-64">
                 <ResponsiveContainer width="100%" height="100%">
@@ -89,8 +89,8 @@ export default function OfferUsagePanel({ company, employees }) {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl border border-gray-100 p-6">
-              <h3 className="font-semibold text-gray-900 mb-3">Redemptions by Brand</h3>
+            <div className="bg-white rounded-lg border border-white/10 p-6">
+              <h3 className="font-semibold text-ivory mb-3">Redemptions by Brand</h3>
               <div className="h-64">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
@@ -105,14 +105,14 @@ export default function OfferUsagePanel({ company, employees }) {
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl border border-gray-100 p-6 mt-6">
-            <h3 className="font-semibold text-gray-900 mb-3">Most Redeemed Offers</h3>
+          <div className="bg-white rounded-lg border border-white/10 p-6 mt-6">
+            <h3 className="font-semibold text-ivory mb-3">Most Redeemed Offers</h3>
             <div className="space-y-2">
               {topBusinesses.map((b, i) => (
                 <div key={b.name} className="flex items-center gap-3 py-2 border-b border-gray-50 last:border-0">
-                  <span className="text-gray-400 text-xs w-5">{i + 1}</span>
-                  <span className="text-sm font-medium text-gray-700 flex-1">{b.name}</span>
-                  <span className="text-xs text-gray-500">{b.value} redemptions</span>
+                  <span className="text-ivory-dim text-xs w-5">{i + 1}</span>
+                  <span className="text-sm font-medium text-ivory flex-1">{b.name}</span>
+                  <span className="text-xs text-ivory-muted">{b.value} redemptions</span>
                 </div>
               ))}
             </div>

@@ -9,9 +9,9 @@ import AdminEditModal from "@/components/admin/AdminEditModal";
 import StatusBadge from "@/components/admin/StatusBadge";
 import { UserPlus, UserCog, LogOut, Trash2 } from "lucide-react";
 
-function RowIconBtn({ title, onClick, Icon, color = "text-gray-600 hover:text-gray-900" }) {
+function RowIconBtn({ title, onClick, Icon, color = "text-ivory-muted hover:text-ivory" }) {
   return (
-    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-gray-100 ${color}`}>
+    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-white/5 ${color}`}>
       <Icon className="w-4 h-4" />
     </button>
   );
@@ -103,19 +103,19 @@ export default function AdminUsers() {
     { key: "full_name", label: "Name", sortable: true,
       accessor: (u) => u.full_name || u.email || "—" },
     { key: "email", label: "Email", sortable: true,
-      render: (u) => <span className="text-xs text-gray-500">{u.email}</span> },
+      render: (u) => <span className="text-xs text-ivory-muted">{u.email}</span> },
     { key: "role", label: "Role", sortable: true,
       render: (u) => <StatusBadge status={u.role} label={u.role} className="capitalize" /> },
     { key: "account_type", label: "Account", sortable: true,
       render: (u) => <StatusBadge status={u.account_type || (u.company_id ? "corporate" : "individual")} label={u.account_type === "corporate" ? "Corporate" : "Individual"} /> },
     { key: "plan_tier", label: "Membership", sortable: true,
-      render: (u) => u.plan_tier ? <StatusBadge status={u.plan_tier.toLowerCase()} label={u.plan_tier} /> : <span className="text-xs text-gray-400">—</span> },
+      render: (u) => u.plan_tier ? <StatusBadge status={u.plan_tier.toLowerCase()} label={u.plan_tier} /> : <span className="text-xs text-ivory-dim">—</span> },
     { key: "company_id", label: "Company",
-      render: (u) => <span className="text-xs text-gray-600">{companyName(u.company_id)}</span> },
+      render: (u) => <span className="text-xs text-ivory-muted">{companyName(u.company_id)}</span> },
     { key: "status", label: "Status", sortable: true,
       render: (u) => <StatusBadge status={u.status || (u.is_suspended ? "suspended" : "active")} /> },
     { key: "created_date", label: "Joined", sortable: true,
-      render: (u) => <span className="text-xs text-gray-500">{formatDate(u.created_date)}</span> },
+      render: (u) => <span className="text-xs text-ivory-muted">{formatDate(u.created_date)}</span> },
   ];
 
   const editFields = [
@@ -167,12 +167,12 @@ export default function AdminUsers() {
     <div>
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
         <div>
-          <h1 className="text-2xl font-bold font-heading text-gray-900">Users</h1>
-          <p className="text-sm text-gray-500 mt-1">{filtered.length} users · Manage individual subscribers and corporate employees.</p>
+          <h1 className="text-2xl font-bold font-heading text-ivory">Users</h1>
+          <p className="text-sm text-ivory-muted mt-1">{filtered.length} users · Manage individual subscribers and corporate employees.</p>
         </div>
         <button
           onClick={inviteUser}
-          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg"
+          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-[#D6B56D] hover:bg-[#E5C77A] text-white rounded-lg"
         >
           <UserPlus className="w-4 h-4" /> Invite user
         </button>

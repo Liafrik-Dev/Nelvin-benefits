@@ -79,25 +79,25 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#F7F3ED] text-[#180126] border-t border-[#180126]/10">
+    <footer className="bg-forest-secondary text-[#F5F1E8] border-t border-[#D6B56D]/15">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
           <div className="col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 bg-[#082F24] rounded-xl flex items-center justify-center">
-                <span className="text-[#B8FF00] font-extrabold text-sm">N</span>
+              <div className="w-9 h-9 bg-[#D6B56D] rounded-lg flex items-center justify-center shadow-md shadow-[#062B23]/30">
+                <span className="text-[#062B23] font-extrabold text-sm">N</span>
               </div>
               <span className="font-bold text-xl font-heading">Nelvin</span>
             </div>
-            <p className="text-[#180126]/60 text-xs leading-relaxed mb-6">
+            <p className="text-[#F5F1E8]/60 text-xs leading-relaxed mb-6">
               Africa's savings super app. Unlock exclusive offers, cashback, and corporate experiences across all 54 countries.
             </p>
             <div className="flex flex-col gap-2">
-              <button className="bg-white hover:bg-[#082F24] hover:text-white text-[#180126] rounded-lg px-3 py-2 flex items-center gap-2 text-xs transition-colors w-fit border border-[#180126]/10">
+              <button className="bg-emerald-black/90 hover:bg-[#062B23] hover:text-white text-[#F5F1E8] rounded-lg px-3 py-2 flex items-center gap-2 text-xs transition-colors w-fit border border-[#D6B56D]/15">
                 <AppleIcon className="w-4 h-4" />
                 App Store
               </button>
-              <button className="bg-white hover:bg-[#082F24] hover:text-white text-[#180126] rounded-lg px-3 py-2 flex items-center gap-2 text-xs transition-colors w-fit border border-[#180126]/10">
+              <button className="bg-emerald-black/90 hover:bg-[#062B23] hover:text-white text-[#F5F1E8] rounded-lg px-3 py-2 flex items-center gap-2 text-xs transition-colors w-fit border border-[#D6B56D]/15">
                 <GoogleIcon className="w-4 h-4" />
                 Google Play
               </button>
@@ -106,11 +106,11 @@ export default function Footer() {
 
           {footerColumns.map((col) => (
             <div key={col.title}>
-              <h4 className="font-bold text-xs tracking-wider uppercase mb-4 text-[#180126]/80">{col.title}</h4>
+              <h4 className="font-bold text-xs tracking-wider uppercase mb-4 text-[#F5F1E8]/80">{col.title}</h4>
               <ul className="space-y-2.5">
                 {col.links.map((l) => (
                   <li key={l.label}>
-                    <Link to={l.to} className="text-[#180126]/60 hover:text-[#00BD00] text-xs transition-colors">
+                    <Link to={l.to} className="text-[#F5F1E8]/60 hover:text-[#E5C77A] text-xs transition-colors">
                       {l.label}
                     </Link>
                   </li>
@@ -121,9 +121,9 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-[#180126]/10">
+      <div className="border-t border-[#D6B56D]/15">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-[#180126]/40 text-xs">
+          <p className="text-[#F5F1E8]/40 text-xs">
             © 2026 Nelvin Africa Ltd. All rights reserved.
           </p>
           <div className="flex items-center gap-3">
@@ -134,7 +134,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.label}
-                className="w-8 h-8 bg-white hover:bg-[#00BD00] hover:text-white rounded-full flex items-center justify-center transition-colors border border-[#180126]/10 text-[#180126]/60"
+                className="w-8 h-8 bg-emerald-black/90 hover:bg-[#D6B56D] hover:text-[#062B23] rounded-lg flex items-center justify-center transition-colors border border-[#D6B56D]/15 text-ivory-muted"
               >
                 <s.icon className="w-3.5 h-3.5" />
               </a>

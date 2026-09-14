@@ -13,8 +13,8 @@ const DEFAULT_ACTIONS = [
 
 function Button({ onClick, children, tone = "ghost", disabled }) {
   const tones = {
-    ghost: "bg-white text-[#180126] ring-1 ring-[#180126]/15 hover:bg-[#180126] hover:text-white",
-    success: "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200 hover:bg-emerald-600 hover:text-white",
+    ghost: "bg-white text-[#F5F1E8] ring-1 ring-[#103F35]/15 hover:bg-[#103F35] hover:text-white",
+    success: "bg-[#0A3A2F] text-ivory ring-1 ring-[#D6B56D]/25 hover:bg-[#D6B56D] hover:text-white",
     danger: "bg-red-50 text-red-600 ring-1 ring-red-200 hover:bg-red-600 hover:text-white",
   };
   return (
@@ -29,22 +29,22 @@ function Button({ onClick, children, tone = "ghost", disabled }) {
 }
 
 function Value({ value }) {
-  if (value === null || value === undefined || value === "" ) return <span className="text-[#180126]/35">—</span>;
-  if (typeof value === "boolean") return value ? <span className="text-emerald-600 font-semibold">Yes</span> : <span className="text-red-500 font-semibold">No</span>;
+  if (value === null || value === undefined || value === "" ) return <span className="text-[#F5F1E8]/35">—</span>;
+  if (typeof value === "boolean") return value ? <span className="text-[#D6B56D] font-semibold">Yes</span> : <span className="text-red-500 font-semibold">No</span>;
   return <span>{String(value)}</span>;
 }
 
 function StatusBadge({ status }) {
   const map = {
-    active: ["bg-[#00BD00]/10 text-[#007200]", "Active"],
-    approved: ["bg-[#00BD00]/10 text-[#007200]", "Approved"],
+    active: ["bg-[#0A3A2F]/10 text-[#007200]", "Active"],
+    approved: ["bg-[#0A3A2F]/10 text-[#007200]", "Approved"],
     pending: ["bg-amber-50 text-amber-700", "Pending"],
     rejected: ["bg-red-50 text-red-600", "Rejected"],
     suspended: ["bg-red-50 text-red-600", "Suspended"],
-    inactive: ["bg-gray-100 text-gray-500", "Inactive"],
-    draft: ["bg-gray-100 text-gray-500", "Draft"],
-    redeemed: ["bg-[#7637E3]/10 text-[#7637E3]", "Redeemed"],
-    default: ["bg-gray-100 text-gray-700", String(status || "—").toUpperCase()],
+    inactive: ["bg-white/5 text-ivory-muted", "Inactive"],
+    draft: ["bg-white/5 text-ivory-muted", "Draft"],
+    redeemed: ["bg-[#0A3A2F]/10 text-[#D6B56D]", "Redeemed"],
+    default: ["bg-white/5 text-ivory", String(status || "—").toUpperCase()],
   };
   const [bg, txt] = map[status] || map.default;
   return <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${bg}`}>{txt}</span>;
@@ -56,18 +56,18 @@ function ActionMenu({ row, actions, onAction }) {
     <div className="relative">
       <button
         onClick={(e) => { e.stopPropagation(); setOpen((o) => !o); }}
-        className="w-8 h-8 rounded-full hover:bg-[#F7F3ED] flex items-center justify-center text-[#180126]/60"
+        className="w-8 h-8 rounded-full hover:bg-forest-secondary flex items-center justify-center text-[#F5F1E8]/60"
         aria-label="Row actions"
       >
         <MoreHorizontal className="w-4 h-4" />
       </button>
       {open && (
-        <div className="absolute right-0 z-20 mt-1 w-40 bg-white rounded-xl shadow-xl ring-1 ring-[#180126]/10 p-1.5">
+        <div className="absolute right-0 z-20 mt-1 w-40 bg-white rounded-xl shadow-xl ring-1 ring-[#103F35]/10 p-1.5">
           {actions.filter((a) => row[a.key] !== false).map((a) => (
             <button
               key={a.key}
               onClick={() => { setOpen(false); onAction(a.key, row); }}
-              className="w-full flex items-center gap-2 px-2.5 py-2 text-[11px] font-semibold text-[#180126]/75 hover:bg-[#F7F3ED] hover:text-[#180126] rounded-lg transition-colors"
+              className="w-full flex items-center gap-2 px-2.5 py-2 text-[11px] font-semibold text-[#F5F1E8]/75 hover:bg-forest-secondary hover:text-[#F5F1E8] rounded-lg transition-colors"
             >
               <a.icon className="w-3.5 h-3.5" />
               {a.label}
@@ -153,24 +153,24 @@ export default function ResourceTable({
   };
 
   return (
-    <div className="bg-white rounded-2xl ring-1 ring-[#180126]/10 overflow-hidden">
-      <div className="flex flex-col lg:flex-row lg:items-center gap-3 p-4 border-b border-[#180126]/8">
+    <div className="bg-white rounded-lg ring-1 ring-[#103F35]/10 overflow-hidden">
+      <div className="flex flex-col lg:flex-row lg:items-center gap-3 p-4 border-b border-[#D6B56D]/25/8">
         <div className="relative flex-1 min-w-52">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#180126]/35" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#F5F1E8]/35" />
           <input
             value={q}
             onChange={(e) => { setQ(e.target.value); setPage(1); }}
             placeholder={`Search ${entityLabel}...`}
-            className="w-full h-10 pl-9 pr-3 rounded-xl bg-[#F7F3ED] text-sm text-[#180126] placeholder:text-[#180126]/35 focus:outline-none focus:ring-2 focus:ring-[#00BD00]/40"
+            className="w-full h-10 pl-9 pr-3 rounded-xl bg-forest-secondary text-sm text-[#F5F1E8] placeholder:text-[#F5F1E8]/35 focus:outline-none focus:ring-2 focus:ring-[#0A3A2F]/40"
           />
         </div>
         {statuses.length > 0 && (
           <div className="flex items-center gap-2 overflow-x-auto">
-            <ListFilter className="w-4 h-4 text-[#180126]/40 flex-shrink-0" />
+            <ListFilter className="w-4 h-4 text-[#F5F1E8]/40 flex-shrink-0" />
             <select
               value={status}
               onChange={(e) => { setStatus(e.target.value); setPage(1); }}
-              className="h-10 rounded-xl bg-[#F7F3ED] text-sm font-medium text-[#180126] px-3 focus:outline-none focus:ring-2 focus:ring-[#00BD00]/40"
+              className="h-10 rounded-xl bg-forest-secondary text-sm font-medium text-[#F5F1E8] px-3 focus:outline-none focus:ring-2 focus:ring-[#0A3A2F]/40"
             >
               <option value="all">All ({rows.length})</option>
               {statuses.map((s) => (
@@ -181,13 +181,13 @@ export default function ResourceTable({
         )}
         <div className="flex items-center gap-2">
           {onExport && (
-            <button onClick={exportRows} className="inline-flex items-center gap-1.5 h-10 px-3 rounded-xl bg-white ring-1 ring-[#180126]/10 text-xs font-semibold text-[#180126]/70 hover:bg-[#F7F3ED] transition-colors">
+            <button onClick={exportRows} className="inline-flex items-center gap-1.5 h-10 px-3 rounded-xl bg-white ring-1 ring-[#103F35]/10 text-xs font-semibold text-[#F5F1E8]/70 hover:bg-forest-secondary transition-colors">
               <Download className="w-3.5 h-3.5" />
               Export
             </button>
           )}
           {onRetry && (
-            <button onClick={onRetry} className="inline-flex items-center gap-1.5 h-10 px-3 rounded-xl bg-white ring-1 ring-[#180126]/10 text-xs font-semibold text-[#180126]/70 hover:bg-[#F7F3ED] transition-colors">
+            <button onClick={onRetry} className="inline-flex items-center gap-1.5 h-10 px-3 rounded-xl bg-white ring-1 ring-[#103F35]/10 text-xs font-semibold text-[#F5F1E8]/70 hover:bg-forest-secondary transition-colors">
               <RefreshCw className="w-3.5 h-3.5" />
             </button>
           )}
@@ -197,9 +197,9 @@ export default function ResourceTable({
       <div className="overflow-x-auto">
         <table className="w-full text-left">
           <thead>
-            <tr className="border-b border-[#180126]/8 bg-[#F7F3ED]/60">
+            <tr className="border-b border-[#D6B56D]/25/8 bg-forest-secondary/60">
               {columns.filter((c) => !c.hide).map((c) => (
-                <th key={c.key} className="px-4 py-3 text-[10px] font-extrabold uppercase tracking-wider text-[#180126]/45 whitespace-nowrap">
+                <th key={c.key} className="px-4 py-3 text-[10px] font-extrabold uppercase tracking-wider text-[#F5F1E8]/45 whitespace-nowrap">
                   {c.label}
                 </th>
               ))}
@@ -209,8 +209,8 @@ export default function ResourceTable({
           <tbody>
             {loading ? (
               <tr>
-                <td colSpan={columns.length + 1} className="px-4 py-12 text-center text-sm text-[#180126]/50">
-                  <Loader2 className="w-6 h-6 animate-spin mx-auto mb-2 text-[#00BD00]" />
+                <td colSpan={columns.length + 1} className="px-4 py-12 text-center text-sm text-[#F5F1E8]/50">
+                  <Loader2 className="w-6 h-6 animate-spin mx-auto mb-2 text-[#E5C77A]" />
                   Loading {entityLabel}...
                 </td>
               </tr>
@@ -218,9 +218,9 @@ export default function ResourceTable({
               <tr>
                 <td colSpan={columns.length + 1} className="px-4 py-14">
                   <div className="flex flex-col items-center text-center">
-                    <Inbox className="w-8 h-8 text-[#180126]/25 mb-3" />
-                    <p className="text-sm font-semibold text-[#180126]/60">{emptyTitle || `No ${entityLabel} found`}</p>
-                    {emptyDesc && <p className="text-xs text-[#180126]/40 mt-1 max-w-sm">{emptyDesc}</p>}
+                    <Inbox className="w-8 h-8 text-[#F5F1E8]/25 mb-3" />
+                    <p className="text-sm font-semibold text-[#F5F1E8]/60">{emptyTitle || `No ${entityLabel} found`}</p>
+                    {emptyDesc && <p className="text-xs text-[#F5F1E8]/40 mt-1 max-w-sm">{emptyDesc}</p>}
                   </div>
                 </td>
               </tr>
@@ -229,10 +229,10 @@ export default function ResourceTable({
                 <tr
                   key={r.id || ri}
                   onClick={onView ? () => onView(r) : undefined}
-                  className={`border-b border-[#180126]/6 hover:bg-[#F7F3ED]/50 transition-colors ${onView ? "cursor-pointer" : ""}`}
+                  className={`border-b border-[#D6B56D]/25/6 hover:bg-forest-secondary/50 transition-colors ${onView ? "cursor-pointer" : ""}`}
                 >
                   {columns.filter((c) => !c.hide).map((c) => (
-                    <td key={c.key} className="px-4 py-3.5 text-sm text-[#180126]/80 whitespace-nowrap">
+                    <td key={c.key} className="px-4 py-3.5 text-sm text-[#F5F1E8]/80 whitespace-nowrap">
                       {c.render ? c.render(r, ri) : <Value value={r[c.key]} />}
                     </td>
                   ))}
@@ -250,15 +250,15 @@ export default function ResourceTable({
         </table>
       </div>
 
-      <div className="flex items-center justify-between gap-3 px-4 py-3 border-t border-[#180126]/8">
-        <p className="text-[11px] text-[#180126]/50 font-medium">
+      <div className="flex items-center justify-between gap-3 px-4 py-3 border-t border-[#D6B56D]/25/8">
+        <p className="text-[11px] text-[#F5F1E8]/50 font-medium">
           Showing {pageRows.length ? (page - 1) * PAGE_SIZE + 1 : 0}–{total ? Math.min(page * PAGE_SIZE, total) : 0} of {total} {entityLabel}
         </p>
         <div className="flex items-center gap-1">
           <button
             disabled={page === 1}
             onClick={() => setPage((p) => Math.max(1, p - 1))}
-            className="w-8 h-8 rounded-lg ring-1 ring-[#180126]/10 disabled:opacity-40 hover:bg-[#F7F3ED] flex items-center justify-center text-[#180126]/60"
+            className="w-8 h-8 rounded-lg ring-1 ring-[#103F35]/10 disabled:opacity-40 hover:bg-forest-secondary flex items-center justify-center text-[#F5F1E8]/60"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
@@ -266,7 +266,7 @@ export default function ResourceTable({
             <button
               key={i}
               onClick={() => setPage(i + 1)}
-              className={`w-8 h-8 rounded-lg text-xs font-bold transition-colors ${page === i + 1 ? "bg-[#180126] text-[#B8FF00]" : "text-[#180126]/60 hover:bg-[#F7F3ED]"}`}
+              className={`w-8 h-8 rounded-lg text-xs font-bold transition-colors ${page === i + 1 ? "bg-[#103F35] text-[#D6B56D]" : "text-[#F5F1E8]/60 hover:bg-forest-secondary"}`}
             >
               {i + 1}
             </button>
@@ -274,7 +274,7 @@ export default function ResourceTable({
           <button
             disabled={page === pages}
             onClick={() => setPage((p) => Math.min(pages, p + 1))}
-            className="w-8 h-8 rounded-lg ring-1 ring-[#180126]/10 disabled:opacity-40 hover:bg-[#F7F3ED] flex items-center justify-center text-[#180126]/60"
+            className="w-8 h-8 rounded-lg ring-1 ring-[#103F35]/10 disabled:opacity-40 hover:bg-forest-secondary flex items-center justify-center text-[#F5F1E8]/60"
           >
             <ChevronRight className="w-4 h-4" />
           </button>

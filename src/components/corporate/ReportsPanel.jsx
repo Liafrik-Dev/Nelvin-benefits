@@ -124,21 +124,21 @@ export default function ReportsPanel({ company, employees }) {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold font-heading text-gray-900">Reports</h1>
-        <p className="text-sm text-gray-500 mt-1">Generate savings reports for any period and scope. Export to CSV or PDF.</p>
+        <h1 className="text-2xl font-bold font-heading text-ivory">Reports</h1>
+        <p className="text-sm text-ivory-muted mt-1">Generate savings reports for any period and scope. Export to CSV or PDF.</p>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-100 p-6 max-w-2xl">
+      <div className="bg-white rounded-lg border border-white/10 p-6 max-w-2xl">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-semibold text-gray-600 mb-1.5 uppercase tracking-wider flex items-center gap-1"><Calendar className="w-3 h-3" /> Period</label>
-            <select value={period} onChange={(e) => setPeriod(e.target.value)} className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg outline-none focus:border-emerald-400">
+            <label className="block text-xs font-semibold text-ivory-muted mb-1.5 uppercase tracking-wider flex items-center gap-1"><Calendar className="w-3 h-3" /> Period</label>
+            <select value={period} onChange={(e) => setPeriod(e.target.value)} className="w-full px-3 py-2 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40">
               {PERIODS.map((p) => <option key={p.id} value={p.id}>{p.label}</option>)}
             </select>
           </div>
           <div>
-            <label className="block text-xs font-semibold text-gray-600 mb-1.5 uppercase tracking-wider">Scope</label>
-            <select value={scope} onChange={(e) => { setScope(e.target.value); setScopeValue(""); }} className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg outline-none focus:border-emerald-400">
+            <label className="block text-xs font-semibold text-ivory-muted mb-1.5 uppercase tracking-wider">Scope</label>
+            <select value={scope} onChange={(e) => { setScope(e.target.value); setScopeValue(""); }} className="w-full px-3 py-2 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40">
               {SCOPES.map((s) => <option key={s.id} value={s.id}>{s.label}</option>)}
             </select>
           </div>
@@ -146,8 +146,8 @@ export default function ReportsPanel({ company, employees }) {
 
         {scope === "department" && (
           <div className="mt-4">
-            <label className="block text-xs font-semibold text-gray-600 mb-1.5 uppercase tracking-wider">Department</label>
-            <select value={scopeValue} onChange={(e) => setScopeValue(e.target.value)} className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg outline-none focus:border-emerald-400">
+            <label className="block text-xs font-semibold text-ivory-muted mb-1.5 uppercase tracking-wider">Department</label>
+            <select value={scopeValue} onChange={(e) => setScopeValue(e.target.value)} className="w-full px-3 py-2 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40">
               <option value="">All departments</option>
               {departments.map((d) => <option key={d} value={d}>{d}</option>)}
             </select>
@@ -155,8 +155,8 @@ export default function ReportsPanel({ company, employees }) {
         )}
         {scope === "country" && (
           <div className="mt-4">
-            <label className="block text-xs font-semibold text-gray-600 mb-1.5 uppercase tracking-wider">Country</label>
-            <select value={scopeValue} onChange={(e) => setScopeValue(e.target.value)} className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg outline-none focus:border-emerald-400">
+            <label className="block text-xs font-semibold text-ivory-muted mb-1.5 uppercase tracking-wider">Country</label>
+            <select value={scopeValue} onChange={(e) => setScopeValue(e.target.value)} className="w-full px-3 py-2 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40">
               <option value="">All countries</option>
               {countries.map((c) => <option key={c} value={c}>{c}</option>)}
             </select>
@@ -164,8 +164,8 @@ export default function ReportsPanel({ company, employees }) {
         )}
         {scope === "employee" && (
           <div className="mt-4">
-            <label className="block text-xs font-semibold text-gray-600 mb-1.5 uppercase tracking-wider">Employee</label>
-            <select value={scopeValue} onChange={(e) => setScopeValue(e.target.value)} className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg outline-none focus:border-emerald-400">
+            <label className="block text-xs font-semibold text-ivory-muted mb-1.5 uppercase tracking-wider">Employee</label>
+            <select value={scopeValue} onChange={(e) => setScopeValue(e.target.value)} className="w-full px-3 py-2 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40">
               <option value="">All employees</option>
               {employeeOptions.map((e) => <option key={e.id} value={e.user_id}>{e.user_name || e.user_email}</option>)}
             </select>
@@ -173,14 +173,14 @@ export default function ReportsPanel({ company, employees }) {
         )}
 
         <div className="mt-6 flex gap-3 flex-wrap">
-          <button onClick={() => downloadCsv(buildRows())} disabled={loading} className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold px-4 py-2 rounded-lg">
+          <button onClick={() => downloadCsv(buildRows())} disabled={loading} className="inline-flex items-center gap-2 bg-[#D6B56D] hover:bg-[#E5C77A] text-[#062B23] text-sm font-semibold px-4 py-2 rounded-lg">
             <FileSpreadsheet className="w-4 h-4" /> Download CSV
           </button>
-          <button onClick={() => downloadPdf(buildRows())} disabled={loading || generating} className="inline-flex items-center gap-2 bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 text-sm font-semibold px-4 py-2 rounded-lg">
+          <button onClick={() => downloadPdf(buildRows())} disabled={loading || generating} className="inline-flex items-center gap-2 bg-white border border-white/12 hover:bg-forest-secondary/60 text-ivory text-sm font-semibold px-4 py-2 rounded-lg">
             <Download className="w-4 h-4" /> {generating ? "Building…" : "Download PDF"}
           </button>
         </div>
-        <p className="text-xs text-gray-400 mt-3 flex items-center gap-1"><FileText className="w-3 h-3" /> Excel-compatible — open the CSV in Excel/Sheets directly.</p>
+        <p className="text-xs text-ivory-dim mt-3 flex items-center gap-1"><FileText className="w-3 h-3" /> Excel-compatible — open the CSV in Excel/Sheets directly.</p>
       </div>
     </div>
   );

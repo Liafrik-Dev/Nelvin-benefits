@@ -32,7 +32,7 @@ export default function EmployeeNav() {
   const location = useLocation();
 
   return (
-    <div className="bg-white border-b border-gray-100 shadow-sm sticky top-[72px] z-30">
+    <div className="bg-white border-b border-white/10 shadow-sm sticky top-[72px] z-30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
         <div className="flex items-center gap-1 overflow-x-auto py-2.5 scrollbar-hide flex-1">
           {EMPLOYEE_NAV_ITEMS.map((item) => {
@@ -44,8 +44,8 @@ export default function EmployeeNav() {
                 to={item.path}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors ${
                   isActive
-                    ? "bg-[#082F24] text-[#B8FF00]"
-                    : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                    ? "bg-[#062B23] text-[#D6B56D]"
+                    : "text-ivory-muted hover:bg-white/5 hover:text-ivory"
                 }`}
               >
                 <Icon className="w-3.5 h-3.5" />
@@ -54,7 +54,7 @@ export default function EmployeeNav() {
             );
           })}
         </div>
-        <CurrencySelector className="shrink-0 bg-[#082F24] border-none" />
+        <CurrencySelector className="shrink-0 bg-[#062B23] border-none" />
       </div>
     </div>
   );

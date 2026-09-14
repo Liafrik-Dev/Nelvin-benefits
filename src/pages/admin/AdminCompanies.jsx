@@ -9,9 +9,9 @@ import AdminEditModal from "@/components/admin/AdminEditModal";
 import StatusBadge from "@/components/admin/StatusBadge";
 import { Check, X, Ban, Trash2, Edit2, Eye, Plus, RotateCcw } from "lucide-react";
 
-function RowIconBtn({ title, onClick, Icon, color = "text-gray-600 hover:text-gray-900" }) {
+function RowIconBtn({ title, onClick, Icon, color = "text-ivory-muted hover:text-ivory" }) {
   return (
-    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-gray-100 ${color}`}>
+    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-white/5 ${color}`}>
       <Icon className="w-4 h-4" />
     </button>
   );
@@ -126,32 +126,32 @@ export default function AdminCompanies() {
         <div className="flex items-center gap-2">
           {c.logo_url ? <img src={c.logo_url} alt="" className="w-8 h-8 rounded-lg object-cover" /> : <div className="w-8 h-8 rounded-lg bg-violet-100 text-violet-700 flex items-center justify-center text-xs font-bold">{(c.name || "?").slice(0,1)}</div>}
           <div className="min-w-0">
-            <p className="text-sm font-medium text-gray-900 truncate">{c.name}</p>
-            <p className="text-xs text-gray-400 truncate">{c.industry || "—"}</p>
+            <p className="text-sm font-medium text-ivory truncate">{c.name}</p>
+            <p className="text-xs text-ivory-dim truncate">{c.industry || "—"}</p>
           </div>
         </div>
       ) },
     { key: "billing_contact_email", label: "Billing contact",
-      render: (c) => <div className="text-xs"><div className="text-gray-700 font-medium">{c.billing_contact_name || "—"}</div><div className="text-gray-400">{c.billing_contact_email || "—"}</div></div> },
+      render: (c) => <div className="text-xs"><div className="text-ivory font-medium">{c.billing_contact_name || "—"}</div><div className="text-ivory-dim">{c.billing_contact_email || "—"}</div></div> },
     { key: "country", label: "Country", sortable: true,
-      render: (c) => <span className="text-xs text-gray-600">{c.country || "—"}</span> },
+      render: (c) => <span className="text-xs text-ivory-muted">{c.country || "—"}</span> },
     { key: "membership_tier", label: "Plan",
       render: (c) => <StatusBadge status={(planName(c.membership_plan_id) || c.membership_tier || "—").toLowerCase()} label={planName(c.membership_plan_id) || c.membership_tier || "—"} /> },
     { key: "seats_used", label: "Seats", sortable: true,
       render: (c) => (
-        <span className="text-xs text-gray-700 font-medium">
+        <span className="text-xs text-ivory font-medium">
           {c.seats_used || 0}/{c.seats_purchased || 0}
         </span>
       ) },
     { key: "activation_type", label: "Flow", sortable: true, render: (c) => (
-        <span className="text-xs text-gray-600">
+        <span className="text-xs text-ivory-muted">
           {c.activation_type === "custom_pricing" ? "Custom (10+)" : c.activation_type === "self_serve" ? "Self-serve" : "—"}
         </span>
     ) },
     { key: "dashboard_access", label: "Access", sortable: true, render: (c) => (
         c.dashboard_access
-          ? <span className="text-[10px] font-bold uppercase tracking-wide bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full">Active</span>
-          : <span className="text-[10px] font-bold uppercase tracking-wide bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">Locked</span>
+          ? <span className="text-[10px] font-bold uppercase tracking-wide bg-[#103F35]/60 text-[#D6B56D] px-2 py-0.5 rounded-full">Active</span>
+          : <span className="text-[10px] font-bold uppercase tracking-wide bg-white/5 text-ivory-muted px-2 py-0.5 rounded-full">Locked</span>
     ) },
     { key: "status", label: "Status", sortable: true, render: (c) => (
         <div className="flex flex-wrap items-center gap-1.5">
@@ -162,7 +162,7 @@ export default function AdminCompanies() {
         </div>
     ) },
     { key: "created_date", label: "Created", sortable: true,
-      render: (c) => <span className="text-xs text-gray-500">{formatDate(c.created_date)}</span> },
+      render: (c) => <span className="text-xs text-ivory-muted">{formatDate(c.created_date)}</span> },
   ];
 
   const editFields = [
@@ -200,12 +200,12 @@ export default function AdminCompanies() {
     <div>
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
         <div>
-          <h1 className="text-2xl font-bold font-heading text-gray-900">Companies</h1>
-          <p className="text-sm text-gray-500 mt-1">{filtered.length} companies · Corporate accounts with seats + billing.</p>
+          <h1 className="text-2xl font-bold font-heading text-ivory">Companies</h1>
+          <p className="text-sm text-ivory-muted mt-1">{filtered.length} companies · Corporate accounts with seats + billing.</p>
         </div>
         <button
           onClick={() => setEditing({})}
-          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg"
+          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-[#D6B56D] hover:bg-[#E5C77A] text-white rounded-lg"
         >
           <Plus className="w-4 h-4" /> New company
         </button>
@@ -225,7 +225,7 @@ export default function AdminCompanies() {
             <RowIconBtn title="View employees" Icon={Eye} onClick={() => setViewing(c)} />
             <RowIconBtn title="Edit" Icon={Edit2} onClick={() => setEditing(c)} />
             {!c.dashboard_access && c.status === "pending" && (
-              <RowIconBtn title={c.activation_type === "custom_pricing" ? "Approve application" : "Confirm payment"} Icon={Check} color="text-emerald-600 hover:text-emerald-700" onClick={() => activateCompany(c)} />
+              <RowIconBtn title={c.activation_type === "custom_pricing" ? "Approve application" : "Confirm payment"} Icon={Check} color="text-[#D6B56D] hover:text-[#D6B56D]" onClick={() => activateCompany(c)} />
             )}
             {!c.dashboard_access && c.status === "pending" && (
               <RowIconBtn title="Reject" Icon={X} color="text-rose-600 hover:text-rose-700" onClick={() => rejectCompany(c)} />
@@ -234,7 +234,7 @@ export default function AdminCompanies() {
               <RowIconBtn title="Suspend" Icon={Ban} color="text-amber-600 hover:text-amber-700" onClick={() => suspendCompany(c)} />
             )}
             {c.status === "suspended" && (
-              <RowIconBtn title="Reactivate" Icon={RotateCcw} color="text-emerald-600 hover:text-emerald-700" onClick={() => reactivateCompany(c)} />
+              <RowIconBtn title="Reactivate" Icon={RotateCcw} color="text-[#D6B56D] hover:text-[#D6B56D]" onClick={() => reactivateCompany(c)} />
             )}
             <RowIconBtn title="Delete" Icon={Trash2} color="text-rose-600 hover:text-rose-700" onClick={() => removeCompany(c.id)} />
           </div>
@@ -278,28 +278,28 @@ export default function AdminCompanies() {
           <div className="absolute inset-0 bg-black/40" onClick={() => setViewing(null)} />
           <div className="relative w-full max-w-md bg-white h-full overflow-y-auto p-6">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="font-bold text-gray-900 text-lg">{viewing.name}</h2>
-              <button onClick={() => setViewing(null)} className="text-gray-400"><X className="w-5 h-5" /></button>
+              <h2 className="font-bold text-ivory text-lg">{viewing.name}</h2>
+              <button onClick={() => setViewing(null)} className="text-ivory-dim"><X className="w-5 h-5" /></button>
             </div>
             <div className="space-y-3 text-sm">
-              <div><span className="text-xs text-gray-400">Industry</span><p>{viewing.industry || "—"}</p></div>
-              <div><span className="text-xs text-gray-400">Billing Contact</span><p>{viewing.billing_contact_name || "—"}</p><p className="text-xs text-gray-500">{viewing.billing_contact_email}</p></div>
+              <div><span className="text-xs text-ivory-dim">Industry</span><p>{viewing.industry || "—"}</p></div>
+              <div><span className="text-xs text-ivory-dim">Billing Contact</span><p>{viewing.billing_contact_name || "—"}</p><p className="text-xs text-ivory-muted">{viewing.billing_contact_email}</p></div>
               <div className="grid grid-cols-2 gap-3">
-                <div><span className="text-xs text-gray-400">Country</span><p>{viewing.country || "—"}</p></div>
-                <div><span className="text-xs text-gray-400">Plan</span><p>{planName(viewing.membership_plan_id) || viewing.membership_tier || "—"}</p></div>
-                <div><span className="text-xs text-gray-400">Seats Used</span><p>{viewing.seats_used || 0}/{viewing.seats_purchased || 0}</p></div>
-                <div><span className="text-xs text-gray-400">Status</span><p><StatusBadge status={viewing.status} /></p></div>
+                <div><span className="text-xs text-ivory-dim">Country</span><p>{viewing.country || "—"}</p></div>
+                <div><span className="text-xs text-ivory-dim">Plan</span><p>{planName(viewing.membership_plan_id) || viewing.membership_tier || "—"}</p></div>
+                <div><span className="text-xs text-ivory-dim">Seats Used</span><p>{viewing.seats_used || 0}/{viewing.seats_purchased || 0}</p></div>
+                <div><span className="text-xs text-ivory-dim">Status</span><p><StatusBadge status={viewing.status} /></p></div>
               </div>
               <div>
-                <span className="text-xs text-gray-400">Employees ({employeesOf(viewing.id).length})</span>
+                <span className="text-xs text-ivory-dim">Employees ({employeesOf(viewing.id).length})</span>
                 {employeesOf(viewing.id).length === 0 ? (
-                  <p className="text-gray-400 text-xs mt-2">No employees linked.</p>
+                  <p className="text-ivory-dim text-xs mt-2">No employees linked.</p>
                 ) : (
-                  <ul className="divide-y divide-gray-100 mt-2">
+                  <ul className="divide-y divide-white/10 mt-2">
                     {employeesOf(viewing.id).map((e) => (
                       <li key={e.id} className="py-2">
-                        <p className="font-medium text-gray-900 text-sm">{e.full_name || "—"}</p>
-                        <p className="text-xs text-gray-400">{e.email}</p>
+                        <p className="font-medium text-ivory text-sm">{e.full_name || "—"}</p>
+                        <p className="text-xs text-ivory-dim">{e.email}</p>
                       </li>
                     ))}
                   </ul>

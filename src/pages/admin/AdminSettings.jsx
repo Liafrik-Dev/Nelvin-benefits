@@ -44,8 +44,8 @@ export default function AdminSettings() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold font-heading text-gray-900">Settings</h1>
-        <p className="text-sm text-gray-500 mt-1">Website identity, SMTP, languages, currencies, social, legal, SEO.</p>
+        <h1 className="text-2xl font-bold font-heading text-ivory">Settings</h1>
+        <p className="text-sm text-ivory-muted mt-1">Website identity, SMTP, languages, currencies, social, legal, SEO.</p>
       </div>
 
       <div className="space-y-6">
@@ -94,7 +94,7 @@ export default function AdminSettings() {
           <Field label="SEO Description"><Input value={form.seo_description} onChange={(e) => set("seo_description", e.target.value)} /></Field>
           <div className="flex items-center gap-2 pt-2">
             <input id="maintenance" type="checkbox" checked={form.maintenance_mode} onChange={(e) => set("maintenance_mode", e.target.checked)} />
-            <label htmlFor="maintenance" className="text-sm text-gray-700">Maintenance Mode (disable public app for end users)</label>
+            <label htmlFor="maintenance" className="text-sm text-ivory">Maintenance Mode (disable public app for end users)</label>
           </div>
         </Section>
 
@@ -102,12 +102,12 @@ export default function AdminSettings() {
           <button
             onClick={save}
             disabled={saving}
-            className="bg-emerald-700 hover:bg-emerald-800 text-white rounded-full px-5 py-2.5 text-sm font-semibold flex items-center gap-2 disabled:opacity-50"
+            className="bg-[#D6B56D] hover:bg-[#E5C77A] text-white rounded-full px-5 py-2.5 text-sm font-semibold flex items-center gap-2 disabled:opacity-50"
           >
             {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
             {saved ? "Saved!" : "Save settings"}
           </button>
-          <span className="text-xs text-gray-400">Settings persistence ships with the Settings entity in Phase 2/3. Values are saved to this browser only for now.</span>
+          <span className="text-xs text-ivory-dim">Settings persistence ships with the Settings entity in Phase 2/3. Values are saved to this browser only for now.</span>
           <StatusBadge status="pending" label="Phase 2/3" />
         </div>
       </div>
@@ -117,8 +117,8 @@ export default function AdminSettings() {
 
 function Section({ title, children }) {
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 p-5 sm:p-6">
-      <h2 className="font-semibold text-gray-900 mb-3">{title}</h2>
+    <div className="bg-white rounded-lg border border-white/10 p-5 sm:p-6">
+      <h2 className="font-semibold text-ivory mb-3">{title}</h2>
       <div className="space-y-3">{children}</div>
     </div>
   );
@@ -127,9 +127,9 @@ function Section({ title, children }) {
 function Field({ label, hint, children }) {
   return (
     <div>
-      <label className="text-sm font-medium text-gray-700 block mb-1.5">{label}</label>
+      <label className="text-sm font-medium text-ivory block mb-1.5">{label}</label>
       {children}
-      {hint && <p className="text-xs text-gray-400 mt-1">{hint}</p>}
+      {hint && <p className="text-xs text-ivory-dim mt-1">{hint}</p>}
     </div>
   );
 }
@@ -138,7 +138,7 @@ function Input({ type = "text", ...props }) {
   return (
     <input
       type={type}
-      className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-emerald-100"
+      className="w-full border border-white/12 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#D6B56D]/20"
       {...props}
     />
   );

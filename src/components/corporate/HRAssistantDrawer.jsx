@@ -23,11 +23,11 @@ export default function HRAssistantDrawer({ isOpen, onClose }) {
           {/* Header */}
           <div className="flex items-center justify-between border-b border-slate-100 pb-4">
             <div className="flex items-center gap-2">
-              <div className="w-9 h-9 rounded-xl bg-[#082F24] text-[#B8FF00] flex items-center justify-center">
+              <div className="w-9 h-9 rounded-xl bg-[#062B23] text-[#D6B56D] flex items-center justify-center">
                 <Bot className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="font-bold text-[#082F24]">Smart HR Copilot</h3>
+                <h3 className="font-bold text-[#F5F1E8]">Smart HR Copilot</h3>
                 <p className="text-xs text-slate-500">Automations & Impact Analytics</p>
               </div>
             </div>
@@ -40,15 +40,15 @@ export default function HRAssistantDrawer({ isOpen, onClose }) {
           </div>
 
           {/* AI Insights & Budget Suggestions */}
-          <div className="p-4 bg-[#F7F3ED] rounded-xl border border-[#082F24]/10 space-y-3">
-            <div className="flex items-center gap-1.5 text-xs font-bold text-[#082F24]">
-              <Sparkles className="w-4 h-4 text-[#00BD00]" />
+          <div className="p-4 bg-forest-secondary rounded-xl border border-[#062B23]/10 space-y-3">
+            <div className="flex items-center gap-1.5 text-xs font-bold text-[#F5F1E8]">
+              <Sparkles className="w-4 h-4 text-[#E5C77A]" />
               Smart Budget Recommendation
             </div>
             <p className="text-xs text-slate-600 leading-relaxed">
               Based on employee usage data in <strong>Wellness & Gym</strong>, reallocating 15% of unused Food budget will increase employee benefit adoption by <strong>+24%</strong>.
             </p>
-            <button className="text-xs font-bold text-[#082F24] underline hover:text-[#00BD00]">
+            <button className="text-xs font-bold text-[#F5F1E8] underline hover:text-[#E5C77A]">
               Apply Budget Optimization
             </button>
           </div>
@@ -61,7 +61,7 @@ export default function HRAssistantDrawer({ isOpen, onClose }) {
 
             <div className="flex items-center justify-between p-3 bg-slate-50 rounded-lg border border-slate-200/80">
               <div className="space-y-0.5">
-                <span className="text-xs font-semibold text-[#082F24] block">
+                <span className="text-xs font-semibold text-[#F5F1E8] block">
                   Auto-assign Welcome Wallet
                 </span>
                 <span className="text-[11px] text-slate-500 block">
@@ -72,7 +72,7 @@ export default function HRAssistantDrawer({ isOpen, onClose }) {
                 type="checkbox"
                 checked={autoAllocate}
                 onChange={(e) => setAutoAllocate(e.target.checked)}
-                className="w-4 h-4 accent-[#082F24] rounded"
+                className="w-4 h-4 accent-[#062B23] rounded"
               />
             </div>
           </div>
@@ -89,7 +89,7 @@ export default function HRAssistantDrawer({ isOpen, onClose }) {
                 onClick={() => setReportFormat("pdf")}
                 className={`p-3 rounded-lg border text-xs font-bold flex items-center justify-center gap-2 transition-all ${
                   reportFormat === "pdf"
-                    ? "border-[#082F24] bg-[#082F24] text-white"
+                    ? "border-[#062B23] bg-[#062B23] text-white"
                     : "border-slate-200 text-slate-600 hover:bg-slate-50"
                 }`}
               >
@@ -100,7 +100,7 @@ export default function HRAssistantDrawer({ isOpen, onClose }) {
                 onClick={() => setReportFormat("csv")}
                 className={`p-3 rounded-lg border text-xs font-bold flex items-center justify-center gap-2 transition-all ${
                   reportFormat === "csv"
-                    ? "border-[#082F24] bg-[#082F24] text-white"
+                    ? "border-[#062B23] bg-[#062B23] text-white"
                     : "border-slate-200 text-slate-600 hover:bg-slate-50"
                 }`}
               >
@@ -115,7 +115,7 @@ export default function HRAssistantDrawer({ isOpen, onClose }) {
           <button
             onClick={handleExport}
             disabled={downloading}
-            className="w-full bg-[#082F24] hover:bg-[#082F24]/90 text-[#B8FF00] font-bold py-3 rounded-xl transition-all text-sm flex items-center justify-center gap-2"
+            className="w-full bg-[#062B23] hover:bg-[#062B23]/90 text-[#D6B56D] font-bold py-3 rounded-xl transition-all text-sm flex items-center justify-center gap-2"
           >
             {downloading ? (
               <span>Generating Report...</span>

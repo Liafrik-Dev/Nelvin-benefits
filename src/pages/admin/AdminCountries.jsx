@@ -7,9 +7,9 @@ import AdminEditModal from "@/components/admin/AdminEditModal";
 import StatusBadge from "@/components/admin/StatusBadge";
 import { Edit2, Trash2, Plus, Star, Power } from "lucide-react";
 
-function RowIconBtn({ title, onClick, Icon, color = "text-gray-600 hover:text-gray-900" }) {
+function RowIconBtn({ title, onClick, Icon, color = "text-ivory-muted hover:text-ivory" }) {
   return (
-    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-gray-100 ${color}`}>
+    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-white/5 ${color}`}>
       <Icon className="w-4 h-4" />
     </button>
   );
@@ -73,14 +73,14 @@ export default function AdminCountries() {
         <div className="flex items-center gap-2">
           <span className="text-xl w-8 h-8 flex items-center justify-center">{c.flag || "🏳️"}</span>
           <div>
-            <p className="text-sm font-medium text-gray-900 truncate flex items-center gap-1">{c.name}{c.is_featured && <Star className="w-3 h-3 text-amber-500 fill-amber-400" />}</p>
-            <p className="text-xs text-gray-400 truncate">{c.country_code || "—"}</p>
+            <p className="text-sm font-medium text-ivory truncate flex items-center gap-1">{c.name}{c.is_featured && <Star className="w-3 h-3 text-amber-500 fill-amber-400" />}</p>
+            <p className="text-xs text-ivory-dim truncate">{c.country_code || "—"}</p>
           </div>
         </div>
       ) },
     { key: "currency", label: "Currency", sortable: true, render: (c) => <span className="text-xs">{c.currency || "—"}</span> },
     { key: "is_african", label: "Region", sortable: true, render: (c) => <StatusBadge status={c.is_african ? "active" : "individual"} label={c.is_african ? "Africa" : "World"} /> },
-    { key: "offerCount", label: "Offers", render: (c) => <span className="text-xs font-medium text-gray-700">{offerCount(c)}</span> },
+    { key: "offerCount", label: "Offers", render: (c) => <span className="text-xs font-medium text-ivory">{offerCount(c)}</span> },
     { key: "is_active", label: "Status", sortable: true, render: (c) => <StatusBadge status={c.is_active ? "active" : "inactive"} label={c.is_active ? "Active" : "Inactive"} /> },
   ];
 
@@ -99,12 +99,12 @@ export default function AdminCountries() {
     <div>
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
         <div>
-          <h1 className="text-2xl font-bold font-heading text-gray-900">Countries</h1>
-          <p className="text-sm text-gray-500 mt-1">{filtered.length} countries · All 54 African countries plus major world countries.</p>
+          <h1 className="text-2xl font-bold font-heading text-ivory">Countries</h1>
+          <p className="text-sm text-ivory-muted mt-1">{filtered.length} countries · All 54 African countries plus major world countries.</p>
         </div>
         <button
           onClick={() => setEditing({})}
-          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg"
+          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-[#D6B56D] hover:bg-[#E5C77A] text-white rounded-lg"
         >
           <Plus className="w-4 h-4" /> New country
         </button>
@@ -120,8 +120,8 @@ export default function AdminCountries() {
         exportName={`countries-${Date.now()}.csv`}
         renderActions={(c) => (
           <div className="flex items-center justify-end gap-1">
-            <RowIconBtn title={c.is_active ? "Disable" : "Enable"} Icon={Power} color={c.is_active ? "text-emerald-600" : "text-gray-400"} onClick={() => toggleActive(c)} />
-            <RowIconBtn title={c.is_featured ? "Unfeature" : "Feature"} Icon={Star} color={c.is_featured ? "text-amber-500" : "text-gray-400"} onClick={() => toggleFeatured(c)} />
+            <RowIconBtn title={c.is_active ? "Disable" : "Enable"} Icon={Power} color={c.is_active ? "text-[#D6B56D]" : "text-ivory-dim"} onClick={() => toggleActive(c)} />
+            <RowIconBtn title={c.is_featured ? "Unfeature" : "Feature"} Icon={Star} color={c.is_featured ? "text-amber-500" : "text-ivory-dim"} onClick={() => toggleFeatured(c)} />
             <RowIconBtn title="Edit" Icon={Edit2} onClick={() => setEditing(c)} />
             <RowIconBtn title="Delete" Icon={Trash2} color="text-rose-600 hover:text-rose-700" onClick={() => remove(c)} />
           </div>

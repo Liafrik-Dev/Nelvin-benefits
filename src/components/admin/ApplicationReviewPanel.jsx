@@ -9,10 +9,10 @@ function Detail({ label, value, icon }) {
   if (!value) return null;
   return (
     <div className="flex items-start gap-2.5 py-2 border-b border-gray-50">
-      {icon && <span className="text-gray-400 mt-1">{icon}</span>}
+      {icon && <span className="text-ivory-dim mt-1">{icon}</span>}
       <div className="flex-1">
-        <p className="text-[11px] uppercase tracking-wider text-gray-400">{label}</p>
-        <p className="text-sm text-gray-900 break-words">{value}</p>
+        <p className="text-[11px] uppercase tracking-wider text-ivory-dim">{label}</p>
+        <p className="text-sm text-ivory break-words">{value}</p>
       </div>
     </div>
   );
@@ -22,8 +22,8 @@ function MediaRow({ label, src }) {
   if (!src) return null;
   return (
     <div className="mb-2">
-      <p className="text-[11px] uppercase tracking-wider text-gray-400 mb-1">{label}</p>
-      <a href={src} target="_blank" rel="noopener noreferrer" className="block w-full h-28 rounded-lg overflow-hidden border border-gray-100 bg-gray-50">
+      <p className="text-[11px] uppercase tracking-wider text-ivory-dim mb-1">{label}</p>
+      <a href={src} target="_blank" rel="noopener noreferrer" className="block w-full h-28 rounded-lg overflow-hidden border border-white/10 bg-forest-secondary/60">
         <img src={src} alt={label} className="w-full h-full object-cover" />
       </a>
     </div>
@@ -56,13 +56,13 @@ export default function ApplicationReviewPanel({
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="fixed right-0 top-0 bottom-0 w-full sm:w-[440px] bg-white shadow-xl z-50 overflow-y-auto flex flex-col"
           >
-            <div className="sticky top-0 bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between z-10">
+            <div className="sticky top-0 bg-white border-b border-white/10 px-6 py-4 flex items-center justify-between z-10">
               <div>
-                <p className="text-[11px] uppercase tracking-wider text-gray-400">{app.status}</p>
-                <h2 className="font-bold text-gray-900 text-lg">{app.business_name}</h2>
+                <p className="text-[11px] uppercase tracking-wider text-ivory-dim">{app.status}</p>
+                <h2 className="font-bold text-ivory text-lg">{app.business_name}</h2>
               </div>
-              <button onClick={onClose} className="w-8 h-8 rounded-full hover:bg-gray-100 flex items-center justify-center">
-                <X className="w-4 h-4 text-gray-500" />
+              <button onClick={onClose} className="w-8 h-8 rounded-full hover:bg-white/5 flex items-center justify-center">
+                <X className="w-4 h-4 text-ivory-muted" />
               </button>
             </div>
 
@@ -81,10 +81,10 @@ export default function ApplicationReviewPanel({
 
               {app.business_image_urls?.length > 0 && (
                 <div className="mt-4">
-                  <p className="text-[11px] uppercase tracking-wider text-gray-400 mb-2">Business images</p>
+                  <p className="text-[11px] uppercase tracking-wider text-ivory-dim mb-2">Business images</p>
                   <div className="grid grid-cols-2 gap-2">
                     {app.business_image_urls.map((url, i) => (
-                      <a key={i} href={url} target="_blank" rel="noopener noreferrer" className="block h-24 rounded-lg overflow-hidden border border-gray-100 bg-gray-50">
+                      <a key={i} href={url} target="_blank" rel="noopener noreferrer" className="block h-24 rounded-lg overflow-hidden border border-white/10 bg-forest-secondary/60">
                         <img src={url} alt="business" className="w-full h-full object-cover" />
                       </a>
                     ))}
@@ -100,11 +100,11 @@ export default function ApplicationReviewPanel({
               </div>
 
               {publishedOffer && (
-                <div className="mt-4 p-3 rounded-xl bg-emerald-50 border border-emerald-100">
-                  <p className="text-xs text-emerald-700 font-semibold mb-1 flex items-center gap-1">
+                <div className="mt-4 p-3 rounded-xl bg-[#0A3A2F] border border-white/10">
+                  <p className="text-xs text-[#D6B56D] font-semibold mb-1 flex items-center gap-1">
                     <BadgeCheck className="w-3.5 h-3.5" /> Published as live offer
                   </p>
-                  <Link to={`/offer/${publishedOffer.id}`} target="_blank" className="text-xs text-emerald-700 underline flex items-center gap-1">
+                  <Link to={`/offer/${publishedOffer.id}`} target="_blank" className="text-xs text-[#D6B56D] underline flex items-center gap-1">
                     View live offer <ExternalLink className="w-3 h-3" />
                   </Link>
                 </div>
@@ -118,14 +118,14 @@ export default function ApplicationReviewPanel({
               )}
             </div>
 
-            <div className="sticky bottom-0 bg-white border-t border-gray-100 px-6 py-4 space-y-2.5">
+            <div className="sticky bottom-0 bg-white border-t border-white/10 px-6 py-4 space-y-2.5">
               {!rejectMode ? (
                 <>
                   {app.status !== "approved" ? (
                     <button
                       disabled={busy}
                       onClick={async () => { setBusy(true); await onApprovePublish(app); setBusy(false); }}
-                      className="w-full bg-emerald-700 text-white py-3 rounded-full font-medium text-sm hover:bg-emerald-800 disabled:opacity-50 flex items-center justify-center gap-2"
+                      className="w-full bg-[#D6B56D] text-white py-3 rounded-full font-medium text-sm hover:bg-[#E5C77A] disabled:opacity-50 flex items-center justify-center gap-2"
                     >
                       <Check className="w-4 h-4" /> Approve & Publish
                     </button>
@@ -153,11 +153,11 @@ export default function ApplicationReviewPanel({
                     value={reason}
                     onChange={(e) => setReason(e.target.value)}
                     placeholder="Reason for rejection (optional)"
-                    className="w-full rounded-xl border border-gray-200 p-3 text-sm outline-none focus:border-gray-400"
+                    className="w-full rounded-xl border border-white/12 p-3 text-sm outline-none focus:border-gray-400"
                     rows={3}
                   />
                   <div className="flex gap-2">
-                    <button onClick={() => setRejectMode(false)} className="flex-1 py-3 rounded-full font-medium text-sm bg-gray-100 text-gray-600 hover:bg-gray-200">Cancel</button>
+                    <button onClick={() => setRejectMode(false)} className="flex-1 py-3 rounded-full font-medium text-sm bg-white/5 text-ivory-muted hover:bg-white/10">Cancel</button>
                     <button
                       disabled={busy}
                       onClick={async () => { setBusy(true); await onReject(app, reason); setRejectMode(false); setReason(""); setBusy(false); }}

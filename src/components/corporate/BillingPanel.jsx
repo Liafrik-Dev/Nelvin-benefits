@@ -100,38 +100,38 @@ export default function BillingPanel({ company, onChanged }) {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold font-heading text-gray-900">Billing</h1>
-        <p className="text-sm text-gray-500 mt-1">{isLead ? "Enterprise plan — invoiced seats, single renewal." : "Self-serve plan — billed monthly per seat."}</p>
+        <h1 className="text-2xl font-bold font-heading text-ivory">Billing</h1>
+        <p className="text-sm text-ivory-muted mt-1">{isLead ? "Enterprise plan — invoiced seats, single renewal." : "Self-serve plan — billed monthly per seat."}</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-2xl border border-gray-100 p-6">
-          <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2"><Receipt className="w-4 h-4 text-emerald-600" /> Current Plan</h3>
-          <p className="text-2xl font-bold text-emerald-700">{company.membership_tier || "—"}</p>
-          <p className="text-sm text-gray-500 mt-1">{isLead ? "Custom enterprise plan, manually approved after a sales call." : "Self-serve tier, billed per seat per month."}</p>
+        <div className="bg-white rounded-lg border border-white/10 p-6">
+          <h3 className="font-semibold text-ivory mb-3 flex items-center gap-2"><Receipt className="w-4 h-4 text-[#D6B56D]" /> Current Plan</h3>
+          <p className="text-2xl font-bold text-[#D6B56D]">{company.membership_tier || "—"}</p>
+          <p className="text-sm text-ivory-muted mt-1">{isLead ? "Custom enterprise plan, manually approved after a sales call." : "Self-serve tier, billed per seat per month."}</p>
 
           <div className="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
-            <div className="bg-gray-50 rounded-lg p-3"><p className="text-xs text-gray-400 uppercase tracking-wider">Seats Purchased</p><p className="font-bold text-gray-900">{seatsTotal}</p></div>
-            <div className="bg-gray-50 rounded-lg p-3"><p className="text-xs text-gray-400 uppercase tracking-wider">Seats Used</p><p className="font-bold text-gray-900">{seatsUsed}</p></div>
-            <div className="bg-gray-50 rounded-lg p-3"><p className="text-xs text-gray-400 uppercase tracking-wider">Remaining</p><p className="font-bold text-gray-900">{seatsRemaining}</p></div>
-            <div className="bg-gray-50 rounded-lg p-3">
-              <p className="text-xs text-gray-400 uppercase tracking-wider flex items-center gap-1"><Calendar className="w-3 h-3" /> Renewal</p>
-              <p className="font-bold text-gray-900 text-xs">{company.next_renewal_date ? new Date(company.next_renewal_date).toLocaleDateString() : (company.billing_end_date || "—")}</p>
+            <div className="bg-forest-secondary/60 rounded-lg p-3"><p className="text-xs text-ivory-dim uppercase tracking-wider">Seats Purchased</p><p className="font-bold text-ivory">{seatsTotal}</p></div>
+            <div className="bg-forest-secondary/60 rounded-lg p-3"><p className="text-xs text-ivory-dim uppercase tracking-wider">Seats Used</p><p className="font-bold text-ivory">{seatsUsed}</p></div>
+            <div className="bg-forest-secondary/60 rounded-lg p-3"><p className="text-xs text-ivory-dim uppercase tracking-wider">Remaining</p><p className="font-bold text-ivory">{seatsRemaining}</p></div>
+            <div className="bg-forest-secondary/60 rounded-lg p-3">
+              <p className="text-xs text-ivory-dim uppercase tracking-wider flex items-center gap-1"><Calendar className="w-3 h-3" /> Renewal</p>
+              <p className="font-bold text-ivory text-xs">{company.next_renewal_date ? new Date(company.next_renewal_date).toLocaleDateString() : (company.billing_end_date || "—")}</p>
             </div>
           </div>
 
           {!isLead && (
-            <div className="mt-6 bg-emerald-50 rounded-lg p-4">
-              <p className="text-xs text-emerald-700 uppercase tracking-wider font-semibold">Add seats</p>
+            <div className="mt-6 bg-[#0A3A2F] rounded-lg p-4">
+              <p className="text-xs text-[#D6B56D] uppercase tracking-wider font-semibold">Add seats</p>
               <div className="flex items-center gap-2 mt-2">
-                <button onClick={() => setSeats((s) => Math.max(0, s - 1))} className="p-2 bg-white rounded-lg border border-emerald-200 text-emerald-700"><Minus className="w-3.5 h-3.5" /></button>
-                <input type="number" min="0" value={seats} onChange={(e) => setSeats(Math.max(0, Number(e.target.value)))} className="w-16 text-center px-2 py-1.5 text-sm border border-emerald-200 rounded-lg" />
-                <button onClick={() => setSeats((s) => s + 1)} className="p-2 bg-white rounded-lg border border-emerald-200 text-emerald-700"><Plus className="w-3.5 h-3.5" /></button>
-                <button onClick={addSeats} disabled={addingSeats || seats < 1} className="ml-2 inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold px-4 py-2 rounded-lg disabled:opacity-50">
+                <button onClick={() => setSeats((s) => Math.max(0, s - 1))} className="p-2 bg-white rounded-lg border border-white/15 text-[#D6B56D]"><Minus className="w-3.5 h-3.5" /></button>
+                <input type="number" min="0" value={seats} onChange={(e) => setSeats(Math.max(0, Number(e.target.value)))} className="w-16 text-center px-2 py-1.5 text-sm border border-white/15 rounded-lg" />
+                <button onClick={() => setSeats((s) => s + 1)} className="p-2 bg-white rounded-lg border border-white/15 text-[#D6B56D]"><Plus className="w-3.5 h-3.5" /></button>
+                <button onClick={addSeats} disabled={addingSeats || seats < 1} className="ml-2 inline-flex items-center gap-1.5 bg-[#D6B56D] hover:bg-[#E5C77A] text-[#062B23] text-sm font-semibold px-4 py-2 rounded-lg disabled:opacity-50">
                   <ArrowUpCircle className="w-4 h-4" /> Add {seats} seat{seats === 1 ? "" : "s"}
                 </button>
               </div>
-              <p className="text-xs text-emerald-700/70 mt-2">Checkout is recorded as a completed payment in v1 — gateway wiring is the next phase.</p>
+              <p className="text-xs text-ivory-muted mt-2">Checkout is recorded as a completed payment in v1 — gateway wiring is the next phase.</p>
             </div>
           )}
 
@@ -142,23 +142,23 @@ export default function BillingPanel({ company, onChanged }) {
           )}
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-100 p-6">
-          <h3 className="font-semibold text-gray-900 mb-3">Payments & Invoices</h3>
+        <div className="bg-white rounded-lg border border-white/10 p-6">
+          <h3 className="font-semibold text-ivory mb-3">Payments & Invoices</h3>
           {loading ? (
-            <div className="p-6 text-center text-sm text-gray-400">Loading…</div>
+            <div className="p-6 text-center text-sm text-ivory-dim">Loading…</div>
           ) : payments.length === 0 ? (
-            <div className="p-6 text-center text-sm text-gray-400">No payments recorded yet.</div>
+            <div className="p-6 text-center text-sm text-ivory-dim">No payments recorded yet.</div>
           ) : (
-            <div className="divide-y divide-gray-100 max-h-[320px] overflow-y-auto">
+            <div className="divide-y divide-white/10 max-h-[320px] overflow-y-auto">
               {payments.map((p) => (
                 <div key={p.id} className="py-3 flex items-center justify-between gap-3">
                   <div className="min-w-0">
-                    <p className="text-sm font-medium text-gray-900 truncate">{p.description || p.membership_plan_name || "Payment"}</p>
-                    <p className="text-xs text-gray-400">{new Date(p.created_date || p.billing_period_start).toLocaleDateString()} · {p.status}</p>
+                    <p className="text-sm font-medium text-ivory truncate">{p.description || p.membership_plan_name || "Payment"}</p>
+                    <p className="text-xs text-ivory-dim">{new Date(p.created_date || p.billing_period_start).toLocaleDateString()} · {p.status}</p>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="text-sm font-bold text-gray-900">${(p.amount || 0).toLocaleString()}</span>
-                    <button onClick={() => downloadInvoice(p)} className="text-xs text-emerald-700 hover:text-emerald-800 flex items-center gap-1"><Download className="w-3.5 h-3.5" /> Invoice</button>
+                    <span className="text-sm font-bold text-ivory">${(p.amount || 0).toLocaleString()}</span>
+                    <button onClick={() => downloadInvoice(p)} className="text-xs text-[#D6B56D] hover:text-[#E5C77A] flex items-center gap-1"><Download className="w-3.5 h-3.5" /> Invoice</button>
                   </div>
                 </div>
               ))}

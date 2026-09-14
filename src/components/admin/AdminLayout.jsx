@@ -59,14 +59,14 @@ export default function AdminLayout() {
 
   if (!adminAllowed(user)) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+      <div className="min-h-screen flex items-center justify-center bg-forest-secondary/60 px-4">
         <div className="text-center max-w-md">
-          <ShieldCheck className="w-10 h-10 text-gray-300 mx-auto mb-3" />
-          <h1 className="text-xl font-bold text-gray-900 mb-2">Admin access required</h1>
-          <p className="text-sm text-gray-500 mb-4">
+          <ShieldCheck className="w-10 h-10 text-ivory/60 mx-auto mb-3" />
+          <h1 className="text-xl font-bold text-ivory mb-2">Admin access required</h1>
+          <p className="text-sm text-ivory-muted mb-4">
             Your account does not have permission to view the admin backend.
           </p>
-          <Link to="/" className="inline-flex items-center gap-1 text-sm text-emerald-700 font-semibold">
+          <Link to="/" className="inline-flex items-center gap-1 text-sm text-[#D6B56D] font-semibold">
             <ChevronLeft className="w-4 h-4" /> Back to site
           </Link>
         </div>
@@ -75,21 +75,21 @@ export default function AdminLayout() {
   }
 
   return (
-    <div className="min-h-screen bg-[#faf8f5] flex">
+    <div className="min-h-screen bg-forest flex">
       {/* Sidebar */}
       <aside
-        className={`fixed lg:sticky top-0 z-40 lg:z-10 h-screen w-72 bg-white border-r border-gray-100 flex-shrink-0 transition-transform duration-200 ${
+        className={`fixed lg:sticky top-0 z-40 lg:z-10 h-screen w-72 bg-white border-r border-white/10 flex-shrink-0 transition-transform duration-200 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         }`}
       >
-        <div className="h-16 px-5 flex items-center justify-between border-b border-gray-100">
+        <div className="h-16 px-5 flex items-center justify-between border-b border-white/10">
           <Link to="/admin" className="flex items-center gap-2" onClick={() => setSidebarOpen(false)}>
             <div className="w-8 h-8 bg-amber-500 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">N</span>
             </div>
-            <span className="font-bold text-gray-900 font-heading">Nelvin Admin</span>
+            <span className="font-bold text-ivory font-heading">Nelvin Admin</span>
           </Link>
-          <button className="lg:hidden text-gray-400" onClick={() => setSidebarOpen(false)}>
+          <button className="lg:hidden text-ivory-dim" onClick={() => setSidebarOpen(false)}>
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -103,8 +103,8 @@ export default function AdminLayout() {
               className={({ isActive }) =>
                 `flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-sm mb-0.5 transition-colors ${
                   isActive
-                    ? "bg-emerald-50 text-emerald-700 font-semibold"
-                    : "text-gray-600 hover:bg-gray-50"
+                    ? "bg-[#0A3A2F] text-ivory font-semibold"
+                    : "text-ivory-muted hover:bg-forest-secondary/60"
                 }`
               }
             >
@@ -113,7 +113,7 @@ export default function AdminLayout() {
                 {item.label}
               </span>
               {item.phase && (
-                <span className="text-[10px] uppercase tracking-wide text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded">
+                <span className="text-[10px] uppercase tracking-wide text-ivory-dim bg-white/5 px-1.5 py-0.5 rounded">
                   {item.phase}
                 </span>
               )}
@@ -131,34 +131,34 @@ export default function AdminLayout() {
 
       {/* Main */}
       <div className="flex-1 min-w-0 flex flex-col">
-        <header className="sticky top-0 z-20 bg-white border-b border-gray-100 h-16 px-4 sm:px-6 flex items-center justify-between gap-3">
+        <header className="sticky top-0 z-20 bg-white border-b border-white/10 h-16 px-4 sm:px-6 flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <button
-              className="lg:hidden text-gray-600"
+              className="lg:hidden text-ivory-muted"
               onClick={() => setSidebarOpen(true)}
               aria-label="Open navigation"
             >
               <Menu className="w-6 h-6" />
             </button>
-            <Link to="/" className="text-sm text-gray-500 hover:text-gray-700 flex items-center gap-1">
+            <Link to="/" className="text-sm text-ivory-muted hover:text-ivory flex items-center gap-1">
               <ChevronLeft className="w-4 h-4" /> View site
             </Link>
           </div>
           <div className="flex items-center gap-3">
             <div className="text-right hidden sm:block">
-              <p className="text-sm font-semibold text-gray-900 leading-tight">
+              <p className="text-sm font-semibold text-ivory leading-tight">
                 {user?.full_name || "Admin"}
               </p>
-              <p className="text-xs text-gray-400 capitalize">{user?.role || ""}</p>
+              <p className="text-xs text-ivory-dim capitalize">{user?.role || ""}</p>
             </div>
             <Avatar
               user={user}
               className="w-9 h-9"
-              fallbackClassName="bg-emerald-700 text-white font-semibold text-sm"
+              fallbackClassName="bg-[#D6B56D] text-white font-semibold text-sm"
             />
             <button
               onClick={() => logout(true)}
-              className="text-xs text-gray-500 hover:text-rose-600 ml-1"
+              className="text-xs text-ivory-muted hover:text-rose-600 ml-1"
             >
               Sign out
             </button>

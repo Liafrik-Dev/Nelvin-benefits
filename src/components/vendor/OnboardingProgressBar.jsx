@@ -20,16 +20,16 @@ export default function OnboardingProgressBar({ step, complete }) {
           <span
             key={label}
             className={`text-xs font-medium tracking-wide transition-colors ${
-              i <= activeStage ? "text-gray-900" : "text-gray-400"
+              i <= activeStage ? "text-ivory" : "text-ivory-dim"
             }`}
           >
             {label}
           </span>
         ))}
       </div>
-      <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
+      <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
         <motion.div
-          className="h-full bg-gray-900 rounded-full"
+          className="h-full bg-[#062B23] rounded-full"
           initial={{ width: 0 }}
           animate={{ width: `${percent}%` }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}

@@ -43,42 +43,42 @@ export default function Notifications() {
   const list = notifications.length > 0 ? notifications : defaultNotifs;
 
   return (
-    <div className="min-h-screen bg-[#faf8f5]">
-      <div className="relative bg-[#082F24] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-forest">
+      <div className="relative bg-[#062B23] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
         <Navbar />
       </div>
       <EmployeeNav />
 
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
-        <div className="flex items-center justify-between border-b border-gray-100 pb-4">
+        <div className="flex items-center justify-between border-b border-white/10 pb-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold uppercase">
-              <Bell className="w-3.5 h-3.5 text-emerald-600" /> Activity Center
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0A3A2F] text-[#E5C77A] text-xs font-bold uppercase">
+              <Bell className="w-3.5 h-3.5 text-[#D6B56D]" /> Activity Center
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-2 font-heading">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-ivory mt-2 font-heading">
               Notifications & Alerts
             </h1>
           </div>
-          <span className="text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-full">
+          <span className="text-xs font-bold text-ivory-muted bg-white/5 px-3 py-1.5 rounded-full">
             {list.length} Messages
           </span>
         </div>
 
         {loading ? (
-          <div className="h-64 flex items-center justify-center text-gray-400">Loading notifications...</div>
+          <div className="h-64 flex items-center justify-center text-ivory-dim">Loading notifications...</div>
         ) : (
           <div className="space-y-4">
             {list.map((n) => (
-              <div key={n.id} className="bg-white rounded-3xl border border-gray-100 p-5 shadow-sm flex items-start gap-4">
-                <div className="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-700 flex items-center justify-center flex-shrink-0">
+              <div key={n.id} className="bg-white rounded-xl border border-white/10 p-5 shadow-sm flex items-start gap-4">
+                <div className="w-10 h-10 rounded-lg bg-[#0A3A2F] text-ivory flex items-center justify-center flex-shrink-0">
                   <Bell className="w-5 h-5" />
                 </div>
                 <div className="flex-1 space-y-1">
                   <div className="flex items-center justify-between">
-                    <h3 className="font-bold text-gray-900 text-sm font-heading">{n.title}</h3>
-                    <span className="text-[10px] text-gray-400 font-medium">{n.date || "Recent"}</span>
+                    <h3 className="font-bold text-ivory text-sm font-heading">{n.title}</h3>
+                    <span className="text-[10px] text-ivory-dim font-medium">{n.date || "Recent"}</span>
                   </div>
-                  <p className="text-xs text-gray-600 leading-relaxed">{n.message || n.body}</p>
+                  <p className="text-xs text-ivory-muted leading-relaxed">{n.message || n.body}</p>
                 </div>
               </div>
             ))}

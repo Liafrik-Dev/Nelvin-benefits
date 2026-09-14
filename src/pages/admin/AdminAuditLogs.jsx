@@ -39,27 +39,27 @@ export default function AdminAuditLogs() {
   });
 
   const columns = [
-    { key: "created_date", label: "Timestamp", sortable: true, render: (l) => <span className="text-xs text-gray-500">{formatDate(l.created_date)}</span> },
-    { key: "admin_name", label: "Admin", sortable: true, render: (l) => <span className="text-sm text-gray-700">{l.admin_name || "—"}</span> },
+    { key: "created_date", label: "Timestamp", sortable: true, render: (l) => <span className="text-xs text-ivory-muted">{formatDate(l.created_date)}</span> },
+    { key: "admin_name", label: "Admin", sortable: true, render: (l) => <span className="text-sm text-ivory">{l.admin_name || "—"}</span> },
     { key: "action", label: "Action", sortable: true, render: (l) => <StatusBadge status={l.action === "delete" ? "rejected" : l.action === "approve" ? "approved" : "pending"} label={l.action} className="capitalize" /> },
-    { key: "entity_type", label: "Entity", sortable: true, render: (l) => <span className="text-xs text-gray-700">{l.entity_type || "—"}</span> },
-    { key: "entity_name", label: "Target", render: (l) => <span className="text-xs text-gray-700 line-clamp-1 max-w-xs">{l.entity_name || l.entity_id || "—"}</span> },
-    { key: "description", label: "Description", render: (l) => <span className="text-xs text-gray-500">{l.description || "—"}</span> },
+    { key: "entity_type", label: "Entity", sortable: true, render: (l) => <span className="text-xs text-ivory">{l.entity_type || "—"}</span> },
+    { key: "entity_name", label: "Target", render: (l) => <span className="text-xs text-ivory line-clamp-1 max-w-xs">{l.entity_name || l.entity_id || "—"}</span> },
+    { key: "description", label: "Description", render: (l) => <span className="text-xs text-ivory-muted">{l.description || "—"}</span> },
   ];
 
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold font-heading text-gray-900">Audit Logs</h1>
-        <p className="text-sm text-gray-500 mt-1">All admin actions across the platform with admin, target, action, and timestamp.</p>
+        <h1 className="text-2xl font-bold font-heading text-ivory">Audit Logs</h1>
+        <p className="text-sm text-ivory-muted mt-1">All admin actions across the platform with admin, target, action, and timestamp.</p>
       </div>
       {filtered.length === 0 && !loading ? (
-        <div className="bg-white rounded-2xl border border-gray-100 p-10 text-center">
-          <div className="inline-flex items-center justify-center w-14 h-14 bg-emerald-50 text-emerald-700 rounded-2xl mb-4">
+        <div className="bg-white rounded-lg border border-white/10 p-10 text-center">
+          <div className="inline-flex items-center justify-center w-14 h-14 bg-[#0A3A2F] text-[#D6B56D] rounded-lg mb-4">
             <ScrollText className="w-7 h-7" />
           </div>
-          <h2 className="text-lg font-semibold text-gray-900">No logged actions yet</h2>
-          <p className="text-sm text-gray-500 max-w-md mx-auto mt-2">
+          <h2 className="text-lg font-semibold text-ivory">No logged actions yet</h2>
+          <p className="text-sm text-ivory-muted max-w-md mx-auto mt-2">
             No audit log entries have been recorded. Live audit log writes (auto-records on every admin create/update/delete/approve/reject/refund) will be wired to fire from the Admin pages in Phase 3. The viewer below already displays any stored log entries.
           </p>
           <div className="inline-block mt-4"><StatusBadge status="pending" label="Live writing in Phase 3" /></div>

@@ -25,8 +25,8 @@ export default function ChoosePlan() {
   };
 
   return (
-    <div className="min-h-screen bg-[#faf8f5]">
-      <div className="relative bg-gray-900 pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div className="min-h-screen bg-forest">
+      <div className="relative bg-[#062B23] pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <Navbar />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -37,13 +37,13 @@ export default function ChoosePlan() {
           <Link to="/" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-xs font-medium mb-6 transition-colors">
             <ArrowLeft className="w-3.5 h-3.5" /> Back to home
           </Link>
-          <p className="text-emerald-400 font-semibold text-xs tracking-[0.15em] uppercase mb-3">Membership</p>
+          <p className="text-[#E5C77A] font-semibold text-xs tracking-[0.15em] uppercase mb-3">Membership</p>
           <h1 className="text-3xl sm:text-5xl font-bold font-heading text-white">Choose your savings plan.</h1>
           <p className="text-white/60 mt-4 max-w-lg mx-auto">
             From casual weekend spenders to luxury travellers — there's a Nelvin plan built for you.
           </p>
         </motion.div>
-        <div className="absolute -top-20 -right-20 w-72 h-72 bg-emerald-600/20 rounded-full blur-3xl" />
+        <div className="absolute -top-20 -right-20 w-72 h-72 bg-[#D6B56D]/20 rounded-full blur-3xl" />
         <div className="absolute -bottom-24 -left-20 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl" />
       </div>
 
@@ -59,10 +59,10 @@ export default function ChoosePlan() {
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, delay: i * 0.15, ease: "easeOut" }}
                 whileHover={{ y: -6 }}
-                className={`rounded-2xl p-8 relative transition-shadow ${
+                className={`rounded-lg p-8 relative transition-shadow ${
                   plan.highlight
-                    ? "bg-emerald-700 text-white shadow-2xl md:-mt-4 md:pb-10"
-                    : "bg-white border border-gray-200 hover:shadow-xl"
+                    ? "bg-[#D6B56D] text-white shadow-2xl md:-mt-4 md:pb-10"
+                    : "bg-white border border-white/12 hover:shadow-xl"
                 } ${isSelected ? "ring-2 ring-amber-400" : ""}`}
               >
                 {plan.highlight && (
@@ -75,13 +75,13 @@ export default function ChoosePlan() {
                 <p className={`font-bold text-sm tracking-wider mb-4 ${plan.nameColor}`}>{plan.name}</p>
                 <div className="flex items-baseline gap-1 mb-1">
                   <span className="text-5xl font-bold font-heading">{plan.price}</span>
-                  <span className={`text-sm ${plan.highlight ? "text-white/70" : "text-gray-400"}`}>{plan.period}</span>
+                  <span className={`text-sm ${plan.highlight ? "text-white/70" : "text-ivory-dim"}`}>{plan.period}</span>
                 </div>
-                <p className={`text-sm mb-6 ${plan.highlight ? "text-white/70" : "text-gray-500"}`}>{plan.desc}</p>
+                <p className={`text-sm mb-6 ${plan.highlight ? "text-white/70" : "text-ivory-muted"}`}>{plan.desc}</p>
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((f, j) => (
                     <li key={j} className="flex items-start gap-2.5 text-sm">
-                      <Check className={`w-4 h-4 mt-0.5 flex-shrink-0 ${plan.highlight ? "text-emerald-300" : "text-emerald-600"}`} />
+                      <Check className={`w-4 h-4 mt-0.5 flex-shrink-0 ${plan.highlight ? "text-[#E5C77A]" : "text-[#D6B56D]"}`} />
                       <span>{f}</span>
                     </li>
                   ))}
@@ -90,8 +90,8 @@ export default function ChoosePlan() {
                   onClick={() => handlePick(plan)}
                   className={`w-full py-3 rounded-full font-semibold text-sm transition-colors block text-center ${
                     plan.highlight
-                      ? "bg-white text-emerald-700 hover:bg-gray-100"
-                      : "bg-emerald-700 text-white hover:bg-emerald-800"
+                      ? "bg-white text-[#D6B56D] hover:bg-white/5"
+                      : "bg-[#D6B56D] text-white hover:bg-[#E5C77A]"
                   }`}
                 >
                   {plan.cta}

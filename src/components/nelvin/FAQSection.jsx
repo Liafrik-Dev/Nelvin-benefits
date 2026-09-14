@@ -14,19 +14,19 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <section id="faq" className="bg-[#F7F3ED] py-24 px-4 sm:px-6 lg:px-8">
+    <section id="faq" className="bg-forest-secondary py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto flex flex-col lg:flex-row gap-12">
         <div className="lg:w-1/3">
-          <p className="text-[#180126]/50 font-semibold text-xs tracking-[0.15em] uppercase mb-3">Frequently Asked</p>
-          <h2 className="text-3xl sm:text-4xl font-bold font-heading text-[#180126] leading-tight">
+          <p className="text-[#F5F1E8]/50 font-semibold text-xs tracking-[0.15em] uppercase mb-3">Frequently Asked</p>
+          <h2 className="text-3xl sm:text-4xl font-bold font-heading text-[#F5F1E8] leading-tight">
             Everything you need to{" "}
-            <span className="bg-[#B8FF00] px-1 rounded-xl">know.</span>
+            <span className="bg-[#D6B56D] px-1 rounded-xl">know.</span>
           </h2>
-          <p className="text-[#180126]/60 text-sm mt-4 leading-relaxed">
+          <p className="text-[#F5F1E8]/60 text-sm mt-4 leading-relaxed">
             Can't find your answer? Our support team responds in under an hour, seven days a week.
 
           </p>
-          <a href="mailto:Nelvin23@proton.me" className="mt-6 group inline-flex items-center gap-3 bg-[#180126] hover:bg-[#2b0140] text-white px-6 h-11 rounded-[23px] font-bold text-sm transition-colors w-fit">
+          <a href="mailto:Nelvin23@proton.me" className="mt-6 group inline-flex items-center gap-3 bg-[#103F35] hover:bg-[#0A3A2F] ring-1 ring-white/10 text-ivory px-6 h-11 rounded-lg font-bold text-sm transition-colors w-fit">
             <MessageCircle className="w-4 h-4" /> Talk to us
           </a>
         </div>
@@ -35,22 +35,22 @@ export default function FAQSection() {
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className="bg-white rounded-2xl border border-[#180126]/10 overflow-hidden"
+              className="bg-emerald-black/90 rounded-lg ring-1 ring-white/10 border border-[#D6B56D]/15 overflow-hidden"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 className="w-full flex items-center justify-between px-6 py-5 text-left"
               >
-                <span className="font-bold text-[#180126] text-sm pr-4">{faq.q}</span>
+                <span className="font-bold text-[#F5F1E8] text-sm pr-4">{faq.q}</span>
                 {openIndex === i ? (
-                  <Minus className="w-4 h-4 text-[#00BD00] flex-shrink-0" />
+                  <Minus className="w-4 h-4 text-[#E5C77A] flex-shrink-0" />
                 ) : (
-                  <Plus className="w-4 h-4 text-[#180126] flex-shrink-0" />
+                  <Plus className="w-4 h-4 text-[#F5F1E8] flex-shrink-0" />
                 )}
               </button>
               {openIndex === i && (
                 <div className="px-6 pb-5">
-                  <p className="text-sm text-[#180126]/60 leading-relaxed">{faq.a}</p>
+                  <p className="text-sm text-[#F5F1E8]/60 leading-relaxed">{faq.a}</p>
                 </div>
               )}
             </div>

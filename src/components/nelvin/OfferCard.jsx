@@ -32,7 +32,7 @@ export default function OfferCard({ offer }) {
   return (
     <Link
       to={`/offer/${offer.id}`}
-      className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-xl transition-shadow group block"
+      className="bg-emerald-black rounded-lg overflow-hidden ring-1 ring-white/10 hover:ring-[#D6B56D]/40 hover:shadow-xl transition-shadow group block"
     >
       <div className="relative h-48 overflow-hidden">
         <img
@@ -42,12 +42,12 @@ export default function OfferCard({ offer }) {
         />
         <div className="absolute top-3 left-3 flex gap-2">
           {offer.discount_label && (
-            <span className="bg-gray-900/80 text-white text-xs font-bold px-2.5 py-1 rounded-full">
+            <span className="bg-[#062B23]/85 text-[#E5C77A] text-xs font-bold px-2.5 py-1 rounded-full">
               {offer.discount_label}
             </span>
           )}
           {offer.tag && (
-            <span className="bg-white/90 text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full">
+            <span className="bg-emerald-black/90 text-ivory text-xs font-medium px-2.5 py-1 rounded-full">
               {offer.tag}
             </span>
           )}
@@ -55,19 +55,19 @@ export default function OfferCard({ offer }) {
       </div>
       <div className="p-4">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-sm font-medium text-gray-700">{offer.business_name}</span>
+          <span className="text-sm font-medium text-ivory">{offer.business_name}</span>
           {offer.rating && (
             <div className="flex items-center gap-1">
               <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-              <span className="text-sm font-semibold text-gray-800">{offer.rating}</span>
+              <span className="text-sm font-semibold text-ivory">{offer.rating}</span>
             </div>
           )}
         </div>
-        <h3 className="font-bold text-gray-900 mb-2 line-clamp-2">{offer.title}</h3>
-        <div className="flex items-center gap-1 text-xs text-gray-400 mb-4">
+        <h3 className="font-bold text-ivory mb-2 line-clamp-2">{offer.title}</h3>
+        <div className="flex items-center gap-1 text-xs text-ivory-dim mb-4">
           <MapPin className="w-3 h-3" /> {offer.city || "Lagos"}, {offer.country || "Nigeria"}
         </div>
-        <div className="bg-emerald-700 group-hover:bg-emerald-800 text-white text-center py-2.5 rounded-full text-sm font-semibold transition-colors">
+        <div className="bg-[#D6B56D] group-hover:bg-[#E5C77A] text-[#062B23] text-center py-2.5 rounded-lg text-sm font-semibold transition-colors">
           View Offer
         </div>
       </div>

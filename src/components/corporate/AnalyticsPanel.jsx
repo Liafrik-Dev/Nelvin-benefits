@@ -85,26 +85,26 @@ export default function AnalyticsPanel({ company, employees }) {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold font-heading text-gray-900">Analytics</h1>
-        <p className="text-sm text-gray-500 mt-1">Deeper insights into how your team engages with Nelvin benefits.</p>
+        <h1 className="text-2xl font-bold font-heading text-ivory">Analytics</h1>
+        <p className="text-sm text-ivory-muted mt-1">Deeper insights into how your team engages with Nelvin benefits.</p>
       </div>
 
       {loading ? (
-        <div className="bg-white rounded-2xl border border-gray-100 p-12 text-center text-sm text-gray-400">Loading analytics…</div>
+        <div className="bg-white rounded-lg border border-white/10 p-12 text-center text-sm text-ivory-dim">Loading analytics…</div>
       ) : (
         <>
-          <div className="bg-white rounded-2xl border border-gray-100 p-6 mb-6 flex items-center gap-4">
-            <div className="w-14 h-14 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center"><Users className="w-6 h-6" /></div>
+          <div className="bg-white rounded-lg border border-white/10 p-6 mb-6 flex items-center gap-4">
+            <div className="w-14 h-14 rounded-xl bg-[#103F35]/60 text-[#D6B56D] ring-1 ring-[#D6B56D]/25 flex items-center justify-center"><Users className="w-6 h-6" /></div>
             <div>
-              <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider">Employee Engagement</p>
-              <p className="text-3xl font-bold font-heading text-gray-900">{engagement}%</p>
-              <p className="text-xs text-gray-400">{engagedIds.size} of {activeIds.size} active employees redeemed an offer</p>
+              <p className="text-xs text-ivory-dim font-semibold uppercase tracking-wider">Employee Engagement</p>
+              <p className="text-3xl font-bold font-heading text-ivory">{engagement}%</p>
+              <p className="text-xs text-ivory-dim">{engagedIds.size} of {activeIds.size} active employees redeemed an offer</p>
             </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-white rounded-2xl border border-gray-100 p-6">
-              <div className="flex items-center gap-2 mb-3"><TrendingUp className="w-4 h-4 text-emerald-600" /><h3 className="font-semibold text-gray-900">Monthly Usage</h3></div>
+            <div className="bg-white rounded-lg border border-white/10 p-6">
+              <div className="flex items-center gap-2 mb-3"><TrendingUp className="w-4 h-4 text-[#D6B56D]" /><h3 className="font-semibold text-ivory">Monthly Usage</h3></div>
               <div className="h-56">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={months}>
@@ -118,8 +118,8 @@ export default function AnalyticsPanel({ company, employees }) {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl border border-gray-100 p-6">
-              <h3 className="font-semibold text-gray-900 mb-3">Savings by Department</h3>
+            <div className="bg-white rounded-lg border border-white/10 p-6">
+              <h3 className="font-semibold text-ivory mb-3">Savings by Department</h3>
               <div className="h-56">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={depData}>
@@ -133,8 +133,8 @@ export default function AnalyticsPanel({ company, employees }) {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl border border-gray-100 p-6">
-              <div className="flex items-center gap-2 mb-3"><PieIcon className="w-4 h-4 text-emerald-600" /><h3 className="font-semibold text-gray-900">Top Categories</h3></div>
+            <div className="bg-white rounded-lg border border-white/10 p-6">
+              <div className="flex items-center gap-2 mb-3"><PieIcon className="w-4 h-4 text-[#D6B56D]" /><h3 className="font-semibold text-ivory">Top Categories</h3></div>
               <div className="h-56">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
@@ -148,16 +148,16 @@ export default function AnalyticsPanel({ company, employees }) {
               </div>
             </div>
 
-            <div className="bg-white rounded-2xl border border-gray-100 p-6">
-              <h3 className="font-semibold text-gray-900 mb-3">Most Redeemed Offers</h3>
+            <div className="bg-white rounded-lg border border-white/10 p-6">
+              <h3 className="font-semibold text-ivory mb-3">Most Redeemed Offers</h3>
               <div className="space-y-2 mt-2">
                 {topOffers.length === 0 ? (
-                  <p className="text-sm text-gray-400">No redemptions yet.</p>
+                  <p className="text-sm text-ivory-dim">No redemptions yet.</p>
                 ) : topOffers.map((o, i) => (
                   <div key={o.name} className="flex items-center gap-3 py-2 border-b border-gray-50 last:border-0">
-                    <span className="text-gray-400 text-xs w-5">{i + 1}</span>
-                    <span className="text-sm font-medium text-gray-700 flex-1 truncate">{o.name}</span>
-                    <span className="text-xs text-gray-500">{o.value}</span>
+                    <span className="text-ivory-dim text-xs w-5">{i + 1}</span>
+                    <span className="text-sm font-medium text-ivory flex-1 truncate">{o.name}</span>
+                    <span className="text-xs text-ivory-muted">{o.value}</span>
                   </div>
                 ))}
               </div>

@@ -127,9 +127,9 @@ export default function AuthForm({ mode = "login" }) {
   if (showOtp) {
     return (
       <AuthLayout>
-        <div className="max-w-md mx-auto bg-white p-8 rounded-3xl shadow-xl text-gray-900 text-center space-y-6">
+        <div className="max-w-md mx-auto bg-white p-8 rounded-xl shadow-xl text-ivory text-center space-y-6">
           <h2 className="text-2xl font-bold font-heading">Verify Your Email</h2>
-          <p className="text-gray-600 text-sm">We sent a 6-digit confirmation code to <strong>{email}</strong></p>
+          <p className="text-ivory-muted text-sm">We sent a 6-digit confirmation code to <strong>{email}</strong></p>
           {serverError && <div className="p-3 bg-rose-50 text-rose-700 text-xs font-bold rounded-xl">{serverError}</div>}
           <div className="flex justify-center">
             <InputOTP maxLength={6} value={otpCode} onChange={setOtpCode}>
@@ -138,7 +138,7 @@ export default function AuthForm({ mode = "login" }) {
               </InputOTPGroup>
             </InputOTP>
           </div>
-          <Button className="w-full h-12 bg-[#082F24] hover:bg-emerald-950 text-[#B8FF00] font-bold rounded-full" onClick={handleVerify} disabled={loading || otpCode.length < 6}>
+          <Button className="w-full h-12 bg-[#D6B56D] hover:bg-[#E5C77A] text-[#062B23] font-bold rounded-lg" onClick={handleVerify} disabled={loading || otpCode.length < 6}>
             {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Verify & Access Portal"}
           </Button>
         </div>
@@ -160,14 +160,14 @@ export default function AuthForm({ mode = "login" }) {
         </div>
 
         {/* Single Unified Form Box */}
-        <div className="max-w-md mx-auto bg-white text-gray-900 rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/20 space-y-5">
+        <div className="max-w-md mx-auto bg-white text-ivory rounded-xl p-6 sm:p-8 shadow-2xl border border-white/20 space-y-5">
           {/* Role Tabs */}
-          <div className="grid grid-cols-3 gap-1.5 p-1.5 bg-[#F7F3ED] rounded-2xl text-xs font-extrabold text-center border border-gray-200">
+          <div className="grid grid-cols-3 gap-1.5 p-1.5 bg-forest-secondary rounded-lg text-xs font-extrabold text-center border border-white/12">
             <button
               type="button"
               onClick={() => setActiveTab("subscriber")}
               className={`py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 ${
-                activeTab === "subscriber" ? "bg-[#082F24] text-[#B8FF00] shadow-md" : "text-gray-600 hover:text-gray-900"
+                activeTab === "subscriber" ? "bg-[#062B23] text-[#D6B56D] shadow-md" : "text-ivory-muted hover:text-ivory"
               }`}
             >
               <User className="w-3.5 h-3.5" /> Particulier
@@ -176,7 +176,7 @@ export default function AuthForm({ mode = "login" }) {
               type="button"
               onClick={() => setActiveTab("hr_admin")}
               className={`py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 ${
-                activeTab === "hr_admin" ? "bg-[#082F24] text-[#B8FF00] shadow-md" : "text-gray-600 hover:text-gray-900"
+                activeTab === "hr_admin" ? "bg-[#062B23] text-[#D6B56D] shadow-md" : "text-ivory-muted hover:text-ivory"
               }`}
             >
               <Building2 className="w-3.5 h-3.5" /> HR Team
@@ -185,7 +185,7 @@ export default function AuthForm({ mode = "login" }) {
               type="button"
               onClick={() => setActiveTab("business")}
               className={`py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 ${
-                activeTab === "business" ? "bg-[#082F24] text-[#B8FF00] shadow-md" : "text-gray-600 hover:text-gray-900"
+                activeTab === "business" ? "bg-[#062B23] text-[#D6B56D] shadow-md" : "text-ivory-muted hover:text-ivory"
               }`}
             >
               <Store className="w-3.5 h-3.5" /> Partner
@@ -193,13 +193,13 @@ export default function AuthForm({ mode = "login" }) {
           </div>
 
           {/* Action Toggle (Login vs Signup) */}
-          <div className="flex items-center justify-between border-b border-gray-100 pb-3 pt-1">
+          <div className="flex items-center justify-between border-b border-white/10 pb-3 pt-1">
             <div className="flex gap-5">
               <button
                 type="button"
                 onClick={() => setActiveAction("login")}
                 className={`text-sm font-black font-heading pb-1 border-b-2 transition-all ${
-                  activeAction === "login" ? "border-[#00BD00] text-[#082F24]" : "border-transparent text-gray-400 hover:text-gray-600"
+                  activeAction === "login" ? "border-[#0A3A2F] text-[#F5F1E8]" : "border-transparent text-ivory-dim hover:text-ivory-muted"
                 }`}
               >
                 Log In
@@ -208,13 +208,13 @@ export default function AuthForm({ mode = "login" }) {
                 type="button"
                 onClick={() => setActiveAction("signup")}
                 className={`text-sm font-black font-heading pb-1 border-b-2 transition-all ${
-                  activeAction === "signup" ? "border-[#00BD00] text-[#082F24]" : "border-transparent text-gray-400 hover:text-gray-600"
+                  activeAction === "signup" ? "border-[#0A3A2F] text-[#F5F1E8]" : "border-transparent text-ivory-dim hover:text-ivory-muted"
                 }`}
               >
                 Create Account
               </button>
             </div>
-            <span className="text-[10px] font-black text-[#082F24] bg-[#B8FF00] px-3 py-1 rounded-full uppercase tracking-wider">
+            <span className="text-[10px] font-black text-[#D6B56D] bg-[#D6B56D]/10 border border-[#D6B56D]/30 px-3 py-1 rounded uppercase tracking-wider">
               {activeTab === "subscriber" ? "Particulier / Personal" : activeTab === "hr_admin" ? "HR Portal" : "Partner Portal"}
             </span>
           </div>
@@ -226,10 +226,10 @@ export default function AuthForm({ mode = "login" }) {
           )}
 
           <div className="grid grid-cols-2 gap-3">
-            <Button variant="outline" className="h-10 rounded-xl border-gray-200 text-xs font-bold" onClick={() => handleProvider("google")}>
+            <Button variant="outline" className="h-10 rounded-xl border-white/12 text-xs font-bold" onClick={() => handleProvider("google")}>
               <GoogleIcon className="w-4 h-4 mr-2" /> Google
             </Button>
-            <Button variant="outline" className="h-10 rounded-xl border-gray-200 text-xs font-bold" onClick={() => handleProvider("apple")}>
+            <Button variant="outline" className="h-10 rounded-xl border-white/12 text-xs font-bold" onClick={() => handleProvider("apple")}>
               <AppleIcon className="w-4 h-4 mr-2" /> Apple
             </Button>
           </div>
@@ -238,12 +238,12 @@ export default function AuthForm({ mode = "login" }) {
             {activeAction === "signup" && (
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-1">
-                  <Label className="text-xs font-bold text-gray-700">First Name</Label>
+                  <Label className="text-xs font-bold text-ivory">First Name</Label>
                   <Input placeholder="Jane" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="h-10 text-xs rounded-xl" />
                   {errors.firstName && <p className="text-[10px] text-rose-600 font-bold">{errors.firstName}</p>}
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-xs font-bold text-gray-700">Last Name</Label>
+                  <Label className="text-xs font-bold text-ivory">Last Name</Label>
                   <Input placeholder="Doe" value={lastName} onChange={(e) => setLastName(e.target.value)} className="h-10 text-xs rounded-xl" />
                   {errors.lastName && <p className="text-[10px] text-rose-600 font-bold">{errors.lastName}</p>}
                 </div>
@@ -251,20 +251,20 @@ export default function AuthForm({ mode = "login" }) {
             )}
 
             <div className="space-y-1">
-              <Label className="text-xs font-bold text-gray-700">Email Address</Label>
+              <Label className="text-xs font-bold text-ivory">Email Address</Label>
               <Input type="email" placeholder="you@company.com" value={email} onChange={(e) => setEmail(e.target.value)} className="h-10 text-xs rounded-xl" />
               {errors.email && <p className="text-[10px] text-rose-600 font-bold">{errors.email}</p>}
             </div>
 
             <div className="space-y-1">
-              <Label className="text-xs font-bold text-gray-700">Password</Label>
+              <Label className="text-xs font-bold text-ivory">Password</Label>
               <Input type="password" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} className="h-10 text-xs rounded-xl" />
               {errors.password && <p className="text-[10px] text-rose-600 font-bold">{errors.password}</p>}
             </div>
 
             {activeAction === "signup" && (
               <div className="space-y-1">
-                <Label className="text-xs font-bold text-gray-700">Confirm Password</Label>
+                <Label className="text-xs font-bold text-ivory">Confirm Password</Label>
                 <Input type="password" placeholder="••••••••" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="h-10 text-xs rounded-xl" />
                 {errors.confirmPassword && <p className="text-[10px] text-rose-600 font-bold">{errors.confirmPassword}</p>}
               </div>
@@ -273,7 +273,7 @@ export default function AuthForm({ mode = "login" }) {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full h-11 bg-[#082F24] hover:bg-emerald-950 text-[#B8FF00] font-extrabold text-xs rounded-2xl shadow-md transition-all"
+              className="w-full h-11 bg-[#D6B56D] hover:bg-[#E5C77A] text-[#062B23] font-extrabold text-xs rounded-lg shadow-md shadow-[#062B23]/30 transition-all"
             >
               {loading ? (
                 <Loader2 className="w-4 h-4 animate-spin" />

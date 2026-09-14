@@ -54,37 +54,37 @@ export default function Benefits() {
   };
 
   return (
-    <div className="min-h-screen bg-[#faf8f5]">
-      <div className="relative bg-gray-900 pt-24 pb-10 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-forest">
+      <div className="relative bg-[#062B23] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
         <Navbar />
-        <p className="max-w-5xl mx-auto text-emerald-400 font-semibold text-sm">Benefits</p>
+        <p className="max-w-5xl mx-auto text-[#E5C77A] font-semibold text-sm">Benefits</p>
       </div>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 pb-16">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white rounded-2xl border border-gray-100 p-6 mb-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white rounded-lg border border-white/10 p-6 mb-4">
           <div className="flex items-center gap-4">
-            <Avatar user={user} className="w-14 h-14" fallbackClassName="bg-emerald-700 text-white font-bold text-lg" />
+            <Avatar user={user} className="w-14 h-14" fallbackClassName="bg-[#D6B56D] text-white font-bold text-lg" />
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-xl font-bold text-gray-900">{user?.full_name || "Member"}</h1>
-                <span className="bg-emerald-100 text-emerald-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">
+                <h1 className="text-xl font-bold text-ivory">{user?.full_name || "Member"}</h1>
+                <span className="bg-[#103F35]/60 text-[#D6B56D] ring-1 ring-[#D6B56D]/25 text-xs font-semibold px-2.5 py-0.5 rounded-full">
                   {user?.role === "admin" ? "Admin" : "Free Member"}
                 </span>
               </div>
-              <p className="text-sm text-gray-400">{redemptions.length} offers redeemed all time</p>
+              <p className="text-sm text-ivory-dim">{redemptions.length} offers redeemed all time</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <button onClick={handleExport} className="flex items-center gap-2 border border-gray-200 rounded-full px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50">
+            <button onClick={handleExport} className="flex items-center gap-2 border border-white/12 rounded-full px-4 py-2 text-sm font-semibold text-ivory hover:bg-forest-secondary/60">
               <Download className="w-4 h-4" /> Export Report
             </button>
-            <Link to="/choose-plan" className="bg-emerald-700 hover:bg-emerald-800 text-white rounded-full px-5 py-2 text-sm font-semibold">
+            <Link to="/choose-plan" className="bg-[#D6B56D] hover:bg-[#E5C77A] text-white rounded-full px-5 py-2 text-sm font-semibold">
               Upgrade Plan
             </Link>
           </div>
         </div>
 
-        <div className="bg-gray-900 rounded-2xl p-8 mb-4">
+        <div className="bg-[#062B23] rounded-lg p-8 mb-4">
           <p className="text-xs tracking-wider uppercase text-white/50 mb-3">Lifetime Savings</p>
           <p className="text-4xl sm:text-5xl font-bold text-white font-heading">₦{lifetimeSavings.toLocaleString()}</p>
           <div className="flex flex-wrap items-center gap-4 mt-3 text-sm">
@@ -96,30 +96,30 @@ export default function Benefits() {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          <div className="bg-white rounded-2xl border border-gray-100 p-5">
-            <Calendar className="w-5 h-5 text-emerald-700 mb-3" />
-            <p className="text-xs text-gray-400 uppercase tracking-wide">This Month</p>
-            <p className="text-xl font-bold text-gray-900">₦{thisMonth.toLocaleString()}</p>
+          <div className="bg-white rounded-lg border border-white/10 p-5">
+            <Calendar className="w-5 h-5 text-[#D6B56D] mb-3" />
+            <p className="text-xs text-ivory-dim uppercase tracking-wide">This Month</p>
+            <p className="text-xl font-bold text-ivory">₦{thisMonth.toLocaleString()}</p>
           </div>
-          <div className="bg-white rounded-2xl border border-gray-100 p-5">
-            <TrendingUp className="w-5 h-5 text-gray-400 mb-3" />
-            <p className="text-xs text-gray-400 uppercase tracking-wide">Last Month</p>
-            <p className="text-xl font-bold text-gray-900">₦{lastMonth.toLocaleString()}</p>
+          <div className="bg-white rounded-lg border border-white/10 p-5">
+            <TrendingUp className="w-5 h-5 text-ivory-dim mb-3" />
+            <p className="text-xs text-ivory-dim uppercase tracking-wide">Last Month</p>
+            <p className="text-xl font-bold text-ivory">₦{lastMonth.toLocaleString()}</p>
           </div>
-          <div className="bg-white rounded-2xl border border-gray-100 p-5">
+          <div className="bg-white rounded-lg border border-white/10 p-5">
             <BarChart3 className="w-5 h-5 text-amber-500 mb-3" />
-            <p className="text-xs text-gray-400 uppercase tracking-wide">This Year</p>
-            <p className="text-xl font-bold text-gray-900">₦{thisYear.toLocaleString()}</p>
+            <p className="text-xs text-ivory-dim uppercase tracking-wide">This Year</p>
+            <p className="text-xl font-bold text-ivory">₦{thisYear.toLocaleString()}</p>
           </div>
-          <div className="bg-white rounded-2xl border border-gray-100 p-5">
-            <CheckCircle2 className="w-5 h-5 text-emerald-700 mb-3" />
-            <p className="text-xs text-gray-400 uppercase tracking-wide">Total Redeemed</p>
-            <p className="text-xl font-bold text-gray-900">{redemptions.length} offers</p>
+          <div className="bg-white rounded-lg border border-white/10 p-5">
+            <CheckCircle2 className="w-5 h-5 text-[#D6B56D] mb-3" />
+            <p className="text-xs text-ivory-dim uppercase tracking-wide">Total Redeemed</p>
+            <p className="text-xl font-bold text-ivory">{redemptions.length} offers</p>
           </div>
         </div>
 
         <div className="mt-6">
-          <Link to="/my-offers" className="text-emerald-700 font-semibold text-sm hover:underline">
+          <Link to="/my-offers" className="text-[#D6B56D] font-semibold text-sm hover:underline">
             View all redeemed offers →
           </Link>
         </div>

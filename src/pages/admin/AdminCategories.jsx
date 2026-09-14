@@ -7,9 +7,9 @@ import AdminEditModal from "@/components/admin/AdminEditModal";
 import StatusBadge from "@/components/admin/StatusBadge";
 import { Edit2, Trash2, Plus, ArrowUp, ArrowDown, EyeOff, Star } from "lucide-react";
 
-function RowIconBtn({ title, onClick, Icon, color = "text-gray-600 hover:text-gray-900" }) {
+function RowIconBtn({ title, onClick, Icon, color = "text-ivory-muted hover:text-ivory" }) {
   return (
-    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-gray-100 ${color}`}>
+    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-white/5 ${color}`}>
       <Icon className="w-4 h-4" />
     </button>
   );
@@ -75,15 +75,15 @@ export default function AdminCategories() {
     { key: "name", label: "Category", sortable: true,
       render: (c) => (
         <div className="flex items-center gap-2">
-          {c.image_url ? <img src={c.image_url} alt="" className="w-8 h-8 rounded-lg object-cover" /> : <div className="w-8 h-8 rounded-lg bg-gray-100 text-gray-500 flex items-center justify-center text-xs">{c.icon || "📁"}</div>}
+          {c.image_url ? <img src={c.image_url} alt="" className="w-8 h-8 rounded-lg object-cover" /> : <div className="w-8 h-8 rounded-lg bg-white/5 text-ivory-muted flex items-center justify-center text-xs">{c.icon || "📁"}</div>}
           <div className="min-w-0">
-            <p className="text-sm font-medium text-gray-900 truncate flex items-center gap-1">{c.name}{c.is_featured && <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-400" />}</p>
-            <p className="text-xs text-gray-400 truncate">{c.slug}</p>
+            <p className="text-sm font-medium text-ivory truncate flex items-center gap-1">{c.name}{c.is_featured && <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-400" />}</p>
+            <p className="text-xs text-ivory-dim truncate">{c.slug}</p>
           </div>
         </div>
       ) },
-    { key: "description", label: "Description", render: (c) => <span className="text-xs text-gray-500 line-clamp-2 max-w-xs">{c.description || "—"}</span> },
-    { key: "offerCount", label: "Offers", render: (c) => <span className="text-xs font-medium text-gray-700">{offerCount(c)}</span> },
+    { key: "description", label: "Description", render: (c) => <span className="text-xs text-ivory-muted line-clamp-2 max-w-xs">{c.description || "—"}</span> },
+    { key: "offerCount", label: "Offers", render: (c) => <span className="text-xs font-medium text-ivory">{offerCount(c)}</span> },
     { key: "display_order", label: "Order", sortable: true, render: (c) => <span className="text-xs">{c.display_order || 0}</span> },
     { key: "is_active", label: "Status", sortable: true, render: (c) => <StatusBadge status={c.is_active ? "active" : "inactive"} label={c.is_active ? "Active" : "Inactive"} /> },
   ];
@@ -106,12 +106,12 @@ export default function AdminCategories() {
     <div>
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
         <div>
-          <h1 className="text-2xl font-bold font-heading text-gray-900">Categories</h1>
-          <p className="text-sm text-gray-500 mt-1">{filtered.length} categories · Each must have a unique image.</p>
+          <h1 className="text-2xl font-bold font-heading text-ivory">Categories</h1>
+          <p className="text-sm text-ivory-muted mt-1">{filtered.length} categories · Each must have a unique image.</p>
         </div>
         <button
           onClick={() => setEditing({})}
-          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg"
+          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-[#D6B56D] hover:bg-[#E5C77A] text-white rounded-lg"
         >
           <Plus className="w-4 h-4" /> New category
         </button>
@@ -129,8 +129,8 @@ export default function AdminCategories() {
           <div className="flex items-center justify-end gap-1">
             <RowIconBtn title="Move up" Icon={ArrowUp} onClick={() => move(c, -1)} />
             <RowIconBtn title="Move down" Icon={ArrowDown} onClick={() => move(c, 1)} />
-            <RowIconBtn title={c.is_featured ? "Unfeature" : "Feature"} Icon={Star} color={c.is_featured ? "text-amber-500" : "text-gray-400"} onClick={() => toggleFeatured(c)} />
-            <RowIconBtn title={c.is_active ? "Hide category" : "Show category"} Icon={EyeOff} color={c.is_active ? "text-gray-400" : "text-emerald-600"} onClick={() => toggleActive(c)} />
+            <RowIconBtn title={c.is_featured ? "Unfeature" : "Feature"} Icon={Star} color={c.is_featured ? "text-amber-500" : "text-ivory-dim"} onClick={() => toggleFeatured(c)} />
+            <RowIconBtn title={c.is_active ? "Hide category" : "Show category"} Icon={EyeOff} color={c.is_active ? "text-ivory-dim" : "text-[#D6B56D]"} onClick={() => toggleActive(c)} />
             <RowIconBtn title="Edit" Icon={Edit2} onClick={() => setEditing(c)} />
             <RowIconBtn title="Delete" Icon={Trash2} color="text-rose-600 hover:text-rose-700" onClick={() => remove(c)} />
           </div>

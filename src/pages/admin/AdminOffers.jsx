@@ -8,9 +8,9 @@ import AdminEditModal from "@/components/admin/AdminEditModal";
 import StatusBadge from "@/components/admin/StatusBadge";
 import { Star, Eye, Edit2, Trash2, ClipboardCopy, EyeOff, Archive, Send, Ban } from "lucide-react";
 
-function RowIconBtn({ title, onClick, Icon, color = "text-gray-600 hover:text-gray-900" }) {
+function RowIconBtn({ title, onClick, Icon, color = "text-ivory-muted hover:text-ivory" }) {
   return (
-    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-gray-100 ${color}`}>
+    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-white/5 ${color}`}>
       <Icon className="w-4 h-4" />
     </button>
   );
@@ -84,18 +84,18 @@ export default function AdminOffers() {
     { key: "title", label: "Offer", sortable: true,
       render: (o) => (
         <div className="flex items-center gap-2">
-          {o.image_url ? <img src={o.image_url} alt="" className="w-10 h-10 rounded-lg object-cover" /> : <div className="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-bold">{(o.title || "?").slice(0,1)}</div>}
+          {o.image_url ? <img src={o.image_url} alt="" className="w-10 h-10 rounded-lg object-cover" /> : <div className="w-10 h-10 rounded-lg bg-[#103F35]/60 text-[#D6B56D] flex items-center justify-center text-xs font-bold">{(o.title || "?").slice(0,1)}</div>}
           <div className="min-w-0">
-            <p className="text-sm font-medium text-gray-900 truncate flex items-center gap-1">
+            <p className="text-sm font-medium text-ivory truncate flex items-center gap-1">
               {o.title}{o.is_featured && <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-400" />}
             </p>
-            <p className="text-xs text-gray-400 truncate">{o.business_name}</p>
+            <p className="text-xs text-ivory-dim truncate">{o.business_name}</p>
           </div>
         </div>
       ) },
     { key: "category", label: "Category", sortable: true, render: (o) => <span className="text-xs">{o.category || "—"}</span> },
     { key: "country", label: "Location", sortable: true, render: (o) => <span className="text-xs">{o.city ? `${o.city}, ` : ""}{o.country}</span> },
-    { key: "discount_label", label: "Discount", render: (o) => <span className="text-xs font-semibold text-emerald-700">{o.discount_label || (o.original_price ? `${o.discount_price || 0} vs ${o.original_price}` : "—")}</span> },
+    { key: "discount_label", label: "Discount", render: (o) => <span className="text-xs font-semibold text-[#D6B56D]">{o.discount_label || (o.original_price ? `${o.discount_price || 0} vs ${o.original_price}` : "—")}</span> },
     { key: "max_redemptions_per_user", label: "Limit", render: (o) => <span className="text-xs">{o.max_redemptions_per_user || 1}/user{o.total_redemption_limit ? ` · ${o.total_redemptions_count || 0}/${o.total_redemption_limit}` : ""}</span> },
     { key: "membership_requirement", label: "Tier", sortable: true, render: (o) => <StatusBadge status={(o.membership_requirement || "All").toLowerCase()} label={o.membership_requirement || "All"} /> },
     { key: "status", label: "Status", sortable: true, render: (o) => <StatusBadge status={o.status} className="capitalize" /> },
@@ -143,8 +143,8 @@ export default function AdminOffers() {
     <div>
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
         <div>
-          <h1 className="text-2xl font-bold font-heading text-gray-900">Offers</h1>
-          <p className="text-sm text-gray-500 mt-1">{filtered.length} offers · Approve, feature, publish, archive, duplicate.</p>
+          <h1 className="text-2xl font-bold font-heading text-ivory">Offers</h1>
+          <p className="text-sm text-ivory-muted mt-1">{filtered.length} offers · Approve, feature, publish, archive, duplicate.</p>
         </div>
       </div>
 
@@ -161,10 +161,10 @@ export default function AdminOffers() {
           <div className="flex items-center justify-end gap-1">
             <RowIconBtn title="Preview" Icon={Eye} onClick={() => setViewing(o)} />
             <RowIconBtn title="Edit" Icon={Edit2} onClick={() => setEditing(o)} />
-            <RowIconBtn title={o.is_featured ? "Unfeature" : "Feature"} Icon={Star} color={o.is_featured ? "text-amber-500" : "text-gray-400"} onClick={() => update(o.id, { is_featured: !o.is_featured })} />
-            <RowIconBtn title={o.is_published ? "Unpublish" : "Publish"} Icon={Send} color={o.is_published ? "text-emerald-600" : "text-gray-400"} onClick={() => update(o.id, { is_published: !o.is_published, status: !o.is_published ? "active" : "inactive" })} />
-            <RowIconBtn title={o.status === "hidden" ? "Unhide" : "Hide"} Icon={EyeOff} color={o.status === "hidden" ? "text-gray-700" : "text-gray-400"} onClick={() => update(o.id, { status: o.status === "hidden" ? "active" : "hidden" })} />
-            <RowIconBtn title={o.is_archived ? "Restore" : "Archive"} Icon={Archive} color={o.is_archived ? "text-emerald-600" : "text-gray-400"} onClick={() => update(o.id, { is_archived: !o.is_archived, status: !o.is_archived ? "archived" : "active" })} />
+            <RowIconBtn title={o.is_featured ? "Unfeature" : "Feature"} Icon={Star} color={o.is_featured ? "text-amber-500" : "text-ivory-dim"} onClick={() => update(o.id, { is_featured: !o.is_featured })} />
+            <RowIconBtn title={o.is_published ? "Unpublish" : "Publish"} Icon={Send} color={o.is_published ? "text-[#D6B56D]" : "text-ivory-dim"} onClick={() => update(o.id, { is_published: !o.is_published, status: !o.is_published ? "active" : "inactive" })} />
+            <RowIconBtn title={o.status === "hidden" ? "Unhide" : "Hide"} Icon={EyeOff} color={o.status === "hidden" ? "text-ivory" : "text-ivory-dim"} onClick={() => update(o.id, { status: o.status === "hidden" ? "active" : "hidden" })} />
+            <RowIconBtn title={o.is_archived ? "Restore" : "Archive"} Icon={Archive} color={o.is_archived ? "text-[#D6B56D]" : "text-ivory-dim"} onClick={() => update(o.id, { is_archived: !o.is_archived, status: !o.is_archived ? "archived" : "active" })} />
             <RowIconBtn title="Duplicate" Icon={ClipboardCopy} onClick={() => duplicate(o)} />
             <RowIconBtn title="Delete" Icon={Trash2} color="text-rose-600 hover:text-rose-700" onClick={() => remove(o)} />
           </div>
@@ -213,27 +213,27 @@ export default function AdminOffers() {
           <div className="absolute inset-0 bg-black/40" onClick={() => setViewing(null)} />
           <div className="relative w-full max-w-lg bg-white h-full overflow-y-auto p-6">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="font-bold text-gray-900 text-lg">{viewing.title}</h2>
-              <button onClick={() => setViewing(null)} className="text-gray-400">✕</button>
+              <h2 className="font-bold text-ivory text-lg">{viewing.title}</h2>
+              <button onClick={() => setViewing(null)} className="text-ivory-dim">✕</button>
             </div>
             {viewing.image_url && <img src={viewing.image_url} alt="" className="w-full h-40 rounded-lg object-cover mb-3" />}
             <div className="space-y-2 text-sm">
               <div className="grid grid-cols-2 gap-3">
-                <div><span className="text-xs text-gray-400">Business</span><p>{viewing.business_name}</p></div>
-                <div><span className="text-xs text-gray-400">Category</span><p>{viewing.category}</p></div>
-                <div><span className="text-xs text-gray-400">Location</span><p>{viewing.city}, {viewing.country}</p></div>
-                <div><span className="text-xs text-gray-400">Discount</span><p className="font-semibold text-emerald-700">{viewing.discount_label || "—"}</p></div>
-                <div><span className="text-xs text-gray-400">Original price</span><p>{formatMoney(viewing.original_price, "USD")}</p></div>
-                <div><span className="text-xs text-gray-400">Discount price</span><p>{formatMoney(viewing.discount_price, "USD")}</p></div>
-                <div><span className="text-xs text-gray-400">Expires</span><p>{formatDate(viewing.expires_date)}</p></div>
-                <div><span className="text-xs text-gray-400">Membership tier</span><p><StatusBadge status={(viewing.membership_requirement || "All").toLowerCase()} label={viewing.membership_requirement || "All"} /></p></div>
-                <div><span className="text-xs text-gray-400">Max / user</span><p>{viewing.max_redemptions_per_user || 1}</p></div>
-                <div><span className="text-xs text-gray-400">Total limit</span><p>{viewing.total_redemption_limit || "Unlimited"}</p></div>
+                <div><span className="text-xs text-ivory-dim">Business</span><p>{viewing.business_name}</p></div>
+                <div><span className="text-xs text-ivory-dim">Category</span><p>{viewing.category}</p></div>
+                <div><span className="text-xs text-ivory-dim">Location</span><p>{viewing.city}, {viewing.country}</p></div>
+                <div><span className="text-xs text-ivory-dim">Discount</span><p className="font-semibold text-[#D6B56D]">{viewing.discount_label || "—"}</p></div>
+                <div><span className="text-xs text-ivory-dim">Original price</span><p>{formatMoney(viewing.original_price, "USD")}</p></div>
+                <div><span className="text-xs text-ivory-dim">Discount price</span><p>{formatMoney(viewing.discount_price, "USD")}</p></div>
+                <div><span className="text-xs text-ivory-dim">Expires</span><p>{formatDate(viewing.expires_date)}</p></div>
+                <div><span className="text-xs text-ivory-dim">Membership tier</span><p><StatusBadge status={(viewing.membership_requirement || "All").toLowerCase()} label={viewing.membership_requirement || "All"} /></p></div>
+                <div><span className="text-xs text-ivory-dim">Max / user</span><p>{viewing.max_redemptions_per_user || 1}</p></div>
+                <div><span className="text-xs text-ivory-dim">Total limit</span><p>{viewing.total_redemption_limit || "Unlimited"}</p></div>
               </div>
-              {viewing.description && <div><span className="text-xs text-gray-400">Description</span><p className="text-gray-700">{viewing.description}</p></div>}
-              <div className="grid grid-cols-2 gap-3 pt-2 border-t border-gray-100">
-                <div><span className="text-xs text-gray-400">Status</span><p><StatusBadge status={viewing.status} className="capitalize" /></p></div>
-                <div><span className="text-xs text-gray-400">Flags</span><p className="text-xs">{viewing.is_featured ? "Featured · " : ""}{viewing.is_published ? "Published · " : "Unpublished · "}{viewing.is_archived ? "Archived" : ""}</p></div>
+              {viewing.description && <div><span className="text-xs text-ivory-dim">Description</span><p className="text-ivory">{viewing.description}</p></div>}
+              <div className="grid grid-cols-2 gap-3 pt-2 border-t border-white/10">
+                <div><span className="text-xs text-ivory-dim">Status</span><p><StatusBadge status={viewing.status} className="capitalize" /></p></div>
+                <div><span className="text-xs text-ivory-dim">Flags</span><p className="text-xs">{viewing.is_featured ? "Featured · " : ""}{viewing.is_published ? "Published · " : "Unpublished · "}{viewing.is_archived ? "Archived" : ""}</p></div>
               </div>
             </div>
           </div>

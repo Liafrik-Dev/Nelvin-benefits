@@ -19,22 +19,22 @@ const PIE_COLORS = ["#166534", "#65a30d", "#d97706", "#9333ea", "#0ea5e9", "#ef4
 
 function StatCard({ icon: Icon, label, value, accent = "emerald", to }) {
   const accents = {
-    emerald: "bg-emerald-50 text-emerald-700",
+    emerald: "bg-[#0A3A2F] text-[#D6B56D]",
     sky: "bg-sky-50 text-sky-700",
     amber: "bg-amber-50 text-amber-700",
     violet: "bg-violet-50 text-violet-700",
     rose: "bg-rose-50 text-rose-700",
-    gray: "bg-gray-100 text-gray-700",
+    gray: "bg-white/5 text-ivory",
   };
   const inner = (
-    <div className="bg-white rounded-2xl border border-gray-100 p-4 sm:p-5 hover:shadow-md transition-shadow h-full">
+    <div className="bg-white rounded-lg border border-white/10 p-4 sm:p-5 hover:shadow-md transition-shadow h-full">
       <div className="flex items-center gap-3">
         <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${accents[accent]}`}>
           <Icon className="w-5 h-5" />
         </div>
         <div className="min-w-0">
-          <p className="text-xs text-gray-400 truncate">{label}</p>
-          <p className="text-xl font-bold text-gray-900">{value}</p>
+          <p className="text-xs text-ivory-dim truncate">{label}</p>
+          <p className="text-xl font-bold text-ivory">{value}</p>
         </div>
       </div>
     </div>
@@ -225,7 +225,7 @@ export default function AdminHome() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-32">
-        <div className="w-8 h-8 border-4 border-emerald-200 border-t-emerald-700 rounded-full animate-spin" />
+        <div className="w-8 h-8 border-4 border-white/15 border-t-emerald-700 rounded-full animate-spin" />
       </div>
     );
   }
@@ -233,8 +233,8 @@ export default function AdminHome() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold font-heading text-gray-900">Welcome back, {adminUser?.full_name?.split(" ")[0] || "Admin"}</h1>
-        <p className="text-sm text-gray-500 mt-1">Overview of Nelvin's users, businesses, offers and revenue.</p>
+        <h1 className="text-2xl font-bold font-heading text-ivory">Welcome back, {adminUser?.full_name?.split(" ")[0] || "Admin"}</h1>
+        <p className="text-sm text-ivory-muted mt-1">Overview of Nelvin's users, businesses, offers and revenue.</p>
       </div>
 
       {/* Stat grid */}
@@ -259,11 +259,11 @@ export default function AdminHome() {
 
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div className="bg-white rounded-2xl border border-gray-100 p-5">
+        <div className="bg-white rounded-lg border border-white/10 p-5">
           <div className="flex items-center gap-2 mb-4">
-            <TrendingUp className="w-4 h-4 text-emerald-700" />
-            <h3 className="font-semibold text-gray-900">User Growth</h3>
-            <span className="text-xs text-gray-400 ml-auto">Individual vs Corporate</span>
+            <TrendingUp className="w-4 h-4 text-[#D6B56D]" />
+            <h3 className="font-semibold text-ivory">User Growth</h3>
+            <span className="text-xs text-ivory-dim ml-auto">Individual vs Corporate</span>
           </div>
           <ResponsiveContainer width="100%" height={240}>
             <LineChart data={growthData}>
@@ -278,10 +278,10 @@ export default function AdminHome() {
           </ResponsiveContainer>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-100 p-5">
+        <div className="bg-white rounded-lg border border-white/10 p-5">
           <div className="flex items-center gap-2 mb-4">
             <Crown className="w-4 h-4 text-amber-500" />
-            <h3 className="font-semibold text-gray-900">Membership Sales</h3>
+            <h3 className="font-semibold text-ivory">Membership Sales</h3>
           </div>
           <ResponsiveContainer width="100%" height={240}>
             <BarChart data={salesData}>
@@ -294,10 +294,10 @@ export default function AdminHome() {
           </ResponsiveContainer>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-100 p-5">
+        <div className="bg-white rounded-lg border border-white/10 p-5">
           <div className="flex items-center gap-2 mb-4">
-            <Tag className="w-4 h-4 text-emerald-700" />
-            <h3 className="font-semibold text-gray-900">Offers by Category</h3>
+            <Tag className="w-4 h-4 text-[#D6B56D]" />
+            <h3 className="font-semibold text-ivory">Offers by Category</h3>
           </div>
           <ResponsiveContainer width="100%" height={240}>
             <PieChart>
@@ -311,10 +311,10 @@ export default function AdminHome() {
           </ResponsiveContainer>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-100 p-5">
+        <div className="bg-white rounded-lg border border-white/10 p-5">
           <div className="flex items-center gap-2 mb-4">
             <Globe2 className="w-4 h-4 text-sky-700" />
-            <h3 className="font-semibold text-gray-900">Offers by Country</h3>
+            <h3 className="font-semibold text-ivory">Offers by Country</h3>
           </div>
           <ResponsiveContainer width="100%" height={240}>
             <PieChart>
@@ -328,11 +328,11 @@ export default function AdminHome() {
           </ResponsiveContainer>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-100 p-5 lg:col-span-2">
+        <div className="bg-white rounded-lg border border-white/10 p-5 lg:col-span-2">
           <div className="flex items-center gap-2 mb-4">
-            <CreditCard className="w-4 h-4 text-emerald-700" />
-            <h3 className="font-semibold text-gray-900">Revenue Overview</h3>
-            <span className="text-xs text-gray-400 ml-auto">Cumulative</span>
+            <CreditCard className="w-4 h-4 text-[#D6B56D]" />
+            <h3 className="font-semibold text-ivory">Revenue Overview</h3>
+            <span className="text-xs text-ivory-dim ml-auto">Cumulative</span>
           </div>
           <ResponsiveContainer width="100%" height={240}>
             <AreaChart data={revenueData}>
@@ -354,18 +354,18 @@ export default function AdminHome() {
 
       {/* Recent lists */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div className="bg-white rounded-2xl border border-gray-100 p-5">
+        <div className="bg-white rounded-lg border border-white/10 p-5">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="font-semibold text-gray-900">Recent Registrations</h3>
-            <Link to="/admin/users" className="text-xs text-emerald-700 font-semibold">View all</Link>
+            <h3 className="font-semibold text-ivory">Recent Registrations</h3>
+            <Link to="/admin/users" className="text-xs text-[#D6B56D] font-semibold">View all</Link>
           </div>
-          <ul className="divide-y divide-gray-100">
-            {recentRegistrations.length === 0 && <li className="py-3 text-sm text-gray-400">No users yet.</li>}
+          <ul className="divide-y divide-white/10">
+            {recentRegistrations.length === 0 && <li className="py-3 text-sm text-ivory-dim">No users yet.</li>}
             {recentRegistrations.map((u) => (
               <li key={u.id} className="py-2.5 flex items-center justify-between gap-3">
                 <div className="min-w-0">
-                  <p className="text-sm font-medium text-gray-900 truncate">{u.full_name || u.email}</p>
-                  <p className="text-xs text-gray-400 truncate">{u.email}</p>
+                  <p className="text-sm font-medium text-ivory truncate">{u.full_name || u.email}</p>
+                  <p className="text-xs text-ivory-dim truncate">{u.email}</p>
                 </div>
                 <StatusBadge status={u.account_type || "individual"} label={u.account_type === "corporate" ? "Corporate" : "Individual"} />
               </li>
@@ -373,18 +373,18 @@ export default function AdminHome() {
           </ul>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-100 p-5">
+        <div className="bg-white rounded-lg border border-white/10 p-5">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="font-semibold text-gray-900">Latest Offers</h3>
-            <Link to="/admin/offers" className="text-xs text-emerald-700 font-semibold">View all</Link>
+            <h3 className="font-semibold text-ivory">Latest Offers</h3>
+            <Link to="/admin/offers" className="text-xs text-[#D6B56D] font-semibold">View all</Link>
           </div>
-          <ul className="divide-y divide-gray-100">
-            {latestOffers.length === 0 && <li className="py-3 text-sm text-gray-400">No offers yet.</li>}
+          <ul className="divide-y divide-white/10">
+            {latestOffers.length === 0 && <li className="py-3 text-sm text-ivory-dim">No offers yet.</li>}
             {latestOffers.map((o) => (
               <li key={o.id} className="py-2.5 flex items-center justify-between gap-3">
                 <div className="min-w-0">
-                  <p className="text-sm font-medium text-gray-900 truncate">{o.title}</p>
-                  <p className="text-xs text-gray-400 truncate">{o.business_name} · {o.country}</p>
+                  <p className="text-sm font-medium text-ivory truncate">{o.title}</p>
+                  <p className="text-xs text-ivory-dim truncate">{o.business_name} · {o.country}</p>
                 </div>
                 <StatusBadge status={o.status} />
               </li>
@@ -392,23 +392,23 @@ export default function AdminHome() {
           </ul>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-100 p-5">
+        <div className="bg-white rounded-lg border border-white/10 p-5">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="font-semibold text-gray-900">Recent Payments</h3>
-            <Link to="/admin/payments" className="text-xs text-emerald-700 font-semibold">View all</Link>
+            <h3 className="font-semibold text-ivory">Recent Payments</h3>
+            <Link to="/admin/payments" className="text-xs text-[#D6B56D] font-semibold">View all</Link>
           </div>
-          <ul className="divide-y divide-gray-100">
-            {recentPayments.length === 0 && <li className="py-3 text-sm text-gray-400">No payments yet.</li>}
+          <ul className="divide-y divide-white/10">
+            {recentPayments.length === 0 && <li className="py-3 text-sm text-ivory-dim">No payments yet.</li>}
             {recentPayments.map((p) => (
               <li key={p.id} className="py-2.5 flex items-center justify-between gap-3">
                 <div className="min-w-0">
-                  <p className="text-sm font-medium text-gray-900 truncate">
+                  <p className="text-sm font-medium text-ivory truncate">
                     {p.user_name || p.company_name || p.business_name || "Payment"}
                   </p>
-                  <p className="text-xs text-gray-400 truncate">{formatDate(p.created_date)} · {p.payment_method || "—"}</p>
+                  <p className="text-xs text-ivory-dim truncate">{formatDate(p.created_date)} · {p.payment_method || "—"}</p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-sm font-semibold text-gray-900">{formatMoney(p.amount, p.currency)}</span>
+                  <span className="text-sm font-semibold text-ivory">{formatMoney(p.amount, p.currency)}</span>
                   <StatusBadge status={p.status} />
                 </div>
               </li>
@@ -416,20 +416,20 @@ export default function AdminHome() {
           </ul>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-100 p-5">
+        <div className="bg-white rounded-lg border border-white/10 p-5">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="font-semibold text-gray-900">Recent Reviews</h3>
-            <Link to="/admin/reviews" className="text-xs text-emerald-700 font-semibold">View all</Link>
+            <h3 className="font-semibold text-ivory">Recent Reviews</h3>
+            <Link to="/admin/reviews" className="text-xs text-[#D6B56D] font-semibold">View all</Link>
           </div>
-          <ul className="divide-y divide-gray-100">
-            {recentReviews.length === 0 && <li className="py-3 text-sm text-gray-400">No reviews yet.</li>}
+          <ul className="divide-y divide-white/10">
+            {recentReviews.length === 0 && <li className="py-3 text-sm text-ivory-dim">No reviews yet.</li>}
             {recentReviews.map((r) => (
               <li key={r.id} className="py-2.5 flex items-center justify-between gap-3">
                 <div className="min-w-0">
-                  <p className="text-sm font-medium text-gray-900 truncate">
+                  <p className="text-sm font-medium text-ivory truncate">
                     {r.title || `★ ${r.rating}`} · {r.user_name || "—"}
                   </p>
-                  <p className="text-xs text-gray-400 truncate">{r.target_name || r.target_type}</p>
+                  <p className="text-xs text-ivory-dim truncate">{r.target_name || r.target_type}</p>
                 </div>
                 <StatusBadge status={r.status} />
               </li>

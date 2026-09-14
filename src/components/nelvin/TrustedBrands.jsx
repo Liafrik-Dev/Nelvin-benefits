@@ -28,8 +28,8 @@ const logos = [
 
 export default function TrustedBrands() {
   return (
-    <section className="bg-[#F7F3ED] py-14 overflow-hidden">
-      <p className="text-center text-xs tracking-[0.2em] text-[#180126]/50 uppercase mb-8 font-semibold">
+    <section className="bg-forest-secondary py-14 overflow-hidden">
+      <p className="text-center text-xs tracking-[0.2em] text-[#F5F1E8]/50 uppercase mb-8 font-semibold">
         Join the remarkable organisations putting people at the heart of what they do
       </p>
       <div className="relative overflow-hidden">

@@ -97,20 +97,20 @@ export default function Navbar() {
   return (
     <header className="fixed top-3 left-3 right-3 sm:top-5 sm:left-5 sm:right-5 z-50">
       <div className="max-w-6xl mx-auto">
-        <div className={`rounded-full bg-[#082F24]/95 backdrop-blur-xl text-white shadow-2xl border border-white/15 transition-all duration-300 ${scrolled ? "py-1 shadow-[#082F24]/40" : "py-1.5"}`}>
+        <div className={`rounded-full bg-[#062B23]/95 backdrop-blur-xl text-white shadow-2xl border border-white/15 transition-all duration-300 ${scrolled ? "py-1 shadow-[#062B23]/40" : "py-1.5"}`}>
           <div className="h-14 sm:h-16 px-4 sm:px-6 flex items-center justify-between gap-2 sm:gap-4">
 
             {/* Brand Logo & Tag */}
             <div className="flex items-center gap-3">
               <Link to="/" className="flex items-center gap-2.5 group">
-                <div className="w-9 h-9 bg-gradient-to-br from-[#B8FF00] to-[#00BD00] rounded-xl flex items-center justify-center shadow-md shadow-[#B8FF00]/20 group-hover:scale-105 transition-transform">
-                  <span className="text-[#082F24] font-black text-base tracking-tighter">N</span>
+                <div className="w-9 h-9 bg-gradient-to-br from-[#D6B56D] to-[#E5C77A] rounded-lg flex items-center justify-center shadow-md shadow-[#D6B56D]/20 group-hover:scale-105 transition-transform">
+                  <span className="text-[#062B23] font-black text-base tracking-tighter">N</span>
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-extrabold text-lg sm:text-xl font-heading tracking-tight leading-none text-white">
-                    Nelvin<span className="text-[#B8FF00]">.</span>
+                  <span className="font-bold text-lg sm:text-xl font-heading tracking-tight leading-none text-[#D6B56D]">
+                    Nelvin<span className="text-ivory">.</span>
                   </span>
-                  <span className="text-[10px] font-bold text-[#B8FF00] tracking-widest uppercase hidden sm:block">
+                  <span className="text-[10px] font-bold text-[#D6B56D] tracking-widest uppercase hidden sm:block">
                     Perks for Everyone
                   </span>
                 </div>
@@ -123,10 +123,10 @@ export default function Navbar() {
                 <button
                   key={key}
                   onClick={() => toggleMenu(key)}
-                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all ${
+                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
                     menuKey === key
-                      ? "text-[#082F24] bg-[#B8FF00] shadow-sm"
-                      : "text-white/90 hover:text-white hover:bg-white/10"
+                      ? "text-[#062B23] bg-[#D6B56D] shadow-sm"
+                      : "text-ivory/90 hover:text-white hover:bg-white/10"
                   }`}
                 >
                   <span>{config.label}</span>
@@ -140,8 +140,8 @@ export default function Navbar() {
                   to="/explore"
                   className={`flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-extrabold transition-all ${
                     location.pathname.startsWith('/explore') || location.pathname.startsWith('/dashboard')
-                      ? 'bg-[#B8FF00] text-[#082F24]'
-                      : 'text-white/80 hover:text-[#B8FF00]'
+                      ? 'bg-[#D6B56D] text-[#062B23]'
+                      : 'text-ivory/80 hover:text-[#D6B56D]'
                   }`}
                 >
                   <UserCheck className="w-3 h-3" />
@@ -152,8 +152,8 @@ export default function Navbar() {
                   to="/corporate"
                   className={`flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-extrabold transition-all ${
                     location.pathname.startsWith('/corporate')
-                      ? 'bg-[#00BD00] text-white'
-                      : 'text-white/80 hover:text-[#B8FF00]'
+                      ? 'bg-[#0A3A2F] text-white'
+                      : 'text-white/80 hover:text-[#D6B56D]'
                   }`}
                 >
                   <Building2 className="w-3 h-3" />
@@ -164,8 +164,8 @@ export default function Navbar() {
                   to="/business"
                   className={`flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-extrabold transition-all ${
                     location.pathname.startsWith('/business')
-                      ? 'bg-[#00BD00] text-white'
-                      : 'text-white/80 hover:text-[#B8FF00]'
+                      ? 'bg-[#0A3A2F] text-white'
+                      : 'text-white/80 hover:text-[#D6B56D]'
                   }`}
                 >
                   <Store className="w-3 h-3" />
@@ -181,9 +181,9 @@ export default function Navbar() {
                 <button
                   onClick={() => setLangOpen(!langOpen)}
                   aria-label={t('nav.language')}
-                  className="flex items-center gap-1.5 text-white/90 hover:text-[#B8FF00] text-xs font-bold transition-colors px-2.5 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-white/20"
+                  className="flex items-center gap-1.5 text-white/90 hover:text-[#D6B56D] text-xs font-bold transition-colors px-2.5 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-white/20"
                 >
-                  <Globe className="w-3.5 h-3.5 text-[#B8FF00]" />
+                  <Globe className="w-3.5 h-3.5 text-[#D6B56D]" />
                   <span className="uppercase">{lang}</span>
                 </button>
 
@@ -194,7 +194,7 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: -6, scale: 0.96 }}
                       transition={{ duration: 0.15 }}
-                      className="absolute right-0 mt-2 w-44 rounded-2xl border border-white/15 bg-[#082F24] text-white p-1.5 shadow-2xl z-50 backdrop-blur-xl"
+                      className="absolute right-0 mt-2 w-44 rounded-lg border border-white/15 bg-[#062B23] text-white p-1.5 shadow-2xl z-50 backdrop-blur-xl"
                     >
                       {LANGUAGES.map((lng) => (
                         <button
@@ -206,7 +206,7 @@ export default function Navbar() {
                           className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-xs font-semibold text-white/90 hover:bg-white/10 transition-colors"
                         >
                           <span>{lng.label}</span>
-                          {lang === lng.code && <Check className="h-3.5 w-3.5 text-[#B8FF00]" />}
+                          {lang === lng.code && <Check className="h-3.5 w-3.5 text-[#D6B56D]" />}
                         </button>
                       ))}
                     </motion.div>
@@ -222,13 +222,13 @@ export default function Navbar() {
                 <div className="flex items-center gap-2">
                   <Link
                     to="/login"
-                    className="hidden sm:inline-flex px-3.5 py-1.5 text-xs font-bold text-white/90 hover:text-[#B8FF00] transition-colors"
+                    className="hidden sm:inline-flex px-3.5 py-1.5 text-xs font-bold text-white/90 hover:text-[#D6B56D] transition-colors"
                   >
                     Log in
                   </Link>
                   <Link
                     to="/register"
-                    className="bg-gradient-to-r from-[#B8FF00] to-[#00BD00] text-[#082F24] text-xs font-extrabold px-4 py-2 rounded-full hover:brightness-110 shadow-md shadow-[#B8FF00]/20 transition-all flex items-center gap-1.5"
+                    className="bg-[#D6B56D] text-[#062B23] text-xs font-extrabold px-4 py-2 rounded-lg hover:bg-[#E5C77A] shadow-md shadow-[#062B23]/20 transition-all flex items-center gap-1.5"
                   >
                     <Sparkles className="w-3.5 h-3.5" />
                     <span>Get Started</span>
@@ -238,7 +238,7 @@ export default function Navbar() {
 
               {/* Mobile Menu Trigger */}
               <button
-                className="lg:hidden text-white p-2 rounded-xl bg-white/10 hover:bg-white/20 transition-colors"
+                className="lg:hidden text-white p-2 rounded-xl bg-white/10 hover:bg-emerald-black/35 transition-colors"
                 onClick={() => setMobileOpen(!mobileOpen)}
               >
                 {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -250,7 +250,7 @@ export default function Navbar() {
           {menuKey && (
             <div
               ref={dropdownRef}
-              className="hidden lg:block absolute left-0 right-0 top-full mt-3 bg-[#082F24] text-white rounded-3xl p-6 shadow-2xl border border-white/15 z-50 backdrop-blur-xl"
+              className="hidden lg:block absolute left-0 right-0 top-full mt-3 bg-[#062B23] text-white rounded-xl p-6 shadow-2xl border border-white/15 z-50 backdrop-blur-xl"
             >
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 {menus[menuKey].items.map((item) => {
@@ -260,13 +260,13 @@ export default function Navbar() {
                       key={item.title}
                       to={item.to}
                       onClick={() => setMenuKey(null)}
-                      className="group flex items-start gap-3 border border-white/10 hover:border-[#B8FF00]/40 bg-white/5 hover:bg-white/10 rounded-2xl p-3.5 transition-all duration-150"
+                      className="group flex items-start gap-3 border border-white/10 hover:border-[#D6B56D]/40 bg-white/5 hover:bg-white/10 rounded-lg p-3.5 transition-all duration-150"
                     >
-                      <div className="w-8 h-8 rounded-xl bg-[#B8FF00]/10 border border-[#B8FF00]/20 flex items-center justify-center shrink-0 group-hover:bg-[#B8FF00] group-hover:text-[#082F24] transition-colors">
-                        <ItemIcon className="w-4 h-4 text-[#B8FF00] group-hover:text-[#082F24]" />
+                      <div className="w-8 h-8 rounded-xl bg-[#D6B56D]/10 border border-[#D6B56D]/20 flex items-center justify-center shrink-0 group-hover:bg-[#D6B56D] group-hover:text-[#062B23] transition-colors">
+                        <ItemIcon className="w-4 h-4 text-[#D6B56D] group-hover:text-[#F5F1E8]" />
                       </div>
                       <div>
-                        <h4 className="font-extrabold text-xs text-white group-hover:text-[#B8FF00] transition-colors">
+                        <h4 className="font-extrabold text-xs text-white group-hover:text-[#D6B56D] transition-colors">
                           {item.title}
                         </h4>
                         <p className="text-white/60 text-[11px] leading-tight mt-1 line-clamp-2">
@@ -289,36 +289,36 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="lg:hidden mt-2 bg-[#082F24] border border-white/15 rounded-3xl shadow-2xl overflow-hidden text-white p-5 space-y-5"
+              className="lg:hidden mt-2 bg-[#062B23] border border-white/15 rounded-xl shadow-2xl overflow-hidden text-white p-5 space-y-5"
             >
               {/* Role Switcher Drawer Header */}
               <div className="space-y-2">
-                <p className="text-[11px] font-bold uppercase tracking-wider text-[#B8FF00]">Switch Portal Space</p>
+                <p className="text-[11px] font-bold uppercase tracking-wider text-[#D6B56D]">Switch Portal Space</p>
                 <div className="grid grid-cols-3 gap-2">
                   <Link
                     to="/explore"
                     onClick={() => setMobileOpen(false)}
-                    className="flex flex-col items-center justify-center gap-1 p-2.5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#B8FF00] text-center"
+                    className="flex flex-col items-center justify-center gap-1 p-2.5 rounded-lg bg-white/5 border border-white/10 hover:border-[#D6B56D] text-center"
                   >
-                    <UserCheck className="w-4 h-4 text-[#B8FF00]" />
+                    <UserCheck className="w-4 h-4 text-[#D6B56D]" />
                     <span className="text-[11px] font-extrabold">Employee</span>
                   </Link>
 
                   <Link
                     to="/corporate"
                     onClick={() => setMobileOpen(false)}
-                    className="flex flex-col items-center justify-center gap-1 p-2.5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#00BD00] text-center"
+                    className="flex flex-col items-center justify-center gap-1 p-2.5 rounded-lg bg-white/5 border border-white/10 hover:border-[#0A3A2F] text-center"
                   >
-                    <Building2 className="w-4 h-4 text-[#00BD00]" />
+                    <Building2 className="w-4 h-4 text-[#E5C77A]" />
                     <span className="text-[11px] font-extrabold">HR Admin</span>
                   </Link>
 
                   <Link
                     to="/business"
                     onClick={() => setMobileOpen(false)}
-                    className="flex flex-col items-center justify-center gap-1 p-2.5 rounded-2xl bg-white/5 border border-white/10 hover:border-[#00BD00] text-center"
+                    className="flex flex-col items-center justify-center gap-1 p-2.5 rounded-lg bg-white/5 border border-white/10 hover:border-[#0A3A2F] text-center"
                   >
-                    <Store className="w-4 h-4 text-[#00BD00]" />
+                    <Store className="w-4 h-4 text-[#E5C77A]" />
                     <span className="text-[11px] font-extrabold">Partner</span>
                   </Link>
                 </div>
@@ -330,7 +330,7 @@ export default function Navbar() {
               <div className="max-h-[50vh] overflow-y-auto space-y-4 pr-1">
                 {Object.entries(menus).map(([key, config]) => (
                   <div key={key} className="space-y-2">
-                    <p className="text-[#B8FF00] font-extrabold text-[11px] uppercase tracking-widest">{config.label}</p>
+                    <p className="text-[#D6B56D] font-extrabold text-[11px] uppercase tracking-widest">{config.label}</p>
                     <div className="grid grid-cols-1 gap-1.5">
                       {config.items.map((item) => (
                         <Link
@@ -339,7 +339,7 @@ export default function Navbar() {
                           onClick={() => setMobileOpen(false)}
                           className="flex items-center gap-2.5 py-2 px-3 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-semibold text-white/90 transition-colors"
                         >
-                          <item.icon className="w-3.5 h-3.5 text-[#B8FF00]" />
+                          <item.icon className="w-3.5 h-3.5 text-[#D6B56D]" />
                           <span>{item.title}</span>
                         </Link>
                       ))}
@@ -363,7 +363,7 @@ export default function Navbar() {
                   <Link
                     to="/register"
                     onClick={() => setMobileOpen(false)}
-                    className="bg-gradient-to-r from-[#B8FF00] to-[#00BD00] text-[#082F24] font-extrabold text-center rounded-full py-2 text-xs shadow-md shadow-[#B8FF00]/20"
+                    className="bg-[#D6B56D] text-[#062B23] font-extrabold text-center rounded-lg py-2 text-xs shadow-md shadow-[#062B23]/20"
                   >
                     Get Started
                   </Link>

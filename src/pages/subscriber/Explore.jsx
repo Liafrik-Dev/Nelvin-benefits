@@ -25,30 +25,30 @@ export default function Explore() {
   const cashback = offers.filter((o) => o.tag === "Cashback");
 
   return (
-    <div className="min-h-screen bg-[#faf8f5]">
-      <div className="relative bg-[#082F24] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-forest">
+      <div className="relative bg-[#062B23] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
         <Navbar />
       </div>
       <EmployeeNav />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
-        <div className="bg-white rounded-3xl border border-gray-100 p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="bg-white rounded-xl border border-white/10 p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-3 max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5 text-emerald-600" /> Curated Lifestyle Perks
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0A3A2F] text-[#E5C77A] text-xs font-bold uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5 text-[#D6B56D]" /> Curated Lifestyle Perks
             </div>
-            <h1 className="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight font-heading">
+            <h1 className="text-2xl sm:text-4xl font-extrabold text-ivory tracking-tight font-heading">
               Explore Top Employee Benefits & Exclusive Deals
             </h1>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <p className="text-ivory-muted text-sm leading-relaxed">
               Discover verified corporate discounts, cashback rewards, and wellness packages crafted for you and your family across Africa.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Link to="/marketplace" className="bg-[#082F24] text-[#B8FF00] font-bold px-5 py-3 rounded-full text-sm hover:bg-emerald-950 transition-colors flex items-center gap-2">
+            <Link to="/marketplace" className="bg-[#062B23] text-[#D6B56D] font-bold px-5 py-3 rounded-full text-sm hover:bg-[#062B23] transition-colors flex items-center gap-2">
               Browse Marketplace <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link to="/nearby" className="bg-emerald-50 text-emerald-800 font-bold px-5 py-3 rounded-full text-sm hover:bg-emerald-100 transition-colors">
+            <Link to="/nearby" className="bg-[#0A3A2F] text-[#E5C77A] font-bold px-5 py-3 rounded-full text-sm hover:bg-[#103F35] transition-colors">
               Find Nearby
             </Link>
           </div>
@@ -59,14 +59,14 @@ export default function Explore() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Award className="w-5 h-5 text-amber-500" />
-              <h2 className="text-xl font-bold text-gray-900 font-heading">Featured & VIP Deals</h2>
+              <h2 className="text-xl font-bold text-ivory font-heading">Featured & VIP Deals</h2>
             </div>
-            <Link to="/marketplace?filter=featured" className="text-xs font-bold text-emerald-700 hover:underline">View All</Link>
+            <Link to="/marketplace?filter=featured" className="text-xs font-bold text-[#D6B56D] hover:underline">View All</Link>
           </div>
           {loading ? (
-            <div className="h-48 flex items-center justify-center text-gray-400">Loading recommendations...</div>
+            <div className="h-48 flex items-center justify-center text-ivory-dim">Loading recommendations...</div>
           ) : featured.length === 0 ? (
-            <div className="p-8 bg-white rounded-2xl border border-gray-100 text-center text-gray-500 text-sm">
+            <div className="p-8 bg-white rounded-lg border border-white/10 text-center text-ivory-muted text-sm">
               No featured deals found at the moment.
             </div>
           ) : (
@@ -83,12 +83,12 @@ export default function Explore() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Flame className="w-5 h-5 text-rose-500" />
-              <h2 className="text-xl font-bold text-gray-900 font-heading">Trending Right Now</h2>
+              <h2 className="text-xl font-bold text-ivory font-heading">Trending Right Now</h2>
             </div>
-            <Link to="/marketplace?filter=trending" className="text-xs font-bold text-emerald-700 hover:underline">View All</Link>
+            <Link to="/marketplace?filter=trending" className="text-xs font-bold text-[#D6B56D] hover:underline">View All</Link>
           </div>
           {loading ? (
-            <div className="h-48 flex items-center justify-center text-gray-400">Loading recommendations...</div>
+            <div className="h-48 flex items-center justify-center text-ivory-dim">Loading recommendations...</div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {(trending.length ? trending : offers).slice(0, 4).map((offer) => (
@@ -102,13 +102,13 @@ export default function Explore() {
         <section className="space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <TrendingUp className="w-5 h-5 text-emerald-600" />
-              <h2 className="text-xl font-bold text-gray-900 font-heading">High Cashback Perks</h2>
+              <TrendingUp className="w-5 h-5 text-[#D6B56D]" />
+              <h2 className="text-xl font-bold text-ivory font-heading">High Cashback Perks</h2>
             </div>
-            <Link to="/cashback" className="text-xs font-bold text-emerald-700 hover:underline">View Cashback</Link>
+            <Link to="/cashback" className="text-xs font-bold text-[#D6B56D] hover:underline">View Cashback</Link>
           </div>
           {loading ? (
-            <div className="h-48 flex items-center justify-center text-gray-400">Loading...</div>
+            <div className="h-48 flex items-center justify-center text-ivory-dim">Loading...</div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {(cashback.length ? cashback : offers).slice(0, 4).map((offer) => (

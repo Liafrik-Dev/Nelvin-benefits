@@ -8,9 +8,9 @@ import AdminEditModal from "@/components/admin/AdminEditModal";
 import StatusBadge from "@/components/admin/StatusBadge";
 import { Check, X, Edit2, Eye } from "lucide-react";
 
-function RowIconBtn({ title, onClick, Icon, color = "text-gray-600 hover:text-gray-900" }) {
+function RowIconBtn({ title, onClick, Icon, color = "text-ivory-muted hover:text-ivory" }) {
   return (
-    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-gray-100 ${color}`}>
+    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-white/5 ${color}`}>
       <Icon className="w-4 h-4" />
     </button>
   );
@@ -73,16 +73,16 @@ export default function AdminPendingBusinesses() {
         <div className="flex items-center gap-2">
           {b.logo_url ? <img src={b.logo_url} alt="" className="w-8 h-8 rounded-lg object-cover" /> : <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center text-xs font-bold">{(b.business_name || "?").slice(0, 1)}</div>}
           <div className="min-w-0">
-            <p className="text-sm font-medium text-gray-900 truncate">{b.business_name}</p>
-            <p className="text-xs text-gray-400 truncate">{b.contact_name}</p>
+            <p className="text-sm font-medium text-ivory truncate">{b.business_name}</p>
+            <p className="text-xs text-ivory-dim truncate">{b.contact_name}</p>
           </div>
         </div>
       ) },
-    { key: "email", label: "Contact", render: (b) => <div className="text-xs"><div className="text-gray-700">{b.email}</div><div className="text-gray-400">{b.phone || "—"}</div></div> },
+    { key: "email", label: "Contact", render: (b) => <div className="text-xs"><div className="text-ivory">{b.email}</div><div className="text-ivory-dim">{b.phone || "—"}</div></div> },
     { key: "category", label: "Category", sortable: true, render: (b) => <span className="text-xs">{b.category || "—"}</span> },
     { key: "country", label: "Location", sortable: true, render: (b) => <span className="text-xs">{b.city ? `${b.city}, ` : ""}{b.country}</span> },
-    { key: "document_type", label: "Document", render: (b) => b.document_url ? <a href={b.document_url} target="_blank" className="text-emerald-700 text-xs underline">View</a> : <span className="text-xs text-gray-400">—</span> },
-    { key: "created_date", label: "Submitted", sortable: true, render: (b) => <span className="text-xs text-gray-500">{formatDate(b.created_date)}</span> },
+    { key: "document_type", label: "Document", render: (b) => b.document_url ? <a href={b.document_url} target="_blank" className="text-[#D6B56D] text-xs underline">View</a> : <span className="text-xs text-ivory-dim">—</span> },
+    { key: "created_date", label: "Submitted", sortable: true, render: (b) => <span className="text-xs text-ivory-muted">{formatDate(b.created_date)}</span> },
   ];
 
   const editFields = [
@@ -110,8 +110,8 @@ export default function AdminPendingBusinesses() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold font-heading text-gray-900">Pending Businesses</h1>
-        <p className="text-sm text-gray-500 mt-1">{filtered.length} applications awaiting approval · Approve, reject, request changes.</p>
+        <h1 className="text-2xl font-bold font-heading text-ivory">Pending Businesses</h1>
+        <p className="text-sm text-ivory-muted mt-1">{filtered.length} applications awaiting approval · Approve, reject, request changes.</p>
       </div>
 
       <AdminDataTable
@@ -127,7 +127,7 @@ export default function AdminPendingBusinesses() {
           <div className="flex items-center justify-end gap-1">
             <RowIconBtn title="Preview" Icon={Eye} onClick={() => setViewing(b)} />
             <RowIconBtn title="Edit before approving" Icon={Edit2} onClick={() => setEditing(b)} />
-            <RowIconBtn title="Approve" Icon={Check} color="text-emerald-600 hover:text-emerald-700" onClick={() => approve(b)} />
+            <RowIconBtn title="Approve" Icon={Check} color="text-[#D6B56D] hover:text-[#D6B56D]" onClick={() => approve(b)} />
             <RowIconBtn title="Reject" Icon={X} color="text-rose-600 hover:text-rose-700" onClick={() => reject(b)} />
             <button title="Request changes" onClick={() => requestChanges(b)} className="px-2 py-1 text-xs bg-amber-50 text-amber-700 rounded hover:bg-amber-100">Request changes</button>
           </div>
@@ -156,30 +156,30 @@ export default function AdminPendingBusinesses() {
           <div className="absolute inset-0 bg-black/40" onClick={() => setViewing(null)} />
           <div className="relative w-full max-w-lg bg-white h-full overflow-y-auto p-6">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="font-bold text-gray-900 text-lg">{viewing.business_name}</h2>
-              <button onClick={() => setViewing(null)} className="text-gray-400">✕</button>
+              <h2 className="font-bold text-ivory text-lg">{viewing.business_name}</h2>
+              <button onClick={() => setViewing(null)} className="text-ivory-dim">✕</button>
             </div>
             {viewing.logo_url && <img src={viewing.logo_url} alt="" className="w-full h-32 rounded-lg object-cover mb-3" />}
             <div className="space-y-2 text-sm">
               <div className="grid grid-cols-2 gap-3">
-                <div><span className="text-xs text-gray-400">Owner</span><p>{viewing.contact_name}</p></div>
-                <div><span className="text-xs text-gray-400">Email</span><p className="truncate">{viewing.email}</p></div>
-                <div><span className="text-xs text-gray-400">Phone</span><p>{viewing.phone || "—"}</p></div>
-                <div><span className="text-xs text-gray-400">Category</span><p>{viewing.category}</p></div>
-                <div><span className="text-xs text-gray-400">Country</span><p>{viewing.country}</p></div>
-                <div><span className="text-xs text-gray-400">City</span><p>{viewing.city}</p></div>
+                <div><span className="text-xs text-ivory-dim">Owner</span><p>{viewing.contact_name}</p></div>
+                <div><span className="text-xs text-ivory-dim">Email</span><p className="truncate">{viewing.email}</p></div>
+                <div><span className="text-xs text-ivory-dim">Phone</span><p>{viewing.phone || "—"}</p></div>
+                <div><span className="text-xs text-ivory-dim">Category</span><p>{viewing.category}</p></div>
+                <div><span className="text-xs text-ivory-dim">Country</span><p>{viewing.country}</p></div>
+                <div><span className="text-xs text-ivory-dim">City</span><p>{viewing.city}</p></div>
               </div>
-              {viewing.business_address && <div><span className="text-xs text-gray-400">Address</span><p>{viewing.business_address}</p></div>}
-              {viewing.website && <div><span className="text-xs text-gray-400">Website</span><a href={viewing.website} target="_blank" className="text-emerald-700 truncate block">{viewing.website}</a></div>}
-              {viewing.description && <div><span className="text-xs text-gray-400">Description</span><p className="text-gray-700">{viewing.description}</p></div>}
-              <div className="grid grid-cols-2 gap-2 pt-3 border-t border-gray-100">
-                {viewing.document_url && <a href={viewing.document_url} target="_blank" className="text-emerald-700 text-xs underline">Business document</a>}
-                {viewing.id_document_url && <a href={viewing.id_document_url} target="_blank" className="text-emerald-700 text-xs underline">ID document</a>}
-                {viewing.selfie_url && <a href={viewing.selfie_url} target="_blank" className="text-emerald-700 text-xs underline">Selfie</a>}
+              {viewing.business_address && <div><span className="text-xs text-ivory-dim">Address</span><p>{viewing.business_address}</p></div>}
+              {viewing.website && <div><span className="text-xs text-ivory-dim">Website</span><a href={viewing.website} target="_blank" className="text-[#D6B56D] truncate block">{viewing.website}</a></div>}
+              {viewing.description && <div><span className="text-xs text-ivory-dim">Description</span><p className="text-ivory">{viewing.description}</p></div>}
+              <div className="grid grid-cols-2 gap-2 pt-3 border-t border-white/10">
+                {viewing.document_url && <a href={viewing.document_url} target="_blank" className="text-[#D6B56D] text-xs underline">Business document</a>}
+                {viewing.id_document_url && <a href={viewing.id_document_url} target="_blank" className="text-[#D6B56D] text-xs underline">ID document</a>}
+                {viewing.selfie_url && <a href={viewing.selfie_url} target="_blank" className="text-[#D6B56D] text-xs underline">Selfie</a>}
               </div>
               {(viewing.business_image_urls || []).length > 0 && (
                 <div>
-                  <span className="text-xs text-gray-400">Gallery</span>
+                  <span className="text-xs text-ivory-dim">Gallery</span>
                   <div className="grid grid-cols-3 gap-2 mt-2">
                     {viewing.business_image_urls.map((url, i) => (
                       <img key={i} src={url} alt="" className="w-full h-20 rounded object-cover" />
@@ -189,9 +189,9 @@ export default function AdminPendingBusinesses() {
               )}
             </div>
             <div className="mt-6 flex gap-2">
-              <button onClick={() => approve(viewing)} className="flex-1 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg py-2 text-sm font-semibold">Approve</button>
+              <button onClick={() => approve(viewing)} className="flex-1 bg-[#D6B56D] hover:bg-[#E5C77A] text-white rounded-lg py-2 text-sm font-semibold">Approve</button>
               <button onClick={() => reject(viewing)} className="flex-1 bg-rose-50 text-rose-700 rounded-lg py-2 text-sm font-semibold">Reject</button>
-              <button onClick={() => { setEditing(viewing); setViewing(null); }} className="px-3 py-2 border border-gray-200 rounded-lg text-sm">Edit</button>
+              <button onClick={() => { setEditing(viewing); setViewing(null); }} className="px-3 py-2 border border-white/12 rounded-lg text-sm">Edit</button>
             </div>
           </div>
         </div>

@@ -6,13 +6,13 @@ import { PiggyBank, Trophy, Wallet, Users } from "lucide-react";
 
 function StatCard({ icon: Icon, label, value, sub, accent }) {
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 p-6">
+    <div className="bg-white rounded-lg border border-white/10 p-6">
       <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 ${accent}`}>
         <Icon className="w-5 h-5" />
       </div>
-      <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider">{label}</p>
-      <p className="text-2xl font-bold font-heading text-gray-900 mt-1">{value}</p>
-      {sub && <p className="text-xs text-gray-400 mt-1">{sub}</p>}
+      <p className="text-xs text-ivory-dim font-semibold uppercase tracking-wider">{label}</p>
+      <p className="text-2xl font-bold font-heading text-ivory mt-1">{value}</p>
+      {sub && <p className="text-xs text-ivory-dim mt-1">{sub}</p>}
     </div>
   );
 }
@@ -57,40 +57,40 @@ export default function SavingsPanel({ company, employees }) {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold font-heading text-gray-900">Savings</h1>
-        <p className="text-sm text-gray-500 mt-1">Company-wide savings across all employee redemptions.</p>
+        <h1 className="text-2xl font-bold font-heading text-ivory">Savings</h1>
+        <p className="text-sm text-ivory-muted mt-1">Company-wide savings across all employee redemptions.</p>
       </div>
 
       {loading ? (
-        <div className="bg-white rounded-2xl border border-gray-100 p-12 text-center text-sm text-gray-400">Loading savings…</div>
+        <div className="bg-white rounded-lg border border-white/10 p-12 text-center text-sm text-ivory-dim">Loading savings…</div>
       ) : (
         <>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <StatCard icon={PiggyBank} label="Total Company Savings" value={`$${totalSavings.toLocaleString()}`} sub="Across all employees" accent="bg-emerald-100 text-emerald-700" />
+            <StatCard icon={PiggyBank} label="Total Company Savings" value={`$${totalSavings.toLocaleString()}`} sub="Across all employees" accent="bg-[#103F35]/60 text-[#D6B56D] ring-1 ring-[#D6B56D]/25" />
             <StatCard icon={Wallet} label="Average Per Employee" value={`$${avg.toLocaleString(undefined, { maximumFractionDigits: 0 })}`} sub={`${activeCount} active employees`} accent="bg-violet-100 text-violet-700" />
             <StatCard icon={Trophy} label="Top Saver" value={topSaver ? (topSaver.emp?.user_name || topSaver.emp?.user_email || "Member") : "—"} sub={topSaver ? `$${topSaver.sav.toLocaleString()}` : "No redemptions yet"} accent="bg-amber-100 text-amber-600" />
           </div>
 
-          <div className="bg-white rounded-2xl border border-gray-100 p-6 mt-6">
+          <div className="bg-white rounded-lg border border-white/10 p-6 mt-6">
             <div className="flex items-center gap-2 mb-3">
-              <Users className="w-4 h-4 text-emerald-600" />
-              <h3 className="font-semibold text-gray-900">Top Savers</h3>
+              <Users className="w-4 h-4 text-[#D6B56D]" />
+              <h3 className="font-semibold text-ivory">Top Savers</h3>
             </div>
             {ranked.length === 0 ? (
-              <p className="text-sm text-gray-400">No redemptions recorded yet.</p>
+              <p className="text-sm text-ivory-dim">No redemptions recorded yet.</p>
             ) : (
               <div className="space-y-2">
                 {ranked.map((r, i) => (
-                  <div key={r.uid} className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50">
-                    <span className="text-xs text-gray-400 w-5">{i + 1}</span>
-                    <div className="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-bold">
+                  <div key={r.uid} className="flex items-center gap-3 p-2 rounded-lg hover:bg-forest-secondary/60">
+                    <span className="text-xs text-ivory-dim w-5">{i + 1}</span>
+                    <div className="w-8 h-8 rounded-full bg-[#103F35]/60 text-[#D6B56D] ring-1 ring-[#D6B56D]/25 flex items-center justify-center text-xs font-bold">
                       {(r.emp?.user_name || r.emp?.user_email || "?").slice(0, 1).toUpperCase()}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-gray-900 truncate">{r.emp?.user_name || r.emp?.user_email || "Member"}</p>
-                      <p className="text-xs text-gray-400">{r.emp?.department || "—"}</p>
+                      <p className="text-sm font-medium text-ivory truncate">{r.emp?.user_name || r.emp?.user_email || "Member"}</p>
+                      <p className="text-xs text-ivory-dim">{r.emp?.department || "—"}</p>
                     </div>
-                    <span className="text-sm font-bold text-emerald-700">${r.sav.toLocaleString()}</span>
+                    <span className="text-sm font-bold text-[#D6B56D]">${r.sav.toLocaleString()}</span>
                   </div>
                 ))}
               </div>

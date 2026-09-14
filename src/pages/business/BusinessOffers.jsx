@@ -38,20 +38,20 @@ export default function BusinessOffers() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold font-heading text-[#082F24]">Manage Store Offers</h1>
-          <p className="text-sm text-gray-500 mt-1">Create, edit, pause, or archive promotional deals for corporate subscribers.</p>
+          <h1 className="text-2xl font-bold font-heading text-[#F5F1E8]">Manage Store Offers</h1>
+          <p className="text-sm text-ivory-muted mt-1">Create, edit, pause, or archive promotional deals for corporate subscribers.</p>
         </div>
         <Link
           to="/business/offers/new"
-          className="bg-[#082F24] hover:bg-[#0d4636] text-[#B8FF00] font-bold text-xs px-4 py-2.5 rounded-xl flex items-center gap-2 shadow-sm transition-colors"
+          className="bg-[#062B23] hover:bg-[#0A3A2F] text-[#D6B56D] font-bold text-xs px-4 py-2.5 rounded-xl flex items-center gap-2 shadow-sm transition-colors"
         >
-          <Plus className="w-4 h-4 text-[#B8FF00]" /> Create New Offer
+          <Plus className="w-4 h-4 text-[#D6B56D]" /> Create New Offer
         </Link>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
+      <div className="bg-white rounded-lg border border-white/10 overflow-hidden shadow-sm">
         <table className="w-full text-sm text-left">
-          <thead className="bg-gray-50 text-gray-500 text-xs uppercase tracking-wider font-semibold border-b border-gray-100">
+          <thead className="bg-forest-secondary/60 text-ivory-muted text-xs uppercase tracking-wider font-semibold border-b border-white/10">
             <tr>
               <th className="px-6 py-3.5">Offer Title</th>
               <th className="px-6 py-3.5">Category</th>
@@ -61,18 +61,18 @@ export default function BusinessOffers() {
               <th className="px-6 py-3.5 text-right">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-100">
+          <tbody className="divide-y divide-white/10">
             {items.map((o) => (
-              <tr key={o.id} className="hover:bg-gray-50 transition-colors">
-                <td className="px-6 py-4 font-bold text-gray-900 flex items-center gap-2">
-                  <Tag className="w-4 h-4 text-[#00BD00]" /> {o.title}
+              <tr key={o.id} className="hover:bg-forest-secondary/60 transition-colors">
+                <td className="px-6 py-4 font-bold text-ivory flex items-center gap-2">
+                  <Tag className="w-4 h-4 text-[#E5C77A]" /> {o.title}
                 </td>
-                <td className="px-6 py-4 text-gray-600">{o.category}</td>
-                <td className="px-6 py-4 font-extrabold text-[#00BD00]">{o.discount_label}</td>
-                <td className="px-6 py-4 font-bold text-gray-900">{o.total_redemptions_count || 0}</td>
+                <td className="px-6 py-4 text-ivory-muted">{o.category}</td>
+                <td className="px-6 py-4 font-extrabold text-[#E5C77A]">{o.discount_label}</td>
+                <td className="px-6 py-4 font-bold text-ivory">{o.total_redemptions_count || 0}</td>
                 <td className="px-6 py-4">
                   <span className={`text-xs font-bold px-2.5 py-1 rounded-full uppercase ${
-                    o.status === "active" ? "bg-emerald-50 text-emerald-700" : "bg-amber-50 text-amber-700"
+                    o.status === "active" ? "bg-[#0A3A2F] text-[#D6B56D]" : "bg-amber-50 text-amber-700"
                   }`}>
                     {o.status || "Active"}
                   </span>
@@ -80,11 +80,11 @@ export default function BusinessOffers() {
                 <td className="px-6 py-4 text-right space-x-2">
                   <button
                     onClick={() => toggleStatus(o.id)}
-                    className="text-xs font-bold text-[#082F24] hover:underline"
+                    className="text-xs font-bold text-[#F5F1E8] hover:underline"
                   >
                     {o.status === "active" ? "Pause" : "Activate"}
                   </button>
-                  <Link to={`/offer/${o.id}`} className="text-xs font-bold text-gray-500 hover:underline">View</Link>
+                  <Link to={`/offer/${o.id}`} className="text-xs font-bold text-ivory-muted hover:underline">View</Link>
                 </td>
               </tr>
             ))}

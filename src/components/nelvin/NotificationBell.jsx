@@ -36,15 +36,15 @@ export default function NotificationBell() {
         )}
       </button>
       {open && (
-        <div className="absolute right-0 mt-3 w-80 bg-white rounded-xl shadow-2xl border border-gray-100 max-h-96 overflow-y-auto z-50">
-          <div className="p-3 border-b border-gray-100 font-semibold text-sm text-gray-900">Notifications</div>
+        <div className="absolute right-0 mt-3 w-80 bg-white rounded-xl shadow-2xl border border-white/10 max-h-96 overflow-y-auto z-50">
+          <div className="p-3 border-b border-white/10 font-semibold text-sm text-ivory">Notifications</div>
           {notifications.length === 0 ? (
-            <p className="p-4 text-sm text-gray-400">No notifications yet.</p>
+            <p className="p-4 text-sm text-ivory-dim">No notifications yet.</p>
           ) : (
             notifications.map((n) => (
               <div key={n.id} className="p-3 border-b border-gray-50 last:border-0">
-                <p className="text-sm font-medium text-gray-900">{n.title}</p>
-                <p className="text-xs text-gray-500 mt-0.5">{n.message}</p>
+                <p className="text-sm font-medium text-ivory">{n.title}</p>
+                <p className="text-xs text-ivory-muted mt-0.5">{n.message}</p>
               </div>
             ))
           )}

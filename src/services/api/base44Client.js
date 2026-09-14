@@ -467,7 +467,7 @@ const seedCountries = COUNTRIES.map((c, i) => ({
 
 const seedPlans = [
   { name: "Free", tier: "free", price_monthly: 0, price_yearly: 0, currency: "USD", description: "For individuals", benefits: "Find & redeem offers", display_order: 1, color: "#64748b", is_active: true, seats_included: 0 },
-  { name: "Premium", tier: "premium", price_monthly: 9, price_yearly: 90, currency: "USD", description: "Most popular choice", benefits: "Everything in Free, plus\nUnlimited redemptions, cashback, priority support", display_order: 2, color: "#00BD00", is_active: true, seats_included: 0 },
+  { name: "Premium", tier: "premium", price_monthly: 9, price_yearly: 90, currency: "USD", description: "Most popular choice", benefits: "Everything in Free, plus\nUnlimited redemptions, cashback, priority support", display_order: 2, color: "#0A3A2F", is_active: true, seats_included: 0 },
   { name: "VIP", tier: "vip", price_monthly: 29, price_yearly: 290, currency: "USD", description: "The full luxury experience", benefits: "Everything in Premium, plus\nConcierge, airport lounge, luxury partners", display_order: 3, color: "#eab308", is_active: true, seats_included: 0 },
   { name: "Enterprise", tier: "enterprise", price_monthly: 0, price_yearly: 0, currency: "USD", description: "For businesses", benefits: "Custom plans, analytics, SSO", is_corporate: true, display_order: 5, is_active: true, seats_included: 100 },
 ];

@@ -116,19 +116,19 @@ export default function AdminDashboard() {
 
   if (user && user.role !== "admin") {
     return (
-      <div className="min-h-screen bg-[#faf8f5] flex items-center justify-center px-4">
+      <div className="min-h-screen bg-forest flex items-center justify-center px-4">
         <div className="text-center">
           <ShieldAlert className="w-12 h-12 text-rose-500 mx-auto mb-4" />
-          <h1 className="text-xl font-bold text-gray-900 mb-2">Access restricted</h1>
-          <p className="text-gray-500 text-sm">This area is only available to Nelvin staff.</p>
+          <h1 className="text-xl font-bold text-ivory mb-2">Access restricted</h1>
+          <p className="text-ivory-muted text-sm">This area is only available to Nelvin staff.</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#faf8f5]">
-      <div className="relative bg-gray-900 pt-24 pb-10 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-forest">
+      <div className="relative bg-[#062B23] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
         <Navbar />
         <div className="max-w-6xl mx-auto">
           <h1 className="text-2xl sm:text-3xl font-bold font-heading text-white">Staff Admin</h1>
@@ -140,20 +140,20 @@ export default function AdminDashboard() {
         <div className="flex gap-2 mb-6">
           <button
             onClick={() => setTab("applications")}
-            className={`px-5 py-2 rounded-full text-sm font-medium ${tab === "applications" ? "bg-gray-900 text-white" : "bg-white border border-gray-200 text-gray-600"}`}
+            className={`px-5 py-2 rounded-full text-sm font-medium ${tab === "applications" ? "bg-[#062B23] text-white" : "bg-white border border-white/12 text-ivory-muted"}`}
           >
             Vendor Applications ({applications.length})
           </button>
           <button
             onClick={() => setTab("offers")}
-            className={`px-5 py-2 rounded-full text-sm font-medium ${tab === "offers" ? "bg-gray-900 text-white" : "bg-white border border-gray-200 text-gray-600"}`}
+            className={`px-5 py-2 rounded-full text-sm font-medium ${tab === "offers" ? "bg-[#062B23] text-white" : "bg-white border border-white/12 text-ivory-muted"}`}
           >
             Offers ({offers.length})
           </button>
         </div>
 
         {loading ? (
-          <div className="py-16 text-center text-gray-400">Loading...</div>
+          <div className="py-16 text-center text-ivory-dim">Loading...</div>
         ) : tab === "applications" ? (
           <>
             <div className="flex gap-2 mb-4 flex-wrap">
@@ -161,23 +161,23 @@ export default function AdminDashboard() {
                 <button
                   key={s.key}
                   onClick={() => setStatusFilter(s.key)}
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${statusFilter === s.key ? "bg-emerald-700 text-white" : "bg-white border border-gray-200 text-gray-600"}`}
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${statusFilter === s.key ? "bg-[#D6B56D] text-white" : "bg-white border border-white/12 text-ivory-muted"}`}
                 >
                   {s.label} ({counts[s.key]})
                 </button>
               ))}
             </div>
 
-            <div className="bg-white rounded-2xl border border-gray-100 divide-y divide-gray-100">
-              {filteredApps.length === 0 && <p className="p-6 text-sm text-gray-400">No {statusFilter === "all" ? "" : statusFilter} applications.</p>}
+            <div className="bg-white rounded-lg border border-white/10 divide-y divide-white/10">
+              {filteredApps.length === 0 && <p className="p-6 text-sm text-ivory-dim">No {statusFilter === "all" ? "" : statusFilter} applications.</p>}
               {filteredApps.map((app) => (
                 <div key={app.id} className="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div className="flex-1 cursor-pointer min-w-0" onClick={() => setSelectedApp(app)}>
-                    <p className="font-semibold text-gray-900 flex items-center gap-2">
+                    <p className="font-semibold text-ivory flex items-center gap-2">
                       {app.business_name}
-                      {app.published_offer_id && <Check className="w-4 h-4 text-emerald-600" />}
+                      {app.published_offer_id && <Check className="w-4 h-4 text-[#D6B56D]" />}
                     </p>
-                    <p className="text-xs text-gray-500 truncate">{app.contact_name} · {app.email} · {app.category} · {app.country}</p>
+                    <p className="text-xs text-ivory-muted truncate">{app.contact_name} · {app.email} · {app.category} · {app.country}</p>
                     {app.status === "rejected" && app.rejection_reason && (
                       <p className="text-xs text-rose-500 mt-1">Reason: {app.rejection_reason}</p>
                     )}
@@ -185,7 +185,7 @@ export default function AdminDashboard() {
                   <div className="flex items-center gap-2 flex-shrink-0">
                     <span
                       className={`text-xs font-semibold px-3 py-1 rounded-full ${
-                        app.status === "approved" ? "bg-emerald-100 text-emerald-700"
+                        app.status === "approved" ? "bg-[#103F35]/60 text-[#D6B56D] ring-1 ring-[#D6B56D]/25"
                         : app.status === "rejected" ? "bg-rose-100 text-rose-700"
                         : "bg-amber-100 text-amber-700"
                       }`}
@@ -194,7 +194,7 @@ export default function AdminDashboard() {
                     </span>
                     <button
                       onClick={() => setSelectedApp(app)}
-                      className="px-3 h-8 rounded-full bg-gray-900 text-white text-xs font-medium flex items-center gap-1 hover:bg-gray-800"
+                      className="px-3 h-8 rounded-full bg-[#062B23] text-white text-xs font-medium flex items-center gap-1 hover:bg-emerald-black"
                     >
                       <Eye className="w-3.5 h-3.5" /> Review
                     </button>
@@ -204,20 +204,20 @@ export default function AdminDashboard() {
             </div>
           </>
         ) : (
-          <div className="bg-white rounded-2xl border border-gray-100 divide-y divide-gray-100">
-            {offers.length === 0 && <p className="p-6 text-sm text-gray-400">No offers.</p>}
+          <div className="bg-white rounded-lg border border-white/10 divide-y divide-white/10">
+            {offers.length === 0 && <p className="p-6 text-sm text-ivory-dim">No offers.</p>}
             {offers.map((offer) => (
               <div key={offer.id} className="p-4 flex items-center justify-between gap-3">
                 <div className="flex items-center gap-3 flex-1 min-w-0">
                   <img src={offer.image_url} alt={offer.title} className="w-12 h-12 rounded-lg object-cover" />
                   <div className="min-w-0">
-                    <p className="font-semibold text-gray-900 text-sm truncate">{offer.title}</p>
-                    <p className="text-xs text-gray-500">{offer.business_name} · {offer.country} · {offer.status}</p>
+                    <p className="font-semibold text-ivory text-sm truncate">{offer.title}</p>
+                    <p className="text-xs text-ivory-muted">{offer.business_name} · {offer.country} · {offer.status}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2 flex-shrink-0">
-                  <Link to={`/offer/${offer.id}`} target="_blank" className="w-8 h-8 rounded-full bg-gray-50 hover:bg-gray-100 flex items-center justify-center">
-                    <ExternalLink className="w-4 h-4 text-gray-600" />
+                  <Link to={`/offer/${offer.id}`} target="_blank" className="w-8 h-8 rounded-full bg-forest-secondary/60 hover:bg-white/5 flex items-center justify-center">
+                    <ExternalLink className="w-4 h-4 text-ivory-muted" />
                   </Link>
                   <button onClick={() => deleteOffer(offer.id)} className="w-8 h-8 rounded-full bg-rose-50 hover:bg-rose-100 flex items-center justify-center">
                     <Trash2 className="w-4 h-4 text-rose-600" />

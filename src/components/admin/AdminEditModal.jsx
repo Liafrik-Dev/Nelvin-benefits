@@ -64,12 +64,12 @@ export default function AdminEditModal({
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/40" onClick={onClose} />
-      <div className="relative bg-white rounded-2xl shadow-2xl border border-gray-100 w-full max-w-lg max-h-[90vh] overflow-y-auto">
-        <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between sticky top-0 bg-white z-10">
-          <h2 className="font-bold text-gray-900 text-lg">
+      <div className="relative bg-white rounded-lg shadow-2xl border border-white/10 w-full max-w-lg max-h-[90vh] overflow-y-auto">
+        <div className="px-6 py-4 border-b border-white/10 flex items-center justify-between sticky top-0 bg-white z-10">
+          <h2 className="font-bold text-ivory text-lg">
             {title || (isNew ? `New ${entityName}` : `Edit ${entityName}`)}
           </h2>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-700">
+          <button onClick={onClose} className="text-ivory-dim hover:text-ivory">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -79,11 +79,11 @@ export default function AdminEditModal({
             if (f.type === "select") {
               return (
                 <div key={f.key}>
-                  <label className="text-sm font-medium text-gray-700 block mb-1.5">{f.label}</label>
+                  <label className="text-sm font-medium text-ivory block mb-1.5">{f.label}</label>
                   <select
                     value={val}
                     onChange={(e) => set(f.key, e.target.value)}
-                    className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-emerald-100"
+                    className="w-full border border-white/12 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#D6B56D]/20"
                   >
                     <option value="">—</option>
                     {f.options.map((opt) => (
@@ -98,12 +98,12 @@ export default function AdminEditModal({
             if (f.type === "textarea") {
               return (
                 <div key={f.key}>
-                  <label className="text-sm font-medium text-gray-700 block mb-1.5">{f.label}</label>
+                  <label className="text-sm font-medium text-ivory block mb-1.5">{f.label}</label>
                   <textarea
                     value={val}
                     onChange={(e) => set(f.key, e.target.value)}
                     rows={4}
-                    className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-emerald-100"
+                    className="w-full border border-white/12 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#D6B56D]/20"
                   />
                 </div>
               );
@@ -117,7 +117,7 @@ export default function AdminEditModal({
                     checked={!!val}
                     onChange={(e) => set(f.key, e.target.checked)}
                   />
-                  <label htmlFor={f.key} className="text-sm text-gray-700">
+                  <label htmlFor={f.key} className="text-sm text-ivory">
                     {f.label}
                   </label>
                 </div>
@@ -126,34 +126,34 @@ export default function AdminEditModal({
             if (f.type === "url") {
               return (
                 <div key={f.key}>
-                  <label className="text-sm font-medium text-gray-700 block mb-1.5">{f.label}</label>
+                  <label className="text-sm font-medium text-ivory block mb-1.5">{f.label}</label>
                   <input
                     type="text"
                     placeholder="https://"
                     value={val}
                     onChange={(e) => set(f.key, e.target.value)}
-                    className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-emerald-100"
+                    className="w-full border border-white/12 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#D6B56D]/20"
                   />
-                  {f.help && <p className="text-xs text-gray-400 mt-1">{f.help}</p>}
+                  {f.help && <p className="text-xs text-ivory-dim mt-1">{f.help}</p>}
                 </div>
               );
             }
             return (
               <div key={f.key}>
-                <label className="text-sm font-medium text-gray-700 block mb-1.5">{f.label}</label>
+                <label className="text-sm font-medium text-ivory block mb-1.5">{f.label}</label>
                 <input
                   type={f.type === "number" ? "number" : "text"}
                   value={val}
                   onChange={(e) =>
                     set(f.key, f.type === "number" ? Number(e.target.value) : e.target.value)
                   }
-                  className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-emerald-100"
+                  className="w-full border border-white/12 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#D6B56D]/20"
                 />
               </div>
             );
           })}
         </div>
-        <div className="px-6 py-4 border-t border-gray-100 flex items-center justify-between gap-2 sticky bottom-0 bg-white">
+        <div className="px-6 py-4 border-t border-white/10 flex items-center justify-between gap-2 sticky bottom-0 bg-white">
           {!isNew && (
             <button
               onClick={remove}
@@ -166,14 +166,14 @@ export default function AdminEditModal({
           <div className="flex items-center gap-2 ml-auto">
             <button
               onClick={onClose}
-              className="px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg"
+              className="px-4 py-2 text-sm font-medium text-ivory-muted hover:bg-white/5 rounded-lg"
             >
               Cancel
             </button>
             <button
               onClick={save}
               disabled={saving}
-              className="px-4 py-2 text-sm font-semibold bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg flex items-center gap-2 disabled:opacity-50"
+              className="px-4 py-2 text-sm font-semibold bg-[#D6B56D] hover:bg-[#E5C77A] text-white rounded-lg flex items-center gap-2 disabled:opacity-50"
             >
               {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
               {isNew ? "Create" : "Save"}

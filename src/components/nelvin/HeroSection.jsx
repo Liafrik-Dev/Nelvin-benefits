@@ -10,7 +10,7 @@ const HERO_VIDEOS = [
 ];
 
 const LEISURE_PHOTOS = [
-  { title: "Luxury Hotels & Stays", discount: "Up to 35% OFF", img: "/images/assets/b1-foto-hotel-1643982_1920.jpg", icon: Hotel },
+  { title: "Luxury Hotels & Stays", discount: "Up to 35% OFF", img: "/images/benifex/africa/kenya.jpg", icon: Hotel },
   { title: "Gourmet Dining & Cafés", discount: "2-for-1 Specials", img: "/images/benifex/cat/food-dining.jpg", icon: Utensils },
   { title: "Sports & Fitness Clubs", discount: "Free Trial Pass", img: "/images/benifex/cat/fitness-sports.jpg", icon: Dumbbell },
 ];
@@ -40,7 +40,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#082F24] text-white min-h-[90vh] flex items-center">
+    <section className="relative overflow-hidden bg-[#062B23] text-white min-h-[90vh] flex items-center">
       {/* 4 Background Video Loop with 95% Opacity */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <video
@@ -53,19 +53,19 @@ export default function HeroSection() {
         >
           <source src={HERO_VIDEOS[activeVideoIndex].url} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#082F24]/90 via-[#082F24]/75 to-[#082F24]/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#062B23]/90 via-[#062B23]/75 to-[#062B23]/60" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 lg:pt-40 pb-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Copy */}
         <div>
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 rounded-full pl-1 pr-4 py-1 mb-6 shadow-sm">
-            <span className="bg-[#B8FF00] text-[#082F24] text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-full">Open To All</span>
-            <span className="text-xs font-semibold text-white/90">For Individuals, Particulars, HR Teams & Merchants</span>
+          <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur border border-gold-soft rounded-lg pl-1 pr-4 py-1 mb-6 shadow-sm">
+            <span className="bg-[#D6B56D]/15 text-[#D6B56D] border border-[#D6B56D]/30 text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded">Open To All</span>
+            <span className="text-xs font-semibold text-ivory/90">For Individuals, Particulars, HR Teams & Merchants</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl xl:text-6xl font-extrabold font-heading tracking-tight leading-[1.08]">
-            Perks & Savings built for <span className="text-[#B8FF00]">Everyone</span>
+          <h1 className="text-4xl sm:text-5xl xl:text-6xl font-semibold font-heading tracking-tight leading-[1.08] text-ivory">
+            Perks "&" Savings, built for <span className="text-gold italic tracking-tight">Everyone</span>
           </h1>
 
           <p className="mt-6 text-base sm:text-lg text-white/85 leading-relaxed max-w-xl font-medium">
@@ -73,23 +73,23 @@ export default function HeroSection() {
           </p>
 
           {/* Horizontal Search Bar for Individual Users */}
-          <form onSubmit={handleSearchSubmit} className="mt-8 bg-white/95 backdrop-blur p-2 rounded-2xl sm:rounded-full shadow-2xl border border-white/40 flex flex-col sm:flex-row items-center gap-2 text-gray-900">
-            <div className="flex items-center gap-2 px-3 py-1.5 flex-1 w-full border-b sm:border-b-0 sm:border-r border-gray-200">
-              <Search className="w-4 h-4 text-gray-400 shrink-0" />
+          <form onSubmit={handleSearchSubmit} className="mt-8 bg-emerald-black/95 backdrop-blur p-2 rounded-lg sm:rounded-full shadow-2xl border border-white/40 flex flex-col sm:flex-row items-center gap-2 text-ivory">
+            <div className="flex items-center gap-2 px-3 py-1.5 flex-1 w-full border-b sm:border-b-0 sm:border-r border-white/12">
+              <Search className="w-4 h-4 text-ivory-dim shrink-0" />
               <input
                 type="text"
                 placeholder="Search deals (e.g. Nike, Uber, Gym)..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full text-xs font-semibold bg-transparent focus:outline-none placeholder:text-gray-400"
+                className="w-full text-xs font-semibold bg-transparent focus:outline-none placeholder:text-ivory-dim"
               />
             </div>
-            <div className="flex items-center gap-2 px-3 py-1.5 w-full sm:w-36 border-b sm:border-b-0 sm:border-r border-gray-200">
-              <Tag className="w-4 h-4 text-gray-400 shrink-0" />
+            <div className="flex items-center gap-2 px-3 py-1.5 w-full sm:w-36 border-b sm:border-b-0 sm:border-r border-white/12">
+              <Tag className="w-4 h-4 text-ivory-dim shrink-0" />
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="w-full text-xs font-semibold bg-transparent focus:outline-none text-gray-700"
+                className="w-full text-xs font-semibold bg-transparent focus:outline-none text-ivory"
               >
                 <option value="">Category</option>
                 <option value="dining">Dining</option>
@@ -99,18 +99,18 @@ export default function HeroSection() {
               </select>
             </div>
             <div className="flex items-center gap-2 px-3 py-1.5 w-full sm:w-32">
-              <MapPin className="w-4 h-4 text-gray-400 shrink-0" />
+              <MapPin className="w-4 h-4 text-ivory-dim shrink-0" />
               <input
                 type="text"
                 placeholder="City / Country"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
-                className="w-full text-xs font-semibold bg-transparent focus:outline-none placeholder:text-gray-400"
+                className="w-full text-xs font-semibold bg-transparent focus:outline-none placeholder:text-ivory-dim"
               />
             </div>
             <button
               type="submit"
-              className="w-full sm:w-auto bg-[#082F24] hover:bg-emerald-950 text-[#B8FF00] font-extrabold text-xs px-6 py-3 rounded-full transition-all shadow-md shrink-0 flex items-center justify-center gap-1.5"
+              className="w-full sm:w-auto bg-[#D6B56D] hover:bg-[#E5C77A] text-[#062B23] font-bold text-xs px-6 py-3 rounded-lg transition-all shadow-md shadow-[#062B23]/30 shrink-0 flex items-center justify-center gap-1.5"
             >
               Find Offers
               <ArrowRight className="w-3.5 h-3.5" />
@@ -120,16 +120,16 @@ export default function HeroSection() {
           <div className="mt-6 flex flex-col sm:flex-row gap-3.5">
             <Link
               to="/corporate"
-              className="group inline-flex items-center justify-center gap-2.5 bg-white/10 hover:bg-white/20 backdrop-blur border border-white/30 hover:border-white text-white font-bold text-xs h-10 px-6 rounded-full transition-all"
+              className="group inline-flex items-center justify-center gap-2.5 bg-white/10 hover:bg-emerald-black/35 backdrop-blur border border-white/30 hover:border-white text-white font-bold text-xs h-10 px-6 rounded-full transition-all"
             >
-              <Play className="w-3.5 h-3.5 fill-current text-[#B8FF00]" />
+              <Play className="w-3.5 h-3.5 fill-current text-[#D6B56D]" />
               Book Corporate Demo
             </Link>
           </div>
 
           {/* Background Video Selector Bar */}
           <div className="mt-8 pt-6 border-t border-white/10">
-            <p className="text-[10px] uppercase font-bold text-[#B8FF00] tracking-wider mb-2 flex items-center gap-1.5">
+            <p className="text-[10px] uppercase font-bold text-[#D6B56D] tracking-wider mb-2 flex items-center gap-1.5">
               <Video className="w-3.5 h-3.5" /> Interactive Video Atmosphere:
             </p>
             <div className="flex flex-wrap gap-2">
@@ -139,11 +139,11 @@ export default function HeroSection() {
                   onClick={() => setActiveVideoIndex(idx)}
                   className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
                     activeVideoIndex === idx
-                      ? "bg-[#B8FF00] text-[#082F24] shadow-md scale-105"
-                      : "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white"
+                      ? "bg-[#D6B56D] text-[#062B23] shadow-md scale-105"
+                      : "bg-white/10 text-ivory/70 hover:bg-emerald-black/35 hover:text-white"
                   }`}
                 >
-                  <span className={`w-2 h-2 rounded-full ${activeVideoIndex === idx ? "bg-[#082F24] animate-ping" : "bg-white/50"}`} />
+                  <span className={`w-2 h-2 rounded-full ${activeVideoIndex === idx ? "bg-[#062B23] animate-ping" : "bg-white/50"}`} />
                   {vid.title}
                 </button>
               ))}
@@ -153,42 +153,42 @@ export default function HeroSection() {
           {/* Trust Chips */}
           <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-white/80">
-              <ShieldCheck className="w-4 h-4 text-[#B8FF00]" /> Enterprise ISO Security
+              <ShieldCheck className="w-4 h-4 text-[#D6B56D]" /> Enterprise ISO Security
             </span>
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-white/80">
-              <TrendingUp className="w-4 h-4 text-[#B8FF00]" /> 20K+ Vetted Merchant Partners
+              <TrendingUp className="w-4 h-4 text-[#D6B56D]" /> 20K+ Vetted Merchant Partners
             </span>
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-white/80">
-              <Sparkles className="w-4 h-4 text-[#B8FF00]" /> 500K+ Active Perks
+              <Sparkles className="w-4 h-4 text-[#D6B56D]" /> 500K+ Active Perks
             </span>
           </div>
         </div>
 
         {/* Visual Showcase Gallery with Multiple Leisure Photos */}
         <div className="relative space-y-3">
-          <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/20 group">
+          <div className="relative rounded-xl overflow-hidden shadow-2xl border border-white/20 group">
             <img
               src={LEISURE_PHOTOS[activePhotoIndex].img}
               alt={LEISURE_PHOTOS[activePhotoIndex].title}
               className="w-full h-[420px] sm:h-[460px] object-cover transition-all duration-700 scale-105 group-hover:scale-100"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#082F24] via-[#082F24]/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#062B23] via-[#062B23]/20 to-transparent" />
 
             <div className="absolute top-4 left-4 bg-black/40 backdrop-blur border border-white/20 text-white px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#B8FF00] animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-[#D6B56D] animate-pulse" />
               <span>{LEISURE_PHOTOS[activePhotoIndex].title}</span>
             </div>
 
-            <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur rounded-2xl p-4 shadow-xl text-gray-900 flex items-center justify-between">
+            <div className="absolute bottom-5 left-5 right-5 bg-emerald-black/95 backdrop-blur rounded-lg p-4 shadow-xl text-ivory flex items-center justify-between">
               <div>
-                <p className="text-[10px] uppercase tracking-widest text-emerald-800 font-bold">Exclusive Perk</p>
-                <p className="text-base font-extrabold font-heading text-gray-900">{LEISURE_PHOTOS[activePhotoIndex].discount}</p>
+                <p className="text-[10px] uppercase tracking-widest text-[#E5C77A] font-bold">Exclusive Perk</p>
+                <p className="text-base font-extrabold font-heading text-ivory">{LEISURE_PHOTOS[activePhotoIndex].discount}</p>
               </div>
               <div className="flex -space-x-2">
                 {["https://randomuser.me/api/portraits/women/44.jpg", "https://randomuser.me/api/portraits/men/32.jpg", "https://randomuser.me/api/portraits/women/68.jpg"].map((u) => (
                   <img key={u} src={u} alt="" className="w-8 h-8 rounded-full border-2 border-white object-cover" />
                 ))}
-                <span className="w-8 h-8 rounded-full bg-[#B8FF00] text-[#082F24] text-[10px] font-black flex items-center justify-center border-2 border-white">+50K</span>
+                <span className="w-8 h-8 rounded-full bg-[#D6B56D] text-[#062B23] text-[10px] font-black flex items-center justify-center border-2 border-white">+50K</span>
               </div>
             </div>
           </div>
@@ -203,8 +203,8 @@ export default function HeroSection() {
                   onClick={() => setActivePhotoIndex(i)}
                   className={`p-2.5 rounded-xl border text-left transition-all flex items-center gap-2 ${
                     activePhotoIndex === i
-                      ? "bg-[#B8FF00] border-[#B8FF00] text-[#082F24] font-extrabold shadow-md scale-105"
-                      : "bg-white/10 border-white/15 text-white/80 hover:bg-white/20"
+                      ? "bg-[#D6B56D] border-[#D6B56D] text-[#062B23] font-extrabold shadow-md scale-105"
+                      : "bg-white/10 border-white/15 text-ivory/80 hover:bg-emerald-black/35 hover:text-white"
                   }`}
                 >
                   <IconComp className="w-4 h-4 shrink-0" />

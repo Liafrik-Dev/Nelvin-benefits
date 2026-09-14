@@ -56,23 +56,23 @@ export default function Categories() {
   const listToRender = categories.length > 0 ? categories : defaultCategories;
 
   return (
-    <div className="min-h-screen bg-[#faf8f5]">
-      <div className="relative bg-[#082F24] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-forest">
+      <div className="relative bg-[#062B23] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
         <Navbar />
       </div>
       <EmployeeNav />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         <div>
-          <span className="text-xs font-bold text-emerald-800 uppercase tracking-wider bg-emerald-50 px-3 py-1 rounded-full">Explore By Category</span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-2 font-heading">
+          <span className="text-xs font-bold text-[#E5C77A] uppercase tracking-wider bg-[#0A3A2F] px-3 py-1 rounded-full">Explore By Category</span>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-ivory mt-2 font-heading">
             Benefit Categories
           </h1>
-          <p className="text-gray-500 text-sm mt-1">Browse verified corporate perks organized by department and lifestyle theme.</p>
+          <p className="text-ivory-muted text-sm mt-1">Browse verified corporate perks organized by department and lifestyle theme.</p>
         </div>
 
         {loading ? (
-          <div className="h-64 flex items-center justify-center text-gray-400">Loading categories...</div>
+          <div className="h-64 flex items-center justify-center text-ivory-dim">Loading categories...</div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {listToRender.map((cat) => {
@@ -82,24 +82,24 @@ export default function Categories() {
                 <div
                   key={cat.id || cat.name}
                   onClick={() => navigate(`/marketplace?category=${encodeURIComponent(cat.name)}`)}
-                  className="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-all cursor-pointer group flex flex-col justify-between"
+                  className="bg-white rounded-xl overflow-hidden border border-white/10 shadow-sm hover:shadow-md transition-all cursor-pointer group flex flex-col justify-between"
                 >
                   <div className="relative h-36 overflow-hidden">
                     <img src={imgUrl} alt={cat.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
                       <span className="font-bold text-sm font-heading">{cat.name}</span>
-                      <div className="w-8 h-8 rounded-xl bg-white/20 backdrop-blur flex items-center justify-center text-[#B8FF00]">
+                      <div className="w-8 h-8 rounded-xl bg-emerald-black/35 backdrop-blur flex items-center justify-center text-[#D6B56D]">
                         <IconComp className="w-4 h-4" />
                       </div>
                     </div>
                   </div>
 
                   <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-                    <p className="text-xs text-gray-500 line-clamp-2">
+                    <p className="text-xs text-ivory-muted line-clamp-2">
                       {cat.description || "Exclusive corporate offers and employee savings in this category."}
                     </p>
-                    <div className="pt-3 border-t border-gray-50 flex items-center justify-between text-xs font-bold text-emerald-700">
+                    <div className="pt-3 border-t border-gray-50 flex items-center justify-between text-xs font-bold text-[#D6B56D]">
                       <span>{cat.count || 12}+ Perks Available</span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </div>

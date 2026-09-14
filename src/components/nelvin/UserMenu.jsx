@@ -59,27 +59,27 @@ export default function UserMenu() {
     <div
       ref={menuRef}
       style={{ position: "fixed", top: `${coords.top}px`, right: `${coords.right}px` }}
-      className="w-64 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-[100]"
+      className="w-64 bg-white rounded-lg shadow-2xl border border-white/10 overflow-hidden z-[100]"
     >
-      <div className="p-4 border-b border-gray-100">
-        <p className="font-bold text-gray-900">{user?.full_name || "Member"}</p>
-        <p className="text-xs text-gray-400 break-all">{user?.email}</p>
+      <div className="p-4 border-b border-white/10">
+        <p className="font-bold text-ivory">{user?.full_name || "Member"}</p>
+        <p className="text-xs text-ivory-dim break-all">{user?.email}</p>
         <span className="inline-block mt-2 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">
           {user?.role === "admin" ? "Admin" : "Free"}
         </span>
       </div>
-      <Link to="/profile" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+      <Link to="/profile" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-3 text-sm text-ivory hover:bg-forest-secondary/60">
         <User className="w-4 h-4" /> Profile
       </Link>
-      <Link to="/dashboard" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+      <Link to="/dashboard" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-3 text-sm text-ivory hover:bg-forest-secondary/60">
         <LayoutDashboard className="w-4 h-4" /> Dashboard
       </Link>
-      <Link to="/benefits" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-gray-50">
+      <Link to="/benefits" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-3 text-sm text-ivory hover:bg-forest-secondary/60">
         <Crown className="w-4 h-4" /> Membership
       </Link>
       <button
         onClick={() => logout(true)}
-        className="w-full flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 border-t border-gray-100"
+        className="w-full flex items-center gap-3 px-4 py-3 text-sm text-ivory hover:bg-forest-secondary/60 border-t border-white/10"
       >
         <LogOut className="w-4 h-4" /> Sign out
       </button>

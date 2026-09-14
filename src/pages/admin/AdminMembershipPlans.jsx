@@ -8,9 +8,9 @@ import AdminEditModal from "@/components/admin/AdminEditModal";
 import StatusBadge from "@/components/admin/StatusBadge";
 import { Edit2, Trash2, Plus, Power } from "lucide-react";
 
-function RowIconBtn({ title, onClick, Icon, color = "text-gray-600 hover:text-gray-900" }) {
+function RowIconBtn({ title, onClick, Icon, color = "text-ivory-muted hover:text-ivory" }) {
   return (
-    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-gray-100 ${color}`}>
+    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-white/5 ${color}`}>
       <Icon className="w-4 h-4" />
     </button>
   );
@@ -63,10 +63,10 @@ export default function AdminMembershipPlans() {
     { key: "name", label: "Plan", sortable: true,
       render: (p) => (
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center text-sm font-bold">{(p.name || "?").slice(0, 1)}</div>
+          <div className="w-8 h-8 rounded-lg bg-[#103F35]/60 text-[#D6B56D] flex items-center justify-center text-sm font-bold">{(p.name || "?").slice(0, 1)}</div>
           <div className="min-w-0">
-            <p className="text-sm font-medium text-gray-900 truncate">{p.name}</p>
-            <p className="text-xs text-gray-400 truncate">{p.tier || "—"}</p>
+            <p className="text-sm font-medium text-ivory truncate">{p.name}</p>
+            <p className="text-xs text-ivory-dim truncate">{p.tier || "—"}</p>
           </div>
         </div>
       ) },
@@ -101,12 +101,12 @@ export default function AdminMembershipPlans() {
     <div>
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
         <div>
-          <h1 className="text-2xl font-bold font-heading text-gray-900">Membership Plans</h1>
-          <p className="text-sm text-gray-500 mt-1">{filtered.length} plans · Free, Silver, Gold, Platinum, Enterprise.</p>
+          <h1 className="text-2xl font-bold font-heading text-ivory">Membership Plans</h1>
+          <p className="text-sm text-ivory-muted mt-1">{filtered.length} plans · Free, Silver, Gold, Platinum, Enterprise.</p>
         </div>
         <button
           onClick={() => setEditing({ currency: "USD", is_active: true, display_order: data.length })}
-          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg"
+          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-[#D6B56D] hover:bg-[#E5C77A] text-white rounded-lg"
         >
           <Plus className="w-4 h-4" /> New plan
         </button>
@@ -122,7 +122,7 @@ export default function AdminMembershipPlans() {
         exportName={`membership-plans-${Date.now()}.csv`}
         renderActions={(p) => (
           <div className="flex items-center justify-end gap-1">
-            <RowIconBtn title={p.is_active ? "Deactivate" : "Activate"} Icon={Power} color={p.is_active ? "text-emerald-600" : "text-gray-400"} onClick={() => toggleActive(p)} />
+            <RowIconBtn title={p.is_active ? "Deactivate" : "Activate"} Icon={Power} color={p.is_active ? "text-[#D6B56D]" : "text-ivory-dim"} onClick={() => toggleActive(p)} />
             <RowIconBtn title="Edit" Icon={Edit2} onClick={() => setEditing(p)} />
             <RowIconBtn title="Delete" Icon={Trash2} color="text-rose-600 hover:text-rose-700" onClick={() => remove(p)} />
           </div>

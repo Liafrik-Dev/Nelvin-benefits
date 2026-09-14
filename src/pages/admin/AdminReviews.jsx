@@ -7,9 +7,9 @@ import AdminDataTable from "@/components/admin/AdminDataTable";
 import StatusBadge from "@/components/admin/StatusBadge";
 import { Check, X, Reply, EyeOff, Star, Flag, Trash2 } from "lucide-react";
 
-function RowIconBtn({ title, onClick, Icon, color = "text-gray-600 hover:text-gray-900" }) {
+function RowIconBtn({ title, onClick, Icon, color = "text-ivory-muted hover:text-ivory" }) {
   return (
-    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-gray-100 ${color}`}>
+    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-white/5 ${color}`}>
       <Icon className="w-4 h-4" />
     </button>
   );
@@ -66,19 +66,19 @@ export default function AdminReviews() {
 
   const columns = [
     { key: "rating", label: "Rating", sortable: true, render: (r) => <span className="text-xs font-semibold text-amber-600">★ {r.rating}</span> },
-    { key: "user_name", label: "Author", sortable: true, render: (r) => <div><p className="text-sm font-medium text-gray-900">{r.user_name || "—"}</p><p className="text-xs text-gray-400">{r.user_email}</p></div> },
+    { key: "user_name", label: "Author", sortable: true, render: (r) => <div><p className="text-sm font-medium text-ivory">{r.user_name || "—"}</p><p className="text-xs text-ivory-dim">{r.user_email}</p></div> },
     { key: "target_type", label: "For", render: (r) => <StatusBadge status={r.target_type === "business" ? "business" : "active"} label={r.target_type === "business" ? "Business" : "Offer"} /> },
     { key: "target_name", label: "Target", render: (r) => <span className="text-xs">{r.target_name || "—"}</span> },
-    { key: "title", label: "Review", render: (r) => <div className="max-w-xs"><p className="text-sm font-medium text-gray-900 truncate">{r.title}</p><p className="text-xs text-gray-400 line-clamp-1">{r.body}</p></div> },
-    { key: "created_date", label: "Date", sortable: true, render: (r) => <span className="text-xs text-gray-500">{formatDate(r.created_date)}</span> },
+    { key: "title", label: "Review", render: (r) => <div className="max-w-xs"><p className="text-sm font-medium text-ivory truncate">{r.title}</p><p className="text-xs text-ivory-dim line-clamp-1">{r.body}</p></div> },
+    { key: "created_date", label: "Date", sortable: true, render: (r) => <span className="text-xs text-ivory-muted">{formatDate(r.created_date)}</span> },
     { key: "status", label: "Status", sortable: true, render: (r) => <StatusBadge status={r.status} className="capitalize" /> },
   ];
 
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold font-heading text-gray-900">Reviews</h1>
-        <p className="text-sm text-gray-500 mt-1">{filtered.length} reviews · Approve, reject, hide, feature or reply.</p>
+        <h1 className="text-2xl font-bold font-heading text-ivory">Reviews</h1>
+        <p className="text-sm text-ivory-muted mt-1">{filtered.length} reviews · Approve, reject, hide, feature or reply.</p>
       </div>
       <AdminDataTable
         data={filtered}
@@ -90,10 +90,10 @@ export default function AdminReviews() {
         exportName={`reviews-${Date.now()}.csv`}
         renderActions={(r) => (
           <div className="flex items-center justify-end gap-1">
-            <RowIconBtn title="Approve" Icon={Check} color="text-emerald-600 hover:text-emerald-700" onClick={() => setStatus(r, "approved")} />
+            <RowIconBtn title="Approve" Icon={Check} color="text-[#D6B56D] hover:text-[#D6B56D]" onClick={() => setStatus(r, "approved")} />
             <RowIconBtn title="Reject" Icon={X} color="text-rose-600 hover:text-rose-700" onClick={() => setStatus(r, "rejected")} />
-            <RowIconBtn title="Hide" Icon={EyeOff} color="text-gray-500" onClick={() => setStatus(r, "hidden")} />
-            <RowIconBtn title={r.is_featured ? "Unfeature" : "Feature"} Icon={Star} color={r.is_featured ? "text-amber-500" : "text-gray-400"} onClick={() => feature(r)} />
+            <RowIconBtn title="Hide" Icon={EyeOff} color="text-ivory-muted" onClick={() => setStatus(r, "hidden")} />
+            <RowIconBtn title={r.is_featured ? "Unfeature" : "Feature"} Icon={Star} color={r.is_featured ? "text-amber-500" : "text-ivory-dim"} onClick={() => feature(r)} />
             <RowIconBtn title="Reply" Icon={Reply} color="text-sky-600" onClick={() => reply(r)} />
             <RowIconBtn title="Report" Icon={Flag} color="text-amber-600" onClick={() => report(r)} />
             <RowIconBtn title="Delete" Icon={Trash2} color="text-rose-600 hover:text-rose-700" onClick={() => remove(r)} />

@@ -38,8 +38,8 @@ export default function Checkout() {
 
   if (!plan || plan.slug === "free") {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#faf8f5]">
-        <Loader2 className="w-6 h-6 animate-spin text-gray-400" />
+      <div className="min-h-screen flex items-center justify-center bg-forest">
+        <Loader2 className="w-6 h-6 animate-spin text-ivory-dim" />
       </div>
     );
   }
@@ -95,8 +95,8 @@ export default function Checkout() {
   };
 
   return (
-    <div className="min-h-screen bg-[#faf8f5]">
-      <div className="relative bg-gray-900 pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div className="min-h-screen bg-forest">
+      <div className="relative bg-[#062B23] pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <Navbar />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -107,10 +107,10 @@ export default function Checkout() {
           <Link to="/choose-plan" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-xs font-medium mb-6 transition-colors">
             <ArrowLeft className="w-3.5 h-3.5" /> Change plan
           </Link>
-          <p className="text-emerald-400 font-semibold text-xs tracking-[0.15em] uppercase mb-3">Checkout</p>
+          <p className="text-[#E5C77A] font-semibold text-xs tracking-[0.15em] uppercase mb-3">Checkout</p>
           <h1 className="text-3xl sm:text-4xl font-bold font-heading text-white">Confirm your {plan.name} membership</h1>
         </motion.div>
-        <div className="absolute -top-20 -right-20 w-72 h-72 bg-emerald-600/20 rounded-full blur-3xl" />
+        <div className="absolute -top-20 -right-20 w-72 h-72 bg-[#D6B56D]/20 rounded-full blur-3xl" />
         <div className="absolute -bottom-24 -left-20 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl" />
       </div>
 
@@ -119,51 +119,51 @@ export default function Checkout() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8"
+          className="bg-white rounded-lg border border-white/10 shadow-sm p-8"
         >
           <AnimatePresence mode="wait">
             {status === "done" ? (
               <motion.div key="done" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="text-center py-6">
-                <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Check className="w-8 h-8 text-emerald-600" />
+                <div className="w-16 h-16 bg-[#103F35]/60 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Check className="w-8 h-8 text-[#D6B56D]" />
                 </div>
-                <h2 className="text-2xl font-bold font-heading text-gray-900">You're enrolled!</h2>
-                <p className="text-sm text-gray-500 mt-2">Your {plan.name} membership is pending activation. Redirecting to your dashboard…</p>
-                <div className="flex justify-center mt-4"><Loader2 className="w-5 h-5 animate-spin text-emerald-600" /></div>
+                <h2 className="text-2xl font-bold font-heading text-ivory">You're enrolled!</h2>
+                <p className="text-sm text-ivory-muted mt-2">Your {plan.name} membership is pending activation. Redirecting to your dashboard…</p>
+                <div className="flex justify-center mt-4"><Loader2 className="w-5 h-5 animate-spin text-[#D6B56D]" /></div>
               </motion.div>
             ) : (
               <motion.div key="form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                 <div className="flex items-baseline justify-between mb-1">
-                  <h3 className="font-bold text-lg text-gray-900">{plan.name}</h3>
+                  <h3 className="font-bold text-lg text-ivory">{plan.name}</h3>
                   <div className="flex items-baseline gap-1">
                     <span className="text-3xl font-bold font-heading">{plan.price}</span>
-                    <span className="text-sm text-gray-400">{plan.period}</span>
+                    <span className="text-sm text-ivory-dim">{plan.period}</span>
                   </div>
                 </div>
-                <p className="text-sm text-gray-500 mb-6">{plan.desc}</p>
+                <p className="text-sm text-ivory-muted mb-6">{plan.desc}</p>
                 <ul className="space-y-3 mb-6">
                   {plan.features.map((f, i) => (
-                    <li key={i} className="flex items-start gap-2.5 text-sm text-gray-700">
-                      <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-emerald-600" /> {f}
+                    <li key={i} className="flex items-start gap-2.5 text-sm text-ivory">
+                      <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#D6B56D]" /> {f}
                     </li>
                   ))}
                 </ul>
-                <div className="bg-gray-50 rounded-xl p-4 mb-6 text-xs text-gray-500 space-y-1">
-                  <p><span className="font-medium text-gray-700">Signed in as:</span> {user?.email}</p>
-                  <p><span className="font-medium text-gray-700">Billing:</span> ${priceAmount}/month · USD</p>
+                <div className="bg-forest-secondary/60 rounded-xl p-4 mb-6 text-xs text-ivory-muted space-y-1">
+                  <p><span className="font-medium text-ivory">Signed in as:</span> {user?.email}</p>
+                  <p><span className="font-medium text-ivory">Billing:</span> ${priceAmount}/month · USD</p>
                 </div>
                 {error && <div className="mb-4 p-3 rounded-lg bg-destructive/10 text-destructive text-sm">{error}</div>}
                 <button
                   onClick={handleConfirm}
                   disabled={status === "processing"}
-                  className="w-full py-3.5 rounded-full font-semibold text-sm bg-emerald-700 hover:bg-emerald-800 text-white transition-colors disabled:opacity-70 flex items-center justify-center gap-2"
+                  className="w-full py-3.5 rounded-full font-semibold text-sm bg-[#D6B56D] hover:bg-[#E5C77A] text-white transition-colors disabled:opacity-70 flex items-center justify-center gap-2"
                 >
                   {status === "processing"
                     ? <><Loader2 className="w-4 h-4 animate-spin" />Processing…</>
                     : <>Confirm & Pay ${priceAmount}/mo</>}
                 </button>
-                <p className="flex items-center justify-center gap-1.5 text-xs text-gray-400 mt-4">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" /> Secure checkout · plan verified against the pricing table
+                <p className="flex items-center justify-center gap-1.5 text-xs text-ivory-dim mt-4">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#D6B56D]" /> Secure checkout · plan verified against the pricing table
                 </p>
               </motion.div>
             )}

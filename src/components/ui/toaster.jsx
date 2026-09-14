@@ -11,7 +11,7 @@ const ICONS = {
 
 const ACCENTS = {
   default: "border-slate-200 text-slate-800",
-  success: "border-emerald-200 text-emerald-700",
+  success: "border-white/15 text-[#D6B56D]",
   destructive: "border-rose-200 text-rose-600",
 }
 

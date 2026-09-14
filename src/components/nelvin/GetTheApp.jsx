@@ -8,10 +8,10 @@ import { ArrowRight } from "lucide-react";
 
 export default function GetTheApp() {
   return (
-    <section className="bg-[#082F24] py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden text-white border-y border-emerald-900">
+    <section className="bg-[#062B23] py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden text-white border-y border-[#0A3A2F]">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
         <div className="space-y-2 text-center lg:text-left">
-          <span className="text-xs font-black uppercase tracking-widest text-[#B8FF00] bg-white/10 px-3 py-1 rounded-full">
+          <span className="text-xs font-black uppercase tracking-widest text-[#D6B56D] bg-white/10 px-3 py-1 rounded-full">
             Join the Movement
           </span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-heading tracking-tight">
@@ -25,19 +25,19 @@ export default function GetTheApp() {
         <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0">
           <Link
             to="/corporate"
-            className="bg-[#B8FF00] hover:bg-[#a2e600] text-[#082F24] font-black text-xs h-12 px-7 rounded-full transition-all shadow-lg flex items-center gap-2"
+            className="bg-[#D6B56D] hover:bg-[#E5C77A] text-[#062B23] font-black text-xs h-12 px-7 rounded-full transition-all shadow-lg flex items-center gap-2"
           >
             Book Free Demo
             <ArrowRight className="w-4 h-4" />
           </Link>
           <div className="flex items-center gap-2">
-            <button className="bg-white/10 hover:bg-white/20 text-white rounded-xl px-4 py-2.5 flex items-center gap-2 transition-colors">
+            <button className="bg-white/10 hover:bg-emerald-black/35 text-white rounded-xl px-4 py-2.5 flex items-center gap-2 transition-colors">
               <AppleIcon className="w-4 h-4" />
               <div className="text-left">
                 <div className="text-[8px] text-white/70 leading-none">App Store</div>
               </div>
             </button>
-            <button className="bg-white/10 hover:bg-white/20 text-white rounded-xl px-4 py-2.5 flex items-center gap-2 transition-colors">
+            <button className="bg-white/10 hover:bg-emerald-black/35 text-white rounded-xl px-4 py-2.5 flex items-center gap-2 transition-colors">
               <GoogleIcon className="w-4 h-4" />
               <div className="text-left">
                 <div className="text-[8px] text-white/70 leading-none">Google Play</div>

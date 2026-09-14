@@ -15,9 +15,9 @@ const PHOTOS = [
 
 function AfricaPhoto({ p }) {
   return (
-    <div className={`relative ${p.w} h-40 sm:h-44 overflow-hidden rounded-2xl group`}>
+    <div className={`relative ${p.w} h-40 sm:h-44 overflow-hidden rounded-lg group`}>
       <img src={p.src} alt={p.label} loading="lazy" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#180126]/70 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#103F35]/70 via-transparent to-transparent" />
       <span className="absolute bottom-2.5 left-3 text-[11px] font-bold text-white drop-shadow">{p.label}</span>
     </div>
   );
@@ -25,17 +25,17 @@ function AfricaPhoto({ p }) {
 
 export default function AfricaMena() {
   return (
-    <section id="africa" className="bg-[#082F24] py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section id="africa" className="bg-[#062B23] py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <div
         className="absolute inset-0 opacity-15"
-        style={{ backgroundImage: "radial-gradient(50% 50% at 85% 15%, rgba(184,255,0,0.3) 0%, transparent 60%), radial-gradient(45% 45% at 10% 90%, rgba(118,55,227,0.4) 0%, transparent 55%)" }}
+        style={{ backgroundImage: "radial-gradient(50% 50% at 85% 15%, rgba(214,181,109,0.16) 0%, transparent 60%), radial-gradient(45% 45% at 10% 90%, rgba(16,63,53,0.75) 0%, transparent 55%)" }}
       />
       <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
         <div>
-          <p className="text-[#B8FF00] font-bold text-xs tracking-[0.2em] uppercase mb-3">Africa &amp; MENA</p>
+          <p className="text-[#D6B56D] font-bold text-xs tracking-[0.2em] uppercase mb-3">Africa &amp; MENA</p>
           <h2 className="text-3xl sm:text-4xl xl:text-5xl font-extrabold font-heading text-white tracking-tight leading-tight">
             Built for Africa.<br />Ready for{" "}
-            <span className="bg-[#B8FF00] text-[#082F24] px-2 rounded-2xl">the world.</span>
+            <span className="bg-[#D6B56D] text-[#062B23] px-2 rounded-lg">the world.</span>
           </h2>
           <p className="mt-5 text-white/70 leading-relaxed max-w-lg">
             We started in Africa because that's where the biggest opportunity — and the greatest
@@ -46,9 +46,9 @@ export default function AfricaMena() {
 
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
             {LANDING_AFRICA_POINTS.map((pt) => (
-              <div key={pt.title} className="flex items-start gap-3 bg-white/5 backdrop-blur rounded-2xl p-3.5 ring-1 ring-white/10 hover:ring-[#B8FF00]/40 hover:bg-white/10 transition-all">
-                <span className="w-9 h-9 rounded-xl bg-[#B8FF00]/15 flex items-center justify-center flex-shrink-0">
-                  <LIcon name={pt.icon} className="w-4.5 h-4.5 text-[#B8FF00]" />
+              <div key={pt.title} className="flex items-start gap-3 bg-white/5 backdrop-blur rounded-lg p-3.5 ring-1 ring-white/10 hover:ring-[#D6B56D]/40 hover:bg-white/10 transition-all">
+                <span className="w-9 h-9 rounded-xl bg-[#D6B56D]/15 flex items-center justify-center flex-shrink-0">
+                  <LIcon name={pt.icon} className="w-4.5 h-4.5 text-[#D6B56D]" />
                 </span>
                 <div>
                   <p className="text-sm font-extrabold text-white">{pt.title}</p>
@@ -63,7 +63,7 @@ export default function AfricaMena() {
               <Link
                 key={c}
                 to={c.endsWith("more") ? "/country/nigeria" : `/country/${c.toLowerCase().replace(/\s+/g,"-")}`}
-                className="text-[11px] font-bold text-[#082F24] bg-[#B8FF00] hover:bg-white px-3.5 py-1.5 rounded-full transition-colors"
+                className="text-[11px] font-bold text-[#F5F1E8] bg-[#D6B56D] hover:bg-white px-3.5 py-1.5 rounded-full transition-colors"
               >
                 {c}
               </Link>
@@ -80,8 +80,8 @@ export default function AfricaMena() {
               {PHOTOS.slice(3).map((p) => <AfricaPhoto key={p.label} p={p} />)}
             </div>
           </div>
-          <div className="relative mt-8 bg-[#180126] rounded-3xl p-6 ring-1 ring-white/10 shadow-2xl">
-            <Quote className="w-8 h-8 text-[#B8FF00]" />
+          <div className="relative mt-8 bg-[#103F35] rounded-xl p-6 ring-1 ring-white/10 shadow-2xl">
+            <Quote className="w-8 h-8 text-[#D6B56D]" />
             <p className="mt-3 text-sm text-white/85 leading-relaxed italic">
               "Nelvin let us roll out benefits in 12 African markets in six weeks —
               localised payments, currencies and deals — something our old provider couldn't
@@ -92,7 +92,7 @@ export default function AfricaMena() {
               <img
                 src="https://randomuser.me/api/portraits/women/65.jpg"
                 alt=""
-                className="w-10 h-10 rounded-full object-cover ring-2 ring-[#B8FF00]"
+                className="w-10 h-10 rounded-full object-cover ring-2 ring-[#D6B56D]"
               />
               <div>
                 <p className="text-xs font-extrabold text-white">Amina Okafor</p>

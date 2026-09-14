@@ -30,8 +30,8 @@ export default function CountryOffers() {
   }, [countrySlug]);
 
   return (
-    <div className="min-h-screen bg-[#faf8f5]">
-      <div className="relative bg-gray-900 pt-24 pb-10 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-forest">
+      <div className="relative bg-[#062B23] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
         <Navbar />
         <div className="max-w-7xl mx-auto">
           <Link to="/" className="text-white/60 hover:text-white text-sm flex items-center gap-1 mb-4">
@@ -45,9 +45,9 @@ export default function CountryOffers() {
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {loading ? (
-          <div className="text-center py-20 text-gray-400">Loading offers...</div>
+          <div className="text-center py-20 text-ivory-dim">Loading offers...</div>
         ) : offers.length === 0 ? (
-          <div className="text-center py-20 text-gray-400">No offers available in this country yet.</div>
+          <div className="text-center py-20 text-ivory-dim">No offers available in this country yet.</div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {offers.map((offer) => (

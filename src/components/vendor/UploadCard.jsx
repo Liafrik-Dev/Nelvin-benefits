@@ -17,25 +17,25 @@ export default function UploadCard({ label, hint, fileUrl, onUploaded, accept = 
 
   return (
     <label
-      className={`group relative flex items-center gap-3 border rounded-2xl p-4 cursor-pointer transition-all duration-300 ${
+      className={`group relative flex items-center gap-3 border rounded-lg p-4 cursor-pointer transition-all duration-300 ${
         fileUrl
-          ? "border-emerald-200 bg-emerald-50/50"
-          : "border-gray-200 bg-[#f9f9fb] hover:border-gray-900/30 hover:shadow-[0_0_0_4px_rgba(0,0,0,0.03)]"
+          ? "border-white/15 bg-[#0A3A2F]/50"
+          : "border-white/12 bg-[#f9f9fb] hover:border-gray-900/30 hover:shadow-[0_0_0_4px_rgba(0,0,0,0.03)]"
       }`}
     >
       <input type="file" accept={accept} className="hidden" onChange={handleChange} />
-      <div className="w-10 h-10 rounded-xl bg-white border border-gray-100 flex items-center justify-center flex-shrink-0">
+      <div className="w-10 h-10 rounded-xl bg-white border border-white/10 flex items-center justify-center flex-shrink-0">
         {uploading ? (
-          <Loader2 className="w-4 h-4 text-gray-400 animate-spin" />
+          <Loader2 className="w-4 h-4 text-ivory-dim animate-spin" />
         ) : fileUrl ? (
-          <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+          <CheckCircle2 className="w-5 h-5 text-[#D6B56D]" />
         ) : (
-          <UploadCloud className="w-4 h-4 text-gray-400" />
+          <UploadCloud className="w-4 h-4 text-ivory-dim" />
         )}
       </div>
       <div className="min-w-0">
-        <p className="text-sm font-medium text-gray-900">{label}</p>
-        <p className="text-xs text-gray-400 truncate">
+        <p className="text-sm font-medium text-ivory">{label}</p>
+        <p className="text-xs text-ivory-dim truncate">
           {uploading ? "Uploading..." : fileUrl ? "Uploaded — tap to replace" : hint}
         </p>
       </div>

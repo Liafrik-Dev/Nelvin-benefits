@@ -42,14 +42,14 @@ export default function MembershipCard({ employee, company, accent = "#059669", 
     <div className="space-y-3">
       <div
         ref={cardRef}
-        className="rounded-2xl overflow-hidden shadow-lg border border-white/10"
+        className="rounded-lg overflow-hidden shadow-lg border border-white/10"
         style={{ background: `linear-gradient(135deg, ${accent} 0%, #0f172a 100%)` }}
       >
         <div className="p-5 text-white relative">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-2">
               {logoUrl ? (
-                <img src={logoUrl} alt="" className="w-9 h-9 rounded-lg object-cover bg-white/90" />
+                <img src={logoUrl} alt="" className="w-9 h-9 rounded-lg object-cover bg-emerald-black/90" />
               ) : (
                 <div className="w-9 h-9 bg-white/15 rounded-lg flex items-center justify-center text-amber-400 font-bold">
                   N
@@ -60,7 +60,7 @@ export default function MembershipCard({ employee, company, accent = "#059669", 
                 <p className="text-sm font-semibold leading-tight">{companyName}</p>
               </div>
             </div>
-            <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-full ${status === "active" ? "bg-emerald-400/30 text-emerald-50" : "bg-rose-400/30 text-rose-50"}`}>
+            <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-full ${status === "active" ? "bg-[#E5C77A]/30 text-ivory" : "bg-rose-400/30 text-rose-50"}`}>
               {status}
             </span>
           </div>
@@ -91,13 +91,13 @@ export default function MembershipCard({ employee, company, accent = "#059669", 
 
       {downloadable && (
         <div className="flex gap-2">
-          <button onClick={downloadCard} className="inline-flex items-center gap-2 text-xs bg-emerald-50 text-emerald-700 font-semibold px-3 py-2 rounded-lg hover:bg-emerald-100">
+          <button onClick={downloadCard} className="inline-flex items-center gap-2 text-xs bg-[#0A3A2F] text-ivory font-semibold px-3 py-2 rounded-lg hover:bg-[#103F35]/60">
             <Download className="w-3.5 h-3.5" /> Download Card
           </button>
           <a
             href={qrUrl}
             download={`${subscriberId || "nelvin"}-qr.png`}
-            className="inline-flex items-center gap-2 text-xs bg-gray-100 text-gray-700 font-semibold px-3 py-2 rounded-lg hover:bg-gray-200"
+            className="inline-flex items-center gap-2 text-xs bg-white/5 text-ivory font-semibold px-3 py-2 rounded-lg hover:bg-white/10"
           >
             <QrIcon className="w-3.5 h-3.5" /> QR Code
           </a>

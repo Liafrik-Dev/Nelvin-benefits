@@ -50,86 +50,86 @@ export default function Wallet() {
   });
 
   return (
-    <div className="min-h-screen bg-[#faf8f5]">
-      <div className="relative bg-[#082F24] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-forest">
+      <div className="relative bg-[#062B23] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
         <Navbar />
       </div>
       <EmployeeNav />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         {/* Header summary */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-white rounded-3xl border border-gray-100 p-6 sm:p-8 shadow-sm">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-white rounded-xl border border-white/10 p-6 sm:p-8 shadow-sm">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold uppercase">
-              <WalletIcon className="w-3.5 h-3.5 text-emerald-600" /> Digital Wallet & Allowance Card
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0A3A2F] text-[#E5C77A] text-xs font-bold uppercase">
+              <WalletIcon className="w-3.5 h-3.5 text-[#D6B56D]" /> Digital Wallet & Allowance Card
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 font-heading">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-ivory font-heading">
               My Wallet & Cashback
             </h1>
-            <p className="text-gray-500 text-sm">Manage personal top-ups, corporate stipends, and earned cashback.</p>
+            <p className="text-ivory-muted text-sm">Manage personal top-ups, corporate stipends, and earned cashback.</p>
           </div>
 
           <button
             onClick={() => setTopUpModal(true)}
-            className="bg-[#082F24] text-[#B8FF00] font-bold px-6 py-3 rounded-full text-sm hover:bg-emerald-950 transition-colors shadow-sm flex items-center gap-2"
+            className="bg-[#062B23] text-[#D6B56D] font-bold px-6 py-3 rounded-full text-sm hover:bg-[#062B23] transition-colors shadow-sm flex items-center gap-2"
           >
             <Plus className="w-4 h-4" /> Top Up Balance
           </button>
         </div>
 
         {successMsg && (
-          <div className="bg-emerald-50 border border-emerald-200 text-emerald-800 p-4 rounded-2xl flex items-center gap-3 text-sm font-semibold">
-            <CheckCircle2 className="w-5 h-5 text-emerald-600" /> {successMsg}
+          <div className="bg-[#0A3A2F] border border-white/15 text-[#E5C77A] p-4 rounded-lg flex items-center gap-3 text-sm font-semibold">
+            <CheckCircle2 className="w-5 h-5 text-[#D6B56D]" /> {successMsg}
           </div>
         )}
 
         {/* Balance cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-[#082F24] rounded-3xl p-6 text-white space-y-4 shadow-sm">
+          <div className="bg-[#062B23] rounded-xl p-6 text-white space-y-4 shadow-sm">
             <div className="flex items-center justify-between">
               <span className="text-xs uppercase font-bold text-white/60 tracking-wider">Total Balance</span>
-              <CreditCard className="w-5 h-5 text-[#B8FF00]" />
+              <CreditCard className="w-5 h-5 text-[#D6B56D]" />
             </div>
             <div>
-              <p className="text-3xl font-black font-heading text-[#B8FF00]">${balance.toFixed(2)}</p>
+              <p className="text-3xl font-black font-heading text-[#D6B56D]">${balance.toFixed(2)}</p>
               <p className="text-xs text-white/60 mt-1">Ready for redemption</p>
             </div>
           </div>
 
-          <div className="bg-white rounded-3xl border border-gray-100 p-6 space-y-4 shadow-sm">
+          <div className="bg-white rounded-xl border border-white/10 p-6 space-y-4 shadow-sm">
             <div className="flex items-center justify-between">
-              <span className="text-xs uppercase font-bold text-gray-400 tracking-wider">Cashback Earned</span>
-              <ArrowDownRight className="w-5 h-5 text-emerald-600" />
+              <span className="text-xs uppercase font-bold text-ivory-dim tracking-wider">Cashback Earned</span>
+              <ArrowDownRight className="w-5 h-5 text-[#D6B56D]" />
             </div>
             <div>
-              <p className="text-3xl font-black font-heading text-gray-900">${cashback.toFixed(2)}</p>
-              <p className="text-xs text-emerald-700 font-semibold mt-1">Available to spend</p>
+              <p className="text-3xl font-black font-heading text-ivory">${cashback.toFixed(2)}</p>
+              <p className="text-xs text-[#D6B56D] font-semibold mt-1">Available to spend</p>
             </div>
           </div>
 
-          <div className="bg-white rounded-3xl border border-gray-100 p-6 space-y-4 shadow-sm">
+          <div className="bg-white rounded-xl border border-white/10 p-6 space-y-4 shadow-sm">
             <div className="flex items-center justify-between">
-              <span className="text-xs uppercase font-bold text-gray-400 tracking-wider">Company Allowance</span>
+              <span className="text-xs uppercase font-bold text-ivory-dim tracking-wider">Company Allowance</span>
               <ArrowUpRight className="w-5 h-5 text-amber-500" />
             </div>
             <div>
-              <p className="text-3xl font-black font-heading text-gray-900">${allowance.toFixed(2)}</p>
-              <p className="text-xs text-gray-500 mt-1">Refills on the 1st of every month</p>
+              <p className="text-3xl font-black font-heading text-ivory">${allowance.toFixed(2)}</p>
+              <p className="text-xs text-ivory-muted mt-1">Refills on the 1st of every month</p>
             </div>
           </div>
         </div>
 
         {/* Transactions Table */}
-        <div className="bg-white rounded-3xl border border-gray-100 p-6 shadow-sm space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-gray-100 pb-4">
-            <h2 className="text-lg font-bold text-gray-900 font-heading">Recent Wallet Transactions</h2>
+        <div className="bg-white rounded-xl border border-white/10 p-6 shadow-sm space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-4">
+            <h2 className="text-lg font-bold text-ivory font-heading">Recent Wallet Transactions</h2>
             <div className="flex items-center gap-2">
               {["all", "credits", "debits"].map((f) => (
                 <button
                   key={f}
                   onClick={() => setTxFilter(f)}
                   className={`px-3 py-1 rounded-full text-xs font-bold uppercase transition-all ${
-                    txFilter === f ? "bg-[#082F24] text-[#B8FF00]" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                    txFilter === f ? "bg-[#062B23] text-[#D6B56D]" : "bg-white/5 text-ivory-muted hover:bg-white/10"
                   }`}
                 >
                   {f}
@@ -141,7 +141,7 @@ export default function Wallet() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
-                <tr className="border-b border-gray-100 text-gray-400 font-semibold">
+                <tr className="border-b border-white/10 text-ivory-dim font-semibold">
                   <th className="py-3 px-2">Type</th>
                   <th className="py-3 px-2">Description</th>
                   <th className="py-3 px-2">Date</th>
@@ -151,16 +151,16 @@ export default function Wallet() {
               </thead>
               <tbody className="divide-y divide-gray-50">
                 {filteredTx.map((tx) => (
-                  <tr key={tx.id} className="hover:bg-gray-50 transition-colors">
-                    <td className="py-3.5 px-2 font-bold capitalize text-gray-800">{tx.type.replace("_", " ")}</td>
-                    <td className="py-3.5 px-2 font-medium text-gray-900">{tx.label}</td>
-                    <td className="py-3.5 px-2 text-gray-500">{tx.date}</td>
+                  <tr key={tx.id} className="hover:bg-forest-secondary/60 transition-colors">
+                    <td className="py-3.5 px-2 font-bold capitalize text-ivory">{tx.type.replace("_", " ")}</td>
+                    <td className="py-3.5 px-2 font-medium text-ivory">{tx.label}</td>
+                    <td className="py-3.5 px-2 text-ivory-muted">{tx.date}</td>
                     <td className="py-3.5 px-2">
-                      <span className="bg-emerald-50 text-emerald-800 px-2 py-0.5 rounded-full font-bold text-[10px]">
+                      <span className="bg-[#0A3A2F] text-[#E5C77A] px-2 py-0.5 rounded-full font-bold text-[10px]">
                         {tx.status}
                       </span>
                     </td>
-                    <td className={`py-3.5 px-2 text-right font-extrabold ${tx.amount.startsWith("+") ? "text-emerald-700" : "text-gray-900"}`}>
+                    <td className={`py-3.5 px-2 text-right font-extrabold ${tx.amount.startsWith("+") ? "text-[#D6B56D]" : "text-ivory"}`}>
                       {tx.amount}
                     </td>
                   </tr>
@@ -174,11 +174,11 @@ export default function Wallet() {
       {/* Top Up Modal */}
       {topUpModal && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full space-y-6 shadow-xl">
-            <h3 className="text-xl font-bold text-gray-900 font-heading">Top Up Wallet Balance</h3>
+          <div className="bg-emerald-black rounded-xl p-6 sm:p-8 max-w-md w-full space-y-6 shadow-xl">
+            <h3 className="text-xl font-bold text-ivory font-heading">Top Up Wallet Balance</h3>
             <form onSubmit={handleTopUp} className="space-y-4">
               <div>
-                <label className="block text-xs font-bold text-gray-700 mb-2">Select Amount ($)</label>
+                <label className="block text-xs font-bold text-ivory mb-2">Select Amount ($)</label>
                 <div className="grid grid-cols-3 gap-2">
                   {[20, 50, 100].map((amt) => (
                     <button
@@ -186,7 +186,7 @@ export default function Wallet() {
                       key={amt}
                       onClick={() => setTopUpAmount(amt)}
                       className={`py-2.5 rounded-xl font-bold text-sm border ${
-                        topUpAmount === amt ? "bg-[#082F24] text-[#B8FF00] border-[#082F24]" : "bg-gray-50 border-gray-200 text-gray-800"
+                        topUpAmount === amt ? "bg-[#062B23] text-[#D6B56D] border-[#062B23]" : "bg-forest-secondary/60 border-white/12 text-ivory"
                       }`}
                     >
                       ${amt}
@@ -196,13 +196,13 @@ export default function Wallet() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-gray-700 mb-1">Custom Amount</label>
+                <label className="block text-xs font-bold text-ivory mb-1">Custom Amount</label>
                 <input
                   type="number"
                   min="5"
                   value={topUpAmount}
                   onChange={(e) => setTopUpAmount(Number(e.target.value))}
-                  className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm font-bold text-gray-900"
+                  className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3.5 py-2.5 text-sm font-bold text-ivory"
                 />
               </div>
 
@@ -210,13 +210,13 @@ export default function Wallet() {
                 <button
                   type="button"
                   onClick={() => setTopUpModal(false)}
-                  className="px-5 py-2.5 rounded-full text-xs font-bold text-gray-500 hover:bg-gray-100"
+                  className="px-5 py-2.5 rounded-full text-xs font-bold text-ivory-muted hover:bg-white/5"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="bg-[#082F24] text-[#B8FF00] px-6 py-2.5 rounded-full text-xs font-bold hover:bg-emerald-950"
+                  className="bg-[#062B23] text-[#D6B56D] px-6 py-2.5 rounded-full text-xs font-bold hover:bg-[#062B23]"
                 >
                   Confirm & Pay
                 </button>

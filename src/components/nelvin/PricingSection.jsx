@@ -6,11 +6,11 @@ export default function PricingSection() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <section className="bg-[#F7F3ED] py-24 px-4 sm:px-6 lg:px-8">
+    <section className="bg-forest-secondary py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
-        <div className="relative rounded-[2rem] overflow-hidden">
+        <div className="relative rounded-xl overflow-hidden">
           <img src="/images/benifex/footer-banner-v2.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-[#082F24]/85" />
+          <div className="absolute inset-0 bg-[#062B23]/85" />
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 p-8 sm:p-14 items-center">
             <div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-white tracking-tight leading-tight">
@@ -24,47 +24,47 @@ export default function PricingSection() {
               </p>
             </div>
 
-            <div className="bg-white rounded-3xl p-8 shadow-xl">
+            <div className="bg-emerald-black/90 rounded-xl ring-1 ring-white/10 p-8 shadow-xl">
               {submitted ? (
                 <div className="text-center py-10">
-                  <div className="w-14 h-14 rounded-full bg-[#B8FF00] flex items-center justify-center mx-auto mb-4">
-                    <Check className="w-7 h-7 text-[#082F24]" />
+                  <div className="w-14 h-14 rounded-full bg-[#D6B56D] flex items-center justify-center mx-auto mb-4">
+                    <Check className="w-7 h-7 text-[#F5F1E8]" />
                   </div>
-                  <h3 className="text-xl font-bold text-[#180126] mb-2">Thank you!</h3>
-                  <p className="text-sm text-[#180126]/60">We'll be in touch shortly to arrange your demo.</p>
+                  <h3 className="text-xl font-bold text-[#F5F1E8] mb-2">Thank you!</h3>
+                  <p className="text-sm text-[#F5F1E8]/60">We'll be in touch shortly to arrange your demo.</p>
                 </div>
               ) : (
                 <form
                   onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
                   className="space-y-4"
                 >
-                  <h3 className="text-lg font-bold text-[#180126]">Book a free demo</h3>
+                  <h3 className="text-lg font-bold text-[#F5F1E8]">Book a free demo</h3>
                   <div className="grid grid-cols-2 gap-4">
                     <input
                       required
                       placeholder="First Name"
-                      className="border border-[#180126]/30 rounded-lg px-4 py-2.5 text-sm text-[#180126] outline-none focus:border-[#180126] placeholder:text-[#D1CCD4]"
+                      className="border border-[#D6B56D]/25/30 rounded-lg px-4 py-2.5 text-sm text-[#F5F1E8] outline-none focus:border-[#D6B56D]/25 placeholder:text-[#9AA39C]"
                     />
                     <input
                       required
                       placeholder="Surname"
-                      className="border border-[#180126]/30 rounded-lg px-4 py-2.5 text-sm text-[#180126] outline-none focus:border-[#180126] placeholder:text-[#D1CCD4]"
+                      className="border border-[#D6B56D]/25/30 rounded-lg px-4 py-2.5 text-sm text-[#F5F1E8] outline-none focus:border-[#D6B56D]/25 placeholder:text-[#9AA39C]"
                     />
                   </div>
                   <input
                     required
                     type="email"
                     placeholder="Email"
-                    className="w-full border border-[#180126]/30 rounded-lg px-4 py-2.5 text-sm text-[#180126] outline-none focus:border-[#180126] placeholder:text-[#D1CCD4]"
+                    className="w-full border border-[#D6B56D]/25/30 rounded-lg px-4 py-2.5 text-sm text-[#F5F1E8] outline-none focus:border-[#D6B56D]/25 placeholder:text-[#9AA39C]"
                   />
                   <button
                     type="submit"
-                    className="group w-full inline-flex items-center justify-center gap-3 bg-[#180126] hover:bg-[#2b0140] text-white font-bold text-sm h-11 rounded-[23px] transition-colors"
+                    className="group w-full inline-flex items-center justify-center gap-3 bg-[#103F35] hover:bg-[#2b0140] text-white font-bold text-sm h-11 rounded-[23px] transition-colors"
                   >
                     <span className="transition-transform group-hover:-translate-x-1">Submit</span>
-                    <span className="w-4 h-4 rounded-full bg-[#B8FF00] flex items-center justify-center text-[#180126] text-xs">→</span>
+                    <span className="w-4 h-4 rounded-full bg-[#D6B56D] flex items-center justify-center text-[#062B23] text-xs">→</span>
                   </button>
-                  <p className="text-[10px] text-[#180126]/50 leading-relaxed">
+                  <p className="text-[10px] text-[#F5F1E8]/50 leading-relaxed">
                     Nelvin will use your personal information to contact you from time to time about other products, services and events that we feel may be of interest to you.
                   </p>
                 </form>

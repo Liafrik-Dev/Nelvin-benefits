@@ -8,9 +8,9 @@ import AdminEditModal from "@/components/admin/AdminEditModal";
 import StatusBadge from "@/components/admin/StatusBadge";
 import { Check, Reply, Ban, Trash2 } from "lucide-react";
 
-function RowIconBtn({ title, onClick, Icon, color = "text-gray-600 hover:text-gray-900" }) {
+function RowIconBtn({ title, onClick, Icon, color = "text-ivory-muted hover:text-ivory" }) {
   return (
-    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-gray-100 ${color}`}>
+    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-white/5 ${color}`}>
       <Icon className="w-4 h-4" />
     </button>
   );
@@ -76,14 +76,14 @@ export default function AdminSupport() {
     { key: "subject", label: "Subject", sortable: true,
       render: (t) => (
         <div className="min-w-0">
-          <p className="text-sm font-medium text-gray-900 truncate">{t.subject}</p>
-          <p className="text-xs text-gray-400 truncate">{t.user_email || "—"}</p>
+          <p className="text-sm font-medium text-ivory truncate">{t.subject}</p>
+          <p className="text-xs text-ivory-dim truncate">{t.user_email || "—"}</p>
         </div>
       ) },
     { key: "priority", label: "Priority", sortable: true, render: (t) => <StatusBadge status={t.priority || "medium"} className="capitalize" /> },
     { key: "category", label: "Category", render: (t) => <span className="text-xs">{t.category || "—"}</span> },
     { key: "status", label: "Status", sortable: true, render: (t) => <StatusBadge status={t.status} className="capitalize" /> },
-    { key: "created_date", label: "Opened", sortable: true, render: (t) => <span className="text-xs text-gray-500">{formatDate(t.created_date)}</span> },
+    { key: "created_date", label: "Opened", sortable: true, render: (t) => <span className="text-xs text-ivory-muted">{formatDate(t.created_date)}</span> },
   ];
 
   const editFields = [
@@ -109,8 +109,8 @@ export default function AdminSupport() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold font-heading text-gray-900">Support Tickets</h1>
-        <p className="text-sm text-gray-500 mt-1">{filtered.length} tickets · Reply, close, assign, prioritize, archive.</p>
+        <h1 className="text-2xl font-bold font-heading text-ivory">Support Tickets</h1>
+        <p className="text-sm text-ivory-muted mt-1">{filtered.length} tickets · Reply, close, assign, prioritize, archive.</p>
       </div>
       <AdminDataTable
         data={filtered}
@@ -124,8 +124,8 @@ export default function AdminSupport() {
         renderActions={(t) => (
           <div className="flex items-center justify-end gap-1">
             <RowIconBtn title="Reply" Icon={Reply} color="text-sky-600" onClick={() => reply(t)} />
-            <RowIconBtn title="Close" Icon={Check} color="text-emerald-600" onClick={() => close(t)} />
-            <RowIconBtn title="Archive" Icon={Ban} color="text-gray-500" onClick={() => archive(t)} />
+            <RowIconBtn title="Close" Icon={Check} color="text-[#D6B56D]" onClick={() => close(t)} />
+            <RowIconBtn title="Archive" Icon={Ban} color="text-ivory-muted" onClick={() => archive(t)} />
             <RowIconBtn title="Delete" Icon={Trash2} color="text-rose-600 hover:text-rose-700" onClick={() => remove(t)} />
           </div>
         )}
@@ -170,34 +170,34 @@ export default function AdminSupport() {
           <div className="absolute inset-0 bg-black/40" onClick={() => setViewing(null)} />
           <div className="relative w-full max-w-md bg-white h-full overflow-y-auto p-6">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="font-bold text-gray-900 text-lg">{viewing.subject}</h2>
-              <button onClick={() => setViewing(null)} className="text-gray-400">✕</button>
+              <h2 className="font-bold text-ivory text-lg">{viewing.subject}</h2>
+              <button onClick={() => setViewing(null)} className="text-ivory-dim">✕</button>
             </div>
             <div className="text-sm space-y-2 mb-4">
               <div className="grid grid-cols-2 gap-3">
-                <div><span className="text-xs text-gray-400">User</span><p>{viewing.user_name || "—"}</p><p className="text-xs text-gray-400">{viewing.user_email}</p></div>
-                <div><span className="text-xs text-gray-400">Priority</span><p><StatusBadge status={viewing.priority || "medium"} className="capitalize" /></p></div>
-                <div><span className="text-xs text-gray-400">Status</span><p><StatusBadge status={viewing.status} className="capitalize" /></p></div>
-                <div><span className="text-xs text-gray-400">Opened</span><p>{formatDate(viewing.created_date)}</p></div>
+                <div><span className="text-xs text-ivory-dim">User</span><p>{viewing.user_name || "—"}</p><p className="text-xs text-ivory-dim">{viewing.user_email}</p></div>
+                <div><span className="text-xs text-ivory-dim">Priority</span><p><StatusBadge status={viewing.priority || "medium"} className="capitalize" /></p></div>
+                <div><span className="text-xs text-ivory-dim">Status</span><p><StatusBadge status={viewing.status} className="capitalize" /></p></div>
+                <div><span className="text-xs text-ivory-dim">Opened</span><p>{formatDate(viewing.created_date)}</p></div>
               </div>
-              <div><span className="text-xs text-gray-400">Body</span><p className="text-gray-700">{viewing.body}</p></div>
+              <div><span className="text-xs text-ivory-dim">Body</span><p className="text-ivory">{viewing.body}</p></div>
             </div>
-            <div className="border-t border-gray-100 pt-4 space-y-2">
-              <p className="text-xs text-gray-400 uppercase tracking-wide">Replies</p>
+            <div className="border-t border-white/10 pt-4 space-y-2">
+              <p className="text-xs text-ivory-dim uppercase tracking-wide">Replies</p>
               {(viewing.replies || []).length === 0 ? (
-                <p className="text-sm text-gray-400">No replies yet.</p>
+                <p className="text-sm text-ivory-dim">No replies yet.</p>
               ) : (
                 viewing.replies.map((r, i) => (
-                  <div key={i} className={`rounded-lg p-3 ${r.is_admin ? "bg-emerald-50" : "bg-gray-50"}`}>
-                    <p className="text-xs font-semibold text-gray-700">{r.is_admin ? "Admin" : r.author_name || "User"} · {formatDate(r.created_date)}</p>
-                    <p className="text-sm text-gray-700">{r.body}</p>
+                  <div key={i} className={`rounded-lg p-3 ${r.is_admin ? "bg-[#0A3A2F]" : "bg-forest-secondary/60"}`}>
+                    <p className="text-xs font-semibold text-ivory">{r.is_admin ? "Admin" : r.author_name || "User"} · {formatDate(r.created_date)}</p>
+                    <p className="text-sm text-ivory">{r.body}</p>
                   </div>
                 ))
               )}
             </div>
             <div className="mt-6 flex gap-2">
-              <button onClick={() => reply(viewing)} className="flex-1 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg py-2 text-sm font-semibold">Reply</button>
-              <button onClick={() => { setEditing(viewing); setViewing(null); }} className="px-3 py-2 border border-gray-200 rounded-lg text-sm">Manage</button>
+              <button onClick={() => reply(viewing)} className="flex-1 bg-[#D6B56D] hover:bg-[#E5C77A] text-white rounded-lg py-2 text-sm font-semibold">Reply</button>
+              <button onClick={() => { setEditing(viewing); setViewing(null); }} className="px-3 py-2 border border-white/12 rounded-lg text-sm">Manage</button>
             </div>
           </div>
         </div>

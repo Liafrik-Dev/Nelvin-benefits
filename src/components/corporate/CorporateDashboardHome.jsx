@@ -13,13 +13,13 @@ import {
 
 function StatCard({ icon: Icon, label, value, sub, accent }) {
   return (
-    <div className="bg-white rounded-3xl border border-gray-100 p-6 shadow-xl hover:shadow-2xl transition-shadow">
-      <div className={`w-11 h-11 rounded-2xl flex items-center justify-center mb-4 ${accent}`}>
+    <div className="bg-white rounded-xl border border-white/10 p-6 shadow-xl hover:shadow-2xl transition-shadow">
+      <div className={`w-11 h-11 rounded-lg flex items-center justify-center mb-4 ${accent}`}>
         <Icon className="w-5 h-5" />
       </div>
-      <p className="text-[11px] text-gray-400 font-extrabold uppercase tracking-wider">{label}</p>
-      <p className="text-2xl sm:text-3xl font-black font-heading text-gray-900 mt-1">{value}</p>
-      {sub && <p className="text-xs text-gray-500 font-medium mt-1">{sub}</p>}
+      <p className="text-[11px] text-ivory-dim font-extrabold uppercase tracking-wider">{label}</p>
+      <p className="text-2xl sm:text-3xl font-black font-heading text-ivory mt-1">{value}</p>
+      {sub && <p className="text-xs text-ivory-muted font-medium mt-1">{sub}</p>}
     </div>
   );
 }
@@ -87,15 +87,15 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
   const seatPercentage = Math.min(100, Math.round((seatsUsed / seatsPurchased) * 100));
 
   return (
-    <div className="space-y-8 font-sans text-[#082F24]">
+    <div className="space-y-8 font-sans text-[#F5F1E8]">
       {/* Company Banner Header */}
-      <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-[#082F24] via-[#0D4435] to-[#082F24] text-white p-6 sm:p-8 md:p-10 shadow-2xl border border-white/10">
-        <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-15 bg-[radial-gradient(#B8FF00_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+      <div className="relative rounded-xl overflow-hidden bg-gradient-to-r from-[#062B23] via-[#0D4435] to-[#062B23] text-white p-6 sm:p-8 md:p-10 shadow-2xl border border-white/10">
+        <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-15 bg-[radial-gradient(#D6B56D_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
         <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-[#B8FF00] border border-[#B8FF00]/30 text-xs font-extrabold tracking-wider uppercase backdrop-blur-md">
-              <Building2 className="w-3.5 h-3.5 text-[#B8FF00]" /> {company.name || "Enterprise Portal"}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-[#D6B56D] border border-[#D6B56D]/30 text-xs font-extrabold tracking-wider uppercase backdrop-blur-md">
+              <Building2 className="w-3.5 h-3.5 text-[#D6B56D]" /> {company.name || "Enterprise Portal"}
             </div>
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-black font-heading tracking-tight text-white">
               HR Benefits Management Dashboard
@@ -107,7 +107,7 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
 
           <button
             onClick={onGoEmployees}
-            className="bg-[#B8FF00] hover:bg-[#8DF01F] text-[#082F24] font-extrabold px-6 py-3 rounded-full text-xs transition-all shadow-lg shadow-[#B8FF00]/20 flex items-center gap-2 shrink-0"
+            className="bg-[#D6B56D] hover:bg-[#E5C77A] text-[#062B23] font-extrabold px-6 py-3 rounded-full text-xs transition-all shadow-lg shadow-[#D6B56D]/20 flex items-center gap-2 shrink-0"
           >
             <UserPlus className="w-4 h-4" /> Invite Employees
           </button>
@@ -116,23 +116,23 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
 
       {/* Metric Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
-        <StatCard icon={Users} label="Total Workforce" value={loading ? "—" : total || 18} accent="bg-emerald-50 text-[#00BD00]" />
-        <StatCard icon={UserCheck} label="Active Users" value={loading ? "—" : active || 16} accent="bg-emerald-50 text-[#00BD00]" />
+        <StatCard icon={Users} label="Total Workforce" value={loading ? "—" : total || 18} accent="bg-[#0A3A2F] text-[#E5C77A]" />
+        <StatCard icon={UserCheck} label="Active Users" value={loading ? "—" : active || 16} accent="bg-[#0A3A2F] text-[#E5C77A]" />
         <StatCard icon={Gift} label="Redemptions" value={loading ? "—" : redemptions.length || 142} accent="bg-amber-50 text-amber-600" />
-        <StatCard icon={Wallet} label="Total Savings" value={loading ? "—" : `$${(totalSavings || 12450).toLocaleString()}`} accent="bg-emerald-50 text-[#00BD00]" />
+        <StatCard icon={Wallet} label="Total Savings" value={loading ? "—" : `$${(totalSavings || 12450).toLocaleString()}`} accent="bg-[#0A3A2F] text-[#E5C77A]" />
         <StatCard icon={Crown} label="Active Offers" value={loading ? "—" : (Array.isArray(offers) && offers.length ? offers.length : 24)} accent="bg-rose-50 text-rose-600" />
         <StatCard icon={Globe} label="Coverage" value={loading ? "—" : `${countriesTouched} Regions`} accent="bg-sky-50 text-sky-600" />
       </div>
 
       {/* Interactive Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-3xl border border-gray-100 p-6 sm:p-8 shadow-xl space-y-4">
-          <div className="flex items-start justify-between border-b border-gray-100 pb-4">
+        <div className="bg-white rounded-xl border border-white/10 p-6 sm:p-8 shadow-xl space-y-4">
+          <div className="flex items-start justify-between border-b border-white/10 pb-4">
             <div>
-              <div className="flex items-center gap-2 text-xs font-black uppercase text-[#00BD00] tracking-wider mb-1">
+              <div className="flex items-center gap-2 text-xs font-black uppercase text-[#E5C77A] tracking-wider mb-1">
                 <TrendingUp className="w-4 h-4" /> Engagement Metrics
               </div>
-              <h3 className="font-bold text-lg text-gray-900 font-heading">Monthly Employee Redemptions</h3>
+              <h3 className="font-bold text-lg text-ivory font-heading">Monthly Employee Redemptions</h3>
             </div>
           </div>
           <div className="h-56 w-full pt-2">
@@ -141,20 +141,20 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
                 <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" vertical={false} />
                 <XAxis dataKey="label" tick={{ fontSize: 11, fontWeight: 700, fill: "#9ca3af" }} axisLine={false} tickLine={false} />
                 <YAxis tick={{ fontSize: 11, fill: "#9ca3af" }} axisLine={false} tickLine={false} allowDecimals={false} />
-                <Tooltip contentStyle={{ backgroundColor: "#082F24", borderRadius: "12px", border: "none", color: "#fff" }} />
-                <Line type="monotone" dataKey="count" stroke="#00BD00" strokeWidth={3} dot={{ r: 4, fill: "#082F24" }} />
+                <Tooltip contentStyle={{ backgroundColor: "#062B23", borderRadius: "12px", border: "none", color: "#fff" }} />
+                <Line type="monotone" dataKey="count" stroke="#0A3A2F" strokeWidth={3} dot={{ r: 4, fill: "#062B23" }} />
               </LineChart>
             </ResponsiveContainer>
           </div>
         </div>
 
-        <div className="bg-white rounded-3xl border border-gray-100 p-6 sm:p-8 shadow-xl space-y-4">
-          <div className="flex items-start justify-between border-b border-gray-100 pb-4">
+        <div className="bg-white rounded-xl border border-white/10 p-6 sm:p-8 shadow-xl space-y-4">
+          <div className="flex items-start justify-between border-b border-white/10 pb-4">
             <div>
-              <div className="flex items-center gap-2 text-xs font-black uppercase text-[#00BD00] tracking-wider mb-1">
+              <div className="flex items-center gap-2 text-xs font-black uppercase text-[#E5C77A] tracking-wider mb-1">
                 <PieChartIcon className="w-4 h-4" /> Department Insights
               </div>
-              <h3 className="font-bold text-lg text-gray-900 font-heading">Corporate Savings by Department</h3>
+              <h3 className="font-bold text-lg text-ivory font-heading">Corporate Savings by Department</h3>
             </div>
           </div>
           <div className="h-56 w-full pt-2">
@@ -163,8 +163,8 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
                 <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" vertical={false} />
                 <XAxis dataKey="name" tick={{ fontSize: 10, fontWeight: 700, fill: "#9ca3af" }} axisLine={false} tickLine={false} />
                 <YAxis tick={{ fontSize: 11, fill: "#9ca3af" }} axisLine={false} tickLine={false} tickFormatter={(v) => `$${v}`} />
-                <Tooltip contentStyle={{ backgroundColor: "#082F24", borderRadius: "12px", border: "none", color: "#fff" }} formatter={(v) => [`$${v}`, "Savings"]} />
-                <Bar dataKey="value" fill="#082F24" radius={[8, 8, 0, 0]} barSize={32} />
+                <Tooltip contentStyle={{ backgroundColor: "#062B23", borderRadius: "12px", border: "none", color: "#fff" }} formatter={(v) => [`$${v}`, "Savings"]} />
+                <Bar dataKey="value" fill="#062B23" radius={[8, 8, 0, 0]} barSize={32} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -173,26 +173,26 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
 
       {/* Plan Seats & Quick Management Controls */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-3xl border border-gray-100 p-6 sm:p-8 shadow-xl space-y-4">
-          <h3 className="font-bold text-lg text-gray-900 font-heading">Quick HR Administrative Actions</h3>
+        <div className="bg-white rounded-xl border border-white/10 p-6 sm:p-8 shadow-xl space-y-4">
+          <h3 className="font-bold text-lg text-ivory font-heading">Quick HR Administrative Actions</h3>
           <div className="space-y-3">
             <button
               onClick={onGoEmployees}
-              className="w-full flex items-center justify-between p-4 rounded-2xl bg-gray-50 hover:bg-[#082F24] hover:text-white transition-all text-left group border border-gray-100"
+              className="w-full flex items-center justify-between p-4 rounded-lg bg-forest-secondary/60 hover:bg-[#062B23] hover:text-white transition-all text-left group border border-white/10"
             >
               <span className="flex items-center gap-3">
-                <UserPlus className="w-5 h-5 text-[#00BD00] group-hover:text-[#B8FF00]" />
+                <UserPlus className="w-5 h-5 text-[#E5C77A] group-hover:text-[#D6B56D]" />
                 <span className="text-xs font-bold">Invite New Employees & Sync HRIS</span>
               </span>
-              <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-[#B8FF00] group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 text-ivory-dim group-hover:text-[#D6B56D] group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         </div>
 
-        <div className="bg-[#082F24] rounded-3xl p-6 sm:p-8 shadow-2xl text-white space-y-4 border border-[#B8FF00]/20">
+        <div className="bg-[#062B23] rounded-xl p-6 sm:p-8 shadow-2xl text-white space-y-4 border border-[#D6B56D]/20">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-extrabold uppercase tracking-widest text-[#B8FF00]">Corporate Subscription</span>
-            <span className="text-xs font-bold bg-[#B8FF00]/10 border border-[#B8FF00]/30 text-[#B8FF00] px-3 py-1 rounded-full">
+            <span className="text-xs font-extrabold uppercase tracking-widest text-[#D6B56D]">Corporate Subscription</span>
+            <span className="text-xs font-bold bg-[#D6B56D]/10 border border-[#D6B56D]/30 text-[#D6B56D] px-3 py-1 rounded-full">
               {company.membership_tier || "Enterprise Tier"}
             </span>
           </div>
@@ -202,12 +202,12 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
             <span className="text-xs text-white/70 font-semibold">{seatsPurchased - seatsUsed} Seats Available</span>
           </div>
 
-          <div className="w-full bg-white/20 rounded-full h-3 overflow-hidden">
-            <div className="bg-gradient-to-r from-[#B8FF00] to-[#00BD00] h-full rounded-full transition-all duration-500" style={{ width: `${seatPercentage}%` }} />
+          <div className="w-full bg-emerald-black/35 rounded-full h-3 overflow-hidden">
+            <div className="bg-gradient-to-r from-[#D6B56D] to-[#E5C77A] h-full rounded-full transition-all duration-500" style={{ width: `${seatPercentage}%` }} />
           </div>
 
           <p className="text-xs text-white/70 pt-1">
-            Need to add seats or activate dedicated Account Manager support? Contact <a href="mailto:Nelvin23@proton.me" className="text-[#B8FF00] font-bold underline">Nelvin23@proton.me</a>
+            Need to add seats or activate dedicated Account Manager support? Contact <a href="mailto:Nelvin23@proton.me" className="text-[#D6B56D] font-bold underline">Nelvin23@proton.me</a>
           </p>
         </div>
       </div>

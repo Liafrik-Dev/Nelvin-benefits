@@ -43,40 +43,40 @@ export default function BusinessCreateOffer() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold font-heading text-gray-900">Create New Offer</h1>
-        <p className="text-sm text-gray-500 mt-1">Submit a new deal or promo code for platform validation.</p>
+        <h1 className="text-2xl font-bold font-heading text-ivory">Create New Offer</h1>
+        <p className="text-sm text-ivory-muted mt-1">Submit a new deal or promo code for platform validation.</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <form onSubmit={handleSubmit} className="lg:col-span-2 bg-white rounded-3xl border border-gray-100 p-6 space-y-4 shadow-sm">
+        <form onSubmit={handleSubmit} className="lg:col-span-2 bg-white rounded-xl border border-white/10 p-6 space-y-4 shadow-sm">
           <div>
-            <label className="block text-xs font-bold text-gray-700 mb-1">Deal Title</label>
+            <label className="block text-xs font-bold text-ivory mb-1">Deal Title</label>
             <input
               type="text"
               required
               value={form.title}
               onChange={(e) => setForm({ ...form, title: e.target.value })}
-              className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3.5 py-2.5 text-xs font-bold text-gray-900"
+              className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3.5 py-2.5 text-xs font-bold text-ivory"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-gray-700 mb-1">Deal Hero Photo Image URL</label>
+            <label className="block text-xs font-bold text-ivory mb-1">Deal Hero Photo Image URL</label>
             <input
               type="text"
               value={form.image_url}
               onChange={(e) => setForm({ ...form, image_url: e.target.value })}
-              className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3.5 py-2 text-xs font-mono"
+              className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3.5 py-2 text-xs font-mono"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-bold text-gray-700 mb-1">Category</label>
+              <label className="block text-xs font-bold text-ivory mb-1">Category</label>
               <select
                 value={form.category}
                 onChange={(e) => setForm({ ...form, category: e.target.value })}
-                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-xs font-semibold"
+                className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3 py-2 text-xs font-semibold"
               >
                 <option>Shopping & Fashion</option>
                 <option>Food & Dining</option>
@@ -86,61 +86,61 @@ export default function BusinessCreateOffer() {
               </select>
             </div>
             <div>
-              <label className="block text-xs font-bold text-gray-700 mb-1">Discount Tag Label</label>
+              <label className="block text-xs font-bold text-ivory mb-1">Discount Tag Label</label>
               <input
                 type="text"
                 required
                 value={form.discount_label}
                 onChange={(e) => setForm({ ...form, discount_label: e.target.value })}
-                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-xs font-bold"
+                className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3 py-2 text-xs font-bold"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-3 gap-3">
             <div>
-              <label className="block text-xs font-bold text-gray-700 mb-1">Original Price ($)</label>
+              <label className="block text-xs font-bold text-ivory mb-1">Original Price ($)</label>
               <input
                 type="number"
                 value={form.original_price}
                 onChange={(e) => setForm({ ...form, original_price: Number(e.target.value) })}
-                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-xs font-bold"
+                className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3 py-2 text-xs font-bold"
               />
             </div>
             <div>
-              <label className="block text-xs font-bold text-gray-700 mb-1">Discount Price ($)</label>
+              <label className="block text-xs font-bold text-ivory mb-1">Discount Price ($)</label>
               <input
                 type="number"
                 value={form.discount_price}
                 onChange={(e) => setForm({ ...form, discount_price: Number(e.target.value) })}
-                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-xs font-bold"
+                className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3 py-2 text-xs font-bold"
               />
             </div>
             <div>
-              <label className="block text-xs font-bold text-gray-700 mb-1">Savings ($)</label>
+              <label className="block text-xs font-bold text-ivory mb-1">Savings ($)</label>
               <input
                 type="number"
                 value={form.savings_amount}
                 onChange={(e) => setForm({ ...form, savings_amount: Number(e.target.value) })}
-                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2 text-xs font-bold text-emerald-700"
+                className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3 py-2 text-xs font-bold text-[#D6B56D]"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-gray-700 mb-1">Description & Terms</label>
+            <label className="block text-xs font-bold text-ivory mb-1">Description & Terms</label>
             <textarea
               rows={3}
               value={form.description}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
-              className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-xs outline-none focus:border-emerald-600"
+              className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl p-3 text-xs outline-none focus:border-[#D6B56D]"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-[#082F24] text-[#B8FF00] font-bold py-3 rounded-full text-xs hover:bg-emerald-950 transition-colors shadow-sm"
+            className="w-full bg-[#062B23] text-[#D6B56D] font-bold py-3 rounded-full text-xs hover:bg-[#062B23] transition-colors shadow-sm"
           >
             {loading ? "Submitting..." : "Submit Offer for Review"}
           </button>
@@ -148,7 +148,7 @@ export default function BusinessCreateOffer() {
 
         {/* Live Card Preview */}
         <div className="space-y-2">
-          <p className="text-xs font-bold text-gray-400 uppercase tracking-wider">Live Member Card Preview</p>
+          <p className="text-xs font-bold text-ivory-dim uppercase tracking-wider">Live Member Card Preview</p>
           <OfferCard offer={{ ...form, business_name: "Nike Nigeria", id: "preview" }} />
         </div>
       </div>
