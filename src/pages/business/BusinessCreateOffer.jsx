@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { db } from "@/services/api/base44Client";
+import { useAuth } from "@/lib/AuthContext";
 import OfferCard from "@/components/nelvin/OfferCard";
 import { Tag, Plus, CheckCircle2 } from "lucide-react";
 
 export default function BusinessCreateOffer() {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [form, setForm] = useState({
     title: "25% Off Storewide Nike Footwear",
     category: "Shopping & Fashion",
@@ -27,7 +29,8 @@ export default function BusinessCreateOffer() {
     try {
       await db.entities.Offer.create({
         ...form,
-        business_name: "Nike Nigeria",
+        business_name: user?.full_name || "Nike Nigeria",
+        business_id: user?.id,
         status: "pending",
         is_published: false,
       }).catch(() => null);

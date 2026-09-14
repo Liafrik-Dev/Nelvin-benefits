@@ -44,7 +44,7 @@ function StatusBadge({ status }) {
     inactive: ["bg-gray-100 text-gray-500", "Inactive"],
     draft: ["bg-gray-100 text-gray-500", "Draft"],
     redeemed: ["bg-[#7637E3]/10 text-[#7637E3]", "Redeemed"],
-    default: ["bg-gray-100 text-gray-700", String(status || "–")).toUpperCase()],
+    default: ["bg-gray-100 text-gray-700", String(status || "—").toUpperCase()],
   };
   const [bg, txt] = map[status] || map.default;
   return <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${bg}`}>{txt}</span>;
@@ -109,14 +109,15 @@ export default function ResourceTable({
     let out = rows;
     if (q.trim()) {
       const needle = q.toLowerCase();
+      const keys = searchKeys.length
+        ? searchKeys
+        : columns.filter((c) => !c.hide).map((c) => c.key);
       out = out.filter((r) =>
-        (searchKeys.length ? searchKeys : [].filter((k) => columns.find((c) => c.key === k)))).some((k) =>
-          String(r[k] ?? "").toLowerCase().includes(needle)
-        ) ||
+        keys.some((k) => String(r[k] ?? "").toLowerCase().includes(needle)) ||
         columns.some((c) => c.render && String(c.render(r) ?? "").toLowerCase().includes(needle))
       );
     }
-    if (status !== "all") out = out.filter((r) => (r[statusKey] || "active") === status;
+    if (status !== "all") out = out.filter((r) => (r[statusKey] || "active") === status);
     return out;
   }, [rows, q, status, statusKey, searchKeys, columns]);
 
@@ -134,8 +135,14 @@ export default function ResourceTable({
   }, [rows, statusKey]);
 
   const exportRows = () => {
-    const cols = columns.filter((c) => !c.hide).map((c) => c.label);
-    const lines = [cols.join(", "), ...filtered.map((r) => columns.filter((c) => !c.hide).map((c) => JSON.stringify(c.render ? c.render(r) : (r[c.key] ?? "")))).join(", "))]
+    const visible = columns.filter((c) => !c.hide);
+    const cols = visible.map((c) => c.label);
+    const lines = [
+      cols.join(", "),
+      ...filtered.map((r) =>
+        visible.map((c) => JSON.stringify(c.render ? c.render(r) : (r[c.key] ?? ""))).join(", ")
+      ),
+    ];
     const blob = new Blob([lines.join("\n")], { type: "text/csv;charset=utf-8" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -226,7 +233,7 @@ export default function ResourceTable({
                 >
                   {columns.filter((c) => !c.hide).map((c) => (
                     <td key={c.key} className="px-4 py-3.5 text-sm text-[#180126]/80 whitespace-nowrap">
-                      {c.render ? c.render(r, rowIndex: ri) : <Value value={r[c.key]} />}
+                      {c.render ? c.render(r, ri) : <Value value={r[c.key]} />}
                     </td>
                   ))}
                   <td className="px-4 py-3.5 pr-4 text-right">

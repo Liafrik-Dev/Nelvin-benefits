@@ -12,6 +12,7 @@ import AuthLayout from "@/components/auth/AuthLayout";
 export default function ResetPassword() {
   const [searchParams] = useSearchParams();
   const resetToken = searchParams.get("token");
+  const tokenHash = searchParams.get("token_hash");
 
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -27,7 +28,11 @@ export default function ResetPassword() {
     }
     setLoading(true);
     try {
-      await db.auth.resetPassword({ resetToken, newPassword });
+      await db.auth.resetPassword({
+        resetToken: resetToken || tokenHash || undefined,
+        tokenType: tokenHash ? "token_hash" : "recovery",
+        newPassword,
+      });
       window.location.href = "/login";
     } catch (err) {
       setError(err.message || "Failed to reset password");
@@ -36,7 +41,7 @@ export default function ResetPassword() {
     }
   };
 
-  if (!resetToken) {
+  if (!resetToken && !tokenHash) {
     return (
       <AuthLayout
         icon={AlertTriangle}

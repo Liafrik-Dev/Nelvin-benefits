@@ -8,6 +8,8 @@ export default function BusinessOffers() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // In production (Supabase) only offers created by this account are visible
+    // via RLS; on the local fallback we show the demo store's sample set.
     db.entities.Offer.list("-created_date", 100)
       .then((data) => {
         setOffers(data || []);

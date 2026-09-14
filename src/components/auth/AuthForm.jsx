@@ -85,8 +85,15 @@ export default function AuthForm({ mode = "login" }) {
     setLoading(true);
     try {
       if (activeAction === "signup") {
-        await db.auth.register({ email, password, role: activeTab });
-        setShowOtp(true);
+        const res = await db.auth.register({ email, password, role: activeTab });
+        if (res?.session) {
+          // Email confirmation disabled — session is live; go straight in.
+          if (activeTab === "business") window.location.href = "/business";
+          else if (activeTab === "hr_admin") window.location.href = "/corporate-dashboard";
+          else window.location.href = resolvePostAuthPath();
+        } else {
+          setShowOtp(true);
+        }
       } else {
         await db.auth.loginViaEmailPassword(email, password);
         if (activeTab === "business") window.location.href = "/business";

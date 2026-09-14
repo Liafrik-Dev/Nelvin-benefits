@@ -15,8 +15,17 @@ export default function Notifications() {
     async function loadNotifs() {
       if (!user?.id) { setLoading(false); return; }
       try {
-        const data = await db.entities.Notification.filter({ user_id: user.id }).catch(() => []);
-        setNotifications(data || []);
+        const data = await db.entities.Notification
+          .filter({ target_user_id: user.id }, "-created_date", 100)
+          .catch(() => []);
+        if (data && data.length === 0) {
+          const byEmail = await db.entities.Notification
+            .filter({ recipient_email: user.email }, "-created_date", 50)
+            .catch(() => []);
+          setNotifications(byEmail || []);
+        } else {
+          setNotifications(data || []);
+        }
       } catch (e) {
         console.error(e);
       }

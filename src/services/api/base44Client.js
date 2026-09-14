@@ -1,105 +1,707 @@
 /**
- * Central access point for the Base44 database / auth SDK.
+ * Central access point for the Nelvin data layer (auth + entities + integrations).
  *
- * Nelvin Benefits is hosted on the Base44 platform. The Base44 runtime injects
- * the database client (auth + entities + integrations) on `globalThis.__B44_DB__`
- * before the bundle boots (see src/lib/app-params.js for the bootstrap flow). When
- * developing outside the Base44 host (plain `vite dev`/ `npm run preview`),
- * a read-only in-memory fallback keeps the UI renderable.
+ * This module is the SINGLE seam between the application and its data backend.
+ * It resolves the database client in this priority order:
  *
- * IMPORTANT: All application code MUST import `db` from this module instead of
- * touching `globalThis.__B44_DB__` directly. This is the single seam that will
- * allow replacing Base44 with Supabase/PostgreSQL/your own API without touching
- * feature code. See docs/BASE44_DEPENDENCIES.md.
+ *   1. A real Supabase project, when `VITE_SUPABASE_URL` + `VITE_SUPABASE_ANON_KEY`
+ *      are configured (production). We map the entity API below onto the Supabase
+ *      PostgREST + Auth + Storage APIs.
+ *   2. The Base44 runtime SDK injected by the Base44 platform on `globalThis.__B44_DB__`.
+ *   3. A local in-memory fallback (development/demo) so the UI stays renderable outside
+ *      a host, with seeded content.
+ *
+ * IMPORTANT: All application code MUST import `db` from this module instead of touching
+ * backends directly. See docs/BASE44_DEPENDENCIES.md.
  */
 
-const mockUser = {
-  id: "user_demo_123",
-  email: "admin@nelvinbenefits.com",
-  full_name: "Demo Admin User",
-  role: "admin",
-  company_id: "company_demo_456",
-  account_type: "corporate",
-  subscriber_id: "NV-009988",
-  membership_status: "active",
+const LOCAL_TOKEN_KEY = "nv_auth_token";
+
+const hasSupabaseConfig = () =>
+  !!import.meta.env?.VITE_SUPABASE_URL &&
+  !!import.meta.env?.VITE_SUPABASE_ANON_KEY;
+
+let _supabaseClient = null;
+async function getSupabase() {
+  if (_supabaseClient) return _supabaseClient;
+  try {
+    const mod = await import("@supabase/supabase-js");
+    _supabaseClient = mod.createClient(
+      import.meta.env.VITE_SUPABASE_URL,
+      import.meta.env.VITE_SUPABASE_ANON_KEY,
+      {
+        auth: {
+          persistSession: true,
+          autoRefreshToken: true,
+          detectSessionInUrl: true,
+          storageKey: "nelvin_supabase_auth",
+        },
+      }
+    );
+    return _supabaseClient;
+  } catch (err) {
+    console.error("Failed to initialise Supabase client:", err);
+    return null;
+  }
+}
+
+function toSupabaseOrder(sort) {
+  if (!sort) return { by: "created_at", dir: "desc" };
+  const s = String(sort);
+  const desc = s.startsWith("-");
+  return { by: desc ? s.slice(1) : s, dir: desc ? "desc" : "asc" };
+}
+
+function toLabel(entity) {
+  return (entity || "")
+    .replace(/([a-z])([A-Z])/g, "$1_$2")
+    .replace(/([A-Z])([A-Z][a-z])/g, "$1_$2")
+    .toLowerCase();
+}
+
+function hydrateRow(row) {
+  if (!row) return row;
+  const out = { ...row };
+  for (const key of Object.keys(row)) {
+    const camel = key.replace(/_([a-z])/g, (_, c) => c.toUpperCase());
+    if (camel !== key && out[camel] === undefined) out[camel] = row[key];
+  }
+  if (out.created_at && out.created_date === undefined) out.created_date = out.created_at;
+  if (out.updated_at && out.updated_date === undefined) out.updated_date = out.updated_at;
+  return out;
+}
+
+function rowsOrError(data, error, fallback = []) {
+  if (error) throw new Error(error.message || "Database request failed");
+  return (data == null ? fallback : data).map(hydrateRow);
+}
+
+function applyFilters(query, filters) {
+  for (const [k, v] of Object.entries(filters || {})) {
+    const col = toLabel(k);
+    if (v === undefined || v === null || v === "") continue;
+    if (Array.isArray(v)) {
+      query = query.in(col, v);
+    } else if (v && typeof v === "object") {
+      for (const [op, val] of Object.entries(v)) {
+        if (val === undefined || val === null || val === "") continue;
+        if (op === "like") query = query.like(col, `%${val}%`);
+        else if (op === "ilike") query = query.ilike(col, `%${val}%`);
+        else if (op === "gte") query = query.gte(col, val);
+        else if (op === "lte") query = query.lte(col, val);
+        else if (op === "gt") query = query.gt(col, val);
+        else if (op === "lt") query = query.lt(col, val);
+        else if (op === "neq") query = query.neq(col, val);
+        else if (op === "in") query = query.in(col, val);
+      }
+    } else {
+      query = query.eq(col, v);
+    }
+  }
+  return query;
+}
+
+function pickWritable(rows) {
+  const EXCLUDE = new Set([
+    "id", "created_at", "updated_at", "created_by_id", "created_date", "updated_date",
+  ]);
+  return rows.map((r) => {
+    const out = {};
+    for (const [k, v] of Object.entries(r || {})) {
+      if (EXCLUDE.has(k) || v === undefined) continue;
+      out[k] = v;
+    }
+    return out;
+  });
+}
+
+function makeSupabaseEntity(entity) {
+  const table = toLabel(entity);
+  return {
+    async filter(filters = {}, sort, limit) {
+      const supabase = await getSupabase();
+      let q = supabase.from(table).select("*");
+      q = applyFilters(q, filters);
+      if (sort) {
+        const { by, dir } = toSupabaseOrder(sort);
+        q = q.order(by, { ascending: dir !== "desc" });
+      } else {
+        q = q.order("created_at", { ascending: false });
+      }
+      if (limit) q = q.limit(limit);
+      const { data, error } = await q;
+      return rowsOrError(data, error);
+    },
+    async list(sort, limit) {
+      return this.filter({}, sort, limit);
+    },
+    async get(id) {
+      const supabase = await getSupabase();
+      const { data, error } = await supabase
+        .from(table)
+        .select("*")
+        .eq("id", id)
+        .maybeSingle();
+      const row = rowsOrError(data, error)[0];
+      return row ?? null;
+    },
+    async create(data) {
+      const supabase = await getSupabase();
+      const payload = pickWritable([data])[0];
+      const { data: created, error } = await supabase
+        .from(table)
+        .insert(payload)
+        .select("*")
+        .single();
+      if (error) throw new Error(error.message);
+      return hydrateRow(created);
+    },
+    async update(id, patch) {
+      const supabase = await getSupabase();
+      const payload = pickWritable([patch])[0];
+      const { data, error } = await supabase
+        .from(table)
+        .update(payload)
+        .eq("id", id)
+        .select("*")
+        .maybeSingle();
+      const rows = rowsOrError(data, error);
+      return rows[0] ?? { id, ...patch };
+    },
+    async delete(id) {
+      const supabase = await getSupabase();
+      const { error } = await supabase.from(table).delete().eq("id", id);
+      if (error) throw new Error(error.message);
+    },
+    async bulkUpdate(items) {
+      for (const item of items || []) {
+        const { id, ...patch } = item;
+        if (!id) continue;
+        await this.update(id, patch);
+      }
+    },
+    async bulkCreate(rows) {
+      const supabase = await getSupabase();
+      const { data, error } = await supabase
+        .from(table)
+        .insert(pickWritable(rows || []))
+        .select("*");
+      return rowsOrError(data, error);
+    },
+  };
+}
+
+async function supabaseSyncProfile() {
+  const supabase = await getSupabase();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return null;
+  const { data, error } = await supabase
+    .from("users")
+    .select("*")
+    .eq("id", user.id)
+    .maybeSingle();
+  if (error || !data) {
+    const email = user.email || "";
+    const name = user.user_metadata?.full_name || user.user_metadata?.name || null;
+    const fallbackRole =
+      email.endsWith("nelvinbenefits.com") || email.endsWith("@nelvin.app")
+        ? "admin"
+        : user.user_metadata?.role || "subscriber";
+    const { data: inserted, error: insErr } = await supabase
+      .from("users")
+      .upsert(
+        {
+          id: user.id,
+          email,
+          full_name: name,
+          role: fallbackRole,
+          account_type: fallbackRole === "admin" ? "corporate" : "individual",
+          membership_status: "active",
+          membership_tier: "Free",
+          created_at: new Date().toISOString(),
+        },
+        { onConflict: "id" }
+      )
+      .select("*")
+      .single();
+    if (insErr) {
+      console.error("Failed to create profile:", insErr.message);
+      const { data: fetched } = await supabase
+        .from("users")
+        .select("*")
+        .eq("id", user.id)
+        .maybeSingle();
+      return hydrateRow(fetched);
+    }
+    return hydrateRow(inserted);
+  }
+  return hydrateRow(data);
+}
+
+async function supabaseUploadFile({ file }) {
+  const supabase = await getSupabase();
+  if (!file) return { file_url: "" };
+  const ext = (file.name || "").split(".").pop()?.toLowerCase() || "bin";
+  const key = `uploads/${Date.now()}-${Math.random().toString(36).slice(2, 10)}.${ext}`;
+  const { error } = await supabase.storage
+    .from("nelvin-public")
+    .upload(key, file, { cacheControl: "3600", upsert: false });
+  if (error) {
+    console.error("Upload failed:", error.message);
+    return { file_url: "" };
+  }
+  const { data } = supabase.storage.from("nelvin-public").getPublicUrl(key);
+  return { file_url: data.publicUrl };
+}
+
+function makeSupabaseBackend() {
+  const entities = {};
+  const ENTITIES = [
+    "User", "Company", "Offer", "Category", "Country", "MembershipPlan",
+    "Employee", "Department", "Team", "Location", "Redemption", "Favorite",
+    "Review", "Notification", "SupportTicket", "Payment", "AuditLog",
+    "VendorApplication", "AnalyticsEvent", "Benefit", "Allowance", "Claim",
+  ];
+  for (const name of ENTITIES) {
+    entities[name] = makeSupabaseEntity(name);
+  }
+
+  return {
+    entities,
+    auth: {
+      async isAuthenticated() {
+        const supabase = await getSupabase();
+        if (!supabase) return false;
+        const { data } = await supabase.auth.getSession();
+        return !!data?.session;
+      },
+      async me() {
+        return supabaseSyncProfile();
+      },
+      async loginViaEmailPassword(email, password) {
+        const supabase = await getSupabase();
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) throw new Error(error.message);
+        await supabaseSyncProfile();
+        return { user: data.user };
+      },
+      async loginWithProvider(provider, redirectPath) {
+        const supabase = await getSupabase();
+        const { error } = await supabase.auth.signInWithOAuth({
+          provider: provider === "apple" ? "apple" : "google",
+          options: { redirectTo: redirectPath || `${window.location.origin}/dashboard` },
+        });
+        if (error) throw new Error(error.message);
+      },
+      async register({ email, password, role }) {
+        const supabase = await getSupabase();
+        const { data, error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: { data: { role: role || "subscriber" } },
+        });
+        if (error) throw new Error(error.message);
+        if (data?.user?.identities?.length === 0) {
+          throw new Error("An account already exists for this email — please log in.");
+        }
+        // If email confirmation is disabled, signUp already returns a session.
+        if (data.session) {
+          await supabaseSyncProfile();
+          return { user: data.user, email, session: data.session };
+        }
+        return { user: data.user, email };
+      },
+      async verifyOtp({ email, otpCode }) {
+        const supabase = await getSupabase();
+        const { data, error } = await supabase.auth.verifyOtp({
+          email,
+          token: otpCode,
+          type: "email",
+        });
+        if (error) throw new Error(error.message);
+        await supabaseSyncProfile();
+        return data.session ? { access_token: data.session.access_token } : { session: data.session };
+      },
+      async updateMe(patch) {
+        const supabase = await getSupabase();
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) throw new Error("Not authenticated");
+        const safe = { ...patch };
+        delete safe.role;
+        const { error } = await supabase
+          .from("users")
+          .update(pickWritable([safe])[0])
+          .eq("id", user.id);
+        if (error) throw new Error(error.message);
+        return supabaseSyncProfile();
+      },
+      async resetPassword(opts) {
+        const supabase = await getSupabase();
+        const { newPassword, tokenType } = opts || {};
+        // Supabase recovery links come in two shapes:
+        //  * ?token_hash=…&type=recovery  — the session is restored automatically
+        //    by the supabase-js client on page load (PKCE), so we must NOT exchange it.
+        //  * an OTP token passed explicitly (legacy ?token=) that needs verifyOtp.
+        let target = null;
+        if (opts?.resetToken && tokenType !== "token_hash") {
+          const { data, error: tErr } = await supabase.auth.verifyOtp({
+            token: opts.resetToken,
+            type: "recovery",
+          });
+          if (tErr) throw new Error(tErr.message);
+          target = data;
+        }
+        const { error } = await supabase.auth.updateUser({ password: newPassword });
+        if (error) throw new Error(error.message);
+        return target;
+      },
+      async resetPasswordRequest(email) {
+        const supabase = await getSupabase();
+        const { error } = await supabase.auth.resetPasswordForEmail(email, {
+          redirectTo: `${window.location.origin}/reset-password`,
+        });
+        if (error) throw new Error(error.message);
+      },
+      async setToken(token) {
+        try { localStorage.setItem(LOCAL_TOKEN_KEY, token); } catch {}
+      },
+      async logout() {
+        const supabase = await getSupabase();
+        await supabase.auth.signOut();
+        try { localStorage.removeItem(LOCAL_TOKEN_KEY); } catch {}
+      },
+      redirectToLogin() {
+        window.location.href = "/login";
+      },
+    },
+    users: {
+      async inviteUser(email, role) {
+        const supabase = await getSupabase();
+        const { error } = await supabase.auth.admin.inviteUserByEmail(email, {
+          data: { role: role || "subscriber" },
+        });
+        if (error) throw new Error(error.message);
+      },
+    },
+    integrations: {
+      Core: {
+        UploadFile: supabaseUploadFile,
+        SendEmail: async () => ({}),
+      },
+    },
+  };
+}
+
+/* ------------------------------------------------------------------ */
+/* Local in-memory fallback (dev / no backend configured)              */
+/* ------------------------------------------------------------------ */
+
+import { CATEGORIES, COUNTRIES } from "@/lib/nelvinData";
+
+function makeId(prefix) {
+  return `${prefix || "row"}_${Math.random().toString(36).slice(2, 10)}`;
+}
+
+const seedOffers = (() => {
+  const countries = COUNTRIES.slice(0, 12).map((c) => c.name);
+  const brands = [
+    ["The Signature Grill", "Restaurants & Cafés", "25% Off Fine Dining", "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80"],
+    ["Sunrise Resorts", "Hotels & Resorts", "30% Off Weekend Getaways", "https://images.unsplash.com/photo-1506878206813-92402b8ded23?w=800&q=80"],
+    ["AeroSkies Airlines", "Travel & Airlines", "Up to 40% Off Flights", "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80"],
+    ["FitHub Gym", "Fitness & Sports", "2 Months Free Membership", "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80"],
+    ["Glow Pharmacy", "Healthcare", "20% Off Vitamins & Care", "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800&q=80"],
+    ["Urban Threads", "Shopping & Fashion", "Buy 1 Get 1 — Weekend", "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80"],
+    ["TechNova Store", "Electronics", "₦20,000 Off Gadgets", "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=800&q=80"],
+    ["La Belle Spa", "Beauty & Spa", "35% Off Spa Packages", "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80"],
+    ["CinemaMax", "Entertainment", "50% Off Movie Tickets", "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800&q=80"],
+  ];
+  return brands.map(([business_name, category, label, image_url], i) => ({
+    id: makeId("off"),
+    title: `${label} — ${business_name}`,
+    business_name,
+    category,
+    country: countries[i % countries.length],
+    city: "Lagos",
+    image_url,
+    discount_label: label,
+    description: `Enjoy ${label.toLowerCase()} at ${business_name}. This exclusive offer is available to active Nelvin members.`,
+    rating: (4 + (i % 5) / 5).toFixed(1),
+    reviews: Math.floor(Math.random() * 80) + 20,
+    savings_amount: Math.floor(Math.random() * 80) + 15,
+    original_price: Math.floor(Math.random() * 300) + 100,
+    discount_price: Math.floor(Math.random() * 150) + 50,
+    tag: i % 3 === 0 ? "Popular" : i % 3 === 1 ? "Trending" : "New",
+    status: "active",
+    is_published: true,
+    is_featured: i < 3,
+    membership_requirement: "All",
+    total_redemptions_count: 0,
+    max_redemptions_per_user: 1,
+    expires_date: new Date(Date.now() + 30 * 86400000).toISOString().slice(0, 10),
+    created_date: new Date(Date.now() - i * 86400000).toISOString(),
+  }));
+})();
+
+const seedCategories = CATEGORIES.map((c, i) => ({
+  id: makeId("cat"),
+  name: c.name,
+  slug: c.slug,
+  icon: c.icon || "",
+  description: `${c.name} — curated offers from trusted partners`,
+  display_order: i,
+  is_active: true,
+  is_enabled: true,
+  is_hidden: i >= 10,
+  is_featured: i < 6,
+}));
+
+const seedCountries = COUNTRIES.map((c, i) => ({
+  id: makeId("ctry"),
+  name: c.name,
+  slug: c.slug,
+  flag: c.flag,
+  image_url: c.image,
+  is_active: true,
+  display_order: i,
+}));
+
+const seedPlans = [
+  { name: "Free", tier: "free", price_monthly: 0, price_yearly: 0, currency: "USD", description: "For individuals", benefits: "Find & redeem offers", display_order: 1, color: "#64748b", is_active: true, seats_included: 0 },
+  { name: "Premium", tier: "premium", price_monthly: 9, price_yearly: 90, currency: "USD", description: "Most popular choice", benefits: "Everything in Free, plus\nUnlimited redemptions, cashback, priority support", display_order: 2, color: "#00BD00", is_active: true, seats_included: 0 },
+  { name: "VIP", tier: "vip", price_monthly: 29, price_yearly: 290, currency: "USD", description: "The full luxury experience", benefits: "Everything in Premium, plus\nConcierge, airport lounge, luxury partners", display_order: 3, color: "#eab308", is_active: true, seats_included: 0 },
+  { name: "Enterprise", tier: "enterprise", price_monthly: 0, price_yearly: 0, currency: "USD", description: "For businesses", benefits: "Custom plans, analytics, SSO", is_corporate: true, display_order: 5, is_active: true, seats_included: 100 },
+];
+
+const localTables = {};
+const ensureTable = (name) => {
+  const key = toLabel(name);
+  if (!localTables[key]) localTables[key] = [];
+  return localTables[key];
 };
 
-const mockCompany = {
-  id: "company_demo_456",
-  name: "Acme Corporation",
-  status: "approved",
-  dashboard_access: true,
-  membership_tier: "Enterprise Gold",
-  employee_count: 150,
-  country: "Nigeria",
-};
+ensureTable("Offer");
+localTables[toLabel("Offer")].push(...seedOffers);
+ensureTable("Category");
+localTables[toLabel("Category")].push(...seedCategories);
+ensureTable("Country");
+localTables[toLabel("Country")].push(...seedCountries);
+ensureTable("MembershipPlan");
+localTables[toLabel("MembershipPlan")].push(...seedPlans);
+
+let localAuthUser = null;
+function getLocalUser() {
+  if (localAuthUser) return localAuthUser;
+  try {
+    if (localStorage.getItem(LOCAL_TOKEN_KEY)) {
+      localAuthUser = {
+        id: "user_demo_123",
+        email: "admin@nelvinbenefits.com",
+        full_name: "Demo Admin User",
+        role: "admin",
+        company_id: "company_demo_456",
+        account_type: "corporate",
+        subscriber_id: "NV-009988",
+        membership_status: "active",
+      };
+    }
+  } catch { /* ignore */ }
+  return localAuthUser;
+}
+
+function localFilter(rows, filters) {
+  return rows.filter((r) =>
+    Object.entries(filters || {}).every(([k, v]) => {
+      if (v === undefined || v === null || v === "") return true;
+      if (k === "q") {
+        return Object.values(r).some((x) =>
+          String(x ?? "").toLowerCase().includes(String(v).toLowerCase())
+        );
+      }
+      return String(r[k] ?? "") === String(v);
+    })
+  );
+}
+
+function applyLocalSort(rows, sort) {
+  if (!sort) {
+    return rows.slice().sort((a, b) => new Date(b.created_date || 0) - new Date(a.created_date || 0));
+  }
+  const desc = sort.startsWith("-");
+  const key = desc ? sort.slice(1) : sort;
+  return rows.slice().sort((a, b) => {
+    const av = a[key];
+    const bv = b[key];
+    let cmp;
+    if (typeof av === "number" && typeof bv === "number") cmp = av - bv;
+    else cmp = String(av ?? "").localeCompare(String(bv ?? ""));
+    return desc ? -cmp : cmp;
+  });
+}
+
+function makeLocalEntity(name) {
+  const tableName = toLabel(name);
+  return {
+    async filter(filters = {}, sort, limit) {
+      let rows = localFilter(ensureTable(tableName), filters);
+      rows = applyLocalSort(rows, sort);
+      if (limit) rows = rows.slice(0, limit);
+      return rows;
+    },
+    async list(sort, limit) {
+      return this.filter({}, sort, limit);
+    },
+    async get(id) {
+      return ensureTable(tableName).find((r) => r.id === id) || null;
+    },
+    async create(data) {
+      const row = {
+        id: makeId("row"),
+        created_date: new Date().toISOString(),
+        updated_date: new Date().toISOString(),
+        created_by_id: getLocalUser()?.id,
+        ...data,
+      };
+      ensureTable(tableName).push(row);
+      return row;
+    },
+    async update(id, patch) {
+      const table = ensureTable(tableName);
+      const idx = table.findIndex((r) => r.id === id);
+      if (idx >= 0) {
+        table[idx] = { ...table[idx], ...patch, updated_date: new Date().toISOString() };
+        return table[idx];
+      }
+      const row = { id, ...patch, created_date: new Date().toISOString(), updated_date: new Date().toISOString() };
+      table.push(row);
+      return row;
+    },
+    async delete(id) {
+      const table = ensureTable(tableName);
+      const idx = table.findIndex((r) => r.id === id);
+      if (idx >= 0) table.splice(idx, 1);
+    },
+    async bulkUpdate(items) {
+      for (const item of items || []) {
+        const { id, ...patch } = item;
+        if (id) await this.update(id, patch);
+      }
+    },
+    async bulkCreate(rows) {
+      const created = [];
+      for (const row of rows || []) created.push(await this.create(row));
+      return created;
+    },
+  };
+}
 
 const fallbackDb = {
   auth: {
-    isAuthenticated: async () => {
-      return !!localStorage.getItem("nv_auth_token");
-    },
-    me: async () => {
-      const token = localStorage.getItem("nv_auth_token");
-      return token ? mockUser : null;
-    },
-    loginViaEmailPassword: async (email, password) => {
-      localStorage.setItem("nv_auth_token", "demo_session_token");
-      return { user: mockUser };
+    isAuthenticated: async () => !!getLocalUser(),
+    me: async () => getLocalUser(),
+    loginViaEmailPassword: async (email) => {
+      try { localStorage.setItem(LOCAL_TOKEN_KEY, "demo_session_token"); } catch {}
+      localAuthUser = {
+        id: "user_demo_123",
+        email: email || "admin@nelvinbenefits.com",
+        full_name: "Demo Admin User",
+        role: "admin",
+        company_id: "company_demo_456",
+        account_type: "corporate",
+        subscriber_id: "NV-009988",
+        membership_status: "active",
+      };
+      return { user: localAuthUser };
     },
     loginWithProvider: (provider, redirectPath) => {
-      localStorage.setItem("nv_auth_token", "demo_session_token");
+      try { localStorage.setItem(LOCAL_TOKEN_KEY, "demo_session_token"); } catch {}
+      localAuthUser = {
+        id: "user_demo_123", email: "admin@nelvinbenefits.com", full_name: "Demo Admin User",
+        role: "admin", company_id: "company_demo_456", account_type: "corporate",
+        subscriber_id: "NV-009988", membership_status: "active",
+      };
       window.location.href = redirectPath || "/";
     },
-    register: async ({ email, password, role }) => {
-      localStorage.setItem("nv_auth_token", "demo_session_token");
+    register: async ({ email }) => {
+      try { localStorage.setItem(LOCAL_TOKEN_KEY, "demo_session_token"); } catch {}
       return { email };
     },
-    verifyOtp: async ({ email, otpCode }) => {
-      return { access_token: "demo_session_token" };
-    },
+    verifyOtp: async () => ({ access_token: "demo_session_token" }),
     updateMe: async (patch) => {
-      Object.assign(mockUser, patch || {});
-      return { ...mockUser };
+      if (localAuthUser) Object.assign(localAuthUser, patch || {});
+      return { ...localAuthUser };
     },
-    resetPassword: async () => {},
-    resetPasswordRequest: async () => {},
+    resetPassword: async () => ({}),
+    resetPasswordRequest: async () => ({}),
     setToken: (token) => {
-      localStorage.setItem("nv_auth_token", token);
+      try { localStorage.setItem(LOCAL_TOKEN_KEY, token); } catch {}
     },
     logout: () => {
-      localStorage.removeItem("nv_auth_token");
+      try { localStorage.removeItem(LOCAL_TOKEN_KEY); } catch {}
+      localAuthUser = null;
     },
-    redirectToLogin: () => {},
+    redirectToLogin: () => { window.location.href = "/login"; },
   },
   entities: new Proxy(
     {},
     {
-      get: (target, prop) => ({
-        filter: async () => [],
-        list: async () => [],
-        get: async (id) => (prop === "Company" ? mockCompany : null),
-        create: async (data) => ({ id: "id_" + Date.now(), ...data }),
-        update: async (id, data) => ({ id, ...data }),
-        updateMe: async (patch) => ({ ...mockUser, ...patch }),
-        delete: async () => ({}),
-        bulkUpdate: async () => ({}),
-        bulkCreate: async () => [],
-      }),
-    },
+      get: (target, name) => makeLocalEntity(name),
+    }
   ),
+  users: {
+    async inviteUser(email, role) {
+      const name = toLabel("User");
+      const exists = ensureTable(name).some((r) => r.email === email);
+      if (exists) return;
+      await makeLocalEntity(name).create({
+        email, role: role || "subscriber", status: "invited",
+        created_date: new Date().toISOString(),
+      });
+    },
+  },
   integrations: {
     Core: {
-      UploadFile: async () => ({ file_url: "" }),
+      UploadFile: async ({ file }) => {
+        if (!file || typeof window === "undefined") return { file_url: "" };
+        return new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve({ file_url: String(reader.result) });
+          reader.onerror = () => resolve({ file_url: "" });
+          reader.readAsDataURL(file);
+        });
+      },
       SendEmail: async () => ({}),
     },
   },
 };
 
-/** The Base44 SDK handle injected by the platform (or the fallback outside it). */
-export const db = globalThis.__B44_DB__ || fallbackDb;
+let resolvedBackend = null;
+function resolveBackend() {
+  if (resolvedBackend) return resolvedBackend;
+
+  if (hasSupabaseConfig()) {
+    console.info("[nelvin] Using Supabase backend");
+    resolvedBackend = makeSupabaseBackend();
+    return resolvedBackend;
+  }
+
+  if (typeof globalThis !== "undefined" && globalThis.__B44_DB__) {
+    console.info("[nelvin] Using Base44 host SDK");
+    resolvedBackend = globalThis.__B44_DB__;
+    return resolvedBackend;
+  }
+
+  console.info("[nelvin] No backend configured — using local in-memory data");
+  resolvedBackend = fallbackDb;
+  return resolvedBackend;
+}
+
+/** The active database client (Supabase when configured, else Base44 host SDK, else local). */
+export const db = resolveBackend();
 
 /** Alias kept for backwards compatibility with code that named the import `base44`. */
 export const base44 = db;
+
+/** True when the app is backed by a real Supabase project. */
+export const isSupabaseBackend = () => hasSupabaseConfig();
 
 export default db;

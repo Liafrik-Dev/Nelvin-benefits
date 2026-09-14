@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Briefcase } from "lucide-react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
+import { useAuth } from "@/lib/AuthContext";
 import { useToast } from "@/components/ui/use-toast";
 import Navbar from "@/components/nelvin/Navbar";
 import Footer from "@/components/nelvin/Footer";
@@ -40,6 +41,7 @@ export default function VendorOnboarding() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const shouldReduceMotion = useReducedMotion();
+  const { user } = useAuth();
   const { toast } = useToast();
 
   const update = (field, value) => setForm((f) => ({ ...f, [field]: value }));
@@ -51,7 +53,11 @@ export default function VendorOnboarding() {
     }
     setSubmitting(true);
     try {
-      await db.entities.VendorApplication.create({ ...form, authorized_confirmation: confirmed });
+      await db.entities.VendorApplication.create({
+        ...form,
+        owner_id: user?.id,
+        authorized_confirmation: confirmed,
+      });
       setSubmitted(true);
     } catch (err) {
       toast({ title: "Submission failed", description: "Something went wrong while submitting your application. Please try again.", variant: "destructive" });

@@ -36,17 +36,29 @@ export default function OfferDetail() {
       return;
     }
     setRedeeming(true);
+    if (!user?.id) {
+      navigateToLogin();
+      return;
+    }
     await db.entities.Redemption.create({
       offer_id: offer.id,
       offer_title: offer.title,
       business_name: offer.business_name,
+      business_id: offer.business_id || "",
       savings_amount: offer.savings_amount || 0,
       country: offer.country,
+      user_id: user.id,
+      company_id: user.company_id || "",
+      status: "issued",
     });
     await db.entities.Notification.create({
       title: "Offer redeemed",
       message: `You redeemed "${offer.title}" at ${offer.business_name}.`,
       type: "offer",
+      channel: "system",
+      audience: "specific_users",
+      target_user_id: user?.id,
+      recipient_email: user?.email,
     });
     db.integrations.Core.SendEmail({
       to: user.email,
