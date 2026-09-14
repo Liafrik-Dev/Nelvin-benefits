@@ -51,15 +51,15 @@ export default function Favorites() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         <div className="flex items-center justify-between border-b border-white/10 pb-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 text-rose-700 text-xs font-bold uppercase">
-              <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" /> Saved Perks
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20 text-xs font-bold uppercase">
+              <Heart className="w-3.5 h-3.5 text-[#D6B56D] fill-[#D6B56D]" /> Saved Perks
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-ivory mt-2 font-heading">
               Your Favorite Benefits
             </h1>
             <p className="text-ivory-muted text-sm mt-1">Quick access to deals and discounts you saved for later.</p>
           </div>
-          <span className="text-xs font-bold bg-white/5 text-ivory px-3 py-1.5 rounded-full">
+          <span className="text-xs font-bold bg-[#0A3A2F]/5 text-ivory px-3 py-1.5 rounded-full">
             {offers.length} Saved
           </span>
         </div>
@@ -67,8 +67,8 @@ export default function Favorites() {
         {loading ? (
           <div className="h-64 flex items-center justify-center text-ivory-dim">Loading favorites...</div>
         ) : offers.length === 0 ? (
-          <div className="bg-white rounded-xl border border-white/10 p-12 text-center space-y-4 max-w-md mx-auto">
-            <div className="w-16 h-16 rounded-lg bg-rose-50 text-rose-500 flex items-center justify-center mx-auto">
+          <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-12 text-center space-y-4 max-w-md mx-auto">
+            <div className="w-16 h-16 rounded-lg bg-[#103F35]/70 text-[#D6B56D] flex items-center justify-center mx-auto">
               <Heart className="w-8 h-8" />
             </div>
             <h3 className="text-lg font-bold text-ivory font-heading">No favorite deals yet</h3>
@@ -84,7 +84,7 @@ export default function Favorites() {
                 <button
                   onClick={() => removeFavorite(offer.id)}
                   title="Remove from favorites"
-                  className="absolute top-3 right-3 z-20 w-8 h-8 bg-emerald-black/90 backdrop-blur rounded-full flex items-center justify-center text-rose-600 hover:bg-rose-600 hover:text-white transition-colors shadow-sm"
+                  className="absolute top-3 right-3 z-20 w-8 h-8 bg-emerald-black/90 backdrop-blur rounded-full flex items-center justify-center text-[#D6B56D] hover:bg-[#D6B56D] hover:text-[#062B23] transition-colors shadow-sm"
                 >
                   <Trash2 className="w-4 h-4" />
                 </button>

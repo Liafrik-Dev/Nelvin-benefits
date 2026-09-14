@@ -19,7 +19,7 @@ export default function BusinessPromoCodes() {
         </button>
       </div>
 
-      <div className="bg-white rounded-lg border border-white/10 overflow-hidden shadow-sm">
+      <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg overflow-hidden shadow-sm">
         <table className="w-full text-sm text-left">
           <thead className="bg-forest-secondary/60 text-ivory-muted text-xs uppercase font-semibold border-b border-white/10">
             <tr>

@@ -37,7 +37,7 @@ export default function CategoriesGrid() {
                 className={`py-3 px-5 rounded-lg text-xs sm:text-sm font-extrabold transition-all whitespace-nowrap flex items-center gap-2 ${
                   activeCategory === idx
                     ? "bg-[#062B23] text-[#D6B56D] shadow-md scale-102"
-                    : "bg-emerald-black/90 text-ivory hover:bg-white/5"
+                    : "bg-emerald-black/90 text-ivory hover:bg-[#0A3A2F]/5"
                 }`}
               >
                 <LIcon name={cat.icon} className="w-4 h-4" />

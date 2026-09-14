@@ -11,7 +11,7 @@ import { UserPlus, UserCog, LogOut, Trash2 } from "lucide-react";
 
 function RowIconBtn({ title, onClick, Icon, color = "text-ivory-muted hover:text-ivory" }) {
   return (
-    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-white/5 ${color}`}>
+    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-[#0A3A2F]/5 ${color}`}>
       <Icon className="w-4 h-4" />
     </button>
   );

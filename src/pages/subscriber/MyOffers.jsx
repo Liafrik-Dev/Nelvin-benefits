@@ -28,13 +28,13 @@ export default function MyOffers() {
         <Navbar />
       </div>
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 pb-16">
-        <div className="bg-white rounded-lg border border-white/10 p-6 sm:p-8">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 sm:p-8">
           <div className="flex items-center justify-between mb-6 gap-4">
             <div>
               <h1 className="text-2xl font-bold font-heading text-ivory">Offers You've Used</h1>
               <p className="text-sm text-ivory-dim mt-1">Track every offer you've redeemed and how much you saved</p>
             </div>
-            <span className="bg-amber-100 text-amber-700 text-xs font-bold px-3 py-1.5 rounded-full whitespace-nowrap">
+            <span className="bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20 text-xs font-bold px-3 py-1.5 rounded-full whitespace-nowrap">
               {redemptions.length} Redeemed
             </span>
           </div>
@@ -61,7 +61,7 @@ export default function MyOffers() {
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-amber-600 font-bold text-sm">+₦{(r.savings_amount || 0).toLocaleString()}</p>
+                    <p className="text-[#E5C77A] font-bold text-sm">+₦{(r.savings_amount || 0).toLocaleString()}</p>
                     <p className="text-xs text-ivory-dim">{new Date(r.created_date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}</p>
                   </div>
                 </div>

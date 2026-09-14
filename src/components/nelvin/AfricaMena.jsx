@@ -46,7 +46,7 @@ export default function AfricaMena() {
 
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
             {LANDING_AFRICA_POINTS.map((pt) => (
-              <div key={pt.title} className="flex items-start gap-3 bg-white/5 backdrop-blur rounded-lg p-3.5 ring-1 ring-white/10 hover:ring-[#D6B56D]/40 hover:bg-white/10 transition-all">
+              <div key={pt.title} className="flex items-start gap-3 bg-[#0A3A2F]/5 backdrop-blur rounded-lg p-3.5 ring-1 ring-white/10 hover:ring-[#D6B56D]/40 hover:bg-[#0A3A2F]/10 transition-all">
                 <span className="w-9 h-9 rounded-xl bg-[#D6B56D]/15 flex items-center justify-center flex-shrink-0">
                   <LIcon name={pt.icon} className="w-4.5 h-4.5 text-[#D6B56D]" />
                 </span>
@@ -63,7 +63,7 @@ export default function AfricaMena() {
               <Link
                 key={c}
                 to={c.endsWith("more") ? "/country/nigeria" : `/country/${c.toLowerCase().replace(/\s+/g,"-")}`}
-                className="text-[11px] font-bold text-[#F5F1E8] bg-[#D6B56D] hover:bg-white px-3.5 py-1.5 rounded-full transition-colors"
+                className="text-[11px] font-bold text-[#F5F1E8] bg-[#D6B56D] hover:bg-[#0A3A2F] px-3.5 py-1.5 rounded-full transition-colors"
               >
                 {c}
               </Link>

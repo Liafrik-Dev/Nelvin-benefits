@@ -90,7 +90,7 @@ export default function StepBusinessInfo({ form, update, onNext }) {
         </label>
         <label className="flex items-center gap-3 border border-dashed border-white/15 rounded-lg p-4 cursor-pointer hover:border-gray-900/40 hover:bg-forest-secondary/60 transition-all">
           <input type="file" accept="image/*" multiple className="hidden" onChange={handleImages} />
-          <div className="w-10 h-10 rounded-xl bg-white border border-white/10 flex items-center justify-center flex-shrink-0">
+          <div className="w-10 h-10 rounded-xl bg-emerald-black ring-1 ring-white/10 border border-transparent flex items-center justify-center flex-shrink-0">
             {uploading ? <Loader2 className="w-4 h-4 animate-spin text-ivory-dim" /> : <ImagePlus className="w-4 h-4 text-ivory-dim" />}
           </div>
           <p className="text-sm text-ivory-muted">{uploading ? "Uploading..." : "Click to upload business photos"}</p>

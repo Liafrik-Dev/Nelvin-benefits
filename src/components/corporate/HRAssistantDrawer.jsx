@@ -18,22 +18,22 @@ export default function HRAssistantDrawer({ isOpen, onClose }) {
 
   return (
     <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex justify-end">
-      <div className="w-full max-w-md bg-white h-full shadow-2xl p-6 overflow-y-auto flex flex-col justify-between animate-in slide-in-from-right">
+      <div className="w-full max-w-md bg-[#0A3A2F] h-full shadow-2xl p-6 overflow-y-auto flex flex-col justify-between animate-in slide-in-from-right">
         <div className="space-y-6">
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+          <div className="flex items-center justify-between border-b border-white/10 pb-4">
             <div className="flex items-center gap-2">
               <div className="w-9 h-9 rounded-xl bg-[#062B23] text-[#D6B56D] flex items-center justify-center">
                 <Bot className="w-5 h-5" />
               </div>
               <div>
                 <h3 className="font-bold text-[#F5F1E8]">Smart HR Copilot</h3>
-                <p className="text-xs text-slate-500">Automations & Impact Analytics</p>
+                <p className="text-xs text-ivory-dim">Automations & Impact Analytics</p>
               </div>
             </div>
             <button
               onClick={onClose}
-              className="p-1 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100"
+              className="p-1 rounded-lg text-ivory-dim hover:text-[#D6B56D] hover:bg-[#103F35]"
             >
               <X className="w-5 h-5" />
             </button>
@@ -45,7 +45,7 @@ export default function HRAssistantDrawer({ isOpen, onClose }) {
               <Sparkles className="w-4 h-4 text-[#E5C77A]" />
               Smart Budget Recommendation
             </div>
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-ivory-dim leading-relaxed">
               Based on employee usage data in <strong>Wellness & Gym</strong>, reallocating 15% of unused Food budget will increase employee benefit adoption by <strong>+24%</strong>.
             </p>
             <button className="text-xs font-bold text-[#F5F1E8] underline hover:text-[#E5C77A]">
@@ -54,17 +54,17 @@ export default function HRAssistantDrawer({ isOpen, onClose }) {
           </div>
 
           {/* Onboarding Automations */}
-          <div className="space-y-3 border-t border-slate-100 pt-4">
-            <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+          <div className="space-y-3 border-t border-white/10 pt-4">
+            <h4 className="text-xs font-bold text-[#D6B56D] uppercase tracking-wider">
               Automated Benefit Rules
             </h4>
 
-            <div className="flex items-center justify-between p-3 bg-slate-50 rounded-lg border border-slate-200/80">
+            <div className="flex items-center justify-between p-3 bg-[#103F35]/60 rounded-lg ring-1 ring-white/10">
               <div className="space-y-0.5">
                 <span className="text-xs font-semibold text-[#F5F1E8] block">
                   Auto-assign Welcome Wallet
                 </span>
-                <span className="text-[11px] text-slate-500 block">
+                <span className="text-[11px] text-ivory-dim block">
                   Grant €150 allowance upon employee onboarding
                 </span>
               </div>
@@ -78,8 +78,8 @@ export default function HRAssistantDrawer({ isOpen, onClose }) {
           </div>
 
           {/* Export Report Generator */}
-          <div className="space-y-3 border-t border-slate-100 pt-4">
-            <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+          <div className="space-y-3 border-t border-white/10 pt-4">
+            <h4 className="text-xs font-bold text-[#D6B56D] uppercase tracking-wider">
               Export Comprehensive HR Report
             </h4>
 
@@ -90,7 +90,7 @@ export default function HRAssistantDrawer({ isOpen, onClose }) {
                 className={`p-3 rounded-lg border text-xs font-bold flex items-center justify-center gap-2 transition-all ${
                   reportFormat === "pdf"
                     ? "border-[#062B23] bg-[#062B23] text-white"
-                    : "border-slate-200 text-slate-600 hover:bg-slate-50"
+                    : "border-white/10 text-ivory-muted hover:bg-[#103F35]"
                 }`}
               >
                 <Download className="w-4 h-4" /> PDF Executive
@@ -101,7 +101,7 @@ export default function HRAssistantDrawer({ isOpen, onClose }) {
                 className={`p-3 rounded-lg border text-xs font-bold flex items-center justify-center gap-2 transition-all ${
                   reportFormat === "csv"
                     ? "border-[#062B23] bg-[#062B23] text-white"
-                    : "border-slate-200 text-slate-600 hover:bg-slate-50"
+                    : "border-white/10 text-ivory-muted hover:bg-[#103F35]"
                 }`}
               >
                 <FileSpreadsheet className="w-4 h-4" /> CSV Raw Data
@@ -111,7 +111,7 @@ export default function HRAssistantDrawer({ isOpen, onClose }) {
         </div>
 
         {/* Action Button */}
-        <div className="pt-6 border-t border-slate-100">
+        <div className="pt-6 border-t border-white/10">
           <button
             onClick={handleExport}
             disabled={downloading}

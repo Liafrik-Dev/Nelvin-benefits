@@ -17,7 +17,7 @@ export default function StatsSection() {
           </h2>
           <div className="mt-10 grid grid-cols-2 gap-5">
             {LANDING_STATS.map((s) => (
-              <div key={s.label} className="bg-white/5 backdrop-blur rounded-lg p-5 ring-1 ring-white/10">
+              <div key={s.label} className="bg-[#0A3A2F]/5 backdrop-blur rounded-lg p-5 ring-1 ring-white/10">
                 <p className="text-2xl sm:text-3xl font-extrabold font-heading text-[#D6B56D]">{s.value}</p>
                 <p className="mt-1 text-[11px] text-white/55 font-semibold leading-snug">{s.label}</p>
               </div>

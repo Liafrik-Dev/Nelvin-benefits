@@ -94,7 +94,7 @@ const AdminAuditLogs = lazy(() => import('@/pages/admin/AdminAuditLogs'));
 const AdminBackups = lazy(() => import('@/pages/admin/AdminBackups'));
 
 const RouteFallback = () => (
-  <div className="w-8 h-8 border-4 border-slate-200 border-t-slate-800 rounded-full animate-spin mx-auto my-24" />
+  <div className="w-8 h-8 border-4 border-white/10 border-t-[#D6B56D] rounded-full animate-spin mx-auto my-24" />
 );
 
 const AuthenticatedApp = () => {
@@ -103,7 +103,7 @@ const AuthenticatedApp = () => {
   if (isLoadingPublicSettings || isLoadingAuth) {
     return (
       <div className="fixed inset-0 flex items-center justify-center">
-        <div className="w-8 h-8 border-4 border-slate-200 border-t-slate-800 rounded-full animate-spin"></div>
+        <div className="w-8 h-8 border-4 border-white/10 border-t-[#D6B56D] rounded-full animate-spin"></div>
       </div>
     );
   }

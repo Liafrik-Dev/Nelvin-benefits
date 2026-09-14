@@ -126,7 +126,7 @@ export default function Navbar() {
                   className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
                     menuKey === key
                       ? "text-[#062B23] bg-[#D6B56D] shadow-sm"
-                      : "text-ivory/90 hover:text-white hover:bg-white/10"
+                      : "text-ivory/90 hover:text-white hover:bg-[#0A3A2F]/10"
                   }`}
                 >
                   <span>{config.label}</span>
@@ -135,7 +135,7 @@ export default function Navbar() {
               ))}
 
               {/* Portal Quick Links Pill */}
-              <div className="ml-2 pl-2 border-l border-white/15 flex items-center gap-1 bg-white/5 p-1 rounded-full border border-white/10">
+              <div className="ml-2 pl-2 border-l border-white/15 flex items-center gap-1 bg-[#0A3A2F]/5 p-1 rounded-full border border-white/10">
                 <Link
                   to="/explore"
                   className={`flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-extrabold transition-all ${
@@ -181,7 +181,7 @@ export default function Navbar() {
                 <button
                   onClick={() => setLangOpen(!langOpen)}
                   aria-label={t('nav.language')}
-                  className="flex items-center gap-1.5 text-white/90 hover:text-[#D6B56D] text-xs font-bold transition-colors px-2.5 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-white/20"
+                  className="flex items-center gap-1.5 text-white/90 hover:text-[#D6B56D] text-xs font-bold transition-colors px-2.5 py-1.5 rounded-full bg-[#0A3A2F]/5 border border-white/10 hover:border-white/20"
                 >
                   <Globe className="w-3.5 h-3.5 text-[#D6B56D]" />
                   <span className="uppercase">{lang}</span>
@@ -203,7 +203,7 @@ export default function Navbar() {
                             setLang(lng.code);
                             setLangOpen(false);
                           }}
-                          className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-xs font-semibold text-white/90 hover:bg-white/10 transition-colors"
+                          className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-xs font-semibold text-white/90 hover:bg-[#0A3A2F]/10 transition-colors"
                         >
                           <span>{lng.label}</span>
                           {lang === lng.code && <Check className="h-3.5 w-3.5 text-[#D6B56D]" />}
@@ -238,7 +238,7 @@ export default function Navbar() {
 
               {/* Mobile Menu Trigger */}
               <button
-                className="lg:hidden text-white p-2 rounded-xl bg-white/10 hover:bg-emerald-black/35 transition-colors"
+                className="lg:hidden text-white p-2 rounded-xl bg-[#0A3A2F]/10 hover:bg-emerald-black/35 transition-colors"
                 onClick={() => setMobileOpen(!mobileOpen)}
               >
                 {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -260,7 +260,7 @@ export default function Navbar() {
                       key={item.title}
                       to={item.to}
                       onClick={() => setMenuKey(null)}
-                      className="group flex items-start gap-3 border border-white/10 hover:border-[#D6B56D]/40 bg-white/5 hover:bg-white/10 rounded-lg p-3.5 transition-all duration-150"
+                      className="group flex items-start gap-3 border border-white/10 hover:border-[#D6B56D]/40 bg-[#0A3A2F]/5 hover:bg-[#0A3A2F]/10 rounded-lg p-3.5 transition-all duration-150"
                     >
                       <div className="w-8 h-8 rounded-xl bg-[#D6B56D]/10 border border-[#D6B56D]/20 flex items-center justify-center shrink-0 group-hover:bg-[#D6B56D] group-hover:text-[#062B23] transition-colors">
                         <ItemIcon className="w-4 h-4 text-[#D6B56D] group-hover:text-[#F5F1E8]" />
@@ -298,7 +298,7 @@ export default function Navbar() {
                   <Link
                     to="/explore"
                     onClick={() => setMobileOpen(false)}
-                    className="flex flex-col items-center justify-center gap-1 p-2.5 rounded-lg bg-white/5 border border-white/10 hover:border-[#D6B56D] text-center"
+                    className="flex flex-col items-center justify-center gap-1 p-2.5 rounded-lg bg-[#0A3A2F]/5 border border-white/10 hover:border-[#D6B56D] text-center"
                   >
                     <UserCheck className="w-4 h-4 text-[#D6B56D]" />
                     <span className="text-[11px] font-extrabold">Employee</span>
@@ -307,7 +307,7 @@ export default function Navbar() {
                   <Link
                     to="/corporate"
                     onClick={() => setMobileOpen(false)}
-                    className="flex flex-col items-center justify-center gap-1 p-2.5 rounded-lg bg-white/5 border border-white/10 hover:border-[#0A3A2F] text-center"
+                    className="flex flex-col items-center justify-center gap-1 p-2.5 rounded-lg bg-[#0A3A2F]/5 border border-white/10 hover:border-[#0A3A2F] text-center"
                   >
                     <Building2 className="w-4 h-4 text-[#E5C77A]" />
                     <span className="text-[11px] font-extrabold">HR Admin</span>
@@ -316,7 +316,7 @@ export default function Navbar() {
                   <Link
                     to="/business"
                     onClick={() => setMobileOpen(false)}
-                    className="flex flex-col items-center justify-center gap-1 p-2.5 rounded-lg bg-white/5 border border-white/10 hover:border-[#0A3A2F] text-center"
+                    className="flex flex-col items-center justify-center gap-1 p-2.5 rounded-lg bg-[#0A3A2F]/5 border border-white/10 hover:border-[#0A3A2F] text-center"
                   >
                     <Store className="w-4 h-4 text-[#E5C77A]" />
                     <span className="text-[11px] font-extrabold">Partner</span>
@@ -324,7 +324,7 @@ export default function Navbar() {
                 </div>
               </div>
 
-              <div className="h-px bg-white/10" />
+              <div className="h-px bg-[#0A3A2F]/10" />
 
               {/* Mobile Links */}
               <div className="max-h-[50vh] overflow-y-auto space-y-4 pr-1">
@@ -337,7 +337,7 @@ export default function Navbar() {
                           key={item.title}
                           to={item.to}
                           onClick={() => setMobileOpen(false)}
-                          className="flex items-center gap-2.5 py-2 px-3 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-semibold text-white/90 transition-colors"
+                          className="flex items-center gap-2.5 py-2 px-3 rounded-xl bg-[#0A3A2F]/5 hover:bg-[#0A3A2F]/10 text-xs font-semibold text-white/90 transition-colors"
                         >
                           <item.icon className="w-3.5 h-3.5 text-[#D6B56D]" />
                           <span>{item.title}</span>
@@ -348,7 +348,7 @@ export default function Navbar() {
                 ))}
               </div>
 
-              <div className="h-px bg-white/10" />
+              <div className="h-px bg-[#0A3A2F]/10" />
 
               {/* Mobile Auth Actions */}
               {!isAuthenticated && (
@@ -356,7 +356,7 @@ export default function Navbar() {
                   <Link
                     to="/login"
                     onClick={() => setMobileOpen(false)}
-                    className="border border-white/20 text-white font-bold text-center rounded-full py-2 text-xs hover:bg-white/10 transition-colors"
+                    className="border border-white/20 text-white font-bold text-center rounded-full py-2 text-xs hover:bg-[#0A3A2F]/10 transition-colors"
                   >
                     Log in
                   </Link>

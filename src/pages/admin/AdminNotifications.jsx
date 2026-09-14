@@ -67,12 +67,12 @@ export default function AdminNotifications() {
         <p className="text-sm text-ivory-muted mt-1">Send system (in-app) and email notifications to specific audiences.</p>
       </div>
 
-      <div className="bg-amber-50 border border-amber-100 rounded-xl px-4 py-3 mb-6 text-sm text-amber-700">
+      <div className="bg-[#103F35]/70 border border-[#D6B56D]/25 rounded-xl px-4 py-3 mb-6 text-sm text-[#E5C77A]">
         Email notifications require SendEmail integration credits, which are currently exhausted. They will resume after credits reset on 2026-09-01 or with a higher tier. System (in-app) notifications work immediately.
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-lg border border-white/10 p-6 space-y-4">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-4">
           <h2 className="font-semibold text-ivory">Compose notification</h2>
           <div>
             <label className="text-sm font-medium text-ivory block mb-1.5">Channel</label>
@@ -80,14 +80,14 @@ export default function AdminNotifications() {
               <button
                 type="button"
                 onClick={() => set("channel", "system")}
-                className={`px-4 py-2 text-sm rounded-lg border ${form.channel === "system" ? "bg-[#0A3A2F] border-white/15 text-[#D6B56D]" : "bg-white border-white/12 text-ivory-muted"}`}
+                className={`px-4 py-2 text-sm rounded-lg border ${form.channel === "system" ? "bg-[#0A3A2F] border-white/15 text-[#D6B56D]" : "bg-[#0A3A2F] border-white/12 text-ivory-muted"}`}
               >
                 System (in-app)
               </button>
               <button
                 type="button"
                 onClick={() => set("channel", "email")}
-                className={`px-4 py-2 text-sm rounded-lg border ${form.channel === "email" ? "bg-[#0A3A2F] border-white/15 text-[#D6B56D]" : "bg-white border-white/12 text-ivory-muted"}`}
+                className={`px-4 py-2 text-sm rounded-lg border ${form.channel === "email" ? "bg-[#0A3A2F] border-white/15 text-[#D6B56D]" : "bg-[#0A3A2F] border-white/12 text-ivory-muted"}`}
               >
                 Email
               </button>
@@ -119,7 +119,7 @@ export default function AdminNotifications() {
           {form.audience === "membership" && (
             <div>
               <label className="text-sm font-medium text-ivory block mb-1.5">Plan</label>
-              <select value={form.target_membership_plan} onChange={(e) => set("target_membership_plan", e.target.value)} className="w-full border border-white/12 rounded-xl px-3 py-2 text-sm bg-white">
+              <select value={form.target_membership_plan} onChange={(e) => set("target_membership_plan", e.target.value)} className="w-full border border-white/12 rounded-xl px-3 py-2 text-sm bg-[#062B23]/40 text-ivory">
                 <option value="">—</option>
                 {["Free", "Silver", "Gold", "Platinum", "Enterprise"].map((t) => <option key={t}>{t}</option>)}
               </select>
@@ -150,7 +150,7 @@ export default function AdminNotifications() {
           {sent > 0 && <p className="text-xs text-[#D6B56D]">{sent} notifications delivered this session.</p>}
         </div>
 
-        <div className="bg-white rounded-lg border border-white/10 p-6">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6">
           <h2 className="font-semibold text-ivory mb-3">Recent notifications</h2>
           {history.length === 0 ? (
             <p className="text-sm text-ivory-dim py-8 text-center">No notifications sent yet.</p>

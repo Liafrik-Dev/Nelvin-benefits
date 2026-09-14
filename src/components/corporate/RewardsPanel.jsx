@@ -48,28 +48,28 @@ export default function RewardsPanel({ company }) {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white rounded-lg border border-white/10 p-6 space-y-2 shadow-sm">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-2 shadow-sm">
           <p className="text-xs font-bold text-ivory-dim uppercase">Monthly Recognition Pool</p>
           <p className="text-3xl font-black text-ivory">50,000 Pts</p>
           <p className="text-xs text-[#D6B56D] font-semibold">12,400 Distributed this month</p>
         </div>
 
-        <div className="bg-white rounded-lg border border-white/10 p-6 space-y-2 shadow-sm">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-2 shadow-sm">
           <p className="text-xs font-bold text-ivory-dim uppercase">Active Rewards Claimed</p>
           <p className="text-3xl font-black text-ivory">142 Vouchers</p>
           <p className="text-xs text-ivory-muted">Value: $7,100</p>
         </div>
 
-        <div className="bg-white rounded-lg border border-white/10 p-6 space-y-2 shadow-sm">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-2 shadow-sm">
           <p className="text-xs font-bold text-ivory-dim uppercase">Top Recognized Employee</p>
           <p className="text-lg font-bold text-ivory">Pamela Anderson (Designer)</p>
-          <p className="text-xs text-amber-600 font-bold flex items-center gap-1">
+          <p className="text-xs text-[#E5C77A] font-bold flex items-center gap-1">
             <Trophy className="w-3.5 h-3.5" /> 1,450 Points Earned
           </p>
         </div>
       </div>
 
-      <div className="bg-white rounded-lg border border-white/10 p-6 space-y-4 shadow-sm">
+      <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-4 shadow-sm">
         <h3 className="text-base font-bold text-ivory font-heading">Recent Recognition Stream</h3>
         <div className="space-y-3">
           {feed.map((item) => (

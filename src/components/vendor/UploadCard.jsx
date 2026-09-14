@@ -24,7 +24,7 @@ export default function UploadCard({ label, hint, fileUrl, onUploaded, accept = 
       }`}
     >
       <input type="file" accept={accept} className="hidden" onChange={handleChange} />
-      <div className="w-10 h-10 rounded-xl bg-white border border-white/10 flex items-center justify-center flex-shrink-0">
+      <div className="w-10 h-10 rounded-xl bg-emerald-black ring-1 ring-white/10 border border-transparent flex items-center justify-center flex-shrink-0">
         {uploading ? (
           <Loader2 className="w-4 h-4 text-ivory-dim animate-spin" />
         ) : fileUrl ? (

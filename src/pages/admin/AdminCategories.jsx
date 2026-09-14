@@ -9,7 +9,7 @@ import { Edit2, Trash2, Plus, ArrowUp, ArrowDown, EyeOff, Star } from "lucide-re
 
 function RowIconBtn({ title, onClick, Icon, color = "text-ivory-muted hover:text-ivory" }) {
   return (
-    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-white/5 ${color}`}>
+    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-[#0A3A2F]/5 ${color}`}>
       <Icon className="w-4 h-4" />
     </button>
   );
@@ -75,9 +75,9 @@ export default function AdminCategories() {
     { key: "name", label: "Category", sortable: true,
       render: (c) => (
         <div className="flex items-center gap-2">
-          {c.image_url ? <img src={c.image_url} alt="" className="w-8 h-8 rounded-lg object-cover" /> : <div className="w-8 h-8 rounded-lg bg-white/5 text-ivory-muted flex items-center justify-center text-xs">{c.icon || "📁"}</div>}
+          {c.image_url ? <img src={c.image_url} alt="" className="w-8 h-8 rounded-lg object-cover" /> : <div className="w-8 h-8 rounded-lg bg-[#0A3A2F]/5 text-ivory-muted flex items-center justify-center text-xs">{c.icon || "📁"}</div>}
           <div className="min-w-0">
-            <p className="text-sm font-medium text-ivory truncate flex items-center gap-1">{c.name}{c.is_featured && <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-400" />}</p>
+            <p className="text-sm font-medium text-ivory truncate flex items-center gap-1">{c.name}{c.is_featured && <Star className="w-3.5 h-3.5 text-[#E5C77A] fill-[#D6B56D]" />}</p>
             <p className="text-xs text-ivory-dim truncate">{c.slug}</p>
           </div>
         </div>
@@ -129,7 +129,7 @@ export default function AdminCategories() {
           <div className="flex items-center justify-end gap-1">
             <RowIconBtn title="Move up" Icon={ArrowUp} onClick={() => move(c, -1)} />
             <RowIconBtn title="Move down" Icon={ArrowDown} onClick={() => move(c, 1)} />
-            <RowIconBtn title={c.is_featured ? "Unfeature" : "Feature"} Icon={Star} color={c.is_featured ? "text-amber-500" : "text-ivory-dim"} onClick={() => toggleFeatured(c)} />
+            <RowIconBtn title={c.is_featured ? "Unfeature" : "Feature"} Icon={Star} color={c.is_featured ? "text-[#E5C77A]" : "text-ivory-dim"} onClick={() => toggleFeatured(c)} />
             <RowIconBtn title={c.is_active ? "Hide category" : "Show category"} Icon={EyeOff} color={c.is_active ? "text-ivory-dim" : "text-[#D6B56D]"} onClick={() => toggleActive(c)} />
             <RowIconBtn title="Edit" Icon={Edit2} onClick={() => setEditing(c)} />
             <RowIconBtn title="Delete" Icon={Trash2} color="text-rose-600 hover:text-rose-700" onClick={() => remove(c)} />

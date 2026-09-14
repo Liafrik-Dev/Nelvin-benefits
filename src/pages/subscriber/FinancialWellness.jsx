@@ -22,7 +22,7 @@ export default function FinancialWellness() {
       <EmployeeNav />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        <div className="bg-white rounded-xl border border-white/10 p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2 max-w-xl">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0A3A2F] text-[#E5C77A] text-xs font-bold uppercase">
               <DollarSign className="w-3.5 h-3.5 text-[#D6B56D]" /> Financial Health & Salary On-Demand
@@ -42,7 +42,7 @@ export default function FinancialWellness() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Salary Advance Request */}
-          <div className="bg-white rounded-xl border border-white/10 p-6 sm:p-8 shadow-sm space-y-6">
+          <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 sm:p-8 shadow-sm space-y-6">
             <div className="flex items-center gap-2 text-ivory font-bold font-heading text-lg">
               <Calculator className="w-5 h-5 text-[#D6B56D]" /> Instant Earned Salary Advance
             </div>
@@ -94,8 +94,8 @@ export default function FinancialWellness() {
 
           {/* Financial Perks */}
           <div className="space-y-4">
-            <div className="bg-white rounded-xl border border-white/10 p-6 shadow-sm flex items-start gap-4">
-              <div className="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center flex-shrink-0">
+            <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 shadow-sm flex items-start gap-4">
+              <div className="w-10 h-10 rounded-lg bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20 flex items-center justify-center flex-shrink-0">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <div className="space-y-1">
@@ -104,8 +104,8 @@ export default function FinancialWellness() {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl border border-white/10 p-6 shadow-sm flex items-start gap-4">
-              <div className="w-10 h-10 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center flex-shrink-0">
+            <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 shadow-sm flex items-start gap-4">
+              <div className="w-10 h-10 rounded-lg bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20 flex items-center justify-center flex-shrink-0">
                 <TrendingUp className="w-5 h-5" />
               </div>
               <div className="space-y-1">
@@ -114,7 +114,7 @@ export default function FinancialWellness() {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl border border-white/10 p-6 shadow-sm flex items-start gap-4">
+            <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 shadow-sm flex items-start gap-4">
               <div className="w-10 h-10 rounded-lg bg-[#0A3A2F] text-ivory flex items-center justify-center flex-shrink-0">
                 <Lock className="w-5 h-5" />
               </div>

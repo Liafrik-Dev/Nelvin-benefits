@@ -54,14 +54,14 @@ export default function ApplicationReviewPanel({
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed right-0 top-0 bottom-0 w-full sm:w-[440px] bg-white shadow-xl z-50 overflow-y-auto flex flex-col"
+            className="fixed right-0 top-0 bottom-0 w-full sm:w-[440px] bg-[#0A3A2F] shadow-xl z-50 overflow-y-auto flex flex-col"
           >
-            <div className="sticky top-0 bg-white border-b border-white/10 px-6 py-4 flex items-center justify-between z-10">
+            <div className="sticky top-0 bg-emerald-black border-b border-white/10 px-6 py-4 flex items-center justify-between z-10">
               <div>
                 <p className="text-[11px] uppercase tracking-wider text-ivory-dim">{app.status}</p>
                 <h2 className="font-bold text-ivory text-lg">{app.business_name}</h2>
               </div>
-              <button onClick={onClose} className="w-8 h-8 rounded-full hover:bg-white/5 flex items-center justify-center">
+              <button onClick={onClose} className="w-8 h-8 rounded-full hover:bg-[#0A3A2F]/5 flex items-center justify-center">
                 <X className="w-4 h-4 text-ivory-muted" />
               </button>
             </div>
@@ -111,14 +111,14 @@ export default function ApplicationReviewPanel({
               )}
 
               {app.rejection_reason && (
-                <div className="mt-3 p-3 rounded-xl bg-rose-50 border border-rose-100">
+                <div className="mt-3 p-3 rounded-xl bg-[#103F35]/70 border border-rose-100">
                   <p className="text-xs text-rose-700 font-semibold">Rejection reason</p>
                   <p className="text-xs text-rose-600 mt-0.5">{app.rejection_reason}</p>
                 </div>
               )}
             </div>
 
-            <div className="sticky bottom-0 bg-white border-t border-white/10 px-6 py-4 space-y-2.5">
+            <div className="sticky bottom-0 bg-[#0A3A2F] border-t border-white/10 px-6 py-4 space-y-2.5">
               {!rejectMode ? (
                 <>
                   {app.status !== "approved" ? (
@@ -133,7 +133,7 @@ export default function ApplicationReviewPanel({
                     <button
                       disabled={busy}
                       onClick={async () => { setBusy(true); await onUnpublish(app); setBusy(false); }}
-                      className="w-full bg-rose-50 text-rose-600 py-3 rounded-full font-medium text-sm hover:bg-rose-100 disabled:opacity-50"
+                      className="w-full bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20 py-3 rounded-full font-medium text-sm hover:bg-[#103F35]/70 disabled:opacity-50"
                     >
                       Unpublish (move back to pending)
                     </button>
@@ -141,7 +141,7 @@ export default function ApplicationReviewPanel({
                   {app.status !== "rejected" && (
                     <button
                       onClick={() => setRejectMode(true)}
-                      className="w-full text-rose-600 py-2.5 rounded-full font-medium text-sm hover:bg-rose-50"
+                      className="w-full text-rose-600 py-2.5 rounded-full font-medium text-sm hover:bg-[#103F35]/70"
                     >
                       Reject
                     </button>
@@ -157,11 +157,11 @@ export default function ApplicationReviewPanel({
                     rows={3}
                   />
                   <div className="flex gap-2">
-                    <button onClick={() => setRejectMode(false)} className="flex-1 py-3 rounded-full font-medium text-sm bg-white/5 text-ivory-muted hover:bg-white/10">Cancel</button>
+                    <button onClick={() => setRejectMode(false)} className="flex-1 py-3 rounded-full font-medium text-sm bg-[#0A3A2F]/5 text-ivory-muted hover:bg-[#0A3A2F]/10">Cancel</button>
                     <button
                       disabled={busy}
                       onClick={async () => { setBusy(true); await onReject(app, reason); setRejectMode(false); setReason(""); setBusy(false); }}
-                      className="flex-1 py-3 rounded-full font-medium text-sm bg-rose-600 text-white hover:bg-rose-700 disabled:opacity-50"
+                      className="flex-1 py-3 rounded-lg font-medium text-sm bg-rose-950/50 text-rose-200 ring-1 ring-rose-400/30 hover:bg-rose-900/60 disabled:opacity-50"
                     >Confirm reject</button>
                   </div>
                 </div>

@@ -96,7 +96,7 @@ export default function NotificationsPanel({ company }) {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-6">
-        <form onSubmit={submit} className="bg-white rounded-lg border border-white/10 p-6 space-y-4">
+        <form onSubmit={submit} className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Field label="Type">
               <select value={form.type} onChange={(e) => setForm((s) => ({ ...s, type: e.target.value }))} className="w-full px-3 py-2 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40">
@@ -141,7 +141,7 @@ export default function NotificationsPanel({ company }) {
           </div>
         </form>
 
-        <div className="bg-white rounded-lg border border-white/10 p-6 h-fit">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 h-fit">
           <h3 className="font-semibold text-ivory mb-3 flex items-center gap-2"><Bell className="w-4 h-4 text-[#D6B56D]" /> Recently sent</h3>
           {sent.length === 0 ? (
             <p className="text-sm text-ivory-dim">No notifications sent yet in this session.</p>

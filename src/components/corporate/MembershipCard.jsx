@@ -51,7 +51,7 @@ export default function MembershipCard({ employee, company, accent = "#059669", 
               {logoUrl ? (
                 <img src={logoUrl} alt="" className="w-9 h-9 rounded-lg object-cover bg-emerald-black/90" />
               ) : (
-                <div className="w-9 h-9 bg-white/15 rounded-lg flex items-center justify-center text-amber-400 font-bold">
+                <div className="w-9 h-9 bg-[#0A3A2F]/15 rounded-lg flex items-center justify-center text-[#E5C77A] font-bold">
                   N
                 </div>
               )}
@@ -77,7 +77,7 @@ export default function MembershipCard({ employee, company, accent = "#059669", 
                 <span><span className="opacity-60">Tier: </span>{tier}</span>
               </div>
             </div>
-            <div className="rounded-lg bg-white p-1.5 flex-shrink-0">
+            <div className="rounded-lg bg-[#0A3A2F] p-1.5 flex-shrink-0">
               <img src={qrUrl} alt="Membership QR" width={84} height={84} />
             </div>
           </div>
@@ -97,7 +97,7 @@ export default function MembershipCard({ employee, company, accent = "#059669", 
           <a
             href={qrUrl}
             download={`${subscriberId || "nelvin"}-qr.png`}
-            className="inline-flex items-center gap-2 text-xs bg-white/5 text-ivory font-semibold px-3 py-2 rounded-lg hover:bg-white/10"
+            className="inline-flex items-center gap-2 text-xs bg-[#0A3A2F]/5 text-ivory font-semibold px-3 py-2 rounded-lg hover:bg-[#0A3A2F]/10"
           >
             <QrIcon className="w-3.5 h-3.5" /> QR Code
           </a>

@@ -67,11 +67,11 @@ export default function ConfirmationScreen() {
         </Link>
         <button
           onClick={() => toast({ title: "Application tracking is coming soon" })}
-          className="flex-1 bg-white/5 hover:bg-white/10 text-ivory rounded-full py-3 text-sm font-semibold transition-all"
+          className="flex-1 bg-[#0A3A2F]/5 hover:bg-[#0A3A2F]/10 text-ivory rounded-full py-3 text-sm font-semibold transition-all"
         >
           Track My Application
         </button>
-        <a href="mailto:Nelvin23@proton.me" className="flex-1 bg-white/5 hover:bg-white/10 text-ivory rounded-full py-3 text-sm font-semibold transition-all">
+        <a href="mailto:Nelvin23@proton.me" className="flex-1 bg-[#0A3A2F]/5 hover:bg-[#0A3A2F]/10 text-ivory rounded-full py-3 text-sm font-semibold transition-all">
           Contact Support
         </a>
       </div>

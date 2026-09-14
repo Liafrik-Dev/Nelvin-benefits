@@ -82,7 +82,7 @@ export default function Categories() {
                 <div
                   key={cat.id || cat.name}
                   onClick={() => navigate(`/marketplace?category=${encodeURIComponent(cat.name)}`)}
-                  className="bg-white rounded-xl overflow-hidden border border-white/10 shadow-sm hover:shadow-md transition-all cursor-pointer group flex flex-col justify-between"
+                  className="bg-emerald-black ring-1 ring-white/10 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer group flex flex-col justify-between"
                 >
                   <div className="relative h-36 overflow-hidden">
                     <img src={imgUrl} alt={cat.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />

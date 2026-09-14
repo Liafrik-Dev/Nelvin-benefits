@@ -25,7 +25,7 @@ export default function BusinessQRCodes() {
         <p className="text-sm text-ivory-muted mt-1">Cashier point-of-sale scanner tool to verify member QR barcodes instantly.</p>
       </div>
 
-      <div className="bg-white rounded-lg border border-white/10 p-6 space-y-6 shadow-sm">
+      <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-6 shadow-sm">
         <div className="w-16 h-16 rounded-lg bg-[#0A3A2F] text-[#D6B56D] flex items-center justify-center mx-auto">
           <QrCode className="w-8 h-8" />
         </div>

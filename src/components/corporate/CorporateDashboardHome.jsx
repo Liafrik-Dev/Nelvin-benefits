@@ -13,7 +13,7 @@ import {
 
 function StatCard({ icon: Icon, label, value, sub, accent }) {
   return (
-    <div className="bg-white rounded-xl border border-white/10 p-6 shadow-xl hover:shadow-2xl transition-shadow">
+    <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 shadow-xl hover:shadow-2xl transition-shadow">
       <div className={`w-11 h-11 rounded-lg flex items-center justify-center mb-4 ${accent}`}>
         <Icon className="w-5 h-5" />
       </div>
@@ -94,7 +94,7 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
 
         <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-[#D6B56D] border border-[#D6B56D]/30 text-xs font-extrabold tracking-wider uppercase backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0A3A2F]/10 text-[#D6B56D] border border-[#D6B56D]/30 text-xs font-extrabold tracking-wider uppercase backdrop-blur-md">
               <Building2 className="w-3.5 h-3.5 text-[#D6B56D]" /> {company.name || "Enterprise Portal"}
             </div>
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-black font-heading tracking-tight text-white">
@@ -118,15 +118,15 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
         <StatCard icon={Users} label="Total Workforce" value={loading ? "—" : total || 18} accent="bg-[#0A3A2F] text-[#E5C77A]" />
         <StatCard icon={UserCheck} label="Active Users" value={loading ? "—" : active || 16} accent="bg-[#0A3A2F] text-[#E5C77A]" />
-        <StatCard icon={Gift} label="Redemptions" value={loading ? "—" : redemptions.length || 142} accent="bg-amber-50 text-amber-600" />
+        <StatCard icon={Gift} label="Redemptions" value={loading ? "—" : redemptions.length || 142} accent="bg-[#103F35] text-[#D6B56D]" />
         <StatCard icon={Wallet} label="Total Savings" value={loading ? "—" : `$${(totalSavings || 12450).toLocaleString()}`} accent="bg-[#0A3A2F] text-[#E5C77A]" />
-        <StatCard icon={Crown} label="Active Offers" value={loading ? "—" : (Array.isArray(offers) && offers.length ? offers.length : 24)} accent="bg-rose-50 text-rose-600" />
-        <StatCard icon={Globe} label="Coverage" value={loading ? "—" : `${countriesTouched} Regions`} accent="bg-sky-50 text-sky-600" />
+        <StatCard icon={Crown} label="Active Offers" value={loading ? "—" : (Array.isArray(offers) && offers.length ? offers.length : 24)} accent="bg-[#103F35] text-[#D6B56D]" />
+        <StatCard icon={Globe} label="Coverage" value={loading ? "—" : `${countriesTouched} Regions`} accent="bg-[#103F35] text-[#D6B56D]" />
       </div>
 
       {/* Interactive Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-xl border border-white/10 p-6 sm:p-8 shadow-xl space-y-4">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 sm:p-8 shadow-xl space-y-4">
           <div className="flex items-start justify-between border-b border-white/10 pb-4">
             <div>
               <div className="flex items-center gap-2 text-xs font-black uppercase text-[#E5C77A] tracking-wider mb-1">
@@ -148,7 +148,7 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
           </div>
         </div>
 
-        <div className="bg-white rounded-xl border border-white/10 p-6 sm:p-8 shadow-xl space-y-4">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 sm:p-8 shadow-xl space-y-4">
           <div className="flex items-start justify-between border-b border-white/10 pb-4">
             <div>
               <div className="flex items-center gap-2 text-xs font-black uppercase text-[#E5C77A] tracking-wider mb-1">
@@ -173,7 +173,7 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
 
       {/* Plan Seats & Quick Management Controls */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-xl border border-white/10 p-6 sm:p-8 shadow-xl space-y-4">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 sm:p-8 shadow-xl space-y-4">
           <h3 className="font-bold text-lg text-ivory font-heading">Quick HR Administrative Actions</h3>
           <div className="space-y-3">
             <button

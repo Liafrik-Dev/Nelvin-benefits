@@ -127,10 +127,10 @@ export default function AuthForm({ mode = "login" }) {
   if (showOtp) {
     return (
       <AuthLayout>
-        <div className="max-w-md mx-auto bg-white p-8 rounded-xl shadow-xl text-ivory text-center space-y-6">
+        <div className="max-w-md mx-auto bg-[#0A3A2F] p-8 rounded-xl shadow-xl text-ivory text-center space-y-6">
           <h2 className="text-2xl font-bold font-heading">Verify Your Email</h2>
           <p className="text-ivory-muted text-sm">We sent a 6-digit confirmation code to <strong>{email}</strong></p>
-          {serverError && <div className="p-3 bg-rose-50 text-rose-700 text-xs font-bold rounded-xl">{serverError}</div>}
+          {serverError && <div className="p-3 bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20 text-xs font-bold rounded-xl">{serverError}</div>}
           <div className="flex justify-center">
             <InputOTP maxLength={6} value={otpCode} onChange={setOtpCode}>
               <InputOTPGroup>
@@ -160,7 +160,7 @@ export default function AuthForm({ mode = "login" }) {
         </div>
 
         {/* Single Unified Form Box */}
-        <div className="max-w-md mx-auto bg-white text-ivory rounded-xl p-6 sm:p-8 shadow-2xl border border-white/20 space-y-5">
+        <div className="max-w-md mx-auto bg-[#0A3A2F] text-ivory rounded-xl p-6 sm:p-8 shadow-2xl border border-white/20 space-y-5">
           {/* Role Tabs */}
           <div className="grid grid-cols-3 gap-1.5 p-1.5 bg-forest-secondary rounded-lg text-xs font-extrabold text-center border border-white/12">
             <button
@@ -220,7 +220,7 @@ export default function AuthForm({ mode = "login" }) {
           </div>
 
           {serverError && (
-            <div className="p-3 bg-rose-50 text-rose-700 text-xs font-bold rounded-xl">
+            <div className="p-3 bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20 text-xs font-bold rounded-xl">
               {serverError}
             </div>
           )}

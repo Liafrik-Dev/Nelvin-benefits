@@ -6,7 +6,7 @@ import { PiggyBank, Trophy, Wallet, Users } from "lucide-react";
 
 function StatCard({ icon: Icon, label, value, sub, accent }) {
   return (
-    <div className="bg-white rounded-lg border border-white/10 p-6">
+    <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6">
       <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 ${accent}`}>
         <Icon className="w-5 h-5" />
       </div>
@@ -62,16 +62,16 @@ export default function SavingsPanel({ company, employees }) {
       </div>
 
       {loading ? (
-        <div className="bg-white rounded-lg border border-white/10 p-12 text-center text-sm text-ivory-dim">Loading savings…</div>
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-12 text-center text-sm text-ivory-dim">Loading savings…</div>
       ) : (
         <>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <StatCard icon={PiggyBank} label="Total Company Savings" value={`$${totalSavings.toLocaleString()}`} sub="Across all employees" accent="bg-[#103F35]/60 text-[#D6B56D] ring-1 ring-[#D6B56D]/25" />
-            <StatCard icon={Wallet} label="Average Per Employee" value={`$${avg.toLocaleString(undefined, { maximumFractionDigits: 0 })}`} sub={`${activeCount} active employees`} accent="bg-violet-100 text-violet-700" />
-            <StatCard icon={Trophy} label="Top Saver" value={topSaver ? (topSaver.emp?.user_name || topSaver.emp?.user_email || "Member") : "—"} sub={topSaver ? `$${topSaver.sav.toLocaleString()}` : "No redemptions yet"} accent="bg-amber-100 text-amber-600" />
+            <StatCard icon={Wallet} label="Average Per Employee" value={`$${avg.toLocaleString(undefined, { maximumFractionDigits: 0 })}`} sub={`${activeCount} active employees`} accent="bg-[#103F35] text-[#D6B56D]" />
+            <StatCard icon={Trophy} label="Top Saver" value={topSaver ? (topSaver.emp?.user_name || topSaver.emp?.user_email || "Member") : "—"} sub={topSaver ? `$${topSaver.sav.toLocaleString()}` : "No redemptions yet"} accent="bg-[#103F35] text-[#D6B56D]" />
           </div>
 
-          <div className="bg-white rounded-lg border border-white/10 p-6 mt-6">
+          <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 mt-6">
             <div className="flex items-center gap-2 mb-3">
               <Users className="w-4 h-4 text-[#D6B56D]" />
               <h3 className="font-semibold text-ivory">Top Savers</h3>

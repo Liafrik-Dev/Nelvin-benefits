@@ -38,7 +38,7 @@ export default function Search() {
       <EmployeeNav />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        <div className="bg-white rounded-xl border border-white/10 p-6 sm:p-8 shadow-sm space-y-6">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 sm:p-8 shadow-sm space-y-6">
           <div className="max-w-2xl mx-auto text-center space-y-2">
             <h1 className="text-2xl sm:text-3xl font-extrabold text-ivory font-heading">Search Nelvin Benefits</h1>
             <p className="text-ivory-muted text-sm">Instant search across thousands of corporate offers, vendor stores, and location perks.</p>
@@ -51,7 +51,7 @@ export default function Search() {
               placeholder="Search by brand name, deal title, city, or benefit..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="w-full bg-forest-secondary/60 border border-white/12 pl-12 pr-10 py-3.5 rounded-full text-sm font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#D6B56D]/40 transition-all"
+              className="w-full bg-forest-secondary/60 border border-white/12 pl-12 pr-10 py-3.5 rounded-full text-sm font-medium focus:bg-[#0A3A2F] focus:outline-none focus:ring-2 focus:ring-[#D6B56D]/40 transition-all"
             />
             {query && (
               <button onClick={() => setQuery("")} className="absolute right-4 top-1/2 -translate-y-1/2 text-ivory-dim hover:text-ivory-muted">
@@ -100,7 +100,7 @@ export default function Search() {
         ) : loading ? (
           <div className="text-center py-12 text-ivory-dim text-sm">Searching perks...</div>
         ) : offers.length === 0 ? (
-          <div className="bg-white rounded-lg border border-white/10 p-8 text-center text-ivory-muted text-sm">
+          <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-8 text-center text-ivory-muted text-sm">
             No results found for "{query}".
           </div>
         ) : (

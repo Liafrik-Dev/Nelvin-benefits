@@ -49,7 +49,7 @@ export default function BusinessOffers() {
         </Link>
       </div>
 
-      <div className="bg-white rounded-lg border border-white/10 overflow-hidden shadow-sm">
+      <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg overflow-hidden shadow-sm">
         <table className="w-full text-sm text-left">
           <thead className="bg-forest-secondary/60 text-ivory-muted text-xs uppercase tracking-wider font-semibold border-b border-white/10">
             <tr>
@@ -72,7 +72,7 @@ export default function BusinessOffers() {
                 <td className="px-6 py-4 font-bold text-ivory">{o.total_redemptions_count || 0}</td>
                 <td className="px-6 py-4">
                   <span className={`text-xs font-bold px-2.5 py-1 rounded-full uppercase ${
-                    o.status === "active" ? "bg-[#0A3A2F] text-[#D6B56D]" : "bg-amber-50 text-amber-700"
+                    o.status === "active" ? "bg-[#0A3A2F] text-[#D6B56D]" : "bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20"
                   }`}>
                     {o.status || "Active"}
                   </span>

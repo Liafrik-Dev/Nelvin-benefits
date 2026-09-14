@@ -58,7 +58,7 @@ export default function Wallet() {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         {/* Header summary */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-white rounded-xl border border-white/10 p-6 sm:p-8 shadow-sm">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 sm:p-8 shadow-sm">
           <div className="space-y-2">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0A3A2F] text-[#E5C77A] text-xs font-bold uppercase">
               <WalletIcon className="w-3.5 h-3.5 text-[#D6B56D]" /> Digital Wallet & Allowance Card
@@ -96,7 +96,7 @@ export default function Wallet() {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl border border-white/10 p-6 space-y-4 shadow-sm">
+          <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 space-y-4 shadow-sm">
             <div className="flex items-center justify-between">
               <span className="text-xs uppercase font-bold text-ivory-dim tracking-wider">Cashback Earned</span>
               <ArrowDownRight className="w-5 h-5 text-[#D6B56D]" />
@@ -107,10 +107,10 @@ export default function Wallet() {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl border border-white/10 p-6 space-y-4 shadow-sm">
+          <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 space-y-4 shadow-sm">
             <div className="flex items-center justify-between">
               <span className="text-xs uppercase font-bold text-ivory-dim tracking-wider">Company Allowance</span>
-              <ArrowUpRight className="w-5 h-5 text-amber-500" />
+              <ArrowUpRight className="w-5 h-5 text-[#E5C77A]" />
             </div>
             <div>
               <p className="text-3xl font-black font-heading text-ivory">${allowance.toFixed(2)}</p>
@@ -120,7 +120,7 @@ export default function Wallet() {
         </div>
 
         {/* Transactions Table */}
-        <div className="bg-white rounded-xl border border-white/10 p-6 shadow-sm space-y-4">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 shadow-sm space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-4">
             <h2 className="text-lg font-bold text-ivory font-heading">Recent Wallet Transactions</h2>
             <div className="flex items-center gap-2">
@@ -129,7 +129,7 @@ export default function Wallet() {
                   key={f}
                   onClick={() => setTxFilter(f)}
                   className={`px-3 py-1 rounded-full text-xs font-bold uppercase transition-all ${
-                    txFilter === f ? "bg-[#062B23] text-[#D6B56D]" : "bg-white/5 text-ivory-muted hover:bg-white/10"
+                    txFilter === f ? "bg-[#062B23] text-[#D6B56D]" : "bg-[#0A3A2F]/5 text-ivory-muted hover:bg-[#0A3A2F]/10"
                   }`}
                 >
                   {f}
@@ -210,7 +210,7 @@ export default function Wallet() {
                 <button
                   type="button"
                   onClick={() => setTopUpModal(false)}
-                  className="px-5 py-2.5 rounded-full text-xs font-bold text-ivory-muted hover:bg-white/5"
+                  className="px-5 py-2.5 rounded-full text-xs font-bold text-ivory-muted hover:bg-[#0A3A2F]/5"
                 >
                   Cancel
                 </button>

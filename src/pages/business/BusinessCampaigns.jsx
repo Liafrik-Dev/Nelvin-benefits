@@ -14,7 +14,7 @@ export default function BusinessCampaigns() {
         </button>
       </div>
 
-      <div className="bg-white rounded-lg border border-white/10 p-8 text-center space-y-3 shadow-sm max-w-xl mx-auto">
+      <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-8 text-center space-y-3 shadow-sm max-w-xl mx-auto">
         <Sparkles className="w-10 h-10 text-[#D6B56D] mx-auto" />
         <h3 className="text-lg font-bold text-ivory font-heading">Boost Your Store Reach</h3>
         <p className="text-xs text-ivory-muted">

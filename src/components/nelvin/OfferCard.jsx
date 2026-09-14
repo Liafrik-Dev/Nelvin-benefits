@@ -58,7 +58,7 @@ export default function OfferCard({ offer }) {
           <span className="text-sm font-medium text-ivory">{offer.business_name}</span>
           {offer.rating && (
             <div className="flex items-center gap-1">
-              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+              <Star className="w-3.5 h-3.5 fill-[#D6B56D] text-[#E5C77A]" />
               <span className="text-sm font-semibold text-ivory">{offer.rating}</span>
             </div>
           )}

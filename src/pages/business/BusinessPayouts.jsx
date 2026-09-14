@@ -31,7 +31,7 @@ export default function BusinessPayouts() {
         </button>
       </div>
 
-      <div className="bg-white rounded-lg border border-white/10 p-6 shadow-sm flex items-center justify-between">
+      <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 shadow-sm flex items-center justify-between">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 bg-[#0A3A2F] text-[#E5C77A] rounded-lg flex items-center justify-center">
             <Building2 className="w-6 h-6" />
@@ -44,7 +44,7 @@ export default function BusinessPayouts() {
         </div>
       </div>
 
-      <div className="bg-white rounded-lg border border-white/10 p-6 shadow-sm space-y-4">
+      <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 shadow-sm space-y-4">
         <h3 className="font-bold text-ivory text-base font-heading">Settlement History</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-sm text-left">
@@ -66,7 +66,7 @@ export default function BusinessPayouts() {
                   <td className="px-6 py-4 text-xs text-ivory-muted">{p.date}</td>
                   <td className="px-6 py-4">
                     <span className={`text-xs font-bold px-2.5 py-1 rounded-full uppercase ${
-                      p.status === "paid" ? "bg-[#0A3A2F] text-[#D6B56D]" : "bg-amber-50 text-amber-800"
+                      p.status === "paid" ? "bg-[#0A3A2F] text-[#D6B56D]" : "bg-[#103F35]/70 text-[#E5C77A]"
                     }`}>
                       {p.status}
                     </span>

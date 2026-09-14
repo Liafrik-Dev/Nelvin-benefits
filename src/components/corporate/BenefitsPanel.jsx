@@ -51,7 +51,7 @@ export default function BenefitsPanel({ company }) {
       {loading ? (
         <div className="p-12 text-center text-sm text-ivory-dim">Loading benefits…</div>
       ) : filtered.length === 0 ? (
-        <div className="bg-white rounded-lg border border-white/10 p-12 text-center">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-12 text-center">
           <Gift className="w-10 h-10 text-ivory/60 mx-auto mb-3" />
           <p className="text-sm text-ivory-muted">No offers match. Try a different search or <Link to="/offers" className="text-[#D6B56D]">browse all offers</Link>.</p>
         </div>

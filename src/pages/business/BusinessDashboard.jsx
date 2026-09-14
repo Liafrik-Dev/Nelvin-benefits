@@ -69,7 +69,7 @@ export default function BusinessDashboard() {
 
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-[#D6B56D] border border-[#D6B56D]/30 text-xs font-black tracking-wider uppercase backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0A3A2F]/10 text-[#D6B56D] border border-[#D6B56D]/30 text-xs font-black tracking-wider uppercase backdrop-blur-md">
               <Store className="w-3.5 h-3.5 text-[#D6B56D]" /> Verified Merchant Partner
             </div>
 
@@ -92,7 +92,7 @@ export default function BusinessDashboard() {
 
             <Link
               to="/business/offers/new"
-              className="inline-flex items-center gap-2 bg-white/10 hover:bg-emerald-black/35 text-white font-extrabold text-xs px-5 py-3 rounded-full border border-white/20 backdrop-blur-md transition-all"
+              className="inline-flex items-center gap-2 bg-[#0A3A2F]/10 hover:bg-emerald-black/35 text-white font-extrabold text-xs px-5 py-3 rounded-full border border-white/20 backdrop-blur-md transition-all"
             >
               <Plus className="w-4 h-4 text-[#D6B56D]" /> Create New Offer
             </Link>
@@ -102,7 +102,7 @@ export default function BusinessDashboard() {
 
       {/* KPI Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        <div className="bg-white rounded-xl border border-white/10 p-6 space-y-3 shadow-xl hover:shadow-2xl transition-shadow">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 space-y-3 shadow-xl hover:shadow-2xl transition-shadow">
           <div className="flex items-center justify-between">
             <span className="text-xs font-extrabold text-ivory-dim uppercase tracking-wider">Active Offers</span>
             <div className="w-9 h-9 rounded-xl bg-[#0A3A2F] text-[#E5C77A] flex items-center justify-center">
@@ -117,22 +117,22 @@ export default function BusinessDashboard() {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl border border-white/10 p-6 space-y-3 shadow-xl hover:shadow-2xl transition-shadow">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 space-y-3 shadow-xl hover:shadow-2xl transition-shadow">
           <div className="flex items-center justify-between">
             <span className="text-xs font-extrabold text-ivory-dim uppercase tracking-wider">Total Redemptions</span>
-            <div className="w-9 h-9 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+            <div className="w-9 h-9 rounded-xl bg-[#103F35]/70 text-[#E5C77A] flex items-center justify-center">
               <TicketCheck className="w-5 h-5" />
             </div>
           </div>
           <div>
             <p className="text-3xl font-black font-heading text-ivory">{stats.totalRedemptions}</p>
-            <p className="text-xs text-amber-600 font-extrabold flex items-center gap-1 mt-1">
+            <p className="text-xs text-[#E5C77A] font-extrabold flex items-center gap-1 mt-1">
               +24% vs last month
             </p>
           </div>
         </div>
 
-        <div className="bg-white rounded-xl border border-white/10 p-6 space-y-3 shadow-xl hover:shadow-2xl transition-shadow">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 space-y-3 shadow-xl hover:shadow-2xl transition-shadow">
           <div className="flex items-center justify-between">
             <span className="text-xs font-extrabold text-ivory-dim uppercase tracking-wider">Gross Revenue</span>
             <div className="w-9 h-9 rounded-xl bg-[#0A3A2F] text-[#E5C77A] flex items-center justify-center">
@@ -160,7 +160,7 @@ export default function BusinessDashboard() {
       </div>
 
       {/* Interactive Store Analytics & Performance Chart */}
-      <div className="bg-white rounded-xl border border-white/10 p-6 sm:p-8 shadow-xl space-y-6">
+      <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 sm:p-8 shadow-xl space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-5">
           <div>
             <div className="flex items-center gap-2 text-xs font-black uppercase text-[#E5C77A] tracking-wider mb-1">
@@ -171,7 +171,7 @@ export default function BusinessDashboard() {
             </h2>
           </div>
 
-          <div className="flex items-center gap-2 bg-white/5 p-1 rounded-full">
+          <div className="flex items-center gap-2 bg-[#0A3A2F]/5 p-1 rounded-full">
             <button
               onClick={() => setActiveTab("overview")}
               className={`px-4 py-1.5 rounded-full text-xs font-extrabold transition-all ${
@@ -222,7 +222,7 @@ export default function BusinessDashboard() {
       </div>
 
       {/* Stream of Recent Customer Redemptions */}
-      <div className="bg-white rounded-xl border border-white/10 p-6 sm:p-8 shadow-xl space-y-6">
+      <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 sm:p-8 shadow-xl space-y-6">
         <div className="flex items-center justify-between border-b border-white/10 pb-4">
           <div>
             <h2 className="text-lg sm:text-xl font-bold text-ivory font-heading">Recent Customer Redemptions</h2>
@@ -255,7 +255,7 @@ export default function BusinessDashboard() {
 
               <div className="flex items-center justify-between sm:justify-end gap-6 text-right">
                 <div>
-                  <span className="font-mono text-xs font-bold bg-white/5 px-2.5 py-1 rounded-lg text-ivory">{r.code}</span>
+                  <span className="font-mono text-xs font-bold bg-[#0A3A2F]/5 px-2.5 py-1 rounded-lg text-ivory">{r.code}</span>
                   <p className="text-[10px] text-ivory-dim mt-1 flex items-center justify-end gap-1">
                     <Clock className="w-3 h-3" /> {r.date}
                   </p>

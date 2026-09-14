@@ -103,7 +103,7 @@ export default function CorporateDashboard() {
   if (!user?.company_id || !company) {
     return (
       <div className="min-h-screen bg-forest-secondary/60 flex items-center justify-center px-4">
-        <div className="max-w-md text-center bg-white rounded-lg border border-white/10 p-8 shadow-sm">
+        <div className="max-w-md text-center bg-emerald-black ring-1 ring-white/10 rounded-lg p-8 shadow-sm">
           <Building2 className="w-10 h-10 text-[#D6B56D] mx-auto mb-4" />
           <h1 className="text-xl font-bold text-ivory">No company linked yet</h1>
           <p className="text-sm text-ivory-muted mt-2 mb-6">Sign up your company, or your admin will invite you with your work email.</p>
@@ -128,17 +128,17 @@ export default function CorporateDashboard() {
       action = (
         <div className="flex gap-3 justify-center">
           {!isLead && <button onClick={() => navigate("/corporate-signup")} className="bg-[#D6B56D] text-white px-6 py-2.5 rounded-full text-sm font-semibold">Try again</button>}
-          <button onClick={() => navigate("/")} className="bg-white/5 text-ivory px-6 py-2.5 rounded-full text-sm font-semibold">Return home</button>
+          <button onClick={() => navigate("/")} className="bg-[#0A3A2F]/5 text-ivory px-6 py-2.5 rounded-full text-sm font-semibold">Return home</button>
         </div>
       );
     } else if (isSuspended) {
       title = "Account suspended";
       message = "Your corporate account is currently suspended. Please contact your Nelvin account manager.";
-      action = <button onClick={() => navigate("/")} className="bg-white/5 text-ivory px-6 py-2.5 rounded-full text-sm font-semibold">Return home</button>;
+      action = <button onClick={() => navigate("/")} className="bg-[#0A3A2F]/5 text-ivory px-6 py-2.5 rounded-full text-sm font-semibold">Return home</button>;
     } else if (isLead) {
       title = "Application under review";
       message = "Thanks for your interest! Our team is reviewing your application and will reach out within 1 business day to finalize your custom plan. You'll get dashboard access automatically once approved.";
-      action = <button onClick={() => navigate("/")} className="bg-white/5 text-ivory px-6 py-2.5 rounded-full text-sm font-semibold">Return home</button>;
+      action = <button onClick={() => navigate("/")} className="bg-[#0A3A2F]/5 text-ivory px-6 py-2.5 rounded-full text-sm font-semibold">Return home</button>;
     } else {
       title = "Confirming your payment…";
       message = "We're verifying your payment. This usually takes a few minutes. You'll get access automatically once confirmed.";
@@ -150,7 +150,7 @@ export default function CorporateDashboard() {
     }
     return (
       <div className="min-h-screen bg-forest-secondary/60 flex items-center justify-center px-4">
-        <div className="max-w-md text-center bg-white rounded-lg border border-white/10 p-8 shadow-sm">
+        <div className="max-w-md text-center bg-emerald-black ring-1 ring-white/10 rounded-lg p-8 shadow-sm">
           {isRejected || isSuspended ? (
             <Building2 className="w-10 h-10 text-ivory-dim mx-auto mb-4" />
           ) : isLead ? (
@@ -172,7 +172,7 @@ export default function CorporateDashboard() {
     const me = employees.find((e) => e.user_id === user.id) || {};
     return (
       <div className="min-h-screen bg-forest-secondary/60">
-        <header className="bg-white border-b border-white/10 sticky top-0 z-20">
+        <header className="bg-emerald-black border-b border-white/10 sticky top-0 z-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
             <div className="flex items-center gap-3 min-w-0">
               {company.branding_logo_url || company.logo_url ? (
@@ -192,19 +192,19 @@ export default function CorporateDashboard() {
         </header>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
           {company.branding_welcome_message && (
-            <div className="bg-white border border-white/10 rounded-lg p-6">
+            <div className="bg-emerald-black ring-1 ring-white/10 border border-transparent rounded-lg p-6">
               <p className="text-xs uppercase tracking-wider text-[#D6B56D] font-semibold mb-1">Welcome</p>
               <p className="text-ivory">{company.branding_welcome_message}</p>
             </div>
           )}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <MembershipCard employee={{ ...me, user_name: user.full_name, user_email: user.email, status: "active", membership_tier: company.membership_tier }} company={company} accent={company.branding_primary_color || "#059669"} />
-            <div className="bg-white rounded-lg border border-white/10 p-6">
+            <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6">
               <h3 className="font-semibold text-ivory mb-3">Quick links</h3>
               <div className="space-y-2">
-                <Link to="/offers" className="block p-3 rounded-lg bg-forest-secondary/60 hover:bg-white/5 text-sm font-medium text-ivory">Browse offers</Link>
-                <Link to="/dashboard" className="block p-3 rounded-lg bg-forest-secondary/60 hover:bg-white/5 text-sm font-medium text-ivory">My dashboard & savings</Link>
-                <Link to="/profile" className="block p-3 rounded-lg bg-forest-secondary/60 hover:bg-white/5 text-sm font-medium text-ivory">My profile</Link>
+                <Link to="/offers" className="block p-3 rounded-lg bg-forest-secondary/60 hover:bg-[#0A3A2F]/5 text-sm font-medium text-ivory">Browse offers</Link>
+                <Link to="/dashboard" className="block p-3 rounded-lg bg-forest-secondary/60 hover:bg-[#0A3A2F]/5 text-sm font-medium text-ivory">My dashboard & savings</Link>
+                <Link to="/profile" className="block p-3 rounded-lg bg-forest-secondary/60 hover:bg-[#0A3A2F]/5 text-sm font-medium text-ivory">My profile</Link>
               </div>
             </div>
           </div>
@@ -216,7 +216,7 @@ export default function CorporateDashboard() {
   if (company.status !== "approved") {
     return (
       <div className="min-h-screen bg-forest-secondary/60 flex items-center justify-center px-4">
-        <div className="max-w-md text-center bg-white rounded-lg border border-white/10 p-8 shadow-sm">
+        <div className="max-w-md text-center bg-emerald-black ring-1 ring-white/10 rounded-lg p-8 shadow-sm">
           <Users className="w-10 h-10 text-[#D6B56D] mx-auto mb-4" />
           <h1 className="text-xl font-bold text-ivory">Thanks — we'll be in touch within 1 business day.</h1>
           <p className="text-sm text-ivory-muted mt-2 mb-6">Our team is reaching out to schedule a call and set up your company dashboard.</p>
@@ -230,7 +230,7 @@ export default function CorporateDashboard() {
 
   return (
     <div className="min-h-screen bg-forest-secondary/60">
-      <header className="bg-white border-b border-white/10 sticky top-0 z-20">
+      <header className="bg-emerald-black border-b border-white/10 sticky top-0 z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3 min-w-0">
             {company.branding_logo_url || company.logo_url ? (
@@ -252,7 +252,7 @@ export default function CorporateDashboard() {
             >
               <Bot className="w-4 h-4" /> Smart Copilot
             </button>
-            <button onClick={refresh} title="Refresh" className="p-2 rounded-lg text-ivory-dim hover:text-ivory hover:bg-white/5"><RefreshCw className="w-4 h-4" /></button>
+            <button onClick={refresh} title="Refresh" className="p-2 rounded-lg text-ivory-dim hover:text-ivory hover:bg-[#0A3A2F]/5"><RefreshCw className="w-4 h-4" /></button>
             <Link to="/" className="text-xs text-ivory-muted hover:text-ivory px-3 py-1">View site</Link>
             <button onClick={() => logout(true)} className="text-xs text-ivory-muted hover:text-ivory flex items-center gap-1 px-2 py-1"><LogOut className="w-3.5 h-3.5" /> Sign out</button>
           </div>
@@ -265,7 +265,7 @@ export default function CorporateDashboard() {
             {TABS.map((t) => (
               <button key={t.id} onClick={() => setTab(t.id)}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium transition-colors ${
-                  tab === t.id ? "bg-[#0A3A2F] text-ivory font-bold" : "text-ivory-muted hover:bg-white/5 hover:text-ivory"
+                  tab === t.id ? "bg-[#0A3A2F] text-ivory font-bold" : "text-ivory-muted hover:bg-[#0A3A2F]/5 hover:text-ivory"
                 }`}>
                 <t.icon className="w-4 h-4" /> {t.label}
               </button>
@@ -277,7 +277,7 @@ export default function CorporateDashboard() {
           {TABS.map((t) => (
             <button key={t.id} onClick={() => setTab(t.id)}
               className={`flex-shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${
-                tab === t.id ? "bg-[#0A3A2F] text-ivory font-bold" : "text-ivory-muted bg-white/5"
+                tab === t.id ? "bg-[#0A3A2F] text-ivory font-bold" : "text-ivory-muted bg-[#0A3A2F]/5"
               }`}>
               <t.icon className="w-3.5 h-3.5" /> {t.label}
             </button>

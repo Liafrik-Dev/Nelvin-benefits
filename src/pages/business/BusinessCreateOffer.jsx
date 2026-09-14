@@ -48,7 +48,7 @@ export default function BusinessCreateOffer() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <form onSubmit={handleSubmit} className="lg:col-span-2 bg-white rounded-xl border border-white/10 p-6 space-y-4 shadow-sm">
+        <form onSubmit={handleSubmit} className="lg:col-span-2 bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 space-y-4 shadow-sm">
           <div>
             <label className="block text-xs font-bold text-ivory mb-1">Deal Title</label>
             <input

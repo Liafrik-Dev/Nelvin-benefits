@@ -27,12 +27,12 @@ export default function BusinessProfile() {
         <p className="text-sm text-ivory-muted mt-1">Manage public merchant information, store hero images, and contact details.</p>
       </div>
 
-      <div className="bg-white rounded-xl border border-white/10 overflow-hidden shadow-sm space-y-6">
+      <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl overflow-hidden shadow-sm space-y-6">
         {/* Banner Preview */}
         <div className="relative h-44 bg-[#062B23] overflow-hidden">
           <img src={profile.bannerUrl} alt="Store Banner" className="w-full h-full object-cover opacity-90" />
           <div className="absolute bottom-4 left-6 flex items-center gap-4">
-            <img src={profile.logoUrl} alt="Logo" className="w-16 h-16 rounded-lg border-2 border-white object-cover bg-white shadow-md" />
+            <img src={profile.logoUrl} alt="Logo" className="w-16 h-16 rounded-lg border-2 border-white object-cover bg-[#0A3A2F] shadow-md" />
             <div className="text-white">
               <h2 className="font-extrabold text-lg font-heading">{profile.businessName}</h2>
               <span className="text-xs bg-emerald-black/35 backdrop-blur px-2.5 py-0.5 rounded-full">{profile.category}</span>

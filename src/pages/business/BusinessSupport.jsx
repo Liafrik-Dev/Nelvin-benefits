@@ -21,7 +21,7 @@ export default function BusinessSupport() {
         <p className="text-sm text-ivory-muted mt-1">Get dedicated merchant assistance, billing help, or technical support.</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="bg-white rounded-lg border border-white/10 p-6 space-y-4 shadow-sm">
+      <form onSubmit={handleSubmit} className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-4 shadow-sm">
         <div>
           <label className="block text-xs font-bold text-ivory mb-1">Subject</label>
           <input

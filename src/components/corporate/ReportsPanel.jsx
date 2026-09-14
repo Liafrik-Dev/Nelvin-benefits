@@ -128,7 +128,7 @@ export default function ReportsPanel({ company, employees }) {
         <p className="text-sm text-ivory-muted mt-1">Generate savings reports for any period and scope. Export to CSV or PDF.</p>
       </div>
 
-      <div className="bg-white rounded-lg border border-white/10 p-6 max-w-2xl">
+      <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 max-w-2xl">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-xs font-semibold text-ivory-muted mb-1.5 uppercase tracking-wider flex items-center gap-1"><Calendar className="w-3 h-3" /> Period</label>
@@ -176,7 +176,7 @@ export default function ReportsPanel({ company, employees }) {
           <button onClick={() => downloadCsv(buildRows())} disabled={loading} className="inline-flex items-center gap-2 bg-[#D6B56D] hover:bg-[#E5C77A] text-[#062B23] text-sm font-semibold px-4 py-2 rounded-lg">
             <FileSpreadsheet className="w-4 h-4" /> Download CSV
           </button>
-          <button onClick={() => downloadPdf(buildRows())} disabled={loading || generating} className="inline-flex items-center gap-2 bg-white border border-white/12 hover:bg-forest-secondary/60 text-ivory text-sm font-semibold px-4 py-2 rounded-lg">
+          <button onClick={() => downloadPdf(buildRows())} disabled={loading || generating} className="inline-flex items-center gap-2 bg-emerald-black ring-1 ring-white/10 border border-transparent hover:bg-forest-secondary/60 text-ivory text-sm font-semibold px-4 py-2 rounded-lg">
             <Download className="w-4 h-4" /> {generating ? "Building…" : "Download PDF"}
           </button>
         </div>

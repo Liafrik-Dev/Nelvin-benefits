@@ -75,7 +75,7 @@ export default function Dashboard() {
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
             <div className="lg:col-span-2 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-[#D6B56D] border border-[#D6B56D]/30 text-xs font-black tracking-wider uppercase backdrop-blur-md">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0A3A2F]/10 text-[#D6B56D] border border-[#D6B56D]/30 text-xs font-black tracking-wider uppercase backdrop-blur-md">
                 <Crown className="w-3.5 h-3.5 text-[#D6B56D]" /> Premium Gold Member
               </div>
 
@@ -96,7 +96,7 @@ export default function Dashboard() {
                 </Link>
                 <Link
                   to="/wallet"
-                  className="bg-white/10 hover:bg-emerald-black/35 text-white font-bold text-xs px-5 py-3 rounded-full transition-all border border-white/15 backdrop-blur-sm flex items-center gap-2"
+                  className="bg-[#0A3A2F]/10 hover:bg-emerald-black/35 text-white font-bold text-xs px-5 py-3 rounded-full transition-all border border-white/15 backdrop-blur-sm flex items-center gap-2"
                 >
                   <Wallet className="w-4 h-4 text-[#D6B56D]" /> Open Wallet ($320.00)
                 </Link>
@@ -104,7 +104,7 @@ export default function Dashboard() {
             </div>
 
             {/* Quick Balance & Benefit Allowance Card */}
-            <div className="bg-white/10 border border-white/15 rounded-lg p-6 backdrop-blur-xl space-y-4 shadow-inner">
+            <div className="bg-[#0A3A2F]/10 border border-white/15 rounded-lg p-6 backdrop-blur-xl space-y-4 shadow-inner">
               <div className="flex items-center justify-between border-b border-white/10 pb-3">
                 <span className="text-xs font-extrabold text-white/70 uppercase tracking-wider">Benefit Allowance</span>
                 <span className="text-xs font-bold text-[#D6B56D] bg-[#D6B56D]/10 px-2.5 py-0.5 rounded-full border border-[#D6B56D]/30">Active</span>
@@ -128,7 +128,7 @@ export default function Dashboard() {
         </div>
 
         {/* Analytics & Savings Weekly Chart Card */}
-        <div className="bg-white rounded-xl border border-white/10 p-6 sm:p-8 shadow-xl space-y-6">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 sm:p-8 shadow-xl space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-5">
             <div>
               <div className="flex items-center gap-2 text-xs font-black uppercase text-[#E5C77A] tracking-wider mb-1">
@@ -140,7 +140,7 @@ export default function Dashboard() {
             </div>
 
             <div className="flex items-center gap-3">
-              <span className="text-xs font-bold text-ivory-muted bg-white/5 px-3 py-1.5 rounded-full">
+              <span className="text-xs font-bold text-ivory-muted bg-[#0A3A2F]/5 px-3 py-1.5 rounded-full">
                 This Week: <strong className="text-[#F5F1E8]">${totalSaved}</strong>
               </span>
               <Link
@@ -187,7 +187,7 @@ export default function Dashboard() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           <Link
             to="/marketplace"
-            className="group bg-white rounded-lg border border-white/10 p-6 flex flex-col justify-between hover:shadow-xl hover:border-[#0A3A2F]/40 transition-all duration-300 space-y-4"
+            className="group bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 flex flex-col justify-between hover:shadow-xl hover:border-[#0A3A2F]/40 transition-all duration-300 space-y-4"
           >
             <div className="flex items-center justify-between">
               <div className="w-12 h-12 rounded-lg bg-[#0A3A2F] text-[#E5C77A] flex items-center justify-center group-hover:scale-110 group-hover:bg-[#D6B56D] group-hover:text-[#062B23] transition-all">
@@ -206,55 +206,55 @@ export default function Dashboard() {
 
           <button
             onClick={() => setWalletMsg(true)}
-            className="group bg-white rounded-lg border border-white/10 p-6 flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all duration-300 text-left space-y-4"
+            className="group bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all duration-300 text-left space-y-4"
           >
             <div className="flex items-center justify-between">
-              <div className="w-12 h-12 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center group-hover:scale-110 group-hover:bg-amber-500 group-hover:text-white transition-all">
+              <div className="w-12 h-12 rounded-lg bg-[#103F35]/70 text-[#E5C77A] flex items-center justify-center group-hover:scale-110 group-hover:bg-[#103F35] group-hover:text-white transition-all">
                 <Wallet className="w-6 h-6" />
               </div>
-              <span className="text-[10px] font-black uppercase tracking-wider bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full">Wallet</span>
+              <span className="text-[10px] font-black uppercase tracking-wider bg-[#103F35]/70 text-[#E5C77A] px-2 py-0.5 rounded-full">Wallet</span>
             </div>
             <div>
-              <h3 className="font-bold text-ivory group-hover:text-amber-600 transition-colors">
+              <h3 className="font-bold text-ivory group-hover:text-[#E5C77A] transition-colors">
                 {walletMsg ? "Instant Top Up!" : "Top Up Allowance"}
               </h3>
               <p className="text-xs text-ivory-muted mt-1">Manage corporate debit card & cashbacks.</p>
             </div>
-            <span className="text-xs font-extrabold text-amber-600 flex items-center gap-1 pt-1">
+            <span className="text-xs font-extrabold text-[#E5C77A] flex items-center gap-1 pt-1">
               {walletMsg ? "Feature Active!" : "Manage Card"} <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </span>
           </button>
 
           <button
             onClick={handleInvite}
-            className="group bg-white rounded-lg border border-white/10 p-6 flex flex-col justify-between hover:shadow-xl hover:border-rose-400 transition-all duration-300 text-left space-y-4"
+            className="group bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 flex flex-col justify-between hover:shadow-xl hover:border-rose-400 transition-all duration-300 text-left space-y-4"
           >
             <div className="flex items-center justify-between">
-              <div className="w-12 h-12 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center group-hover:scale-110 group-hover:bg-rose-500 group-hover:text-white transition-all">
+              <div className="w-12 h-12 rounded-lg bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20 flex items-center justify-center group-hover:scale-110 group-hover:bg-[#103F35] group-hover:text-white transition-all">
                 {copied ? <Check className="w-6 h-6" /> : <UserPlus className="w-6 h-6" />}
               </div>
-              <span className="text-[10px] font-black uppercase tracking-wider bg-rose-100 text-rose-800 px-2 py-0.5 rounded-full">+50 Points</span>
+              <span className="text-[10px] font-black uppercase tracking-wider bg-[#103F35]/70 text-[#E5C77A] px-2 py-0.5 rounded-full">+50 Points</span>
             </div>
             <div>
-              <h3 className="font-bold text-ivory group-hover:text-rose-600 transition-colors">
+              <h3 className="font-bold text-ivory group-hover:text-[#D6B56D] transition-colors">
                 {copied ? "Link Copied!" : "Invite Coworkers"}
               </h3>
               <p className="text-xs text-ivory-muted mt-1">Share referral link and earn bonus rewards.</p>
             </div>
-            <span className="text-xs font-extrabold text-rose-600 flex items-center gap-1 pt-1">
+            <span className="text-xs font-extrabold text-[#D6B56D] flex items-center gap-1 pt-1">
               {copied ? "Ready to Paste!" : "Copy Invite Link"} <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </span>
           </button>
 
           <Link
             to="/vouchers"
-            className="group bg-white rounded-lg border border-white/10 p-6 flex flex-col justify-between hover:shadow-xl hover:border-[#062B23] transition-all duration-300 space-y-4"
+            className="group bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 flex flex-col justify-between hover:shadow-xl hover:border-[#062B23] transition-all duration-300 space-y-4"
           >
             <div className="flex items-center justify-between">
               <div className="w-12 h-12 rounded-lg bg-[#062B23]/10 text-[#F5F1E8] flex items-center justify-center group-hover:scale-110 group-hover:bg-[#062B23] group-hover:text-[#D6B56D] transition-all">
                 <Gift className="w-6 h-6" />
               </div>
-              <Crown className="w-4 h-4 text-amber-500" />
+              <Crown className="w-4 h-4 text-[#E5C77A]" />
             </div>
             <div>
               <h3 className="font-bold text-ivory group-hover:text-[#F5F1E8] transition-colors">Digital Vouchers</h3>

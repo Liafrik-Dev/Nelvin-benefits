@@ -44,7 +44,7 @@ export default function Support() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* FAQs */}
-          <div className="bg-white rounded-xl border border-white/10 p-6 sm:p-8 shadow-sm space-y-4">
+          <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 sm:p-8 shadow-sm space-y-4">
             <h2 className="text-lg font-bold text-ivory font-heading">Frequently Asked Questions</h2>
             <div className="space-y-4">
               {faqs.map((faq, i) => (
@@ -57,7 +57,7 @@ export default function Support() {
           </div>
 
           {/* Contact Support */}
-          <div className="bg-white rounded-xl border border-white/10 p-6 sm:p-8 shadow-sm space-y-4">
+          <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 sm:p-8 shadow-sm space-y-4">
             <div className="flex items-center gap-2 font-bold text-ivory font-heading text-lg">
               <MessageSquare className="w-5 h-5 text-[#D6B56D]" /> Submit a Ticket
             </div>
@@ -71,7 +71,7 @@ export default function Support() {
                   placeholder="e.g. Redemption code error at store"
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
-                  className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3.5 py-2.5 text-xs font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#D6B56D]/40"
+                  className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3.5 py-2.5 text-xs font-medium focus:bg-[#0A3A2F] focus:outline-none focus:ring-2 focus:ring-[#D6B56D]/40"
                 />
               </div>
 
@@ -82,7 +82,7 @@ export default function Support() {
                   placeholder="Explain your problem or inquiry..."
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl p-3 text-xs font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#D6B56D]/40"
+                  className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl p-3 text-xs font-medium focus:bg-[#0A3A2F] focus:outline-none focus:ring-2 focus:ring-[#D6B56D]/40"
                 />
               </div>
 

@@ -67,7 +67,7 @@ export default function StepVerification({ form, update, onNext, onBack }) {
       </div>
 
       <div className="flex gap-3">
-        <button type="button" onClick={onBack} className="px-6 py-3.5 rounded-full text-sm font-semibold text-ivory-muted hover:bg-white/5 transition-all">
+        <button type="button" onClick={onBack} className="px-6 py-3.5 rounded-full text-sm font-semibold text-ivory-muted hover:bg-[#0A3A2F]/5 transition-all">
           Back
         </button>
         <button

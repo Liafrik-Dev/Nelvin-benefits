@@ -109,7 +109,7 @@ export default function CompanySettingsPanel({ company, onChanged }) {
 
       <div className="flex flex-wrap gap-1 mb-6 border-b border-white/10 pb-2">
         {[["profile", "Profile"], ["branding", "Branding"], ["sso", "SSO"], ["audit", "Audit Trail"]].map(([id, label]) => (
-          <button key={id} onClick={() => setTab(id)} className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${tab === id ? "bg-[#0A3A2F] text-ivory" : "text-ivory-muted hover:bg-white/5"}`}>
+          <button key={id} onClick={() => setTab(id)} className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${tab === id ? "bg-[#0A3A2F] text-ivory" : "text-ivory-muted hover:bg-[#0A3A2F]/5"}`}>
             {label}
           </button>
         ))}
@@ -117,7 +117,7 @@ export default function CompanySettingsPanel({ company, onChanged }) {
 
       <form onSubmit={save}>
         {tab === "profile" && (
-          <div className="bg-white rounded-lg border border-white/10 p-6 space-y-4 max-w-3xl">
+          <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-4 max-w-3xl">
             <h3 className="font-semibold text-ivory flex items-center gap-2"><Building2 className="w-4 h-4 text-[#D6B56D]" /> Company profile</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Input label="Company name" value={form.name} onChange={(v) => update("name", v)} full />
@@ -130,7 +130,7 @@ export default function CompanySettingsPanel({ company, onChanged }) {
               <div className="sm:col-span-2">
                 <label className="block text-xs font-semibold text-ivory-muted mb-1.5 flex items-center gap-1"><Globe className="w-3 h-3" /> Email domain (used for auto-join)</label>
                 <div className="flex items-center">
-                  <span className="px-3 py-2 bg-white/5 border border-r-0 border-white/12 rounded-l-lg text-ivory-dim text-sm">@</span>
+                  <span className="px-3 py-2 bg-[#0A3A2F]/5 border border-r-0 border-white/12 rounded-l-lg text-ivory-dim text-sm">@</span>
                   <input value={form.email_domain} onChange={(e) => update("email_domain", e.target.value.toLowerCase().replace(/^@/, ""))} className="flex-1 px-3 py-2 text-sm border border-white/12 rounded-r-lg outline-none focus:border-[#D6B56D]/40 focus:ring-2 focus:ring-white/10" />
                 </div>
               </div>
@@ -139,7 +139,7 @@ export default function CompanySettingsPanel({ company, onChanged }) {
         )}
 
         {tab === "branding" && (
-          <div className="bg-white rounded-lg border border-white/10 p-6 space-y-4 max-w-3xl">
+          <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-4 max-w-3xl">
             <h3 className="font-semibold text-ivory flex items-center gap-2"><Palette className="w-4 h-4 text-[#D6B56D]" /> HR portal branding</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
@@ -170,7 +170,7 @@ export default function CompanySettingsPanel({ company, onChanged }) {
         )}
 
         {tab === "sso" && (
-          <div className="bg-white rounded-lg border border-white/10 p-6 space-y-4 max-w-3xl">
+          <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-4 max-w-3xl">
             <h3 className="font-semibold text-ivory flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-[#D6B56D]" /> Single Sign-On</h3>
             <div>
               <label className="block text-xs font-semibold text-ivory-muted mb-1.5">SSO Provider</label>
@@ -189,7 +189,7 @@ export default function CompanySettingsPanel({ company, onChanged }) {
         )}
 
         {tab === "audit" && (
-          <div className="bg-white rounded-lg border border-white/10 p-6 max-w-3xl">
+          <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 max-w-3xl">
             <h3 className="font-semibold text-ivory flex items-center gap-2 mb-3"><AuditIcon className="w-4 h-4 text-[#D6B56D]" /> Recent changes by your team</h3>
             {audits.length === 0 ? (
               <p className="text-sm text-ivory-dim">No audit events recorded yet for this company.</p>

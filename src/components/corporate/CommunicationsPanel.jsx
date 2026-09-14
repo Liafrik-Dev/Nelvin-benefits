@@ -11,7 +11,7 @@ export default function CommunicationsPanel({ company }) {
         <p className="text-sm text-ivory-muted mt-1">Broadcast benefit updates, company policy changes, or deal reminders to employees.</p>
       </div>
 
-      <div className="bg-white rounded-lg border border-white/10 p-6 space-y-4 shadow-sm max-w-2xl">
+      <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-4 shadow-sm max-w-2xl">
         <h3 className="font-bold text-ivory text-base font-heading flex items-center gap-2">
           <Megaphone className="w-5 h-5 text-[#D6B56D]" /> Send Broadcast Announcement
         </h3>

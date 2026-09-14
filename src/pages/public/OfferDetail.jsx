@@ -125,11 +125,11 @@ export default function OfferDetail() {
         </div>
 
         <div className="lg:col-span-2">
-          <div className="bg-white rounded-lg border border-white/10 p-6 sticky top-24">
+          <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 sticky top-24">
             <p className="font-semibold text-ivory">{offer.business_name}</p>
             <div className="flex items-center gap-3 text-sm text-ivory-dim mt-2">
               <span className="flex items-center gap-1">
-                <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                <Star className="w-3.5 h-3.5 fill-[#D6B56D] text-[#E5C77A]" />
                 {offer.rating} ({offer.reviews})
               </span>
             </div>

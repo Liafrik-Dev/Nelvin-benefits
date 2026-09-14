@@ -51,7 +51,7 @@ function ProgressBar({ step, total }) {
   return (
     <div className="flex items-center justify-center gap-2 mb-8">
       {Array.from({ length: total }).map((_, i) => (
-        <div key={i} className={`h-1 rounded-full transition-all duration-300 ${i <= step ? "w-8 bg-[#D6B56D]" : "w-4 bg-white/10"}`} />
+        <div key={i} className={`h-1 rounded-full transition-all duration-300 ${i <= step ? "w-8 bg-[#D6B56D]" : "w-4 bg-[#0A3A2F]/10"}`} />
       ))}
     </div>
   );
@@ -80,7 +80,7 @@ function StepCompanyInfo({ form, update, onNext }) {
         </Field>
         <Field label="Company Email Domain *" full>
           <div className="flex items-center">
-            <span className="px-3 py-2.5 bg-white/5 border border-r-0 border-white/12 rounded-l-lg text-ivory-dim text-sm">@</span>
+            <span className="px-3 py-2.5 bg-[#0A3A2F]/5 border border-r-0 border-white/12 rounded-l-lg text-ivory-dim text-sm">@</span>
             <input
               className="corporate-input rounded-l-none"
               value={form.email_domain}
@@ -104,7 +104,7 @@ function StepCompanyInfo({ form, update, onNext }) {
         <button
           onClick={onNext}
           disabled={!form.name || !form.industry || !form.country || !form.email_domain || !form.billing_contact_name || !form.billing_contact_email}
-          className="inline-flex items-center gap-2 bg-[#D6B56D] disabled:bg-gray-300 hover:bg-[#E5C77A] text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
+          className="inline-flex items-center gap-2 bg-[#D6B56D] disabled:bg-[#103F35] hover:bg-[#E5C77A] text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
         >
           Continue <ArrowRight className="w-4 h-4" />
         </button>
@@ -145,7 +145,7 @@ function StepEmployeeCount({ form, update, onNext, onBack }) {
         <button
           onClick={onNext}
           disabled={Number(form.employee_count) < 1}
-          className="inline-flex items-center gap-2 bg-[#D6B56D] disabled:bg-gray-300 hover:bg-[#E5C77A] text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
+          className="inline-flex items-center gap-2 bg-[#D6B56D] disabled:bg-[#103F35] hover:bg-[#E5C77A] text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
         >
           Continue <ArrowRight className="w-4 h-4" />
         </button>
@@ -195,7 +195,7 @@ function StepPricingOrLead({ form, onPick, onBack, submitting }) {
     <div>
       <h2 className="text-2xl font-bold font-heading text-ivory text-center">Pick your plan</h2>
       <p className="text-sm text-ivory-muted text-center mt-1 mb-8">For {count} employee{count === 1 ? "" : "s"}, you qualify for the <span className="font-semibold text-[#D6B56D]">{tier.name}</span> tier.</p>
-      <div className="max-w-md mx-auto bg-white rounded-lg border-2 border-white/15 shadow-sm p-8">
+      <div className="max-w-md mx-auto bg-[#0A3A2F] rounded-lg border-2 border-white/15 shadow-sm p-8">
         <div className="flex items-baseline justify-between mb-2">
           <h3 className="font-bold text-lg text-ivory">{tier.name}</h3>
           <span className="text-xs font-semibold text-[#D6B56D] bg-[#0A3A2F] px-3 py-1 rounded-full">{tier.range}</span>
@@ -413,7 +413,7 @@ export default function CorporateSignup() {
       </div>
 
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 pb-20">
-        <div className="bg-white rounded-[24px] border border-white/10 p-6 sm:p-10 shadow-sm">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-[24px] p-6 sm:p-10 shadow-sm">
           {!outcome && <ProgressBar step={step} total={3} />}
           <AnimatePresence mode="wait">
             {outcome ? (

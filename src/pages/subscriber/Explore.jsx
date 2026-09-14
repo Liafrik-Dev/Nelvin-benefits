@@ -32,7 +32,7 @@ export default function Explore() {
       <EmployeeNav />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
-        <div className="bg-white rounded-xl border border-white/10 p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-3 max-w-xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0A3A2F] text-[#E5C77A] text-xs font-bold uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5 text-[#D6B56D]" /> Curated Lifestyle Perks
@@ -58,7 +58,7 @@ export default function Explore() {
         <section className="space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Award className="w-5 h-5 text-amber-500" />
+              <Award className="w-5 h-5 text-[#E5C77A]" />
               <h2 className="text-xl font-bold text-ivory font-heading">Featured & VIP Deals</h2>
             </div>
             <Link to="/marketplace?filter=featured" className="text-xs font-bold text-[#D6B56D] hover:underline">View All</Link>
@@ -66,7 +66,7 @@ export default function Explore() {
           {loading ? (
             <div className="h-48 flex items-center justify-center text-ivory-dim">Loading recommendations...</div>
           ) : featured.length === 0 ? (
-            <div className="p-8 bg-white rounded-lg border border-white/10 text-center text-ivory-muted text-sm">
+            <div className="p-8 bg-emerald-black ring-1 ring-white/10 rounded-lg text-center text-ivory-muted text-sm">
               No featured deals found at the moment.
             </div>
           ) : (
@@ -82,7 +82,7 @@ export default function Explore() {
         <section className="space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Flame className="w-5 h-5 text-rose-500" />
+              <Flame className="w-5 h-5 text-[#E5C77A]" />
               <h2 className="text-xl font-bold text-ivory font-heading">Trending Right Now</h2>
             </div>
             <Link to="/marketplace?filter=trending" className="text-xs font-bold text-[#D6B56D] hover:underline">View All</Link>

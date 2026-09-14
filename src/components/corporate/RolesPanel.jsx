@@ -22,7 +22,7 @@ export default function RolesPanel({ company }) {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {roles.map((r) => (
-          <div key={r.name} className="bg-white rounded-lg border border-white/10 p-6 space-y-4 shadow-sm">
+          <div key={r.name} className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-4 shadow-sm">
             <div className="flex items-center justify-between">
               <Shield className="w-6 h-6 text-[#D6B56D]" />
               <span className="text-xs font-bold text-ivory-muted">{r.members} Members</span>

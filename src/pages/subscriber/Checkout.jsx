@@ -111,7 +111,7 @@ export default function Checkout() {
           <h1 className="text-3xl sm:text-4xl font-bold font-heading text-white">Confirm your {plan.name} membership</h1>
         </motion.div>
         <div className="absolute -top-20 -right-20 w-72 h-72 bg-[#D6B56D]/20 rounded-full blur-3xl" />
-        <div className="absolute -bottom-24 -left-20 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl" />
+        <div className="absolute -bottom-24 -left-20 w-72 h-72 bg-[#103F35]/10 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-md mx-auto px-4 sm:px-6 lg:px-8 -mt-10 pb-20 relative z-10">
@@ -119,7 +119,7 @@ export default function Checkout() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="bg-white rounded-lg border border-white/10 shadow-sm p-8"
+          className="bg-emerald-black ring-1 ring-white/10 rounded-lg shadow-sm p-8"
         >
           <AnimatePresence mode="wait">
             {status === "done" ? (

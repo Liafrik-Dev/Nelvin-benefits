@@ -12,12 +12,12 @@ import {
 
 function StatusPill({ status }) {
   const map = {
-    invited: "bg-amber-100 text-amber-700",
+    invited: "bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20",
     active: "bg-[#103F35]/60 text-[#D6B56D] ring-1 ring-[#D6B56D]/25",
-    suspended: "bg-rose-100 text-rose-700",
-    removed: "bg-white/5 text-ivory-muted",
+    suspended: "bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20",
+    removed: "bg-[#0A3A2F]/5 text-ivory-muted",
   };
-  return <span className={`text-xs font-semibold px-2.5 py-1 rounded-full capitalize ${map[status] || "bg-white/5"}`}>{status}</span>;
+  return <span className={`text-xs font-semibold px-2.5 py-1 rounded-full capitalize ${map[status] || "bg-[#0A3A2F]/5"}`}>{status}</span>;
 }
 
 export default function EmployeesPanel({ company, employees, onChanged }) {
@@ -199,8 +199,8 @@ export default function EmployeesPanel({ company, employees, onChanged }) {
         </div>
         <div className="flex gap-2 flex-wrap">
           <button onClick={() => setShowInvite(true)} className="inline-flex items-center gap-2 bg-[#D6B56D] hover:bg-[#E5C77A] text-[#062B23] text-sm font-semibold px-4 py-2 rounded-lg"><UserPlus className="w-4 h-4" /> Invite</button>
-          <button onClick={() => setCsvMode(true)} className="inline-flex items-center gap-2 bg-white border border-white/12 hover:bg-forest-secondary/60 text-ivory text-sm font-semibold px-4 py-2 rounded-lg"><Upload className="w-4 h-4" /> CSV</button>
-          <button onClick={exportCsv} className="inline-flex items-center gap-2 bg-white border border-white/12 hover:bg-forest-secondary/60 text-ivory text-sm font-semibold px-4 py-2 rounded-lg"><Download className="w-4 h-4" /> Export</button>
+          <button onClick={() => setCsvMode(true)} className="inline-flex items-center gap-2 bg-emerald-black ring-1 ring-white/10 border border-transparent hover:bg-forest-secondary/60 text-ivory text-sm font-semibold px-4 py-2 rounded-lg"><Upload className="w-4 h-4" /> CSV</button>
+          <button onClick={exportCsv} className="inline-flex items-center gap-2 bg-emerald-black ring-1 ring-white/10 border border-transparent hover:bg-forest-secondary/60 text-ivory text-sm font-semibold px-4 py-2 rounded-lg"><Download className="w-4 h-4" /> Export</button>
         </div>
       </div>
 
@@ -210,7 +210,7 @@ export default function EmployeesPanel({ company, employees, onChanged }) {
           className="w-full pl-10 pr-4 py-2.5 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40 focus:ring-2 focus:ring-white/10" />
       </div>
 
-      <div className="bg-white rounded-lg border border-white/10 overflow-hidden overflow-x-auto">
+      <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg overflow-hidden overflow-x-auto">
         {loading ? (
           <div className="p-8 text-center text-sm text-ivory-dim">Loading employees…</div>
         ) : filtered.length === 0 ? (
@@ -299,7 +299,7 @@ export default function EmployeesPanel({ company, employees, onChanged }) {
           <div className="space-y-3">
             <div className="bg-[#0A3A2F] text-ivory rounded-lg p-3 text-xs flex gap-2">
               <FileSpreadsheet className="w-4 h-4 mt-0.5 flex-shrink-0" />
-              <span>Columns: <code className="font-mono bg-white px-1 rounded">email, department, office</code> (office optional). One row per employee.</span>
+              <span>Columns: <code className="font-mono bg-[#0A3A2F] px-1 rounded">email, department, office</code> (office optional). One row per employee.</span>
             </div>
             <input type="file" accept=".csv" onChange={handleCsvUpload} className="block w-full text-sm text-ivory-muted file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-[#0A3A2F] file:text-[#D6B56D] file:font-semibold" />
           </div>
@@ -329,14 +329,14 @@ function RowMenu({ onEdit, onSuspend, onActivate, onReset, onRemove }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="relative inline-block">
-      <button onClick={() => setOpen((o) => !o)} className="p-1.5 rounded hover:bg-white/5"><MoreVertical className="w-4 h-4 text-ivory-muted" /></button>
+      <button onClick={() => setOpen((o) => !o)} className="p-1.5 rounded hover:bg-[#0A3A2F]/5"><MoreVertical className="w-4 h-4 text-ivory-muted" /></button>
       {open && (
         <>
           <div className="fixed inset-0 z-10" onClick={() => setOpen(false)} />
-          <div className="absolute right-0 top-8 z-20 w-52 bg-white rounded-lg shadow-xl border border-white/10 py-1 text-sm">
+          <div className="absolute right-0 top-8 z-20 w-52 bg-[#0A3A2F] rounded-lg shadow-xl border border-white/10 py-1 text-sm">
             <button onClick={() => { setOpen(false); onEdit(); }} className="w-full text-left px-3 py-2 hover:bg-forest-secondary/60 text-ivory flex items-center gap-2"><TagIcon className="w-3.5 h-3.5" /> Edit</button>
             {onActivate && <button onClick={() => { setOpen(false); onActivate(); }} className="w-full text-left px-3 py-2 hover:bg-forest-secondary/60 text-ivory flex items-center gap-2"><RotateCcw className="w-3.5 h-3.5" /> Activate</button>}
-            {onSuspend && <button onClick={() => { setOpen(false); onSuspend(); }} className="w-full text-left px-3 py-2 hover:bg-forest-secondary/60 text-amber-700 flex items-center gap-2"><Ban className="w-3.5 h-3.5" /> Suspend</button>}
+            {onSuspend && <button onClick={() => { setOpen(false); onSuspend(); }} className="w-full text-left px-3 py-2 hover:bg-forest-secondary/60 text-[#E5C77A] flex items-center gap-2"><Ban className="w-3.5 h-3.5" /> Suspend</button>}
             <button onClick={() => { setOpen(false); onReset(); }} className="w-full text-left px-3 py-2 hover:bg-forest-secondary/60 text-[#D6B56D] flex items-center gap-2"><Key className="w-3.5 h-3.5" /> Reset password</button>
             <button onClick={() => { setOpen(false); onRemove(); }} className="w-full text-left px-3 py-2 hover:bg-forest-secondary/60 text-rose-700 flex items-center gap-2"><Trash2 className="w-3.5 h-3.5" /> Remove</button>
           </div>
@@ -359,7 +359,7 @@ function Modal({ title, children, onClose }) {
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/40" onClick={onClose} />
-      <div className="relative bg-white rounded-lg shadow-2xl border border-white/10 w-full max-w-md p-6 max-h-[85vh] overflow-y-auto">
+      <div className="relative bg-[#0A3A2F] rounded-lg shadow-2xl border border-white/10 w-full max-w-md p-6 max-h-[85vh] overflow-y-auto">
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-bold text-ivory text-lg">{title}</h3>
           <button onClick={onClose} className="text-ivory-dim hover:text-ivory">×</button>

@@ -37,7 +37,7 @@ export default function LocationsPanel({ company }) {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {locations.map((loc) => (
-          <div key={loc.id} className="bg-white rounded-lg border border-white/10 p-6 space-y-3 shadow-sm">
+          <div key={loc.id} className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-3 shadow-sm">
             <div className="w-10 h-10 rounded-lg bg-[#0A3A2F] text-ivory flex items-center justify-center">
               <Building2 className="w-5 h-5" />
             </div>
@@ -86,7 +86,7 @@ export default function LocationsPanel({ company }) {
                 <button
                   type="button"
                   onClick={() => setShowModal(false)}
-                  className="px-4 py-2 text-xs font-bold text-ivory-muted hover:bg-white/5 rounded-xl"
+                  className="px-4 py-2 text-xs font-bold text-ivory-muted hover:bg-[#0A3A2F]/5 rounded-xl"
                 >
                   Cancel
                 </button>

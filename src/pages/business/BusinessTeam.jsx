@@ -21,7 +21,7 @@ export default function BusinessTeam() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {members.map((m) => (
-          <div key={m.email} className="bg-white rounded-lg border border-white/10 p-6 space-y-2 shadow-sm">
+          <div key={m.email} className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-2 shadow-sm">
             <UserCog className="w-6 h-6 text-[#D6B56D]" />
             <h3 className="font-bold text-ivory text-base font-heading">{m.name}</h3>
             <p className="text-xs text-ivory-muted">{m.email}</p>

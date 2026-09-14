@@ -10,7 +10,7 @@ import { Check, X, Edit2, Eye } from "lucide-react";
 
 function RowIconBtn({ title, onClick, Icon, color = "text-ivory-muted hover:text-ivory" }) {
   return (
-    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-white/5 ${color}`}>
+    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-[#0A3A2F]/5 ${color}`}>
       <Icon className="w-4 h-4" />
     </button>
   );
@@ -134,7 +134,7 @@ export default function AdminPendingOffers() {
             <RowIconBtn title="Edit" Icon={Edit2} onClick={() => setEditing(o)} />
             <RowIconBtn title="Approve & publish" Icon={Check} color="text-[#D6B56D] hover:text-[#D6B56D]" onClick={() => approve(o)} />
             <RowIconBtn title="Reject" Icon={X} color="text-rose-600 hover:text-rose-700" onClick={() => reject(o)} />
-            <button title="Request changes" onClick={() => requestChanges(o)} className="px-2 py-1 text-xs bg-amber-50 text-amber-700 rounded hover:bg-amber-100">Request changes</button>
+            <button title="Request changes" onClick={() => requestChanges(o)} className="px-2 py-1 text-xs bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20 rounded hover:bg-[#103F35]/70">Request changes</button>
           </div>
         )}
         bulkActions={[
@@ -159,7 +159,7 @@ export default function AdminPendingOffers() {
       {viewing && (
         <div className="fixed inset-0 z-[200] flex justify-end">
           <div className="absolute inset-0 bg-black/40" onClick={() => setViewing(null)} />
-          <div className="relative w-full max-w-lg bg-white h-full overflow-y-auto p-6">
+          <div className="relative w-full max-w-lg bg-[#0A3A2F] h-full overflow-y-auto p-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="font-bold text-ivory text-lg">{viewing.title}</h2>
               <button onClick={() => setViewing(null)} className="text-ivory-dim">✕</button>
@@ -175,11 +175,11 @@ export default function AdminPendingOffers() {
                 <div><span className="text-xs text-ivory-dim">Total limit</span><p>{viewing.total_redemption_limit || "Unlimited"}</p></div>
               </div>
               {viewing.description && <div><span className="text-xs text-ivory-dim">Description</span><p className="text-ivory">{viewing.description}</p></div>}
-              {viewing.review_notes && <div><span className="text-xs text-ivory-dim">Review Notes</span><p className="text-amber-700">{viewing.review_notes}</p></div>}
+              {viewing.review_notes && <div><span className="text-xs text-ivory-dim">Review Notes</span><p className="text-[#E5C77A]">{viewing.review_notes}</p></div>}
             </div>
             <div className="mt-6 flex gap-2">
               <button onClick={() => approve(viewing)} className="flex-1 bg-[#D6B56D] hover:bg-[#E5C77A] text-white rounded-lg py-2 text-sm font-semibold">Approve & publish</button>
-              <button onClick={() => reject(viewing)} className="flex-1 bg-rose-50 text-rose-700 rounded-lg py-2 text-sm font-semibold">Reject</button>
+              <button onClick={() => reject(viewing)} className="flex-1 bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20 rounded-lg py-2 text-sm font-semibold">Reject</button>
               <button onClick={() => { setEditing(viewing); setViewing(null); }} className="px-3 py-2 border border-white/12 rounded-lg text-sm">Edit</button>
             </div>
           </div>

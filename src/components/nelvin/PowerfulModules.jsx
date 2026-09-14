@@ -121,7 +121,7 @@ export default function PowerfulModules() {
                   className={`py-4 px-5 text-sm sm:text-base font-bold transition-all relative whitespace-nowrap flex items-center gap-2 ${
                     isActive
                       ? "text-[#D6B56D] border-b-2 border-[#D6B56D] rounded-t-lg bg-emerald-black/90 shadow-sm -mb-[2px] z-10"
-                      : "text-ivory-dim hover:text-ivory hover:bg-white/5 rounded-t-lg"
+                      : "text-ivory-dim hover:text-ivory hover:bg-[#0A3A2F]/5 rounded-t-lg"
                   }`}
                 >
                   {tab.label}

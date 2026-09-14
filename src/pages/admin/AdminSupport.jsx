@@ -10,7 +10,7 @@ import { Check, Reply, Ban, Trash2 } from "lucide-react";
 
 function RowIconBtn({ title, onClick, Icon, color = "text-ivory-muted hover:text-ivory" }) {
   return (
-    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-white/5 ${color}`}>
+    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-[#0A3A2F]/5 ${color}`}>
       <Icon className="w-4 h-4" />
     </button>
   );
@@ -123,7 +123,7 @@ export default function AdminSupport() {
         onRowClick={setViewing}
         renderActions={(t) => (
           <div className="flex items-center justify-end gap-1">
-            <RowIconBtn title="Reply" Icon={Reply} color="text-sky-600" onClick={() => reply(t)} />
+            <RowIconBtn title="Reply" Icon={Reply} color="text-[#D6B56D]" onClick={() => reply(t)} />
             <RowIconBtn title="Close" Icon={Check} color="text-[#D6B56D]" onClick={() => close(t)} />
             <RowIconBtn title="Archive" Icon={Ban} color="text-ivory-muted" onClick={() => archive(t)} />
             <RowIconBtn title="Delete" Icon={Trash2} color="text-rose-600 hover:text-rose-700" onClick={() => remove(t)} />
@@ -168,7 +168,7 @@ export default function AdminSupport() {
       {viewing && (
         <div className="fixed inset-0 z-[200] flex justify-end">
           <div className="absolute inset-0 bg-black/40" onClick={() => setViewing(null)} />
-          <div className="relative w-full max-w-md bg-white h-full overflow-y-auto p-6">
+          <div className="relative w-full max-w-md bg-[#0A3A2F] h-full overflow-y-auto p-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="font-bold text-ivory text-lg">{viewing.subject}</h2>
               <button onClick={() => setViewing(null)} className="text-ivory-dim">✕</button>

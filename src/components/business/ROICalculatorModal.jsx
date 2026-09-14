@@ -15,10 +15,10 @@ export default function ROICalculatorModal({ isOpen, onClose }) {
 
   return (
     <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="bg-white rounded-lg max-w-lg w-full p-6 space-y-6 shadow-2xl relative animate-in fade-in zoom-in-95">
+      <div className="bg-[#0A3A2F] rounded-lg max-w-lg w-full p-6 space-y-6 shadow-2xl relative animate-in fade-in zoom-in-95">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-1 rounded-lg"
+          className="absolute top-4 right-4 text-ivory-dim hover:text-[#D6B56D] p-1 rounded-lg"
         >
           <X className="w-5 h-5" />
         </button>
@@ -29,14 +29,14 @@ export default function ROICalculatorModal({ isOpen, onClose }) {
           </div>
           <div>
             <h3 className="font-bold text-lg text-[#F5F1E8]">Partner ROI & Revenue Simulator</h3>
-            <p className="text-xs text-slate-500">Estimate potential sales volume from Nelvin corporate users</p>
+            <p className="text-xs text-ivory-dim">Estimate potential sales volume from Nelvin corporate users</p>
           </div>
         </div>
 
         {/* Inputs */}
-        <div className="space-y-4 bg-slate-50 p-4 rounded-xl border border-slate-200/80">
+        <div className="space-y-4 bg-[#103F35]/60 p-4 rounded-lg ring-1 ring-white/10">
           <div>
-            <div className="flex justify-between text-xs font-bold text-slate-700 mb-1">
+            <div className="flex justify-between text-xs font-bold text-ivory mb-1">
               <span>Target Corporate Audience Size</span>
               <span className="text-[#F5F1E8]">{employeesTarget} employees</span>
             </div>
@@ -53,21 +53,21 @@ export default function ROICalculatorModal({ isOpen, onClose }) {
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Avg. Ticket (€)</label>
+              <label className="block text-xs font-bold text-ivory mb-1">Avg. Ticket (€)</label>
               <input
                 type="number"
                 value={avgTicket}
                 onChange={(e) => setAvgTicket(Number(e.target.value))}
-                className="w-full text-xs p-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#062B23]"
+                className="w-full text-xs p-2.5 border border-white/20 rounded-lg bg-[#062B23] text-ivory focus:outline-none focus:ring-2 focus:ring-[#062B23]"
               />
             </div>
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Discount Rate (%)</label>
+              <label className="block text-xs font-bold text-ivory mb-1">Discount Rate (%)</label>
               <input
                 type="number"
                 value={avgDiscount}
                 onChange={(e) => setAvgDiscount(Number(e.target.value))}
-                className="w-full text-xs p-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#062B23]"
+                className="w-full text-xs p-2.5 border border-white/20 rounded-lg bg-[#062B23] text-ivory focus:outline-none focus:ring-2 focus:ring-[#062B23]"
               />
             </div>
           </div>

@@ -49,7 +49,7 @@ export default function BudgetsPanel({ company }) {
         {budgets.map((b) => {
           const pct = Math.round((b.spent / b.allocated) * 100);
           return (
-            <div key={b.id} className="bg-white rounded-lg border border-white/10 p-6 space-y-4 shadow-sm">
+            <div key={b.id} className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-4 shadow-sm">
               <div className="flex items-center justify-between">
                 <span className="text-xs uppercase font-bold text-ivory-dim">{b.period} Cap</span>
                 <span className="text-xs font-bold text-[#D6B56D] bg-[#0A3A2F] px-2.5 py-0.5 rounded-full">{pct}% Used</span>
@@ -58,7 +58,7 @@ export default function BudgetsPanel({ company }) {
                 <h3 className="font-bold text-ivory text-lg font-heading">{b.department}</h3>
                 <p className="text-2xl font-black text-ivory mt-1">${b.spent.toLocaleString()} / <span className="text-ivory-dim">${b.allocated.toLocaleString()}</span></p>
               </div>
-              <div className="w-full bg-white/5 rounded-full h-2">
+              <div className="w-full bg-[#0A3A2F]/5 rounded-full h-2">
                 <div className="bg-[#0A3A2F] h-2 rounded-full" style={{ width: `${pct}%` }} />
               </div>
             </div>

@@ -7,9 +7,9 @@ import { Sparkles, Utensils, Bus, HeartPulse, GraduationCap, CheckCircle } from 
 export default function FlexibleBenefits() {
   const buckets = [
     { title: "Meal & Groceries", icon: Utensils, limit: "$150/mo", spent: "$85.00", color: "bg-[#0A3A2F] text-ivory" },
-    { title: "Commute & Travel", icon: Bus, limit: "$100/mo", spent: "$40.00", color: "bg-amber-50 text-amber-700" },
-    { title: "Health & Gym", icon: HeartPulse, limit: "$120/mo", spent: "$120.00", color: "bg-rose-50 text-rose-700" },
-    { title: "Learning & Upskilling", icon: GraduationCap, limit: "$200/yr", spent: "$50.00", color: "bg-indigo-50 text-indigo-700" },
+    { title: "Commute & Travel", icon: Bus, limit: "$100/mo", spent: "$40.00", color: "bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20" },
+    { title: "Health & Gym", icon: HeartPulse, limit: "$120/mo", spent: "$120.00", color: "bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20" },
+    { title: "Learning & Upskilling", icon: GraduationCap, limit: "$200/yr", spent: "$50.00", color: "bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20" },
   ];
 
   return (
@@ -20,7 +20,7 @@ export default function FlexibleBenefits() {
       <EmployeeNav />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        <div className="bg-white rounded-xl border border-white/10 p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0A3A2F] text-[#E5C77A] text-xs font-bold uppercase">
               <Sparkles className="w-3.5 h-3.5 text-[#D6B56D]" /> Flexible Spending Allowances
@@ -40,7 +40,7 @@ export default function FlexibleBenefits() {
           {buckets.map((b) => {
             const Icon = b.icon;
             return (
-              <div key={b.title} className="bg-white rounded-xl border border-white/10 p-6 shadow-sm space-y-4">
+              <div key={b.title} className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 shadow-sm space-y-4">
                 <div className="flex items-center justify-between">
                   <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${b.color}`}>
                     <Icon className="w-6 h-6" />
@@ -51,7 +51,7 @@ export default function FlexibleBenefits() {
                   <h3 className="font-bold text-ivory text-lg font-heading">{b.title}</h3>
                   <p className="text-xs text-ivory-muted mt-1">Used: <span className="font-bold text-ivory">{b.spent}</span></p>
                 </div>
-                <div className="w-full bg-white/5 rounded-full h-2">
+                <div className="w-full bg-[#0A3A2F]/5 rounded-full h-2">
                   <div className="bg-[#062B23] h-2 rounded-full" style={{ width: "60%" }} />
                 </div>
                 <div className="pt-2 flex items-center gap-1.5 text-xs text-[#D6B56D] font-bold">

@@ -137,7 +137,7 @@ export default function Corporate() {
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.35 }}
                 className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
               >
-                <a href="mailto:Nelvin23@proton.me?subject=Corporate%20Demo%20Request" className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-emerald-black/35 backdrop-blur-md text-white font-semibold px-7 py-3.5 rounded-full text-sm transition-colors">
+                <a href="mailto:Nelvin23@proton.me?subject=Corporate%20Demo%20Request" className="inline-flex items-center justify-center gap-2 bg-[#0A3A2F]/10 hover:bg-emerald-black/35 backdrop-blur-md text-white font-semibold px-7 py-3.5 rounded-full text-sm transition-colors">
                   <Phone className="w-4 h-4" /> Request Demo
                 </a>
                 <Link to="/corporate-signup" className="inline-flex items-center justify-center gap-2 bg-[#D6B56D] hover:bg-[#E5C77A] text-[#062B23] font-semibold px-7 py-3.5 rounded-full text-sm transition-colors">
@@ -224,7 +224,7 @@ export default function Corporate() {
 
 function Stat({ label, value }) {
   return (
-    <div className="bg-white/10 backdrop-blur-md rounded-xl px-4 py-3 text-left">
+    <div className="bg-[#0A3A2F]/10 backdrop-blur-md rounded-xl px-4 py-3 text-left">
       <p className="text-[10px] uppercase tracking-wider text-[#E5C77A]">{label}</p>
       <p className="text-xl font-bold font-heading text-white">{value}</p>
     </div>

@@ -10,9 +10,9 @@ const ICONS = {
 }
 
 const ACCENTS = {
-  default: "border-slate-200 text-slate-800",
+  default: "border-white/15 text-[#D6B56D]",
   success: "border-white/15 text-[#D6B56D]",
-  destructive: "border-rose-200 text-rose-600",
+  destructive: "border-rose-400/30 text-rose-300",
 }
 
 export function Toaster() {
@@ -27,18 +27,18 @@ export function Toaster() {
             key={t.id}
             role="alert"
             className={cn(
-              "pointer-events-auto flex items-start gap-3 rounded-xl border bg-white p-4 shadow-lg animate-in slide-in-from-bottom-4 fade-in duration-200",
+              "pointer-events-auto flex items-start gap-3 rounded-lg border bg-[#0A3A2F]/95 p-4 shadow-lg ring-1 ring-white/10 backdrop-blur animate-in slide-in-from-bottom-4 fade-in duration-200",
               ACCENTS[t.variant] || ACCENTS.default
             )}
           >
             <Icon className="mt-0.5 h-4 w-4 shrink-0" />
             <div className="min-w-0 flex-1">
-              {t.title && <p className="text-sm font-semibold text-slate-900">{t.title}</p>}
-              {t.description && <p className="mt-1 text-sm text-slate-500">{t.description}</p>}
+              {t.title && <p className="text-sm font-semibold text-ivory">{t.title}</p>}
+              {t.description && <p className="mt-1 text-sm text-ivory-dim">{t.description}</p>}
             </div>
             <button
               onClick={() => dismiss(t.id)}
-              className="text-slate-400 hover:text-slate-600 shrink-0"
+              className="text-ivory-dim hover:text-[#D6B56D] shrink-0"
               aria-label="Dismiss notification"
             >
               <X className="h-4 w-4" />

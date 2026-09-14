@@ -9,7 +9,7 @@ import { Edit2, Trash2, Plus, Star, Power } from "lucide-react";
 
 function RowIconBtn({ title, onClick, Icon, color = "text-ivory-muted hover:text-ivory" }) {
   return (
-    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-white/5 ${color}`}>
+    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-[#0A3A2F]/5 ${color}`}>
       <Icon className="w-4 h-4" />
     </button>
   );
@@ -73,7 +73,7 @@ export default function AdminCountries() {
         <div className="flex items-center gap-2">
           <span className="text-xl w-8 h-8 flex items-center justify-center">{c.flag || "🏳️"}</span>
           <div>
-            <p className="text-sm font-medium text-ivory truncate flex items-center gap-1">{c.name}{c.is_featured && <Star className="w-3 h-3 text-amber-500 fill-amber-400" />}</p>
+            <p className="text-sm font-medium text-ivory truncate flex items-center gap-1">{c.name}{c.is_featured && <Star className="w-3 h-3 text-[#E5C77A] fill-[#D6B56D]" />}</p>
             <p className="text-xs text-ivory-dim truncate">{c.country_code || "—"}</p>
           </div>
         </div>
@@ -121,7 +121,7 @@ export default function AdminCountries() {
         renderActions={(c) => (
           <div className="flex items-center justify-end gap-1">
             <RowIconBtn title={c.is_active ? "Disable" : "Enable"} Icon={Power} color={c.is_active ? "text-[#D6B56D]" : "text-ivory-dim"} onClick={() => toggleActive(c)} />
-            <RowIconBtn title={c.is_featured ? "Unfeature" : "Feature"} Icon={Star} color={c.is_featured ? "text-amber-500" : "text-ivory-dim"} onClick={() => toggleFeatured(c)} />
+            <RowIconBtn title={c.is_featured ? "Unfeature" : "Feature"} Icon={Star} color={c.is_featured ? "text-[#E5C77A]" : "text-ivory-dim"} onClick={() => toggleFeatured(c)} />
             <RowIconBtn title="Edit" Icon={Edit2} onClick={() => setEditing(c)} />
             <RowIconBtn title="Delete" Icon={Trash2} color="text-rose-600 hover:text-rose-700" onClick={() => remove(c)} />
           </div>

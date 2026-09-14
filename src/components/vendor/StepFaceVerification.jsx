@@ -18,8 +18,8 @@ export default function StepFaceVerification({ form, update, onNext, onBack }) {
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <div className="w-12 h-12 rounded-lg bg-amber-50 flex items-center justify-center mx-auto mb-3">
-          <Camera className="w-6 h-6 text-amber-600" />
+        <div className="w-12 h-12 rounded-lg bg-[#103F35]/70 flex items-center justify-center mx-auto mb-3">
+          <Camera className="w-6 h-6 text-[#E5C77A]" />
         </div>
         <h2 className="text-xl font-semibold text-ivory">Take a quick selfie</h2>
         <p className="text-sm text-ivory-muted mt-1.5 max-w-sm mx-auto">
@@ -55,7 +55,7 @@ export default function StepFaceVerification({ form, update, onNext, onBack }) {
       </div>
 
       <div className="flex gap-3">
-        <button type="button" onClick={onBack} className="px-6 py-3.5 rounded-full text-sm font-semibold text-ivory-muted hover:bg-white/5 transition-all">
+        <button type="button" onClick={onBack} className="px-6 py-3.5 rounded-full text-sm font-semibold text-ivory-muted hover:bg-[#0A3A2F]/5 transition-all">
           Back
         </button>
         <button

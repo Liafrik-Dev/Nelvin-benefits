@@ -64,7 +64,7 @@ export default function Vouchers() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {listToDisplay.map((v) => (
-              <div key={v.id} className="bg-white rounded-xl border border-white/10 p-6 shadow-sm space-y-4 relative overflow-hidden">
+              <div key={v.id} className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 shadow-sm space-y-4 relative overflow-hidden">
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <span className="text-[10px] font-bold uppercase tracking-wider text-[#D6B56D] bg-[#0A3A2F] px-2.5 py-0.5 rounded-full">
@@ -86,7 +86,7 @@ export default function Vouchers() {
                   </div>
                   <button
                     onClick={() => copyCode(v.promo_code || v.redemption_code || "NV-PROMO-77", v.id)}
-                    className="p-2 bg-white rounded-xl border border-white/12 text-ivory-muted hover:text-[#D6B56D] hover:border-[#D6B56D]/40 transition-colors"
+                    className="p-2 bg-emerald-black ring-1 ring-white/10 rounded-xl text-ivory-muted hover:text-[#D6B56D] hover:border-[#D6B56D]/40 transition-colors"
                   >
                     {copiedId === v.id ? <Check className="w-4 h-4 text-[#D6B56D]" /> : <Copy className="w-4 h-4" />}
                   </button>

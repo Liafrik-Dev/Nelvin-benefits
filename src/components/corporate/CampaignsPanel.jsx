@@ -21,7 +21,7 @@ export default function CampaignsPanel({ company }) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {campaigns.map((c) => (
-          <div key={c.id} className="bg-white rounded-lg border border-white/10 p-6 space-y-3 shadow-sm">
+          <div key={c.id} className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-3 shadow-sm">
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-[#D6B56D] bg-[#0A3A2F] px-2.5 py-0.5 rounded-full uppercase">{c.status}</span>
               <Sparkles className="w-4 h-4 text-[#D6B56D]" />

@@ -27,10 +27,10 @@ export default function Lifestyle() {
       <EmployeeNav />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        <div className="bg-white rounded-xl border border-white/10 p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2 max-w-xl">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-800 text-xs font-bold uppercase">
-              <Smile className="w-3.5 h-3.5 text-amber-600" /> Family, Travel & Lifestyle
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#103F35]/70 text-[#E5C77A] text-xs font-bold uppercase">
+              <Smile className="w-3.5 h-3.5 text-[#E5C77A]" /> Family, Travel & Lifestyle
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-ivory font-heading">
               Family & Lifestyle Perks
@@ -40,12 +40,12 @@ export default function Lifestyle() {
             </p>
           </div>
           <div className="flex gap-3">
-            <div className="p-4 bg-indigo-50 rounded-lg text-center">
-              <Baby className="w-6 h-6 text-indigo-700 mx-auto mb-1" />
+            <div className="p-4 bg-[#103F35]/70 rounded-lg text-center">
+              <Baby className="w-6 h-6 text-[#D6B56D] mx-auto mb-1" />
               <p className="text-xs font-bold text-ivory">Childcare</p>
             </div>
-            <div className="p-4 bg-amber-50 rounded-lg text-center">
-              <Plane className="w-6 h-6 text-amber-700 mx-auto mb-1" />
+            <div className="p-4 bg-[#103F35]/70 rounded-lg text-center">
+              <Plane className="w-6 h-6 text-[#E5C77A] mx-auto mb-1" />
               <p className="text-xs font-bold text-ivory">Vacations</p>
             </div>
           </div>

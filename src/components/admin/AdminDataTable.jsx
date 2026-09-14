@@ -57,7 +57,7 @@ export default function AdminDataTable({
   const colSpan = columns.length + (setSelected ? 1 : 0) + (renderActions ? 1 : 0);
 
   return (
-    <div className="bg-white rounded-lg border border-white/10 overflow-hidden">
+    <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg overflow-hidden">
       <div className="flex flex-col lg:flex-row lg:items-center gap-3 p-4 border-b border-white/10">
         {setSearch && (
           <input
@@ -73,7 +73,7 @@ export default function AdminDataTable({
               key={f.key}
               value={f.value}
               onChange={f.onChange}
-              className="border border-white/12 rounded-lg px-3 py-2 text-sm bg-white outline-none"
+              className="border border-white/12 rounded-lg px-3 py-2 text-sm bg-[#0A3A2F] outline-none"
             >
               <option value="">{f.label}</option>
               {(f.options || []).map((opt) => (
@@ -85,7 +85,7 @@ export default function AdminDataTable({
           ))}
           <button
             onClick={() => exportToCsv(exportName, sorted, columns)}
-            className="flex items-center gap-1.5 px-3 py-2 text-sm bg-white/5 hover:bg-white/10 text-ivory rounded-lg whitespace-nowrap"
+            className="flex items-center gap-1.5 px-3 py-2 text-sm bg-[#0A3A2F]/5 hover:bg-[#0A3A2F]/10 text-ivory rounded-lg whitespace-nowrap"
           >
             <Download className="w-3.5 h-3.5" /> Export CSV
           </button>
@@ -100,7 +100,7 @@ export default function AdminDataTable({
             <button
               key={i}
               onClick={() => b.onClick(selected)}
-              className="text-xs px-3 py-1.5 bg-white border bg-white rounded-md hover:bg-forest-secondary/60"
+              className="text-xs px-3 py-1.5 bg-[#0A3A2F] border bg-[#0A3A2F] rounded-md hover:bg-forest-secondary/60"
             >
               {b.label}
             </button>
@@ -198,14 +198,14 @@ export default function AdminDataTable({
             <button
               disabled={page === 0}
               onClick={() => setPage(page - 1)}
-              className="p-1.5 rounded hover:bg-white/5 disabled:opacity-40"
+              className="p-1.5 rounded hover:bg-[#0A3A2F]/5 disabled:opacity-40"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
             <button
               disabled={(page + 1) * pageSize >= total}
               onClick={() => setPage(page + 1)}
-              className="p-1.5 rounded hover:bg-white/5 disabled:opacity-40"
+              className="p-1.5 rounded hover:bg-[#0A3A2F]/5 disabled:opacity-40"
             >
               <ChevronRight className="w-4 h-4" />
             </button>

@@ -33,7 +33,7 @@ export default function UserMenu() {
     return (
       <button
         onClick={navigateToLogin}
-        className="bg-white/15 hover:bg-white/25 text-white text-sm font-medium px-4 py-2 rounded-full transition-colors"
+        className="bg-[#0A3A2F]/15 hover:bg-[#0A3A2F]/25 text-white text-sm font-medium px-4 py-2 rounded-full transition-colors"
       >
         Log in
       </button>
@@ -59,12 +59,12 @@ export default function UserMenu() {
     <div
       ref={menuRef}
       style={{ position: "fixed", top: `${coords.top}px`, right: `${coords.right}px` }}
-      className="w-64 bg-white rounded-lg shadow-2xl border border-white/10 overflow-hidden z-[100]"
+      className="w-64 bg-[#0A3A2F] rounded-lg shadow-2xl border border-white/10 overflow-hidden z-[100]"
     >
       <div className="p-4 border-b border-white/10">
         <p className="font-bold text-ivory">{user?.full_name || "Member"}</p>
         <p className="text-xs text-ivory-dim break-all">{user?.email}</p>
-        <span className="inline-block mt-2 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+        <span className="inline-block mt-2 bg-[#103F35] text-white text-xs font-bold px-3 py-1 rounded-full">
           {user?.role === "admin" ? "Admin" : "Free"}
         </span>
       </div>

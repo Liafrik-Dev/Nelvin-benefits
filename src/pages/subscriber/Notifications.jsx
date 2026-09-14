@@ -59,7 +59,7 @@ export default function Notifications() {
               Notifications & Alerts
             </h1>
           </div>
-          <span className="text-xs font-bold text-ivory-muted bg-white/5 px-3 py-1.5 rounded-full">
+          <span className="text-xs font-bold text-ivory-muted bg-[#0A3A2F]/5 px-3 py-1.5 rounded-full">
             {list.length} Messages
           </span>
         </div>
@@ -69,7 +69,7 @@ export default function Notifications() {
         ) : (
           <div className="space-y-4">
             {list.map((n) => (
-              <div key={n.id} className="bg-white rounded-xl border border-white/10 p-5 shadow-sm flex items-start gap-4">
+              <div key={n.id} className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-5 shadow-sm flex items-start gap-4">
                 <div className="w-10 h-10 rounded-lg bg-[#0A3A2F] text-ivory flex items-center justify-center flex-shrink-0">
                   <Bell className="w-5 h-5" />
                 </div>

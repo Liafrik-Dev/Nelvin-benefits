@@ -10,7 +10,7 @@ import { Star, Eye, Edit2, Trash2, ClipboardCopy, EyeOff, Archive, Send, Ban } f
 
 function RowIconBtn({ title, onClick, Icon, color = "text-ivory-muted hover:text-ivory" }) {
   return (
-    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-white/5 ${color}`}>
+    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-[#0A3A2F]/5 ${color}`}>
       <Icon className="w-4 h-4" />
     </button>
   );
@@ -87,7 +87,7 @@ export default function AdminOffers() {
           {o.image_url ? <img src={o.image_url} alt="" className="w-10 h-10 rounded-lg object-cover" /> : <div className="w-10 h-10 rounded-lg bg-[#103F35]/60 text-[#D6B56D] flex items-center justify-center text-xs font-bold">{(o.title || "?").slice(0,1)}</div>}
           <div className="min-w-0">
             <p className="text-sm font-medium text-ivory truncate flex items-center gap-1">
-              {o.title}{o.is_featured && <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-400" />}
+              {o.title}{o.is_featured && <Star className="w-3.5 h-3.5 text-[#E5C77A] fill-[#D6B56D]" />}
             </p>
             <p className="text-xs text-ivory-dim truncate">{o.business_name}</p>
           </div>
@@ -161,7 +161,7 @@ export default function AdminOffers() {
           <div className="flex items-center justify-end gap-1">
             <RowIconBtn title="Preview" Icon={Eye} onClick={() => setViewing(o)} />
             <RowIconBtn title="Edit" Icon={Edit2} onClick={() => setEditing(o)} />
-            <RowIconBtn title={o.is_featured ? "Unfeature" : "Feature"} Icon={Star} color={o.is_featured ? "text-amber-500" : "text-ivory-dim"} onClick={() => update(o.id, { is_featured: !o.is_featured })} />
+            <RowIconBtn title={o.is_featured ? "Unfeature" : "Feature"} Icon={Star} color={o.is_featured ? "text-[#E5C77A]" : "text-ivory-dim"} onClick={() => update(o.id, { is_featured: !o.is_featured })} />
             <RowIconBtn title={o.is_published ? "Unpublish" : "Publish"} Icon={Send} color={o.is_published ? "text-[#D6B56D]" : "text-ivory-dim"} onClick={() => update(o.id, { is_published: !o.is_published, status: !o.is_published ? "active" : "inactive" })} />
             <RowIconBtn title={o.status === "hidden" ? "Unhide" : "Hide"} Icon={EyeOff} color={o.status === "hidden" ? "text-ivory" : "text-ivory-dim"} onClick={() => update(o.id, { status: o.status === "hidden" ? "active" : "hidden" })} />
             <RowIconBtn title={o.is_archived ? "Restore" : "Archive"} Icon={Archive} color={o.is_archived ? "text-[#D6B56D]" : "text-ivory-dim"} onClick={() => update(o.id, { is_archived: !o.is_archived, status: !o.is_archived ? "archived" : "active" })} />
@@ -211,7 +211,7 @@ export default function AdminOffers() {
       {viewing && (
         <div className="fixed inset-0 z-[200] flex justify-end">
           <div className="absolute inset-0 bg-black/40" onClick={() => setViewing(null)} />
-          <div className="relative w-full max-w-lg bg-white h-full overflow-y-auto p-6">
+          <div className="relative w-full max-w-lg bg-[#0A3A2F] h-full overflow-y-auto p-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="font-bold text-ivory text-lg">{viewing.title}</h2>
               <button onClick={() => setViewing(null)} className="text-ivory-dim">✕</button>

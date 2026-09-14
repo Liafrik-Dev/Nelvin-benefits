@@ -20,7 +20,7 @@ export default function MembershipPanel({ company, employees }) {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-6">
-        <div className="bg-white rounded-lg border border-white/10 overflow-hidden">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg overflow-hidden">
           <div className="p-4 border-b border-white/10">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ivory-dim" />
@@ -41,7 +41,7 @@ export default function MembershipPanel({ company, employees }) {
                   <p className="text-sm font-medium text-ivory truncate">{e.user_name || e.user_email}</p>
                   <p className="text-xs text-ivory-dim truncate">{e.department || "—"} · <span className="font-mono">{e.subscriber_id || "no ID"}</span></p>
                 </div>
-                <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-full ${e.status === "active" ? "bg-[#103F35]/60 text-[#D6B56D] ring-1 ring-[#D6B56D]/25" : "bg-rose-100 text-rose-700"}`}>{e.status}</span>
+                <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-full ${e.status === "active" ? "bg-[#103F35]/60 text-[#D6B56D] ring-1 ring-[#D6B56D]/25" : "bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20"}`}>{e.status}</span>
               </button>
             ))}
           </div>
@@ -49,7 +49,7 @@ export default function MembershipPanel({ company, employees }) {
 
         <div>
           {selected ? (
-            <div className="bg-white rounded-lg border border-white/10 p-4 sticky top-4">
+            <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-4 sticky top-4">
               <p className="text-xs text-ivory-dim uppercase tracking-wider mb-3 flex items-center gap-1"><CreditCard className="w-3.5 h-3.5" /> Membership Card</p>
               <MembershipCard employee={{ ...selected, membership_tier: company.membership_tier }} company={company} accent={company.branding_primary_color || "#059669"} />
               <div className="mt-4 border-t border-white/10 pt-4 text-xs text-ivory-muted space-y-1">
@@ -60,7 +60,7 @@ export default function MembershipPanel({ company, employees }) {
               </div>
             </div>
           ) : (
-            <div className="bg-white rounded-lg border border-white/10 p-8 text-center text-sm text-ivory-dim">Select an employee to preview their card.</div>
+            <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-8 text-center text-sm text-ivory-dim">Select an employee to preview their card.</div>
           )}
         </div>
       </div>

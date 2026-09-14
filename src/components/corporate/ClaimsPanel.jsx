@@ -55,7 +55,7 @@ export default function ClaimsPanel({ company }) {
         </button>
       </div>
 
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-white p-4 rounded-lg border border-white/10 shadow-sm">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-[#0A3A2F] p-4 rounded-lg border border-white/10 shadow-sm">
         <div className="relative w-full sm:w-72">
           <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-ivory-dim" />
           <input
@@ -72,7 +72,7 @@ export default function ClaimsPanel({ company }) {
               key={st}
               onClick={() => setFilterStatus(st)}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
-                filterStatus === st ? "bg-[#062B23] text-[#D6B56D]" : "bg-forest-secondary/60 text-ivory-muted hover:bg-white/5"
+                filterStatus === st ? "bg-[#062B23] text-[#D6B56D]" : "bg-forest-secondary/60 text-ivory-muted hover:bg-[#0A3A2F]/5"
               }`}
             >
               {st}
@@ -81,7 +81,7 @@ export default function ClaimsPanel({ company }) {
         </div>
       </div>
 
-      <div className="bg-white rounded-lg border border-white/10 overflow-hidden shadow-sm">
+      <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg overflow-hidden shadow-sm">
         <table className="w-full text-sm text-left">
           <thead className="bg-forest-secondary/60 text-ivory-muted text-xs uppercase tracking-wider font-semibold border-b border-white/10">
             <tr>
@@ -106,7 +106,7 @@ export default function ClaimsPanel({ company }) {
                 <td className="px-6 py-4">
                   <span className={`text-xs font-bold px-2.5 py-1 rounded-full capitalize ${
                     c.status === "approved" ? "bg-[#0A3A2F] text-ivory" :
-                    c.status === "rejected" ? "bg-rose-50 text-rose-700" : "bg-amber-50 text-amber-700"
+                    c.status === "rejected" ? "bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20" : "bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20"
                   }`}>
                     {c.status}
                   </span>
@@ -154,7 +154,7 @@ export default function ClaimsPanel({ company }) {
                   </button>
                   <button
                     onClick={() => updateStatus(selectedClaim.id, "rejected", rejectReason)}
-                    className="flex-1 bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs py-2.5 rounded-xl transition-colors"
+                    className="flex-1 bg-rose-950/50 hover:bg-rose-900/60 text-rose-200 ring-1 ring-rose-400/30 font-bold text-xs py-2.5 rounded-xl transition-colors"
                   >
                     Reject Claim
                   </button>

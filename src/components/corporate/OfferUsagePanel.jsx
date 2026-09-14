@@ -62,16 +62,16 @@ export default function OfferUsagePanel({ company, employees }) {
       </div>
 
       {loading ? (
-        <div className="bg-white rounded-lg border border-white/10 p-12 text-center text-sm text-ivory-dim">Loading offer usage…</div>
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-12 text-center text-sm text-ivory-dim">Loading offer usage…</div>
       ) : redemptions.length === 0 ? (
-        <div className="bg-white rounded-lg border border-white/10 p-12 text-center">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-12 text-center">
           <BarChart3 className="w-10 h-10 text-ivory/60 mx-auto mb-3" />
           <p className="text-sm text-ivory-muted">No redemptions yet from your team. As employees start using offers, you'll see category and brand breakdowns here.</p>
         </div>
       ) : (
         <>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-white rounded-lg border border-white/10 p-6">
+            <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6">
               <div className="flex items-center gap-2 mb-3">
                 <TrendingUp className="w-4 h-4 text-[#D6B56D]" />
                 <h3 className="font-semibold text-ivory">Top Categories</h3>
@@ -89,7 +89,7 @@ export default function OfferUsagePanel({ company, employees }) {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg border border-white/10 p-6">
+            <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6">
               <h3 className="font-semibold text-ivory mb-3">Redemptions by Brand</h3>
               <div className="h-64">
                 <ResponsiveContainer width="100%" height="100%">
@@ -105,7 +105,7 @@ export default function OfferUsagePanel({ company, employees }) {
             </div>
           </div>
 
-          <div className="bg-white rounded-lg border border-white/10 p-6 mt-6">
+          <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 mt-6">
             <h3 className="font-semibold text-ivory mb-3">Most Redeemed Offers</h3>
             <div className="space-y-2">
               {topBusinesses.map((b, i) => (

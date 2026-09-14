@@ -64,8 +64,8 @@ export default function AdminEditModal({
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/40" onClick={onClose} />
-      <div className="relative bg-white rounded-lg shadow-2xl border border-white/10 w-full max-w-lg max-h-[90vh] overflow-y-auto">
-        <div className="px-6 py-4 border-b border-white/10 flex items-center justify-between sticky top-0 bg-white z-10">
+      <div className="relative bg-[#0A3A2F] rounded-lg shadow-2xl border border-white/10 w-full max-w-lg max-h-[90vh] overflow-y-auto">
+        <div className="px-6 py-4 border-b border-white/10 flex items-center justify-between sticky top-0 bg-[#0A3A2F] z-10">
           <h2 className="font-bold text-ivory text-lg">
             {title || (isNew ? `New ${entityName}` : `Edit ${entityName}`)}
           </h2>
@@ -153,7 +153,7 @@ export default function AdminEditModal({
             );
           })}
         </div>
-        <div className="px-6 py-4 border-t border-white/10 flex items-center justify-between gap-2 sticky bottom-0 bg-white">
+        <div className="px-6 py-4 border-t border-white/10 flex items-center justify-between gap-2 sticky bottom-0 bg-[#0A3A2F]">
           {!isNew && (
             <button
               onClick={remove}
@@ -166,7 +166,7 @@ export default function AdminEditModal({
           <div className="flex items-center gap-2 ml-auto">
             <button
               onClick={onClose}
-              className="px-4 py-2 text-sm font-medium text-ivory-muted hover:bg-white/5 rounded-lg"
+              className="px-4 py-2 text-sm font-medium text-ivory-muted hover:bg-[#0A3A2F]/5 rounded-lg"
             >
               Cancel
             </button>

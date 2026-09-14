@@ -20,7 +20,7 @@ export default function BusinessAnalytics() {
         </button>
       </div>
 
-      <div className="bg-white rounded-lg border border-white/10 p-8 shadow-sm text-center space-y-3">
+      <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-8 shadow-sm text-center space-y-3">
         <BarChart3 className="w-12 h-12 text-[#D6B56D] mx-auto" />
         <h3 className="text-lg font-bold font-heading text-ivory">Total GMV Generated: $48,200.00</h3>
         <p className="text-xs text-ivory-muted">Over 1,200 corporate redemptions processed in the last 12 months across all store branches.</p>

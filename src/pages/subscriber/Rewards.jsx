@@ -54,8 +54,8 @@ export default function Rewards() {
         {/* Header KPI */}
         <div className="bg-gradient-to-r from-[#062B23] to-[#062B23] rounded-xl p-6 sm:p-8 text-white shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-bold uppercase">
-              <Trophy className="w-3.5 h-3.5 text-amber-400" /> Recognition & Rewards Portal
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#D6B56D]/15 text-[#E5C77A] ring-1 ring-[#D6B56D]/25 text-xs font-bold uppercase">
+              <Trophy className="w-3.5 h-3.5 text-[#E5C77A]" /> Recognition & Rewards Portal
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold font-heading">
               Peer Praise & Achievement Points
@@ -63,8 +63,8 @@ export default function Rewards() {
             <p className="text-white/70 text-sm">Earn recognition points from colleagues and redeem them for gift vouchers or perks.</p>
           </div>
 
-          <div className="bg-white/10 backdrop-blur border border-white/20 p-6 rounded-lg text-center min-w-[200px]">
-            <p className="text-xs uppercase tracking-wider text-amber-300 font-bold mb-1">Your Reward Balance</p>
+          <div className="bg-[#0A3A2F]/10 backdrop-blur border border-white/20 p-6 rounded-lg text-center min-w-[200px]">
+            <p className="text-xs uppercase tracking-wider text-[#E5C77A] font-bold mb-1">Your Reward Balance</p>
             <p className="text-4xl font-black text-[#D6B56D] font-heading">{points}</p>
             <p className="text-xs text-white/60 mt-1">Pts ($125 Value)</p>
           </div>
@@ -72,7 +72,7 @@ export default function Rewards() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Send Peer Praise */}
-          <div className="bg-white rounded-xl border border-white/10 p-6 shadow-sm space-y-4">
+          <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 shadow-sm space-y-4">
             <div className="flex items-center gap-2 text-[#E5C77A] font-bold font-heading">
               <Send className="w-5 h-5 text-[#D6B56D]" /> Send Peer Recognition
             </div>
@@ -86,7 +86,7 @@ export default function Rewards() {
                   placeholder="e.g. Alex Johnson"
                   value={praiseRecipient}
                   onChange={(e) => setPraiseRecipient(e.target.value)}
-                  className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3.5 py-2.5 text-xs font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#D6B56D]/40"
+                  className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3.5 py-2.5 text-xs font-medium focus:bg-[#0A3A2F] focus:outline-none focus:ring-2 focus:ring-[#D6B56D]/40"
                 />
               </div>
 
@@ -110,7 +110,7 @@ export default function Rewards() {
                   placeholder="Describe why you are giving this praise..."
                   value={praiseReason}
                   onChange={(e) => setPraiseReason(e.target.value)}
-                  className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl p-3 text-xs font-medium focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#D6B56D]/40"
+                  className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl p-3 text-xs font-medium focus:bg-[#0A3A2F] focus:outline-none focus:ring-2 focus:ring-[#D6B56D]/40"
                 />
               </div>
 
@@ -125,10 +125,10 @@ export default function Rewards() {
           </div>
 
           {/* Social Praise Feed */}
-          <div className="lg:col-span-2 bg-white rounded-xl border border-white/10 p-6 shadow-sm space-y-4">
+          <div className="lg:col-span-2 bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 shadow-sm space-y-4">
             <div className="flex items-center justify-between border-b border-white/10 pb-3">
               <div className="flex items-center gap-2 font-bold text-ivory font-heading">
-                <Sparkles className="w-5 h-5 text-amber-500" /> Recognition Feed
+                <Sparkles className="w-5 h-5 text-[#E5C77A]" /> Recognition Feed
               </div>
               <span className="text-xs font-semibold text-ivory-dim">Live Team Wall</span>
             </div>
@@ -140,7 +140,7 @@ export default function Rewards() {
                     <p className="text-xs font-bold text-ivory">
                       <span className="text-[#D6B56D]">{item.sender}</span> recognized <span className="text-[#D6B56D]">{item.recipient}</span>
                     </p>
-                    <span className="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded-full">
+                    <span className="text-[10px] bg-[#103F35]/70 text-[#E5C77A] font-bold px-2 py-0.5 rounded-full">
                       +{item.points} Pts
                     </span>
                   </div>

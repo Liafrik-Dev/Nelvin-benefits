@@ -35,7 +35,7 @@ export default function Nearby() {
       <EmployeeNav />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        <div className="bg-white rounded-xl border border-white/10 p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0A3A2F] text-[#E5C77A] text-xs font-bold uppercase">
               <MapPin className="w-3.5 h-3.5 text-[#D6B56D]" /> Geolocation & Local Perks
@@ -77,7 +77,7 @@ export default function Nearby() {
               Present your Nelvin digital card or QR code at checkout in any of these registered partner locations to claim instant savings.
             </p>
           </div>
-          <div className="relative z-10 flex items-center gap-3 bg-white/10 backdrop-blur border border-white/20 p-4 rounded-lg">
+          <div className="relative z-10 flex items-center gap-3 bg-[#0A3A2F]/10 backdrop-blur border border-white/20 p-4 rounded-lg">
             <Store className="w-8 h-8 text-[#D6B56D]" />
             <div>
               <p className="text-sm font-bold">{filteredOffers.length} Verified Spots</p>

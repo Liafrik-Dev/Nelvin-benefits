@@ -82,7 +82,7 @@ export default function Profile() {
         <Navbar />
       </div>
       <div className="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 pb-16">
-        <div className="bg-white rounded-lg border border-white/10 p-8">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-8">
           <h1 className="text-2xl font-bold font-heading text-ivory mb-6">Profile</h1>
           <div className="space-y-4">
             <div className="flex items-center gap-4">
@@ -92,7 +92,7 @@ export default function Profile() {
                 <button
                   onClick={() => fileRef.current?.click()}
                   disabled={uploading}
-                  className="bg-white/5 hover:bg-white/10 text-ivory rounded-full px-4 py-2 text-sm font-medium flex items-center gap-2 disabled:opacity-50"
+                  className="bg-[#0A3A2F]/5 hover:bg-[#0A3A2F]/10 text-ivory rounded-full px-4 py-2 text-sm font-medium flex items-center gap-2 disabled:opacity-50"
                 >
                   <Camera className="w-4 h-4" /> {uploading ? "Saving..." : "Upload photo"}
                 </button>

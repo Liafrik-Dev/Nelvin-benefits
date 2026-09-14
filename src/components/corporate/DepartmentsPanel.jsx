@@ -83,7 +83,7 @@ export default function DepartmentsPanel({ company, employees, onChanged }) {
         <div className="flex gap-2">
           {PRESET.filter((p) => !items.some((i) => i.name === p)).slice(0, 3).map((p) => (
             <button key={p} onClick={() => { setForm((s) => ({ ...s, name: p })); setShowAdd(true); }}
-              className="text-xs bg-white/5 hover:bg-white/10 text-ivory px-3 py-2 rounded-lg">+ {p}</button>
+              className="text-xs bg-[#0A3A2F]/5 hover:bg-[#0A3A2F]/10 text-ivory px-3 py-2 rounded-lg">+ {p}</button>
           ))}
           <button onClick={() => setShowAdd(true)} className="inline-flex items-center gap-2 bg-[#D6B56D] hover:bg-[#E5C77A] text-[#062B23] text-sm font-semibold px-4 py-2 rounded-lg">
             <Plus className="w-4 h-4" /> Add Department
@@ -92,9 +92,9 @@ export default function DepartmentsPanel({ company, employees, onChanged }) {
       </div>
 
       {loading ? (
-        <div className="bg-white rounded-lg border border-white/10 p-8 text-center text-sm text-ivory-dim">Loading…</div>
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-8 text-center text-sm text-ivory-dim">Loading…</div>
       ) : items.length === 0 ? (
-        <div className="bg-white rounded-lg border border-white/10 p-12 text-center">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-12 text-center">
           <Boxes className="w-10 h-10 text-ivory/60 mx-auto mb-3" />
           <p className="text-sm text-ivory-muted">No departments yet. Create your first one above.</p>
         </div>
@@ -104,7 +104,7 @@ export default function DepartmentsPanel({ company, employees, onChanged }) {
             const emps = employeesByDept(d.name);
             const sav = totalSavingsByDept(d.name);
             return (
-              <div key={d.id} className="bg-white rounded-lg border border-white/10 p-5">
+              <div key={d.id} className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-5">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-2">
                     <span className="w-3 h-3 rounded-full" style={{ background: d.color || "#059669" }} />
@@ -131,7 +131,7 @@ export default function DepartmentsPanel({ company, employees, onChanged }) {
       )}
 
       {leaderboard.length > 0 && (
-        <div className="mt-8 bg-white rounded-lg border border-white/10 p-6">
+        <div className="mt-8 bg-emerald-black ring-1 ring-white/10 rounded-lg p-6">
           <h3 className="font-semibold text-ivory mb-3">Department Leaderboard</h3>
           <div className="space-y-2">
             {leaderboard.map((d, i) => (
@@ -188,7 +188,7 @@ function Modal({ title, children, onClose }) {
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/40" onClick={onClose} />
-      <div className="relative bg-white rounded-lg shadow-2xl border border-white/10 w-full max-w-md p-6">
+      <div className="relative bg-[#0A3A2F] rounded-lg shadow-2xl border border-white/10 w-full max-w-md p-6">
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-bold text-ivory text-lg">{title}</h3>
           <button onClick={onClose} className="text-ivory-dim hover:text-ivory">×</button>

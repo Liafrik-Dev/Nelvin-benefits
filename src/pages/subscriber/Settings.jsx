@@ -35,7 +35,7 @@ export default function Settings() {
           <p className="text-ivory-muted text-sm">Manage security, communication channels, and privacy settings.</p>
         </div>
 
-        <form onSubmit={handleSave} className="bg-white rounded-xl border border-white/10 p-6 sm:p-8 shadow-sm space-y-6">
+        <form onSubmit={handleSave} className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 sm:p-8 shadow-sm space-y-6">
           <div className="space-y-4">
             <h3 className="font-bold text-ivory text-base font-heading flex items-center gap-2">
               <Bell className="w-4 h-4 text-[#D6B56D]" /> Notification Channels

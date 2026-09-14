@@ -26,7 +26,7 @@ export function EmptyState({ icon: Icon = Inbox, title = "Nothing here yet", des
 export function ErrorState({ message = "Something went wrong. Please try again." , onRetry }) {
   return (
     <div className="flex flex-col items-center justify-center text-center py-14 px-4">
-      <span className="w-14 h-14 rounded-lg bg-red-50 ring-1 ring-red-200 flex items-center justify-center mb-4">
+      <span className="w-14 h-14 rounded-lg bg-[#103F35]/70 ring-1 ring-red-200 flex items-center justify-center mb-4">
         <SearchX className="w-6 h-6 text-red-500" />
       </span>
       <h3 className="text-base font-bold text-[#F5F1E8]">Could not load data</h3>

@@ -21,7 +21,7 @@ export default function BusinessLocations() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {locations.map((loc) => (
-          <div key={loc.id} className="bg-white rounded-lg border border-white/10 p-6 space-y-3 shadow-sm">
+          <div key={loc.id} className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-3 shadow-sm">
             <div className="flex items-center justify-between">
               <Building2 className="w-6 h-6 text-[#D6B56D]" />
               <span className="text-xs font-bold text-[#D6B56D] bg-[#0A3A2F] px-2.5 py-0.5 rounded-full uppercase">{loc.status}</span>

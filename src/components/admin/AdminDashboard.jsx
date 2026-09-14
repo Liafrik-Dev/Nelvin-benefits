@@ -140,13 +140,13 @@ export default function AdminDashboard() {
         <div className="flex gap-2 mb-6">
           <button
             onClick={() => setTab("applications")}
-            className={`px-5 py-2 rounded-full text-sm font-medium ${tab === "applications" ? "bg-[#062B23] text-white" : "bg-white border border-white/12 text-ivory-muted"}`}
+            className={`px-5 py-2 rounded-full text-sm font-medium ${tab === "applications" ? "bg-[#062B23] text-white" : "bg-emerald-black ring-1 ring-white/10 border border-transparent text-ivory-muted"}`}
           >
             Vendor Applications ({applications.length})
           </button>
           <button
             onClick={() => setTab("offers")}
-            className={`px-5 py-2 rounded-full text-sm font-medium ${tab === "offers" ? "bg-[#062B23] text-white" : "bg-white border border-white/12 text-ivory-muted"}`}
+            className={`px-5 py-2 rounded-full text-sm font-medium ${tab === "offers" ? "bg-[#062B23] text-white" : "bg-emerald-black ring-1 ring-white/10 border border-transparent text-ivory-muted"}`}
           >
             Offers ({offers.length})
           </button>
@@ -161,14 +161,14 @@ export default function AdminDashboard() {
                 <button
                   key={s.key}
                   onClick={() => setStatusFilter(s.key)}
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${statusFilter === s.key ? "bg-[#D6B56D] text-white" : "bg-white border border-white/12 text-ivory-muted"}`}
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${statusFilter === s.key ? "bg-[#D6B56D] text-white" : "bg-emerald-black ring-1 ring-white/10 border border-transparent text-ivory-muted"}`}
                 >
                   {s.label} ({counts[s.key]})
                 </button>
               ))}
             </div>
 
-            <div className="bg-white rounded-lg border border-white/10 divide-y divide-white/10">
+            <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg divide-y divide-white/10">
               {filteredApps.length === 0 && <p className="p-6 text-sm text-ivory-dim">No {statusFilter === "all" ? "" : statusFilter} applications.</p>}
               {filteredApps.map((app) => (
                 <div key={app.id} className="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -186,8 +186,8 @@ export default function AdminDashboard() {
                     <span
                       className={`text-xs font-semibold px-3 py-1 rounded-full ${
                         app.status === "approved" ? "bg-[#103F35]/60 text-[#D6B56D] ring-1 ring-[#D6B56D]/25"
-                        : app.status === "rejected" ? "bg-rose-100 text-rose-700"
-                        : "bg-amber-100 text-amber-700"
+                        : app.status === "rejected" ? "bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20"
+                        : "bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20"
                       }`}
                     >
                       {app.status}
@@ -204,7 +204,7 @@ export default function AdminDashboard() {
             </div>
           </>
         ) : (
-          <div className="bg-white rounded-lg border border-white/10 divide-y divide-white/10">
+          <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg divide-y divide-white/10">
             {offers.length === 0 && <p className="p-6 text-sm text-ivory-dim">No offers.</p>}
             {offers.map((offer) => (
               <div key={offer.id} className="p-4 flex items-center justify-between gap-3">
@@ -216,10 +216,10 @@ export default function AdminDashboard() {
                   </div>
                 </div>
                 <div className="flex items-center gap-2 flex-shrink-0">
-                  <Link to={`/offer/${offer.id}`} target="_blank" className="w-8 h-8 rounded-full bg-forest-secondary/60 hover:bg-white/5 flex items-center justify-center">
+                  <Link to={`/offer/${offer.id}`} target="_blank" className="w-8 h-8 rounded-full bg-forest-secondary/60 hover:bg-[#0A3A2F]/5 flex items-center justify-center">
                     <ExternalLink className="w-4 h-4 text-ivory-muted" />
                   </Link>
-                  <button onClick={() => deleteOffer(offer.id)} className="w-8 h-8 rounded-full bg-rose-50 hover:bg-rose-100 flex items-center justify-center">
+                  <button onClick={() => deleteOffer(offer.id)} className="w-8 h-8 rounded-full bg-[#103F35]/70 hover:bg-[#103F35]/70 flex items-center justify-center">
                     <Trash2 className="w-4 h-4 text-rose-600" />
                   </button>
                 </div>

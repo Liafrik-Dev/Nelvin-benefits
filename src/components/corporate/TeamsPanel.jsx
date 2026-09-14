@@ -64,7 +64,7 @@ export default function TeamsPanel({ company }) {
         </button>
       </div>
 
-      <div className="bg-white rounded-lg border border-white/10 overflow-hidden shadow-sm">
+      <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg overflow-hidden shadow-sm">
         <table className="w-full text-sm text-left">
           <thead className="bg-forest-secondary/60 text-ivory-muted text-xs uppercase tracking-wider font-semibold border-b border-white/10">
             <tr>
@@ -128,7 +128,7 @@ export default function TeamsPanel({ company }) {
                 <button
                   type="button"
                   onClick={() => setShowModal(false)}
-                  className="px-4 py-2 text-xs font-bold text-ivory-muted hover:bg-white/5 rounded-xl"
+                  className="px-4 py-2 text-xs font-bold text-ivory-muted hover:bg-[#0A3A2F]/5 rounded-xl"
                 >
                   Cancel
                 </button>

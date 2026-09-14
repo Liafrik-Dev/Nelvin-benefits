@@ -78,13 +78,13 @@ export default function AdminLayout() {
     <div className="min-h-screen bg-forest flex">
       {/* Sidebar */}
       <aside
-        className={`fixed lg:sticky top-0 z-40 lg:z-10 h-screen w-72 bg-white border-r border-white/10 flex-shrink-0 transition-transform duration-200 ${
+        className={`fixed lg:sticky top-0 z-40 lg:z-10 h-screen w-72 bg-[#062B23] border-r border-white/10 flex-shrink-0 transition-transform duration-200 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         }`}
       >
         <div className="h-16 px-5 flex items-center justify-between border-b border-white/10">
           <Link to="/admin" className="flex items-center gap-2" onClick={() => setSidebarOpen(false)}>
-            <div className="w-8 h-8 bg-amber-500 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-[#103F35] rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">N</span>
             </div>
             <span className="font-bold text-ivory font-heading">Nelvin Admin</span>
@@ -113,7 +113,7 @@ export default function AdminLayout() {
                 {item.label}
               </span>
               {item.phase && (
-                <span className="text-[10px] uppercase tracking-wide text-ivory-dim bg-white/5 px-1.5 py-0.5 rounded">
+                <span className="text-[10px] uppercase tracking-wide text-ivory-dim bg-white/10 px-1.5 py-0.5 rounded">
                   {item.phase}
                 </span>
               )}
@@ -131,7 +131,7 @@ export default function AdminLayout() {
 
       {/* Main */}
       <div className="flex-1 min-w-0 flex flex-col">
-        <header className="sticky top-0 z-20 bg-white border-b border-white/10 h-16 px-4 sm:px-6 flex items-center justify-between gap-3">
+        <header className="sticky top-0 z-20 bg-emerald-black border-b border-white/10 h-16 px-4 sm:px-6 flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <button
               className="lg:hidden text-ivory-muted"

@@ -117,7 +117,7 @@ export default function AdminSettings() {
 
 function Section({ title, children }) {
   return (
-    <div className="bg-white rounded-lg border border-white/10 p-5 sm:p-6">
+    <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-5 sm:p-6">
       <h2 className="font-semibold text-ivory mb-3">{title}</h2>
       <div className="space-y-3">{children}</div>
     </div>

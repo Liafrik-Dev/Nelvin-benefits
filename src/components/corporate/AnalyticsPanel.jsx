@@ -90,10 +90,10 @@ export default function AnalyticsPanel({ company, employees }) {
       </div>
 
       {loading ? (
-        <div className="bg-white rounded-lg border border-white/10 p-12 text-center text-sm text-ivory-dim">Loading analytics…</div>
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-12 text-center text-sm text-ivory-dim">Loading analytics…</div>
       ) : (
         <>
-          <div className="bg-white rounded-lg border border-white/10 p-6 mb-6 flex items-center gap-4">
+          <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 mb-6 flex items-center gap-4">
             <div className="w-14 h-14 rounded-xl bg-[#103F35]/60 text-[#D6B56D] ring-1 ring-[#D6B56D]/25 flex items-center justify-center"><Users className="w-6 h-6" /></div>
             <div>
               <p className="text-xs text-ivory-dim font-semibold uppercase tracking-wider">Employee Engagement</p>
@@ -103,7 +103,7 @@ export default function AnalyticsPanel({ company, employees }) {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-white rounded-lg border border-white/10 p-6">
+            <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6">
               <div className="flex items-center gap-2 mb-3"><TrendingUp className="w-4 h-4 text-[#D6B56D]" /><h3 className="font-semibold text-ivory">Monthly Usage</h3></div>
               <div className="h-56">
                 <ResponsiveContainer width="100%" height="100%">
@@ -118,7 +118,7 @@ export default function AnalyticsPanel({ company, employees }) {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg border border-white/10 p-6">
+            <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6">
               <h3 className="font-semibold text-ivory mb-3">Savings by Department</h3>
               <div className="h-56">
                 <ResponsiveContainer width="100%" height="100%">
@@ -133,7 +133,7 @@ export default function AnalyticsPanel({ company, employees }) {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg border border-white/10 p-6">
+            <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6">
               <div className="flex items-center gap-2 mb-3"><PieIcon className="w-4 h-4 text-[#D6B56D]" /><h3 className="font-semibold text-ivory">Top Categories</h3></div>
               <div className="h-56">
                 <ResponsiveContainer width="100%" height="100%">
@@ -148,7 +148,7 @@ export default function AnalyticsPanel({ company, employees }) {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg border border-white/10 p-6">
+            <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6">
               <h3 className="font-semibold text-ivory mb-3">Most Redeemed Offers</h3>
               <div className="space-y-2 mt-2">
                 {topOffers.length === 0 ? (

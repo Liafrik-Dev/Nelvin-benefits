@@ -17,7 +17,7 @@ export default function BusinessSettings() {
         <p className="text-sm text-ivory-muted mt-1">Configure notification webhooks and point-of-sale PINs.</p>
       </div>
 
-      <form onSubmit={handleSave} className="bg-white rounded-lg border border-white/10 p-6 space-y-4 shadow-sm">
+      <form onSubmit={handleSave} className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-4 shadow-sm">
         <div>
           <label className="block text-xs font-bold text-ivory mb-1">Redemption Verification PIN</label>
           <input

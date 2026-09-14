@@ -44,7 +44,7 @@ export default function ChoosePlan() {
           </p>
         </motion.div>
         <div className="absolute -top-20 -right-20 w-72 h-72 bg-[#D6B56D]/20 rounded-full blur-3xl" />
-        <div className="absolute -bottom-24 -left-20 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl" />
+        <div className="absolute -bottom-24 -left-20 w-72 h-72 bg-[#103F35]/10 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 pb-20 relative z-10">
@@ -62,12 +62,12 @@ export default function ChoosePlan() {
                 className={`rounded-lg p-8 relative transition-shadow ${
                   plan.highlight
                     ? "bg-[#D6B56D] text-white shadow-2xl md:-mt-4 md:pb-10"
-                    : "bg-white border border-white/12 hover:shadow-xl"
+                    : "bg-emerald-black ring-1 ring-white/10 border border-transparent hover:shadow-xl"
                 } ${isSelected ? "ring-2 ring-amber-400" : ""}`}
               >
                 {plan.highlight && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="bg-amber-500 text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">
+                    <span className="bg-[#103F35] text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">
                       Most Popular
                     </span>
                   </div>
@@ -90,7 +90,7 @@ export default function ChoosePlan() {
                   onClick={() => handlePick(plan)}
                   className={`w-full py-3 rounded-full font-semibold text-sm transition-colors block text-center ${
                     plan.highlight
-                      ? "bg-white text-[#D6B56D] hover:bg-white/5"
+                      ? "bg-[#0A3A2F] text-[#D6B56D] hover:bg-[#0A3A2F]/5"
                       : "bg-[#D6B56D] text-white hover:bg-[#E5C77A]"
                   }`}
                 >

@@ -11,7 +11,7 @@ function EmployeeMock() {
           <span className="text-xs font-bold">Good morning, Ada</span>
           <span className="bg-[#D6B56D] rounded-full px-2 py-0.5 text-[8px] font-extrabold text-[#062B23]">₦2,450</span>
         </div>
-        <div className="mt-3 bg-white/10 rounded-lg p-3">
+        <div className="mt-3 bg-[#0A3A2F]/10 rounded-lg p-3">
           <p className="text-[8px] text-white/60 font-bold uppercase">Today's pick</p>
           <p className="text-xs font-bold mt-1">2-for-1 suya night</p>
         </div>
@@ -167,7 +167,7 @@ export default function OnePlatformExperiences() {
               className={`text-left rounded-lg px-5 py-4 border-2 transition-all ${
                 active === ex.id
                   ? "bg-[#D6B56D] border-[#D6B56D] text-[#062B23] shadow-lg"
-                  : "bg-white/5 border-white/10 text-ivory/80 hover:bg-white/10 hover:text-ivory"
+                  : "bg-[#0A3A2F]/5 border-white/10 text-ivory/80 hover:bg-[#0A3A2F]/10 hover:text-ivory"
               }`}
             >
               <p className="text-sm font-extrabold">{ex.name}</p>

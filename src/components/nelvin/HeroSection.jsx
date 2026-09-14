@@ -59,7 +59,7 @@ export default function HeroSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 lg:pt-40 pb-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Copy */}
         <div>
-          <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur border border-gold-soft rounded-lg pl-1 pr-4 py-1 mb-6 shadow-sm">
+          <div className="inline-flex items-center gap-2 bg-[#0A3A2F]/5 backdrop-blur border border-gold-soft rounded-lg pl-1 pr-4 py-1 mb-6 shadow-sm">
             <span className="bg-[#D6B56D]/15 text-[#D6B56D] border border-[#D6B56D]/30 text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded">Open To All</span>
             <span className="text-xs font-semibold text-ivory/90">For Individuals, Particulars, HR Teams & Merchants</span>
           </div>
@@ -120,7 +120,7 @@ export default function HeroSection() {
           <div className="mt-6 flex flex-col sm:flex-row gap-3.5">
             <Link
               to="/corporate"
-              className="group inline-flex items-center justify-center gap-2.5 bg-white/10 hover:bg-emerald-black/35 backdrop-blur border border-white/30 hover:border-white text-white font-bold text-xs h-10 px-6 rounded-full transition-all"
+              className="group inline-flex items-center justify-center gap-2.5 bg-[#0A3A2F]/10 hover:bg-emerald-black/35 backdrop-blur border border-white/30 hover:border-white text-white font-bold text-xs h-10 px-6 rounded-full transition-all"
             >
               <Play className="w-3.5 h-3.5 fill-current text-[#D6B56D]" />
               Book Corporate Demo
@@ -140,10 +140,10 @@ export default function HeroSection() {
                   className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
                     activeVideoIndex === idx
                       ? "bg-[#D6B56D] text-[#062B23] shadow-md scale-105"
-                      : "bg-white/10 text-ivory/70 hover:bg-emerald-black/35 hover:text-white"
+                      : "bg-[#0A3A2F]/10 text-ivory/70 hover:bg-emerald-black/35 hover:text-white"
                   }`}
                 >
-                  <span className={`w-2 h-2 rounded-full ${activeVideoIndex === idx ? "bg-[#062B23] animate-ping" : "bg-white/50"}`} />
+                  <span className={`w-2 h-2 rounded-full ${activeVideoIndex === idx ? "bg-[#062B23] animate-ping" : "bg-[#0A3A2F]/50"}`} />
                   {vid.title}
                 </button>
               ))}
@@ -204,7 +204,7 @@ export default function HeroSection() {
                   className={`p-2.5 rounded-xl border text-left transition-all flex items-center gap-2 ${
                     activePhotoIndex === i
                       ? "bg-[#D6B56D] border-[#D6B56D] text-[#062B23] font-extrabold shadow-md scale-105"
-                      : "bg-white/10 border-white/15 text-ivory/80 hover:bg-emerald-black/35 hover:text-white"
+                      : "bg-[#0A3A2F]/10 border-white/15 text-ivory/80 hover:bg-emerald-black/35 hover:text-white"
                   }`}
                 >
                   <IconComp className="w-4 h-4 shrink-0" />

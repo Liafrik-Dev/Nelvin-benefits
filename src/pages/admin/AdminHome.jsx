@@ -20,14 +20,14 @@ const PIE_COLORS = ["#166534", "#65a30d", "#d97706", "#9333ea", "#0ea5e9", "#ef4
 function StatCard({ icon: Icon, label, value, accent = "emerald", to }) {
   const accents = {
     emerald: "bg-[#0A3A2F] text-[#D6B56D]",
-    sky: "bg-sky-50 text-sky-700",
-    amber: "bg-amber-50 text-amber-700",
-    violet: "bg-violet-50 text-violet-700",
-    rose: "bg-rose-50 text-rose-700",
-    gray: "bg-white/5 text-ivory",
+    sky: "bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20",
+    amber: "bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20",
+    violet: "bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20",
+    rose: "bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20",
+    gray: "bg-[#0A3A2F]/5 text-ivory",
   };
   const inner = (
-    <div className="bg-white rounded-lg border border-white/10 p-4 sm:p-5 hover:shadow-md transition-shadow h-full">
+    <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-4 sm:p-5 hover:shadow-md transition-shadow h-full">
       <div className="flex items-center gap-3">
         <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${accents[accent]}`}>
           <Icon className="w-5 h-5" />
@@ -259,7 +259,7 @@ export default function AdminHome() {
 
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div className="bg-white rounded-lg border border-white/10 p-5">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-5">
           <div className="flex items-center gap-2 mb-4">
             <TrendingUp className="w-4 h-4 text-[#D6B56D]" />
             <h3 className="font-semibold text-ivory">User Growth</h3>
@@ -278,9 +278,9 @@ export default function AdminHome() {
           </ResponsiveContainer>
         </div>
 
-        <div className="bg-white rounded-lg border border-white/10 p-5">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-5">
           <div className="flex items-center gap-2 mb-4">
-            <Crown className="w-4 h-4 text-amber-500" />
+            <Crown className="w-4 h-4 text-[#E5C77A]" />
             <h3 className="font-semibold text-ivory">Membership Sales</h3>
           </div>
           <ResponsiveContainer width="100%" height={240}>
@@ -294,7 +294,7 @@ export default function AdminHome() {
           </ResponsiveContainer>
         </div>
 
-        <div className="bg-white rounded-lg border border-white/10 p-5">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-5">
           <div className="flex items-center gap-2 mb-4">
             <Tag className="w-4 h-4 text-[#D6B56D]" />
             <h3 className="font-semibold text-ivory">Offers by Category</h3>
@@ -311,9 +311,9 @@ export default function AdminHome() {
           </ResponsiveContainer>
         </div>
 
-        <div className="bg-white rounded-lg border border-white/10 p-5">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-5">
           <div className="flex items-center gap-2 mb-4">
-            <Globe2 className="w-4 h-4 text-sky-700" />
+            <Globe2 className="w-4 h-4 text-[#D6B56D]" />
             <h3 className="font-semibold text-ivory">Offers by Country</h3>
           </div>
           <ResponsiveContainer width="100%" height={240}>
@@ -328,7 +328,7 @@ export default function AdminHome() {
           </ResponsiveContainer>
         </div>
 
-        <div className="bg-white rounded-lg border border-white/10 p-5 lg:col-span-2">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-5 lg:col-span-2">
           <div className="flex items-center gap-2 mb-4">
             <CreditCard className="w-4 h-4 text-[#D6B56D]" />
             <h3 className="font-semibold text-ivory">Revenue Overview</h3>
@@ -354,7 +354,7 @@ export default function AdminHome() {
 
       {/* Recent lists */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div className="bg-white rounded-lg border border-white/10 p-5">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-5">
           <div className="flex items-center justify-between mb-3">
             <h3 className="font-semibold text-ivory">Recent Registrations</h3>
             <Link to="/admin/users" className="text-xs text-[#D6B56D] font-semibold">View all</Link>
@@ -373,7 +373,7 @@ export default function AdminHome() {
           </ul>
         </div>
 
-        <div className="bg-white rounded-lg border border-white/10 p-5">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-5">
           <div className="flex items-center justify-between mb-3">
             <h3 className="font-semibold text-ivory">Latest Offers</h3>
             <Link to="/admin/offers" className="text-xs text-[#D6B56D] font-semibold">View all</Link>
@@ -392,7 +392,7 @@ export default function AdminHome() {
           </ul>
         </div>
 
-        <div className="bg-white rounded-lg border border-white/10 p-5">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-5">
           <div className="flex items-center justify-between mb-3">
             <h3 className="font-semibold text-ivory">Recent Payments</h3>
             <Link to="/admin/payments" className="text-xs text-[#D6B56D] font-semibold">View all</Link>
@@ -416,7 +416,7 @@ export default function AdminHome() {
           </ul>
         </div>
 
-        <div className="bg-white rounded-lg border border-white/10 p-5">
+        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-5">
           <div className="flex items-center justify-between mb-3">
             <h3 className="font-semibold text-ivory">Recent Reviews</h3>
             <Link to="/admin/reviews" className="text-xs text-[#D6B56D] font-semibold">View all</Link>

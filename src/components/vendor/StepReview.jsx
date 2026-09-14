@@ -67,7 +67,7 @@ export default function StepReview({ form, confirmed, setConfirmed, onBack, onSu
             ) : null
           )}
         </div>
-        <p className="text-xs text-ivory-dim mt-3">Verification Status: <span className="text-amber-600 font-medium">Pending Review</span></p>
+        <p className="text-xs text-ivory-dim mt-3">Verification Status: <span className="text-[#E5C77A] font-medium">Pending Review</span></p>
       </div>
 
       <label className="flex items-start gap-3 cursor-pointer">
@@ -81,7 +81,7 @@ export default function StepReview({ form, confirmed, setConfirmed, onBack, onSu
       </label>
 
       <div className="flex gap-3">
-        <button type="button" onClick={onBack} className="px-6 py-3.5 rounded-full text-sm font-semibold text-ivory-muted hover:bg-white/5 transition-all">
+        <button type="button" onClick={onBack} className="px-6 py-3.5 rounded-full text-sm font-semibold text-ivory-muted hover:bg-[#0A3A2F]/5 transition-all">
           Back
         </button>
         <button

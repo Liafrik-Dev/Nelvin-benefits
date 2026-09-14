@@ -17,7 +17,7 @@ export default function BusinessCustomers() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {companies.map((c) => (
-          <div key={c.name} className="bg-white rounded-lg border border-white/10 p-6 space-y-3 shadow-sm">
+          <div key={c.name} className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-3 shadow-sm">
             <Building2 className="w-6 h-6 text-[#D6B56D]" />
             <h3 className="font-bold text-ivory text-lg font-heading">{c.name}</h3>
             <div className="pt-2 border-t border-gray-50 text-xs space-y-1 text-ivory-muted">
