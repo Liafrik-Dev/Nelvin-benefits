@@ -70,11 +70,11 @@ const footerColumns = [
 ];
 
 const socials = [
-  { icon: Facebook, label: "Facebook" },
-  { icon: Twitter, label: "X" },
-  { icon: Linkedin, label: "LinkedIn" },
-  { icon: Instagram, label: "Instagram" },
-  { icon: Youtube, label: "YouTube" },
+  { icon: Facebook, label: "Facebook", href: "https://www.facebook.com/nelvinbenefits" },
+  { icon: Twitter, label: "X", href: "https://x.com/nelvinbenefits" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/nelvinbenefits" },
+  { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/nelvinbenefits" },
+  { icon: Youtube, label: "YouTube", href: "https://www.youtube.com/@nelvinbenefits" },
 ];
 
 export default function Footer() {
@@ -128,7 +128,14 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-3">
             {socials.map((s) => (
-              <a key={s.label} href="#" aria-label={s.label} className="w-8 h-8 bg-white hover:bg-[#00BD00] hover:text-white rounded-full flex items-center justify-center transition-colors border border-[#180126]/10 text-[#180126]/60">
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                className="w-8 h-8 bg-white hover:bg-[#00BD00] hover:text-white rounded-full flex items-center justify-center transition-colors border border-[#180126]/10 text-[#180126]/60"
+              >
                 <s.icon className="w-3.5 h-3.5" />
               </a>
             ))}

@@ -19,10 +19,15 @@ export default function OfferDetail() {
   const [redeemed, setRedeemed] = useState(false);
 
   useEffect(() => {
-    db.entities.Offer.get(offerId).then((data) => {
-      setOffer(data);
-      setLoading(false);
-    });
+    db.entities.Offer.get(offerId)
+      .then((data) => {
+        setOffer(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setOffer(null);
+        setLoading(false);
+      });
   }, [offerId]);
 
   const handleRedeem = async () => {

@@ -58,6 +58,12 @@ const fallbackDb = {
     verifyOtp: async ({ email, otpCode }) => {
       return { access_token: "demo_session_token" };
     },
+    updateMe: async (patch) => {
+      Object.assign(mockUser, patch || {});
+      return { ...mockUser };
+    },
+    resetPassword: async () => {},
+    resetPasswordRequest: async () => {},
     setToken: (token) => {
       localStorage.setItem("nv_auth_token", token);
     },
@@ -65,7 +71,6 @@ const fallbackDb = {
       localStorage.removeItem("nv_auth_token");
     },
     redirectToLogin: () => {},
-    resetPasswordRequest: async () => {},
   },
   entities: new Proxy(
     {},
@@ -76,13 +81,17 @@ const fallbackDb = {
         get: async (id) => (prop === "Company" ? mockCompany : null),
         create: async (data) => ({ id: "id_" + Date.now(), ...data }),
         update: async (id, data) => ({ id, ...data }),
+        updateMe: async (patch) => ({ ...mockUser, ...patch }),
         delete: async () => ({}),
+        bulkUpdate: async () => ({}),
+        bulkCreate: async () => [],
       }),
     },
   ),
   integrations: {
     Core: {
       UploadFile: async () => ({ file_url: "" }),
+      SendEmail: async () => ({}),
     },
   },
 };

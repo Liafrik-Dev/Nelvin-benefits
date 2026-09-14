@@ -30,7 +30,7 @@ const NAV = [
 
 function businessAllowed(user) {
   const r = (user?.role || "").toLowerCase();
-  return r === "business" || r === "partner" || r === "vendor" || r === "admin" || r === "founder" || true;
+  return r === "business" || r === "partner" || r === "vendor" || r === "admin" || r === "founder";
 }
 
 export default function BusinessLayout() {

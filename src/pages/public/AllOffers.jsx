@@ -18,10 +18,15 @@ export default function AllOffers() {
     const query = { status: "active" };
     if (category) query.category = category;
     if (country) query.country = country;
-    db.entities.Offer.filter(query, "-created_date", 150).then((data) => {
-      setOffers(data);
-      setLoading(false);
-    });
+    db.entities.Offer.filter(query, "-created_date", 150)
+      .then((data) => {
+        setOffers(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setOffers([]);
+        setLoading(false);
+      });
   }, [category, country]);
 
   return (

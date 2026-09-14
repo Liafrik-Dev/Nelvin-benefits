@@ -6,6 +6,82 @@ import { appParams } from '@/lib/app-params';
 
 const AuthContext = createContext();
 
+/**
+ * Minimal axios-like client built on native fetch. The Base44 platform injects
+ * an SDK but does not provide `createAxiosClient`; without this helper the
+ * public-settings check used to throw a ReferenceError on every boot, which
+ * silently left even authenticated users in a signed-out state.
+ *
+ * Supports the options used by this file: `baseURL`, `headers`, `token`
+ * (sent as `Authorization: Bearer <token>`) and `interceptResponses` (see below).
+ */
+function createAxiosClient({ baseURL = "", headers = {}, token = null }) {
+  const buildUrl = (url) => {
+    if (/^https?:\/\//i.test(url)) return url;
+    return `${baseURL.replace(/\/$/, "")}/${url.replace(/^\//, "")}`;
+  };
+
+  const request = async (method, url, options = {}) => {
+    const { interceptResponses, ...fetchOptions } = options;
+    const mergedHeaders = { ...headers, ...(fetchOptions.headers || {}) };
+    if (token) mergedHeaders.Authorization = `Bearer ${token}`;
+
+    let res;
+    try {
+      res = await fetch(buildUrl(url), {
+        method,
+        credentials: "include",
+        ...fetchOptions,
+        headers: mergedHeaders,
+      });
+    } catch (err) {
+      // Network failure — surfaces a fake "axios-like" error for the callers.
+      const networkError = new Error(err.message || "Network request failed");
+      networkError.status = 0;
+      networkError.data = null;
+      throw networkError;
+    }
+
+    let data = null;
+    const text = await res.text();
+    if (text) {
+      try {
+        data = JSON.parse(text);
+      } catch {
+        data = text;
+      }
+    }
+
+    if (!res.ok) {
+      const error = new Error(data?.message || data?.error || `Request failed with status ${res.status}`);
+      error.status = res.status;
+      error.data = data;
+      throw error;
+    }
+    return data;
+  };
+
+  return {
+    get: (url, opts) => request("GET", url, opts),
+    post: (url, body, opts) =>
+      request("POST", url, {
+        ...(body === undefined ? {} : { body: JSON.stringify(body) }),
+        ...opts,
+      }),
+    put: (url, body, opts) =>
+      request("PUT", url, {
+        ...(body === undefined ? {} : { body: JSON.stringify(body) }),
+        ...opts,
+      }),
+    patch: (url, body, opts) =>
+      request("PATCH", url, {
+        ...(body === undefined ? {} : { body: JSON.stringify(body) }),
+        ...opts,
+      }),
+    delete: (url, opts) => request("DELETE", url, opts),
+  };
+}
+
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -40,7 +116,7 @@ export const AuthProvider = ({ children }) => {
         setAppPublicSettings(publicSettings);
         
         // If we got the app public settings successfully, check if user is authenticated
-        if (appParams.token) {
+        if (appParams.token || (await db.auth.isAuthenticated())) {
           await checkUserAuth();
         } else {
           setIsLoadingAuth(false);
@@ -52,8 +128,10 @@ export const AuthProvider = ({ children }) => {
         console.error('App state check failed:', appError);
         
         // Handle app-level errors
+        let handled = false;
         if (appError.status === 403 && appError.data?.extra_data?.reason) {
           const reason = appError.data.extra_data.reason;
+          handled = true;
           if (reason === 'auth_required') {
             setAuthError({
               type: 'auth_required',
@@ -70,14 +148,28 @@ export const AuthProvider = ({ children }) => {
               message: appError.message
             });
           }
-        } else {
+        } else if (appError.data && typeof appError.data === 'object' && appError.status !== undefined) {
+          // Structured API error (JSON) we don't specifically map → generic app error.
           setAuthError({
             type: 'unknown',
             message: appError.message || 'Failed to load app'
           });
         }
+
+        // When the public-settings call fails for transport reasons (app is
+        // hosted outside the Base44 host, offline, CORS, HTML error pages…),
+        // still resolve auth from the injected SDK/fallback so a valid session
+        // is not lost.
+        if (!handled) {
+          if (appParams.token || (await db.auth.isAuthenticated())) {
+            await checkUserAuth();
+          } else {
+            setIsLoadingAuth(false);
+            setIsAuthenticated(false);
+            setAuthChecked(true);
+          }
+        }
         setIsLoadingPublicSettings(false);
-        setIsLoadingAuth(false);
       }
     } catch (error) {
       console.error('Unexpected error:', error);
@@ -153,6 +245,14 @@ export const AuthProvider = ({ children }) => {
       // Now check if the user is authenticated
       setIsLoadingAuth(true);
       let currentUser = await db.auth.me();
+      if (!currentUser) {
+        // No active session — treat as signed out (not an error).
+        setUser(null);
+        setIsAuthenticated(false);
+        setIsLoadingAuth(false);
+        setAuthChecked(true);
+        return;
+      }
       // Domain-based auto-join for corporate users without a linked company.
       if (!currentUser.company_id) {
         currentUser = await linkUserToCompany(currentUser);

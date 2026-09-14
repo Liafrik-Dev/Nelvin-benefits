@@ -8,7 +8,9 @@ export default function NotificationBell() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    db.entities.Notification.list("-created_date", 10).then(setNotifications);
+    db.entities.Notification.list("-created_date", 10)
+      .then(setNotifications)
+      .catch(() => {});
   }, []);
 
   const unreadCount = notifications.filter((n) => !n.read).length;

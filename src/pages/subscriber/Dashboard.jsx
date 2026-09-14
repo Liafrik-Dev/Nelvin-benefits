@@ -33,10 +33,15 @@ export default function Dashboard() {
   const [walletMsg, setWalletMsg] = useState(false);
 
   useEffect(() => {
-    db.entities.Redemption.list("-created_date", 200).then((data) => {
-      setRedemptions(data || []);
-      setLoading(false);
-    });
+    db.entities.Redemption.list("-created_date", 200)
+      .then((data) => {
+        setRedemptions(data || []);
+        setLoading(false);
+      })
+      .catch(() => {
+        setRedemptions([]);
+        setLoading(false);
+      });
   }, []);
 
   const weekStart = startOfWeek(new Date(), { weekStartsOn: 1 });

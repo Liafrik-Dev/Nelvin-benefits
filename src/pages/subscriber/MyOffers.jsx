@@ -11,10 +11,15 @@ export default function MyOffers() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    db.entities.Redemption.list("-created_date", 200).then((data) => {
-      setRedemptions(data);
-      setLoading(false);
-    });
+    db.entities.Redemption.list("-created_date", 200)
+      .then((data) => {
+        setRedemptions(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setRedemptions([]);
+        setLoading(false);
+      });
   }, []);
 
   return (

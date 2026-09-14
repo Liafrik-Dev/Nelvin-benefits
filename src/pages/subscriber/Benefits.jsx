@@ -16,10 +16,15 @@ export default function Benefits() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    db.entities.Redemption.list("-created_date", 500).then((data) => {
-      setRedemptions(data);
-      setLoading(false);
-    });
+    db.entities.Redemption.list("-created_date", 500)
+      .then((data) => {
+        setRedemptions(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setRedemptions([]);
+        setLoading(false);
+      });
   }, []);
 
   const now = new Date();

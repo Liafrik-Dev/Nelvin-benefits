@@ -18,10 +18,15 @@ export default function CountryOffers() {
   useEffect(() => {
     if (!country) return;
     setLoading(true);
-    db.entities.Offer.filter({ country: country.name, status: "active" }, "-created_date", 100).then((data) => {
-      setOffers(data);
-      setLoading(false);
-    });
+    db.entities.Offer.filter({ country: country.name, status: "active" }, "-created_date", 100)
+      .then((data) => {
+        setOffers(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setOffers([]);
+        setLoading(false);
+      });
   }, [countrySlug]);
 
   return (

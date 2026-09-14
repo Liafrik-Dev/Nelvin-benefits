@@ -18,10 +18,15 @@ export default function CategoryOffers() {
   useEffect(() => {
     if (!category) return;
     setLoading(true);
-    db.entities.Offer.filter({ category: category.name, status: "active" }, "-created_date", 100).then((data) => {
-      setOffers(data);
-      setLoading(false);
-    });
+    db.entities.Offer.filter({ category: category.name, status: "active" }, "-created_date", 100)
+      .then((data) => {
+        setOffers(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setOffers([]);
+        setLoading(false);
+      });
   }, [categorySlug]);
 
   return (

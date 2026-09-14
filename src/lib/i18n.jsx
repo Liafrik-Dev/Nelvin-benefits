@@ -60,7 +60,13 @@ export function LanguageProvider({ children }) {
      let str = DICTIONARIES[lang]?.[key] || DICTIONARIES.en[key] || key
      if (vars) {
        for (const [k, v] of Object.entries(vars)) {
-         str = str.replaceAll(`{${k}}}`, String(v))
+         const pattern = `{${k}}`
+         if (str.includes(pattern)) {
+           str = str.replaceAll(pattern, String(v))
+         } else {
+           // tolerate locale strings that already carry a doubled brace
+           str = str.replaceAll(`{${k}}}`, String(v))
+         }
        }
      }
      return str

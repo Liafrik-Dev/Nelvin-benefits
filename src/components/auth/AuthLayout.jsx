@@ -22,7 +22,7 @@ export default function AuthLayout({ children }) {
           <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-white/80">
             <RouterLink to="/offers" className="hover:text-[#B8FF00] transition-colors">Discounts</RouterLink>
             <RouterLink to="/corporate" className="hover:text-[#B8FF00] transition-colors">Pricing</RouterLink>
-            <RouterLink to="/subscriber/support" className="hover:text-[#B8FF00] transition-colors">Contact</RouterLink>
+            <RouterLink to="/support" className="hover:text-[#B8FF00] transition-colors">Contact</RouterLink>
             <RouterLink to="/business" className="hover:text-[#B8FF00] transition-colors">Request a Brand</RouterLink>
           </nav>
 
