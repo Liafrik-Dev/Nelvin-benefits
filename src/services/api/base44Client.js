@@ -76,6 +76,43 @@ function rowsOrError(data, error, fallback = []) {
   return (data == null ? fallback : data).map(hydrateRow);
 }
 
+/* ------------------------------------------------------------------ */
+/* Degraded mode: when a Supabase table is missing (e.g. migrations    */
+/* not applied yet), transparently fall back to the seeded in-memory   */
+/* database so the platform stays fully functional.                    */
+/* ------------------------------------------------------------------ */
+let fallbackRef = null; // filled after fallbackDb is defined (module init)
+
+function isMissingTable(error) {
+  const code = error && error.code;
+  const msg = String((error && (error.message) || "") || "");
+  const combined = `${code} ${msg}`;
+  return (
+    combined.includes("PGRST205") ||   // Could not find the table in the schema cache
+    combined.includes("PGRST301") ||   // inspect could not find column/relationship
+    combined.includes("42703") ||      // undefined_column
+    combined.includes("42P01") ||      // undefined_table
+    msg.includes("Could not find the table") ||
+    msg.includes("in the schema cache") ||
+    msg.includes("relation") && msg.includes("does not exist")
+  );
+}
+
+function degradeEntity(entity) {
+  resolvedBackend = fallbackRef || fallbackDb;
+  return resolvedBackend.entities[entity];
+}
+
+function wrapDegrade(entity, fn, args, publicName) {
+  return fn(...args).catch((err) => {
+    if (!isMissingTable(err)) throw err;
+    const fb = degradeEntity(entity);
+    if (!fb) throw err;
+    const method = fb[publicName || fn.name];
+    return typeof method === "function" ? method(...args) : Promise.resolve(null);
+  });
+}
+
 function applyFilters(query, filters) {
   for (const [k, v] of Object.entries(filters || {})) {
     const col = toLabel(k);
@@ -117,62 +154,78 @@ function pickWritable(rows) {
 
 function makeSupabaseEntity(entity) {
   const table = toLabel(entity);
+
+  async function doFilter(filters = {}, sort, limit) {
+    const supabase = await getSupabase();
+    let q = supabase.from(table).select("*");
+    q = applyFilters(q, filters);
+    if (sort) {
+      const { by, dir } = toSupabaseOrder(sort);
+      q = q.order(by, { ascending: dir !== "desc" });
+    } else {
+      q = q.order("created_at", { ascending: false });
+    }
+    if (limit) q = q.limit(limit);
+    const { data, error } = await q;
+    return rowsOrError(data, error);
+  }
+  async function doList(sort, limit) {
+    return doFilter({}, sort, limit);
+  }
+  async function doGet(id) {
+    const supabase = await getSupabase();
+    const { data, error } = await supabase
+      .from(table)
+      .select("*")
+      .eq("id", id)
+      .maybeSingle();
+    const row = rowsOrError(data, error)[0];
+    return row ?? null;
+  }
+  async function doCreate(data) {
+    const supabase = await getSupabase();
+    const payload = pickWritable([data])[0];
+    const { data: created, error } = await supabase
+      .from(table)
+      .insert(payload)
+      .select("*")
+      .single();
+    if (error) throw new Error(error.message);
+    return hydrateRow(created);
+  }
+  async function doUpdate(id, patch) {
+    const supabase = await getSupabase();
+    const payload = pickWritable([patch])[0];
+    const { data, error } = await supabase
+      .from(table)
+      .update(payload)
+      .eq("id", id)
+      .select("*")
+      .maybeSingle();
+    const rows = rowsOrError(data, error);
+    return rows[0] ?? { id, ...patch };
+  }
+  async function doDelete(id) {
+    const supabase = await getSupabase();
+    const { error } = await supabase.from(table).delete().eq("id", id);
+    if (error) throw new Error(error.message);
+  }
+  async function doBulkCreate(rows) {
+    const supabase = await getSupabase();
+    const { data, error } = await supabase
+      .from(table)
+      .insert(pickWritable(rows || []))
+      .select("*");
+    return rowsOrError(data, error);
+  }
+
   return {
-    async filter(filters = {}, sort, limit) {
-      const supabase = await getSupabase();
-      let q = supabase.from(table).select("*");
-      q = applyFilters(q, filters);
-      if (sort) {
-        const { by, dir } = toSupabaseOrder(sort);
-        q = q.order(by, { ascending: dir !== "desc" });
-      } else {
-        q = q.order("created_at", { ascending: false });
-      }
-      if (limit) q = q.limit(limit);
-      const { data, error } = await q;
-      return rowsOrError(data, error);
-    },
-    async list(sort, limit) {
-      return this.filter({}, sort, limit);
-    },
-    async get(id) {
-      const supabase = await getSupabase();
-      const { data, error } = await supabase
-        .from(table)
-        .select("*")
-        .eq("id", id)
-        .maybeSingle();
-      const row = rowsOrError(data, error)[0];
-      return row ?? null;
-    },
-    async create(data) {
-      const supabase = await getSupabase();
-      const payload = pickWritable([data])[0];
-      const { data: created, error } = await supabase
-        .from(table)
-        .insert(payload)
-        .select("*")
-        .single();
-      if (error) throw new Error(error.message);
-      return hydrateRow(created);
-    },
-    async update(id, patch) {
-      const supabase = await getSupabase();
-      const payload = pickWritable([patch])[0];
-      const { data, error } = await supabase
-        .from(table)
-        .update(payload)
-        .eq("id", id)
-        .select("*")
-        .maybeSingle();
-      const rows = rowsOrError(data, error);
-      return rows[0] ?? { id, ...patch };
-    },
-    async delete(id) {
-      const supabase = await getSupabase();
-      const { error } = await supabase.from(table).delete().eq("id", id);
-      if (error) throw new Error(error.message);
-    },
+    filter: (filters, sort, limit) => wrapDegrade(entity, doFilter, [filters, sort, limit], "filter"),
+    list: (sort, limit) => wrapDegrade(entity, doList, [sort, limit], "list"),
+    get: (id) => wrapDegrade(entity, doGet, [id], "get"),
+    create: (data) => wrapDegrade(entity, doCreate, [data], "create"),
+    update: (id, patch) => wrapDegrade(entity, doUpdate, [id, patch], "update"),
+    delete: (id) => wrapDegrade(entity, doDelete, [id], "delete"),
     async bulkUpdate(items) {
       for (const item of items || []) {
         const { id, ...patch } = item;
@@ -180,14 +233,7 @@ function makeSupabaseEntity(entity) {
         await this.update(id, patch);
       }
     },
-    async bulkCreate(rows) {
-      const supabase = await getSupabase();
-      const { data, error } = await supabase
-        .from(table)
-        .insert(pickWritable(rows || []))
-        .select("*");
-      return rowsOrError(data, error);
-    },
+    bulkCreate: (rows) => wrapDegrade(entity, doBulkCreate, [rows], "bulkCreate"),
   };
 }
 
@@ -673,6 +719,8 @@ const fallbackDb = {
     },
   },
 };
+
+fallbackRef = fallbackDb;
 
 let resolvedBackend = null;
 function resolveBackend() {

@@ -3,10 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, Play, ShieldCheck, TrendingUp, Sparkles, Video, Search, MapPin, Tag, Utensils, Hotel, Dumbbell, Sparkle } from "lucide-react";
 
 const HERO_VIDEOS = [
-  { id: "team", title: "Corporate Teams", url: "https://assets.mixkit.co/videos/preview/mixkit-business-people-working-together-in-an-office-42861-large.mp4" },
-  { id: "shopping", title: "Lifestyle & Deals", url: "https://assets.mixkit.co/videos/preview/mixkit-friends-walking-with-shopping-bags-in-a-mall-42901-large.mp4" },
-  { id: "wellness", title: "Health & Fitness", url: "https://assets.mixkit.co/videos/preview/mixkit-young-woman-doing-yoga-exercises-at-home-43026-large.mp4" },
-  { id: "tech", title: "Digital Wallet", url: "https://assets.mixkit.co/videos/preview/mixkit-hands-holding-a-smartphone-over-a-wooden-table-41525-large.mp4" },
+  { id: "savanna-sunset", title: "Savanna at Sunset", url: "https://assets.mixkit.co/videos/preview/mixkit-sunset-in-the-savanna-through-a-tree-5278-large.mp4" },
+  { id: "savanna-aerial", title: "Savanna Aerial View", url: "https://assets.mixkit.co/videos/preview/mixkit-area-in-the-savanna-aerial-shot-3880-large.mp4" },
+  { id: "african-plains", title: "African Plains", url: "https://assets.mixkit.co/videos/preview/mixkit-herds-of-african-animals-on-a-vast-plain-11239-large.mp4" },
+  { id: "savanna-lake", title: "Savanna Lake", url: "https://assets.mixkit.co/videos/preview/mixkit-lake-in-a-savanna-at-sunset-5029-large.mp4" },
+  { id: "savanna-horizon", title: "Savanna Horizon", url: "https://assets.mixkit.co/videos/preview/mixkit-sunset-on-the-savanna-seen-behind-the-skyline-5031-large.mp4" },
+  { id: "savanna-tree", title: "Savanna Tree", url: "https://assets.mixkit.co/videos/preview/mixkit-huge-argan-tree-in-the-savanna-4027-large.mp4" },
 ];
 
 const LEISURE_PHOTOS = [
@@ -41,19 +43,20 @@ export default function HeroSection() {
 
   return (
     <section className="relative overflow-hidden bg-[#062B23] text-white min-h-[90vh] flex items-center">
-      {/* 4 Background Video Loop with 95% Opacity */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      {/* African Landscape Background Video Carousel with 90% Opacity */}
+      <div className="absolute inset-0 z-0 overflow-hidden bg-[#062B23]">
         <video
           key={HERO_VIDEOS[activeVideoIndex].url}
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover opacity-95 scale-105 transition-opacity duration-1000"
+          preload="auto"
+          className="w-full h-full object-cover opacity-90 scale-105 transition-opacity duration-1000"
         >
           <source src={HERO_VIDEOS[activeVideoIndex].url} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#062B23]/90 via-[#062B23]/75 to-[#062B23]/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#062B23]/90 via-[#062B23]/70 to-[#062B23]/50" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 lg:pt-40 pb-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -130,7 +133,7 @@ export default function HeroSection() {
           {/* Background Video Selector Bar */}
           <div className="mt-8 pt-6 border-t border-white/10">
             <p className="text-[10px] uppercase font-bold text-[#D6B56D] tracking-wider mb-2 flex items-center gap-1.5">
-              <Video className="w-3.5 h-3.5" /> Interactive Video Atmosphere:
+              <Video className="w-3.5 h-3.5" /> African Landscape Atmosphere:
             </p>
             <div className="flex flex-wrap gap-2">
               {HERO_VIDEOS.map((vid, idx) => (
