@@ -1,5 +1,11 @@
 import React from "react";
 
+/**
+ * Partner logo marquee. The reference keeps this banded, quiet and
+ * full-bleed with soft edge fades; the previous version faded to a light
+ * cream that clashed with the forest surface, so the fade is now a mask.
+ */
+
 const logos = [
   "Anaplan_logo.svg",
   "astrazeneca-vector-logo-v4.svg",
@@ -26,22 +32,37 @@ const logos = [
   "White__Case_logo.svg",
 ];
 
+function LogoRow() {
+  return (
+    <>
+      {logos.map((logo) => (
+        <span key={logo} className="flex shrink-0 items-center justify-center">
+          <img
+            src={`/images/benifex/logos/${logo}`}
+            alt=""
+            loading="lazy"
+            className="h-8 w-auto max-w-[124px] object-contain opacity-55 brightness-0 invert transition-opacity duration-300 hover:opacity-100 sm:h-10"
+          />
+        </span>
+      ))}
+    </>
+  );
+}
+
 export default function TrustedBrands() {
   return (
-    <section className="bg-forest-secondary py-14 overflow-hidden">
-      <p className="text-center text-xs tracking-[0.2em] text-[#F5F1E8]/50 uppercase mb-8 font-semibold">
-        Join the remarkable organisations putting people at the heart of what they do
-      </p>
-      <div className="relative overflow-hidden">
-        <div className="flex animate-scroll gap-14 items-center whitespace-nowrap">
-          {[...logos, ...logos, ...logos].map((logo, i) => (
-            <span key={i} className="flex-shrink-0 opacity-40 hover:opacity-100 transition-opacity">
-              <img src={`/images/benifex/logos/${logo}`} alt={logo} className="h-12 w-auto max-w-32 object-contain grayscale hover:grayscale-0 transition-all" />
-            </span>
-          ))}
+    <section className="surface-nv-secondary py-12 lg:py-16" aria-label="Trusted by">
+      <div className="container-nv">
+        <p className="text-balance-nv text-center text-[11px] font-bold uppercase tracking-[0.2em] text-ivory-dim">
+          Join the remarkable organisations putting people at the heart of what they do
+        </p>
+      </div>
+
+      <div className="mask-fade-x relative mt-9 overflow-hidden">
+        <div className="flex w-max animate-scroll-slow items-center gap-10 sm:gap-16">
+          <LogoRow />
+          <LogoRow />
         </div>
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#F7F3ED] to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#F7F3ED] to-transparent" />
       </div>
     </section>
   );

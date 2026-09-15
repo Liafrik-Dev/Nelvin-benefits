@@ -41,9 +41,9 @@ export default function StepFaceVerification({ form, update, onNext, onBack }) {
           {form.selfie_url ? (
             <img src={form.selfie_url} alt="Selfie preview" className="w-full h-full object-cover" />
           ) : uploading ? (
-            <Loader2 className="w-8 h-8 text-ivory/60 animate-spin" />
+            <Loader2 className="w-8 h-8 text-[#F5F1E8]/60 animate-spin" />
           ) : (
-            <Camera className="w-10 h-10 text-ivory/60" />
+            <Camera className="w-10 h-10 text-[#F5F1E8]/60" />
           )}
         </div>
 

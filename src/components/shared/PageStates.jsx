@@ -34,7 +34,7 @@ export function ErrorState({ message = "Something went wrong. Please try again."
       {onRetry && (
         <button
           onClick={onRetry}
-          className="mt-5 bg-[#103F35] text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-[#2b0140] transition-colors"
+          className="mt-5 bg-[#103F35] text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-[#0A3A2F] transition-colors"
         >
           Retry
         </button>

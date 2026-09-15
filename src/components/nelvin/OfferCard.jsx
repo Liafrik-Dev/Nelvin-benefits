@@ -26,50 +26,61 @@ function getOfferImage(offer) {
   return "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=800&q=80";
 }
 
+/**
+ * Offer card — the reference's offer tiles: image-led, a badge row, then
+ * merchant/rating and location, closing on a single full-width action.
+ */
 export default function OfferCard({ offer }) {
   const imageUrl = getOfferImage(offer);
 
   return (
     <Link
       to={`/offer/${offer.id}`}
-      className="bg-emerald-black rounded-lg overflow-hidden ring-1 ring-white/10 hover:ring-[#D6B56D]/40 hover:shadow-xl transition-shadow group block"
+      className="card-nv card-nv-interactive group block overflow-hidden"
     >
       <div className="relative h-48 overflow-hidden">
         <img
           src={imageUrl}
           alt={offer.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="absolute top-3 left-3 flex gap-2">
+        <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/45 to-transparent" />
+        <div className="absolute left-3 top-3 flex flex-wrap gap-2">
           {offer.discount_label && (
-            <span className="bg-[#062B23]/85 text-[#E5C77A] text-xs font-bold px-2.5 py-1 rounded-full">
+            <span className="rounded-full bg-gold px-2.5 py-1 text-xs font-bold text-[#062B23]">
               {offer.discount_label}
             </span>
           )}
           {offer.tag && (
-            <span className="bg-emerald-black/90 text-ivory text-xs font-medium px-2.5 py-1 rounded-full">
+            <span className="rounded-full border border-white/20 bg-[#062B23]/80 px-2.5 py-1 text-xs font-medium text-ivory backdrop-blur">
               {offer.tag}
             </span>
           )}
         </div>
       </div>
+
       <div className="p-4">
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-sm font-medium text-ivory">{offer.business_name}</span>
+        <div className="mb-2 flex items-center justify-between gap-3">
+          <span className="truncate text-sm font-medium text-ivory-muted">{offer.business_name}</span>
           {offer.rating && (
-            <div className="flex items-center gap-1">
-              <Star className="w-3.5 h-3.5 fill-[#D6B56D] text-[#E5C77A]" />
+            <span className="flex shrink-0 items-center gap-1">
+              <Star className="h-3.5 w-3.5 fill-gold text-gold" />
               <span className="text-sm font-semibold text-ivory">{offer.rating}</span>
-            </div>
+            </span>
           )}
         </div>
-        <h3 className="font-bold text-ivory mb-2 line-clamp-2">{offer.title}</h3>
-        <div className="flex items-center gap-1 text-xs text-ivory-dim mb-4">
-          <MapPin className="w-3 h-3" /> {offer.city || "Lagos"}, {offer.country || "Nigeria"}
-        </div>
-        <div className="bg-[#D6B56D] group-hover:bg-[#E5C77A] text-[#062B23] text-center py-2.5 rounded-lg text-sm font-semibold transition-colors">
-          View Offer
-        </div>
+
+        <h3 className="mb-2 line-clamp-2 font-bold text-ivory">{offer.title}</h3>
+
+        <p className="mb-4 flex items-center gap-1 text-xs text-ivory-dim">
+          <MapPin className="h-3 w-3" />
+          {offer.city || "Lagos"}, {offer.country || "Nigeria"}
+        </p>
+
+        <span className="block rounded-lg bg-gold py-2.5 text-center text-sm font-semibold text-[#062B23] transition-colors group-hover:bg-[#E5C77A]">
+          View offer
+        </span>
       </div>
     </Link>
   );

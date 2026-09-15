@@ -1,24 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { SectionHeading } from "@/components/nelvin/Brand";
+
+/**
+ * Platform overview tiles — the reference's bento of capability cards.
+ * Copy and destinations unchanged; cards now share the 16px/soft-shadow
+ * card treatment with the rest of the page.
+ */
 
 const panels = [
   {
     label: "Platform overview",
     title: "One home for everything at work",
-    desc: "Connect all your benefits, wellbeing, reward,and recognition so your people have one home for everything.",
+    desc: "Connect all your benefits, wellbeing, reward and recognition so your people have one home for everything.",
     to: "/offers",
     img: "/images/benifex/Recognition2.png",
-    bg: "bg-[#0A3A2F]",
     span: "lg:col-span-2",
   },
   {
     label: "Benefits",
-    title: "Run, manage,and administer engaging benefits",
+    title: "Run, manage and administer engaging benefits",
     desc: "Engaging employee benefits made effortless.",
     to: "/benefits",
     img: "/images/benifex/benefits-page-your-benefits.png",
-    bg: "bg-[#062B23]",
   },
   {
     label: "Wallet",
@@ -26,7 +31,6 @@ const panels = [
     desc: "Card-based allowances with ultimate flexibility.",
     to: "/choose-plan",
     img: "/images/benifex/Discounts.png",
-    bg: "bg-[#103F35]",
   },
   {
     label: "Discounts",
@@ -34,15 +38,13 @@ const panels = [
     desc: "Instantly increase post-payroll value.",
     to: "/offers",
     img: "/images/benifex/Discounts.png",
-    bg: "bg-[#103F35]",
   },
   {
-    label: "Reward & Recognition",
+    label: "Reward & recognition",
     title: "Shine a light on great work",
     desc: "Celebrate the incredible things happening across your organisation.",
     to: "/corporate",
     img: "/images/benifex/recognition-page-prove-the-impact.png",
-    bg: "bg-[#0A3A2F]",
   },
   {
     label: "Mobile",
@@ -50,7 +52,6 @@ const panels = [
     desc: "In the office, remote, or on the go.",
     to: "/",
     img: "/images/benifex/Recognition2.png",
-    bg: "bg-[#0A3A2F]",
   },
   {
     label: "Wellbeing",
@@ -58,15 +59,13 @@ const panels = [
     desc: "Customised and guided support.",
     to: "/benefits",
     img: "/images/benifex/benefits-page-your-benefits.png",
-    bg: "bg-[#062B23]",
   },
   {
-    label: "AI-powered Benefits",
+    label: "AI-powered benefits",
     title: "Next-generation engagement",
     desc: "Transformative, AI-driven technology for your people.",
     to: "/offers",
     img: "/images/benifex/Recognition2.png",
-    bg: "bg-[#103F35] ring-1 ring-[#D6B56D]/30",
   },
 ];
 
@@ -79,61 +78,58 @@ const benefits = [
 
 export default function FeaturedDeals() {
   return (
-    <section id="platform" className="bg-forest-secondary py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-14">
-          <p className="text-[#F5F1E8]/50 font-semibold text-xs tracking-[0.2em] uppercase mb-3">Explore the platform</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-[#F5F1E8] tracking-tight">
-            Nelvin brings everything together
-          </h2>
-          <p className="text-[#F5F1E8]/60 mt-4 max-w-xl mx-auto text-base">
-            One platform for benefits, discounts, reward, wellbeing,and wallet — in one home for everything.
+    <section id="explore-platform" className="surface-nv-primary section-nv">
+      <div className="container-nv">
+        <SectionHeading
+          eyebrow="Explore the platform"
+          title="Nelvin brings everything together"
+          lead="One platform for benefits, discounts, reward, wellbeing and wallet — one home for everything."
+        />
 
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {panels.map((panel, i) => (
+        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {panels.map((panel) => (
             <Link
-              key={i}
+              key={panel.title}
               to={panel.to}
-              className={`group relative rounded-xl overflow-hidden ${panel.bg} ${panel.span || ""} flex flex-col justify-end min-h-64 p-6`}
+              className={`group relative flex min-h-64 flex-col justify-end overflow-hidden rounded-2xl border border-white/10 bg-[#062B23] p-6 shadow-nv-card transition-shadow hover:shadow-nv-card-hover ${panel.span || ""}`}
             >
               <div
-                className="absolute inset-0 bg-cover bg-center opacity-40 group-hover:opacity-60 transition-opacity duration-500"
+                className="absolute inset-0 bg-cover bg-center opacity-40 transition-opacity duration-500 group-hover:opacity-60"
                 style={{ backgroundImage: `url(${panel.img})` }}
+                aria-hidden="true"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#062B23] via-[#062B23]/70 to-transparent" />
+
               <div className="relative z-10">
-                <span className="inline-block text-[11px] font-bold uppercase tracking-widest bg-emerald-black/35 text-white rounded-full px-3 py-1 mb-3">
+                <span className="inline-block rounded-full bg-[#D6B56D]/15 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-gold">
                   {panel.label}
                 </span>
-                <h3 className="text-xl font-bold text-white leading-snug mb-2">{panel.title}</h3>
-                <p className="text-white/70 text-xs leading-relaxed mb-4">{panel.desc}</p>
-                <span className="inline-flex items-center gap-2 text-white text-xs font-bold group-hover:gap-3 transition-all">
-                  Explore <ArrowRight className="w-3.5 h-3.5" />
+                <h3 className="mt-3 text-xl font-bold leading-snug text-white">{panel.title}</h3>
+                <p className="mt-2 text-xs leading-relaxed text-ivory-muted">{panel.desc}</p>
+                <span className="mt-4 inline-flex items-center gap-2 text-xs font-bold text-gold">
+                  Explore
+                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                 </span>
               </div>
             </Link>
           ))}
         </div>
 
-        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {benefits.map((b, i) => (
-            <div key={i} className="flex items-start gap-3 bg-emerald-black/90 rounded-lg ring-1 ring-white/10 p-5">
-              <span className="w-6 h-6 rounded-full bg-[#D6B56D] flex items-center justify-center text-[#062B23] text-xs font-extrabold flex-shrink-0 mt-0.5">✓</span>
-              <p className="text-sm font-semibold text-[#F5F1E8] leading-relaxed">{b}</p>
-            </div>
+        <ul className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {benefits.map((b) => (
+            <li key={b} className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.04] p-5">
+              <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold text-xs font-extrabold text-[#062B23]">
+                ✓
+              </span>
+              <p className="text-sm font-semibold leading-relaxed text-ivory">{b}</p>
+            </li>
           ))}
-        </div>
+        </ul>
 
-        <div className="text-center mt-10">
-          <Link
-            to="/offers"
-            className="group inline-flex items-center gap-3 bg-[#103F35] hover:bg-[#2b0140] text-white font-bold text-sm h-11 px-6 rounded-[23px] transition-colors"
-          >
-            <span className="transition-transform group-hover:-translate-x-1">Explore the platform</span>
-            <span className="w-4 h-4 rounded-full bg-[#D6B56D] flex items-center justify-center text-[#062B23] text-xs">→</span>
+        <div className="mt-10 text-center">
+          <Link to="/offers" className="btn-nv btn-nv-lg btn-nv-outline group">
+            Explore the platform
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </Link>
         </div>
       </div>

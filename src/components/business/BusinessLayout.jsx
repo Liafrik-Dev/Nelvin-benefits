@@ -42,7 +42,7 @@ export default function BusinessLayout() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-forest px-4">
         <div className="text-center max-w-md">
-          <Store className="w-10 h-10 text-ivory/60 mx-auto mb-3" />
+          <Store className="w-10 h-10 text-[#F5F1E8]/60 mx-auto mb-3" />
           <h1 className="text-xl font-bold text-ivory mb-2">Business access required</h1>
           <p className="text-sm text-ivory-muted mb-4">
             Connect a business account to manage offers, redemptions and analytics.
@@ -87,7 +87,7 @@ export default function BusinessLayout() {
                 `flex items-center justify-between gap-2 px-3 py-2 rounded-xl text-xs font-semibold transition-colors ${
                   isActive
                     ? "bg-[#D6B56D] text-[#062B23]"
-                    : "text-ivory/70 hover:bg-[#0A3A2F]/10 hover:text-white"
+                    : "text-[#F5F1E8]/70 hover:bg-[#0A3A2F]/10 hover:text-white"
                 }`
               }
             >

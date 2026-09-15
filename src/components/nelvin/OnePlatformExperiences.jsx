@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Check, ArrowRight } from "lucide-react";
 import { LANDING_EXPERIENCES } from "@/lib/landingData";
+import { SectionHeading } from "@/components/nelvin/Brand";
 
 function EmployeeMock() {
   return (
@@ -140,64 +141,74 @@ export default function OnePlatformExperiences() {
   const Mock = MOCKS[active] || EmployeeMock;
 
   return (
-    <section id="platform" className="bg-[#103F35] py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section id="platform" className="surface-nv-raised section-nv relative overflow-hidden">
       <div
-        className="absolute inset-0 opacity-30"
-        style={{ backgroundImage: "radial-gradient(60% 60% at 20% 10%, rgba(214,181,109,0.14) 0%, transparent 60%), radial-gradient(50% 50% at 90% 90%, rgba(16,63,53,0.8) 0%, transparent 55%)" }}
+        className="absolute inset-0 opacity-40"
+        style={{ backgroundImage: "radial-gradient(60% 60% at 18% 8%, rgba(214,181,109,0.14) 0%, transparent 60%), radial-gradient(50% 50% at 92% 92%, rgba(6,43,35,0.85) 0%, transparent 55%)" }}
+        aria-hidden="true"
       />
-      <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <p className="text-[#D6B56D] font-bold text-xs tracking-[0.2em] uppercase mb-3">One platform</p>
-          <h2 className="text-3xl sm:text-4xl xl:text-5xl font-extrabold font-heading text-white tracking-tight leading-tight">
-            Multiple experiences.<br />One beautiful platform.
-          </h2>
-          <p className="mt-4 text-white/60 leading-relaxed max-w-xl mx-auto">
-            Four tailored experiences, powered by the same engine — members, employers,
-            partners and platform operators each get their own home.
+      <div className="relative z-10 container-nv">
+        <SectionHeading
+          tone="white"
+          eyebrow="One platform"
+          title={<>Multiple experiences. One beautiful platform.</>}
+          lead="Four tailored experiences, powered by the same engine — members, employers, partners and platform operators each get their own home."
+        />
 
-
-          </p>
+        <div className="mt-12 grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-4">
+          {LANDING_EXPERIENCES.map((ex) => {
+            const on = active === ex.id;
+            return (
+              <button
+                key={ex.id}
+                type="button"
+                onClick={() => setActive(ex.id)}
+                aria-selected={on}
+                role="tab"
+                className={`rounded-xl border p-4 text-left transition-colors sm:px-5 sm:py-4 ${
+                  on
+                    ? "border-gold bg-gold text-[#062B23] shadow-nv-card"
+                    : "border-white/12 bg-white/[0.04] text-ivory-muted hover:border-[#D6B56D]/35 hover:text-ivory"
+                }`}
+              >
+                <p className="text-sm font-extrabold">{ex.name}</p>
+                <p className={`mt-1 text-[10px] font-semibold ${on ? "text-[#062B23]/70" : "text-ivory-dim"}`}>
+                  {ex.points[0]}
+                </p>
+              </button>
+            );
+          })}
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-12">
-          {LANDING_EXPERIENCES.map((ex) => (
-            <button
-              key={ex.id}
-              onClick={() => setActive(ex.id)}
-              className={`text-left rounded-lg px-5 py-4 border-2 transition-all ${
-                active === ex.id
-                  ? "bg-[#D6B56D] border-[#D6B56D] text-[#062B23] shadow-lg"
-                  : "bg-[#0A3A2F]/5 border-white/10 text-ivory/80 hover:bg-[#0A3A2F]/10 hover:text-ivory"
-              }`}
-            >
-              <p className="text-sm font-extrabold">{ex.name}</p>
-              <p className={`text-[10px] font-semibold mt-0.5 ${active === ex.id ? "text-[#F5F1E8]/60" : "text-white/45"}`}>{ex.points[0]}</p>
-            </button>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div className="mt-12 grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
           <div>
-            <h3 className="text-2xl sm:text-3xl font-extrabold font-heading text-white">{LANDING_EXPERIENCES.find((e) => e.id === active).name}</h3>
-            <p className="mt-3 text-white/60 leading-relaxed max-w-md">{LANDING_EXPERIENCES.find((e) => e.id === active).desc}</p>
-            <ul className="mt-6 space-y-2.5">
-              {LANDING_EXPERIENCES.find((e) => e.id === active).points.map((p) => (
-                <li key={p} className="flex items-center gap-2.5 text-sm text-white/85">
-                  <span className="w-5 h-5 rounded-full bg-[#D6B56D]/15 flex items-center justify-center flex-shrink-0">
-                    <Check className="w-3 h-3 text-[#D6B56D]" />
-                  </span>
-                  {p}
-                </li>
-              ))}
-            </ul>
-            <Link to={LANDING_EXPERIENCES.find((e) => e.id === active).to} className="group mt-8 inline-flex items-center gap-2.5 bg-[#D6B56D] text-[#062B23] font-extrabold text-sm h-11 px-6 rounded-[22px] hover:shadow-lg hover:-translate-y-0.5 transition-all">
-              Open {LANDING_EXPERIENCES.find((e) => e.id === active).name}
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            </Link>
+            {(() => {
+              const ex = LANDING_EXPERIENCES.find((e) => e.id === active);
+              return (
+                <>
+                  <h3 className="text-2xl font-extrabold font-heading text-white sm:text-3xl">{ex.name}</h3>
+                  <p className="mt-3 max-w-md leading-relaxed text-white/70">{ex.desc}</p>
+                  <ul className="mt-6 space-y-2.5">
+                    {ex.points.map((p) => (
+                      <li key={p} className="flex items-center gap-2.5 text-sm text-white/85">
+                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#D6B56D]/15">
+                          <Check className="h-3 w-3 text-gold" />
+                        </span>
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link to={ex.to} className="btn-nv btn-nv-md btn-nv-gold group mt-8">
+                    Open {ex.name}
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </Link>
+                </>
+              );
+            })()}
           </div>
-          <div className="flex items-center justify-center scale-90 sm:scale-100">
+          <div className="flex scale-90 items-center justify-center sm:scale-100">
             <div className="relative">
-              <div className="absolute -inset-6 bg-[#D6B56D]/10 rounded-[3rem] blur-2xl" />
+              <div className="absolute -inset-6 rounded-[3rem] bg-[#D6B56D]/10 blur-2xl" aria-hidden="true" />
               <Mock />
             </div>
           </div>

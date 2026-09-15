@@ -1,48 +1,50 @@
 import React from "react";
-import AppleIcon from "@/components/shared/AppleIcon";
-import GoogleIcon from "@/components/shared/GoogleIcon";
-import { Fingerprint, Wifi, Bell } from "lucide-react";
-
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import AppleIcon from "@/components/shared/AppleIcon";
+import GoogleIcon from "@/components/shared/GoogleIcon";
 
+/**
+ * App download band — mirrors the reference's full-bleed CTA strip with the
+ * store badges grouped beside a single primary action.
+ */
 export default function GetTheApp() {
   return (
-    <section className="bg-[#062B23] py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden text-white border-y border-[#0A3A2F]">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
-        <div className="space-y-2 text-center lg:text-left">
-          <span className="text-xs font-black uppercase tracking-widest text-[#D6B56D] bg-[#0A3A2F]/10 px-3 py-1 rounded-full">
-            Join the Movement
-          </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-heading tracking-tight">
-            Ready to connect your employee experience?
-          </h2>
-          <p className="text-white/80 text-xs sm:text-sm max-w-2xl">
-            Join remarkable organizations putting people at the heart of what they do. Book a demo today.
-          </p>
-        </div>
+    <section className="surface-nv-raised border-y border-white/10">
+      <div className="container-nv py-14 lg:py-16">
+        <div className="flex flex-col items-center justify-between gap-8 lg:flex-row">
+          <div className="text-center lg:text-left">
+            <span className="chip-nv">Join the movement</span>
+            <h2 className="text-balance-nv mt-4 text-2xl font-extrabold font-heading tracking-tight text-ivory sm:text-3xl lg:text-4xl">
+              Ready to connect your employee experience?
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm text-ivory-muted">
+              Join remarkable organisations putting people at the heart of what they do.
+              Book a demo today.
+            </p>
+          </div>
 
-        <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0">
-          <Link
-            to="/corporate"
-            className="bg-[#D6B56D] hover:bg-[#E5C77A] text-[#062B23] font-black text-xs h-12 px-7 rounded-full transition-all shadow-lg flex items-center gap-2"
-          >
-            Book Free Demo
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-          <div className="flex items-center gap-2">
-            <button className="bg-[#0A3A2F]/10 hover:bg-emerald-black/35 text-white rounded-xl px-4 py-2.5 flex items-center gap-2 transition-colors">
-              <AppleIcon className="w-4 h-4" />
-              <div className="text-left">
-                <div className="text-[8px] text-white/70 leading-none">App Store</div>
-              </div>
-            </button>
-            <button className="bg-[#0A3A2F]/10 hover:bg-emerald-black/35 text-white rounded-xl px-4 py-2.5 flex items-center gap-2 transition-colors">
-              <GoogleIcon className="w-4 h-4" />
-              <div className="text-left">
-                <div className="text-[8px] text-white/70 leading-none">Google Play</div>
-              </div>
-            </button>
+          <div className="flex shrink-0 flex-col items-center gap-4 sm:flex-row">
+            <Link to="/corporate" className="btn-nv btn-nv-lg btn-nv-gold group">
+              Book free demo
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </Link>
+            <div className="flex items-center gap-2">
+              <a
+                href="#"
+                className="btn-nv btn-nv-md border border-white/12 bg-white/[0.04] px-4 text-ivory transition-colors hover:border-[#D6B56D]/40 hover:text-gold"
+              >
+                <AppleIcon className="h-4 w-4" />
+                <span className="text-[11px] font-bold">App Store</span>
+              </a>
+              <a
+                href="#"
+                className="btn-nv btn-nv-md border border-white/12 bg-white/[0.04] px-4 text-ivory transition-colors hover:border-[#D6B56D]/40 hover:text-gold"
+              >
+                <GoogleIcon className="h-4 w-4" />
+                <span className="text-[11px] font-bold">Google Play</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>

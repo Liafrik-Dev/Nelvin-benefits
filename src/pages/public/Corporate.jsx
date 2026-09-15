@@ -160,7 +160,7 @@ export default function Corporate() {
               <div key={l} className="flex items-center gap-2 text-ivory-dim font-semibold text-sm">
                 <div className="w-8 h-8 rounded-lg bg-[#103F35]/60 text-[#D6B56D] ring-1 ring-[#D6B56D]/25 flex items-center justify-center font-bold text-xs">{l.slice(0, 1)}</div>
                 {l}
-                <span className="ml-1 text-[10px] uppercase tracking-wide text-ivory/60 border border-white/12 rounded px-1">demo</span>
+                <span className="ml-1 text-[10px] uppercase tracking-wide text-[#F5F1E8]/60 border border-white/12 rounded px-1">demo</span>
               </div>
             ))}
           </div>

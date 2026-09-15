@@ -130,7 +130,7 @@ export default function Marketplace() {
           <div className="h-64 flex items-center justify-center text-ivory-dim">Loading marketplace offers...</div>
         ) : sorted.length === 0 ? (
           <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-12 text-center space-y-3">
-            <ShoppingBag className="w-10 h-10 text-ivory/60 mx-auto" />
+            <ShoppingBag className="w-10 h-10 text-[#F5F1E8]/60 mx-auto" />
             <h3 className="text-lg font-bold text-ivory">No matching offers found</h3>
             <p className="text-ivory-muted text-xs">Try clearing filters or searching for another keyword.</p>
             <button

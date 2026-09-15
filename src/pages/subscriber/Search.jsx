@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { db } from "@/services/api/base44Client";
 import Navbar from "@/components/nelvin/Navbar";
 import Footer from "@/components/nelvin/Footer";
@@ -7,19 +8,35 @@ import OfferCard from "@/components/nelvin/OfferCard";
 import { Search as SearchIcon, Filter, X, Tag } from "lucide-react";
 
 export default function Search() {
-  const [query, setQuery] = useState("");
+  const [searchParams] = useSearchParams();
+  const [query, setQuery] = useState(() => searchParams.get("q") || "");
+  // The hero search sends category/city too; fold them into the term so the
+  // header, hero and this page all resolve to the same result set.
+  const [category] = useState(() => searchParams.get("category") || "");
+  const [city] = useState(() => searchParams.get("city") || "");
   const [offers, setOffers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState("All");
   const [minDiscount, setMinDiscount] = useState(0);
 
+  const term = [query, category, city].filter(Boolean).join(" ").trim().toLowerCase();
+
   useEffect(() => {
-    if (!query) { setOffers([]); return; }
+    if (!term) { setOffers([]); return; }
     setLoading(true);
     db.entities.Offer.filter({ is_published: true, status: "active" }, "-created_date", 100)
       .then((data) => {
         const matched = (data || []).filter((o) => {
-          const textMatches = (o.title + " " + o.business_name + " " + (o.description || "") + " " + (o.category || "")).toLowerCase().includes(query.toLowerCase());
+          const haystack = [
+            o.title,
+            o.business_name,
+            o.description,
+            o.category,
+            o.city,
+            o.country,
+          ].join(" ");
+          // Every token must appear somewhere in the offer record.
+          const textMatches = term.split(/\s+/).every((tok) => haystack.includes(tok));
           const countryMatches = selectedCountry === "All" || o.country === selectedCountry;
           const discountMatches = (o.savings_amount || 0) >= minDiscount;
           return textMatches && countryMatches && discountMatches;
@@ -28,7 +45,7 @@ export default function Search() {
         setLoading(false);
       })
       .catch(() => setLoading(false));
-  }, [query, selectedCountry, minDiscount]);
+  }, [term, selectedCountry, minDiscount]);
 
   return (
     <div className="min-h-screen bg-forest">
@@ -93,7 +110,7 @@ export default function Search() {
         </div>
 
         {/* Results */}
-        {!query ? (
+        {!term ? (
           <div className="text-center py-12 text-ivory-dim text-sm">
             Type in keywords above to search benefits.
           </div>
@@ -101,7 +118,7 @@ export default function Search() {
           <div className="text-center py-12 text-ivory-dim text-sm">Searching perks...</div>
         ) : offers.length === 0 ? (
           <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-8 text-center text-ivory-muted text-sm">
-            No results found for "{query}".
+            No results found for "{term}".
           </div>
         ) : (
           <div className="space-y-4">

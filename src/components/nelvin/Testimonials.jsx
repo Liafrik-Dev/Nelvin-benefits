@@ -1,5 +1,6 @@
 import React from "react";
 import { Star, Quote } from "lucide-react";
+import { SectionHeading } from "@/components/nelvin/Brand";
 
 const TESTIMONIALS = [
   {
@@ -27,30 +28,39 @@ const TESTIMONIALS = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="bg-forest-secondary py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <p className="text-[#E5C77A] font-bold text-xs tracking-[0.2em] uppercase mb-3">Testimonials</p>
-          <h2 className="text-3xl sm:text-4xl xl:text-5xl font-extrabold font-heading text-[#F5F1E8] tracking-tight leading-tight">
-            Loved by HR teams,{" "}
-            <span className="bg-[#D6B56D] px-2 rounded-lg">member-adored.</span>
-          </h2>
-        </div>
+    <section id="testimonials" className="surface-nv-secondary section-nv">
+      <div className="container-nv">
+        <SectionHeading
+          eyebrow="Testimonials"
+          title={<>Loved by HR teams, member-adored.</>}
+        />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
           {TESTIMONIALS.map((t) => (
-            <figure key={t.name} className="relative bg-emerald-black/90 rounded-xl ring-1 ring-white/10 p-7 ring-1 ring-[#103F35]/8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
-              <Quote className="w-8 h-8 text-[#E5C77A]/30 mb-4" />
-              <div className="flex items-center gap-1 mb-4">{[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-[#FFC107] text-[#FFC107]" />
-              ))}</div>
-              <blockquote className="text-sm text-[#F5F1E8]/80 leading-relaxed flex-1">"{t.quote}"</blockquote>
-              <figcaption className="mt-6 pt-5 border-t border-[#D6B56D]/25/8 flex items-center gap-3">
-                <img src={t.img} alt={t.name} loading="lazy" className="w-11 h-11 rounded-full object-cover ring-2 ring-[#0A3A2F]/30" />
+            <figure
+              key={t.name}
+              className="card-nv card-nv-interactive flex flex-col p-7"
+            >
+              <Quote className="mb-5 h-8 w-8 text-[#D6B56D]/30" />
+              <div className="mb-4 flex items-center gap-1" aria-label="Rated 5 out of 5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-4 w-4 fill-[#FFC107] text-[#FFC107]" />
+                ))}
+              </div>
+              <blockquote className="flex-1 text-sm leading-relaxed text-ivory-muted">
+                "{t.quote}"
+              </blockquote>
+              <figcaption className="mt-6 flex items-center gap-3 border-t border-white/10 pt-5">
+                <img
+                  src={t.img}
+                  alt=""
+                  loading="lazy"
+                  className="h-11 w-11 rounded-full object-cover ring-2 ring-[#D6B56D]/40"
+                />
                 <div>
-                  <p className="text-sm font-extrabold text-[#F5F1E8]">{t.name}</p>
-                  <p className="text-[10px] text-[#F5F1E8]/50 font-semibold">{t.role}</p>
-                  <p className="text-[10px] font-bold text-[#E5C77A]">{t.company}</p>
+                  <p className="text-sm font-extrabold text-ivory">{t.name}</p>
+                  <p className="text-[10px] font-semibold text-ivory-dim">{t.role}</p>
+                  <p className="text-[10px] font-bold text-gold">{t.company}</p>
                 </div>
               </figcaption>
             </figure>

@@ -1,56 +1,59 @@
 import React, { useState } from "react";
 import { Mail, Check, ArrowRight } from "lucide-react";
 
+/**
+ * Newsletter — a single quiet capture band. Unused by the current Home
+ * composition but kept functional and restyled for consistency.
+ */
 export default function Newsletter() {
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
 
   return (
-    <section className="bg-forest py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-3xl mx-auto">
-        <div className="rounded-xl border-2 border-[#D6B56D]/15 p-8 sm:p-12 text-center bg-forest-secondary">
-          <div className="w-12 h-12 bg-[#062B23] rounded-lg flex items-center justify-center mx-auto mb-5">
-            <Mail className="w-5 h-5 text-[#D6B56D]" />
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold font-heading text-[#F5F1E8] mb-3">
+    <section className="surface-nv-primary section-nv">
+      <div className="container-nv">
+        <div className="mx-auto max-w-3xl rounded-2xl border border-[#D6B56D]/20 bg-[#103F35] p-8 text-center shadow-nv-card sm:p-12">
+          <span className="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-[#062B23]">
+            <Mail className="h-5 w-5 text-gold" />
+          </span>
+
+          <h2 className="text-2xl font-bold font-heading text-ivory sm:text-3xl">
             Never miss a drop.
-
           </h2>
-          <p className="text-[#F5F1E8]/60 text-sm mb-8">
-            Get the week's best offers, cashback drops,and luxury reveals — straight to your inbox.
-
+          <p className="mt-3 text-sm text-ivory-muted">
+            Get the week's best offers, cashback drops and luxury reveals —
+            straight to your inbox.
           </p>
-          {done ? (
-            <p className="inline-flex items-center gap-2 bg-[#D6B56D] text-[#062B23] font-bold text-sm rounded-full px-6 py-3">
-              <Check className="w-4 h-4" /> Thank you! You are subscribed.
 
+          {done ? (
+            <p className="btn-nv btn-nv-md btn-nv-gold mx-auto mt-8">
+              <Check className="h-4 w-4" />
+              Thank you! You are subscribed.
             </p>
           ) : (
             <form
               onSubmit={(e) => { e.preventDefault(); if (email) setDone(true); }}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 max-w-md mx-auto"
+              className="mx-auto mt-8 flex max-w-md flex-col items-stretch gap-2 sm:flex-row sm:items-center"
             >
+              <label className="sr-only" htmlFor="newsletter-email">Your best email</label>
               <input
+                id="newsletter-email"
                 type="email"
                 required
-                placeholder="Your best email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 bg-emerald-black/90 rounded-lg px-5 py-3 text-sm text-[#F5F1E8] outline-none border border-[#D6B56D]/25 focus:border-[#D6B56D] placeholder:text-[#9AA39C]"
+                placeholder="Your best email"
+                className="flex-1 rounded-lg border border-white/15 bg-white/[0.05] px-5 py-3 text-sm text-ivory outline-none placeholder:text-ivory-dim focus:border-gold"
               />
-              <button
-                type="submit"
-                className="group bg-[#D6B56D] hover:bg-[#E5C77A] text-[#062B23] px-6 py-3 rounded-lg font-bold text-sm transition-colors whitespace-nowrap inline-flex items-center justify-center gap-2 shadow-md shadow-[#062B23]/30"
-              >
+              <button type="submit" className="btn-nv btn-nv-md btn-nv-gold group shrink-0">
                 Subscribe
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </button>
             </form>
           )}
-          <p className="text-xs text-[#F5F1E8]/40 mt-4">
+
+          <p className="mt-4 text-xs text-ivory-dim">
             By subscribing you agree to Nelvin's Privacy Policy. Unsubscribe anytime.
-
-
           </p>
         </div>
       </div>

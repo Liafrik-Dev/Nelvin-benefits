@@ -61,7 +61,7 @@ export default function AdminLayout() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-forest-secondary/60 px-4">
         <div className="text-center max-w-md">
-          <ShieldCheck className="w-10 h-10 text-ivory/60 mx-auto mb-3" />
+          <ShieldCheck className="w-10 h-10 text-[#F5F1E8]/60 mx-auto mb-3" />
           <h1 className="text-xl font-bold text-ivory mb-2">Admin access required</h1>
           <p className="text-sm text-ivory-muted mb-4">
             Your account does not have permission to view the admin backend.

@@ -154,7 +154,7 @@ export default function ResourceTable({
 
   return (
     <div className="bg-[#0A3A2F] rounded-lg ring-1 ring-white/10 overflow-hidden">
-      <div className="flex flex-col lg:flex-row lg:items-center gap-3 p-4 border-b border-[#D6B56D]/25/8">
+      <div className="flex flex-col lg:flex-row lg:items-center gap-3 p-4 border-b border-white/10">
         <div className="relative flex-1 min-w-52">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#F5F1E8]/35" />
           <input
@@ -197,7 +197,7 @@ export default function ResourceTable({
       <div className="overflow-x-auto">
         <table className="w-full text-left">
           <thead>
-            <tr className="border-b border-[#D6B56D]/25/8 bg-forest-secondary/60">
+            <tr className="border-b border-white/10 bg-forest-secondary/60">
               {columns.filter((c) => !c.hide).map((c) => (
                 <th key={c.key} className="px-4 py-3 text-[10px] font-extrabold uppercase tracking-wider text-[#F5F1E8]/45 whitespace-nowrap">
                   {c.label}
@@ -229,7 +229,7 @@ export default function ResourceTable({
                 <tr
                   key={r.id || ri}
                   onClick={onView ? () => onView(r) : undefined}
-                  className={`border-b border-[#D6B56D]/25/6 hover:bg-forest-secondary/50 transition-colors ${onView ? "cursor-pointer" : ""}`}
+                  className={`border-b border-white/10 hover:bg-forest-secondary/50 transition-colors ${onView ? "cursor-pointer" : ""}`}
                 >
                   {columns.filter((c) => !c.hide).map((c) => (
                     <td key={c.key} className="px-4 py-3.5 text-sm text-[#F5F1E8]/80 whitespace-nowrap">
@@ -250,7 +250,7 @@ export default function ResourceTable({
         </table>
       </div>
 
-      <div className="flex items-center justify-between gap-3 px-4 py-3 border-t border-[#D6B56D]/25/8">
+      <div className="flex items-center justify-between gap-3 px-4 py-3 border-t border-white/10">
         <p className="text-[11px] text-[#F5F1E8]/50 font-medium">
           Showing {pageRows.length ? (page - 1) * PAGE_SIZE + 1 : 0}–{total ? Math.min(page * PAGE_SIZE, total) : 0} of {total} {entityLabel}
         </p>

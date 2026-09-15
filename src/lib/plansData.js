@@ -19,7 +19,7 @@ export const PLANS = [
     features: ["Unlimited redemptions", "Cashback on every offer", "Priority customer support", "VIP-only weekly drops", "Multi-country access"],
     cta: "Go Premium",
     highlight: true,
-    nameColor: "text-white",
+    nameColor: "text-[#062B23]",
   },
   {
     slug: "vip",

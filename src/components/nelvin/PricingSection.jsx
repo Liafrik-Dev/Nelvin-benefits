@@ -1,71 +1,83 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { ArrowRight, Check } from "lucide-react";
+import { Check } from "lucide-react";
 
+/**
+ * Demo request — the reference closes the page with a photographic band
+ * carrying a short form. The submit handler is unchanged (local success
+ * state, no backend call).
+ */
 export default function PricingSection() {
   const [submitted, setSubmitted] = useState(false);
 
+  const fieldClass =
+    "w-full rounded-lg border border-white/15 bg-white/[0.05] px-4 py-2.5 text-sm text-ivory outline-none transition-colors placeholder:text-ivory-dim focus:border-gold";
+
   return (
-    <section className="bg-forest-secondary py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="relative rounded-xl overflow-hidden">
-          <img src="/images/benifex/footer-banner-v2.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-[#062B23]/85" />
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 p-8 sm:p-14 items-center">
+    <section className="surface-nv-primary section-nv">
+      <div className="container-nv">
+        <div className="relative overflow-hidden rounded-2xl">
+          <img
+            src="/images/benifex/footer-banner-v2.jpg"
+            alt=""
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-[#062B23]/90" aria-hidden="true" />
+
+          <div className="relative z-10 grid grid-cols-1 items-center gap-10 p-8 sm:p-12 lg:grid-cols-2 lg:p-14">
             <div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-white tracking-tight leading-tight">
+              <h2 className="text-balance-nv text-3xl font-bold font-heading leading-tight tracking-tight text-white sm:text-4xl">
                 Ready to connect your employee experience?
               </h2>
-              <p className="text-white/70 mt-4 max-w-md text-base leading-relaxed">
-                Join the remarkable organisations putting people at the heart of what they do.
-                A global community of changemakers.
- Book a free demo today.
-
+              <p className="mt-4 max-w-md text-base leading-relaxed text-white/70">
+                Join the remarkable organisations putting people at the heart of what
+                they do. Book a free demo today.
               </p>
             </div>
 
-            <div className="bg-emerald-black/90 rounded-xl ring-1 ring-white/10 p-8 shadow-xl">
+            <div className="rounded-2xl border border-white/12 bg-[#0A3A2F]/95 p-8 shadow-nv-card backdrop-blur">
               {submitted ? (
-                <div className="text-center py-10">
-                  <div className="w-14 h-14 rounded-full bg-[#D6B56D] flex items-center justify-center mx-auto mb-4">
-                    <Check className="w-7 h-7 text-[#F5F1E8]" />
-                  </div>
-                  <h3 className="text-xl font-bold text-[#F5F1E8] mb-2">Thank you!</h3>
-                  <p className="text-sm text-[#F5F1E8]/60">We'll be in touch shortly to arrange your demo.</p>
+                <div className="py-10 text-center">
+                  <span className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-gold">
+                    <Check className="h-7 w-7 text-[#062B23]" />
+                  </span>
+                  <h3 className="mb-2 text-xl font-bold text-ivory">Thank you!</h3>
+                  <p className="text-sm text-ivory-muted">
+                    We'll be in touch shortly to arrange your demo.
+                  </p>
                 </div>
               ) : (
                 <form
                   onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
                   className="space-y-4"
                 >
-                  <h3 className="text-lg font-bold text-[#F5F1E8]">Book a free demo</h3>
-                  <div className="grid grid-cols-2 gap-4">
-                    <input
-                      required
-                      placeholder="First Name"
-                      className="border border-[#D6B56D]/25/30 rounded-lg px-4 py-2.5 text-sm text-[#F5F1E8] outline-none focus:border-[#D6B56D]/25 placeholder:text-[#9AA39C]"
-                    />
-                    <input
-                      required
-                      placeholder="Surname"
-                      className="border border-[#D6B56D]/25/30 rounded-lg px-4 py-2.5 text-sm text-[#F5F1E8] outline-none focus:border-[#D6B56D]/25 placeholder:text-[#9AA39C]"
-                    />
+                  <h3 className="text-lg font-bold text-ivory">Book a free demo</h3>
+
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <label className="sr-only" htmlFor="demo-first-name">First name</label>
+                    <input id="demo-first-name" required placeholder="First name" className={fieldClass} />
+                    <label className="sr-only" htmlFor="demo-surname">Surname</label>
+                    <input id="demo-surname" required placeholder="Surname" className={fieldClass} />
                   </div>
+
+                  <label className="sr-only" htmlFor="demo-email">Work email</label>
                   <input
+                    id="demo-email"
                     required
                     type="email"
-                    placeholder="Email"
-                    className="w-full border border-[#D6B56D]/25/30 rounded-lg px-4 py-2.5 text-sm text-[#F5F1E8] outline-none focus:border-[#D6B56D]/25 placeholder:text-[#9AA39C]"
+                    placeholder="Work email"
+                    className={fieldClass}
                   />
-                  <button
-                    type="submit"
-                    className="group w-full inline-flex items-center justify-center gap-3 bg-[#103F35] hover:bg-[#2b0140] text-white font-bold text-sm h-11 rounded-[23px] transition-colors"
-                  >
-                    <span className="transition-transform group-hover:-translate-x-1">Submit</span>
-                    <span className="w-4 h-4 rounded-full bg-[#D6B56D] flex items-center justify-center text-[#062B23] text-xs">→</span>
+
+                  <button type="submit" className="btn-nv btn-nv-md btn-nv-gold group w-full">
+                    Request my demo
+                    <span className="transition-transform group-hover:translate-x-0.5">→</span>
                   </button>
-                  <p className="text-[10px] text-[#F5F1E8]/50 leading-relaxed">
-                    Nelvin will use your personal information to contact you from time to time about other products, services and events that we feel may be of interest to you.
+
+                  <p className="text-[10px] leading-relaxed text-ivory-dim">
+                    Nelvin will use your personal information to contact you from time to
+                    time about other products, services and events that we feel may be of
+                    interest to you.
                   </p>
                 </form>
               )}

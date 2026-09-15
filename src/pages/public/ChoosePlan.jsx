@@ -34,7 +34,7 @@ export default function ChoosePlan() {
           transition={{ duration: 0.6 }}
           className="max-w-3xl mx-auto text-center relative z-10"
         >
-          <Link to="/" className="inline-flex items-center gap-1.5 text-white/60 hover:text-white text-xs font-medium mb-6 transition-colors">
+          <Link to="/" className="mb-6 inline-flex min-h-8 items-center gap-1.5 py-1 text-xs font-medium text-white/60 transition-colors hover:text-white">
             <ArrowLeft className="w-3.5 h-3.5" /> Back to home
           </Link>
           <p className="text-[#E5C77A] font-semibold text-xs tracking-[0.15em] uppercase mb-3">Membership</p>
@@ -61,7 +61,7 @@ export default function ChoosePlan() {
                 whileHover={{ y: -6 }}
                 className={`rounded-lg p-8 relative transition-shadow ${
                   plan.highlight
-                    ? "bg-[#D6B56D] text-white shadow-2xl md:-mt-4 md:pb-10"
+                    ? "bg-[#D6B56D] text-[#062B23] shadow-2xl md:-mt-4 md:pb-10"
                     : "bg-emerald-black ring-1 ring-white/10 border border-transparent hover:shadow-xl"
                 } ${isSelected ? "ring-2 ring-amber-400" : ""}`}
               >
@@ -75,13 +75,13 @@ export default function ChoosePlan() {
                 <p className={`font-bold text-sm tracking-wider mb-4 ${plan.nameColor}`}>{plan.name}</p>
                 <div className="flex items-baseline gap-1 mb-1">
                   <span className="text-5xl font-bold font-heading">{plan.price}</span>
-                  <span className={`text-sm ${plan.highlight ? "text-white/70" : "text-ivory-dim"}`}>{plan.period}</span>
+                  <span className={`text-sm ${plan.highlight ? "text-[#062B23]/70" : "text-ivory-dim"}`}>{plan.period}</span>
                 </div>
-                <p className={`text-sm mb-6 ${plan.highlight ? "text-white/70" : "text-ivory-muted"}`}>{plan.desc}</p>
+                <p className={`text-sm mb-6 ${plan.highlight ? "text-[#062B23]/80" : "text-ivory-muted"}`}>{plan.desc}</p>
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((f, j) => (
                     <li key={j} className="flex items-start gap-2.5 text-sm">
-                      <Check className={`w-4 h-4 mt-0.5 flex-shrink-0 ${plan.highlight ? "text-[#E5C77A]" : "text-[#D6B56D]"}`} />
+                      <Check className={`w-4 h-4 mt-0.5 flex-shrink-0 ${plan.highlight ? "text-[#062B23]" : "text-[#D6B56D]"}`} />
                       <span>{f}</span>
                     </li>
                   ))}
@@ -91,7 +91,7 @@ export default function ChoosePlan() {
                   className={`w-full py-3 rounded-full font-semibold text-sm transition-colors block text-center ${
                     plan.highlight
                       ? "bg-[#0A3A2F] text-[#D6B56D] hover:bg-[#0A3A2F]/5"
-                      : "bg-[#D6B56D] text-white hover:bg-[#E5C77A]"
+                      : "bg-[#D6B56D] text-[#062B23] hover:bg-[#E5C77A]"
                   }`}
                 >
                   {plan.cta}

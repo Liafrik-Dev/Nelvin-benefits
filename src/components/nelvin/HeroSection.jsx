@@ -1,10 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ArrowRight, Play, ShieldCheck, TrendingUp, Sparkles, Video, Search, MapPin, Tag, Utensils, Hotel, Dumbbell, Sparkle } from "lucide-react";
+import {
+  ArrowRight,
+  Play,
+  ShieldCheck,
+  TrendingUp,
+  Sparkles,
+  Search,
+  MapPin,
+  Tag,
+  Utensils,
+  Hotel,
+  Dumbbell,
+} from "lucide-react";
+
+/**
+ * Hero — modelled on The ENTERTAINER: a full-bleed media band, one
+ * restrained headline, a single horizontal search/CTA control, trust
+ * signals, then proof imagery. Video rotates automatically and can be
+ * pinned by the viewer.
+ */
 
 const HERO_VIDEOS = [
   { id: "savanna-sunset", title: "Savanna at Sunset", url: "https://assets.mixkit.co/videos/preview/mixkit-sunset-in-the-savanna-through-a-tree-5278-large.mp4" },
-  { id: "savanna-aerial", title: "Savanna Aerial View", url: "https://assets.mixkit.co/videos/preview/mixkit-area-in-the-savanna-aerial-shot-3880-large.mp4" },
+  { id: "savanna-aerial", title: "Savanna Aerial", url: "https://assets.mixkit.co/videos/preview/mixkit-area-in-the-savanna-aerial-shot-3880-large.mp4" },
   { id: "african-plains", title: "African Plains", url: "https://assets.mixkit.co/videos/preview/mixkit-herds-of-african-animals-on-a-vast-plain-11239-large.mp4" },
   { id: "savanna-lake", title: "Savanna Lake", url: "https://assets.mixkit.co/videos/preview/mixkit-lake-in-a-savanna-at-sunset-5029-large.mp4" },
   { id: "savanna-horizon", title: "Savanna Horizon", url: "https://assets.mixkit.co/videos/preview/mixkit-sunset-on-the-savanna-seen-behind-the-skyline-5031-large.mp4" },
@@ -17,9 +36,19 @@ const LEISURE_PHOTOS = [
   { title: "Sports & Fitness Clubs", discount: "Free Trial Pass", img: "/images/benifex/cat/fitness-sports.jpg", icon: Dumbbell },
 ];
 
+const TRUST = [
+  { icon: ShieldCheck, label: "Enterprise ISO security" },
+  { icon: TrendingUp, label: "20K+ vetted merchant partners" },
+  { icon: Sparkles, label: "500K+ active perks" },
+];
+
 export default function HeroSection() {
   const [activeVideoIndex, setActiveVideoIndex] = useState(0);
   const [activePhotoIndex, setActivePhotoIndex] = useState(0);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [category, setCategory] = useState("");
+  const [city, setCity] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -27,10 +56,6 @@ export default function HeroSection() {
     }, 8000);
     return () => clearInterval(interval);
   }, []);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [category, setCategory] = useState("");
-  const [city, setCity] = useState("");
-  const navigate = useNavigate();
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -38,12 +63,16 @@ export default function HeroSection() {
     if (searchQuery) params.set("q", searchQuery);
     if (category) params.set("category", category);
     if (city) params.set("city", city);
-    navigate(`/search?${params.toString()}`);
+    const qs = params.toString();
+    navigate(qs ? `/search?${qs}` : "/search");
   };
 
+  const activePhoto = LEISURE_PHOTOS[activePhotoIndex];
+  const ActivePhotoIcon = activePhoto.icon;
+
   return (
-    <section className="relative overflow-hidden bg-[#062B23] text-white min-h-[90vh] flex items-center">
-      {/* African Landscape Background Video Carousel with 90% Opacity */}
+    <section className="relative isolate flex min-h-[92vh] items-center overflow-hidden bg-[#062B23] text-ivory">
+      {/* Media band */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-[#062B23]">
         <video
           key={HERO_VIDEOS[activeVideoIndex].url}
@@ -52,172 +81,215 @@ export default function HeroSection() {
           muted
           playsInline
           preload="auto"
-          className="w-full h-full object-cover opacity-90 scale-105 transition-opacity duration-1000"
+          aria-hidden="true"
+          className="h-full w-full scale-105 object-cover opacity-70"
         >
           <source src={HERO_VIDEOS[activeVideoIndex].url} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#062B23]/90 via-[#062B23]/70 to-[#062B23]/50" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#062B23] via-[#062B23]/85 to-[#062B23]/45" />
+        <div className="absolute inset-0 bg-lux-diagonal opacity-60" aria-hidden="true" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 lg:pt-40 pb-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        {/* Copy */}
-        <div>
-          <div className="inline-flex items-center gap-2 bg-[#0A3A2F]/5 backdrop-blur border border-gold-soft rounded-lg pl-1 pr-4 py-1 mb-6 shadow-sm">
-            <span className="bg-[#D6B56D]/15 text-[#D6B56D] border border-[#D6B56D]/30 text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded">Open To All</span>
-            <span className="text-xs font-semibold text-ivory/90">For Individuals, Particulars, HR Teams & Merchants</span>
-          </div>
+      <div className="relative z-10 container-nv w-full pb-20 pt-32 lg:pb-24 lg:pt-40">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-16">
+          {/* Copy column */}
+          <div className="animate-fade-up">
+            <span className="chip-nv">
+              <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+              Open to everyone
+            </span>
 
-          <h1 className="text-4xl sm:text-5xl xl:text-6xl font-semibold font-heading tracking-tight leading-[1.08] text-ivory">
-            Perks "&" Savings, built for <span className="text-gold italic tracking-tight">Everyone</span>
-          </h1>
+            <h1 className="text-balance-nv mt-6 text-4xl font-bold font-heading leading-[1.08] tracking-tight text-ivory sm:text-5xl xl:text-[3.5rem]">
+              Perks &amp; savings, built for{" "}
+              <span className="text-gold italic">everyone</span>.
+            </h1>
 
-          <p className="mt-6 text-base sm:text-lg text-white/85 leading-relaxed max-w-xl font-medium">
-            Whether you are an individual looking for daily discounts, an HR team managing company benefits, or a business growing your customer base — Nelvin connects everyone in one place.
-          </p>
-
-          {/* Horizontal Search Bar for Individual Users */}
-          <form onSubmit={handleSearchSubmit} className="mt-8 bg-emerald-black/95 backdrop-blur p-2 rounded-lg sm:rounded-full shadow-2xl border border-white/40 flex flex-col sm:flex-row items-center gap-2 text-ivory">
-            <div className="flex items-center gap-2 px-3 py-1.5 flex-1 w-full border-b sm:border-b-0 sm:border-r border-white/12">
-              <Search className="w-4 h-4 text-ivory-dim shrink-0" />
-              <input
-                type="text"
-                placeholder="Search deals (e.g. Nike, Uber, Gym)..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full text-xs font-semibold bg-transparent focus:outline-none placeholder:text-ivory-dim"
-              />
-            </div>
-            <div className="flex items-center gap-2 px-3 py-1.5 w-full sm:w-36 border-b sm:border-b-0 sm:border-r border-white/12">
-              <Tag className="w-4 h-4 text-ivory-dim shrink-0" />
-              <select
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                className="w-full text-xs font-semibold bg-transparent focus:outline-none text-ivory"
-              >
-                <option value="">Category</option>
-                <option value="dining">Dining</option>
-                <option value="wellness">Wellness</option>
-                <option value="travel">Travel</option>
-                <option value="shopping">Shopping</option>
-              </select>
-            </div>
-            <div className="flex items-center gap-2 px-3 py-1.5 w-full sm:w-32">
-              <MapPin className="w-4 h-4 text-ivory-dim shrink-0" />
-              <input
-                type="text"
-                placeholder="City / Country"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-                className="w-full text-xs font-semibold bg-transparent focus:outline-none placeholder:text-ivory-dim"
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full sm:w-auto bg-[#D6B56D] hover:bg-[#E5C77A] text-[#062B23] font-bold text-xs px-6 py-3 rounded-lg transition-all shadow-md shadow-[#062B23]/30 shrink-0 flex items-center justify-center gap-1.5"
-            >
-              Find Offers
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </form>
-
-          <div className="mt-6 flex flex-col sm:flex-row gap-3.5">
-            <Link
-              to="/corporate"
-              className="group inline-flex items-center justify-center gap-2.5 bg-[#0A3A2F]/10 hover:bg-emerald-black/35 backdrop-blur border border-white/30 hover:border-white text-white font-bold text-xs h-10 px-6 rounded-full transition-all"
-            >
-              <Play className="w-3.5 h-3.5 fill-current text-[#D6B56D]" />
-              Book Corporate Demo
-            </Link>
-          </div>
-
-          {/* Background Video Selector Bar */}
-          <div className="mt-8 pt-6 border-t border-white/10">
-            <p className="text-[10px] uppercase font-bold text-[#D6B56D] tracking-wider mb-2 flex items-center gap-1.5">
-              <Video className="w-3.5 h-3.5" /> African Landscape Atmosphere:
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-ivory-muted sm:text-lg">
+              Daily discounts for individuals, flexible benefits for employees, and
+              effortless administration for HR teams — one platform connecting every
+              side of the employee benefits story across Africa.
             </p>
-            <div className="flex flex-wrap gap-2">
+
+            {/* Single unified search control */}
+            <form
+              onSubmit={handleSearchSubmit}
+              role="search"
+              className="mt-8 rounded-2xl border border-white/15 bg-[#103F35]/80 p-2 shadow-nv-card backdrop-blur-xl sm:rounded-full"
+            >
+              <div className="flex flex-col gap-1 sm:flex-row sm:items-center">
+                <div className="flex min-w-0 flex-1 items-center gap-2.5 px-3.5 py-2.5 sm:py-1.5">
+                  <Search className="h-4 w-4 shrink-0 text-gold" />
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search deals — brands, dining, hotels…"
+                    aria-label="Search deals"
+                    className="w-full min-w-0 bg-transparent text-xs font-semibold text-ivory outline-none placeholder:text-ivory-dim"
+                  />
+                </div>
+
+                <div className="hidden h-6 w-px bg-white/12 sm:block" />
+
+                <div className="flex items-center gap-2.5 px-3.5 py-2.5 sm:w-40 sm:py-1.5">
+                  <Tag className="h-4 w-4 shrink-0 text-gold" />
+                  <select
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                    aria-label="Category"
+                    className="w-full bg-transparent text-xs font-semibold text-ivory outline-none"
+                  >
+                    <option value="" className="bg-[#062B23]">Category</option>
+                    <option value="dining" className="bg-[#062B23]">Dining</option>
+                    <option value="wellness" className="bg-[#062B23]">Wellness</option>
+                    <option value="travel" className="bg-[#062B23]">Travel</option>
+                    <option value="shopping" className="bg-[#062B23]">Shopping</option>
+                  </select>
+                </div>
+
+                <div className="hidden h-6 w-px bg-white/12 sm:block" />
+
+                <div className="flex items-center gap-2.5 px-3.5 py-2.5 sm:w-36 sm:py-1.5">
+                  <MapPin className="h-4 w-4 shrink-0 text-gold" />
+                  <input
+                    type="text"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    placeholder="City"
+                    aria-label="City or country"
+                    className="w-full min-w-0 bg-transparent text-xs font-semibold text-ivory outline-none placeholder:text-ivory-dim"
+                  />
+                </div>
+
+                <button type="submit" className="btn-nv btn-nv-md btn-nv-gold shrink-0">
+                  Find offers
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </button>
+              </div>
+            </form>
+
+            {/* Secondary CTA */}
+            <div className="mt-5 flex flex-wrap items-center gap-3">
+              <Link to="/corporate" className="btn-nv btn-nv-md btn-nv-outline">
+                <Play className="h-3.5 w-3.5 fill-current text-gold" />
+                Book a corporate demo
+              </Link>
+              <Link
+                to="/offers"
+                className="btn-nv btn-nv-md btn-nv-ghost group"
+              >
+                Browse all offers
+                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            </div>
+
+            {/* Trust signals */}
+            <ul className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+              {TRUST.map((t) => (
+                <li key={t.label} className="inline-flex items-center gap-2 text-xs font-semibold text-ivory-muted">
+                  <t.icon className="h-4 w-4 text-gold" />
+                  {t.label}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Proof column */}
+          <div className="animate-fade-up-delay-2 space-y-3">
+            <div className="group relative overflow-hidden rounded-2xl border border-white/15 shadow-nv-card">
+              <img
+                src={activePhoto.img}
+                alt={activePhoto.title}
+                className="h-[380px] w-full object-cover transition-transform duration-700 group-hover:scale-105 sm:h-[440px]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#062B23] via-[#062B23]/25 to-transparent" />
+
+              <span className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-[#062B23]/70 px-3 py-1.5 text-[11px] font-bold text-ivory backdrop-blur">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-gold" />
+                {activePhoto.title}
+              </span>
+
+              <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-4 rounded-xl border border-white/12 bg-[#103F35]/95 p-4 shadow-nv-card backdrop-blur">
+                <div className="min-w-0">
+                  <p className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-gold">
+                    <ActivePhotoIcon className="h-3 w-3" />
+                    Exclusive perk
+                  </p>
+                  <p className="mt-1 truncate text-base font-extrabold font-heading text-ivory">
+                    {activePhoto.discount}
+                  </p>
+                </div>
+                <div className="flex shrink-0 -space-x-2">
+                  {[
+                    "https://randomuser.me/api/portraits/women/44.jpg",
+                    "https://randomuser.me/api/portraits/men/32.jpg",
+                    "https://randomuser.me/api/portraits/women/68.jpg",
+                  ].map((u) => (
+                    <img
+                      key={u}
+                      src={u}
+                      alt=""
+                      loading="lazy"
+                      className="h-8 w-8 rounded-full border-2 border-[#103F35] object-cover"
+                    />
+                  ))}
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#103F35] bg-gold text-[10px] font-black text-[#062B23]">
+                    50K
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Photo + video switchers, kept as one quiet control row */}
+            <div className="grid grid-cols-3 gap-2">
+              {LEISURE_PHOTOS.map((p, i) => {
+                const Icon = p.icon;
+                const on = activePhotoIndex === i;
+                return (
+                  <button
+                    key={p.title}
+                    type="button"
+                    onClick={() => setActivePhotoIndex(i)}
+                    aria-pressed={on}
+                    className={`flex items-center gap-2 rounded-lg border p-2.5 text-left transition-all ${
+                      on
+                        ? "border-gold bg-gold text-[#062B23]"
+                        : "border-white/12 bg-white/[0.04] text-ivory-muted hover:border-[#D6B56D]/40 hover:text-ivory"
+                    }`}
+                  >
+                    <Icon className="h-4 w-4 shrink-0" />
+                    <span className="truncate text-[10px] font-bold leading-tight">{p.title}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] p-2.5">
+              <span className="pl-1 pr-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-ivory-dim">
+                Atmosphere
+              </span>
               {HERO_VIDEOS.map((vid, idx) => (
                 <button
                   key={vid.id}
+                  type="button"
                   onClick={() => setActiveVideoIndex(idx)}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                  aria-pressed={activeVideoIndex === idx}
+                  className={`inline-flex min-h-8 items-center rounded-full px-3 py-1.5 text-[10px] font-bold transition-colors ${
                     activeVideoIndex === idx
-                      ? "bg-[#D6B56D] text-[#062B23] shadow-md scale-105"
-                      : "bg-[#0A3A2F]/10 text-ivory/70 hover:bg-emerald-black/35 hover:text-white"
+                      ? "bg-gold text-[#062B23]"
+                      : "text-ivory-dim hover:text-gold"
                   }`}
                 >
-                  <span className={`w-2 h-2 rounded-full ${activeVideoIndex === idx ? "bg-[#062B23] animate-ping" : "bg-[#0A3A2F]/50"}`} />
                   {vid.title}
                 </button>
               ))}
             </div>
           </div>
-
-          {/* Trust Chips */}
-          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
-            <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-white/80">
-              <ShieldCheck className="w-4 h-4 text-[#D6B56D]" /> Enterprise ISO Security
-            </span>
-            <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-white/80">
-              <TrendingUp className="w-4 h-4 text-[#D6B56D]" /> 20K+ Vetted Merchant Partners
-            </span>
-            <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-white/80">
-              <Sparkles className="w-4 h-4 text-[#D6B56D]" /> 500K+ Active Perks
-            </span>
-          </div>
-        </div>
-
-        {/* Visual Showcase Gallery with Multiple Leisure Photos */}
-        <div className="relative space-y-3">
-          <div className="relative rounded-xl overflow-hidden shadow-2xl border border-white/20 group">
-            <img
-              src={LEISURE_PHOTOS[activePhotoIndex].img}
-              alt={LEISURE_PHOTOS[activePhotoIndex].title}
-              className="w-full h-[420px] sm:h-[460px] object-cover transition-all duration-700 scale-105 group-hover:scale-100"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#062B23] via-[#062B23]/20 to-transparent" />
-
-            <div className="absolute top-4 left-4 bg-black/40 backdrop-blur border border-white/20 text-white px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#D6B56D] animate-pulse" />
-              <span>{LEISURE_PHOTOS[activePhotoIndex].title}</span>
-            </div>
-
-            <div className="absolute bottom-5 left-5 right-5 bg-emerald-black/95 backdrop-blur rounded-lg p-4 shadow-xl text-ivory flex items-center justify-between">
-              <div>
-                <p className="text-[10px] uppercase tracking-widest text-[#E5C77A] font-bold">Exclusive Perk</p>
-                <p className="text-base font-extrabold font-heading text-ivory">{LEISURE_PHOTOS[activePhotoIndex].discount}</p>
-              </div>
-              <div className="flex -space-x-2">
-                {["https://randomuser.me/api/portraits/women/44.jpg", "https://randomuser.me/api/portraits/men/32.jpg", "https://randomuser.me/api/portraits/women/68.jpg"].map((u) => (
-                  <img key={u} src={u} alt="" className="w-8 h-8 rounded-full border-2 border-white object-cover" />
-                ))}
-                <span className="w-8 h-8 rounded-full bg-[#D6B56D] text-[#062B23] text-[10px] font-black flex items-center justify-center border-2 border-white">+50K</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Leisure Photo Switcher Chips */}
-          <div className="grid grid-cols-3 gap-2">
-            {LEISURE_PHOTOS.map((p, i) => {
-              const IconComp = p.icon;
-              return (
-                <button
-                  key={p.title}
-                  onClick={() => setActivePhotoIndex(i)}
-                  className={`p-2.5 rounded-xl border text-left transition-all flex items-center gap-2 ${
-                    activePhotoIndex === i
-                      ? "bg-[#D6B56D] border-[#D6B56D] text-[#062B23] font-extrabold shadow-md scale-105"
-                      : "bg-[#0A3A2F]/10 border-white/15 text-ivory/80 hover:bg-emerald-black/35 hover:text-white"
-                  }`}
-                >
-                  <IconComp className="w-4 h-4 shrink-0" />
-                  <span className="text-[10px] leading-tight truncate block">{p.title}</span>
-                </button>
-              );
-            })}
-          </div>
         </div>
       </div>
+
+      {/* Bottom hairline for a crisp edge into the next section */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-px bg-gradient-to-r from-transparent via-[#D6B56D]/30 to-transparent" />
     </section>
   );
 }

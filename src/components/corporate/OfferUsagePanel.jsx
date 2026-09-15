@@ -65,7 +65,7 @@ export default function OfferUsagePanel({ company, employees }) {
         <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-12 text-center text-sm text-ivory-dim">Loading offer usage…</div>
       ) : redemptions.length === 0 ? (
         <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-12 text-center">
-          <BarChart3 className="w-10 h-10 text-ivory/60 mx-auto mb-3" />
+          <BarChart3 className="w-10 h-10 text-[#F5F1E8]/60 mx-auto mb-3" />
           <p className="text-sm text-ivory-muted">No redemptions yet from your team. As employees start using offers, you'll see category and brand breakdowns here.</p>
         </div>
       ) : (

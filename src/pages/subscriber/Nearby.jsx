@@ -46,7 +46,7 @@ export default function Nearby() {
             <p className="text-ivory-muted text-sm">Find physical store discounts, restaurants, and gym spots near your location.</p>
           </div>
 
-          <div className="flex items-center gap-2 bg-forest-secondary/60 p-1.5 rounded-lg border border-white/12">
+          <div className="flex max-w-full flex-wrap items-center gap-2 bg-forest-secondary/60 p-1.5 rounded-lg border border-white/12">
             <span className="text-xs font-bold text-ivory-muted pl-2">City:</span>
             {cities.map((city) => (
               <button

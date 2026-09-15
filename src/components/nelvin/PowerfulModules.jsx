@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle2, Sparkles, Smartphone, ShieldCheck, Zap, Layers } from "lucide-react";
+import { ArrowRight, CheckCircle2, Layers, Zap } from "lucide-react";
+import { SectionHeading } from "@/components/nelvin/Brand";
+
+/**
+ * Module explorer — the reference groups platform capability into a
+ * horizontal tab rail over one shared detail panel. Copy is unchanged; the
+ * structure, spacing and surfaces follow the reference.
+ */
 
 const MODULE_TABS = [
   {
@@ -12,10 +19,10 @@ const MODULE_TABS = [
       "Predictive perk discovery based on employee spending and lifestyle habits",
       "Smart budget allocation optimization for HR teams",
       "Automated fraud detection on claim receipts",
-      "Localized merchant matching across Africa and MENA regions"
+      "Localized merchant matching across Africa and MENA regions",
     ],
     link: "/explore",
-    image: "/images/assets/From Klickpin.com- 4603664114519569792-pin-id-4603664114519569792.jpg"
+    image: "/images/assets/From Klickpin.com- 4603664114519569792-pin-id-4603664114519569792.jpg",
   },
   {
     id: "rewards",
@@ -26,10 +33,10 @@ const MODULE_TABS = [
       "Peer-to-peer kudos feed with company core values tagging",
       "Automated work anniversary and birthday reward drops",
       "Redeemable point store for gift cards, tech gadgets, and flights",
-      "Managerial recognition budgets with real-time telemetry"
+      "Managerial recognition budgets with real-time telemetry",
     ],
     link: "/rewards",
-    image: "/images/assets/From Klickpin.com- 1024498615375273129-pin-id-1024498615375273129.jpg"
+    image: "/images/assets/From Klickpin.com- 1024498615375273129-pin-id-1024498615375273129.jpg",
   },
   {
     id: "wallet",
@@ -40,10 +47,10 @@ const MODULE_TABS = [
       "Instant corporate allowance refills (Meal, Transport, Wellness)",
       "Virtual Visa/Mastercard generation for employee online checkout",
       "Instant cashback auto-credited into spendable balance",
-      "Multi-currency support across NGN, KES, EGP, AED, and USD"
+      "Multi-currency support across NGN, KES, EGP, AED, and USD",
     ],
     link: "/wallet",
-    image: "/images/benifex/africa/nigeria.jpg"
+    image: "/images/benifex/africa/nigeria.jpg",
   },
   {
     id: "analytics",
@@ -54,24 +61,24 @@ const MODULE_TABS = [
       "Departmental spending heatmaps and cost forecast models",
       "Live redemption tracking and perk popularity indexes",
       "One-click CSV/PDF export for C-suite and finance reviews",
-      "Employee satisfaction survey integration and eNPS tracking"
+      "Employee satisfaction survey integration and eNPS tracking",
     ],
     link: "/corporate-dashboard",
-    image: "/images/assets/From Klickpin.com- 492229434296406338-pin-id-492229434296406338.jpg"
+    image: "/images/assets/From Klickpin.com- 492229434296406338-pin-id-492229434296406338.jpg",
   },
   {
     id: "developer",
-    label: "Developer / API & Integrations",
+    label: "Developer & API",
     title: "Seamless HRIS & Payroll Sync",
     subtitle: "Connect Nelvin directly with your existing HR technology stack in minutes.",
     points: [
       "Bi-directional sync with BambooHR, Workday, Deel, and Personio",
       "REST & GraphQL APIs with webhook triggers for custom workflows",
       "Single Sign-On (SSO) via Okta, Azure AD, Google Workspace, and SAML",
-      "Automated employee onboarding and offboarding roster sync"
+      "Automated employee onboarding and offboarding roster sync",
     ],
     link: "/corporate-dashboard",
-    image: "/images/assets/From Klickpin.com- 122160208638482683-pin-id-122160208638482683.jpg"
+    image: "/images/assets/From Klickpin.com- 122160208638482683-pin-id-122160208638482683.jpg",
   },
   {
     id: "security",
@@ -82,46 +89,46 @@ const MODULE_TABS = [
       "ISO 27001 & SOC 2 Type II certified infrastructure",
       "Full GDPR & NDPR data compliance with local data residency",
       "End-to-end 256-bit AES encryption for wallet and personal data",
-      "Comprehensive audit logs and role-based access controls (RBAC)"
+      "Comprehensive audit logs and role-based access controls (RBAC)",
     ],
     link: "/settings",
-    image: "/images/benifex/africa/morocco.jpg"
-  }
+    image: "/images/benifex/africa/morocco.jpg",
+  },
 ];
 
 export default function PowerfulModules() {
-  const [activeTabId, setActiveTabId] = useState("discounts");
+  const [activeTabId, setActiveTabId] = useState("ai");
   const activeTab = MODULE_TABS.find((t) => t.id === activeTabId) || MODULE_TABS[0];
 
   return (
-    <section id="modules" className="bg-forest-secondary py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-y border-white/10">
-      <div className="max-w-7xl mx-auto space-y-10">
-        {/* Title */}
-        <div className="text-center space-y-3 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 bg-[#D6B56D]/10 text-[#D6B56D] border border-[#D6B56D]/25 px-3 py-1 rounded-lg text-xs font-extrabold uppercase tracking-widest">
-            <Layers className="w-3.5 h-3.5" /> All-In-One Unified Engine
-          </div>
-          <h2 className="text-3xl sm:text-4xl xl:text-5xl font-semibold font-heading text-ivory tracking-tight">
-            Everything a modern benefits platform needs — <span className="text-[#D6B56D]">built in</span>.
-          </h2>
-          <p className="text-ivory-muted text-sm sm:text-base leading-relaxed">
-            Consolidate your entire benefits ecosystem into a single compressed, multi-layered experience.
-          </p>
-        </div>
+    <section id="modules" className="surface-nv-secondary section-nv border-y border-white/10">
+      <div className="container-nv">
+        <SectionHeading
+          eyebrow="All-in-one engine"
+          title={<>Everything a modern benefits platform needs, built in.</>}
+          lead="Consolidate your entire benefits ecosystem into a single, coherent experience."
+        />
 
-        {/* Tab Navigation Bar - Styled like attached POS screenshot */}
-        <div className="overflow-x-auto pb-2 scrollbar-none">
-          <div className="flex items-center justify-between min-w-max border-b border-white/10 gap-2 px-2">
+        {/* Tab rail */}
+        <div className="mt-12 overflow-x-auto">
+          <div
+            className="flex min-w-max items-center gap-1 border-b border-white/10"
+            role="tablist"
+            aria-label="Platform modules"
+          >
             {MODULE_TABS.map((tab) => {
-              const isActive = tab.id === activeTabId;
+              const on = tab.id === activeTabId;
               return (
                 <button
                   key={tab.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={on}
                   onClick={() => setActiveTabId(tab.id)}
-                  className={`py-4 px-5 text-sm sm:text-base font-bold transition-all relative whitespace-nowrap flex items-center gap-2 ${
-                    isActive
-                      ? "text-[#D6B56D] border-b-2 border-[#D6B56D] rounded-t-lg bg-emerald-black/90 shadow-sm -mb-[2px] z-10"
-                      : "text-ivory-dim hover:text-ivory hover:bg-[#0A3A2F]/5 rounded-t-lg"
+                  className={`-mb-px whitespace-nowrap border-b-2 px-4 py-4 text-sm font-bold transition-colors ${
+                    on
+                      ? "border-gold text-gold"
+                      : "border-transparent text-ivory-dim hover:text-ivory"
                   }`}
                 >
                   {tab.label}
@@ -131,64 +138,51 @@ export default function PowerfulModules() {
           </div>
         </div>
 
-        {/* Compressed Multi-Layer Content Card */}
-        <div className="bg-emerald-black/90 rounded-xl ring-1 ring-white/10 border border-white/10 p-6 sm:p-10 shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center relative overflow-hidden">
-          {/* Subtle Layered Glow Background */}
-          <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-[#0A3A2F]/10 blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-[#D6B56D]/10 blur-3xl pointer-events-none" />
-
-          {/* Left Side: Multi-device Showcase Mockup */}
-          <div className="lg:col-span-6 relative flex items-center justify-center">
-            <div className="relative w-full max-w-md aspect-[4/3] sm:aspect-[16/10] rounded-xl overflow-hidden shadow-2xl border border-white/10 bg-[#103F35] group">
+        {/* Detail panel */}
+        <div className="card-nv mt-8 grid grid-cols-1 items-center gap-8 p-6 sm:p-10 lg:grid-cols-12 lg:gap-12">
+          <div className="relative lg:col-span-6">
+            <div className="group relative aspect-[16/11] w-full overflow-hidden rounded-xl border border-white/10 bg-[#062B23]">
               <img
                 src={activeTab.image}
                 alt={activeTab.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#062B23]/90 via-[#062B23]/20 to-transparent" />
 
-              {/* Overlay Badge */}
-              <div className="absolute bottom-4 left-4 right-4 bg-emerald-black/95 backdrop-blur rounded-lg p-4 shadow-lg border border-white/15 flex items-center justify-between">
-                <div>
-                  <span className="text-[10px] uppercase font-bold text-[#D6B56D] tracking-wider block">Live Platform View</span>
-                  <p className="text-xs sm:text-sm font-bold text-ivory font-heading">{activeTab.title}</p>
+              <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-4 rounded-xl border border-white/12 bg-[#062B23]/90 p-4 backdrop-blur">
+                <div className="min-w-0">
+                  <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-gold">
+                    Live platform view
+                  </span>
+                  <p className="mt-1 truncate text-xs font-bold text-ivory sm:text-sm">{activeTab.title}</p>
                 </div>
-                <div className="w-8 h-8 rounded-full bg-[#0A3A2F] text-white flex items-center justify-center font-bold text-xs shadow-md">
-                  <Zap className="w-4 h-4" />
-                </div>
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gold text-[#062B23]">
+                  <Zap className="h-4 w-4" />
+                </span>
               </div>
             </div>
           </div>
 
-          {/* Right Side: Feature Details & Bullet Points */}
-          <div className="lg:col-span-6 space-y-6">
-            <div>
-              <h3 className="text-2xl sm:text-3xl font-semibold text-ivory font-heading tracking-tight mb-2">
-                {activeTab.title}
-              </h3>
-              <p className="text-ivory-muted text-sm sm:text-base leading-relaxed">
-                {activeTab.subtitle}
-              </p>
-            </div>
+          <div className="lg:col-span-6">
+            <h3 className="text-2xl font-extrabold font-heading text-ivory sm:text-3xl">
+              {activeTab.title}
+            </h3>
+            <p className="mt-3 leading-relaxed text-ivory-muted">{activeTab.subtitle}</p>
 
-            <ul className="space-y-3">
-              {activeTab.points.map((pt, idx) => (
-                <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-ivory-muted font-medium">
-                  <CheckCircle2 className="w-5 h-5 text-[#D6B56D] shrink-0 mt-0.5" />
+            <ul className="mt-6 space-y-3">
+              {activeTab.points.map((pt) => (
+                <li key={pt} className="flex items-start gap-3 text-sm font-medium text-ivory-muted">
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
                   <span>{pt}</span>
                 </li>
               ))}
             </ul>
 
-            <div className="pt-2">
-              <Link
-                to={activeTab.link}
-                className="inline-flex items-center gap-2 text-[#D6B56D] font-bold text-sm hover:text-[#E5C77A] transition-colors group"
-              >
-                Explore {activeTab.label}
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
+            <Link to={activeTab.link} className="btn-nv btn-nv-md btn-nv-outline group mt-8">
+              Explore {activeTab.label}
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </Link>
           </div>
         </div>
       </div>

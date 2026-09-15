@@ -1,5 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { ChevronRight, Mail } from "lucide-react";
+import AppleIcon from "@/components/shared/AppleIcon";
+import GoogleIcon from "@/components/shared/GoogleIcon";
+import { BrandLogo } from "@/components/nelvin/Brand";
+
+/**
+ * Footer — the reference organises this as a small number of titled link
+ * columns with hairline dividers, a brand block, store buttons and a legal
+ * rail. NelvinBenefit keeps that structure in forest + gold.
+ */
+
 const Facebook = (props) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
 );
@@ -15,48 +26,46 @@ const Instagram = (props) => (
 const Youtube = (props) => (
   <svg viewBox="0 0 24 24" fill="currentColor" {...props}><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.501 6.186C0 7.98 0 12 0 12s0 4.02.501 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 16.02 24 12 24 12s0-4.02-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
 );
-import AppleIcon from "@/components/shared/AppleIcon";
-import GoogleIcon from "@/components/shared/GoogleIcon";
 
 const footerColumns = [
   {
-    title: "Employee Portal",
+    title: "Employee portal",
     links: [
-      { label: "Explore Perks", to: "/explore" },
+      { label: "Explore perks", to: "/explore" },
       { label: "Categories", to: "/categories" },
       { label: "Marketplace", to: "/marketplace" },
-      { label: "My Wallet & Cashback", to: "/wallet" },
-      { label: "Rewards & Praise", to: "/rewards" },
-      { label: "Wellness Benefits", to: "/wellness" },
+      { label: "My wallet & cashback", to: "/wallet" },
+      { label: "Rewards & praise", to: "/rewards" },
+      { label: "Wellness benefits", to: "/wellness" },
     ],
   },
   {
-    title: "HR & Employer",
+    title: "HR & employer",
     links: [
-      { label: "HR Dashboard", to: "/corporate-dashboard" },
-      { label: "Employee Management", to: "/corporate-dashboard" },
-      { label: "Budgets & Allowances", to: "/corporate-dashboard" },
-      { label: "Corporate Sign Up", to: "/corporate-signup" },
-      { label: "HRIS & SSO Integrations", to: "/corporate-dashboard" },
+      { label: "HR dashboard", to: "/corporate-dashboard" },
+      { label: "Employee management", to: "/corporate-dashboard" },
+      { label: "Budgets & allowances", to: "/corporate-dashboard" },
+      { label: "Corporate sign up", to: "/corporate-signup" },
+      { label: "HRIS & SSO integrations", to: "/corporate-dashboard" },
     ],
   },
   {
-    title: "Business Partners",
+    title: "Business partners",
     links: [
-      { label: "Business Dashboard", to: "/business" },
-      { label: "Merchant Onboarding", to: "/partner" },
-      { label: "Manage Offers", to: "/business/offers" },
-      { label: "QR Code Validator", to: "/business/qr-codes" },
-      { label: "Earnings & Payouts", to: "/business/payouts" },
+      { label: "Business dashboard", to: "/business" },
+      { label: "Merchant onboarding", to: "/partner" },
+      { label: "Manage offers", to: "/business/offers" },
+      { label: "QR code validator", to: "/business/qr-codes" },
+      { label: "Earnings & payouts", to: "/business/payouts" },
     ],
   },
   {
     title: "Company",
     links: [
       { label: "About Nelvin", to: "/corporate" },
-      { label: "Awards & Impact", to: "/corporate" },
-      { label: "Partner Enquiries", to: "/partner" },
-      { label: "Contact Support", to: "/support" },
+      { label: "Awards & impact", to: "/corporate" },
+      { label: "Partner enquiries", to: "/partner" },
+      { label: "Contact support", to: "/support" },
     ],
   },
   {
@@ -79,54 +88,77 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="bg-forest-secondary text-[#F5F1E8] border-t border-[#D6B56D]/15">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-          <div className="col-span-2 lg:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 bg-[#D6B56D] rounded-lg flex items-center justify-center shadow-md shadow-[#062B23]/30">
-                <span className="text-[#062B23] font-extrabold text-sm">N</span>
-              </div>
-              <span className="font-bold text-xl font-heading">Nelvin</span>
-            </div>
-            <p className="text-[#F5F1E8]/60 text-xs leading-relaxed mb-6">
-              Africa's savings super app. Unlock exclusive offers, cashback, and corporate experiences across all 54 countries.
+    <footer className="surface-nv-primary border-t border-white/10 text-ivory">
+      {/* Brand + app block */}
+      <div className="container-nv py-14 lg:py-16">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,300px)_minmax(0,1fr)] lg:gap-16">
+          <div>
+            <BrandLogo size="md" tagline="Employee Benefits Platform" />
+            <p className="mt-5 max-w-xs text-xs leading-relaxed text-ivory-muted">
+              Africa's savings super app. Unlock exclusive offers, cashback and
+              corporate experiences across all 54 countries.
             </p>
-            <div className="flex flex-col gap-2">
-              <button className="bg-emerald-black/90 hover:bg-[#062B23] hover:text-white text-[#F5F1E8] rounded-lg px-3 py-2 flex items-center gap-2 text-xs transition-colors w-fit border border-[#D6B56D]/15">
-                <AppleIcon className="w-4 h-4" />
+
+            <div className="mt-6 flex flex-col gap-2">
+              <a
+                href="#"
+                className="btn-nv btn-nv-sm w-fit border border-white/12 bg-white/[0.04] px-3 text-ivory transition-colors hover:border-[#D6B56D]/40 hover:text-gold"
+              >
+                <AppleIcon className="h-4 w-4" />
                 App Store
-              </button>
-              <button className="bg-emerald-black/90 hover:bg-[#062B23] hover:text-white text-[#F5F1E8] rounded-lg px-3 py-2 flex items-center gap-2 text-xs transition-colors w-fit border border-[#D6B56D]/15">
-                <GoogleIcon className="w-4 h-4" />
+              </a>
+              <a
+                href="#"
+                className="btn-nv btn-nv-sm w-fit border border-white/12 bg-white/[0.04] px-3 text-ivory transition-colors hover:border-[#D6B56D]/40 hover:text-gold"
+              >
+                <GoogleIcon className="h-4 w-4" />
                 Google Play
-              </button>
+              </a>
             </div>
+
+            <a
+              href="mailto:Nelvin23@proton.me"
+              className="mt-5 inline-flex min-h-8 items-center gap-2 py-1 text-xs font-semibold text-gold transition-colors hover:text-[#E5C77A]"
+            >
+              <Mail className="h-3.5 w-3.5" />
+              Nelvin23@proton.me
+            </a>
           </div>
 
-          {footerColumns.map((col) => (
-            <div key={col.title}>
-              <h4 className="font-bold text-xs tracking-wider uppercase mb-4 text-[#F5F1E8]/80">{col.title}</h4>
-              <ul className="space-y-2.5">
-                {col.links.map((l) => (
-                  <li key={l.label}>
-                    <Link to={l.to} className="text-[#F5F1E8]/60 hover:text-[#E5C77A] text-xs transition-colors">
-                      {l.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {/* Link columns */}
+          <div className="grid grid-cols-2 gap-x-6 gap-y-9 sm:grid-cols-3 lg:grid-cols-5">
+            {footerColumns.map((col) => (
+              <nav key={col.title} aria-label={col.title}>
+                <h3 className="text-[11px] font-bold uppercase tracking-[0.16em] text-gold">
+                  {col.title}
+                </h3>
+                <ul className="mt-4 space-y-2.5">
+                  {col.links.map((l) => (
+                    <li key={l.label}>
+                      <Link
+                        to={l.to}
+                        className="group inline-flex min-h-8 items-start gap-1.5 py-1 text-xs text-ivory-muted transition-colors hover:text-ivory"
+                      >
+                        <ChevronRight className="mt-0.5 h-3 w-3 shrink-0 text-[#D6B56D]/30 transition-colors group-hover:text-gold" />
+                        <span>{l.label}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            ))}
+          </div>
         </div>
       </div>
 
-      <div className="border-t border-[#D6B56D]/15">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-[#F5F1E8]/40 text-xs">
-            © 2026 Nelvin Africa Ltd. All rights reserved.
+      {/* Legal rail */}
+      <div className="rule-nv">
+        <div className="container-nv flex flex-col items-center justify-between gap-5 py-6 sm:flex-row">
+          <p className="text-center text-xs text-ivory-dim sm:text-left">
+            © 2026 NelvinBenefit Africa Ltd. All rights reserved.
           </p>
-          <div className="flex items-center gap-3">
+
+          <div className="flex items-center gap-2.5">
             {socials.map((s) => (
               <a
                 key={s.label}
@@ -134,9 +166,9 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.label}
-                className="w-8 h-8 bg-emerald-black/90 hover:bg-[#D6B56D] hover:text-[#062B23] rounded-lg flex items-center justify-center transition-colors border border-[#D6B56D]/15 text-ivory-muted"
+                className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/12 text-ivory-muted transition-colors hover:border-gold hover:bg-gold hover:text-[#062B23]"
               >
-                <s.icon className="w-3.5 h-3.5" />
+                <s.icon className="h-3.5 w-3.5" />
               </a>
             ))}
           </div>

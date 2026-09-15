@@ -18,22 +18,24 @@ import Footer from "@/components/nelvin/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-forest-secondary font-sans">
+    <div className="min-h-screen surface-nv-secondary font-sans">
       <Navbar />
-      <HeroSection />
-      <TrustedBrands />
-      <CategoriesGrid />
-      <OnePlatformExperiences />
-      <PowerfulModules />
-      <AfricaMena />
-      <AudiencesSection />
-      <HowItWorks />
-      <StatsSection />
-      <Testimonials />
-      <FeaturedDeals />
-      <GetTheApp />
-      <PricingSection />
-      <FAQSection />
+      <main>
+        <HeroSection />
+        <TrustedBrands />
+        <CategoriesGrid />
+        <OnePlatformExperiences />
+        <PowerfulModules />
+        <AfricaMena />
+        <AudiencesSection />
+        <HowItWorks />
+        <StatsSection />
+        <Testimonials />
+        <FeaturedDeals />
+        <GetTheApp />
+        <PricingSection />
+        <FAQSection />
+      </main>
       <Footer />
     </div>
   );

@@ -95,7 +95,7 @@ export default function DepartmentsPanel({ company, employees, onChanged }) {
         <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-8 text-center text-sm text-ivory-dim">Loading…</div>
       ) : items.length === 0 ? (
         <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-12 text-center">
-          <Boxes className="w-10 h-10 text-ivory/60 mx-auto mb-3" />
+          <Boxes className="w-10 h-10 text-[#F5F1E8]/60 mx-auto mb-3" />
           <p className="text-sm text-ivory-muted">No departments yet. Create your first one above.</p>
         </div>
       ) : (
@@ -110,7 +110,7 @@ export default function DepartmentsPanel({ company, employees, onChanged }) {
                     <span className="w-3 h-3 rounded-full" style={{ background: d.color || "#059669" }} />
                     <h3 className="font-semibold text-ivory">{d.name}</h3>
                   </div>
-                  <button onClick={() => remove(d.id, d.name)} className="text-ivory/60 hover:text-rose-600 p-1"><Trash2 className="w-3.5 h-3.5" /></button>
+                  <button onClick={() => remove(d.id, d.name)} className="text-[#F5F1E8]/60 hover:text-rose-600 p-1"><Trash2 className="w-3.5 h-3.5" /></button>
                 </div>
                 {d.description && <p className="text-xs text-ivory-muted mt-1">{d.description}</p>}
                 <div className="grid grid-cols-2 gap-2 mt-4 text-xs">

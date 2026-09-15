@@ -1,6 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Play, FileText, Calendar } from "lucide-react";
+import { ArrowRight, Play, FileText } from "lucide-react";
+
+/**
+ * Insights / resources rail. Not part of the current Home composition but
+ * kept working and aligned with the shared design tokens.
+ */
 
 const resources = [
   {
@@ -27,39 +32,46 @@ const resources = [
 
 export default function CountriesSection() {
   return (
-    <section id="events" className="bg-forest-secondary py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-14">
+    <section id="events" className="surface-nv-secondary section-nv">
+      <div className="container-nv">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-[#F5F1E8]/50 font-semibold text-xs tracking-[0.2em] uppercase mb-3">Insights</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-[#F5F1E8] tracking-tight">
+            <p className="eyebrow-nv mb-3">Insights</p>
+            <h2 className="text-balance-nv text-3xl font-bold font-heading tracking-tight text-ivory sm:text-4xl">
               Latest resources, events &amp; insights
             </h2>
           </div>
-          <Link to="/offers" className="group inline-flex items-center gap-2 text-[#F5F1E8] font-bold text-sm">
-            <span className="transition-transform group-hover:-translate-x-1">See all resources</span>
-            <span className="w-6 h-6 rounded-full border-2 border-[#D6B56D]/25 flex items-center justify-center text-xs transition-colors group-hover:bg-[#103F35] group-hover:text-white">→</span>
+          <Link to="/offers" className="btn-nv btn-nv-md btn-nv-outline group w-fit shrink-0">
+            See all resources
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {resources.map((r) => (
             <Link
               key={r.type + r.title}
               to="/offers"
-              className="group bg-emerald-black/90 rounded-xl ring-1 ring-white/10 overflow-hidden border-2 border-transparent hover:border-[#0A3A2F] transition-colors"
+              className="card-nv card-nv-interactive group overflow-hidden"
             >
               <div className="relative h-44 overflow-hidden">
-                <img src={r.img} alt={r.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <span className="absolute top-3 left-3 bg-[#103F35] text-white text-[11px] font-bold uppercase tracking-widest px-3 py-1 rounded-full flex items-center gap-1.5">
-                  {r.type === "Webinar" ? <Play className="w-3 h-3" /> : r.type === "Report" ? <FileText className="w-3 h-3" /> : <Calendar className="w-3 h-3" />}
+                <img
+                  src={r.img}
+                  alt=""
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <span className="absolute left-3 top-3 flex items-center gap-1.5 rounded-full bg-gold px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-[#062B23]">
+                  {r.type === "Webinar" ? <Play className="h-3 w-3" /> : <FileText className="h-3 w-3" />}
                   {r.type}
                 </span>
               </div>
               <div className="p-5">
-                <h3 className="text-sm font-bold text-[#F5F1E8] leading-snug group-hover:text-[#F5F1E8]">{r.title}</h3>
-                <span className="inline-flex items-center gap-1.5 text-[#E5C77A] text-xs font-bold mt-3">
-                  Read more <ArrowRight className="w-3 h-3" />
+                <h3 className="text-sm font-bold leading-snug text-ivory transition-colors group-hover:text-gold">
+                  {r.title}
+                </h3>
+                <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-gold">
+                  Read more <ArrowRight className="h-3 w-3" />
                 </span>
               </div>
             </Link>
