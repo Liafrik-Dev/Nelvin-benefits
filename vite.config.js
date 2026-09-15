@@ -21,4 +21,13 @@ export default defineConfig({
   server: {
     port: 5173,
   },
+  preview: {
+    host: true,
+    allowedHosts: [
+      "work-1-czudbexgkfnbhvgn.prod-runtime.all-hands.dev",
+      "work-2-czudbexgkfnbhvgn.prod-runtime.all-hands.dev",
+      "localhost",
+      "127.0.0.1",
+    ],
+  },
 });
