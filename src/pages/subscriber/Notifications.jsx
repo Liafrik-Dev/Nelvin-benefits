@@ -44,22 +44,22 @@ export default function Notifications() {
 
   return (
     <div className="min-h-screen bg-forest">
-      <div className="relative bg-[#062B23] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-[#FFFFFF] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
         <Navbar />
       </div>
       <EmployeeNav />
 
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
-        <div className="flex items-center justify-between border-b border-white/10 pb-4">
+        <div className="flex items-center justify-between border-b border-[#F1F1F1] pb-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0A3A2F] text-[#E5C77A] text-xs font-bold uppercase">
-              <Bell className="w-3.5 h-3.5 text-[#D6B56D]" /> Activity Center
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFFFFF] text-[#0866FF] text-xs font-bold uppercase">
+              <Bell className="w-3.5 h-3.5 text-[#0866FF]" /> Activity Center
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-ivory mt-2 font-heading">
               Notifications & Alerts
             </h1>
           </div>
-          <span className="text-xs font-bold text-ivory-muted bg-[#0A3A2F]/5 px-3 py-1.5 rounded-full">
+          <span className="text-xs font-bold text-ivory-muted bg-[#F4F4F4] px-3 py-1.5 rounded-full">
             {list.length} Messages
           </span>
         </div>
@@ -69,8 +69,8 @@ export default function Notifications() {
         ) : (
           <div className="space-y-4">
             {list.map((n) => (
-              <div key={n.id} className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-5 shadow-sm flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-[#0A3A2F] text-ivory flex items-center justify-center flex-shrink-0">
+              <div key={n.id} className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-5 shadow-sm flex items-start gap-4">
+                <div className="w-10 h-10 rounded-lg bg-[#FFFFFF] text-ivory flex items-center justify-center flex-shrink-0">
                   <Bell className="w-5 h-5" />
                 </div>
                 <div className="flex-1 space-y-1">

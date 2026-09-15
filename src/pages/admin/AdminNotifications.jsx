@@ -67,12 +67,12 @@ export default function AdminNotifications() {
         <p className="text-sm text-ivory-muted mt-1">Send system (in-app) and email notifications to specific audiences.</p>
       </div>
 
-      <div className="bg-[#103F35]/70 border border-[#D6B56D]/25 rounded-xl px-4 py-3 mb-6 text-sm text-[#E5C77A]">
+      <div className="bg-[#F9F8F7] border border-[#0866FF]/25 rounded-xl px-4 py-3 mb-6 text-sm text-[#0866FF]">
         Email notifications require SendEmail integration credits, which are currently exhausted. They will resume after credits reset on 2026-09-01 or with a higher tier. System (in-app) notifications work immediately.
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-4">
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 space-y-4">
           <h2 className="font-semibold text-ivory">Compose notification</h2>
           <div>
             <label className="text-sm font-medium text-ivory block mb-1.5">Channel</label>
@@ -80,14 +80,14 @@ export default function AdminNotifications() {
               <button
                 type="button"
                 onClick={() => set("channel", "system")}
-                className={`px-4 py-2 text-sm rounded-lg border ${form.channel === "system" ? "bg-[#0A3A2F] border-white/15 text-[#D6B56D]" : "bg-[#0A3A2F] border-white/12 text-ivory-muted"}`}
+                className={`px-4 py-2 text-sm rounded-lg border ${form.channel === "system" ? "bg-[#FFFFFF] border-[#F1F1F1] text-[#0866FF]" : "bg-[#FFFFFF] border-[#F1F1F1] text-ivory-muted"}`}
               >
                 System (in-app)
               </button>
               <button
                 type="button"
                 onClick={() => set("channel", "email")}
-                className={`px-4 py-2 text-sm rounded-lg border ${form.channel === "email" ? "bg-[#0A3A2F] border-white/15 text-[#D6B56D]" : "bg-[#0A3A2F] border-white/12 text-ivory-muted"}`}
+                className={`px-4 py-2 text-sm rounded-lg border ${form.channel === "email" ? "bg-[#FFFFFF] border-[#F1F1F1] text-[#0866FF]" : "bg-[#FFFFFF] border-[#F1F1F1] text-ivory-muted"}`}
               >
                 Email
               </button>
@@ -95,7 +95,7 @@ export default function AdminNotifications() {
           </div>
           <div>
             <label className="text-sm font-medium text-ivory block mb-1.5">Audience</label>
-            <select value={form.audience} onChange={(e) => set("audience", e.target.value)} className="w-full border border-white/12 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#D6B56D]/20">
+            <select value={form.audience} onChange={(e) => set("audience", e.target.value)} className="w-full border border-[#F1F1F1] rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#0866FF]/20">
               <option value="all">All Users</option>
               <option value="specific_users">Specific Users (by email)</option>
               <option value="businesses">Businesses</option>
@@ -107,19 +107,19 @@ export default function AdminNotifications() {
           {form.audience === "specific_users" && (
             <div>
               <label className="text-sm font-medium text-ivory block mb-1.5">Recipient Email</label>
-              <input value={form.recipient_email} onChange={(e) => set("recipient_email", e.target.value)} className="w-full border border-white/12 rounded-xl px-3 py-2 text-sm" />
+              <input value={form.recipient_email} onChange={(e) => set("recipient_email", e.target.value)} className="w-full border border-[#F1F1F1] rounded-xl px-3 py-2 text-sm" />
             </div>
           )}
           {form.audience === "countries" && (
             <div>
               <label className="text-sm font-medium text-ivory block mb-1.5">Country</label>
-              <input value={form.target_country} onChange={(e) => set("target_country", e.target.value)} className="w-full border border-white/12 rounded-xl px-3 py-2 text-sm" />
+              <input value={form.target_country} onChange={(e) => set("target_country", e.target.value)} className="w-full border border-[#F1F1F1] rounded-xl px-3 py-2 text-sm" />
             </div>
           )}
           {form.audience === "membership" && (
             <div>
               <label className="text-sm font-medium text-ivory block mb-1.5">Plan</label>
-              <select value={form.target_membership_plan} onChange={(e) => set("target_membership_plan", e.target.value)} className="w-full border border-white/12 rounded-xl px-3 py-2 text-sm bg-[#062B23]/40 text-ivory">
+              <select value={form.target_membership_plan} onChange={(e) => set("target_membership_plan", e.target.value)} className="w-full border border-[#F1F1F1] rounded-xl px-3 py-2 text-sm bg-[#FFFFFF]/40 text-ivory">
                 <option value="">—</option>
                 {["Free", "Silver", "Gold", "Platinum", "Enterprise"].map((t) => <option key={t}>{t}</option>)}
               </select>
@@ -128,34 +128,34 @@ export default function AdminNotifications() {
           {form.audience === "companies" && (
             <div>
               <label className="text-sm font-medium text-ivory block mb-1.5">Company ID</label>
-              <input value={form.target_company_id} onChange={(e) => set("target_company_id", e.target.value)} className="w-full border border-white/12 rounded-xl px-3 py-2 text-sm" />
+              <input value={form.target_company_id} onChange={(e) => set("target_company_id", e.target.value)} className="w-full border border-[#F1F1F1] rounded-xl px-3 py-2 text-sm" />
             </div>
           )}
           <div>
             <label className="text-sm font-medium text-ivory block mb-1.5">Title</label>
-            <input value={form.title} onChange={(e) => set("title", e.target.value)} className="w-full border border-white/12 rounded-xl px-3 py-2 text-sm" />
+            <input value={form.title} onChange={(e) => set("title", e.target.value)} className="w-full border border-[#F1F1F1] rounded-xl px-3 py-2 text-sm" />
           </div>
           <div>
             <label className="text-sm font-medium text-ivory block mb-1.5">Message</label>
-            <textarea value={form.message} onChange={(e) => set("message", e.target.value)} rows={4} className="w-full border border-white/12 rounded-xl px-3 py-2 text-sm" />
+            <textarea value={form.message} onChange={(e) => set("message", e.target.value)} rows={4} className="w-full border border-[#F1F1F1] rounded-xl px-3 py-2 text-sm" />
           </div>
           <button
             onClick={sendServer}
             disabled={sending}
-            className="bg-[#D6B56D] hover:bg-[#E5C77A] text-white rounded-full px-5 py-2.5 text-sm font-semibold flex items-center gap-2 disabled:opacity-50"
+            className="bg-[#0866FF] hover:bg-[#0866FF] text-white rounded-full px-5 py-2.5 text-sm font-semibold flex items-center gap-2 disabled:opacity-50"
           >
             {sending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
             Send {form.channel === "email" ? "email" : "notification"}
           </button>
-          {sent > 0 && <p className="text-xs text-[#D6B56D]">{sent} notifications delivered this session.</p>}
+          {sent > 0 && <p className="text-xs text-[#0866FF]">{sent} notifications delivered this session.</p>}
         </div>
 
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6">
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6">
           <h2 className="font-semibold text-ivory mb-3">Recent notifications</h2>
           {history.length === 0 ? (
             <p className="text-sm text-ivory-dim py-8 text-center">No notifications sent yet.</p>
           ) : (
-            <ul className="divide-y divide-white/10">
+            <ul className="divide-y divide-[#F1F1F1]">
               {history.map((n) => (
                 <li key={n.id} className="py-3">
                   <div className="flex items-center justify-between">

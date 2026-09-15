@@ -48,12 +48,12 @@ export default function OfferCard({ offer }) {
         <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/45 to-transparent" />
         <div className="absolute left-3 top-3 flex flex-wrap gap-2">
           {offer.discount_label && (
-            <span className="rounded-full bg-gold px-2.5 py-1 text-xs font-bold text-[#062B23]">
+            <span className="rounded-full bg-gold px-2.5 py-1 text-xs font-bold text-white">
               {offer.discount_label}
             </span>
           )}
           {offer.tag && (
-            <span className="rounded-full border border-white/20 bg-[#062B23]/80 px-2.5 py-1 text-xs font-medium text-ivory backdrop-blur">
+            <span className="rounded-full border border-[#E3E3E3] bg-[#FFFFFF]/80 px-2.5 py-1 text-xs font-medium text-ivory backdrop-blur">
               {offer.tag}
             </span>
           )}
@@ -78,7 +78,7 @@ export default function OfferCard({ offer }) {
           {offer.city || "Lagos"}, {offer.country || "Nigeria"}
         </p>
 
-        <span className="block rounded-lg bg-gold py-2.5 text-center text-sm font-semibold text-[#062B23] transition-colors group-hover:bg-[#E5C77A]">
+        <span className="block rounded-lg bg-gold py-2.5 text-center text-sm font-semibold text-white transition-colors group-hover:bg-[#0866FF]">
           View offer
         </span>
       </div>

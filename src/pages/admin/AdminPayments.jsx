@@ -10,7 +10,7 @@ import { Eye, RotateCcw, Ban, Trash2 } from "lucide-react";
 
 function RowIconBtn({ title, onClick, Icon, color = "text-ivory-muted hover:text-ivory" }) {
   return (
-    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-[#0A3A2F]/5 ${color}`}>
+    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-[#F4F4F4] ${color}`}>
       <Icon className="w-4 h-4" />
     </button>
   );
@@ -92,28 +92,28 @@ export default function AdminPayments() {
 
       {/* Summary */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-4">
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-4">
           <p className="text-xs text-ivory-dim">Completed</p>
-          <p className="text-lg font-bold text-[#D6B56D]">
+          <p className="text-lg font-bold text-[#0866FF]">
             {formatMoney(filtered.filter((p) => p.status === "completed").reduce((s, p) => s + (p.amount || 0), 0), "USD")}
           </p>
           <p className="text-xs text-ivory-dim">{filtered.filter((p) => p.status === "completed").length} payments</p>
         </div>
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-4">
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-4">
           <p className="text-xs text-ivory-dim">Pending</p>
-          <p className="text-lg font-bold text-[#E5C77A]">
+          <p className="text-lg font-bold text-[#0866FF]">
             {formatMoney(filtered.filter((p) => p.status === "pending").reduce((s, p) => s + (p.amount || 0), 0), "USD")}
           </p>
           <p className="text-xs text-ivory-dim">{filtered.filter((p) => p.status === "pending").length} payments</p>
         </div>
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-4">
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-4">
           <p className="text-xs text-ivory-dim">Refunded</p>
-          <p className="text-lg font-bold text-[#E5C77A]">
+          <p className="text-lg font-bold text-[#0866FF]">
             {formatMoney(filtered.filter((p) => p.status === "refunded").reduce((s, p) => s + (p.refund_amount || p.amount || 0), 0), "USD")}
           </p>
           <p className="text-xs text-ivory-dim">{filtered.filter((p) => p.status === "refunded").length} refunds</p>
         </div>
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-4">
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-4">
           <p className="text-xs text-ivory-dim">Failed</p>
           <p className="text-lg font-bold text-rose-600">
             {formatMoney(filtered.filter((p) => p.status === "failed").reduce((s, p) => s + (p.amount || 0), 0), "USD")}
@@ -135,10 +135,10 @@ export default function AdminPayments() {
           <div className="flex items-center justify-end gap-1">
             <RowIconBtn title="View receipt" Icon={Eye} onClick={() => setViewing(p)} />
             {p.status === "pending" && (
-              <button onClick={() => approve(p)} className="px-2 py-1 text-xs bg-[#0A3A2F] text-[#D6B56D] rounded hover:bg-[#103F35]">Approve</button>
+              <button onClick={() => approve(p)} className="px-2 py-1 text-xs bg-[#FFFFFF] text-[#0866FF] rounded hover:bg-[#FFFFFF]">Approve</button>
             )}
             {p.status === "completed" && (
-              <RowIconBtn title="Refund" Icon={RotateCcw} color="text-[#E5C77A] hover:text-[#D6B56D]" onClick={() => refund(p)} />
+              <RowIconBtn title="Refund" Icon={RotateCcw} color="text-[#0866FF] hover:text-[#0866FF]" onClick={() => refund(p)} />
             )}
             {p.status === "pending" && (
               <RowIconBtn title="Cancel" Icon={Ban} color="text-rose-600 hover:text-rose-700" onClick={() => cancel(p)} />
@@ -194,7 +194,7 @@ export default function AdminPayments() {
       {viewing && (
         <div className="fixed inset-0 z-[200] flex justify-end">
           <div className="absolute inset-0 bg-black/40" onClick={() => setViewing(null)} />
-          <div className="relative w-full max-w-md bg-[#0A3A2F] h-full overflow-y-auto p-6">
+          <div className="relative w-full max-w-md bg-[#FFFFFF] h-full overflow-y-auto p-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="font-bold text-ivory text-lg">Payment receipt</h2>
               <button onClick={() => setViewing(null)} className="text-ivory-dim">✕</button>
@@ -215,20 +215,20 @@ export default function AdminPayments() {
                 <p className="text-xs text-ivory-muted">{viewing.user_email || viewing.company_name || ""}</p>
               </div>
               {viewing.description && <div><span className="text-xs text-ivory-dim">Description</span><p className="text-ivory">{viewing.description}</p></div>}
-              {viewing.refund_reason && <div><span className="text-xs text-ivory-dim">Refund reason</span><p className="text-[#D6B56D]">{viewing.refund_reason}</p></div>}
+              {viewing.refund_reason && <div><span className="text-xs text-ivory-dim">Refund reason</span><p className="text-[#0866FF]">{viewing.refund_reason}</p></div>}
               {viewing.receipt_url && (
-                <a href={viewing.receipt_url} target="_blank" className="inline-block text-[#D6B56D] text-sm underline mt-2">Open receipt</a>
+                <a href={viewing.receipt_url} target="_blank" className="inline-block text-[#0866FF] text-sm underline mt-2">Open receipt</a>
               )}
             </div>
             <div className="mt-6 flex gap-2">
               {viewing.status === "pending" && (
-                <button onClick={() => { approve(viewing); setViewing(null); }} className="flex-1 bg-[#D6B56D] hover:bg-[#E5C77A] text-white rounded-lg py-2 text-sm font-semibold">Approve</button>
+                <button onClick={() => { approve(viewing); setViewing(null); }} className="flex-1 bg-[#0866FF] hover:bg-[#0866FF] text-white rounded-lg py-2 text-sm font-semibold">Approve</button>
               )}
               {viewing.status === "completed" && (
-                <button onClick={() => { refund(viewing); setViewing(null); }} className="flex-1 bg-[#103F35]/70 text-rose-200 ring-1 ring-rose-400/25 rounded-lg py-2 text-sm font-semibold">Refund</button>
+                <button onClick={() => { refund(viewing); setViewing(null); }} className="flex-1 bg-[#F9F8F7] text-rose-200 ring-1 ring-rose-400/25 rounded-lg py-2 text-sm font-semibold">Refund</button>
               )}
               {viewing.status === "pending" && (
-                <button onClick={() => { cancel(viewing); setViewing(null); }} className="flex-1 bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20 rounded-lg py-2 text-sm font-semibold">Cancel</button>
+                <button onClick={() => { cancel(viewing); setViewing(null); }} className="flex-1 bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20 rounded-lg py-2 text-sm font-semibold">Cancel</button>
               )}
             </div>
           </div>

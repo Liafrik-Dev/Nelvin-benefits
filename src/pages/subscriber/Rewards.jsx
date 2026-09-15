@@ -42,7 +42,7 @@ export default function Rewards() {
 
   return (
     <div className="min-h-screen bg-forest">
-      <div className="relative bg-[#062B23] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-[#FFFFFF] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
         <Navbar />
       </div>
       <EmployeeNav />
@@ -52,29 +52,29 @@ export default function Rewards() {
         <GamificationHub />
 
         {/* Header KPI */}
-        <div className="bg-gradient-to-r from-[#062B23] to-[#062B23] rounded-xl p-6 sm:p-8 text-white shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="bg-gradient-to-r from-black to-black rounded-xl p-6 sm:p-8 text-white shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#D6B56D]/15 text-[#E5C77A] ring-1 ring-[#D6B56D]/25 text-xs font-bold uppercase">
-              <Trophy className="w-3.5 h-3.5 text-[#E5C77A]" /> Recognition & Rewards Portal
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0866FF]/15 text-[#0866FF] ring-1 ring-[#0866FF]/25 text-xs font-bold uppercase">
+              <Trophy className="w-3.5 h-3.5 text-[#0866FF]" /> Recognition & Rewards Portal
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold font-heading">
               Peer Praise & Achievement Points
             </h1>
-            <p className="text-white/70 text-sm">Earn recognition points from colleagues and redeem them for gift vouchers or perks.</p>
+            <p className="text-[#484848] text-sm">Earn recognition points from colleagues and redeem them for gift vouchers or perks.</p>
           </div>
 
-          <div className="bg-[#0A3A2F]/10 backdrop-blur border border-white/20 p-6 rounded-lg text-center min-w-[200px]">
-            <p className="text-xs uppercase tracking-wider text-[#E5C77A] font-bold mb-1">Your Reward Balance</p>
-            <p className="text-4xl font-black text-[#D6B56D] font-heading">{points}</p>
-            <p className="text-xs text-white/60 mt-1">Pts ($125 Value)</p>
+          <div className="bg-[#F4F4F4] backdrop-blur border border-[#E3E3E3] p-6 rounded-lg text-center min-w-[200px]">
+            <p className="text-xs uppercase tracking-wider text-[#0866FF] font-bold mb-1">Your Reward Balance</p>
+            <p className="text-4xl font-black text-[#0866FF] font-heading">{points}</p>
+            <p className="text-xs text-[#484848] mt-1">Pts ($125 Value)</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Send Peer Praise */}
-          <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 shadow-sm space-y-4">
-            <div className="flex items-center gap-2 text-[#E5C77A] font-bold font-heading">
-              <Send className="w-5 h-5 text-[#D6B56D]" /> Send Peer Recognition
+          <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-6 shadow-sm space-y-4">
+            <div className="flex items-center gap-2 text-[#0866FF] font-bold font-heading">
+              <Send className="w-5 h-5 text-[#0866FF]" /> Send Peer Recognition
             </div>
             <p className="text-xs text-ivory-muted">Recognize a coworker for going above and beyond.</p>
 
@@ -86,7 +86,7 @@ export default function Rewards() {
                   placeholder="e.g. Alex Johnson"
                   value={praiseRecipient}
                   onChange={(e) => setPraiseRecipient(e.target.value)}
-                  className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3.5 py-2.5 text-xs font-medium focus:bg-[#0A3A2F] focus:outline-none focus:ring-2 focus:ring-[#D6B56D]/40"
+                  className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl px-3.5 py-2.5 text-xs font-medium focus:bg-[#FFFFFF] focus:outline-none focus:ring-2 focus:ring-[#0866FF]/40"
                 />
               </div>
 
@@ -95,7 +95,7 @@ export default function Rewards() {
                 <select
                   value={praisePoints}
                   onChange={(e) => setPraisePoints(Number(e.target.value))}
-                  className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3.5 py-2.5 text-xs font-medium focus:outline-none"
+                  className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl px-3.5 py-2.5 text-xs font-medium focus:outline-none"
                 >
                   <option value={25}>25 Points (Great job)</option>
                   <option value={50}>50 Points (Exceeded expectations)</option>
@@ -110,37 +110,37 @@ export default function Rewards() {
                   placeholder="Describe why you are giving this praise..."
                   value={praiseReason}
                   onChange={(e) => setPraiseReason(e.target.value)}
-                  className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl p-3 text-xs font-medium focus:bg-[#0A3A2F] focus:outline-none focus:ring-2 focus:ring-[#D6B56D]/40"
+                  className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl p-3 text-xs font-medium focus:bg-[#FFFFFF] focus:outline-none focus:ring-2 focus:ring-[#0866FF]/40"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-[#062B23] text-[#D6B56D] font-bold py-3 rounded-full text-xs hover:bg-[#062B23] transition-colors shadow-sm"
+                className="w-full bg-[#FFFFFF] text-[#0866FF] font-bold py-3 rounded-full text-xs hover:bg-[#FFFFFF] transition-colors shadow-sm"
               >
                 Send Praise
               </button>
-              {sentMsg && <p className="text-xs text-[#D6B56D] font-bold text-center">Praise sent successfully!</p>}
+              {sentMsg && <p className="text-xs text-[#0866FF] font-bold text-center">Praise sent successfully!</p>}
             </form>
           </div>
 
           {/* Social Praise Feed */}
-          <div className="lg:col-span-2 bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 shadow-sm space-y-4">
-            <div className="flex items-center justify-between border-b border-white/10 pb-3">
+          <div className="lg:col-span-2 bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-6 shadow-sm space-y-4">
+            <div className="flex items-center justify-between border-b border-[#F1F1F1] pb-3">
               <div className="flex items-center gap-2 font-bold text-ivory font-heading">
-                <Sparkles className="w-5 h-5 text-[#E5C77A]" /> Recognition Feed
+                <Sparkles className="w-5 h-5 text-[#0866FF]" /> Recognition Feed
               </div>
               <span className="text-xs font-semibold text-ivory-dim">Live Team Wall</span>
             </div>
 
             <div className="space-y-4">
               {feed.map((item) => (
-                <div key={item.id} className="p-4 rounded-lg bg-forest-secondary/60 border border-white/10 space-y-2">
+                <div key={item.id} className="p-4 rounded-lg bg-[#F9F8F7] border border-[#F1F1F1] space-y-2">
                   <div className="flex items-center justify-between">
                     <p className="text-xs font-bold text-ivory">
-                      <span className="text-[#D6B56D]">{item.sender}</span> recognized <span className="text-[#D6B56D]">{item.recipient}</span>
+                      <span className="text-[#0866FF]">{item.sender}</span> recognized <span className="text-[#0866FF]">{item.recipient}</span>
                     </p>
-                    <span className="text-[10px] bg-[#103F35]/70 text-[#E5C77A] font-bold px-2 py-0.5 rounded-full">
+                    <span className="text-[10px] bg-[#F9F8F7] text-[#0866FF] font-bold px-2 py-0.5 rounded-full">
                       +{item.points} Pts
                     </span>
                   </div>

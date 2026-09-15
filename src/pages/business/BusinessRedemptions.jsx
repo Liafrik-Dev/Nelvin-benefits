@@ -38,20 +38,20 @@ export default function BusinessRedemptions() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold font-heading text-[#F5F1E8]">Member Redemptions Log</h1>
+          <h1 className="text-2xl font-bold font-heading text-[#282828]">Member Redemptions Log</h1>
           <p className="text-sm text-ivory-muted mt-1">Real-time stream of employee benefit redemptions verified in your store.</p>
         </div>
         <button
           onClick={() => setScanModal(true)}
-          className="bg-[#062B23] hover:bg-[#0A3A2F] text-[#D6B56D] text-xs font-bold px-4 py-2.5 rounded-xl inline-flex items-center gap-2 shadow-sm transition-colors"
+          className="bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#0866FF] text-xs font-bold px-4 py-2.5 rounded-xl inline-flex items-center gap-2 shadow-sm transition-colors"
         >
-          <QrCode className="w-4 h-4 text-[#D6B56D]" /> Scan / Validate Voucher
+          <QrCode className="w-4 h-4 text-[#0866FF]" /> Scan / Validate Voucher
         </button>
       </div>
 
-      <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg overflow-hidden shadow-sm">
+      <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg overflow-hidden shadow-sm">
         <table className="w-full text-sm text-left">
-          <thead className="bg-forest-secondary/60 text-ivory-muted text-xs uppercase font-semibold border-b border-white/10">
+          <thead className="bg-[#F9F8F7] text-ivory-muted text-xs uppercase font-semibold border-b border-[#F1F1F1]">
             <tr>
               <th className="px-6 py-3.5">Customer & Corporate Company</th>
               <th className="px-6 py-3.5">Offer Title</th>
@@ -60,16 +60,16 @@ export default function BusinessRedemptions() {
               <th className="px-6 py-3.5">Redemption Time</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-white/10">
+          <tbody className="divide-y divide-[#F1F1F1]">
             {redemptions.map((r) => (
-              <tr key={r.id} className="hover:bg-forest-secondary/60 transition-colors">
+              <tr key={r.id} className="hover:bg-[#F9F8F7] transition-colors">
                 <td className="px-6 py-4 font-bold text-ivory">
                   <p>{r.customer}</p>
                   <p className="text-xs text-ivory-dim font-normal">{r.company}</p>
                 </td>
                 <td className="px-6 py-4 font-semibold text-ivory">{r.offer}</td>
                 <td className="px-6 py-4 font-mono font-bold text-ivory">{r.code}</td>
-                <td className="px-6 py-4 font-extrabold text-[#E5C77A]">{r.amount}</td>
+                <td className="px-6 py-4 font-extrabold text-[#0866FF]">{r.amount}</td>
                 <td className="px-6 py-4 text-xs text-ivory-muted">{r.date}</td>
               </tr>
             ))}
@@ -83,10 +83,10 @@ export default function BusinessRedemptions() {
             <button onClick={() => setScanModal(false)} className="absolute top-4 right-4 text-ivory-dim hover:text-ivory-muted">
               <X className="w-5 h-5" />
             </button>
-            <div className="w-12 h-12 bg-[#0A3A2F] rounded-lg flex items-center justify-center mx-auto text-[#E5C77A]">
+            <div className="w-12 h-12 bg-[#FFFFFF] rounded-lg flex items-center justify-center mx-auto text-[#0866FF]">
               <QrCode className="w-6 h-6" />
             </div>
-            <h3 className="font-bold text-lg text-[#F5F1E8]">Validate Customer Voucher</h3>
+            <h3 className="font-bold text-lg text-[#282828]">Validate Customer Voucher</h3>
             <p className="text-xs text-ivory-muted">
               Enter customer code or scan QR code at terminal.
             </p>
@@ -97,16 +97,16 @@ export default function BusinessRedemptions() {
                 placeholder="NV-8841"
                 value={inputCode}
                 onChange={(e) => setInputCode(e.target.value)}
-                className="w-full text-center font-mono font-bold text-sm tracking-widest p-3 border border-white/12 rounded-xl focus:border-[#0A3A2F] focus:outline-none uppercase"
+                className="w-full text-center font-mono font-bold text-sm tracking-widest p-3 border border-[#F1F1F1] rounded-xl focus:border-[#F1F1F1] focus:outline-none uppercase"
               />
               {scanSuccess ? (
-                <div className="p-3 bg-[#0A3A2F] text-[#E5C77A] rounded-xl text-xs font-bold flex items-center justify-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#D6B56D]" /> Voucher Validated!
+                <div className="p-3 bg-[#FFFFFF] text-[#0866FF] rounded-xl text-xs font-bold flex items-center justify-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#0866FF]" /> Voucher Validated!
                 </div>
               ) : (
                 <button
                   type="submit"
-                  className="w-full bg-[#062B23] hover:bg-[#0A3A2F] text-[#D6B56D] font-bold text-xs py-3 rounded-xl transition-colors"
+                  className="w-full bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#0866FF] font-bold text-xs py-3 rounded-xl transition-colors"
                 >
                   Verify Code
                 </button>

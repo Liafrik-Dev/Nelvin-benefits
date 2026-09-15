@@ -12,8 +12,8 @@ export default function Newsletter() {
   return (
     <section className="surface-nv-primary section-nv">
       <div className="container-nv">
-        <div className="mx-auto max-w-3xl rounded-2xl border border-[#D6B56D]/20 bg-[#103F35] p-8 text-center shadow-nv-card sm:p-12">
-          <span className="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-[#062B23]">
+        <div className="mx-auto max-w-3xl rounded-2xl border border-[#0866FF]/20 bg-[#FFFFFF] p-8 text-center shadow-nv-card sm:p-12">
+          <span className="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-[#FFFFFF]">
             <Mail className="h-5 w-5 text-gold" />
           </span>
 
@@ -43,7 +43,7 @@ export default function Newsletter() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your best email"
-                className="flex-1 rounded-lg border border-white/15 bg-white/[0.05] px-5 py-3 text-sm text-ivory outline-none placeholder:text-ivory-dim focus:border-gold"
+                className="flex-1 rounded-lg border border-[#F1F1F1] bg-white/[0.05] px-5 py-3 text-sm text-ivory outline-none placeholder:text-ivory-dim focus:border-gold"
               />
               <button type="submit" className="btn-nv btn-nv-md btn-nv-gold group shrink-0">
                 Subscribe

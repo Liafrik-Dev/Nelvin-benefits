@@ -131,13 +131,12 @@ export default function Navbar() {
   return (
     <header ref={headerRef} className="fixed inset-x-0 top-0 z-50">
       <div
-        className={`border-b backdrop-blur-xl transition-shadow duration-300 ${
-          scrolled ? "border-white/10 shadow-nv-header" : "border-white/[0.06]"
+        className={`border-b bg-white backdrop-blur-xl transition-shadow duration-300 ${
+          scrolled ? "border-[#F1F1F1] shadow-nv-header" : "border-[#F4F4F4]"
         }`}
-        style={{ backgroundColor: "rgba(6, 43, 35, 0.94)" }}
       >
         <div className="container-nv">
-          <div className="flex h-16 items-center gap-3 lg:h-[72px] lg:gap-6">
+          <div className="flex h-16 items-center gap-3 lg:h-20 lg:gap-6">
             {/* Brand */}
             <BrandLogo size="sm" tagline="Perks for Everyone" className="shrink-0" />
 
@@ -153,7 +152,7 @@ export default function Navbar() {
                     aria-expanded={open}
                     aria-haspopup="true"
                     className={`btn-nv btn-nv-sm gap-1.5 px-3 ${
-                      open ? "text-gold bg-white/5" : "btn-nv-ghost"
+                      open ? "text-gold bg-[#F9F8F7]" : "btn-nv-ghost"
                     }`}
                   >
                     {config.label}
@@ -176,7 +175,7 @@ export default function Navbar() {
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Discover offers…"
                   aria-label="Discover offers"
-                  className="h-9 w-44 rounded-lg border border-white/12 bg-white/[0.04] pl-9 pr-3 text-xs font-medium text-ivory outline-none transition-all placeholder:text-ivory-dim focus:w-52 focus:border-gold focus:bg-white/[0.07]"
+                  className="h-9 w-44 rounded-lg border border-[#F1F1F1] bg-[#F9F8F7] pl-9 pr-3 text-xs font-medium text-ivory outline-none transition-all placeholder:text-ivory-dim focus:w-52 focus:border-gold focus:bg-white/[0.07]"
                 />
               </form>
 
@@ -187,7 +186,7 @@ export default function Navbar() {
                   onClick={() => { setLangOpen((v) => !v); setMenuKey(null); }}
                   aria-label={t("nav.language")}
                   aria-expanded={langOpen}
-                  className="btn-nv btn-nv-sm gap-1.5 border border-white/12 px-3 text-[#F5F1E8]/90 hover:border-[#D6B56D]/50 hover:text-gold"
+                  className="btn-nv btn-nv-sm gap-1.5 border border-[#F1F1F1] px-3 text-[#282828]/90 hover:border-[#0866FF]/50 hover:text-gold"
                 >
                   <Globe className="h-3.5 w-3.5 text-gold" />
                   <span className="uppercase">{lang}</span>
@@ -200,14 +199,14 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -6 }}
                       transition={{ duration: 0.15 }}
-                      className="absolute right-0 z-50 mt-2 w-44 rounded-xl border border-white/12 bg-[#062B23] p-1.5 shadow-nv-card"
+                      className="absolute right-0 z-50 mt-2 w-44 rounded-xl border border-[#F1F1F1] bg-[#FFFFFF] p-1.5 shadow-nv-card"
                     >
                       {LANGUAGES.map((lng) => (
                         <button
                           key={lng.code}
                           type="button"
                           onClick={() => { setLang(lng.code); setLangOpen(false); }}
-                          className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-xs font-semibold text-[#F5F1E8]/90 transition-colors hover:bg-white/5 hover:text-gold"
+                          className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-xs font-semibold text-[#282828]/90 transition-colors hover:bg-[#F9F8F7] hover:text-gold"
                         >
                           <span>{lng.label}</span>
                           {lang === lng.code && <Check className="h-3.5 w-3.5 text-gold" />}
@@ -239,7 +238,7 @@ export default function Navbar() {
                 aria-label={mobileOpen ? "Close menu" : "Open menu"}
                 aria-expanded={mobileOpen}
                 onClick={() => setMobileOpen((v) => !v)}
-                className="btn-nv btn-nv-sm btn-nv-ghost border border-white/12 px-2.5 lg:hidden"
+                className="btn-nv btn-nv-sm btn-nv-ghost border border-[#F1F1F1] px-2.5 lg:hidden"
               >
                 {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </button>
@@ -256,7 +255,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.18 }}
-              className="absolute inset-x-0 top-full hidden border-b border-white/10 bg-[#062B23] shadow-nv-header lg:block"
+              className="absolute inset-x-0 top-full hidden border-b border-[#F1F1F1] bg-[#FFFFFF] shadow-nv-header lg:block"
             >
               <div className="container-nv py-8">
                 <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
@@ -267,9 +266,9 @@ export default function Navbar() {
                         key={item.title}
                         to={item.to}
                         onClick={() => setMenuKey(null)}
-                        className="group flex items-start gap-3 rounded-xl border border-transparent p-3.5 transition-colors hover:border-[#D6B56D]/25 hover:bg-white/[0.04]"
+                        className="group flex items-start gap-3 rounded-xl border border-transparent p-3.5 transition-colors hover:border-[#0866FF]/25 hover:bg-[#F9F8F7]"
                       >
-                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#D6B56D]/20 bg-[#D6B56D]/10 text-gold transition-colors group-hover:bg-gold group-hover:text-[#062B23]">
+                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#0866FF]/20 bg-[#0866FF]/10 text-gold transition-colors group-hover:bg-gold group-hover:text-white">
                           <ItemIcon className="h-4 w-4" />
                         </span>
                         <span className="min-w-0">
@@ -298,7 +297,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="max-h-[calc(100vh-4rem)] overflow-y-auto border-b border-white/10 bg-[#062B23] shadow-nv-header lg:hidden"
+            className="max-h-[calc(100vh-4rem)] overflow-y-auto border-b border-[#F1F1F1] bg-[#FFFFFF] shadow-nv-header lg:hidden"
           >
             <div className="container-nv space-y-6 py-6">
               <form onSubmit={submitSearch} className="relative">
@@ -309,7 +308,7 @@ export default function Navbar() {
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Discover offers…"
                   aria-label="Discover offers"
-                  className="h-11 w-full rounded-lg border border-white/12 bg-white/[0.04] pl-10 pr-3 text-sm font-medium text-ivory outline-none placeholder:text-ivory-dim focus:border-gold"
+                  className="h-11 w-full rounded-lg border border-[#F1F1F1] bg-[#F9F8F7] pl-10 pr-3 text-sm font-medium text-ivory outline-none placeholder:text-ivory-dim focus:border-gold"
                 />
               </form>
 
@@ -321,7 +320,7 @@ export default function Navbar() {
                       key={p.title}
                       to={p.to}
                       onClick={() => setMobileOpen(false)}
-                      className="flex flex-col items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.03] p-3 text-center transition-colors hover:border-[#D6B56D]/40"
+                      className="flex flex-col items-center gap-1.5 rounded-xl border border-[#F1F1F1] bg-[#F9F8F7] p-3 text-center transition-colors hover:border-[#0866FF]/40"
                     >
                       <p.icon className="h-4 w-4 text-gold" />
                       <span className="text-[11px] font-bold text-ivory">{p.title}</span>
@@ -344,7 +343,7 @@ export default function Navbar() {
                             key={item.title}
                             to={item.to}
                             onClick={() => setMobileOpen(false)}
-                            className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-xs font-semibold text-[#F5F1E8]/90 transition-colors hover:bg-white/5 hover:text-gold"
+                            className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-xs font-semibold text-[#282828]/90 transition-colors hover:bg-[#F9F8F7] hover:text-gold"
                           >
                             <item.icon className="h-3.5 w-3.5 shrink-0 text-gold" />
                             <span>{item.title}</span>
@@ -368,8 +367,8 @@ export default function Navbar() {
                       onClick={() => setLang(lng.code)}
                       className={`btn-nv btn-nv-sm border ${
                         lang === lng.code
-                          ? "border-gold bg-gold text-[#062B23]"
-                          : "border-white/12 text-[#F5F1E8]/85"
+                          ? "border-gold bg-gold text-white"
+                          : "border-[#F1F1F1] text-[#282828]/85"
                       }`}
                     >
                       {lng.label}

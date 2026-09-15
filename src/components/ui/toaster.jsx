@@ -10,8 +10,8 @@ const ICONS = {
 }
 
 const ACCENTS = {
-  default: "border-white/15 text-[#D6B56D]",
-  success: "border-white/15 text-[#D6B56D]",
+  default: "border-[#F1F1F1] text-[#0866FF]",
+  success: "border-[#F1F1F1] text-[#0866FF]",
   destructive: "border-rose-400/30 text-rose-300",
 }
 
@@ -27,7 +27,7 @@ export function Toaster() {
             key={t.id}
             role="alert"
             className={cn(
-              "pointer-events-auto flex items-start gap-3 rounded-lg border bg-[#0A3A2F]/95 p-4 shadow-lg ring-1 ring-white/10 backdrop-blur animate-in slide-in-from-bottom-4 fade-in duration-200",
+              "pointer-events-auto flex items-start gap-3 rounded-lg border bg-[#F9F8F7] p-4 shadow-lg ring-1 ring-[#F1F1F1] backdrop-blur animate-in slide-in-from-bottom-4 fade-in duration-200",
               ACCENTS[t.variant] || ACCENTS.default
             )}
           >
@@ -38,7 +38,7 @@ export function Toaster() {
             </div>
             <button
               onClick={() => dismiss(t.id)}
-              className="text-ivory-dim hover:text-[#D6B56D] shrink-0"
+              className="text-ivory-dim hover:text-[#0866FF] shrink-0"
               aria-label="Dismiss notification"
             >
               <X className="h-4 w-4" />

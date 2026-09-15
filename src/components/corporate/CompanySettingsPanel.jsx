@@ -107,9 +107,9 @@ export default function CompanySettingsPanel({ company, onChanged }) {
         <p className="text-sm text-ivory-muted mt-1">Company profile, branding, single sign-on, and the audit trail. Branding appears only inside the HR portal — Nelvin's own branding stays intact on the main site and individual subscribers' experience.</p>
       </div>
 
-      <div className="flex flex-wrap gap-1 mb-6 border-b border-white/10 pb-2">
+      <div className="flex flex-wrap gap-1 mb-6 border-b border-[#F1F1F1] pb-2">
         {[["profile", "Profile"], ["branding", "Branding"], ["sso", "SSO"], ["audit", "Audit Trail"]].map(([id, label]) => (
-          <button key={id} onClick={() => setTab(id)} className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${tab === id ? "bg-[#0A3A2F] text-ivory" : "text-ivory-muted hover:bg-[#0A3A2F]/5"}`}>
+          <button key={id} onClick={() => setTab(id)} className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${tab === id ? "bg-[#FFFFFF] text-ivory" : "text-ivory-muted hover:bg-[#F4F4F4]"}`}>
             {label}
           </button>
         ))}
@@ -117,8 +117,8 @@ export default function CompanySettingsPanel({ company, onChanged }) {
 
       <form onSubmit={save}>
         {tab === "profile" && (
-          <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-4 max-w-3xl">
-            <h3 className="font-semibold text-ivory flex items-center gap-2"><Building2 className="w-4 h-4 text-[#D6B56D]" /> Company profile</h3>
+          <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 space-y-4 max-w-3xl">
+            <h3 className="font-semibold text-ivory flex items-center gap-2"><Building2 className="w-4 h-4 text-[#0866FF]" /> Company profile</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Input label="Company name" value={form.name} onChange={(v) => update("name", v)} full />
               <Input label="Industry" value={form.industry} onChange={(v) => update("industry", v)} />
@@ -130,8 +130,8 @@ export default function CompanySettingsPanel({ company, onChanged }) {
               <div className="sm:col-span-2">
                 <label className="block text-xs font-semibold text-ivory-muted mb-1.5 flex items-center gap-1"><Globe className="w-3 h-3" /> Email domain (used for auto-join)</label>
                 <div className="flex items-center">
-                  <span className="px-3 py-2 bg-[#0A3A2F]/5 border border-r-0 border-white/12 rounded-l-lg text-ivory-dim text-sm">@</span>
-                  <input value={form.email_domain} onChange={(e) => update("email_domain", e.target.value.toLowerCase().replace(/^@/, ""))} className="flex-1 px-3 py-2 text-sm border border-white/12 rounded-r-lg outline-none focus:border-[#D6B56D]/40 focus:ring-2 focus:ring-white/10" />
+                  <span className="px-3 py-2 bg-[#F4F4F4] border border-r-0 border-[#F1F1F1] rounded-l-lg text-ivory-dim text-sm">@</span>
+                  <input value={form.email_domain} onChange={(e) => update("email_domain", e.target.value.toLowerCase().replace(/^@/, ""))} className="flex-1 px-3 py-2 text-sm border border-[#F1F1F1] rounded-r-lg outline-none focus:border-[#0866FF]/40 focus:ring-2 focus:ring-[#F1F1F1]" />
                 </div>
               </div>
             </div>
@@ -139,42 +139,42 @@ export default function CompanySettingsPanel({ company, onChanged }) {
         )}
 
         {tab === "branding" && (
-          <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-4 max-w-3xl">
-            <h3 className="font-semibold text-ivory flex items-center gap-2"><Palette className="w-4 h-4 text-[#D6B56D]" /> HR portal branding</h3>
+          <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 space-y-4 max-w-3xl">
+            <h3 className="font-semibold text-ivory flex items-center gap-2"><Palette className="w-4 h-4 text-[#0866FF]" /> HR portal branding</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-semibold text-ivory-muted mb-1.5 flex items-center gap-1"><ImageIcon className="w-3 h-3" /> Main logo</label>
-                <div className="aspect-square bg-forest-secondary/60 rounded-xl border border-white/12 flex items-center justify-center overflow-hidden">
+                <div className="aspect-square bg-[#F9F8F7] rounded-xl border border-[#F1F1F1] flex items-center justify-center overflow-hidden">
                   {form.logo_url ? <img src={form.logo_url} alt="" className="w-full h-full object-cover" /> : <span className="text-xs text-ivory-dim">No logo</span>}
                 </div>
-                <input type="file" accept="image/*" onChange={(e) => onFile("logo_url", e)} className="block w-full text-xs text-ivory-muted file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:bg-[#0A3A2F] file:text-[#D6B56D] file:font-semibold file:text-xs mt-2" />
+                <input type="file" accept="image/*" onChange={(e) => onFile("logo_url", e)} className="block w-full text-xs text-ivory-muted file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:bg-[#FFFFFF] file:text-[#0866FF] file:font-semibold file:text-xs mt-2" />
               </div>
               <div>
                 <label className="block text-xs font-semibold text-ivory-muted mb-1.5">HR portal logo (optional, separate)</label>
-                <div className="aspect-square bg-forest-secondary/60 rounded-xl border border-white/12 flex items-center justify-center overflow-hidden">
+                <div className="aspect-square bg-[#F9F8F7] rounded-xl border border-[#F1F1F1] flex items-center justify-center overflow-hidden">
                   {form.branding_logo_url ? <img src={form.branding_logo_url} alt="" className="w-full h-full object-cover" /> : <span className="text-xs text-ivory-dim">No separate logo</span>}
                 </div>
-                <input type="file" accept="image/*" onChange={(e) => onFile("branding_logo_url", e)} className="block w-full text-xs text-ivory-muted file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:bg-[#0A3A2F] file:text-[#D6B56D] file:font-semibold file:text-xs mt-2" />
+                <input type="file" accept="image/*" onChange={(e) => onFile("branding_logo_url", e)} className="block w-full text-xs text-ivory-muted file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:bg-[#FFFFFF] file:text-[#0866FF] file:font-semibold file:text-xs mt-2" />
               </div>
             </div>
             <div>
               <label className="block text-xs font-semibold text-ivory-muted mb-1.5">Primary accent color (HR portal)</label>
-              <input type="color" value={form.branding_primary_color} onChange={(e) => update("branding_primary_color", e.target.value)} className="h-10 w-16 rounded-lg border border-white/12" />
+              <input type="color" value={form.branding_primary_color} onChange={(e) => update("branding_primary_color", e.target.value)} className="h-10 w-16 rounded-lg border border-[#F1F1F1]" />
               <span className="text-xs text-ivory-dim ml-2">{form.branding_primary_color}</span>
             </div>
             <div>
               <label className="block text-xs font-semibold text-ivory-muted mb-1.5">Welcome message (shown to employees)</label>
-              <textarea rows={3} value={form.branding_welcome_message} onChange={(e) => update("branding_welcome_message", e.target.value)} placeholder="Welcome to your company benefits portal!" className="w-full px-3 py-2 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40" />
+              <textarea rows={3} value={form.branding_welcome_message} onChange={(e) => update("branding_welcome_message", e.target.value)} placeholder="Welcome to your company benefits portal!" className="w-full px-3 py-2 text-sm border border-[#F1F1F1] rounded-lg outline-none focus:border-[#0866FF]/40" />
             </div>
           </div>
         )}
 
         {tab === "sso" && (
-          <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-4 max-w-3xl">
-            <h3 className="font-semibold text-ivory flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-[#D6B56D]" /> Single Sign-On</h3>
+          <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 space-y-4 max-w-3xl">
+            <h3 className="font-semibold text-ivory flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-[#0866FF]" /> Single Sign-On</h3>
             <div>
               <label className="block text-xs font-semibold text-ivory-muted mb-1.5">SSO Provider</label>
-              <select value={form.sso_provider} onChange={(e) => update("sso_provider", e.target.value)} className="w-full px-3 py-2 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40">
+              <select value={form.sso_provider} onChange={(e) => update("sso_provider", e.target.value)} className="w-full px-3 py-2 text-sm border border-[#F1F1F1] rounded-lg outline-none focus:border-[#0866FF]/40">
                 {SSO_OPTIONS.map((o) => <option key={o.id} value={o.id}>{o.label}</option>)}
               </select>
             </div>
@@ -189,12 +189,12 @@ export default function CompanySettingsPanel({ company, onChanged }) {
         )}
 
         {tab === "audit" && (
-          <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 max-w-3xl">
-            <h3 className="font-semibold text-ivory flex items-center gap-2 mb-3"><AuditIcon className="w-4 h-4 text-[#D6B56D]" /> Recent changes by your team</h3>
+          <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 max-w-3xl">
+            <h3 className="font-semibold text-ivory flex items-center gap-2 mb-3"><AuditIcon className="w-4 h-4 text-[#0866FF]" /> Recent changes by your team</h3>
             {audits.length === 0 ? (
               <p className="text-sm text-ivory-dim">No audit events recorded yet for this company.</p>
             ) : (
-              <div className="divide-y divide-white/10">
+              <div className="divide-y divide-[#F1F1F1]">
                 {audits.map((a) => (
                   <div key={a.id} className="py-3">
                     <p className="text-sm text-ivory"><span className="text-xs uppercase tracking-wider text-ivory-dim mr-2">{a.action}</span>{a.description}</p>
@@ -207,7 +207,7 @@ export default function CompanySettingsPanel({ company, onChanged }) {
         )}
 
         <div className="mt-6 max-w-3xl">
-          <button type="submit" disabled={saving} className="inline-flex items-center gap-2 bg-[#D6B56D] hover:bg-[#E5C77A] disabled:opacity-70 text-white font-semibold px-5 py-2.5 rounded-lg text-sm">
+          <button type="submit" disabled={saving} className="inline-flex items-center gap-2 bg-[#0866FF] hover:bg-[#0866FF] disabled:opacity-70 text-white font-semibold px-5 py-2.5 rounded-lg text-sm">
             <Save className="w-4 h-4" /> {saving ? "Saving..." : "Save changes"}
           </button>
         </div>
@@ -220,7 +220,7 @@ function Input({ label, value, onChange, full }) {
   return (
     <div className={full ? "sm:col-span-2" : ""}>
       <label className="block text-xs font-semibold text-ivory-muted mb-1.5">{label}</label>
-      <input value={value} onChange={(e) => onChange(e.target.value)} className="w-full px-3 py-2 text-sm border border-white/12 rounded-lg outline-none focus:border-[#D6B56D]/40 focus:ring-2 focus:ring-white/10" />
+      <input value={value} onChange={(e) => onChange(e.target.value)} className="w-full px-3 py-2 text-sm border border-[#F1F1F1] rounded-lg outline-none focus:border-[#0866FF]/40 focus:ring-2 focus:ring-[#F1F1F1]" />
     </div>
   );
 }

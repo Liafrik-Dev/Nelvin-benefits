@@ -34,16 +34,16 @@ export default function Cashback() {
 
   return (
     <div className="min-h-screen bg-forest">
-      <div className="relative bg-[#062B23] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-[#FFFFFF] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
         <Navbar />
       </div>
       <EmployeeNav />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0A3A2F] text-[#E5C77A] text-xs font-bold uppercase">
-              <TrendingUp className="w-3.5 h-3.5 text-[#D6B56D]" /> Automatic Cashback Perk
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFFFFF] text-[#0866FF] text-xs font-bold uppercase">
+              <TrendingUp className="w-3.5 h-3.5 text-[#0866FF]" /> Automatic Cashback Perk
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-ivory font-heading">
               Earn Instant Cashback On Everyday Purchases
@@ -53,15 +53,15 @@ export default function Cashback() {
             </p>
           </div>
 
-          <div className="bg-[#062B23] text-white p-5 rounded-lg text-center min-w-[220px] space-y-3">
+          <div className="border border-[#E3E3E3] bg-[#FFFFFF] text-[#282828] p-5 rounded-lg text-center min-w-[220px] space-y-3">
             <div>
-              <p className="text-[10px] uppercase text-[#D6B56D] font-bold">Available Cashback Balance</p>
-              <p className="text-3xl font-black font-heading text-[#D6B56D]">${earnings.toFixed(2)}</p>
+              <p className="text-[10px] uppercase text-[#0866FF] font-bold">Available Cashback Balance</p>
+              <p className="text-3xl font-black font-heading text-[#0866FF]">${earnings.toFixed(2)}</p>
             </div>
             <button
               onClick={() => setPayoutModal(true)}
               disabled={earnings === 0}
-              className="w-full bg-[#0A3A2F] hover:bg-[#D6B56D] text-[#062B23] text-xs font-bold py-2 rounded-xl transition-colors disabled:opacity-50"
+              className="w-full bg-[#FFFFFF] hover:bg-[#0866FF] text-white text-xs font-bold py-2 rounded-xl transition-colors disabled:opacity-50"
             >
               Transfer to Wallet
             </button>
@@ -85,21 +85,21 @@ export default function Cashback() {
             <button onClick={() => setPayoutModal(false)} className="absolute top-4 right-4 text-ivory-dim hover:text-ivory-muted">
               <X className="w-5 h-5" />
             </button>
-            <div className="w-12 h-12 bg-[#0A3A2F] rounded-lg flex items-center justify-center mx-auto text-[#E5C77A]">
+            <div className="w-12 h-12 bg-[#FFFFFF] rounded-lg flex items-center justify-center mx-auto text-[#0866FF]">
               <Wallet className="w-6 h-6" />
             </div>
-            <h3 className="font-bold text-lg text-[#F5F1E8]">Transfer to Wallet</h3>
+            <h3 className="font-bold text-lg text-[#282828]">Transfer to Wallet</h3>
             <p className="text-xs text-ivory-muted">
               Move <strong className="text-ivory">${earnings.toFixed(2)}</strong> from cashback directly into your spendable Nelvin balance.
             </p>
             {payoutDone ? (
-              <div className="p-3 bg-[#0A3A2F] text-[#E5C77A] rounded-xl text-xs font-bold flex items-center justify-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#D6B56D]" /> Transfer Complete!
+              <div className="p-3 bg-[#FFFFFF] text-[#0866FF] rounded-xl text-xs font-bold flex items-center justify-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#0866FF]" /> Transfer Complete!
               </div>
             ) : (
               <button
                 onClick={handleTransfer}
-                className="w-full bg-[#062B23] hover:bg-[#0A3A2F] text-[#D6B56D] font-bold text-xs py-3 rounded-xl transition-colors"
+                className="w-full bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#0866FF] font-bold text-xs py-3 rounded-xl transition-colors"
               >
                 Confirm Instant Transfer
               </button>

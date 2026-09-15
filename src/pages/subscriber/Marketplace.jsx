@@ -44,7 +44,7 @@ export default function Marketplace() {
 
   return (
     <div className="min-h-screen bg-forest">
-      <div className="relative bg-[#062B23] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-[#FFFFFF] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
         <Navbar />
       </div>
       <EmployeeNav />
@@ -52,8 +52,8 @@ export default function Marketplace() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0A3A2F] text-[#E5C77A] text-xs font-bold uppercase">
-              <ShoppingBag className="w-3.5 h-3.5 text-[#D6B56D]" /> Complete Benefits Marketplace
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFFFFF] text-[#0866FF] text-xs font-bold uppercase">
+              <ShoppingBag className="w-3.5 h-3.5 text-[#0866FF]" /> Complete Benefits Marketplace
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-ivory mt-2 font-heading">
               Employee Marketplace
@@ -68,13 +68,13 @@ export default function Marketplace() {
               placeholder="Search offers, brands, keywords..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-emerald-black ring-1 ring-white/10 border border-transparent pl-10 pr-4 py-2.5 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-[#D6B56D]/40"
+              className="w-full bg-emerald-black ring-1 ring-[#F1F1F1] border border-transparent pl-10 pr-4 py-2.5 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-[#0866FF]/40"
             />
           </div>
         </div>
 
         {/* Filters bar */}
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-4 shadow-sm flex flex-wrap items-center justify-between gap-4">
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-4 shadow-sm flex flex-wrap items-center justify-between gap-4">
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-xs font-semibold text-ivory-dim flex items-center gap-1 mr-1">
               <Filter className="w-3.5 h-3.5" /> Category:
@@ -84,7 +84,7 @@ export default function Marketplace() {
                 key={c}
                 onClick={() => setSelectedCategory(c)}
                 className={`px-3 py-1 rounded-full text-xs font-semibold transition-colors ${
-                  selectedCategory === c ? "bg-[#062B23] text-[#D6B56D]" : "bg-[#0A3A2F]/5 text-ivory-muted hover:bg-[#0A3A2F]/10"
+                  selectedCategory === c ? "bg-[#FFFFFF] text-[#0866FF]" : "bg-[#F4F4F4] text-ivory-muted hover:bg-[#F4F4F4]"
                 }`}
               >
                 {c}
@@ -99,7 +99,7 @@ export default function Marketplace() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="bg-forest-secondary/60 border border-white/12 text-ivory text-xs font-semibold rounded-lg px-2.5 py-1.5 focus:outline-none"
+              className="bg-[#F9F8F7] border border-[#F1F1F1] text-ivory text-xs font-semibold rounded-lg px-2.5 py-1.5 focus:outline-none"
             >
               <option value="popular">Top Rated</option>
               <option value="savings">Highest Savings</option>
@@ -117,7 +117,7 @@ export default function Marketplace() {
               key={t}
               onClick={() => setSelectedTag(t)}
               className={`px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap transition-colors ${
-                selectedTag === t ? "bg-[#D6B56D] text-white" : "bg-emerald-black ring-1 ring-white/10 border border-transparent text-ivory-muted hover:bg-forest-secondary/60"
+                selectedTag === t ? "bg-[#0866FF] text-white" : "bg-emerald-black ring-1 ring-[#F1F1F1] border border-transparent text-ivory-muted hover:bg-[#F9F8F7]"
               }`}
             >
               {t}
@@ -129,8 +129,8 @@ export default function Marketplace() {
         {loading ? (
           <div className="h-64 flex items-center justify-center text-ivory-dim">Loading marketplace offers...</div>
         ) : sorted.length === 0 ? (
-          <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-12 text-center space-y-3">
-            <ShoppingBag className="w-10 h-10 text-[#F5F1E8]/60 mx-auto" />
+          <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-12 text-center space-y-3">
+            <ShoppingBag className="w-10 h-10 text-[#282828]/60 mx-auto" />
             <h3 className="text-lg font-bold text-ivory">No matching offers found</h3>
             <p className="text-ivory-muted text-xs">Try clearing filters or searching for another keyword.</p>
             <button
@@ -139,7 +139,7 @@ export default function Marketplace() {
                 setSelectedCategory("All");
                 setSelectedTag("All");
               }}
-              className="mt-2 text-xs font-bold text-[#D6B56D] underline"
+              className="mt-2 text-xs font-bold text-[#0866FF] underline"
             >
               Reset Filters
             </button>

@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 /**
  * Brand primitives shared by the public surfaces.
  *
- * NelvinBenefit always renders in champagne gold — the wordmark, the
- * monogram tile, and the nav/footer identity all use it — so the mark
- * stays recognisable against every forest-tone surface.
+ * The NelvinBenefit wordmark renders in brand gold everywhere it appears,
+ * in the two shades that keep it legible on light and on blue surfaces.
  */
 
 const SIZES = {
@@ -16,14 +15,17 @@ const SIZES = {
 };
 
 /** Gold monogram tile — the compact mark used in nav, footer and app chrome. */
-export function BrandMark({ size = "md", className = "" }) {
+export function BrandMark({ size = "md", tone = "default", className = "" }) {
   const s = SIZES[size] || SIZES.md;
+  const inverse = tone === "inverse";
   return (
     <span
-      className={`${s.tile} shrink-0 rounded-xl bg-gradient-to-br from-[#E5C77A] via-[#D6B56D] to-[#B9944C] flex items-center justify-center shadow-nv-card ring-1 ring-[#F0DFAE]/40 ${className}`}
+      className={`${s.tile} shrink-0 rounded-xl ${
+        inverse ? "bg-white ring-white/40" : "bg-gradient-to-br from-[#0866FF] to-[#1F4CF4] ring-[#0866FF]/25"
+      } flex items-center justify-center shadow-nv-card ring-1 ${className}`}
       aria-hidden="true"
     >
-      <span className={`${s.letter} font-black tracking-tighter text-[#062B23] nb-wordmark`}>N</span>
+      <span className={`${s.letter} font-black tracking-tighter nb-wordmark ${inverse ? "text-[#0866FF]" : "text-white"}`}>N</span>
     </span>
   );
 }
@@ -35,6 +37,7 @@ export function BrandMark({ size = "md", className = "" }) {
 export function BrandWordmark({
   size = "md",
   tagline = null,
+  tone = "default",
   as: Tag = "span",
   className = "",
   ...rest
@@ -42,11 +45,11 @@ export function BrandWordmark({
   const s = SIZES[size] || SIZES.md;
   return (
     <Tag className={`flex flex-col ${className}`} {...rest}>
-      <span className={`${s.word} nb-wordmark text-gold-gradient`}>
+      <span className={`${s.word} nb-wordmark ${tone === "inverse" ? "text-brand-gold" : "text-gold-gradient"}`}>
         NelvinBenefit
       </span>
       {tagline ? (
-        <span className={`${s.tag} mt-0.5 font-bold uppercase tracking-[0.18em] text-[#D6B56D]/80`}>
+        <span className={`${s.tag} mt-0.5 font-bold uppercase tracking-[0.18em] ${tone === "inverse" ? "text-white" : "text-[#484848]"}`}>
           {tagline}
         </span>
       ) : null}
@@ -58,6 +61,7 @@ export function BrandWordmark({
 export function BrandLogo({
   size = "md",
   tagline = null,
+  tone = "default",
   to = "/",
   className = "",
   onClick,
@@ -69,8 +73,8 @@ export function BrandLogo({
       aria-label="NelvinBenefit — home"
       className={`group flex items-center gap-2.5 ${className}`}
     >
-      <BrandMark size={size} className="transition-transform duration-200 group-hover:scale-105" />
-      <BrandWordmark size={size} tagline={tagline} />
+      <BrandMark size={size} tone={tone} className="transition-transform duration-200 group-hover:scale-105" />
+      <BrandWordmark size={size} tagline={tagline} tone={tone} />
     </Link>
   );
 }
@@ -81,25 +85,30 @@ export function SectionHeading({
   title,
   lead,
   align = "center",
-  tone = "ivory",
+  tone = "default",
   className = "",
   children,
 }) {
   const alignment =
     align === "left" ? "text-left items-start" : align === "center" ? "text-center items-center" : "text-left items-start";
-  const titleTone = tone === "white" ? "text-white" : "text-ivory";
-  const leadTone = tone === "white" ? "text-white/70" : "text-ivory-muted";
+  const inverse = tone === "inverse";
+  const titleTone = inverse ? "text-white" : "text-[#282828]";
+  const leadTone = inverse ? "text-white" : "text-[#484848]";
 
   return (
     <div className={`flex flex-col ${alignment} ${align === "center" ? "mx-auto max-w-3xl" : ""} ${className}`}>
-      {eyebrow ? <p className="eyebrow-nv mb-3">{eyebrow}</p> : null}
+      {eyebrow ? (
+        <p className={`mb-3 text-[11px] font-bold uppercase tracking-[0.2em] ${inverse ? "text-white/90" : "text-[#0866FF]"}`}>
+          {eyebrow}
+        </p>
+      ) : null}
       <h2
-        className={`text-balance-nv text-3xl font-extrabold font-heading leading-[1.12] tracking-tight sm:text-4xl lg:text-[2.5rem] ${titleTone}`}
+        className={`text-balance-nv font-heading text-3xl font-black leading-[1.12] tracking-tight sm:text-4xl lg:text-[2.125rem] ${titleTone}`}
       >
         {title}
       </h2>
       {lead ? (
-        <p className={`mt-4 text-balance-nv text-sm leading-relaxed sm:text-base ${leadTone}`}>{lead}</p>
+        <p className={`mt-4 text-balance-nv text-base leading-relaxed ${leadTone}`}>{lead}</p>
       ) : null}
       {children}
     </div>

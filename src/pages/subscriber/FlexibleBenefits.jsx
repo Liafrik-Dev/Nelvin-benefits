@@ -6,32 +6,32 @@ import { Sparkles, Utensils, Bus, HeartPulse, GraduationCap, CheckCircle } from 
 
 export default function FlexibleBenefits() {
   const buckets = [
-    { title: "Meal & Groceries", icon: Utensils, limit: "$150/mo", spent: "$85.00", color: "bg-[#0A3A2F] text-ivory" },
-    { title: "Commute & Travel", icon: Bus, limit: "$100/mo", spent: "$40.00", color: "bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20" },
-    { title: "Health & Gym", icon: HeartPulse, limit: "$120/mo", spent: "$120.00", color: "bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20" },
-    { title: "Learning & Upskilling", icon: GraduationCap, limit: "$200/yr", spent: "$50.00", color: "bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20" },
+    { title: "Meal & Groceries", icon: Utensils, limit: "$150/mo", spent: "$85.00", color: "bg-[#FFFFFF] text-ivory" },
+    { title: "Commute & Travel", icon: Bus, limit: "$100/mo", spent: "$40.00", color: "bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20" },
+    { title: "Health & Gym", icon: HeartPulse, limit: "$120/mo", spent: "$120.00", color: "bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20" },
+    { title: "Learning & Upskilling", icon: GraduationCap, limit: "$200/yr", spent: "$50.00", color: "bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20" },
   ];
 
   return (
     <div className="min-h-screen bg-forest">
-      <div className="relative bg-[#062B23] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-[#FFFFFF] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
         <Navbar />
       </div>
       <EmployeeNav />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0A3A2F] text-[#E5C77A] text-xs font-bold uppercase">
-              <Sparkles className="w-3.5 h-3.5 text-[#D6B56D]" /> Flexible Spending Allowances
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFFFFF] text-[#0866FF] text-xs font-bold uppercase">
+              <Sparkles className="w-3.5 h-3.5 text-[#0866FF]" /> Flexible Spending Allowances
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-ivory font-heading">
               My Flexible Benefits & Stipends
             </h1>
             <p className="text-ivory-muted text-sm">Allocate your company benefit budget across meal cards, fitness, learning, and transportation.</p>
           </div>
-          <div className="bg-[#062B23] text-[#D6B56D] p-5 rounded-lg text-center min-w-[200px]">
-            <p className="text-xs uppercase font-bold text-white/60">Annual Flex Budget</p>
+          <div className="bg-[#FFFFFF] text-[#0866FF] p-5 rounded-lg text-center min-w-[200px]">
+            <p className="text-xs uppercase font-bold text-[#484848]">Annual Flex Budget</p>
             <p className="text-3xl font-black font-heading">$1,200.00</p>
           </div>
         </div>
@@ -40,7 +40,7 @@ export default function FlexibleBenefits() {
           {buckets.map((b) => {
             const Icon = b.icon;
             return (
-              <div key={b.title} className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 shadow-sm space-y-4">
+              <div key={b.title} className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-6 shadow-sm space-y-4">
                 <div className="flex items-center justify-between">
                   <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${b.color}`}>
                     <Icon className="w-6 h-6" />
@@ -51,10 +51,10 @@ export default function FlexibleBenefits() {
                   <h3 className="font-bold text-ivory text-lg font-heading">{b.title}</h3>
                   <p className="text-xs text-ivory-muted mt-1">Used: <span className="font-bold text-ivory">{b.spent}</span></p>
                 </div>
-                <div className="w-full bg-[#0A3A2F]/5 rounded-full h-2">
-                  <div className="bg-[#062B23] h-2 rounded-full" style={{ width: "60%" }} />
+                <div className="w-full bg-[#F4F4F4] rounded-full h-2">
+                  <div className="bg-[#FFFFFF] h-2 rounded-full" style={{ width: "60%" }} />
                 </div>
-                <div className="pt-2 flex items-center gap-1.5 text-xs text-[#D6B56D] font-bold">
+                <div className="pt-2 flex items-center gap-1.5 text-xs text-[#0866FF] font-bold">
                   <CheckCircle className="w-4 h-4" /> Auto-reimbursed via Nelvin Card
                 </div>
               </div>

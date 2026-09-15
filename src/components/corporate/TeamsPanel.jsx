@@ -58,15 +58,15 @@ export default function TeamsPanel({ company }) {
         </div>
         <button
           onClick={() => setShowModal(true)}
-          className="inline-flex items-center gap-2 bg-[#D6B56D] hover:bg-[#E5C77A] text-[#062B23] text-sm font-semibold px-4 py-2 rounded-xl shadow-sm"
+          className="inline-flex items-center gap-2 bg-[#0866FF] hover:bg-[#0866FF] text-white text-sm font-semibold px-4 py-2 rounded-xl shadow-sm"
         >
           <Plus className="w-4 h-4" /> Create Team
         </button>
       </div>
 
-      <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg overflow-hidden shadow-sm">
+      <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg overflow-hidden shadow-sm">
         <table className="w-full text-sm text-left">
-          <thead className="bg-forest-secondary/60 text-ivory-muted text-xs uppercase tracking-wider font-semibold border-b border-white/10">
+          <thead className="bg-[#F9F8F7] text-ivory-muted text-xs uppercase tracking-wider font-semibold border-b border-[#F1F1F1]">
             <tr>
               <th className="px-6 py-3.5">Team Name</th>
               <th className="px-6 py-3.5">Team Lead</th>
@@ -75,21 +75,21 @@ export default function TeamsPanel({ company }) {
               <th className="px-6 py-3.5 text-right">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-white/10">
+          <tbody className="divide-y divide-[#F1F1F1]">
             {list.map((t) => (
-              <tr key={t.id} className="hover:bg-forest-secondary/60 transition-colors">
+              <tr key={t.id} className="hover:bg-[#F9F8F7] transition-colors">
                 <td className="px-6 py-4 font-bold text-ivory flex items-center gap-2">
-                  <Users className="w-4 h-4 text-[#D6B56D]" /> {t.name}
+                  <Users className="w-4 h-4 text-[#0866FF]" /> {t.name}
                 </td>
                 <td className="px-6 py-4 text-ivory-muted font-medium">{t.lead_name || "—"}</td>
                 <td className="px-6 py-4 text-ivory-muted font-bold">{t.member_count} Employees</td>
                 <td className="px-6 py-4">
-                  <span className="bg-[#0A3A2F] text-ivory text-xs font-bold px-2.5 py-1 rounded-full uppercase">
+                  <span className="bg-[#FFFFFF] text-ivory text-xs font-bold px-2.5 py-1 rounded-full uppercase">
                     {t.status}
                   </span>
                 </td>
                 <td className="px-6 py-4 text-right space-x-2">
-                  <button className="text-xs font-bold text-[#D6B56D] hover:underline">Edit</button>
+                  <button className="text-xs font-bold text-[#0866FF] hover:underline">Edit</button>
                   <button className="text-xs font-bold text-rose-600 hover:underline">Delete</button>
                 </td>
               </tr>
@@ -111,7 +111,7 @@ export default function TeamsPanel({ company }) {
                   placeholder="e.g. Frontend Engineering"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3.5 py-2 border border-white/12 rounded-xl text-xs outline-none focus:border-[#D6B56D]"
+                  className="w-full px-3.5 py-2 border border-[#F1F1F1] rounded-xl text-xs outline-none focus:border-[#0866FF]"
                 />
               </div>
               <div>
@@ -121,20 +121,20 @@ export default function TeamsPanel({ company }) {
                   placeholder="e.g. Sarah Connor"
                   value={lead}
                   onChange={(e) => setLead(e.target.value)}
-                  className="w-full px-3.5 py-2 border border-white/12 rounded-xl text-xs outline-none focus:border-[#D6B56D]"
+                  className="w-full px-3.5 py-2 border border-[#F1F1F1] rounded-xl text-xs outline-none focus:border-[#0866FF]"
                 />
               </div>
               <div className="flex justify-end gap-2 pt-2">
                 <button
                   type="button"
                   onClick={() => setShowModal(false)}
-                  className="px-4 py-2 text-xs font-bold text-ivory-muted hover:bg-[#0A3A2F]/5 rounded-xl"
+                  className="px-4 py-2 text-xs font-bold text-ivory-muted hover:bg-[#F4F4F4] rounded-xl"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 text-xs font-bold text-white bg-[#D6B56D] rounded-xl hover:bg-[#E5C77A]"
+                  className="px-5 py-2 text-xs font-bold text-white bg-[#0866FF] rounded-xl hover:bg-[#0866FF]"
                 >
                   Save Team
                 </button>

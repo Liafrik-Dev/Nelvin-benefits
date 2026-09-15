@@ -59,14 +59,14 @@ export default function AdminLayout() {
 
   if (!adminAllowed(user)) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-forest-secondary/60 px-4">
+      <div className="min-h-screen flex items-center justify-center bg-[#F9F8F7] px-4">
         <div className="text-center max-w-md">
-          <ShieldCheck className="w-10 h-10 text-[#F5F1E8]/60 mx-auto mb-3" />
+          <ShieldCheck className="w-10 h-10 text-[#282828]/60 mx-auto mb-3" />
           <h1 className="text-xl font-bold text-ivory mb-2">Admin access required</h1>
           <p className="text-sm text-ivory-muted mb-4">
             Your account does not have permission to view the admin backend.
           </p>
-          <Link to="/" className="inline-flex items-center gap-1 text-sm text-[#D6B56D] font-semibold">
+          <Link to="/" className="inline-flex items-center gap-1 text-sm text-[#0866FF] font-semibold">
             <ChevronLeft className="w-4 h-4" /> Back to site
           </Link>
         </div>
@@ -78,13 +78,13 @@ export default function AdminLayout() {
     <div className="min-h-screen bg-forest flex">
       {/* Sidebar */}
       <aside
-        className={`fixed lg:sticky top-0 z-40 lg:z-10 h-screen w-72 bg-[#062B23] border-r border-white/10 flex-shrink-0 transition-transform duration-200 ${
+        className={`fixed lg:sticky top-0 z-40 lg:z-10 h-screen w-72 bg-[#FFFFFF] border-r border-[#F1F1F1] flex-shrink-0 transition-transform duration-200 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         }`}
       >
-        <div className="h-16 px-5 flex items-center justify-between border-b border-white/10">
+        <div className="h-16 px-5 flex items-center justify-between border-b border-[#F1F1F1]">
           <Link to="/admin" className="flex items-center gap-2" onClick={() => setSidebarOpen(false)}>
-            <div className="w-8 h-8 bg-[#103F35] rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-[#FFFFFF] rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">N</span>
             </div>
             <span className="font-bold text-ivory font-heading">Nelvin Admin</span>
@@ -103,8 +103,8 @@ export default function AdminLayout() {
               className={({ isActive }) =>
                 `flex items-center justify-between gap-2 px-3 py-2 rounded-lg text-sm mb-0.5 transition-colors ${
                   isActive
-                    ? "bg-[#0A3A2F] text-ivory font-semibold"
-                    : "text-ivory-muted hover:bg-forest-secondary/60"
+                    ? "bg-[#FFFFFF] text-ivory font-semibold"
+                    : "text-ivory-muted hover:bg-[#F9F8F7]"
                 }`
               }
             >
@@ -113,7 +113,7 @@ export default function AdminLayout() {
                 {item.label}
               </span>
               {item.phase && (
-                <span className="text-[10px] uppercase tracking-wide text-ivory-dim bg-white/10 px-1.5 py-0.5 rounded">
+                <span className="text-[10px] uppercase tracking-wide text-ivory-dim bg-[#F9F8F7] px-1.5 py-0.5 rounded">
                   {item.phase}
                 </span>
               )}
@@ -131,7 +131,7 @@ export default function AdminLayout() {
 
       {/* Main */}
       <div className="flex-1 min-w-0 flex flex-col">
-        <header className="sticky top-0 z-20 bg-emerald-black border-b border-white/10 h-16 px-4 sm:px-6 flex items-center justify-between gap-3">
+        <header className="sticky top-0 z-20 bg-emerald-black border-b border-[#F1F1F1] h-16 px-4 sm:px-6 flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <button
               className="lg:hidden text-ivory-muted"
@@ -154,7 +154,7 @@ export default function AdminLayout() {
             <Avatar
               user={user}
               className="w-9 h-9"
-              fallbackClassName="bg-[#D6B56D] text-white font-semibold text-sm"
+              fallbackClassName="bg-[#0866FF] text-white font-semibold text-sm"
             />
             <button
               onClick={() => logout(true)}

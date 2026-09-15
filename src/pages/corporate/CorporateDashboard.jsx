@@ -92,22 +92,22 @@ export default function CorporateDashboard() {
 
   const refresh = async () => { await checkUserAuth(); setRefreshKey((k) => k + 1); };
 
-  if (isLoadingAuth) return <div className="min-h-screen bg-forest-secondary/60" />;
+  if (isLoadingAuth) return <div className="min-h-screen bg-[#F9F8F7]" />;
   if (!isAuthenticated) return <Navigate to="/login" replace />;
   if (loading) return (
-    <div className="min-h-screen bg-forest-secondary/60 flex items-center justify-center">
-      <div className="w-8 h-8 border-4 border-white/12 border-t-emerald-600 rounded-full animate-spin" />
+    <div className="min-h-screen bg-[#F9F8F7] flex items-center justify-center">
+      <div className="w-8 h-8 border-4 border-[#F1F1F1] border-t-emerald-600 rounded-full animate-spin" />
     </div>
   );
 
   if (!user?.company_id || !company) {
     return (
-      <div className="min-h-screen bg-forest-secondary/60 flex items-center justify-center px-4">
-        <div className="max-w-md text-center bg-emerald-black ring-1 ring-white/10 rounded-lg p-8 shadow-sm">
-          <Building2 className="w-10 h-10 text-[#D6B56D] mx-auto mb-4" />
+      <div className="min-h-screen bg-[#F9F8F7] flex items-center justify-center px-4">
+        <div className="max-w-md text-center bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-8 shadow-sm">
+          <Building2 className="w-10 h-10 text-[#0866FF] mx-auto mb-4" />
           <h1 className="text-xl font-bold text-ivory">No company linked yet</h1>
           <p className="text-sm text-ivory-muted mt-2 mb-6">Sign up your company, or your admin will invite you with your work email.</p>
-          <button onClick={() => navigate("/corporate-signup")} className="bg-[#D6B56D] text-white px-6 py-2.5 rounded-full text-sm font-semibold">Sign Up Your Company</button>
+          <button onClick={() => navigate("/corporate-signup")} className="bg-[#0866FF] text-white px-6 py-2.5 rounded-full text-sm font-semibold">Sign Up Your Company</button>
         </div>
       </div>
     );
@@ -127,36 +127,36 @@ export default function CorporateDashboard() {
           : "Your payment couldn't be confirmed. Please try again or contact support.";
       action = (
         <div className="flex gap-3 justify-center">
-          {!isLead && <button onClick={() => navigate("/corporate-signup")} className="bg-[#D6B56D] text-white px-6 py-2.5 rounded-full text-sm font-semibold">Try again</button>}
-          <button onClick={() => navigate("/")} className="bg-[#0A3A2F]/5 text-ivory px-6 py-2.5 rounded-full text-sm font-semibold">Return home</button>
+          {!isLead && <button onClick={() => navigate("/corporate-signup")} className="bg-[#0866FF] text-white px-6 py-2.5 rounded-full text-sm font-semibold">Try again</button>}
+          <button onClick={() => navigate("/")} className="bg-[#F4F4F4] text-ivory px-6 py-2.5 rounded-full text-sm font-semibold">Return home</button>
         </div>
       );
     } else if (isSuspended) {
       title = "Account suspended";
       message = "Your corporate account is currently suspended. Please contact your Nelvin account manager.";
-      action = <button onClick={() => navigate("/")} className="bg-[#0A3A2F]/5 text-ivory px-6 py-2.5 rounded-full text-sm font-semibold">Return home</button>;
+      action = <button onClick={() => navigate("/")} className="bg-[#F4F4F4] text-ivory px-6 py-2.5 rounded-full text-sm font-semibold">Return home</button>;
     } else if (isLead) {
       title = "Application under review";
       message = "Thanks for your interest! Our team is reviewing your application and will reach out within 1 business day to finalize your custom plan. You'll get dashboard access automatically once approved.";
-      action = <button onClick={() => navigate("/")} className="bg-[#0A3A2F]/5 text-ivory px-6 py-2.5 rounded-full text-sm font-semibold">Return home</button>;
+      action = <button onClick={() => navigate("/")} className="bg-[#F4F4F4] text-ivory px-6 py-2.5 rounded-full text-sm font-semibold">Return home</button>;
     } else {
       title = "Confirming your payment…";
       message = "We're verifying your payment. This usually takes a few minutes. You'll get access automatically once confirmed.";
       action = (
-        <button onClick={refresh} className="bg-[#D6B56D] text-white px-6 py-2.5 rounded-full text-sm font-semibold inline-flex items-center gap-2">
+        <button onClick={refresh} className="bg-[#0866FF] text-white px-6 py-2.5 rounded-full text-sm font-semibold inline-flex items-center gap-2">
           <RefreshCw className="w-4 h-4" /> Refresh
         </button>
       );
     }
     return (
-      <div className="min-h-screen bg-forest-secondary/60 flex items-center justify-center px-4">
-        <div className="max-w-md text-center bg-emerald-black ring-1 ring-white/10 rounded-lg p-8 shadow-sm">
+      <div className="min-h-screen bg-[#F9F8F7] flex items-center justify-center px-4">
+        <div className="max-w-md text-center bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-8 shadow-sm">
           {isRejected || isSuspended ? (
             <Building2 className="w-10 h-10 text-ivory-dim mx-auto mb-4" />
           ) : isLead ? (
-            <Users className="w-10 h-10 text-[#D6B56D] mx-auto mb-4" />
+            <Users className="w-10 h-10 text-[#0866FF] mx-auto mb-4" />
           ) : (
-            <RefreshCw className="w-10 h-10 text-[#D6B56D] mx-auto mb-4 animate-spin" />
+            <RefreshCw className="w-10 h-10 text-[#0866FF] mx-auto mb-4 animate-spin" />
           )}
           <h1 className="text-xl font-bold text-ivory">{title}</h1>
           <p className="text-sm text-ivory-muted mt-2 mb-6">{message}</p>
@@ -171,14 +171,14 @@ export default function CorporateDashboard() {
   if (!isHRAdmin) {
     const me = employees.find((e) => e.user_id === user.id) || {};
     return (
-      <div className="min-h-screen bg-forest-secondary/60">
-        <header className="bg-emerald-black border-b border-white/10 sticky top-0 z-20">
+      <div className="min-h-screen bg-[#F9F8F7]">
+        <header className="bg-emerald-black border-b border-[#F1F1F1] sticky top-0 z-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
             <div className="flex items-center gap-3 min-w-0">
               {company.branding_logo_url || company.logo_url ? (
                 <img src={company.branding_logo_url || company.logo_url} alt="" className="w-10 h-10 rounded-lg object-cover flex-shrink-0" />
               ) : (
-                <div className="w-10 h-10 rounded-lg bg-[#103F35]/60 text-[#D6B56D] ring-1 ring-[#D6B56D]/25 flex items-center justify-center font-bold flex-shrink-0">{(company.name || "?").slice(0, 1)}</div>
+                <div className="w-10 h-10 rounded-lg bg-[#F4F4F4] text-[#0866FF] ring-1 ring-[#0866FF]/25 flex items-center justify-center font-bold flex-shrink-0">{(company.name || "?").slice(0, 1)}</div>
               )}
               <div className="min-w-0">
                 <p className="font-bold text-ivory text-sm truncate">{company.name}</p>
@@ -192,19 +192,19 @@ export default function CorporateDashboard() {
         </header>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
           {company.branding_welcome_message && (
-            <div className="bg-emerald-black ring-1 ring-white/10 border border-transparent rounded-lg p-6">
-              <p className="text-xs uppercase tracking-wider text-[#D6B56D] font-semibold mb-1">Welcome</p>
+            <div className="bg-emerald-black ring-1 ring-[#F1F1F1] border border-transparent rounded-lg p-6">
+              <p className="text-xs uppercase tracking-wider text-[#0866FF] font-semibold mb-1">Welcome</p>
               <p className="text-ivory">{company.branding_welcome_message}</p>
             </div>
           )}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <MembershipCard employee={{ ...me, user_name: user.full_name, user_email: user.email, status: "active", membership_tier: company.membership_tier }} company={company} accent={company.branding_primary_color || "#059669"} />
-            <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6">
+            <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6">
               <h3 className="font-semibold text-ivory mb-3">Quick links</h3>
               <div className="space-y-2">
-                <Link to="/offers" className="block p-3 rounded-lg bg-forest-secondary/60 hover:bg-[#0A3A2F]/5 text-sm font-medium text-ivory">Browse offers</Link>
-                <Link to="/dashboard" className="block p-3 rounded-lg bg-forest-secondary/60 hover:bg-[#0A3A2F]/5 text-sm font-medium text-ivory">My dashboard & savings</Link>
-                <Link to="/profile" className="block p-3 rounded-lg bg-forest-secondary/60 hover:bg-[#0A3A2F]/5 text-sm font-medium text-ivory">My profile</Link>
+                <Link to="/offers" className="block p-3 rounded-lg bg-[#F9F8F7] hover:bg-[#F4F4F4] text-sm font-medium text-ivory">Browse offers</Link>
+                <Link to="/dashboard" className="block p-3 rounded-lg bg-[#F9F8F7] hover:bg-[#F4F4F4] text-sm font-medium text-ivory">My dashboard & savings</Link>
+                <Link to="/profile" className="block p-3 rounded-lg bg-[#F9F8F7] hover:bg-[#F4F4F4] text-sm font-medium text-ivory">My profile</Link>
               </div>
             </div>
           </div>
@@ -215,12 +215,12 @@ export default function CorporateDashboard() {
 
   if (company.status !== "approved") {
     return (
-      <div className="min-h-screen bg-forest-secondary/60 flex items-center justify-center px-4">
-        <div className="max-w-md text-center bg-emerald-black ring-1 ring-white/10 rounded-lg p-8 shadow-sm">
-          <Users className="w-10 h-10 text-[#D6B56D] mx-auto mb-4" />
+      <div className="min-h-screen bg-[#F9F8F7] flex items-center justify-center px-4">
+        <div className="max-w-md text-center bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-8 shadow-sm">
+          <Users className="w-10 h-10 text-[#0866FF] mx-auto mb-4" />
           <h1 className="text-xl font-bold text-ivory">Thanks — we'll be in touch within 1 business day.</h1>
           <p className="text-sm text-ivory-muted mt-2 mb-6">Our team is reaching out to schedule a call and set up your company dashboard.</p>
-          <button onClick={() => logout(true)} className="bg-[#D6B56D] text-white px-6 py-2.5 rounded-full text-sm font-semibold">Back to home</button>
+          <button onClick={() => logout(true)} className="bg-[#0866FF] text-white px-6 py-2.5 rounded-full text-sm font-semibold">Back to home</button>
         </div>
       </div>
     );
@@ -229,8 +229,8 @@ export default function CorporateDashboard() {
   const accent = company.branding_primary_color || "#059669";
 
   return (
-    <div className="min-h-screen bg-forest-secondary/60">
-      <header className="bg-emerald-black border-b border-white/10 sticky top-0 z-20">
+    <div className="min-h-screen bg-[#F9F8F7]">
+      <header className="bg-emerald-black border-b border-[#F1F1F1] sticky top-0 z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3 min-w-0">
             {company.branding_logo_url || company.logo_url ? (
@@ -248,11 +248,11 @@ export default function CorporateDashboard() {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setIsAssistantOpen(true)}
-              className="inline-flex items-center gap-1.5 bg-[#062B23] hover:bg-[#062B23]/90 text-[#D6B56D] px-3 py-1.5 rounded-lg text-xs font-bold transition-all shadow-sm"
+              className="inline-flex items-center gap-1.5 bg-[#FFFFFF] hover:bg-[#F9F8F7] text-[#0866FF] px-3 py-1.5 rounded-lg text-xs font-bold transition-all shadow-sm"
             >
               <Bot className="w-4 h-4" /> Smart Copilot
             </button>
-            <button onClick={refresh} title="Refresh" className="p-2 rounded-lg text-ivory-dim hover:text-ivory hover:bg-[#0A3A2F]/5"><RefreshCw className="w-4 h-4" /></button>
+            <button onClick={refresh} title="Refresh" className="p-2 rounded-lg text-ivory-dim hover:text-ivory hover:bg-[#F4F4F4]"><RefreshCw className="w-4 h-4" /></button>
             <Link to="/" className="text-xs text-ivory-muted hover:text-ivory px-3 py-1">View site</Link>
             <button onClick={() => logout(true)} className="text-xs text-ivory-muted hover:text-ivory flex items-center gap-1 px-2 py-1"><LogOut className="w-3.5 h-3.5" /> Sign out</button>
           </div>
@@ -265,7 +265,7 @@ export default function CorporateDashboard() {
             {TABS.map((t) => (
               <button key={t.id} onClick={() => setTab(t.id)}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium transition-colors ${
-                  tab === t.id ? "bg-[#0A3A2F] text-ivory font-bold" : "text-ivory-muted hover:bg-[#0A3A2F]/5 hover:text-ivory"
+                  tab === t.id ? "bg-[#FFFFFF] text-ivory font-bold" : "text-ivory-muted hover:bg-[#F4F4F4] hover:text-ivory"
                 }`}>
                 <t.icon className="w-4 h-4" /> {t.label}
               </button>
@@ -273,11 +273,11 @@ export default function CorporateDashboard() {
           </nav>
         </aside>
 
-        <div className="lg:hidden flex gap-1 -mx-4 px-4 pb-3 overflow-x-auto border-b border-white/10 mb-4 scrollbar-hide">
+        <div className="lg:hidden flex gap-1 -mx-4 px-4 pb-3 overflow-x-auto border-b border-[#F1F1F1] mb-4 scrollbar-hide">
           {TABS.map((t) => (
             <button key={t.id} onClick={() => setTab(t.id)}
               className={`flex-shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${
-                tab === t.id ? "bg-[#0A3A2F] text-ivory font-bold" : "text-ivory-muted bg-[#0A3A2F]/5"
+                tab === t.id ? "bg-[#FFFFFF] text-ivory font-bold" : "text-ivory-muted bg-[#F4F4F4]"
               }`}>
               <t.icon className="w-3.5 h-3.5" /> {t.label}
             </button>
@@ -286,12 +286,12 @@ export default function CorporateDashboard() {
 
         <main className="min-w-0">
           {showWelcome && (
-            <div className="mb-4 bg-[#0A3A2F] border border-white/15 rounded-lg p-4 flex items-center justify-between gap-3">
+            <div className="mb-4 bg-[#FFFFFF] border border-[#F1F1F1] rounded-lg p-4 flex items-center justify-between gap-3">
               <div>
-                <p className="font-bold text-[#E5C77A] text-sm">Welcome to Nelvin, {company.name}!</p>
-                <p className="text-xs text-[#D6B56D]">Your corporate benefits dashboard is ready. Invite your team to get started.</p>
+                <p className="font-bold text-[#0866FF] text-sm">Welcome to Nelvin, {company.name}!</p>
+                <p className="text-xs text-[#0866FF]">Your corporate benefits dashboard is ready. Invite your team to get started.</p>
               </div>
-              <button onClick={dismissWelcome} className="text-[#D6B56D] hover:text-[#E5C77A] text-xs font-semibold whitespace-nowrap">Dismiss</button>
+              <button onClick={dismissWelcome} className="text-[#0866FF] hover:text-[#0866FF] text-xs font-semibold whitespace-nowrap">Dismiss</button>
             </div>
           )}
           {tab === "dashboard" && <CorporateDashboardHome company={company} employees={employees} onGoEmployees={() => setTab("employees")} />}

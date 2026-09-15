@@ -44,7 +44,7 @@ export default function StepReview({ form, confirmed, setConfirmed, onBack, onSu
         {form.business_image_urls.length > 0 && (
           <div className="grid grid-cols-4 gap-2 mt-3">
             {form.business_image_urls.map((url) => (
-              <img key={url} src={url} alt="" className="aspect-square object-cover rounded-lg border border-white/10" />
+              <img key={url} src={url} alt="" className="aspect-square object-cover rounded-lg border border-[#F1F1F1]" />
             ))}
           </div>
         )}
@@ -61,13 +61,13 @@ export default function StepReview({ form, confirmed, setConfirmed, onBack, onSu
           ].map(([label, url]) =>
             url ? (
               <div key={label} className="flex items-center gap-2 text-sm text-ivory">
-                <FileCheck2 className="w-4 h-4 text-[#D6B56D] flex-shrink-0" />
+                <FileCheck2 className="w-4 h-4 text-[#0866FF] flex-shrink-0" />
                 {label}
               </div>
             ) : null
           )}
         </div>
-        <p className="text-xs text-ivory-dim mt-3">Verification Status: <span className="text-[#E5C77A] font-medium">Pending Review</span></p>
+        <p className="text-xs text-ivory-dim mt-3">Verification Status: <span className="text-[#0866FF] font-medium">Pending Review</span></p>
       </div>
 
       <label className="flex items-start gap-3 cursor-pointer">
@@ -81,14 +81,14 @@ export default function StepReview({ form, confirmed, setConfirmed, onBack, onSu
       </label>
 
       <div className="flex gap-3">
-        <button type="button" onClick={onBack} className="px-6 py-3.5 rounded-full text-sm font-semibold text-ivory-muted hover:bg-[#0A3A2F]/5 transition-all">
+        <button type="button" onClick={onBack} className="px-6 py-3.5 rounded-full text-sm font-semibold text-ivory-muted hover:bg-[#F4F4F4] transition-all">
           Back
         </button>
         <button
           type="button"
           disabled={!confirmed || submitting}
           onClick={onSubmit}
-          className="flex-1 bg-[#062B23] hover:bg-emerald-black disabled:opacity-40 disabled:cursor-not-allowed text-white rounded-full py-3.5 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg flex items-center justify-center gap-2"
+          className="flex-1 border border-[#E3E3E3] bg-[#FFFFFF] hover:bg-[#F9F8F7] disabled:opacity-40 disabled:cursor-not-allowed text-[#282828] rounded-full py-3.5 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg flex items-center justify-center gap-2"
         >
           {submitting && <Loader2 className="w-4 h-4 animate-spin" />}
           {submitting ? "Submitting..." : "Submit for Review"}

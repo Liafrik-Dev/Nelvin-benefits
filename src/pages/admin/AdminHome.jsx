@@ -19,15 +19,15 @@ const PIE_COLORS = ["#166534", "#65a30d", "#d97706", "#9333ea", "#0ea5e9", "#ef4
 
 function StatCard({ icon: Icon, label, value, accent = "emerald", to }) {
   const accents = {
-    emerald: "bg-[#0A3A2F] text-[#D6B56D]",
-    sky: "bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20",
-    amber: "bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20",
-    violet: "bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20",
-    rose: "bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20",
-    gray: "bg-[#0A3A2F]/5 text-ivory",
+    emerald: "bg-[#FFFFFF] text-[#0866FF]",
+    sky: "bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20",
+    amber: "bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20",
+    violet: "bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20",
+    rose: "bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20",
+    gray: "bg-[#F4F4F4] text-ivory",
   };
   const inner = (
-    <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-4 sm:p-5 hover:shadow-md transition-shadow h-full">
+    <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-4 sm:p-5 hover:shadow-md transition-shadow h-full">
       <div className="flex items-center gap-3">
         <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${accents[accent]}`}>
           <Icon className="w-5 h-5" />
@@ -225,7 +225,7 @@ export default function AdminHome() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-32">
-        <div className="w-8 h-8 border-4 border-white/15 border-t-emerald-700 rounded-full animate-spin" />
+        <div className="w-8 h-8 border-4 border-[#F1F1F1] border-t-emerald-700 rounded-full animate-spin" />
       </div>
     );
   }
@@ -259,9 +259,9 @@ export default function AdminHome() {
 
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-5">
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-5">
           <div className="flex items-center gap-2 mb-4">
-            <TrendingUp className="w-4 h-4 text-[#D6B56D]" />
+            <TrendingUp className="w-4 h-4 text-[#0866FF]" />
             <h3 className="font-semibold text-ivory">User Growth</h3>
             <span className="text-xs text-ivory-dim ml-auto">Individual vs Corporate</span>
           </div>
@@ -278,9 +278,9 @@ export default function AdminHome() {
           </ResponsiveContainer>
         </div>
 
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-5">
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-5">
           <div className="flex items-center gap-2 mb-4">
-            <Crown className="w-4 h-4 text-[#E5C77A]" />
+            <Crown className="w-4 h-4 text-[#0866FF]" />
             <h3 className="font-semibold text-ivory">Membership Sales</h3>
           </div>
           <ResponsiveContainer width="100%" height={240}>
@@ -294,9 +294,9 @@ export default function AdminHome() {
           </ResponsiveContainer>
         </div>
 
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-5">
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-5">
           <div className="flex items-center gap-2 mb-4">
-            <Tag className="w-4 h-4 text-[#D6B56D]" />
+            <Tag className="w-4 h-4 text-[#0866FF]" />
             <h3 className="font-semibold text-ivory">Offers by Category</h3>
           </div>
           <ResponsiveContainer width="100%" height={240}>
@@ -311,9 +311,9 @@ export default function AdminHome() {
           </ResponsiveContainer>
         </div>
 
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-5">
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-5">
           <div className="flex items-center gap-2 mb-4">
-            <Globe2 className="w-4 h-4 text-[#D6B56D]" />
+            <Globe2 className="w-4 h-4 text-[#0866FF]" />
             <h3 className="font-semibold text-ivory">Offers by Country</h3>
           </div>
           <ResponsiveContainer width="100%" height={240}>
@@ -328,9 +328,9 @@ export default function AdminHome() {
           </ResponsiveContainer>
         </div>
 
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-5 lg:col-span-2">
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-5 lg:col-span-2">
           <div className="flex items-center gap-2 mb-4">
-            <CreditCard className="w-4 h-4 text-[#D6B56D]" />
+            <CreditCard className="w-4 h-4 text-[#0866FF]" />
             <h3 className="font-semibold text-ivory">Revenue Overview</h3>
             <span className="text-xs text-ivory-dim ml-auto">Cumulative</span>
           </div>
@@ -354,12 +354,12 @@ export default function AdminHome() {
 
       {/* Recent lists */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-5">
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-5">
           <div className="flex items-center justify-between mb-3">
             <h3 className="font-semibold text-ivory">Recent Registrations</h3>
-            <Link to="/admin/users" className="text-xs text-[#D6B56D] font-semibold">View all</Link>
+            <Link to="/admin/users" className="text-xs text-[#0866FF] font-semibold">View all</Link>
           </div>
-          <ul className="divide-y divide-white/10">
+          <ul className="divide-y divide-[#F1F1F1]">
             {recentRegistrations.length === 0 && <li className="py-3 text-sm text-ivory-dim">No users yet.</li>}
             {recentRegistrations.map((u) => (
               <li key={u.id} className="py-2.5 flex items-center justify-between gap-3">
@@ -373,12 +373,12 @@ export default function AdminHome() {
           </ul>
         </div>
 
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-5">
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-5">
           <div className="flex items-center justify-between mb-3">
             <h3 className="font-semibold text-ivory">Latest Offers</h3>
-            <Link to="/admin/offers" className="text-xs text-[#D6B56D] font-semibold">View all</Link>
+            <Link to="/admin/offers" className="text-xs text-[#0866FF] font-semibold">View all</Link>
           </div>
-          <ul className="divide-y divide-white/10">
+          <ul className="divide-y divide-[#F1F1F1]">
             {latestOffers.length === 0 && <li className="py-3 text-sm text-ivory-dim">No offers yet.</li>}
             {latestOffers.map((o) => (
               <li key={o.id} className="py-2.5 flex items-center justify-between gap-3">
@@ -392,12 +392,12 @@ export default function AdminHome() {
           </ul>
         </div>
 
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-5">
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-5">
           <div className="flex items-center justify-between mb-3">
             <h3 className="font-semibold text-ivory">Recent Payments</h3>
-            <Link to="/admin/payments" className="text-xs text-[#D6B56D] font-semibold">View all</Link>
+            <Link to="/admin/payments" className="text-xs text-[#0866FF] font-semibold">View all</Link>
           </div>
-          <ul className="divide-y divide-white/10">
+          <ul className="divide-y divide-[#F1F1F1]">
             {recentPayments.length === 0 && <li className="py-3 text-sm text-ivory-dim">No payments yet.</li>}
             {recentPayments.map((p) => (
               <li key={p.id} className="py-2.5 flex items-center justify-between gap-3">
@@ -416,12 +416,12 @@ export default function AdminHome() {
           </ul>
         </div>
 
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-5">
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-5">
           <div className="flex items-center justify-between mb-3">
             <h3 className="font-semibold text-ivory">Recent Reviews</h3>
-            <Link to="/admin/reviews" className="text-xs text-[#D6B56D] font-semibold">View all</Link>
+            <Link to="/admin/reviews" className="text-xs text-[#0866FF] font-semibold">View all</Link>
           </div>
-          <ul className="divide-y divide-white/10">
+          <ul className="divide-y divide-[#F1F1F1]">
             {recentReviews.length === 0 && <li className="py-3 text-sm text-ivory-dim">No reviews yet.</li>}
             {recentReviews.map((r) => (
               <li key={r.id} className="py-2.5 flex items-center justify-between gap-3">

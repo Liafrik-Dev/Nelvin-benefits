@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ChevronRight, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import AppleIcon from "@/components/shared/AppleIcon";
 import GoogleIcon from "@/components/shared/GoogleIcon";
 import { BrandLogo } from "@/components/nelvin/Brand";
@@ -8,7 +8,7 @@ import { BrandLogo } from "@/components/nelvin/Brand";
 /**
  * Footer — the reference organises this as a small number of titled link
  * columns with hairline dividers, a brand block, store buttons and a legal
- * rail. NelvinBenefit keeps that structure in forest + gold.
+ * rail. NelvinBenefit keeps that structure in corporate blue + gold.
  */
 
 const Facebook = (props) => (
@@ -88,13 +88,13 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="surface-nv-primary border-t border-white/10 text-ivory">
+    <footer className="bg-[#0866FF] text-white">
       {/* Brand + app block */}
-      <div className="container-nv py-14 lg:py-16">
+      <div className="container-nv py-10 lg:py-12">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,300px)_minmax(0,1fr)] lg:gap-16">
           <div>
-            <BrandLogo size="md" tagline="Employee Benefits Platform" />
-            <p className="mt-5 max-w-xs text-xs leading-relaxed text-ivory-muted">
+            <BrandLogo size="md" tagline="Employee Benefits Platform" tone="inverse" />
+            <p className="mt-5 max-w-xs text-[15px] font-light leading-relaxed text-white">
               Africa's savings super app. Unlock exclusive offers, cashback and
               corporate experiences across all 54 countries.
             </p>
@@ -102,14 +102,14 @@ export default function Footer() {
             <div className="mt-6 flex flex-col gap-2">
               <a
                 href="#"
-                className="btn-nv btn-nv-sm w-fit border border-white/12 bg-white/[0.04] px-3 text-ivory transition-colors hover:border-[#D6B56D]/40 hover:text-gold"
+                className="inline-flex h-10 w-fit items-center gap-2 rounded-lg border border-white/25 bg-white/10 px-3 text-[15px] font-normal text-white transition-colors hover:border-white/50 hover:bg-white/20"
               >
                 <AppleIcon className="h-4 w-4" />
                 App Store
               </a>
               <a
                 href="#"
-                className="btn-nv btn-nv-sm w-fit border border-white/12 bg-white/[0.04] px-3 text-ivory transition-colors hover:border-[#D6B56D]/40 hover:text-gold"
+                className="inline-flex h-10 w-fit items-center gap-2 rounded-lg border border-white/25 bg-white/10 px-3 text-[15px] font-normal text-white transition-colors hover:border-white/50 hover:bg-white/20"
               >
                 <GoogleIcon className="h-4 w-4" />
                 Google Play
@@ -118,7 +118,7 @@ export default function Footer() {
 
             <a
               href="mailto:Nelvin23@proton.me"
-              className="mt-5 inline-flex min-h-8 items-center gap-2 py-1 text-xs font-semibold text-gold transition-colors hover:text-[#E5C77A]"
+              className="mt-5 inline-flex min-h-8 items-center gap-2 py-1 text-[15px] font-normal text-white transition-colors hover:text-white"
             >
               <Mail className="h-3.5 w-3.5" />
               Nelvin23@proton.me
@@ -129,17 +129,16 @@ export default function Footer() {
           <div className="grid grid-cols-2 gap-x-6 gap-y-9 sm:grid-cols-3 lg:grid-cols-5">
             {footerColumns.map((col) => (
               <nav key={col.title} aria-label={col.title}>
-                <h3 className="text-[11px] font-bold uppercase tracking-[0.16em] text-gold">
+                <h3 className="text-[17px] font-semibold leading-[22px] text-white">
                   {col.title}
                 </h3>
-                <ul className="mt-4 space-y-2.5">
+                <ul className="mt-3 space-y-0.5">
                   {col.links.map((l) => (
                     <li key={l.label}>
                       <Link
                         to={l.to}
-                        className="group inline-flex min-h-8 items-start gap-1.5 py-1 text-xs text-ivory-muted transition-colors hover:text-ivory"
+                        className="inline-flex min-h-8 items-center py-1 text-[15px] font-light text-white transition-colors hover:text-white hover:underline"
                       >
-                        <ChevronRight className="mt-0.5 h-3 w-3 shrink-0 text-[#D6B56D]/30 transition-colors group-hover:text-gold" />
                         <span>{l.label}</span>
                       </Link>
                     </li>
@@ -152,9 +151,9 @@ export default function Footer() {
       </div>
 
       {/* Legal rail */}
-      <div className="rule-nv">
+      <div className="border-t border-white/20">
         <div className="container-nv flex flex-col items-center justify-between gap-5 py-6 sm:flex-row">
-          <p className="text-center text-xs text-ivory-dim sm:text-left">
+          <p className="text-center text-[15px] font-light text-white sm:text-left">
             © 2026 NelvinBenefit Africa Ltd. All rights reserved.
           </p>
 
@@ -166,7 +165,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.label}
-                className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/12 text-ivory-muted transition-colors hover:border-gold hover:bg-gold hover:text-[#062B23]"
+                className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/30 text-white transition-colors hover:border-white hover:bg-white hover:text-[#0866FF]"
               >
                 <s.icon className="h-3.5 w-3.5" />
               </a>

@@ -101,7 +101,7 @@ export default function PowerfulModules() {
   const activeTab = MODULE_TABS.find((t) => t.id === activeTabId) || MODULE_TABS[0];
 
   return (
-    <section id="modules" className="surface-nv-secondary section-nv border-y border-white/10">
+    <section id="modules" className="surface-nv-secondary section-nv border-y border-[#F1F1F1]">
       <div className="container-nv">
         <SectionHeading
           eyebrow="All-in-one engine"
@@ -112,7 +112,7 @@ export default function PowerfulModules() {
         {/* Tab rail */}
         <div className="mt-12 overflow-x-auto">
           <div
-            className="flex min-w-max items-center gap-1 border-b border-white/10"
+            className="flex min-w-max items-center gap-1 border-b border-[#F1F1F1]"
             role="tablist"
             aria-label="Platform modules"
           >
@@ -141,23 +141,23 @@ export default function PowerfulModules() {
         {/* Detail panel */}
         <div className="card-nv mt-8 grid grid-cols-1 items-center gap-8 p-6 sm:p-10 lg:grid-cols-12 lg:gap-12">
           <div className="relative lg:col-span-6">
-            <div className="group relative aspect-[16/11] w-full overflow-hidden rounded-xl border border-white/10 bg-[#062B23]">
+            <div className="group relative aspect-[16/11] w-full overflow-hidden rounded-xl border border-[#F1F1F1] bg-[#FFFFFF]">
               <img
                 src={activeTab.image}
                 alt={activeTab.title}
                 loading="lazy"
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#062B23]/90 via-[#062B23]/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
 
-              <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-4 rounded-xl border border-white/12 bg-[#062B23]/90 p-4 backdrop-blur">
+              <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-4 rounded-xl border border-[#F1F1F1] bg-[#F9F8F7] p-4 backdrop-blur">
                 <div className="min-w-0">
                   <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-gold">
                     Live platform view
                   </span>
                   <p className="mt-1 truncate text-xs font-bold text-ivory sm:text-sm">{activeTab.title}</p>
                 </div>
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gold text-[#062B23]">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gold text-white">
                   <Zap className="h-4 w-4" />
                 </span>
               </div>

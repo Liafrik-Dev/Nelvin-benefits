@@ -10,7 +10,7 @@ import GoogleIcon from "@/components/shared/GoogleIcon";
  */
 export default function GetTheApp() {
   return (
-    <section className="surface-nv-raised border-y border-white/10">
+    <section className="surface-nv-raised border-y border-[#F1F1F1]">
       <div className="container-nv py-14 lg:py-16">
         <div className="flex flex-col items-center justify-between gap-8 lg:flex-row">
           <div className="text-center lg:text-left">
@@ -32,14 +32,14 @@ export default function GetTheApp() {
             <div className="flex items-center gap-2">
               <a
                 href="#"
-                className="btn-nv btn-nv-md border border-white/12 bg-white/[0.04] px-4 text-ivory transition-colors hover:border-[#D6B56D]/40 hover:text-gold"
+                className="btn-nv btn-nv-md border border-[#F1F1F1] bg-[#F9F8F7] px-4 text-ivory transition-colors hover:border-[#0866FF]/40 hover:text-gold"
               >
                 <AppleIcon className="h-4 w-4" />
                 <span className="text-[11px] font-bold">App Store</span>
               </a>
               <a
                 href="#"
-                className="btn-nv btn-nv-md border border-white/12 bg-white/[0.04] px-4 text-ivory transition-colors hover:border-[#D6B56D]/40 hover:text-gold"
+                className="btn-nv btn-nv-md border border-[#F1F1F1] bg-[#F9F8F7] px-4 text-ivory transition-colors hover:border-[#0866FF]/40 hover:text-gold"
               >
                 <GoogleIcon className="h-4 w-4" />
                 <span className="text-[11px] font-bold">Google Play</span>

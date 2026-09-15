@@ -51,17 +51,17 @@ export default function Wallet() {
 
   return (
     <div className="min-h-screen bg-forest">
-      <div className="relative bg-[#062B23] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-[#FFFFFF] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
         <Navbar />
       </div>
       <EmployeeNav />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         {/* Header summary */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 sm:p-8 shadow-sm">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-6 sm:p-8 shadow-sm">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0A3A2F] text-[#E5C77A] text-xs font-bold uppercase">
-              <WalletIcon className="w-3.5 h-3.5 text-[#D6B56D]" /> Digital Wallet & Allowance Card
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFFFFF] text-[#0866FF] text-xs font-bold uppercase">
+              <WalletIcon className="w-3.5 h-3.5 text-[#0866FF]" /> Digital Wallet & Allowance Card
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-ivory font-heading">
               My Wallet & Cashback
@@ -71,46 +71,46 @@ export default function Wallet() {
 
           <button
             onClick={() => setTopUpModal(true)}
-            className="bg-[#062B23] text-[#D6B56D] font-bold px-6 py-3 rounded-full text-sm hover:bg-[#062B23] transition-colors shadow-sm flex items-center gap-2"
+            className="bg-[#FFFFFF] text-[#0866FF] font-bold px-6 py-3 rounded-full text-sm hover:bg-[#FFFFFF] transition-colors shadow-sm flex items-center gap-2"
           >
             <Plus className="w-4 h-4" /> Top Up Balance
           </button>
         </div>
 
         {successMsg && (
-          <div className="bg-[#0A3A2F] border border-white/15 text-[#E5C77A] p-4 rounded-lg flex items-center gap-3 text-sm font-semibold">
-            <CheckCircle2 className="w-5 h-5 text-[#D6B56D]" /> {successMsg}
+          <div className="bg-[#FFFFFF] border border-[#F1F1F1] text-[#0866FF] p-4 rounded-lg flex items-center gap-3 text-sm font-semibold">
+            <CheckCircle2 className="w-5 h-5 text-[#0866FF]" /> {successMsg}
           </div>
         )}
 
         {/* Balance cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-[#062B23] rounded-xl p-6 text-white space-y-4 shadow-sm">
+          <div className="bg-[#FFFFFF] rounded-xl p-6 text-white space-y-4 shadow-sm">
             <div className="flex items-center justify-between">
-              <span className="text-xs uppercase font-bold text-white/60 tracking-wider">Total Balance</span>
-              <CreditCard className="w-5 h-5 text-[#D6B56D]" />
+              <span className="text-xs uppercase font-bold text-[#484848] tracking-wider">Total Balance</span>
+              <CreditCard className="w-5 h-5 text-[#0866FF]" />
             </div>
             <div>
-              <p className="text-3xl font-black font-heading text-[#D6B56D]">${balance.toFixed(2)}</p>
-              <p className="text-xs text-white/60 mt-1">Ready for redemption</p>
+              <p className="text-3xl font-black font-heading text-[#0866FF]">${balance.toFixed(2)}</p>
+              <p className="text-xs text-[#484848] mt-1">Ready for redemption</p>
             </div>
           </div>
 
-          <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 space-y-4 shadow-sm">
+          <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-6 space-y-4 shadow-sm">
             <div className="flex items-center justify-between">
               <span className="text-xs uppercase font-bold text-ivory-dim tracking-wider">Cashback Earned</span>
-              <ArrowDownRight className="w-5 h-5 text-[#D6B56D]" />
+              <ArrowDownRight className="w-5 h-5 text-[#0866FF]" />
             </div>
             <div>
               <p className="text-3xl font-black font-heading text-ivory">${cashback.toFixed(2)}</p>
-              <p className="text-xs text-[#D6B56D] font-semibold mt-1">Available to spend</p>
+              <p className="text-xs text-[#0866FF] font-semibold mt-1">Available to spend</p>
             </div>
           </div>
 
-          <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 space-y-4 shadow-sm">
+          <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-6 space-y-4 shadow-sm">
             <div className="flex items-center justify-between">
               <span className="text-xs uppercase font-bold text-ivory-dim tracking-wider">Company Allowance</span>
-              <ArrowUpRight className="w-5 h-5 text-[#E5C77A]" />
+              <ArrowUpRight className="w-5 h-5 text-[#0866FF]" />
             </div>
             <div>
               <p className="text-3xl font-black font-heading text-ivory">${allowance.toFixed(2)}</p>
@@ -120,8 +120,8 @@ export default function Wallet() {
         </div>
 
         {/* Transactions Table */}
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 shadow-sm space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-4">
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-6 shadow-sm space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#F1F1F1] pb-4">
             <h2 className="text-lg font-bold text-ivory font-heading">Recent Wallet Transactions</h2>
             <div className="flex items-center gap-2">
               {["all", "credits", "debits"].map((f) => (
@@ -129,7 +129,7 @@ export default function Wallet() {
                   key={f}
                   onClick={() => setTxFilter(f)}
                   className={`px-3 py-1 rounded-full text-xs font-bold uppercase transition-all ${
-                    txFilter === f ? "bg-[#062B23] text-[#D6B56D]" : "bg-[#0A3A2F]/5 text-ivory-muted hover:bg-[#0A3A2F]/10"
+                    txFilter === f ? "bg-[#FFFFFF] text-[#0866FF]" : "bg-[#F4F4F4] text-ivory-muted hover:bg-[#F4F4F4]"
                   }`}
                 >
                   {f}
@@ -141,7 +141,7 @@ export default function Wallet() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
-                <tr className="border-b border-white/10 text-ivory-dim font-semibold">
+                <tr className="border-b border-[#F1F1F1] text-ivory-dim font-semibold">
                   <th className="py-3 px-2">Type</th>
                   <th className="py-3 px-2">Description</th>
                   <th className="py-3 px-2">Date</th>
@@ -151,16 +151,16 @@ export default function Wallet() {
               </thead>
               <tbody className="divide-y divide-gray-50">
                 {filteredTx.map((tx) => (
-                  <tr key={tx.id} className="hover:bg-forest-secondary/60 transition-colors">
+                  <tr key={tx.id} className="hover:bg-[#F9F8F7] transition-colors">
                     <td className="py-3.5 px-2 font-bold capitalize text-ivory">{tx.type.replace("_", " ")}</td>
                     <td className="py-3.5 px-2 font-medium text-ivory">{tx.label}</td>
                     <td className="py-3.5 px-2 text-ivory-muted">{tx.date}</td>
                     <td className="py-3.5 px-2">
-                      <span className="bg-[#0A3A2F] text-[#E5C77A] px-2 py-0.5 rounded-full font-bold text-[10px]">
+                      <span className="bg-[#FFFFFF] text-[#0866FF] px-2 py-0.5 rounded-full font-bold text-[10px]">
                         {tx.status}
                       </span>
                     </td>
-                    <td className={`py-3.5 px-2 text-right font-extrabold ${tx.amount.startsWith("+") ? "text-[#D6B56D]" : "text-ivory"}`}>
+                    <td className={`py-3.5 px-2 text-right font-extrabold ${tx.amount.startsWith("+") ? "text-[#0866FF]" : "text-ivory"}`}>
                       {tx.amount}
                     </td>
                   </tr>
@@ -186,7 +186,7 @@ export default function Wallet() {
                       key={amt}
                       onClick={() => setTopUpAmount(amt)}
                       className={`py-2.5 rounded-xl font-bold text-sm border ${
-                        topUpAmount === amt ? "bg-[#062B23] text-[#D6B56D] border-[#062B23]" : "bg-forest-secondary/60 border-white/12 text-ivory"
+                        topUpAmount === amt ? "bg-[#FFFFFF] text-[#0866FF] border-[#F1F1F1]" : "bg-[#F9F8F7] border-[#F1F1F1] text-ivory"
                       }`}
                     >
                       ${amt}
@@ -202,7 +202,7 @@ export default function Wallet() {
                   min="5"
                   value={topUpAmount}
                   onChange={(e) => setTopUpAmount(Number(e.target.value))}
-                  className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3.5 py-2.5 text-sm font-bold text-ivory"
+                  className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl px-3.5 py-2.5 text-sm font-bold text-ivory"
                 />
               </div>
 
@@ -210,13 +210,13 @@ export default function Wallet() {
                 <button
                   type="button"
                   onClick={() => setTopUpModal(false)}
-                  className="px-5 py-2.5 rounded-full text-xs font-bold text-ivory-muted hover:bg-[#0A3A2F]/5"
+                  className="px-5 py-2.5 rounded-full text-xs font-bold text-ivory-muted hover:bg-[#F4F4F4]"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="bg-[#062B23] text-[#D6B56D] px-6 py-2.5 rounded-full text-xs font-bold hover:bg-[#062B23]"
+                  className="bg-[#FFFFFF] text-[#0866FF] px-6 py-2.5 rounded-full text-xs font-bold hover:bg-[#FFFFFF]"
                 >
                   Confirm & Pay
                 </button>

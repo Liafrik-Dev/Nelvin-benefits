@@ -10,7 +10,7 @@ export default function PricingSection() {
   const [submitted, setSubmitted] = useState(false);
 
   const fieldClass =
-    "w-full rounded-lg border border-white/15 bg-white/[0.05] px-4 py-2.5 text-sm text-ivory outline-none transition-colors placeholder:text-ivory-dim focus:border-gold";
+    "w-full rounded-lg border border-[#F1F1F1] bg-white/[0.05] px-4 py-2.5 text-sm text-ivory outline-none transition-colors placeholder:text-ivory-dim focus:border-gold";
 
   return (
     <section className="surface-nv-primary section-nv">
@@ -22,24 +22,24 @@ export default function PricingSection() {
             loading="lazy"
             className="absolute inset-0 h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-[#062B23]/90" aria-hidden="true" />
+          <div className="absolute inset-0 bg-[#F9F8F7]" aria-hidden="true" />
 
           <div className="relative z-10 grid grid-cols-1 items-center gap-10 p-8 sm:p-12 lg:grid-cols-2 lg:p-14">
             <div>
               <h2 className="text-balance-nv text-3xl font-bold font-heading leading-tight tracking-tight text-white sm:text-4xl">
                 Ready to connect your employee experience?
               </h2>
-              <p className="mt-4 max-w-md text-base leading-relaxed text-white/70">
+              <p className="mt-4 max-w-md text-base leading-relaxed text-[#484848]">
                 Join the remarkable organisations putting people at the heart of what
                 they do. Book a free demo today.
               </p>
             </div>
 
-            <div className="rounded-2xl border border-white/12 bg-[#0A3A2F]/95 p-8 shadow-nv-card backdrop-blur">
+            <div className="rounded-2xl border border-[#F1F1F1] bg-[#F9F8F7] p-8 shadow-nv-card backdrop-blur">
               {submitted ? (
                 <div className="py-10 text-center">
                   <span className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-gold">
-                    <Check className="h-7 w-7 text-[#062B23]" />
+                    <Check className="h-7 w-7 text-[#282828]" />
                   </span>
                   <h3 className="mb-2 text-xl font-bold text-ivory">Thank you!</h3>
                   <p className="text-sm text-ivory-muted">

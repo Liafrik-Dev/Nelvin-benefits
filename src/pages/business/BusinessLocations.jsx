@@ -14,17 +14,17 @@ export default function BusinessLocations() {
           <h1 className="text-2xl font-bold font-heading text-ivory">Store Branches & Locations</h1>
           <p className="text-sm text-ivory-muted mt-1">Manage physical store branches where members can redeem in-person perks.</p>
         </div>
-        <button className="bg-[#D6B56D] text-white font-bold text-xs px-4 py-2 rounded-xl flex items-center gap-2">
+        <button className="bg-[#0866FF] text-white font-bold text-xs px-4 py-2 rounded-xl flex items-center gap-2">
           <Plus className="w-4 h-4" /> Add Branch
         </button>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {locations.map((loc) => (
-          <div key={loc.id} className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-3 shadow-sm">
+          <div key={loc.id} className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 space-y-3 shadow-sm">
             <div className="flex items-center justify-between">
-              <Building2 className="w-6 h-6 text-[#D6B56D]" />
-              <span className="text-xs font-bold text-[#D6B56D] bg-[#0A3A2F] px-2.5 py-0.5 rounded-full uppercase">{loc.status}</span>
+              <Building2 className="w-6 h-6 text-[#0866FF]" />
+              <span className="text-xs font-bold text-[#0866FF] bg-[#FFFFFF] px-2.5 py-0.5 rounded-full uppercase">{loc.status}</span>
             </div>
             <h3 className="font-bold text-ivory text-base font-heading">{loc.name}</h3>
             <p className="text-xs text-ivory-muted flex items-center gap-1">

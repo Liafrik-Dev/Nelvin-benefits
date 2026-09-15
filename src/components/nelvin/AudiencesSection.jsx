@@ -23,7 +23,7 @@ export default function AudiencesSection() {
 
         <div className="mx-auto mt-12 max-w-4xl">
           <div
-            className="grid grid-cols-2 gap-1.5 rounded-xl border border-white/10 bg-white/[0.04] p-1.5 sm:grid-cols-4"
+            className="grid grid-cols-2 gap-1.5 rounded-xl border border-[#F1F1F1] bg-[#F9F8F7] p-1.5 sm:grid-cols-4"
             role="tablist"
             aria-label="Audiences"
           >
@@ -38,8 +38,8 @@ export default function AudiencesSection() {
                   onClick={() => setActiveTab(idx)}
                   className={`rounded-lg px-3 py-2.5 text-xs font-bold transition-colors ${
                     on
-                      ? "bg-gold text-[#062B23] shadow-nv-card"
-                      : "text-ivory-muted hover:bg-white/5 hover:text-ivory"
+                      ? "bg-gold text-white shadow-nv-card"
+                      : "text-ivory-muted hover:bg-[#F9F8F7] hover:text-ivory"
                   }`}
                 >
                   {aud.kicker}
@@ -56,8 +56,8 @@ export default function AudiencesSection() {
                 loading="lazy"
                 className="h-full w-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#062B23]/85 via-transparent to-transparent" />
-              <span className="absolute left-3 top-3 rounded-full bg-gold px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.16em] text-[#062B23]">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+              <span className="absolute left-3 top-3 rounded-full bg-gold px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.16em] text-white">
                 {current.kicker}
               </span>
             </div>
@@ -69,7 +69,7 @@ export default function AudiencesSection() {
               <ul className="mt-5 space-y-2.5">
                 {current.points.map((pt) => (
                   <li key={pt} className="flex items-center gap-2.5 text-xs font-medium text-ivory">
-                    <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#D6B56D]/15">
+                    <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#0866FF]/15">
                       <Check className="h-3 w-3 text-gold" />
                     </span>
                     {pt}

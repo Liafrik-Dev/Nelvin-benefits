@@ -14,14 +14,14 @@ export default function BusinessPromoCodes() {
           <h1 className="text-2xl font-bold font-heading text-ivory">Promo Code Generator</h1>
           <p className="text-sm text-ivory-muted mt-1">Issue unique promotional discount codes for point-of-sale or online checkout.</p>
         </div>
-        <button className="bg-[#D6B56D] text-white font-bold text-xs px-4 py-2 rounded-xl flex items-center gap-2">
+        <button className="bg-[#0866FF] text-white font-bold text-xs px-4 py-2 rounded-xl flex items-center gap-2">
           <Plus className="w-4 h-4" /> Generate Code
         </button>
       </div>
 
-      <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg overflow-hidden shadow-sm">
+      <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg overflow-hidden shadow-sm">
         <table className="w-full text-sm text-left">
-          <thead className="bg-forest-secondary/60 text-ivory-muted text-xs uppercase font-semibold border-b border-white/10">
+          <thead className="bg-[#F9F8F7] text-ivory-muted text-xs uppercase font-semibold border-b border-[#F1F1F1]">
             <tr>
               <th className="px-6 py-3.5">Promo Code</th>
               <th className="px-6 py-3.5">Discount</th>
@@ -29,14 +29,14 @@ export default function BusinessPromoCodes() {
               <th className="px-6 py-3.5">Status</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-white/10">
+          <tbody className="divide-y divide-[#F1F1F1]">
             {codes.map((c) => (
-              <tr key={c.id} className="hover:bg-forest-secondary/60 transition-colors">
+              <tr key={c.id} className="hover:bg-[#F9F8F7] transition-colors">
                 <td className="px-6 py-4 font-mono font-bold text-ivory">{c.code}</td>
-                <td className="px-6 py-4 font-extrabold text-[#D6B56D]">{c.discount}</td>
+                <td className="px-6 py-4 font-extrabold text-[#0866FF]">{c.discount}</td>
                 <td className="px-6 py-4 font-semibold text-ivory">{c.uses} / {c.limit} Used</td>
                 <td className="px-6 py-4">
-                  <span className="bg-[#0A3A2F] text-[#D6B56D] text-xs font-bold px-2.5 py-1 rounded-full uppercase">{c.status}</span>
+                  <span className="bg-[#FFFFFF] text-[#0866FF] text-xs font-bold px-2.5 py-1 rounded-full uppercase">{c.status}</span>
                 </td>
               </tr>
             ))}

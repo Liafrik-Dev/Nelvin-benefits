@@ -13,9 +13,9 @@ const DEFAULT_ACTIONS = [
 
 function Button({ onClick, children, tone = "ghost", disabled }) {
   const tones = {
-    ghost: "bg-[#103F35] text-[#F5F1E8] ring-1 ring-white/10 hover:bg-[#062B23] hover:text-[#D6B56D]",
-    success: "bg-[#0A3A2F] text-ivory ring-1 ring-[#D6B56D]/25 hover:bg-[#D6B56D] hover:text-white",
-    danger: "bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20 hover:bg-red-600 hover:text-white",
+    ghost: "bg-[#FFFFFF] text-[#282828] ring-1 ring-[#F1F1F1] hover:bg-[#FFFFFF] hover:text-[#0866FF]",
+    success: "bg-[#FFFFFF] text-ivory ring-1 ring-[#0866FF]/25 hover:bg-[#0866FF] hover:text-[#282828]",
+    danger: "bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20 hover:bg-red-600 hover:text-[#282828]",
   };
   return (
     <button
@@ -29,22 +29,22 @@ function Button({ onClick, children, tone = "ghost", disabled }) {
 }
 
 function Value({ value }) {
-  if (value === null || value === undefined || value === "" ) return <span className="text-[#F5F1E8]/35">—</span>;
-  if (typeof value === "boolean") return value ? <span className="text-[#D6B56D] font-semibold">Yes</span> : <span className="text-red-500 font-semibold">No</span>;
+  if (value === null || value === undefined || value === "" ) return <span className="text-[#282828]/35">—</span>;
+  if (typeof value === "boolean") return value ? <span className="text-[#0866FF] font-semibold">Yes</span> : <span className="text-red-500 font-semibold">No</span>;
   return <span>{String(value)}</span>;
 }
 
 function StatusBadge({ status }) {
   const map = {
-    active: ["bg-[#0A3A2F]/10 text-[#007200]", "Active"],
-    approved: ["bg-[#0A3A2F]/10 text-[#007200]", "Approved"],
-    pending: ["bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20", "Pending"],
-    rejected: ["bg-[#103F35]/70 text-red-600", "Rejected"],
-    suspended: ["bg-[#103F35]/70 text-red-600", "Suspended"],
-    inactive: ["bg-[#0A3A2F]/5 text-ivory-muted", "Inactive"],
-    draft: ["bg-[#0A3A2F]/5 text-ivory-muted", "Draft"],
-    redeemed: ["bg-[#0A3A2F]/10 text-[#D6B56D]", "Redeemed"],
-    default: ["bg-[#0A3A2F]/5 text-ivory", String(status || "—").toUpperCase()],
+    active: ["bg-[#F4F4F4] text-[#4EA11E]", "Active"],
+    approved: ["bg-[#F4F4F4] text-[#4EA11E]", "Approved"],
+    pending: ["bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20", "Pending"],
+    rejected: ["bg-[#F9F8F7] text-red-600", "Rejected"],
+    suspended: ["bg-[#F9F8F7] text-red-600", "Suspended"],
+    inactive: ["bg-[#F4F4F4] text-ivory-muted", "Inactive"],
+    draft: ["bg-[#F4F4F4] text-ivory-muted", "Draft"],
+    redeemed: ["bg-[#F4F4F4] text-[#0866FF]", "Redeemed"],
+    default: ["bg-[#F4F4F4] text-ivory", String(status || "—").toUpperCase()],
   };
   const [bg, txt] = map[status] || map.default;
   return <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${bg}`}>{txt}</span>;
@@ -56,18 +56,18 @@ function ActionMenu({ row, actions, onAction }) {
     <div className="relative">
       <button
         onClick={(e) => { e.stopPropagation(); setOpen((o) => !o); }}
-        className="w-8 h-8 rounded-full hover:bg-forest-secondary flex items-center justify-center text-[#F5F1E8]/60"
+        className="w-8 h-8 rounded-full hover:bg-[#F9F8F7] flex items-center justify-center text-[#282828]/60"
         aria-label="Row actions"
       >
         <MoreHorizontal className="w-4 h-4" />
       </button>
       {open && (
-        <div className="absolute right-0 z-20 mt-1 w-40 bg-[#0A3A2F] rounded-lg shadow-xl ring-1 ring-white/10 p-1.5">
+        <div className="absolute right-0 z-20 mt-1 w-40 bg-[#FFFFFF] rounded-lg shadow-xl ring-1 ring-[#F1F1F1] p-1.5">
           {actions.filter((a) => row[a.key] !== false).map((a) => (
             <button
               key={a.key}
               onClick={() => { setOpen(false); onAction(a.key, row); }}
-              className="w-full flex items-center gap-2 px-2.5 py-2 text-[11px] font-semibold text-[#F5F1E8]/75 hover:bg-forest-secondary hover:text-[#F5F1E8] rounded-lg transition-colors"
+              className="w-full flex items-center gap-2 px-2.5 py-2 text-[11px] font-semibold text-[#282828]/75 hover:bg-[#F9F8F7] hover:text-[#282828] rounded-lg transition-colors"
             >
               <a.icon className="w-3.5 h-3.5" />
               {a.label}
@@ -153,24 +153,24 @@ export default function ResourceTable({
   };
 
   return (
-    <div className="bg-[#0A3A2F] rounded-lg ring-1 ring-white/10 overflow-hidden">
-      <div className="flex flex-col lg:flex-row lg:items-center gap-3 p-4 border-b border-white/10">
+    <div className="bg-[#FFFFFF] rounded-lg ring-1 ring-[#F1F1F1] overflow-hidden">
+      <div className="flex flex-col lg:flex-row lg:items-center gap-3 p-4 border-b border-[#F1F1F1]">
         <div className="relative flex-1 min-w-52">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#F5F1E8]/35" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#282828]/35" />
           <input
             value={q}
             onChange={(e) => { setQ(e.target.value); setPage(1); }}
             placeholder={`Search ${entityLabel}...`}
-            className="w-full h-10 pl-9 pr-3 rounded-xl bg-forest-secondary text-sm text-[#F5F1E8] placeholder:text-[#F5F1E8]/35 focus:outline-none focus:ring-2 focus:ring-[#0A3A2F]/40"
+            className="w-full h-10 pl-9 pr-3 rounded-xl bg-forest-secondary text-sm text-[#282828] placeholder:text-[#282828]/35 focus:outline-none focus:ring-2 focus:ring-[#E3E3E3]/40"
           />
         </div>
         {statuses.length > 0 && (
           <div className="flex items-center gap-2 overflow-x-auto">
-            <ListFilter className="w-4 h-4 text-[#F5F1E8]/40 flex-shrink-0" />
+            <ListFilter className="w-4 h-4 text-[#282828]/40 flex-shrink-0" />
             <select
               value={status}
               onChange={(e) => { setStatus(e.target.value); setPage(1); }}
-              className="h-10 rounded-xl bg-forest-secondary text-sm font-medium text-[#F5F1E8] px-3 focus:outline-none focus:ring-2 focus:ring-[#0A3A2F]/40"
+              className="h-10 rounded-xl bg-forest-secondary text-sm font-medium text-[#282828] px-3 focus:outline-none focus:ring-2 focus:ring-[#E3E3E3]/40"
             >
               <option value="all">All ({rows.length})</option>
               {statuses.map((s) => (
@@ -181,13 +181,13 @@ export default function ResourceTable({
         )}
         <div className="flex items-center gap-2">
           {onExport && (
-            <button onClick={exportRows} className="inline-flex items-center gap-1.5 h-10 px-3 rounded-xl bg-[#103F35] ring-1 ring-white/10 text-xs font-semibold text-[#F5F1E8] hover:bg-[#0A3A2F] transition-colors">
+            <button onClick={exportRows} className="inline-flex items-center gap-1.5 h-10 px-3 rounded-xl bg-[#FFFFFF] ring-1 ring-[#F1F1F1] text-xs font-semibold text-[#282828] hover:bg-[#FFFFFF] transition-colors">
               <Download className="w-3.5 h-3.5" />
               Export
             </button>
           )}
           {onRetry && (
-            <button onClick={onRetry} className="inline-flex items-center gap-1.5 h-10 px-3 rounded-xl bg-[#103F35] ring-1 ring-white/10 text-xs font-semibold text-[#F5F1E8] hover:bg-[#0A3A2F] transition-colors">
+            <button onClick={onRetry} className="inline-flex items-center gap-1.5 h-10 px-3 rounded-xl bg-[#FFFFFF] ring-1 ring-[#F1F1F1] text-xs font-semibold text-[#282828] hover:bg-[#FFFFFF] transition-colors">
               <RefreshCw className="w-3.5 h-3.5" />
             </button>
           )}
@@ -197,9 +197,9 @@ export default function ResourceTable({
       <div className="overflow-x-auto">
         <table className="w-full text-left">
           <thead>
-            <tr className="border-b border-white/10 bg-forest-secondary/60">
+            <tr className="border-b border-[#F1F1F1] bg-[#F9F8F7]">
               {columns.filter((c) => !c.hide).map((c) => (
-                <th key={c.key} className="px-4 py-3 text-[10px] font-extrabold uppercase tracking-wider text-[#F5F1E8]/45 whitespace-nowrap">
+                <th key={c.key} className="px-4 py-3 text-[10px] font-extrabold uppercase tracking-wider text-[#282828]/45 whitespace-nowrap">
                   {c.label}
                 </th>
               ))}
@@ -209,8 +209,8 @@ export default function ResourceTable({
           <tbody>
             {loading ? (
               <tr>
-                <td colSpan={columns.length + 1} className="px-4 py-12 text-center text-sm text-[#F5F1E8]/50">
-                  <Loader2 className="w-6 h-6 animate-spin mx-auto mb-2 text-[#E5C77A]" />
+                <td colSpan={columns.length + 1} className="px-4 py-12 text-center text-sm text-[#282828]/50">
+                  <Loader2 className="w-6 h-6 animate-spin mx-auto mb-2 text-[#0866FF]" />
                   Loading {entityLabel}...
                 </td>
               </tr>
@@ -218,9 +218,9 @@ export default function ResourceTable({
               <tr>
                 <td colSpan={columns.length + 1} className="px-4 py-14">
                   <div className="flex flex-col items-center text-center">
-                    <Inbox className="w-8 h-8 text-[#F5F1E8]/25 mb-3" />
-                    <p className="text-sm font-semibold text-[#F5F1E8]/60">{emptyTitle || `No ${entityLabel} found`}</p>
-                    {emptyDesc && <p className="text-xs text-[#F5F1E8]/40 mt-1 max-w-sm">{emptyDesc}</p>}
+                    <Inbox className="w-8 h-8 text-[#282828]/25 mb-3" />
+                    <p className="text-sm font-semibold text-[#282828]/60">{emptyTitle || `No ${entityLabel} found`}</p>
+                    {emptyDesc && <p className="text-xs text-[#282828]/40 mt-1 max-w-sm">{emptyDesc}</p>}
                   </div>
                 </td>
               </tr>
@@ -229,10 +229,10 @@ export default function ResourceTable({
                 <tr
                   key={r.id || ri}
                   onClick={onView ? () => onView(r) : undefined}
-                  className={`border-b border-white/10 hover:bg-forest-secondary/50 transition-colors ${onView ? "cursor-pointer" : ""}`}
+                  className={`border-b border-[#F1F1F1] hover:bg-[#F9F8F7] transition-colors ${onView ? "cursor-pointer" : ""}`}
                 >
                   {columns.filter((c) => !c.hide).map((c) => (
-                    <td key={c.key} className="px-4 py-3.5 text-sm text-[#F5F1E8]/80 whitespace-nowrap">
+                    <td key={c.key} className="px-4 py-3.5 text-sm text-[#282828]/80 whitespace-nowrap">
                       {c.render ? c.render(r, ri) : <Value value={r[c.key]} />}
                     </td>
                   ))}
@@ -250,15 +250,15 @@ export default function ResourceTable({
         </table>
       </div>
 
-      <div className="flex items-center justify-between gap-3 px-4 py-3 border-t border-white/10">
-        <p className="text-[11px] text-[#F5F1E8]/50 font-medium">
+      <div className="flex items-center justify-between gap-3 px-4 py-3 border-t border-[#F1F1F1]">
+        <p className="text-[11px] text-[#282828]/50 font-medium">
           Showing {pageRows.length ? (page - 1) * PAGE_SIZE + 1 : 0}–{total ? Math.min(page * PAGE_SIZE, total) : 0} of {total} {entityLabel}
         </p>
         <div className="flex items-center gap-1">
           <button
             disabled={page === 1}
             onClick={() => setPage((p) => Math.max(1, p - 1))}
-            className="w-8 h-8 rounded-lg ring-1 ring-[#103F35]/10 disabled:opacity-40 hover:bg-forest-secondary flex items-center justify-center text-[#F5F1E8]/60"
+            className="w-8 h-8 rounded-lg ring-1 ring-[#E3E3E3]/10 disabled:opacity-40 hover:bg-[#F9F8F7] flex items-center justify-center text-[#282828]/60"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
@@ -266,7 +266,7 @@ export default function ResourceTable({
             <button
               key={i}
               onClick={() => setPage(i + 1)}
-              className={`w-8 h-8 rounded-lg text-xs font-bold transition-colors ${page === i + 1 ? "bg-[#103F35] text-[#D6B56D]" : "text-[#F5F1E8]/60 hover:bg-forest-secondary"}`}
+              className={`w-8 h-8 rounded-lg text-xs font-bold transition-colors ${page === i + 1 ? "bg-[#FFFFFF] text-[#0866FF]" : "text-[#282828]/60 hover:bg-[#F9F8F7]"}`}
             >
               {i + 1}
             </button>
@@ -274,7 +274,7 @@ export default function ResourceTable({
           <button
             disabled={page === pages}
             onClick={() => setPage((p) => Math.min(pages, p + 1))}
-            className="w-8 h-8 rounded-lg ring-1 ring-[#103F35]/10 disabled:opacity-40 hover:bg-forest-secondary flex items-center justify-center text-[#F5F1E8]/60"
+            className="w-8 h-8 rounded-lg ring-1 ring-[#E3E3E3]/10 disabled:opacity-40 hover:bg-[#F9F8F7] flex items-center justify-center text-[#282828]/60"
           >
             <ChevronRight className="w-4 h-4" />
           </button>

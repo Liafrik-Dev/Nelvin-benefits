@@ -21,7 +21,7 @@ export default function BusinessSupport() {
         <p className="text-sm text-ivory-muted mt-1">Get dedicated merchant assistance, billing help, or technical support.</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-4 shadow-sm">
+      <form onSubmit={handleSubmit} className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 space-y-4 shadow-sm">
         <div>
           <label className="block text-xs font-bold text-ivory mb-1">Subject</label>
           <input
@@ -30,7 +30,7 @@ export default function BusinessSupport() {
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
             placeholder="e.g. Payout bank account change"
-            className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3.5 py-2.5 text-xs font-medium"
+            className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl px-3.5 py-2.5 text-xs font-medium"
           />
         </div>
 
@@ -42,18 +42,18 @@ export default function BusinessSupport() {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Explain your inquiry..."
-            className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl p-3 text-xs outline-none focus:border-[#D6B56D]"
+            className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl p-3 text-xs outline-none focus:border-[#0866FF]"
           />
         </div>
 
         <button
           type="submit"
-          className="w-full bg-[#062B23] text-[#D6B56D] font-bold py-3 rounded-full text-xs hover:bg-[#062B23] flex items-center justify-center gap-2"
+          className="w-full bg-[#FFFFFF] text-[#0866FF] font-bold py-3 rounded-full text-xs hover:bg-[#FFFFFF] flex items-center justify-center gap-2"
         >
           <Send className="w-3.5 h-3.5" /> Submit Merchant Ticket
         </button>
         {submitted && (
-          <p className="text-xs font-bold text-[#D6B56D] text-center flex items-center justify-center gap-1">
+          <p className="text-xs font-bold text-[#0866FF] text-center flex items-center justify-center gap-1">
             <CheckCircle2 className="w-4 h-4" /> Ticket submitted to Nelvin Partner Desk!
           </p>
         )}

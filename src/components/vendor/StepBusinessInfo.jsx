@@ -6,7 +6,7 @@ import { ImagePlus, X, Loader2 } from "lucide-react";
 import { CATEGORIES, COUNTRIES } from "@/lib/nelvinData";
 
 const inputClass =
-  "w-full border border-white/12 rounded-xl px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-gray-900/10 focus:border-white/15 transition-all";
+  "w-full border border-[#F1F1F1] rounded-xl px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-gray-900/10 focus:border-[#F1F1F1] transition-all";
 
 export default function StepBusinessInfo({ form, update, onNext }) {
   const [uploading, setUploading] = useState(false);
@@ -88,9 +88,9 @@ export default function StepBusinessInfo({ form, update, onNext }) {
         <label className="text-sm font-medium text-ivory block mb-1.5">
           Business Images <span className="text-ivory-dim font-normal">(1920 × 1080px recommended)</span>
         </label>
-        <label className="flex items-center gap-3 border border-dashed border-white/15 rounded-lg p-4 cursor-pointer hover:border-gray-900/40 hover:bg-forest-secondary/60 transition-all">
+        <label className="flex items-center gap-3 border border-dashed border-[#F1F1F1] rounded-lg p-4 cursor-pointer hover:border-gray-900/40 hover:bg-[#F9F8F7] transition-all">
           <input type="file" accept="image/*" multiple className="hidden" onChange={handleImages} />
-          <div className="w-10 h-10 rounded-xl bg-emerald-black ring-1 ring-white/10 border border-transparent flex items-center justify-center flex-shrink-0">
+          <div className="w-10 h-10 rounded-xl bg-emerald-black ring-1 ring-[#F1F1F1] border border-transparent flex items-center justify-center flex-shrink-0">
             {uploading ? <Loader2 className="w-4 h-4 animate-spin text-ivory-dim" /> : <ImagePlus className="w-4 h-4 text-ivory-dim" />}
           </div>
           <p className="text-sm text-ivory-muted">{uploading ? "Uploading..." : "Click to upload business photos"}</p>
@@ -98,7 +98,7 @@ export default function StepBusinessInfo({ form, update, onNext }) {
         {form.business_image_urls.length > 0 && (
           <div className="grid grid-cols-4 gap-2 mt-3">
             {form.business_image_urls.map((url) => (
-              <div key={url} className="relative group aspect-square rounded-xl overflow-hidden border border-white/10">
+              <div key={url} className="relative group aspect-square rounded-xl overflow-hidden border border-[#F1F1F1]">
                 <img src={url} alt="" className="w-full h-full object-cover" />
                 <button
                   type="button"
@@ -117,7 +117,7 @@ export default function StepBusinessInfo({ form, update, onNext }) {
         type="button"
         disabled={!canContinue}
         onClick={onNext}
-        className="w-full bg-[#062B23] hover:bg-emerald-black disabled:opacity-40 disabled:cursor-not-allowed text-white rounded-full py-3.5 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg"
+        className="w-full border border-[#E3E3E3] bg-[#FFFFFF] hover:bg-[#F9F8F7] disabled:opacity-40 disabled:cursor-not-allowed text-[#282828] rounded-full py-3.5 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg"
       >
         Continue
       </button>

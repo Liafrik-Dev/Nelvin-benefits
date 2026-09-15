@@ -26,9 +26,9 @@ export default function ConfirmationScreen() {
         initial={{ scale: 0.6, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-        className="w-16 h-16 bg-[#0A3A2F] rounded-full flex items-center justify-center mx-auto mb-5"
+        className="w-16 h-16 bg-[#FFFFFF] rounded-full flex items-center justify-center mx-auto mb-5"
       >
-        <CheckCircle2 className="w-9 h-9 text-[#D6B56D]" />
+        <CheckCircle2 className="w-9 h-9 text-[#0866FF]" />
       </motion.div>
 
       <h1 className="text-2xl font-bold text-ivory mb-2">🎉 Thank You!</h1>
@@ -51,9 +51,9 @@ export default function ConfirmationScreen() {
               className="flex items-center gap-3"
             >
               {item.done ? (
-                <CheckCircle2 className="w-5 h-5 text-[#D6B56D] flex-shrink-0" />
+                <CheckCircle2 className="w-5 h-5 text-[#0866FF] flex-shrink-0" />
               ) : (
-                <div className="w-5 h-5 rounded-full border-2 border-white/12 flex-shrink-0" />
+                <div className="w-5 h-5 rounded-full border-2 border-[#F1F1F1] flex-shrink-0" />
               )}
               <span className={`text-sm ${item.done ? "text-ivory font-medium" : "text-ivory-dim"}`}>{item.label}</span>
             </motion.div>
@@ -62,16 +62,16 @@ export default function ConfirmationScreen() {
       </div>
 
       <div className="flex flex-col sm:flex-row gap-3 mt-8">
-        <Link to="/" className="flex-1 bg-[#062B23] hover:bg-emerald-black text-white rounded-full py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg">
+        <Link to="/" className="flex-1 border border-[#E3E3E3] bg-[#FFFFFF] hover:bg-[#F9F8F7] text-[#282828] rounded-full py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg">
           Return to Home
         </Link>
         <button
           onClick={() => toast({ title: "Application tracking is coming soon" })}
-          className="flex-1 bg-[#0A3A2F]/5 hover:bg-[#0A3A2F]/10 text-ivory rounded-full py-3 text-sm font-semibold transition-all"
+          className="flex-1 bg-[#F4F4F4] hover:bg-[#F4F4F4] text-ivory rounded-full py-3 text-sm font-semibold transition-all"
         >
           Track My Application
         </button>
-        <a href="mailto:Nelvin23@proton.me" className="flex-1 bg-[#0A3A2F]/5 hover:bg-[#0A3A2F]/10 text-ivory rounded-full py-3 text-sm font-semibold transition-all">
+        <a href="mailto:Nelvin23@proton.me" className="flex-1 bg-[#F4F4F4] hover:bg-[#F4F4F4] text-ivory rounded-full py-3 text-sm font-semibold transition-all">
           Contact Support
         </a>
       </div>

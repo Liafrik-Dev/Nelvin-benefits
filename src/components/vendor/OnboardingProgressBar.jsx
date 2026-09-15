@@ -27,9 +27,9 @@ export default function OnboardingProgressBar({ step, complete }) {
           </span>
         ))}
       </div>
-      <div className="h-1.5 w-full bg-[#0A3A2F]/5 rounded-full overflow-hidden">
+      <div className="h-1.5 w-full bg-[#F4F4F4] rounded-full overflow-hidden">
         <motion.div
-          className="h-full bg-[#062B23] rounded-full"
+          className="h-full bg-[#FFFFFF] rounded-full"
           initial={{ width: 0 }}
           animate={{ width: `${percent}%` }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}

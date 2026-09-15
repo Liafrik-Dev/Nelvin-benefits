@@ -12,7 +12,7 @@ export function getInitials(user) {
 export default function Avatar({
   user,
   className = "w-9 h-9",
-  fallbackClassName = "bg-[#D6B56D] text-white font-semibold text-sm",
+  fallbackClassName = "bg-[#0866FF] text-white font-semibold text-sm",
 }) {
   const photo = user?.photo_url;
   const [failed, setFailed] = useState(false);

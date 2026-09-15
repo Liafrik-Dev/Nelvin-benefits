@@ -10,7 +10,7 @@ import { Check, Reply, Ban, Trash2 } from "lucide-react";
 
 function RowIconBtn({ title, onClick, Icon, color = "text-ivory-muted hover:text-ivory" }) {
   return (
-    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-[#0A3A2F]/5 ${color}`}>
+    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-[#F4F4F4] ${color}`}>
       <Icon className="w-4 h-4" />
     </button>
   );
@@ -123,8 +123,8 @@ export default function AdminSupport() {
         onRowClick={setViewing}
         renderActions={(t) => (
           <div className="flex items-center justify-end gap-1">
-            <RowIconBtn title="Reply" Icon={Reply} color="text-[#D6B56D]" onClick={() => reply(t)} />
-            <RowIconBtn title="Close" Icon={Check} color="text-[#D6B56D]" onClick={() => close(t)} />
+            <RowIconBtn title="Reply" Icon={Reply} color="text-[#0866FF]" onClick={() => reply(t)} />
+            <RowIconBtn title="Close" Icon={Check} color="text-[#0866FF]" onClick={() => close(t)} />
             <RowIconBtn title="Archive" Icon={Ban} color="text-ivory-muted" onClick={() => archive(t)} />
             <RowIconBtn title="Delete" Icon={Trash2} color="text-rose-600 hover:text-rose-700" onClick={() => remove(t)} />
           </div>
@@ -168,7 +168,7 @@ export default function AdminSupport() {
       {viewing && (
         <div className="fixed inset-0 z-[200] flex justify-end">
           <div className="absolute inset-0 bg-black/40" onClick={() => setViewing(null)} />
-          <div className="relative w-full max-w-md bg-[#0A3A2F] h-full overflow-y-auto p-6">
+          <div className="relative w-full max-w-md bg-[#FFFFFF] h-full overflow-y-auto p-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="font-bold text-ivory text-lg">{viewing.subject}</h2>
               <button onClick={() => setViewing(null)} className="text-ivory-dim">✕</button>
@@ -182,13 +182,13 @@ export default function AdminSupport() {
               </div>
               <div><span className="text-xs text-ivory-dim">Body</span><p className="text-ivory">{viewing.body}</p></div>
             </div>
-            <div className="border-t border-white/10 pt-4 space-y-2">
+            <div className="border-t border-[#F1F1F1] pt-4 space-y-2">
               <p className="text-xs text-ivory-dim uppercase tracking-wide">Replies</p>
               {(viewing.replies || []).length === 0 ? (
                 <p className="text-sm text-ivory-dim">No replies yet.</p>
               ) : (
                 viewing.replies.map((r, i) => (
-                  <div key={i} className={`rounded-lg p-3 ${r.is_admin ? "bg-[#0A3A2F]" : "bg-forest-secondary/60"}`}>
+                  <div key={i} className={`rounded-lg p-3 ${r.is_admin ? "bg-[#FFFFFF]" : "bg-[#F9F8F7]"}`}>
                     <p className="text-xs font-semibold text-ivory">{r.is_admin ? "Admin" : r.author_name || "User"} · {formatDate(r.created_date)}</p>
                     <p className="text-sm text-ivory">{r.body}</p>
                   </div>
@@ -196,8 +196,8 @@ export default function AdminSupport() {
               )}
             </div>
             <div className="mt-6 flex gap-2">
-              <button onClick={() => reply(viewing)} className="flex-1 bg-[#D6B56D] hover:bg-[#E5C77A] text-white rounded-lg py-2 text-sm font-semibold">Reply</button>
-              <button onClick={() => { setEditing(viewing); setViewing(null); }} className="px-3 py-2 border border-white/12 rounded-lg text-sm">Manage</button>
+              <button onClick={() => reply(viewing)} className="flex-1 bg-[#0866FF] hover:bg-[#0866FF] text-white rounded-lg py-2 text-sm font-semibold">Reply</button>
+              <button onClick={() => { setEditing(viewing); setViewing(null); }} className="px-3 py-2 border border-[#F1F1F1] rounded-lg text-sm">Manage</button>
             </div>
           </div>
         </div>

@@ -10,7 +10,7 @@ import { Star, BadgeCheck, Ban, Trash2, Edit2, Eye, Plus, RotateCcw, ClipboardCo
 
 function RowIconBtn({ title, onClick, Icon, color = "text-ivory-muted hover:text-ivory" }) {
   return (
-    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-[#0A3A2F]/5 ${color}`}>
+    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-[#F4F4F4] ${color}`}>
       <Icon className="w-4 h-4" />
     </button>
   );
@@ -86,10 +86,10 @@ export default function AdminBusinesses() {
     { key: "business_name", label: "Business", sortable: true,
       render: (b) => (
         <div className="flex items-center gap-2">
-          {b.logo_url ? <img src={b.logo_url} alt="" className="w-8 h-8 rounded-lg object-cover" /> : <div className="w-8 h-8 rounded-lg bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20 flex items-center justify-center text-xs font-bold">{(b.business_name || "?").slice(0, 1)}</div>}
+          {b.logo_url ? <img src={b.logo_url} alt="" className="w-8 h-8 rounded-lg object-cover" /> : <div className="w-8 h-8 rounded-lg bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20 flex items-center justify-center text-xs font-bold">{(b.business_name || "?").slice(0, 1)}</div>}
           <div className="min-w-0">
             <p className="text-sm font-medium text-ivory truncate flex items-center gap-1">
-              {b.business_name}{b.is_featured && <Star className="w-3.5 h-3.5 text-[#E5C77A] fill-[#D6B56D]" />}
+              {b.business_name}{b.is_featured && <Star className="w-3.5 h-3.5 text-[#0866FF] fill-[#0866FF]" />}
             </p>
             <p className="text-xs text-ivory-dim truncate">{b.contact_name}</p>
           </div>
@@ -146,7 +146,7 @@ export default function AdminBusinesses() {
         </div>
         <button
           onClick={() => setEditing({ status: "pending" })}
-          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-[#D6B56D] hover:bg-[#E5C77A] text-white rounded-lg"
+          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-[#0866FF] hover:bg-[#0866FF] text-white rounded-lg"
         >
           <Plus className="w-4 h-4" /> New business
         </button>
@@ -165,9 +165,9 @@ export default function AdminBusinesses() {
           <div className="flex items-center justify-end gap-1">
             <RowIconBtn title="Preview" Icon={Eye} onClick={() => setViewing(b)} />
             <RowIconBtn title="Edit" Icon={Edit2} onClick={() => setEditing(b)} />
-            <RowIconBtn title={b.is_featured ? "Unfeature" : "Feature"} Icon={Star} color={b.is_featured ? "text-[#E5C77A] hover:text-[#E5C77A]" : "text-ivory-dim"} onClick={() => toggleFeatured(b)} />
-            <RowIconBtn title={b.verification_status === "verified" ? "Revoke verification" : "Verify"} Icon={BadgeCheck} color={b.verification_status === "verified" ? "text-[#D6B56D]" : "text-ivory-dim"} onClick={() => toggleVerified(b)} />
-            <RowIconBtn title={b.is_suspended ? "Unsuspend" : "Suspend"} Icon={Ban} color={b.is_suspended ? "text-[#D6B56D]" : "text-[#E5C77A]"} onClick={() => toggleSuspended(b)} />
+            <RowIconBtn title={b.is_featured ? "Unfeature" : "Feature"} Icon={Star} color={b.is_featured ? "text-[#0866FF] hover:text-[#0866FF]" : "text-ivory-dim"} onClick={() => toggleFeatured(b)} />
+            <RowIconBtn title={b.verification_status === "verified" ? "Revoke verification" : "Verify"} Icon={BadgeCheck} color={b.verification_status === "verified" ? "text-[#0866FF]" : "text-ivory-dim"} onClick={() => toggleVerified(b)} />
+            <RowIconBtn title={b.is_suspended ? "Unsuspend" : "Suspend"} Icon={Ban} color={b.is_suspended ? "text-[#0866FF]" : "text-[#0866FF]"} onClick={() => toggleSuspended(b)} />
             <RowIconBtn title="Duplicate" Icon={ClipboardCopy} onClick={() => duplicate(b)} />
             <RowIconBtn title="Delete" Icon={Trash2} color="text-rose-600 hover:text-rose-700" onClick={() => removeBusiness(b)} />
           </div>
@@ -206,7 +206,7 @@ export default function AdminBusinesses() {
       {viewing && (
         <div className="fixed inset-0 z-[200] flex justify-end">
           <div className="absolute inset-0 bg-black/40" onClick={() => setViewing(null)} />
-          <div className="relative w-full max-w-md bg-[#0A3A2F] h-full overflow-y-auto p-6">
+          <div className="relative w-full max-w-md bg-[#FFFFFF] h-full overflow-y-auto p-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="font-bold text-ivory text-lg">{viewing.business_name}</h2>
               <button onClick={() => setViewing(null)} className="text-ivory-dim">✕</button>
@@ -221,7 +221,7 @@ export default function AdminBusinesses() {
                 <div><span className="text-xs text-ivory-dim">Category</span><p>{viewing.category}</p></div>
               </div>
               {viewing.description && <div><span className="text-xs text-ivory-dim">Description</span><p className="text-ivory">{viewing.description}</p></div>}
-              <div className="grid grid-cols-2 gap-3 pt-2 border-t border-white/10 mt-2">
+              <div className="grid grid-cols-2 gap-3 pt-2 border-t border-[#F1F1F1] mt-2">
                 <div><span className="text-xs text-ivory-dim">Status</span><p><StatusBadge status={viewing.status} /></p></div>
                 <div><span className="text-xs text-ivory-dim">Verified</span><p><StatusBadge status={viewing.verification_status} className="capitalize" /></p></div>
               </div>

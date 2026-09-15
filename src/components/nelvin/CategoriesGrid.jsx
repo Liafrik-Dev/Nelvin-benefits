@@ -15,7 +15,7 @@ export default function CategoriesGrid() {
   const current = LANDING_CATEGORIES[activeCategory] || LANDING_CATEGORIES[0];
 
   return (
-    <section id="categories" className="surface-nv-primary section-nv border-b border-white/10">
+    <section id="categories" className="surface-nv-primary section-nv border-b border-[#F1F1F1]">
       <div className="container-nv">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
@@ -48,8 +48,8 @@ export default function CategoriesGrid() {
                   onClick={() => setActiveCategory(idx)}
                   className={`flex shrink-0 items-center gap-2 rounded-lg px-4 py-3 text-xs font-bold transition-colors ${
                     on
-                      ? "bg-gold text-[#062B23] shadow-nv-card"
-                      : "border border-white/10 bg-white/[0.04] text-ivory-muted hover:border-[#D6B56D]/35 hover:text-ivory"
+                      ? "bg-gold text-white shadow-nv-card"
+                      : "border border-[#F1F1F1] bg-[#F9F8F7] text-ivory-muted hover:border-[#0866FF]/35 hover:text-ivory"
                   }`}
                 >
                   <LIcon name={cat.icon} className="h-4 w-4" />
@@ -68,15 +68,15 @@ export default function CategoriesGrid() {
                 loading="lazy"
                 className="h-full w-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#062B23]/85 via-transparent to-transparent" />
-              <span className="absolute left-4 top-4 rounded-full bg-gold px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-[#062B23]">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+              <span className="absolute left-4 top-4 rounded-full bg-gold px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-white">
                 Featured perks
               </span>
             </div>
 
             <div className="lg:col-span-7">
               <div className="flex items-center gap-3">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#062B23] text-gold">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#FFFFFF] text-gold">
                   <LIcon name={current.icon} className="h-6 w-6" />
                 </span>
                 <div className="min-w-0">

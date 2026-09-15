@@ -42,12 +42,12 @@ export default function BusinessLayout() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-forest px-4">
         <div className="text-center max-w-md">
-          <Store className="w-10 h-10 text-[#F5F1E8]/60 mx-auto mb-3" />
+          <Store className="w-10 h-10 text-[#282828]/60 mx-auto mb-3" />
           <h1 className="text-xl font-bold text-ivory mb-2">Business access required</h1>
           <p className="text-sm text-ivory-muted mb-4">
             Connect a business account to manage offers, redemptions and analytics.
           </p>
-          <Link to="/partner" className="inline-flex items-center font-semibold text-[#E5C77A] text-sm">
+          <Link to="/partner" className="inline-flex items-center font-semibold text-[#0866FF] text-sm">
             Apply as a partner
           </Link>
         </div>
@@ -58,21 +58,21 @@ export default function BusinessLayout() {
   return (
     <div className="min-h-screen bg-forest flex">
       <aside
-        className={`fixed lg:sticky top-0 z-40 lg:z-10 h-screen w-64 bg-[#062B23] text-white flex-shrink-0 transition-transform duration-200 ${
+        className={`fixed lg:sticky top-0 z-40 lg:z-10 h-screen w-64 border border-[#E3E3E3] bg-[#FFFFFF] text-[#282828] flex-shrink-0 transition-transform duration-200 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         }`}
       >
-        <div className="h-16 px-5 flex items-center justify-between border-b border-white/10">
+        <div className="h-16 px-5 flex items-center justify-between border-b border-[#F1F1F1]">
           <Link to="/business" className="flex items-center gap-2" onClick={() => setSidebarOpen(false)}>
-            <div className="w-8 h-8 bg-[#D6B56D] rounded-lg flex items-center justify-center">
-              <span className="text-[#F5F1E8] font-bold text-sm">N</span>
+            <div className="w-8 h-8 bg-[#0866FF] rounded-lg flex items-center justify-center">
+              <span className="text-[#282828] font-bold text-sm">N</span>
             </div>
             <div className="leading-tight">
               <span className="font-bold font-heading block">Nelvin Business</span>
-              <span className="text-[10px] text-white/50">Partner Hub</span>
+              <span className="text-[10px] text-[#737373]">Partner Hub</span>
             </div>
           </Link>
-          <button className="lg:hidden text-white/60" onClick={() => setSidebarOpen(false)}>
+          <button className="lg:hidden text-[#484848]" onClick={() => setSidebarOpen(false)}>
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -86,8 +86,8 @@ export default function BusinessLayout() {
               className={({ isActive }) =>
                 `flex items-center justify-between gap-2 px-3 py-2 rounded-xl text-xs font-semibold transition-colors ${
                   isActive
-                    ? "bg-[#D6B56D] text-[#062B23]"
-                    : "text-[#F5F1E8]/70 hover:bg-[#0A3A2F]/10 hover:text-white"
+                    ? "bg-[#0866FF] text-white"
+                    : "text-[#282828]/70 hover:bg-[#F4F4F4] hover:text-[#282828]"
                 }`
               }
             >
@@ -98,10 +98,10 @@ export default function BusinessLayout() {
             </NavLink>
           ))}
         </nav>
-        <div className="p-3 border-t border-white/10">
+        <div className="p-3 border-t border-[#F1F1F1]">
           <button
             onClick={() => { logout(); navigate("/"); }}
-            className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-white/70 hover:bg-[#0A3A2F]/10 hover:text-white transition-colors"
+            className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-[#484848] hover:bg-[#F4F4F4] hover:text-[#282828] transition-colors"
           >
             <LogOut className="w-4 h-4" />
             Sign out
@@ -117,7 +117,7 @@ export default function BusinessLayout() {
       )}
 
       <div className="flex-1 min-w-0 flex flex-col">
-        <header className="h-16 bg-emerald-black border-b border-white/10 flex items-center gap-3 px-4 lg:px-8 sticky top-0 z-20">
+        <header className="h-16 bg-emerald-black border-b border-[#F1F1F1] flex items-center gap-3 px-4 lg:px-8 sticky top-0 z-20">
           <button className="lg:hidden text-ivory-muted" onClick={() => setSidebarOpen(true)}>
             <Menu className="w-5 h-5" />
           </button>

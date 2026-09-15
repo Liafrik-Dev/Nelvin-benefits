@@ -64,8 +64,8 @@ export default function AdminEditModal({
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/40" onClick={onClose} />
-      <div className="relative bg-[#0A3A2F] rounded-lg shadow-2xl border border-white/10 w-full max-w-lg max-h-[90vh] overflow-y-auto">
-        <div className="px-6 py-4 border-b border-white/10 flex items-center justify-between sticky top-0 bg-[#0A3A2F] z-10">
+      <div className="relative bg-[#FFFFFF] rounded-lg shadow-2xl border border-[#F1F1F1] w-full max-w-lg max-h-[90vh] overflow-y-auto">
+        <div className="px-6 py-4 border-b border-[#F1F1F1] flex items-center justify-between sticky top-0 bg-[#FFFFFF] z-10">
           <h2 className="font-bold text-ivory text-lg">
             {title || (isNew ? `New ${entityName}` : `Edit ${entityName}`)}
           </h2>
@@ -83,7 +83,7 @@ export default function AdminEditModal({
                   <select
                     value={val}
                     onChange={(e) => set(f.key, e.target.value)}
-                    className="w-full border border-white/12 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#D6B56D]/20"
+                    className="w-full border border-[#F1F1F1] rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#0866FF]/20"
                   >
                     <option value="">—</option>
                     {f.options.map((opt) => (
@@ -103,7 +103,7 @@ export default function AdminEditModal({
                     value={val}
                     onChange={(e) => set(f.key, e.target.value)}
                     rows={4}
-                    className="w-full border border-white/12 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#D6B56D]/20"
+                    className="w-full border border-[#F1F1F1] rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#0866FF]/20"
                   />
                 </div>
               );
@@ -132,7 +132,7 @@ export default function AdminEditModal({
                     placeholder="https://"
                     value={val}
                     onChange={(e) => set(f.key, e.target.value)}
-                    className="w-full border border-white/12 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#D6B56D]/20"
+                    className="w-full border border-[#F1F1F1] rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#0866FF]/20"
                   />
                   {f.help && <p className="text-xs text-ivory-dim mt-1">{f.help}</p>}
                 </div>
@@ -147,13 +147,13 @@ export default function AdminEditModal({
                   onChange={(e) =>
                     set(f.key, f.type === "number" ? Number(e.target.value) : e.target.value)
                   }
-                  className="w-full border border-white/12 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#D6B56D]/20"
+                  className="w-full border border-[#F1F1F1] rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#0866FF]/20"
                 />
               </div>
             );
           })}
         </div>
-        <div className="px-6 py-4 border-t border-white/10 flex items-center justify-between gap-2 sticky bottom-0 bg-[#0A3A2F]">
+        <div className="px-6 py-4 border-t border-[#F1F1F1] flex items-center justify-between gap-2 sticky bottom-0 bg-[#FFFFFF]">
           {!isNew && (
             <button
               onClick={remove}
@@ -166,14 +166,14 @@ export default function AdminEditModal({
           <div className="flex items-center gap-2 ml-auto">
             <button
               onClick={onClose}
-              className="px-4 py-2 text-sm font-medium text-ivory-muted hover:bg-[#0A3A2F]/5 rounded-lg"
+              className="px-4 py-2 text-sm font-medium text-ivory-muted hover:bg-[#F4F4F4] rounded-lg"
             >
               Cancel
             </button>
             <button
               onClick={save}
               disabled={saving}
-              className="px-4 py-2 text-sm font-semibold bg-[#D6B56D] hover:bg-[#E5C77A] text-white rounded-lg flex items-center gap-2 disabled:opacity-50"
+              className="px-4 py-2 text-sm font-semibold bg-[#0866FF] hover:bg-[#0866FF] text-white rounded-lg flex items-center gap-2 disabled:opacity-50"
             >
               {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
               {isNew ? "Create" : "Save"}

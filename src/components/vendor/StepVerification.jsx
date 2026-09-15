@@ -15,8 +15,8 @@ export default function StepVerification({ form, update, onNext, onBack }) {
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <div className="w-12 h-12 rounded-lg bg-[#0A3A2F] flex items-center justify-center mx-auto mb-3">
-          <ShieldCheck className="w-6 h-6 text-[#D6B56D]" />
+        <div className="w-12 h-12 rounded-lg bg-[#FFFFFF] flex items-center justify-center mx-auto mb-3">
+          <ShieldCheck className="w-6 h-6 text-[#0866FF]" />
         </div>
         <h2 className="text-xl font-semibold text-ivory">Verify that you own or represent this business</h2>
         <p className="text-sm text-ivory-muted mt-1.5 max-w-sm mx-auto">
@@ -29,7 +29,7 @@ export default function StepVerification({ form, update, onNext, onBack }) {
         <select
           value={form.document_type}
           onChange={(e) => update("document_type", e.target.value)}
-          className="w-full border border-white/12 rounded-xl px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-gray-900/10 mb-3"
+          className="w-full border border-[#F1F1F1] rounded-xl px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-gray-900/10 mb-3"
         >
           <option value="">Select document type</option>
           {DOC_OPTIONS.map((d) => (
@@ -67,14 +67,14 @@ export default function StepVerification({ form, update, onNext, onBack }) {
       </div>
 
       <div className="flex gap-3">
-        <button type="button" onClick={onBack} className="px-6 py-3.5 rounded-full text-sm font-semibold text-ivory-muted hover:bg-[#0A3A2F]/5 transition-all">
+        <button type="button" onClick={onBack} className="px-6 py-3.5 rounded-full text-sm font-semibold text-ivory-muted hover:bg-[#F4F4F4] transition-all">
           Back
         </button>
         <button
           type="button"
           disabled={!canContinue}
           onClick={onNext}
-          className="flex-1 bg-[#062B23] hover:bg-emerald-black disabled:opacity-40 disabled:cursor-not-allowed text-white rounded-full py-3.5 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg"
+          className="flex-1 border border-[#E3E3E3] bg-[#FFFFFF] hover:bg-[#F9F8F7] disabled:opacity-40 disabled:cursor-not-allowed text-[#282828] rounded-full py-3.5 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:shadow-lg"
         >
           Continue
         </button>

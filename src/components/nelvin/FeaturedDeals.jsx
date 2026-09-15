@@ -91,17 +91,17 @@ export default function FeaturedDeals() {
             <Link
               key={panel.title}
               to={panel.to}
-              className={`group relative flex min-h-64 flex-col justify-end overflow-hidden rounded-2xl border border-white/10 bg-[#062B23] p-6 shadow-nv-card transition-shadow hover:shadow-nv-card-hover ${panel.span || ""}`}
+              className={`group relative flex min-h-64 flex-col justify-end overflow-hidden rounded-2xl border border-[#F1F1F1] bg-[#FFFFFF] p-6 shadow-nv-card transition-shadow hover:shadow-nv-card-hover ${panel.span || ""}`}
             >
               <div
                 className="absolute inset-0 bg-cover bg-center opacity-40 transition-opacity duration-500 group-hover:opacity-60"
                 style={{ backgroundImage: `url(${panel.img})` }}
                 aria-hidden="true"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#062B23] via-[#062B23]/70 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent" />
 
               <div className="relative z-10">
-                <span className="inline-block rounded-full bg-[#D6B56D]/15 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-gold">
+                <span className="inline-block rounded-full bg-[#0866FF]/15 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-gold">
                   {panel.label}
                 </span>
                 <h3 className="mt-3 text-xl font-bold leading-snug text-white">{panel.title}</h3>
@@ -117,8 +117,8 @@ export default function FeaturedDeals() {
 
         <ul className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {benefits.map((b) => (
-            <li key={b} className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.04] p-5">
-              <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold text-xs font-extrabold text-[#062B23]">
+            <li key={b} className="flex items-start gap-3 rounded-xl border border-[#F1F1F1] bg-[#F9F8F7] p-5">
+              <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold text-xs font-extrabold text-white">
                 ✓
               </span>
               <p className="text-sm font-semibold leading-relaxed text-ivory">{b}</p>

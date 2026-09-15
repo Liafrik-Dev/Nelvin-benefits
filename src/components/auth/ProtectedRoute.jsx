@@ -5,7 +5,7 @@ import UserNotRegisteredError from '@/components/auth/UserNotRegisteredError';
 
 const DefaultFallback = () => (
   <div className="fixed inset-0 flex items-center justify-center">
-    <div className="w-8 h-8 border-4 border-white/10 border-t-[#D6B56D] rounded-full animate-spin"></div>
+    <div className="w-8 h-8 border-4 border-[#F1F1F1] border-t-[#C99000] rounded-full animate-spin"></div>
   </div>
 );
 

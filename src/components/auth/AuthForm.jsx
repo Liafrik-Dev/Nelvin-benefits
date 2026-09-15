@@ -127,10 +127,10 @@ export default function AuthForm({ mode = "login" }) {
   if (showOtp) {
     return (
       <AuthLayout>
-        <div className="max-w-md mx-auto bg-[#0A3A2F] p-8 rounded-xl shadow-xl text-ivory text-center space-y-6">
+        <div className="max-w-md mx-auto bg-[#FFFFFF] p-8 rounded-xl shadow-xl text-ivory text-center space-y-6">
           <h2 className="text-2xl font-bold font-heading">Verify Your Email</h2>
           <p className="text-ivory-muted text-sm">We sent a 6-digit confirmation code to <strong>{email}</strong></p>
-          {serverError && <div className="p-3 bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20 text-xs font-bold rounded-xl">{serverError}</div>}
+          {serverError && <div className="p-3 bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20 text-xs font-bold rounded-xl">{serverError}</div>}
           <div className="flex justify-center">
             <InputOTP maxLength={6} value={otpCode} onChange={setOtpCode}>
               <InputOTPGroup>
@@ -138,7 +138,7 @@ export default function AuthForm({ mode = "login" }) {
               </InputOTPGroup>
             </InputOTP>
           </div>
-          <Button className="w-full h-12 bg-[#D6B56D] hover:bg-[#E5C77A] text-[#062B23] font-bold rounded-lg" onClick={handleVerify} disabled={loading || otpCode.length < 6}>
+          <Button className="w-full h-12 bg-[#0866FF] hover:bg-[#0866FF] text-white font-bold rounded-lg" onClick={handleVerify} disabled={loading || otpCode.length < 6}>
             {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Verify & Access Portal"}
           </Button>
         </div>
@@ -151,23 +151,23 @@ export default function AuthForm({ mode = "login" }) {
       <div className="space-y-8">
         {/* Title Header */}
         <div className="text-center space-y-2">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-heading">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#282828] tracking-tight font-heading">
             Welcome to Nelvin
           </h1>
-          <p className="text-white/80 text-sm font-medium max-w-md mx-auto">
+          <p className="text-[#282828] text-sm font-medium max-w-md mx-auto">
             Access your account across Member, HR, or Partner portals in one place.
           </p>
         </div>
 
         {/* Single Unified Form Box */}
-        <div className="max-w-md mx-auto bg-[#0A3A2F] text-ivory rounded-xl p-6 sm:p-8 shadow-2xl border border-white/20 space-y-5">
+        <div className="max-w-md mx-auto bg-[#FFFFFF] text-ivory rounded-xl p-6 sm:p-8 shadow-2xl border border-[#E3E3E3] space-y-5">
           {/* Role Tabs */}
-          <div className="grid grid-cols-3 gap-1.5 p-1.5 bg-forest-secondary rounded-lg text-xs font-extrabold text-center border border-white/12">
+          <div className="grid grid-cols-3 gap-1.5 p-1.5 bg-forest-secondary rounded-lg text-xs font-extrabold text-center border border-[#F1F1F1]">
             <button
               type="button"
               onClick={() => setActiveTab("subscriber")}
               className={`py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 ${
-                activeTab === "subscriber" ? "bg-[#062B23] text-[#D6B56D] shadow-md" : "text-ivory-muted hover:text-ivory"
+                activeTab === "subscriber" ? "bg-[#FFFFFF] text-[#0866FF] shadow-md" : "text-ivory-muted hover:text-ivory"
               }`}
             >
               <User className="w-3.5 h-3.5" /> Particulier
@@ -176,7 +176,7 @@ export default function AuthForm({ mode = "login" }) {
               type="button"
               onClick={() => setActiveTab("hr_admin")}
               className={`py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 ${
-                activeTab === "hr_admin" ? "bg-[#062B23] text-[#D6B56D] shadow-md" : "text-ivory-muted hover:text-ivory"
+                activeTab === "hr_admin" ? "bg-[#FFFFFF] text-[#0866FF] shadow-md" : "text-ivory-muted hover:text-ivory"
               }`}
             >
               <Building2 className="w-3.5 h-3.5" /> HR Team
@@ -185,7 +185,7 @@ export default function AuthForm({ mode = "login" }) {
               type="button"
               onClick={() => setActiveTab("business")}
               className={`py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5 ${
-                activeTab === "business" ? "bg-[#062B23] text-[#D6B56D] shadow-md" : "text-ivory-muted hover:text-ivory"
+                activeTab === "business" ? "bg-[#FFFFFF] text-[#0866FF] shadow-md" : "text-ivory-muted hover:text-ivory"
               }`}
             >
               <Store className="w-3.5 h-3.5" /> Partner
@@ -193,13 +193,13 @@ export default function AuthForm({ mode = "login" }) {
           </div>
 
           {/* Action Toggle (Login vs Signup) */}
-          <div className="flex items-center justify-between border-b border-white/10 pb-3 pt-1">
+          <div className="flex items-center justify-between border-b border-[#F1F1F1] pb-3 pt-1">
             <div className="flex gap-5">
               <button
                 type="button"
                 onClick={() => setActiveAction("login")}
                 className={`text-sm font-black font-heading pb-1 border-b-2 transition-all ${
-                  activeAction === "login" ? "border-[#0A3A2F] text-[#F5F1E8]" : "border-transparent text-ivory-dim hover:text-ivory-muted"
+                  activeAction === "login" ? "border-[#F1F1F1] text-[#282828]" : "border-transparent text-ivory-dim hover:text-ivory-muted"
                 }`}
               >
                 Log In
@@ -208,28 +208,28 @@ export default function AuthForm({ mode = "login" }) {
                 type="button"
                 onClick={() => setActiveAction("signup")}
                 className={`text-sm font-black font-heading pb-1 border-b-2 transition-all ${
-                  activeAction === "signup" ? "border-[#0A3A2F] text-[#F5F1E8]" : "border-transparent text-ivory-dim hover:text-ivory-muted"
+                  activeAction === "signup" ? "border-[#F1F1F1] text-[#282828]" : "border-transparent text-ivory-dim hover:text-ivory-muted"
                 }`}
               >
                 Create Account
               </button>
             </div>
-            <span className="text-[10px] font-black text-[#D6B56D] bg-[#D6B56D]/10 border border-[#D6B56D]/30 px-3 py-1 rounded uppercase tracking-wider">
+            <span className="text-[10px] font-black text-[#0866FF] bg-[#0866FF]/10 border border-[#0866FF]/30 px-3 py-1 rounded uppercase tracking-wider">
               {activeTab === "subscriber" ? "Particulier / Personal" : activeTab === "hr_admin" ? "HR Portal" : "Partner Portal"}
             </span>
           </div>
 
           {serverError && (
-            <div className="p-3 bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20 text-xs font-bold rounded-xl">
+            <div className="p-3 bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20 text-xs font-bold rounded-xl">
               {serverError}
             </div>
           )}
 
           <div className="grid grid-cols-2 gap-3">
-            <Button variant="outline" className="h-10 rounded-xl border-white/12 text-xs font-bold" onClick={() => handleProvider("google")}>
+            <Button variant="outline" className="h-10 rounded-xl border-[#F1F1F1] text-xs font-bold" onClick={() => handleProvider("google")}>
               <GoogleIcon className="w-4 h-4 mr-2" /> Google
             </Button>
-            <Button variant="outline" className="h-10 rounded-xl border-white/12 text-xs font-bold" onClick={() => handleProvider("apple")}>
+            <Button variant="outline" className="h-10 rounded-xl border-[#F1F1F1] text-xs font-bold" onClick={() => handleProvider("apple")}>
               <AppleIcon className="w-4 h-4 mr-2" /> Apple
             </Button>
           </div>
@@ -273,7 +273,7 @@ export default function AuthForm({ mode = "login" }) {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full h-11 bg-[#D6B56D] hover:bg-[#E5C77A] text-[#062B23] font-extrabold text-xs rounded-lg shadow-md shadow-[#062B23]/30 transition-all"
+              className="w-full h-11 bg-[#0866FF] hover:bg-[#0866FF] text-white font-extrabold text-xs rounded-lg shadow-md shadow-[#FFFFFF]/30 transition-all"
             >
               {loading ? (
                 <Loader2 className="w-4 h-4 animate-spin" />

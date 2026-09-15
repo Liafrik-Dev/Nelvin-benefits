@@ -80,7 +80,7 @@ export default function OfferDetail() {
   if (loading) {
     return (
       <div className="min-h-screen bg-forest">
-        <div className="relative bg-[#062B23] pt-24 pb-10 px-4">
+        <div className="relative bg-[#FFFFFF] pt-24 pb-10 px-4">
           <Navbar />
         </div>
         <div className="py-24 text-center text-ivory-dim">Loading offer...</div>
@@ -91,7 +91,7 @@ export default function OfferDetail() {
   if (!offer) {
     return (
       <div className="min-h-screen bg-forest">
-        <div className="relative bg-[#062B23] pt-24 pb-10 px-4">
+        <div className="relative bg-[#FFFFFF] pt-24 pb-10 px-4">
           <Navbar />
         </div>
         <div className="py-24 text-center text-ivory-dim">Offer not found.</div>
@@ -101,10 +101,10 @@ export default function OfferDetail() {
 
   return (
     <div className="min-h-screen bg-forest">
-      <div className="relative bg-[#062B23] pt-24 pb-6 px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-[#FFFFFF] pt-24 pb-6 px-4 sm:px-6 lg:px-8">
         <Navbar />
         <div className="max-w-5xl mx-auto">
-          <button onClick={() => navigate(-1)} className="text-white/60 hover:text-white text-sm flex items-center gap-1">
+          <button onClick={() => navigate(-1)} className="text-[#484848] hover:text-[#282828] text-sm flex items-center gap-1">
             <ArrowLeft className="w-4 h-4" /> Back
           </button>
         </div>
@@ -115,7 +115,7 @@ export default function OfferDetail() {
           <div className="relative rounded-lg overflow-hidden h-80">
             <img src={offer.image_url} alt={offer.title} className="w-full h-full object-cover" />
             {offer.discount_label && (
-              <span className="absolute top-4 left-4 bg-[#062B23]/80 text-white text-xs font-bold px-3 py-1.5 rounded-full">
+              <span className="absolute top-4 left-4 bg-[#FFFFFF]/90 text-[#282828] text-xs font-bold px-3 py-1.5 rounded-full">
                 {offer.discount_label}
               </span>
             )}
@@ -125,11 +125,11 @@ export default function OfferDetail() {
         </div>
 
         <div className="lg:col-span-2">
-          <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 sticky top-24">
+          <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 sticky top-24">
             <p className="font-semibold text-ivory">{offer.business_name}</p>
             <div className="flex items-center gap-3 text-sm text-ivory-dim mt-2">
               <span className="flex items-center gap-1">
-                <Star className="w-3.5 h-3.5 fill-[#D6B56D] text-[#E5C77A]" />
+                <Star className="w-3.5 h-3.5 fill-[#0866FF] text-[#0866FF]" />
                 {offer.rating} ({offer.reviews})
               </span>
             </div>
@@ -144,20 +144,20 @@ export default function OfferDetail() {
               </div>
             )}
             {offer.savings_amount > 0 && (
-              <div className="mt-4 bg-[#0A3A2F] rounded-xl p-4 flex items-center gap-2">
-                <Tag className="w-4 h-4 text-[#D6B56D]" />
-                <span className="text-sm font-semibold text-[#D6B56D]">Save ₦{offer.savings_amount.toLocaleString()}</span>
+              <div className="mt-4 bg-[#FFFFFF] rounded-xl p-4 flex items-center gap-2">
+                <Tag className="w-4 h-4 text-[#0866FF]" />
+                <span className="text-sm font-semibold text-[#0866FF]">Save ₦{offer.savings_amount.toLocaleString()}</span>
               </div>
             )}
             {redeemed ? (
-              <div className="mt-6 bg-[#D6B56D] text-white rounded-full py-3 text-center font-semibold text-sm flex items-center justify-center gap-2">
+              <div className="mt-6 bg-[#0866FF] text-white rounded-full py-3 text-center font-semibold text-sm flex items-center justify-center gap-2">
                 <CheckCircle2 className="w-4 h-4" /> Redeemed!
               </div>
             ) : (
               <button
                 onClick={handleRedeem}
                 disabled={redeeming}
-                className="mt-6 w-full bg-[#D6B56D] hover:bg-[#E5C77A] text-white rounded-full py-3 font-semibold text-sm"
+                className="mt-6 w-full bg-[#0866FF] hover:bg-[#0866FF] text-white rounded-full py-3 font-semibold text-sm"
               >
                 {redeeming ? "Redeeming..." : isAuthenticated ? "Redeem Now" : "Log in to Redeem"}
               </button>

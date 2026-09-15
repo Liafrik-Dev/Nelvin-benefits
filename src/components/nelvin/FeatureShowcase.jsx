@@ -67,15 +67,15 @@ const FEATURES = [
 
 function VisualCard({ f }) {
   return (
-    <div className="relative overflow-hidden rounded-2xl shadow-nv-card ring-1 ring-white/10">
+    <div className="relative overflow-hidden rounded-2xl shadow-nv-card ring-1 ring-[#F1F1F1]">
       <img
         src={f.img}
         alt={f.title}
         loading="lazy"
         className="h-72 w-full object-cover sm:h-80"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#062B23]/85 via-transparent to-transparent" />
-      <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-lg border border-white/12 bg-[#062B23]/90 px-4 py-2.5 backdrop-blur">
+      <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+      <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-lg border border-[#F1F1F1] bg-[#F9F8F7] px-4 py-2.5 backdrop-blur">
         <span className="h-2 w-2 rounded-full bg-gold" />
         <span className="text-[11px] font-extrabold text-ivory">{f.kicker}</span>
       </div>
@@ -111,7 +111,7 @@ export default function FeatureShowcase() {
                   <ul className="mt-6 grid max-w-md grid-cols-1 gap-x-4 gap-y-2.5 sm:grid-cols-2">
                     {f.points.map((pt) => (
                       <li key={pt} className="flex items-center gap-2 text-sm text-ivory-muted">
-                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#D6B56D]/15">
+                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#0866FF]/15">
                           <Check className="h-3 w-3 text-gold" />
                         </span>
                         {pt}

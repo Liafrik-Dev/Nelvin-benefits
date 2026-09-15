@@ -78,21 +78,21 @@ export default function Profile() {
 
   return (
     <div className="min-h-screen bg-forest">
-      <div className="relative bg-[#062B23] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-[#FFFFFF] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
         <Navbar />
       </div>
       <div className="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 pb-16">
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-8">
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-8">
           <h1 className="text-2xl font-bold font-heading text-ivory mb-6">Profile</h1>
           <div className="space-y-4">
             <div className="flex items-center gap-4">
-              <Avatar user={user} className="w-20 h-20" fallbackClassName="bg-[#D6B56D] text-white font-bold text-2xl" />
+              <Avatar user={user} className="w-20 h-20" fallbackClassName="bg-[#0866FF] text-white font-bold text-2xl" />
               <div className="flex flex-col gap-2">
                 <input ref={fileRef} type="file" accept="image/jpeg,image/png,image/webp" onChange={handleFile} className="hidden" />
                 <button
                   onClick={() => fileRef.current?.click()}
                   disabled={uploading}
-                  className="bg-[#0A3A2F]/5 hover:bg-[#0A3A2F]/10 text-ivory rounded-full px-4 py-2 text-sm font-medium flex items-center gap-2 disabled:opacity-50"
+                  className="bg-[#F4F4F4] hover:bg-[#F4F4F4] text-ivory rounded-full px-4 py-2 text-sm font-medium flex items-center gap-2 disabled:opacity-50"
                 >
                   <Camera className="w-4 h-4" /> {uploading ? "Saving..." : "Upload photo"}
                 </button>
@@ -113,17 +113,17 @@ export default function Profile() {
               <input
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                className="w-full border border-white/12 rounded-xl px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-[#D6B56D]/25"
+                className="w-full border border-[#F1F1F1] rounded-xl px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-[#0866FF]/25"
               />
             </div>
             <div>
               <label className="text-sm font-medium text-ivory block mb-1.5">Email</label>
-              <input value={user?.email || ""} disabled className="w-full border border-white/12 rounded-xl px-4 py-2.5 text-sm bg-forest-secondary/60 text-ivory-dim" />
+              <input value={user?.email || ""} disabled className="w-full border border-[#F1F1F1] rounded-xl px-4 py-2.5 text-sm bg-[#F9F8F7] text-ivory-dim" />
             </div>
             <button
               onClick={handleSave}
               disabled={saving}
-              className="bg-[#D6B56D] hover:bg-[#E5C77A] text-white rounded-full px-6 py-2.5 text-sm font-semibold flex items-center gap-2"
+              className="bg-[#0866FF] hover:bg-[#0866FF] text-white rounded-full px-6 py-2.5 text-sm font-semibold flex items-center gap-2"
             >
               {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
               {saved ? "Saved!" : "Save changes"}

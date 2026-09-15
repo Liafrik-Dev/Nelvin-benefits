@@ -34,14 +34,14 @@ export default function BudgetsPanel({ company }) {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold font-heading text-[#F5F1E8]">Budgets & Allowances</h1>
+          <h1 className="text-2xl font-bold font-heading text-[#282828]">Budgets & Allowances</h1>
           <p className="text-sm text-ivory-muted mt-1">Set monthly benefit spending caps and allowance limits per department.</p>
         </div>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="inline-flex items-center gap-2 bg-[#062B23] hover:bg-[#0A3A2F] text-[#D6B56D] text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm transition-colors"
+          className="inline-flex items-center gap-2 bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#0866FF] text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm transition-colors"
         >
-          <Plus className="w-4 h-4 text-[#D6B56D]" /> Add Budget Rule
+          <Plus className="w-4 h-4 text-[#0866FF]" /> Add Budget Rule
         </button>
       </div>
 
@@ -49,17 +49,17 @@ export default function BudgetsPanel({ company }) {
         {budgets.map((b) => {
           const pct = Math.round((b.spent / b.allocated) * 100);
           return (
-            <div key={b.id} className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-4 shadow-sm">
+            <div key={b.id} className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 space-y-4 shadow-sm">
               <div className="flex items-center justify-between">
                 <span className="text-xs uppercase font-bold text-ivory-dim">{b.period} Cap</span>
-                <span className="text-xs font-bold text-[#D6B56D] bg-[#0A3A2F] px-2.5 py-0.5 rounded-full">{pct}% Used</span>
+                <span className="text-xs font-bold text-[#0866FF] bg-[#FFFFFF] px-2.5 py-0.5 rounded-full">{pct}% Used</span>
               </div>
               <div>
                 <h3 className="font-bold text-ivory text-lg font-heading">{b.department}</h3>
                 <p className="text-2xl font-black text-ivory mt-1">${b.spent.toLocaleString()} / <span className="text-ivory-dim">${b.allocated.toLocaleString()}</span></p>
               </div>
-              <div className="w-full bg-[#0A3A2F]/5 rounded-full h-2">
-                <div className="bg-[#0A3A2F] h-2 rounded-full" style={{ width: `${pct}%` }} />
+              <div className="w-full bg-[#F4F4F4] rounded-full h-2">
+                <div className="bg-[#FFFFFF] h-2 rounded-full" style={{ width: `${pct}%` }} />
               </div>
             </div>
           );
@@ -69,8 +69,8 @@ export default function BudgetsPanel({ company }) {
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-emerald-black rounded-xl p-6 max-w-md w-full shadow-2xl space-y-4">
-            <div className="flex items-center justify-between border-b border-white/10 pb-3">
-              <h3 className="font-bold text-lg text-[#F5F1E8]">Create Department Budget</h3>
+            <div className="flex items-center justify-between border-b border-[#F1F1F1] pb-3">
+              <h3 className="font-bold text-lg text-[#282828]">Create Department Budget</h3>
               <button onClick={() => setIsModalOpen(false)} className="text-ivory-dim hover:text-ivory-muted"><X className="w-5 h-5" /></button>
             </div>
             <form onSubmit={handleAddRule} className="space-y-4">
@@ -82,7 +82,7 @@ export default function BudgetsPanel({ company }) {
                   placeholder="e.g. Sales & Support"
                   value={dept}
                   onChange={(e) => setDept(e.target.value)}
-                  className="w-full text-xs p-3 border border-white/12 rounded-xl focus:border-[#0A3A2F] focus:outline-none"
+                  className="w-full text-xs p-3 border border-[#F1F1F1] rounded-xl focus:border-[#F1F1F1] focus:outline-none"
                 />
               </div>
               <div>
@@ -93,12 +93,12 @@ export default function BudgetsPanel({ company }) {
                   placeholder="10000"
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
-                  className="w-full text-xs p-3 border border-white/12 rounded-xl focus:border-[#0A3A2F] focus:outline-none"
+                  className="w-full text-xs p-3 border border-[#F1F1F1] rounded-xl focus:border-[#F1F1F1] focus:outline-none"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full bg-[#062B23] hover:bg-[#0A3A2F] text-[#D6B56D] font-bold text-xs py-3 rounded-xl shadow-sm transition-colors"
+                className="w-full bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#0866FF] font-bold text-xs py-3 rounded-xl shadow-sm transition-colors"
               >
                 Save Budget Rule
               </button>

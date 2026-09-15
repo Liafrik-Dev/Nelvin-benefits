@@ -49,13 +49,13 @@ export default function Search() {
 
   return (
     <div className="min-h-screen bg-forest">
-      <div className="relative bg-[#062B23] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-[#FFFFFF] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
         <Navbar />
       </div>
       <EmployeeNav />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 sm:p-8 shadow-sm space-y-6">
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-6 sm:p-8 shadow-sm space-y-6">
           <div className="max-w-2xl mx-auto text-center space-y-2">
             <h1 className="text-2xl sm:text-3xl font-extrabold text-ivory font-heading">Search Nelvin Benefits</h1>
             <p className="text-ivory-muted text-sm">Instant search across thousands of corporate offers, vendor stores, and location perks.</p>
@@ -68,7 +68,7 @@ export default function Search() {
               placeholder="Search by brand name, deal title, city, or benefit..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="w-full bg-forest-secondary/60 border border-white/12 pl-12 pr-10 py-3.5 rounded-full text-sm font-medium focus:bg-[#0A3A2F] focus:outline-none focus:ring-2 focus:ring-[#D6B56D]/40 transition-all"
+              className="w-full bg-[#F9F8F7] border border-[#F1F1F1] pl-12 pr-10 py-3.5 rounded-full text-sm font-medium focus:bg-[#FFFFFF] focus:outline-none focus:ring-2 focus:ring-[#0866FF]/40 transition-all"
             />
             {query && (
               <button onClick={() => setQuery("")} className="absolute right-4 top-1/2 -translate-y-1/2 text-ivory-dim hover:text-ivory-muted">
@@ -77,14 +77,14 @@ export default function Search() {
             )}
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-ivory-muted pt-2 border-t border-white/10">
+          <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold text-ivory-muted pt-2 border-t border-[#F1F1F1]">
             <div className="flex items-center gap-2">
               <Filter className="w-3.5 h-3.5 text-ivory-dim" />
               <span>Country:</span>
               <select
                 value={selectedCountry}
                 onChange={(e) => setSelectedCountry(e.target.value)}
-                className="bg-forest-secondary/60 border border-white/12 rounded-lg px-2.5 py-1"
+                className="bg-[#F9F8F7] border border-[#F1F1F1] rounded-lg px-2.5 py-1"
               >
                 <option value="All">All Countries</option>
                 <option value="Nigeria">Nigeria</option>
@@ -103,7 +103,7 @@ export default function Search() {
                 min="0"
                 value={minDiscount}
                 onChange={(e) => setMinDiscount(Number(e.target.value))}
-                className="w-16 bg-forest-secondary/60 border border-white/12 rounded-lg px-2 py-1 text-center"
+                className="w-16 bg-[#F9F8F7] border border-[#F1F1F1] rounded-lg px-2 py-1 text-center"
               />
             </div>
           </div>
@@ -117,7 +117,7 @@ export default function Search() {
         ) : loading ? (
           <div className="text-center py-12 text-ivory-dim text-sm">Searching perks...</div>
         ) : offers.length === 0 ? (
-          <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-8 text-center text-ivory-muted text-sm">
+          <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-8 text-center text-ivory-muted text-sm">
             No results found for "{term}".
           </div>
         ) : (

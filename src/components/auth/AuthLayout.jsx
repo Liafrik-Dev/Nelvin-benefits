@@ -5,9 +5,9 @@ import { BrandLogo } from "@/components/nelvin/Brand";
 
 export default function AuthLayout({ children }) {
   return (
-    <div className="min-h-screen bg-[#062B23] text-white font-sans flex flex-col justify-between">
+    <div className="min-h-screen border border-[#E3E3E3] bg-[#FFFFFF] text-[#282828] font-sans flex flex-col justify-between">
       {/* Top Header Navigation matching Brand Palette */}
-      <header className="w-full bg-[#062B23]/90 backdrop-blur-md border-b border-white/10 fixed inset-x-0 top-0 z-50">
+      <header className="w-full bg-[#F9F8F7] backdrop-blur-md border-b border-[#F1F1F1] fixed inset-x-0 top-0 z-50">
         <div className="container-nv h-16 flex items-center justify-between gap-4">
           <BrandLogo size="sm" tagline="Perks for Everyone" className="shrink-0" />
 
@@ -34,7 +34,7 @@ export default function AuthLayout({ children }) {
       </main>
 
       {/* Footer */}
-      <footer className="w-full bg-[#062B23] border-t border-white/10 py-4 text-center text-xs text-ivory-dim flex items-center justify-center gap-2">
+      <footer className="w-full bg-[#FFFFFF] border-t border-[#F1F1F1] py-4 text-center text-xs text-ivory-dim flex items-center justify-center gap-2">
         <ShieldCheck className="h-4 w-4 text-gold" />
         <span>Enterprise ISO-27001 Secured • NelvinBenefit Platform</span>
       </footer>

@@ -26,7 +26,7 @@ export default function ChoosePlan() {
 
   return (
     <div className="min-h-screen bg-forest">
-      <div className="relative bg-[#062B23] pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <div className="relative bg-[#FFFFFF] pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <Navbar />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -34,17 +34,17 @@ export default function ChoosePlan() {
           transition={{ duration: 0.6 }}
           className="max-w-3xl mx-auto text-center relative z-10"
         >
-          <Link to="/" className="mb-6 inline-flex min-h-8 items-center gap-1.5 py-1 text-xs font-medium text-white/60 transition-colors hover:text-white">
+          <Link to="/" className="mb-6 inline-flex min-h-8 items-center gap-1.5 py-1 text-xs font-medium text-[#484848] transition-colors hover:text-[#282828]">
             <ArrowLeft className="w-3.5 h-3.5" /> Back to home
           </Link>
-          <p className="text-[#E5C77A] font-semibold text-xs tracking-[0.15em] uppercase mb-3">Membership</p>
-          <h1 className="text-3xl sm:text-5xl font-bold font-heading text-white">Choose your savings plan.</h1>
-          <p className="text-white/60 mt-4 max-w-lg mx-auto">
+          <p className="text-[#0866FF] font-semibold text-xs tracking-[0.15em] uppercase mb-3">Membership</p>
+          <h1 className="text-3xl sm:text-5xl font-bold font-heading text-[#282828]">Choose your savings plan.</h1>
+          <p className="text-[#484848] mt-4 max-w-lg mx-auto">
             From casual weekend spenders to luxury travellers — there's a Nelvin plan built for you.
           </p>
         </motion.div>
-        <div className="absolute -top-20 -right-20 w-72 h-72 bg-[#D6B56D]/20 rounded-full blur-3xl" />
-        <div className="absolute -bottom-24 -left-20 w-72 h-72 bg-[#103F35]/10 rounded-full blur-3xl" />
+        <div className="absolute -top-20 -right-20 w-72 h-72 bg-[#0866FF]/20 rounded-full blur-3xl" />
+        <div className="absolute -bottom-24 -left-20 w-72 h-72 bg-[#F4F4F4] rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 pb-20 relative z-10">
@@ -61,27 +61,27 @@ export default function ChoosePlan() {
                 whileHover={{ y: -6 }}
                 className={`rounded-lg p-8 relative transition-shadow ${
                   plan.highlight
-                    ? "bg-[#D6B56D] text-[#062B23] shadow-2xl md:-mt-4 md:pb-10"
-                    : "bg-emerald-black ring-1 ring-white/10 border border-transparent hover:shadow-xl"
+                    ? "bg-[#0866FF] text-white shadow-2xl md:-mt-4 md:pb-10"
+                    : "bg-white ring-1 ring-[#F1F1F1] border border-transparent hover:shadow-xl"
                 } ${isSelected ? "ring-2 ring-amber-400" : ""}`}
               >
                 {plan.highlight && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="bg-[#103F35] text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">
+                    <span className="border border-[#E3E3E3] bg-[#FFFFFF] text-[#282828] text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">
                       Most Popular
                     </span>
                   </div>
                 )}
-                <p className={`font-bold text-sm tracking-wider mb-4 ${plan.nameColor}`}>{plan.name}</p>
+                <p className={`font-bold text-sm tracking-wider mb-4 ${plan.highlight ? "text-white" : plan.nameColor}`}>{plan.name}</p>
                 <div className="flex items-baseline gap-1 mb-1">
                   <span className="text-5xl font-bold font-heading">{plan.price}</span>
-                  <span className={`text-sm ${plan.highlight ? "text-[#062B23]/70" : "text-ivory-dim"}`}>{plan.period}</span>
+                  <span className={`text-sm ${plan.highlight ? "text-white" : "text-ivory-dim"}`}>{plan.period}</span>
                 </div>
-                <p className={`text-sm mb-6 ${plan.highlight ? "text-[#062B23]/80" : "text-ivory-muted"}`}>{plan.desc}</p>
+                <p className={`text-sm mb-6 ${plan.highlight ? "text-white" : "text-ivory-muted"}`}>{plan.desc}</p>
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((f, j) => (
                     <li key={j} className="flex items-start gap-2.5 text-sm">
-                      <Check className={`w-4 h-4 mt-0.5 flex-shrink-0 ${plan.highlight ? "text-[#062B23]" : "text-[#D6B56D]"}`} />
+                      <Check className={`w-4 h-4 mt-0.5 flex-shrink-0 ${plan.highlight ? "text-white" : "text-[#0866FF]"}`} />
                       <span>{f}</span>
                     </li>
                   ))}
@@ -90,8 +90,8 @@ export default function ChoosePlan() {
                   onClick={() => handlePick(plan)}
                   className={`w-full py-3 rounded-full font-semibold text-sm transition-colors block text-center ${
                     plan.highlight
-                      ? "bg-[#0A3A2F] text-[#D6B56D] hover:bg-[#0A3A2F]/5"
-                      : "bg-[#D6B56D] text-[#062B23] hover:bg-[#E5C77A]"
+                      ? "bg-[#FFFFFF] text-[#0866FF] hover:bg-[#F4F4F4]"
+                      : "bg-[#0866FF] text-white hover:bg-[#0866FF]"
                   }`}
                 >
                   {plan.cta}

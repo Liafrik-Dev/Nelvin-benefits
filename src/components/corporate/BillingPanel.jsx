@@ -105,29 +105,29 @@ export default function BillingPanel({ company, onChanged }) {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6">
-          <h3 className="font-semibold text-ivory mb-3 flex items-center gap-2"><Receipt className="w-4 h-4 text-[#D6B56D]" /> Current Plan</h3>
-          <p className="text-2xl font-bold text-[#D6B56D]">{company.membership_tier || "—"}</p>
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6">
+          <h3 className="font-semibold text-ivory mb-3 flex items-center gap-2"><Receipt className="w-4 h-4 text-[#0866FF]" /> Current Plan</h3>
+          <p className="text-2xl font-bold text-[#0866FF]">{company.membership_tier || "—"}</p>
           <p className="text-sm text-ivory-muted mt-1">{isLead ? "Custom enterprise plan, manually approved after a sales call." : "Self-serve tier, billed per seat per month."}</p>
 
           <div className="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
-            <div className="bg-forest-secondary/60 rounded-lg p-3"><p className="text-xs text-ivory-dim uppercase tracking-wider">Seats Purchased</p><p className="font-bold text-ivory">{seatsTotal}</p></div>
-            <div className="bg-forest-secondary/60 rounded-lg p-3"><p className="text-xs text-ivory-dim uppercase tracking-wider">Seats Used</p><p className="font-bold text-ivory">{seatsUsed}</p></div>
-            <div className="bg-forest-secondary/60 rounded-lg p-3"><p className="text-xs text-ivory-dim uppercase tracking-wider">Remaining</p><p className="font-bold text-ivory">{seatsRemaining}</p></div>
-            <div className="bg-forest-secondary/60 rounded-lg p-3">
+            <div className="bg-[#F9F8F7] rounded-lg p-3"><p className="text-xs text-ivory-dim uppercase tracking-wider">Seats Purchased</p><p className="font-bold text-ivory">{seatsTotal}</p></div>
+            <div className="bg-[#F9F8F7] rounded-lg p-3"><p className="text-xs text-ivory-dim uppercase tracking-wider">Seats Used</p><p className="font-bold text-ivory">{seatsUsed}</p></div>
+            <div className="bg-[#F9F8F7] rounded-lg p-3"><p className="text-xs text-ivory-dim uppercase tracking-wider">Remaining</p><p className="font-bold text-ivory">{seatsRemaining}</p></div>
+            <div className="bg-[#F9F8F7] rounded-lg p-3">
               <p className="text-xs text-ivory-dim uppercase tracking-wider flex items-center gap-1"><Calendar className="w-3 h-3" /> Renewal</p>
               <p className="font-bold text-ivory text-xs">{company.next_renewal_date ? new Date(company.next_renewal_date).toLocaleDateString() : (company.billing_end_date || "—")}</p>
             </div>
           </div>
 
           {!isLead && (
-            <div className="mt-6 bg-[#0A3A2F] rounded-lg p-4">
-              <p className="text-xs text-[#D6B56D] uppercase tracking-wider font-semibold">Add seats</p>
+            <div className="mt-6 bg-[#FFFFFF] rounded-lg p-4">
+              <p className="text-xs text-[#0866FF] uppercase tracking-wider font-semibold">Add seats</p>
               <div className="flex items-center gap-2 mt-2">
-                <button onClick={() => setSeats((s) => Math.max(0, s - 1))} className="p-2 bg-[#0A3A2F] rounded-lg border border-white/15 text-[#D6B56D]"><Minus className="w-3.5 h-3.5" /></button>
-                <input type="number" min="0" value={seats} onChange={(e) => setSeats(Math.max(0, Number(e.target.value)))} className="w-16 text-center px-2 py-1.5 text-sm border border-white/15 rounded-lg" />
-                <button onClick={() => setSeats((s) => s + 1)} className="p-2 bg-[#0A3A2F] rounded-lg border border-white/15 text-[#D6B56D]"><Plus className="w-3.5 h-3.5" /></button>
-                <button onClick={addSeats} disabled={addingSeats || seats < 1} className="ml-2 inline-flex items-center gap-1.5 bg-[#D6B56D] hover:bg-[#E5C77A] text-[#062B23] text-sm font-semibold px-4 py-2 rounded-lg disabled:opacity-50">
+                <button onClick={() => setSeats((s) => Math.max(0, s - 1))} className="p-2 bg-[#FFFFFF] rounded-lg border border-[#F1F1F1] text-[#0866FF]"><Minus className="w-3.5 h-3.5" /></button>
+                <input type="number" min="0" value={seats} onChange={(e) => setSeats(Math.max(0, Number(e.target.value)))} className="w-16 text-center px-2 py-1.5 text-sm border border-[#F1F1F1] rounded-lg" />
+                <button onClick={() => setSeats((s) => s + 1)} className="p-2 bg-[#FFFFFF] rounded-lg border border-[#F1F1F1] text-[#0866FF]"><Plus className="w-3.5 h-3.5" /></button>
+                <button onClick={addSeats} disabled={addingSeats || seats < 1} className="ml-2 inline-flex items-center gap-1.5 bg-[#0866FF] hover:bg-[#0866FF] text-white text-sm font-semibold px-4 py-2 rounded-lg disabled:opacity-50">
                   <ArrowUpCircle className="w-4 h-4" /> Add {seats} seat{seats === 1 ? "" : "s"}
                 </button>
               </div>
@@ -136,20 +136,20 @@ export default function BillingPanel({ company, onChanged }) {
           )}
 
           {isLead && (
-            <div className="mt-6 bg-[#103F35]/70 rounded-lg p-4">
-              <p className="text-sm text-[#E5C77A]">To adjust seats, change renewal date, or invoices, contact <a href="mailto:Nelvin23@proton.me" className="font-semibold underline">Nelvin23@proton.me</a>.</p>
+            <div className="mt-6 bg-[#F9F8F7] rounded-lg p-4">
+              <p className="text-sm text-[#0866FF]">To adjust seats, change renewal date, or invoices, contact <a href="mailto:Nelvin23@proton.me" className="font-semibold underline">Nelvin23@proton.me</a>.</p>
             </div>
           )}
         </div>
 
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6">
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6">
           <h3 className="font-semibold text-ivory mb-3">Payments & Invoices</h3>
           {loading ? (
             <div className="p-6 text-center text-sm text-ivory-dim">Loading…</div>
           ) : payments.length === 0 ? (
             <div className="p-6 text-center text-sm text-ivory-dim">No payments recorded yet.</div>
           ) : (
-            <div className="divide-y divide-white/10 max-h-[320px] overflow-y-auto">
+            <div className="divide-y divide-[#F1F1F1] max-h-[320px] overflow-y-auto">
               {payments.map((p) => (
                 <div key={p.id} className="py-3 flex items-center justify-between gap-3">
                   <div className="min-w-0">
@@ -158,7 +158,7 @@ export default function BillingPanel({ company, onChanged }) {
                   </div>
                   <div className="flex items-center gap-3">
                     <span className="text-sm font-bold text-ivory">${(p.amount || 0).toLocaleString()}</span>
-                    <button onClick={() => downloadInvoice(p)} className="text-xs text-[#D6B56D] hover:text-[#E5C77A] flex items-center gap-1"><Download className="w-3.5 h-3.5" /> Invoice</button>
+                    <button onClick={() => downloadInvoice(p)} className="text-xs text-[#0866FF] hover:text-[#0866FF] flex items-center gap-1"><Download className="w-3.5 h-3.5" /> Invoice</button>
                   </div>
                 </div>
               ))}

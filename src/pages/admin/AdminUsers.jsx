@@ -11,7 +11,7 @@ import { UserPlus, UserCog, LogOut, Trash2 } from "lucide-react";
 
 function RowIconBtn({ title, onClick, Icon, color = "text-ivory-muted hover:text-ivory" }) {
   return (
-    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-[#0A3A2F]/5 ${color}`}>
+    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-[#F4F4F4] ${color}`}>
       <Icon className="w-4 h-4" />
     </button>
   );
@@ -172,7 +172,7 @@ export default function AdminUsers() {
         </div>
         <button
           onClick={inviteUser}
-          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-[#D6B56D] hover:bg-[#E5C77A] text-white rounded-lg"
+          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-[#0866FF] hover:bg-[#0866FF] text-white rounded-lg"
         >
           <UserPlus className="w-4 h-4" /> Invite user
         </button>

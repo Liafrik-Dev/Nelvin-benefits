@@ -44,8 +44,8 @@ export default function FAQSection() {
             return (
               <div
                 key={faq.q}
-                className={`overflow-hidden rounded-xl border bg-[#103F35] transition-colors ${
-                  open ? "border-[#D6B56D]/35" : "border-white/10"
+                className={`overflow-hidden rounded-xl border bg-[#FFFFFF] transition-colors ${
+                  open ? "border-[#0866FF]/35" : "border-[#F1F1F1]"
                 }`}
               >
                 <h3>

@@ -11,7 +11,7 @@ import { Check, X, Ban, Trash2, Edit2, Eye, Plus, RotateCcw } from "lucide-react
 
 function RowIconBtn({ title, onClick, Icon, color = "text-ivory-muted hover:text-ivory" }) {
   return (
-    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-[#0A3A2F]/5 ${color}`}>
+    <button title={title} onClick={onClick} className={`p-1.5 rounded hover:bg-[#F4F4F4] ${color}`}>
       <Icon className="w-4 h-4" />
     </button>
   );
@@ -124,7 +124,7 @@ export default function AdminCompanies() {
     { key: "name", label: "Company", sortable: true,
       render: (c) => (
         <div className="flex items-center gap-2">
-          {c.logo_url ? <img src={c.logo_url} alt="" className="w-8 h-8 rounded-lg object-cover" /> : <div className="w-8 h-8 rounded-lg bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20 flex items-center justify-center text-xs font-bold">{(c.name || "?").slice(0,1)}</div>}
+          {c.logo_url ? <img src={c.logo_url} alt="" className="w-8 h-8 rounded-lg object-cover" /> : <div className="w-8 h-8 rounded-lg bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20 flex items-center justify-center text-xs font-bold">{(c.name || "?").slice(0,1)}</div>}
           <div className="min-w-0">
             <p className="text-sm font-medium text-ivory truncate">{c.name}</p>
             <p className="text-xs text-ivory-dim truncate">{c.industry || "—"}</p>
@@ -150,14 +150,14 @@ export default function AdminCompanies() {
     ) },
     { key: "dashboard_access", label: "Access", sortable: true, render: (c) => (
         c.dashboard_access
-          ? <span className="text-[10px] font-bold uppercase tracking-wide bg-[#103F35]/60 text-[#D6B56D] px-2 py-0.5 rounded-full">Active</span>
-          : <span className="text-[10px] font-bold uppercase tracking-wide bg-[#0A3A2F]/5 text-ivory-muted px-2 py-0.5 rounded-full">Locked</span>
+          ? <span className="text-[10px] font-bold uppercase tracking-wide bg-[#F4F4F4] text-[#0866FF] px-2 py-0.5 rounded-full">Active</span>
+          : <span className="text-[10px] font-bold uppercase tracking-wide bg-[#F4F4F4] text-ivory-muted px-2 py-0.5 rounded-full">Locked</span>
     ) },
     { key: "status", label: "Status", sortable: true, render: (c) => (
         <div className="flex flex-wrap items-center gap-1.5">
           <StatusBadge status={c.status} />
           {c.is_corporate_lead && c.status === "pending" && (
-            <span className="text-[10px] font-bold uppercase tracking-wide bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20 px-2 py-0.5 rounded-full">Need Call</span>
+            <span className="text-[10px] font-bold uppercase tracking-wide bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20 px-2 py-0.5 rounded-full">Need Call</span>
           )}
         </div>
     ) },
@@ -205,7 +205,7 @@ export default function AdminCompanies() {
         </div>
         <button
           onClick={() => setEditing({})}
-          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-[#D6B56D] hover:bg-[#E5C77A] text-white rounded-lg"
+          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-[#0866FF] hover:bg-[#0866FF] text-white rounded-lg"
         >
           <Plus className="w-4 h-4" /> New company
         </button>
@@ -225,16 +225,16 @@ export default function AdminCompanies() {
             <RowIconBtn title="View employees" Icon={Eye} onClick={() => setViewing(c)} />
             <RowIconBtn title="Edit" Icon={Edit2} onClick={() => setEditing(c)} />
             {!c.dashboard_access && c.status === "pending" && (
-              <RowIconBtn title={c.activation_type === "custom_pricing" ? "Approve application" : "Confirm payment"} Icon={Check} color="text-[#D6B56D] hover:text-[#D6B56D]" onClick={() => activateCompany(c)} />
+              <RowIconBtn title={c.activation_type === "custom_pricing" ? "Approve application" : "Confirm payment"} Icon={Check} color="text-[#0866FF] hover:text-[#0866FF]" onClick={() => activateCompany(c)} />
             )}
             {!c.dashboard_access && c.status === "pending" && (
               <RowIconBtn title="Reject" Icon={X} color="text-rose-600 hover:text-rose-700" onClick={() => rejectCompany(c)} />
             )}
             {c.dashboard_access && c.status !== "suspended" && (
-              <RowIconBtn title="Suspend" Icon={Ban} color="text-[#E5C77A] hover:text-[#E5C77A]" onClick={() => suspendCompany(c)} />
+              <RowIconBtn title="Suspend" Icon={Ban} color="text-[#0866FF] hover:text-[#0866FF]" onClick={() => suspendCompany(c)} />
             )}
             {c.status === "suspended" && (
-              <RowIconBtn title="Reactivate" Icon={RotateCcw} color="text-[#D6B56D] hover:text-[#D6B56D]" onClick={() => reactivateCompany(c)} />
+              <RowIconBtn title="Reactivate" Icon={RotateCcw} color="text-[#0866FF] hover:text-[#0866FF]" onClick={() => reactivateCompany(c)} />
             )}
             <RowIconBtn title="Delete" Icon={Trash2} color="text-rose-600 hover:text-rose-700" onClick={() => removeCompany(c.id)} />
           </div>
@@ -276,7 +276,7 @@ export default function AdminCompanies() {
       {viewing && (
         <div className="fixed inset-0 z-[200] flex justify-end">
           <div className="absolute inset-0 bg-black/40" onClick={() => setViewing(null)} />
-          <div className="relative w-full max-w-md bg-[#0A3A2F] h-full overflow-y-auto p-6">
+          <div className="relative w-full max-w-md bg-[#FFFFFF] h-full overflow-y-auto p-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="font-bold text-ivory text-lg">{viewing.name}</h2>
               <button onClick={() => setViewing(null)} className="text-ivory-dim"><X className="w-5 h-5" /></button>
@@ -295,7 +295,7 @@ export default function AdminCompanies() {
                 {employeesOf(viewing.id).length === 0 ? (
                   <p className="text-ivory-dim text-xs mt-2">No employees linked.</p>
                 ) : (
-                  <ul className="divide-y divide-white/10 mt-2">
+                  <ul className="divide-y divide-[#F1F1F1] mt-2">
                     {employeesOf(viewing.id).map((e) => (
                       <li key={e.id} className="py-2">
                         <p className="font-medium text-ivory text-sm">{e.full_name || "—"}</p>

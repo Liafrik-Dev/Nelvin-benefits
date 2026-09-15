@@ -48,7 +48,7 @@ export default function BusinessCreateOffer() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <form onSubmit={handleSubmit} className="lg:col-span-2 bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 space-y-4 shadow-sm">
+        <form onSubmit={handleSubmit} className="lg:col-span-2 bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-6 space-y-4 shadow-sm">
           <div>
             <label className="block text-xs font-bold text-ivory mb-1">Deal Title</label>
             <input
@@ -56,7 +56,7 @@ export default function BusinessCreateOffer() {
               required
               value={form.title}
               onChange={(e) => setForm({ ...form, title: e.target.value })}
-              className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3.5 py-2.5 text-xs font-bold text-ivory"
+              className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl px-3.5 py-2.5 text-xs font-bold text-ivory"
             />
           </div>
 
@@ -66,7 +66,7 @@ export default function BusinessCreateOffer() {
               type="text"
               value={form.image_url}
               onChange={(e) => setForm({ ...form, image_url: e.target.value })}
-              className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3.5 py-2 text-xs font-mono"
+              className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl px-3.5 py-2 text-xs font-mono"
             />
           </div>
 
@@ -76,7 +76,7 @@ export default function BusinessCreateOffer() {
               <select
                 value={form.category}
                 onChange={(e) => setForm({ ...form, category: e.target.value })}
-                className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3 py-2 text-xs font-semibold"
+                className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl px-3 py-2 text-xs font-semibold"
               >
                 <option>Shopping & Fashion</option>
                 <option>Food & Dining</option>
@@ -92,7 +92,7 @@ export default function BusinessCreateOffer() {
                 required
                 value={form.discount_label}
                 onChange={(e) => setForm({ ...form, discount_label: e.target.value })}
-                className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3 py-2 text-xs font-bold"
+                className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl px-3 py-2 text-xs font-bold"
               />
             </div>
           </div>
@@ -104,7 +104,7 @@ export default function BusinessCreateOffer() {
                 type="number"
                 value={form.original_price}
                 onChange={(e) => setForm({ ...form, original_price: Number(e.target.value) })}
-                className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3 py-2 text-xs font-bold"
+                className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl px-3 py-2 text-xs font-bold"
               />
             </div>
             <div>
@@ -113,7 +113,7 @@ export default function BusinessCreateOffer() {
                 type="number"
                 value={form.discount_price}
                 onChange={(e) => setForm({ ...form, discount_price: Number(e.target.value) })}
-                className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3 py-2 text-xs font-bold"
+                className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl px-3 py-2 text-xs font-bold"
               />
             </div>
             <div>
@@ -122,7 +122,7 @@ export default function BusinessCreateOffer() {
                 type="number"
                 value={form.savings_amount}
                 onChange={(e) => setForm({ ...form, savings_amount: Number(e.target.value) })}
-                className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3 py-2 text-xs font-bold text-[#D6B56D]"
+                className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl px-3 py-2 text-xs font-bold text-[#0866FF]"
               />
             </div>
           </div>
@@ -133,14 +133,14 @@ export default function BusinessCreateOffer() {
               rows={3}
               value={form.description}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
-              className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl p-3 text-xs outline-none focus:border-[#D6B56D]"
+              className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl p-3 text-xs outline-none focus:border-[#0866FF]"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-[#062B23] text-[#D6B56D] font-bold py-3 rounded-full text-xs hover:bg-[#062B23] transition-colors shadow-sm"
+            className="w-full bg-[#FFFFFF] text-[#0866FF] font-bold py-3 rounded-full text-xs hover:bg-[#FFFFFF] transition-colors shadow-sm"
           >
             {loading ? "Submitting..." : "Submit Offer for Review"}
           </button>

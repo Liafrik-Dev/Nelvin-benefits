@@ -15,16 +15,16 @@ export default function RolesPanel({ company }) {
           <h1 className="text-2xl font-bold font-heading text-ivory">Roles & Permissions</h1>
           <p className="text-sm text-ivory-muted mt-1">Configure role-based access control (RBAC) for HR administrators and managers.</p>
         </div>
-        <button className="inline-flex items-center gap-2 bg-[#D6B56D] hover:bg-[#E5C77A] text-[#062B23] text-sm font-semibold px-4 py-2 rounded-xl shadow-sm">
+        <button className="inline-flex items-center gap-2 bg-[#0866FF] hover:bg-[#0866FF] text-white text-sm font-semibold px-4 py-2 rounded-xl shadow-sm">
           <Plus className="w-4 h-4" /> Create Custom Role
         </button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {roles.map((r) => (
-          <div key={r.name} className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-4 shadow-sm">
+          <div key={r.name} className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 space-y-4 shadow-sm">
             <div className="flex items-center justify-between">
-              <Shield className="w-6 h-6 text-[#D6B56D]" />
+              <Shield className="w-6 h-6 text-[#0866FF]" />
               <span className="text-xs font-bold text-ivory-muted">{r.members} Members</span>
             </div>
             <div>
@@ -32,7 +32,7 @@ export default function RolesPanel({ company }) {
               <div className="mt-3 space-y-1.5">
                 {r.permissions.map((p) => (
                   <p key={p} className="text-xs text-ivory-muted flex items-center gap-1.5">
-                    <Check className="w-3.5 h-3.5 text-[#D6B56D]" /> {p}
+                    <Check className="w-3.5 h-3.5 text-[#0866FF]" /> {p}
                   </p>
                 ))}
               </div>

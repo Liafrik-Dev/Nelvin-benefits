@@ -23,7 +23,7 @@ function MediaRow({ label, src }) {
   return (
     <div className="mb-2">
       <p className="text-[11px] uppercase tracking-wider text-ivory-dim mb-1">{label}</p>
-      <a href={src} target="_blank" rel="noopener noreferrer" className="block w-full h-28 rounded-lg overflow-hidden border border-white/10 bg-forest-secondary/60">
+      <a href={src} target="_blank" rel="noopener noreferrer" className="block w-full h-28 rounded-lg overflow-hidden border border-[#F1F1F1] bg-[#F9F8F7]">
         <img src={src} alt={label} className="w-full h-full object-cover" />
       </a>
     </div>
@@ -54,14 +54,14 @@ export default function ApplicationReviewPanel({
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed right-0 top-0 bottom-0 w-full sm:w-[440px] bg-[#0A3A2F] shadow-xl z-50 overflow-y-auto flex flex-col"
+            className="fixed right-0 top-0 bottom-0 w-full sm:w-[440px] bg-[#FFFFFF] shadow-xl z-50 overflow-y-auto flex flex-col"
           >
-            <div className="sticky top-0 bg-emerald-black border-b border-white/10 px-6 py-4 flex items-center justify-between z-10">
+            <div className="sticky top-0 bg-emerald-black border-b border-[#F1F1F1] px-6 py-4 flex items-center justify-between z-10">
               <div>
                 <p className="text-[11px] uppercase tracking-wider text-ivory-dim">{app.status}</p>
                 <h2 className="font-bold text-ivory text-lg">{app.business_name}</h2>
               </div>
-              <button onClick={onClose} className="w-8 h-8 rounded-full hover:bg-[#0A3A2F]/5 flex items-center justify-center">
+              <button onClick={onClose} className="w-8 h-8 rounded-full hover:bg-[#F4F4F4] flex items-center justify-center">
                 <X className="w-4 h-4 text-ivory-muted" />
               </button>
             </div>
@@ -84,7 +84,7 @@ export default function ApplicationReviewPanel({
                   <p className="text-[11px] uppercase tracking-wider text-ivory-dim mb-2">Business images</p>
                   <div className="grid grid-cols-2 gap-2">
                     {app.business_image_urls.map((url, i) => (
-                      <a key={i} href={url} target="_blank" rel="noopener noreferrer" className="block h-24 rounded-lg overflow-hidden border border-white/10 bg-forest-secondary/60">
+                      <a key={i} href={url} target="_blank" rel="noopener noreferrer" className="block h-24 rounded-lg overflow-hidden border border-[#F1F1F1] bg-[#F9F8F7]">
                         <img src={url} alt="business" className="w-full h-full object-cover" />
                       </a>
                     ))}
@@ -100,32 +100,32 @@ export default function ApplicationReviewPanel({
               </div>
 
               {publishedOffer && (
-                <div className="mt-4 p-3 rounded-xl bg-[#0A3A2F] border border-white/10">
-                  <p className="text-xs text-[#D6B56D] font-semibold mb-1 flex items-center gap-1">
+                <div className="mt-4 p-3 rounded-xl bg-[#FFFFFF] border border-[#F1F1F1]">
+                  <p className="text-xs text-[#0866FF] font-semibold mb-1 flex items-center gap-1">
                     <BadgeCheck className="w-3.5 h-3.5" /> Published as live offer
                   </p>
-                  <Link to={`/offer/${publishedOffer.id}`} target="_blank" className="text-xs text-[#D6B56D] underline flex items-center gap-1">
+                  <Link to={`/offer/${publishedOffer.id}`} target="_blank" className="text-xs text-[#0866FF] underline flex items-center gap-1">
                     View live offer <ExternalLink className="w-3 h-3" />
                   </Link>
                 </div>
               )}
 
               {app.rejection_reason && (
-                <div className="mt-3 p-3 rounded-xl bg-[#103F35]/70 border border-rose-100">
+                <div className="mt-3 p-3 rounded-xl bg-[#F9F8F7] border border-rose-100">
                   <p className="text-xs text-rose-700 font-semibold">Rejection reason</p>
                   <p className="text-xs text-rose-600 mt-0.5">{app.rejection_reason}</p>
                 </div>
               )}
             </div>
 
-            <div className="sticky bottom-0 bg-[#0A3A2F] border-t border-white/10 px-6 py-4 space-y-2.5">
+            <div className="sticky bottom-0 bg-[#FFFFFF] border-t border-[#F1F1F1] px-6 py-4 space-y-2.5">
               {!rejectMode ? (
                 <>
                   {app.status !== "approved" ? (
                     <button
                       disabled={busy}
                       onClick={async () => { setBusy(true); await onApprovePublish(app); setBusy(false); }}
-                      className="w-full bg-[#D6B56D] text-white py-3 rounded-full font-medium text-sm hover:bg-[#E5C77A] disabled:opacity-50 flex items-center justify-center gap-2"
+                      className="w-full bg-[#0866FF] text-white py-3 rounded-full font-medium text-sm hover:bg-[#0866FF] disabled:opacity-50 flex items-center justify-center gap-2"
                     >
                       <Check className="w-4 h-4" /> Approve & Publish
                     </button>
@@ -133,7 +133,7 @@ export default function ApplicationReviewPanel({
                     <button
                       disabled={busy}
                       onClick={async () => { setBusy(true); await onUnpublish(app); setBusy(false); }}
-                      className="w-full bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20 py-3 rounded-full font-medium text-sm hover:bg-[#103F35]/70 disabled:opacity-50"
+                      className="w-full bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20 py-3 rounded-full font-medium text-sm hover:bg-[#F9F8F7] disabled:opacity-50"
                     >
                       Unpublish (move back to pending)
                     </button>
@@ -141,7 +141,7 @@ export default function ApplicationReviewPanel({
                   {app.status !== "rejected" && (
                     <button
                       onClick={() => setRejectMode(true)}
-                      className="w-full text-rose-600 py-2.5 rounded-full font-medium text-sm hover:bg-[#103F35]/70"
+                      className="w-full text-rose-600 py-2.5 rounded-full font-medium text-sm hover:bg-[#F9F8F7]"
                     >
                       Reject
                     </button>
@@ -153,11 +153,11 @@ export default function ApplicationReviewPanel({
                     value={reason}
                     onChange={(e) => setReason(e.target.value)}
                     placeholder="Reason for rejection (optional)"
-                    className="w-full rounded-xl border border-white/12 p-3 text-sm outline-none focus:border-gray-400"
+                    className="w-full rounded-xl border border-[#F1F1F1] p-3 text-sm outline-none focus:border-gray-400"
                     rows={3}
                   />
                   <div className="flex gap-2">
-                    <button onClick={() => setRejectMode(false)} className="flex-1 py-3 rounded-full font-medium text-sm bg-[#0A3A2F]/5 text-ivory-muted hover:bg-[#0A3A2F]/10">Cancel</button>
+                    <button onClick={() => setRejectMode(false)} className="flex-1 py-3 rounded-full font-medium text-sm bg-[#F4F4F4] text-ivory-muted hover:bg-[#F4F4F4]">Cancel</button>
                     <button
                       disabled={busy}
                       onClick={async () => { setBusy(true); await onReject(app, reason); setRejectMode(false); setReason(""); setBusy(false); }}

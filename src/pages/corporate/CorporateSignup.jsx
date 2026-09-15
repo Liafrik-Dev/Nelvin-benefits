@@ -51,7 +51,7 @@ function ProgressBar({ step, total }) {
   return (
     <div className="flex items-center justify-center gap-2 mb-8">
       {Array.from({ length: total }).map((_, i) => (
-        <div key={i} className={`h-1 rounded-full transition-all duration-300 ${i <= step ? "w-8 bg-[#D6B56D]" : "w-4 bg-[#0A3A2F]/10"}`} />
+        <div key={i} className={`h-1 rounded-full transition-all duration-300 ${i <= step ? "w-8 bg-[#0866FF]" : "w-4 bg-[#F4F4F4]"}`} />
       ))}
     </div>
   );
@@ -80,7 +80,7 @@ function StepCompanyInfo({ form, update, onNext }) {
         </Field>
         <Field label="Company Email Domain *" full>
           <div className="flex items-center">
-            <span className="px-3 py-2.5 bg-[#0A3A2F]/5 border border-r-0 border-white/12 rounded-l-lg text-ivory-dim text-sm">@</span>
+            <span className="px-3 py-2.5 bg-[#F4F4F4] border border-r-0 border-[#F1F1F1] rounded-l-lg text-ivory-dim text-sm">@</span>
             <input
               className="corporate-input rounded-l-none"
               value={form.email_domain}
@@ -104,7 +104,7 @@ function StepCompanyInfo({ form, update, onNext }) {
         <button
           onClick={onNext}
           disabled={!form.name || !form.industry || !form.country || !form.email_domain || !form.billing_contact_name || !form.billing_contact_email}
-          className="inline-flex items-center gap-2 bg-[#D6B56D] disabled:bg-[#103F35] hover:bg-[#E5C77A] text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
+          className="inline-flex items-center gap-2 bg-[#0866FF] disabled:bg-[#FFFFFF] hover:bg-[#0866FF] text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
         >
           Continue <ArrowRight className="w-4 h-4" />
         </button>
@@ -119,20 +119,20 @@ function StepEmployeeCount({ form, update, onNext, onBack }) {
       <h2 className="text-2xl font-bold font-heading text-ivory text-center">How many employees will use Nelvin?</h2>
       <p className="text-sm text-ivory-muted text-center mt-1 mb-6">This decides your plan tier. Self-serve is available up to 9 employees; teams of 10+ get custom pricing.</p>
       <div className="max-w-sm mx-auto">
-        <div className="bg-forest-secondary/60 rounded-lg border border-white/10 p-6 text-center">
+        <div className="bg-[#F9F8F7] rounded-lg border border-[#F1F1F1] p-6 text-center">
           <input
             type="number"
             min="1"
             value={form.employee_count}
             onChange={(e) => update("employee_count", e.target.value)}
             placeholder="0"
-            className="text-5xl font-bold font-heading text-[#D6B56D] text-center w-full bg-transparent outline-none"
+            className="text-5xl font-bold font-heading text-[#0866FF] text-center w-full bg-transparent outline-none"
           />
           <p className="text-xs text-ivory-dim mt-1">employees</p>
         </div>
         <div className="mt-4 grid grid-cols-3 gap-2">
           {[3, 7, 15].map((n) => (
-            <button key={n} onClick={() => update("employee_count", String(n))} className="text-xs py-2 rounded-lg border border-white/12 hover:border-[#D6B56D]/30 hover:bg-[#0A3A2F] transition-colors">
+            <button key={n} onClick={() => update("employee_count", String(n))} className="text-xs py-2 rounded-lg border border-[#F1F1F1] hover:border-[#0866FF]/30 hover:bg-[#FFFFFF] transition-colors">
               {n}
             </button>
           ))}
@@ -145,7 +145,7 @@ function StepEmployeeCount({ form, update, onNext, onBack }) {
         <button
           onClick={onNext}
           disabled={Number(form.employee_count) < 1}
-          className="inline-flex items-center gap-2 bg-[#D6B56D] disabled:bg-[#103F35] hover:bg-[#E5C77A] text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
+          className="inline-flex items-center gap-2 bg-[#0866FF] disabled:bg-[#FFFFFF] hover:bg-[#0866FF] text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
         >
           Continue <ArrowRight className="w-4 h-4" />
         </button>
@@ -179,7 +179,7 @@ function StepPricingOrLead({ form, onPick, onBack, submitting }) {
           <button
             onClick={onPick}
             disabled={submitting}
-            className="inline-flex items-center gap-2 bg-[#D6B56D] hover:bg-[#E5C77A] disabled:opacity-70 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
+            className="inline-flex items-center gap-2 bg-[#0866FF] hover:bg-[#0866FF] disabled:opacity-70 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
           >
             {submitting ? "Submitting..." : "Submit — we'll be in touch"}
           </button>
@@ -194,26 +194,26 @@ function StepPricingOrLead({ form, onPick, onBack, submitting }) {
   return (
     <div>
       <h2 className="text-2xl font-bold font-heading text-ivory text-center">Pick your plan</h2>
-      <p className="text-sm text-ivory-muted text-center mt-1 mb-8">For {count} employee{count === 1 ? "" : "s"}, you qualify for the <span className="font-semibold text-[#D6B56D]">{tier.name}</span> tier.</p>
-      <div className="max-w-md mx-auto bg-[#0A3A2F] rounded-lg border-2 border-white/15 shadow-sm p-8">
+      <p className="text-sm text-ivory-muted text-center mt-1 mb-8">For {count} employee{count === 1 ? "" : "s"}, you qualify for the <span className="font-semibold text-[#0866FF]">{tier.name}</span> tier.</p>
+      <div className="max-w-md mx-auto bg-[#FFFFFF] rounded-lg border-2 border-[#F1F1F1] shadow-sm p-8">
         <div className="flex items-baseline justify-between mb-2">
           <h3 className="font-bold text-lg text-ivory">{tier.name}</h3>
-          <span className="text-xs font-semibold text-[#D6B56D] bg-[#0A3A2F] px-3 py-1 rounded-full">{tier.range}</span>
+          <span className="text-xs font-semibold text-[#0866FF] bg-[#FFFFFF] px-3 py-1 rounded-full">{tier.range}</span>
         </div>
         <div className="flex items-baseline gap-1 mb-1">
           <span className="text-4xl font-bold font-heading">${tier.monthly}</span>
           <span className="text-sm text-ivory-dim">/ employee / month</span>
         </div>
         <p className="text-sm text-ivory-muted mb-4">{tier.desc}</p>
-        <div className="bg-[#0A3A2F] rounded-xl p-4 my-6 text-center">
-          <p className="text-xs text-[#D6B56D] font-semibold uppercase tracking-wider">Your monthly total</p>
-          <p className="text-3xl font-bold font-heading text-[#D6B56D]">${total}<span className="text-sm font-normal text-[#D6B56D]">/mo</span></p>
+        <div className="bg-[#FFFFFF] rounded-xl p-4 my-6 text-center">
+          <p className="text-xs text-[#0866FF] font-semibold uppercase tracking-wider">Your monthly total</p>
+          <p className="text-3xl font-bold font-heading text-[#0866FF]">${total}<span className="text-sm font-normal text-[#0866FF]">/mo</span></p>
           <p className="text-xs text-ivory-muted mt-1">Billed to {form.billing_contact_email}</p>
         </div>
         <ul className="space-y-2 mb-6">
           {tier.features.map((f, i) => (
             <li key={i} className="flex items-start gap-2 text-sm text-ivory">
-              <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#D6B56D]" /> {f}
+              <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#0866FF]" /> {f}
             </li>
           ))}
         </ul>
@@ -225,7 +225,7 @@ function StepPricingOrLead({ form, onPick, onBack, submitting }) {
         <button
           onClick={onPick}
           disabled={submitting}
-          className="inline-flex items-center gap-2 bg-[#D6B56D] hover:bg-[#E5C77A] disabled:opacity-70 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
+          className="inline-flex items-center gap-2 bg-[#0866FF] hover:bg-[#0866FF] disabled:opacity-70 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
         >
           {submitting ? "Setting up..." : <>Pay & Launch (${total}/mo)</>}
         </button>
@@ -237,7 +237,7 @@ function StepPricingOrLead({ form, onPick, onBack, submitting }) {
 
 function Box({ label, value, full }) {
   return (
-    <div className={`bg-forest-secondary/60 border border-white/10 rounded-lg p-3 ${full ? "col-span-2" : ""}`}>
+    <div className={`bg-[#F9F8F7] border border-[#F1F1F1] rounded-lg p-3 ${full ? "col-span-2" : ""}`}>
       <p className="text-xs text-ivory-dim uppercase tracking-wider">{label}</p>
       <p className="text-sm font-semibold text-ivory mt-1">{value}</p>
     </div>
@@ -401,31 +401,31 @@ export default function CorporateSignup() {
     <div className="min-h-screen bg-forest">
       <style>{`.corporate-input { width: 100%; padding: 0.625rem 0.875rem; border: 1px solid #e5e7eb; border-radius: 0.5rem; font-size: 0.875rem; outline: none; transition: border-color 0.15s; } .corporate-input:focus { border-color: #059669; box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1); }`}</style>
 
-      <div className="relative bg-[#062B23] pt-24 pb-14 px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-[#FFFFFF] pt-24 pb-14 px-4 sm:px-6 lg:px-8">
         <Navbar />
         <div className="max-w-2xl mx-auto text-center">
-          <div className="w-12 h-12 bg-[#D6B56D] rounded-xl flex items-center justify-center mx-auto mb-4">
+          <div className="w-12 h-12 bg-[#0866FF] rounded-xl flex items-center justify-center mx-auto mb-4">
             <Building2 className="w-6 h-6 text-white" />
           </div>
-          <h1 className="text-3xl sm:text-4xl font-bold font-heading text-white">Sign up your company</h1>
-          <p className="text-white/60 mt-3">Three quick steps. Launch your corporate benefits program today.</p>
+          <h1 className="text-3xl sm:text-4xl font-bold font-heading text-[#282828]">Sign up your company</h1>
+          <p className="text-[#484848] mt-3">Three quick steps. Launch your corporate benefits program today.</p>
         </div>
       </div>
 
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 pb-20">
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-[24px] p-6 sm:p-10 shadow-sm">
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-[24px] p-6 sm:p-10 shadow-sm">
           {!outcome && <ProgressBar step={step} total={3} />}
           <AnimatePresence mode="wait">
             {outcome ? (
               <motion.div key="confirmation" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="text-center py-6">
-                <div className="w-16 h-16 bg-[#103F35]/60 rounded-full flex items-center justify-center mx-auto mb-4">
-                  {outcome.type === "self" ? <Check className="w-8 h-8 text-[#D6B56D]" /> : <Phone className="w-8 h-8 text-[#D6B56D]" />}
+                <div className="w-16 h-16 bg-[#F4F4F4] rounded-full flex items-center justify-center mx-auto mb-4">
+                  {outcome.type === "self" ? <Check className="w-8 h-8 text-[#0866FF]" /> : <Phone className="w-8 h-8 text-[#0866FF]" />}
                 </div>
                 {outcome.type === "self" ? (
                   <>
                     <h2 className="text-2xl font-bold font-heading text-ivory">You're all set!</h2>
                     <p className="text-sm text-ivory-muted mt-2 mb-6">Here's your corporate dashboard. Invite your team and they'll auto-join with their {form.email_domain || "company"} email.</p>
-                    <button onClick={() => navigate("/corporate-dashboard")} className="inline-flex items-center gap-2 bg-[#D6B56D] hover:bg-[#E5C77A] text-[#062B23] font-semibold px-7 py-3 rounded-full text-sm">
+                    <button onClick={() => navigate("/corporate-dashboard")} className="inline-flex items-center gap-2 bg-[#0866FF] hover:bg-[#0866FF] text-white font-semibold px-7 py-3 rounded-full text-sm">
                       Go to Dashboard <ArrowRight className="w-4 h-4" />
                     </button>
                   </>
@@ -433,7 +433,7 @@ export default function CorporateSignup() {
                   <>
                     <h2 className="text-2xl font-bold font-heading text-ivory">Thanks — we'll be in touch within 1 business day.</h2>
                     <p className="text-sm text-ivory-muted mt-2 mb-6">Our team is reaching out to schedule a call and design a custom plan for your {Number(form.employee_count)} employees.</p>
-                    <button onClick={() => navigate("/")} className="inline-flex items-center gap-2 bg-[#062B23] hover:bg-emerald-black text-white font-semibold px-7 py-3 rounded-full text-sm">
+                    <button onClick={() => navigate("/")} className="inline-flex items-center gap-2 border border-[#E3E3E3] bg-[#FFFFFF] hover:bg-[#F9F8F7] text-[#282828] font-semibold px-7 py-3 rounded-full text-sm">
                       Back to home
                     </button>
                   </>

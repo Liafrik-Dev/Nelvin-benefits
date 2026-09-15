@@ -33,7 +33,7 @@ export default function UserMenu() {
     return (
       <button
         onClick={navigateToLogin}
-        className="bg-[#0A3A2F]/15 hover:bg-[#0A3A2F]/25 text-white text-sm font-medium px-4 py-2 rounded-full transition-colors"
+        className="bg-[#FFFFFF]/15 hover:bg-[#FFFFFF]/25 text-white text-sm font-medium px-4 py-2 rounded-full transition-colors"
       >
         Log in
       </button>
@@ -59,27 +59,27 @@ export default function UserMenu() {
     <div
       ref={menuRef}
       style={{ position: "fixed", top: `${coords.top}px`, right: `${coords.right}px` }}
-      className="w-64 bg-[#0A3A2F] rounded-lg shadow-2xl border border-white/10 overflow-hidden z-[100]"
+      className="w-64 bg-[#FFFFFF] rounded-lg shadow-2xl border border-[#F1F1F1] overflow-hidden z-[100]"
     >
-      <div className="p-4 border-b border-white/10">
+      <div className="p-4 border-b border-[#F1F1F1]">
         <p className="font-bold text-ivory">{user?.full_name || "Member"}</p>
         <p className="text-xs text-ivory-dim break-all">{user?.email}</p>
-        <span className="inline-block mt-2 bg-[#103F35] text-white text-xs font-bold px-3 py-1 rounded-full">
+        <span className="inline-block mt-2 border border-[#E3E3E3] bg-[#FFFFFF] text-[#282828] text-xs font-bold px-3 py-1 rounded-full">
           {user?.role === "admin" ? "Admin" : "Free"}
         </span>
       </div>
-      <Link to="/profile" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-3 text-sm text-ivory hover:bg-forest-secondary/60">
+      <Link to="/profile" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-3 text-sm text-ivory hover:bg-[#F9F8F7]">
         <User className="w-4 h-4" /> Profile
       </Link>
-      <Link to="/dashboard" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-3 text-sm text-ivory hover:bg-forest-secondary/60">
+      <Link to="/dashboard" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-3 text-sm text-ivory hover:bg-[#F9F8F7]">
         <LayoutDashboard className="w-4 h-4" /> Dashboard
       </Link>
-      <Link to="/benefits" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-3 text-sm text-ivory hover:bg-forest-secondary/60">
+      <Link to="/benefits" onClick={() => setOpen(false)} className="flex items-center gap-3 px-4 py-3 text-sm text-ivory hover:bg-[#F9F8F7]">
         <Crown className="w-4 h-4" /> Membership
       </Link>
       <button
         onClick={() => logout(true)}
-        className="w-full flex items-center gap-3 px-4 py-3 text-sm text-ivory hover:bg-forest-secondary/60 border-t border-white/10"
+        className="w-full flex items-center gap-3 px-4 py-3 text-sm text-ivory hover:bg-[#F9F8F7] border-t border-[#F1F1F1]"
       >
         <LogOut className="w-4 h-4" /> Sign out
       </button>
@@ -90,7 +90,7 @@ export default function UserMenu() {
     <div ref={btnRef} className="relative">
       <button onClick={toggle} className="flex items-center gap-1" aria-label="Open account menu">
         <Avatar user={user} />
-        <ChevronDown className="w-4 h-4 text-white/80" />
+        <ChevronDown className="w-4 h-4 text-[#282828]" />
       </button>
       {open && createPortal(dropdown, document.body)}
     </div>

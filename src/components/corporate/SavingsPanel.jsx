@@ -6,7 +6,7 @@ import { PiggyBank, Trophy, Wallet, Users } from "lucide-react";
 
 function StatCard({ icon: Icon, label, value, sub, accent }) {
   return (
-    <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6">
+    <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6">
       <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 ${accent}`}>
         <Icon className="w-5 h-5" />
       </div>
@@ -62,18 +62,18 @@ export default function SavingsPanel({ company, employees }) {
       </div>
 
       {loading ? (
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-12 text-center text-sm text-ivory-dim">Loading savings…</div>
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-12 text-center text-sm text-ivory-dim">Loading savings…</div>
       ) : (
         <>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <StatCard icon={PiggyBank} label="Total Company Savings" value={`$${totalSavings.toLocaleString()}`} sub="Across all employees" accent="bg-[#103F35]/60 text-[#D6B56D] ring-1 ring-[#D6B56D]/25" />
-            <StatCard icon={Wallet} label="Average Per Employee" value={`$${avg.toLocaleString(undefined, { maximumFractionDigits: 0 })}`} sub={`${activeCount} active employees`} accent="bg-[#103F35] text-[#D6B56D]" />
-            <StatCard icon={Trophy} label="Top Saver" value={topSaver ? (topSaver.emp?.user_name || topSaver.emp?.user_email || "Member") : "—"} sub={topSaver ? `$${topSaver.sav.toLocaleString()}` : "No redemptions yet"} accent="bg-[#103F35] text-[#D6B56D]" />
+            <StatCard icon={PiggyBank} label="Total Company Savings" value={`$${totalSavings.toLocaleString()}`} sub="Across all employees" accent="bg-[#F4F4F4] text-[#0866FF] ring-1 ring-[#0866FF]/25" />
+            <StatCard icon={Wallet} label="Average Per Employee" value={`$${avg.toLocaleString(undefined, { maximumFractionDigits: 0 })}`} sub={`${activeCount} active employees`} accent="bg-[#FFFFFF] text-[#0866FF]" />
+            <StatCard icon={Trophy} label="Top Saver" value={topSaver ? (topSaver.emp?.user_name || topSaver.emp?.user_email || "Member") : "—"} sub={topSaver ? `$${topSaver.sav.toLocaleString()}` : "No redemptions yet"} accent="bg-[#FFFFFF] text-[#0866FF]" />
           </div>
 
-          <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 mt-6">
+          <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 mt-6">
             <div className="flex items-center gap-2 mb-3">
-              <Users className="w-4 h-4 text-[#D6B56D]" />
+              <Users className="w-4 h-4 text-[#0866FF]" />
               <h3 className="font-semibold text-ivory">Top Savers</h3>
             </div>
             {ranked.length === 0 ? (
@@ -81,16 +81,16 @@ export default function SavingsPanel({ company, employees }) {
             ) : (
               <div className="space-y-2">
                 {ranked.map((r, i) => (
-                  <div key={r.uid} className="flex items-center gap-3 p-2 rounded-lg hover:bg-forest-secondary/60">
+                  <div key={r.uid} className="flex items-center gap-3 p-2 rounded-lg hover:bg-[#F9F8F7]">
                     <span className="text-xs text-ivory-dim w-5">{i + 1}</span>
-                    <div className="w-8 h-8 rounded-full bg-[#103F35]/60 text-[#D6B56D] ring-1 ring-[#D6B56D]/25 flex items-center justify-center text-xs font-bold">
+                    <div className="w-8 h-8 rounded-full bg-[#F4F4F4] text-[#0866FF] ring-1 ring-[#0866FF]/25 flex items-center justify-center text-xs font-bold">
                       {(r.emp?.user_name || r.emp?.user_email || "?").slice(0, 1).toUpperCase()}
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-ivory truncate">{r.emp?.user_name || r.emp?.user_email || "Member"}</p>
                       <p className="text-xs text-ivory-dim">{r.emp?.department || "—"}</p>
                     </div>
-                    <span className="text-sm font-bold text-[#D6B56D]">${r.sav.toLocaleString()}</span>
+                    <span className="text-sm font-bold text-[#0866FF]">${r.sav.toLocaleString()}</span>
                   </div>
                 ))}
               </div>

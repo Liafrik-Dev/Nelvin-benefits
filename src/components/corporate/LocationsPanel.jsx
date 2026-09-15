@@ -29,7 +29,7 @@ export default function LocationsPanel({ company }) {
         </div>
         <button
           onClick={() => setShowModal(true)}
-          className="inline-flex items-center gap-2 bg-[#D6B56D] hover:bg-[#E5C77A] text-[#062B23] text-sm font-semibold px-4 py-2 rounded-xl shadow-sm"
+          className="inline-flex items-center gap-2 bg-[#0866FF] hover:bg-[#0866FF] text-white text-sm font-semibold px-4 py-2 rounded-xl shadow-sm"
         >
           <Plus className="w-4 h-4" /> Add Office Location
         </button>
@@ -37,8 +37,8 @@ export default function LocationsPanel({ company }) {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {locations.map((loc) => (
-          <div key={loc.id} className="bg-emerald-black ring-1 ring-white/10 rounded-lg p-6 space-y-3 shadow-sm">
-            <div className="w-10 h-10 rounded-lg bg-[#0A3A2F] text-ivory flex items-center justify-center">
+          <div key={loc.id} className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 space-y-3 shadow-sm">
+            <div className="w-10 h-10 rounded-lg bg-[#FFFFFF] text-ivory flex items-center justify-center">
               <Building2 className="w-5 h-5" />
             </div>
             <div>
@@ -49,7 +49,7 @@ export default function LocationsPanel({ company }) {
             </div>
             <div className="pt-3 border-t border-gray-50 flex items-center justify-between text-xs font-bold text-ivory">
               <span>{loc.headcount} Employees</span>
-              <span className="text-[#D6B56D]">{loc.country}</span>
+              <span className="text-[#0866FF]">{loc.country}</span>
             </div>
           </div>
         ))}
@@ -68,7 +68,7 @@ export default function LocationsPanel({ company }) {
                   placeholder="e.g. Accra Tech Hub"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3.5 py-2 border border-white/12 rounded-xl text-xs outline-none focus:border-[#D6B56D]"
+                  className="w-full px-3.5 py-2 border border-[#F1F1F1] rounded-xl text-xs outline-none focus:border-[#0866FF]"
                 />
               </div>
               <div>
@@ -79,20 +79,20 @@ export default function LocationsPanel({ company }) {
                   placeholder="e.g. Airport Residential Area, Accra"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
-                  className="w-full px-3.5 py-2 border border-white/12 rounded-xl text-xs outline-none focus:border-[#D6B56D]"
+                  className="w-full px-3.5 py-2 border border-[#F1F1F1] rounded-xl text-xs outline-none focus:border-[#0866FF]"
                 />
               </div>
               <div className="flex justify-end gap-2 pt-2">
                 <button
                   type="button"
                   onClick={() => setShowModal(false)}
-                  className="px-4 py-2 text-xs font-bold text-ivory-muted hover:bg-[#0A3A2F]/5 rounded-xl"
+                  className="px-4 py-2 text-xs font-bold text-ivory-muted hover:bg-[#F4F4F4] rounded-xl"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 text-xs font-bold text-white bg-[#D6B56D] rounded-xl hover:bg-[#E5C77A]"
+                  className="px-5 py-2 text-xs font-bold text-white bg-[#0866FF] rounded-xl hover:bg-[#0866FF]"
                 >
                   Save Location
                 </button>

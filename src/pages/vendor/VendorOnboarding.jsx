@@ -91,19 +91,19 @@ export default function VendorOnboarding() {
 
   return (
     <div className="min-h-screen bg-forest">
-      <div className="relative bg-[#062B23] pt-24 pb-14 px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-[#FFFFFF] pt-24 pb-14 px-4 sm:px-6 lg:px-8">
         <Navbar />
         <div className="max-w-2xl mx-auto text-center">
-          <div className="w-12 h-12 bg-[#103F35] rounded-xl flex items-center justify-center mx-auto mb-4">
+          <div className="w-12 h-12 bg-[#FFFFFF] rounded-xl flex items-center justify-center mx-auto mb-4">
             <Briefcase className="w-6 h-6 text-white" />
           </div>
-          <h1 className="text-3xl sm:text-4xl font-bold font-heading text-white">Grow your business with Nelvin</h1>
-          <p className="text-white/60 mt-3">Reach 2.4M+ members across Africa. Onboard your business in minutes.</p>
+          <h1 className="text-3xl sm:text-4xl font-bold font-heading text-[#282828]">Grow your business with Nelvin</h1>
+          <p className="text-[#484848] mt-3">Reach 2.4M+ members across Africa. Onboard your business in minutes.</p>
         </div>
       </div>
 
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 pb-20">
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-[24px] p-6 sm:p-10 shadow-sm">
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-[24px] p-6 sm:p-10 shadow-sm">
           {!submitted && <OnboardingProgressBar step={step} complete={false} />}
           <AnimatePresence mode="wait">
             {submitted ? (

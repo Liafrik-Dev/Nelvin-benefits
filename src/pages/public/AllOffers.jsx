@@ -31,11 +31,11 @@ export default function AllOffers() {
 
   return (
     <div className="min-h-screen bg-forest">
-      <div className="relative bg-[#062B23] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-[#FFFFFF] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
         <Navbar />
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-3xl sm:text-4xl font-bold font-heading text-white">Browse all offers</h1>
-          <p className="text-white/60 mt-2">{offers.length} offers available</p>
+          <h1 className="text-3xl sm:text-4xl font-bold font-heading text-[#282828]">Browse all offers</h1>
+          <p className="text-[#484848] mt-2">{offers.length} offers available</p>
         </div>
       </div>
 
@@ -44,7 +44,7 @@ export default function AllOffers() {
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="border border-white/12 rounded-lg px-4 py-2 text-sm bg-[#103F35] text-ivory outline-none focus:border-[#D6B56D]"
+            className="border border-[#F1F1F1] rounded-lg px-4 py-2 text-sm bg-[#FFFFFF] text-ivory outline-none focus:border-[#0866FF]"
           >
             <option value="">All Categories</option>
             {CATEGORIES.map((c) => (
@@ -56,7 +56,7 @@ export default function AllOffers() {
           <select
             value={country}
             onChange={(e) => setCountry(e.target.value)}
-            className="border border-white/12 rounded-lg px-4 py-2 text-sm bg-[#103F35] text-ivory outline-none focus:border-[#D6B56D]"
+            className="border border-[#F1F1F1] rounded-lg px-4 py-2 text-sm bg-[#FFFFFF] text-ivory outline-none focus:border-[#0866FF]"
           >
             <option value="">All Countries</option>
             {COUNTRIES.map((c) => (

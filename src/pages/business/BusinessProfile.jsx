@@ -27,15 +27,15 @@ export default function BusinessProfile() {
         <p className="text-sm text-ivory-muted mt-1">Manage public merchant information, store hero images, and contact details.</p>
       </div>
 
-      <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl overflow-hidden shadow-sm space-y-6">
+      <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl overflow-hidden shadow-sm space-y-6">
         {/* Banner Preview */}
-        <div className="relative h-44 bg-[#062B23] overflow-hidden">
+        <div className="relative h-44 bg-[#FFFFFF] overflow-hidden">
           <img src={profile.bannerUrl} alt="Store Banner" className="w-full h-full object-cover opacity-90" />
           <div className="absolute bottom-4 left-6 flex items-center gap-4">
-            <img src={profile.logoUrl} alt="Logo" className="w-16 h-16 rounded-lg border-2 border-white object-cover bg-[#0A3A2F] shadow-md" />
+            <img src={profile.logoUrl} alt="Logo" className="w-16 h-16 rounded-lg border-2 border-white object-cover bg-[#FFFFFF] shadow-md" />
             <div className="text-white">
               <h2 className="font-extrabold text-lg font-heading">{profile.businessName}</h2>
-              <span className="text-xs bg-emerald-black/35 backdrop-blur px-2.5 py-0.5 rounded-full">{profile.category}</span>
+              <span className="text-xs bg-[#F4F4F4] backdrop-blur px-2.5 py-0.5 rounded-full">{profile.category}</span>
             </div>
           </div>
         </div>
@@ -47,7 +47,7 @@ export default function BusinessProfile() {
               type="text"
               value={profile.businessName}
               onChange={(e) => setProfile({ ...profile, businessName: e.target.value })}
-              className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3.5 py-2.5 text-xs font-bold text-ivory"
+              className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl px-3.5 py-2.5 text-xs font-bold text-ivory"
             />
           </div>
 
@@ -57,7 +57,7 @@ export default function BusinessProfile() {
               type="text"
               value={profile.bannerUrl}
               onChange={(e) => setProfile({ ...profile, bannerUrl: e.target.value })}
-              className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3.5 py-2 text-xs font-mono"
+              className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl px-3.5 py-2 text-xs font-mono"
             />
           </div>
 
@@ -67,7 +67,7 @@ export default function BusinessProfile() {
               rows={3}
               value={profile.description}
               onChange={(e) => setProfile({ ...profile, description: e.target.value })}
-              className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl p-3 text-xs outline-none focus:border-[#D6B56D]"
+              className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl p-3 text-xs outline-none focus:border-[#0866FF]"
             />
           </div>
 
@@ -78,7 +78,7 @@ export default function BusinessProfile() {
                 type="text"
                 value={profile.phone}
                 onChange={(e) => setProfile({ ...profile, phone: e.target.value })}
-                className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3.5 py-2 text-xs"
+                className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl px-3.5 py-2 text-xs"
               />
             </div>
             <div>
@@ -87,7 +87,7 @@ export default function BusinessProfile() {
                 type="text"
                 value={profile.website}
                 onChange={(e) => setProfile({ ...profile, website: e.target.value })}
-                className="w-full bg-forest-secondary/60 border border-white/12 rounded-xl px-3.5 py-2 text-xs"
+                className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl px-3.5 py-2 text-xs"
               />
             </div>
           </div>
@@ -95,12 +95,12 @@ export default function BusinessProfile() {
           <div className="pt-3 flex items-center justify-between">
             <button
               type="submit"
-              className="bg-[#062B23] text-[#D6B56D] font-bold px-6 py-2.5 rounded-full text-xs hover:bg-[#062B23] flex items-center gap-2"
+              className="bg-[#FFFFFF] text-[#0866FF] font-bold px-6 py-2.5 rounded-full text-xs hover:bg-[#FFFFFF] flex items-center gap-2"
             >
               <Save className="w-3.5 h-3.5" /> Save Changes
             </button>
             {saved && (
-              <span className="text-xs font-bold text-[#D6B56D] flex items-center gap-1">
+              <span className="text-xs font-bold text-[#0866FF] flex items-center gap-1">
                 <CheckCircle className="w-4 h-4" /> Store profile updated
               </span>
             )}

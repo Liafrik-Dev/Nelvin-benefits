@@ -5,30 +5,51 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
-        heading: ['"Cormorant Garamond"', "Georgia", "ui-serif", "serif"],
-        body: ['"Plus Jakarta Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
-        display: ['"Cormorant Garamond"', "Georgia", "ui-serif", "serif"],
-        serif: ['"Cormorant Garamond"', "Georgia", "ui-serif", "serif"],
+        sans: ['"Nunito Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
+        heading: ['"Nunito Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
+        body: ['"Nunito Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ['"Nunito Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
+        serif: ['"Nunito Sans"', "ui-sans-serif", "system-ui", "sans-serif"],
         mono: ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
       },
       colors: {
+        /* Legacy semantic names kept so existing markup keeps working.
+           They now resolve to the reference palette: white and #F9F8F7
+           surfaces, corporate blue accent, near-black greys. */
         forest: {
-          DEFAULT: "#062B23",
-          midnight: "#062B23",
-          secondary: "#0A3A2F",
+          DEFAULT: "#FFFFFF",
+          midnight: "#FFFFFF",
+          secondary: "#F9F8F7",
         },
         "emerald-black": {
-          DEFAULT: "#103F35",
+          DEFAULT: "#FFFFFF",
         },
         champagne: {
-          DEFAULT: "#D6B56D",
-          gold: "#D6B56D",
-          soft: "#E5C77A",
+          DEFAULT: "#0866FF",
+          gold: "#0866FF",
+          soft: "#2F85FE",
         },
         ivory: {
-          DEFAULT: "#F5F1E8",
-          warm: "#F5F1E8",
+          DEFAULT: "#282828",
+          warm: "#282828",
+        },
+        corporate: {
+          DEFAULT: "#0866FF",
+          hover: "#1F4CF4",
+          light: "#2F85FE",
+        },
+        accent: {
+          DEFAULT: "#E6FB52",
+        },
+        ink: {
+          DEFAULT: "#282828",
+          muted: "#484848",
+          dim: "#737373",
+        },
+        surface: {
+          DEFAULT: "#FFFFFF",
+          muted: "#F9F8F7",
+          sunken: "#F4F4F4",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

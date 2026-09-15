@@ -31,14 +31,14 @@ export default function CategoryOffers() {
 
   return (
     <div className="min-h-screen bg-forest">
-      <div className="relative bg-[#062B23] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-[#FFFFFF] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
         <Navbar />
         <div className="max-w-7xl mx-auto">
-          <Link to="/" className="text-white/60 hover:text-white text-sm flex items-center gap-1 mb-4">
+          <Link to="/" className="text-[#484848] hover:text-[#282828] text-sm flex items-center gap-1 mb-4">
             <ArrowLeft className="w-4 h-4" /> Back to home
           </Link>
-          <h1 className="text-3xl sm:text-4xl font-bold font-heading text-white">{category?.name || "Category"}</h1>
-          <p className="text-white/60 mt-2">{offers.length} offers available</p>
+          <h1 className="text-3xl sm:text-4xl font-bold font-heading text-[#282828]">{category?.name || "Category"}</h1>
+          <p className="text-[#484848] mt-2">{offers.length} offers available</p>
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

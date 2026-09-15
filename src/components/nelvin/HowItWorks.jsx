@@ -17,7 +17,7 @@ function HowItWorksMultiTab() {
   return (
     <div className="card-nv mx-auto mt-12 max-w-4xl p-6 sm:p-8">
       <div
-        className="grid grid-cols-2 gap-1.5 rounded-xl border border-white/10 bg-white/[0.04] p-1.5 sm:grid-cols-4"
+        className="grid grid-cols-2 gap-1.5 rounded-xl border border-[#F1F1F1] bg-[#F9F8F7] p-1.5 sm:grid-cols-4"
         role="tablist"
         aria-label="Implementation steps"
       >
@@ -32,8 +32,8 @@ function HowItWorksMultiTab() {
               onClick={() => setActiveStep(idx)}
               className={`flex items-center justify-center gap-2 rounded-lg px-3 py-2.5 text-xs font-bold transition-colors ${
                 on
-                  ? "bg-gold text-[#062B23] shadow-nv-card"
-                  : "text-ivory-muted hover:bg-white/5 hover:text-ivory"
+                  ? "bg-gold text-white shadow-nv-card"
+                  : "text-ivory-muted hover:bg-[#F9F8F7] hover:text-ivory"
               }`}
             >
               <span className="font-extrabold">{step.num}.</span>
@@ -44,12 +44,12 @@ function HowItWorksMultiTab() {
       </div>
 
       <div className="mt-8 flex flex-col items-center gap-6 md:flex-row md:items-start">
-        <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-[#062B23] text-gold shadow-nv-card">
+        <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-[#FFFFFF] text-gold shadow-nv-card">
           <LIcon name={current.icon} className="h-8 w-8" />
         </span>
         <div className="flex-1 text-center md:text-left">
           <div className="flex flex-wrap items-center justify-center gap-2 md:justify-start">
-            <span className="rounded-full bg-gold px-2.5 py-0.5 text-[11px] font-extrabold text-[#062B23]">
+            <span className="rounded-full bg-gold px-2.5 py-0.5 text-[11px] font-extrabold text-white">
               Step {current.num}
             </span>
             <h3 className="text-xl font-extrabold font-heading text-ivory">{current.title}</h3>

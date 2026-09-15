@@ -8,7 +8,7 @@ export const PLANS = [
     features: ["Access basic offers", "3 redemptions / month", "Standard support", "Wallet basics"],
     cta: "Get Started",
     highlight: false,
-    nameColor: "text-[#D6B56D]",
+    nameColor: "text-[#0866FF]",
   },
   {
     slug: "premium",
@@ -19,7 +19,7 @@ export const PLANS = [
     features: ["Unlimited redemptions", "Cashback on every offer", "Priority customer support", "VIP-only weekly drops", "Multi-country access"],
     cta: "Go Premium",
     highlight: true,
-    nameColor: "text-[#062B23]",
+    nameColor: "text-[#282828]",
   },
   {
     slug: "vip",
@@ -30,6 +30,6 @@ export const PLANS = [
     features: ["Everything in Premium", "Concierge booking service", "Airport lounge access", "Exclusive luxury partners", "Complimentary birthday rewards"],
     cta: "Become VIP",
     highlight: false,
-    nameColor: "text-[#D6B56D]",
+    nameColor: "text-[#0866FF]",
   },
 ];

@@ -71,9 +71,9 @@ export default function HeroSection() {
   const ActivePhotoIcon = activePhoto.icon;
 
   return (
-    <section className="relative isolate flex min-h-[92vh] items-center overflow-hidden bg-[#062B23] text-ivory">
+    <section className="relative isolate flex min-h-[92vh] items-center overflow-hidden bg-[#FFFFFF] text-ivory">
       {/* Media band */}
-      <div className="absolute inset-0 z-0 overflow-hidden bg-[#062B23]">
+      <div className="absolute inset-0 z-0 overflow-hidden bg-[#FFFFFF]">
         <video
           key={HERO_VIDEOS[activeVideoIndex].url}
           autoPlay
@@ -86,7 +86,7 @@ export default function HeroSection() {
         >
           <source src={HERO_VIDEOS[activeVideoIndex].url} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-br from-[#062B23] via-[#062B23]/85 to-[#062B23]/45" />
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-black/55 to-black/25" />
         <div className="absolute inset-0 bg-lux-diagonal opacity-60" aria-hidden="true" />
       </div>
 
@@ -114,7 +114,7 @@ export default function HeroSection() {
             <form
               onSubmit={handleSearchSubmit}
               role="search"
-              className="mt-8 rounded-2xl border border-white/15 bg-[#103F35]/80 p-2 shadow-nv-card backdrop-blur-xl sm:rounded-full"
+              className="mt-8 rounded-2xl border border-[#F1F1F1] bg-[#FFFFFF]/80 p-2 shadow-nv-card backdrop-blur-xl sm:rounded-full"
             >
               <div className="flex flex-col gap-1 sm:flex-row sm:items-center">
                 <div className="flex min-w-0 flex-1 items-center gap-2.5 px-3.5 py-2.5 sm:py-1.5">
@@ -129,7 +129,7 @@ export default function HeroSection() {
                   />
                 </div>
 
-                <div className="hidden h-6 w-px bg-white/12 sm:block" />
+                <div className="hidden h-6 w-px bg-[#F9F8F7] sm:block" />
 
                 <div className="flex items-center gap-2.5 px-3.5 py-2.5 sm:w-40 sm:py-1.5">
                   <Tag className="h-4 w-4 shrink-0 text-gold" />
@@ -139,15 +139,15 @@ export default function HeroSection() {
                     aria-label="Category"
                     className="w-full bg-transparent text-xs font-semibold text-ivory outline-none"
                   >
-                    <option value="" className="bg-[#062B23]">Category</option>
-                    <option value="dining" className="bg-[#062B23]">Dining</option>
-                    <option value="wellness" className="bg-[#062B23]">Wellness</option>
-                    <option value="travel" className="bg-[#062B23]">Travel</option>
-                    <option value="shopping" className="bg-[#062B23]">Shopping</option>
+                    <option value="" className="bg-[#FFFFFF]">Category</option>
+                    <option value="dining" className="bg-[#FFFFFF]">Dining</option>
+                    <option value="wellness" className="bg-[#FFFFFF]">Wellness</option>
+                    <option value="travel" className="bg-[#FFFFFF]">Travel</option>
+                    <option value="shopping" className="bg-[#FFFFFF]">Shopping</option>
                   </select>
                 </div>
 
-                <div className="hidden h-6 w-px bg-white/12 sm:block" />
+                <div className="hidden h-6 w-px bg-[#F9F8F7] sm:block" />
 
                 <div className="flex items-center gap-2.5 px-3.5 py-2.5 sm:w-36 sm:py-1.5">
                   <MapPin className="h-4 w-4 shrink-0 text-gold" />
@@ -196,20 +196,20 @@ export default function HeroSection() {
 
           {/* Proof column */}
           <div className="animate-fade-up-delay-2 space-y-3">
-            <div className="group relative overflow-hidden rounded-2xl border border-white/15 shadow-nv-card">
+            <div className="group relative overflow-hidden rounded-2xl border border-[#F1F1F1] shadow-nv-card">
               <img
                 src={activePhoto.img}
                 alt={activePhoto.title}
                 className="h-[380px] w-full object-cover transition-transform duration-700 group-hover:scale-105 sm:h-[440px]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#062B23] via-[#062B23]/25 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/15 to-transparent" />
 
-              <span className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-[#062B23]/70 px-3 py-1.5 text-[11px] font-bold text-ivory backdrop-blur">
+              <span className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-[#E3E3E3] bg-black/55 px-3 py-1.5 text-[11px] font-bold text-ivory backdrop-blur">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-gold" />
                 {activePhoto.title}
               </span>
 
-              <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-4 rounded-xl border border-white/12 bg-[#103F35]/95 p-4 shadow-nv-card backdrop-blur">
+              <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-4 rounded-xl border border-[#F1F1F1] bg-[#F9F8F7] p-4 shadow-nv-card backdrop-blur">
                 <div className="min-w-0">
                   <p className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-gold">
                     <ActivePhotoIcon className="h-3 w-3" />
@@ -230,10 +230,10 @@ export default function HeroSection() {
                       src={u}
                       alt=""
                       loading="lazy"
-                      className="h-8 w-8 rounded-full border-2 border-[#103F35] object-cover"
+                      className="h-8 w-8 rounded-full border-2 border-[#F1F1F1] object-cover"
                     />
                   ))}
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#103F35] bg-gold text-[10px] font-black text-[#062B23]">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#F1F1F1] bg-gold text-[10px] font-black text-white">
                     50K
                   </span>
                 </div>
@@ -253,8 +253,8 @@ export default function HeroSection() {
                     aria-pressed={on}
                     className={`flex items-center gap-2 rounded-lg border p-2.5 text-left transition-all ${
                       on
-                        ? "border-gold bg-gold text-[#062B23]"
-                        : "border-white/12 bg-white/[0.04] text-ivory-muted hover:border-[#D6B56D]/40 hover:text-ivory"
+                        ? "border-gold bg-gold text-white"
+                        : "border-[#F1F1F1] bg-[#F9F8F7] text-ivory-muted hover:border-[#0866FF]/40 hover:text-ivory"
                     }`}
                   >
                     <Icon className="h-4 w-4 shrink-0" />
@@ -264,7 +264,7 @@ export default function HeroSection() {
               })}
             </div>
 
-            <div className="flex flex-wrap items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] p-2.5">
+            <div className="flex flex-wrap items-center gap-2 rounded-xl border border-[#F1F1F1] bg-[#F9F8F7] p-2.5">
               <span className="pl-1 pr-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-ivory-dim">
                 Atmosphere
               </span>
@@ -276,7 +276,7 @@ export default function HeroSection() {
                   aria-pressed={activeVideoIndex === idx}
                   className={`inline-flex min-h-8 items-center rounded-full px-3 py-1.5 text-[10px] font-bold transition-colors ${
                     activeVideoIndex === idx
-                      ? "bg-gold text-[#062B23]"
+                      ? "bg-gold text-white"
                       : "text-ivory-dim hover:text-gold"
                   }`}
                 >
@@ -289,7 +289,7 @@ export default function HeroSection() {
       </div>
 
       {/* Bottom hairline for a crisp edge into the next section */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-px bg-gradient-to-r from-transparent via-[#D6B56D]/30 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-px bg-gradient-to-r from-transparent via-[#0866FF]/30 to-transparent" />
     </section>
   );
 }

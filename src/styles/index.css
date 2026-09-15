@@ -1,106 +1,111 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ============================================================
-   Nelvin Benefits — Premium African Luxury design system
-   Deep forest foundation · Champagne-gold jewelry · Warm ivory
+   Nelvin Benefits — design system
+   Architecture, scale and palette mirror The ENTERTAINER:
+   white chrome, one saturated corporate blue, chartreuse accent,
+   near-black greys on white and warm off-white surfaces.
    ============================================================ */
 
 @layer base {
   :root {
-    /* Deep Midnight Forest — primary background (~80% of the visual) */
-    --background: 160 33% 9%;
-    --foreground: 40 33% 94%;
+    /* White chrome — the page surface, matching the reference. */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 16%;
 
-    /* Emerald Black — cards / panels / elevated surfaces */
-    --card: 164 36% 15%;
-    --card-foreground: 40 33% 94%;
+    /* White cards sitting on the off-white section surface. */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 16%;
 
-    --popover: 164 36% 14%;
-    --popover-foreground: 40 33% 94%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 16%;
 
-    /* Champagne Gold — primary accent / CTAs */
-    --primary: 42 55% 61%;
-    --primary-foreground: 160 60% 9%;
+    /* Corporate Blue — every CTA, link accent and the footer. */
+    --primary: 217 100% 51%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Rich Forest — secondary sections / nav areas */
-    --secondary: 162 38% 13%;
-    --secondary-foreground: 40 33% 94%;
+    /* Off-white section surface — the #F9F8F7 bands. */
+    --secondary: 40 11% 97%;
+    --secondary-foreground: 0 0% 16%;
 
-    --muted: 162 30% 16%;
-    --muted-foreground: 40 20% 78%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 42 40% 30%;
-    --accent-foreground: 40 45% 92%;
+    /* Chartreuse — the short-lived highlight accent. */
+    --accent: 69 96% 65%;
+    --accent-foreground: 0 0% 16%;
 
-    --destructive: 0 60% 50%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
 
-    /* Restrained borders — forest/ivory/gold, never bright */
-    --border: 42 25% 80% / 14%;
-    --input: 42 25% 80% / 16%;
-    --ring: 42 55% 61%;
+    /* Hairline borders — #F4F4F4 / #E3E3E3, never heavy. */
+    --border: 0 0% 92%;
+    --input: 0 0% 89%;
+    --ring: 217 100% 51%;
 
-    --chart-1: 42 55% 61%;   /* champagne */
-    --chart-2: 164 36% 30%;  /* emerald black */
-    --chart-3: 40 45% 75%;   /* warm ivory */
-    --chart-4: 162 38% 30%;  /* rich forest */
-    --chart-5: 30 45% 45%;   /* deep bronze */
+    --chart-1: 217 100% 51%;
+    --chart-2: 217 100% 85%;
+    --chart-3: 69 96% 65%;
+    --chart-4: 0 0% 45%;
+    --chart-5: 0 0% 16%;
 
-    --radius: 0.375rem;
+    --radius: 0.5rem;
 
-    --font-heading: "Cormorant Garamond", "Georgia", ui-serif, serif;
-    --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-    --font-display: "Cormorant Garamond", "Georgia", ui-serif, serif;
-    --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-heading: "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-body: "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-display: "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-sans: "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
-    --sidebar-background: 162 38% 12%;
-    --sidebar-foreground: 40 33% 94%;
-    --sidebar-primary: 42 55% 61%;
-    --sidebar-primary-foreground: 160 60% 9%;
-    --sidebar-accent: 162 30% 18%;
-    --sidebar-accent-foreground: 40 33% 94%;
-    --sidebar-border: 42 25% 80% / 12%;
-    --sidebar-ring: 42 55% 61%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 16%;
+    --sidebar-primary: 217 100% 51%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 16%;
+    --sidebar-border: 0 0% 92%;
+    --sidebar-ring: 217 100% 51%;
   }
 
+  /* The reference ships a single light theme. Keep .dark identical so a
+     stale `dark` class can never drop the UI back onto the old palette. */
   .dark {
-    --background: 160 33% 9%;
-    --foreground: 40 33% 94%;
-    --card: 164 36% 15%;
-    --card-foreground: 40 33% 94%;
-    --popover: 164 36% 14%;
-    --popover-foreground: 40 33% 94%;
-    --primary: 42 55% 61%;
-    --primary-foreground: 160 60% 9%;
-    --secondary: 162 38% 13%;
-    --secondary-foreground: 40 33% 94%;
-    --muted: 162 30% 16%;
-    --muted-foreground: 40 20% 78%;
-    --accent: 42 40% 30%;
-    --accent-foreground: 40 45% 92%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 42 25% 80% / 14%;
-    --input: 42 25% 80% / 16%;
-    --ring: 42 55% 61%;
-    --chart-1: 42 55% 61%;
-    --chart-2: 164 36% 30%;
-    --chart-3: 40 45% 75%;
-    --chart-4: 162 38% 30%;
-    --chart-5: 30 45% 45%;
-    --sidebar-background: 162 38% 12%;
-    --sidebar-foreground: 40 33% 94%;
-    --sidebar-primary: 42 55% 61%;
-    --sidebar-primary-foreground: 160 60% 9%;
-    --sidebar-accent: 162 30% 18%;
-    --sidebar-accent-foreground: 40 33% 94%;
-    --sidebar-border: 42 25% 80% / 12%;
-    --sidebar-ring: 42 55% 61%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 16%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 16%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 16%;
+    --primary: 217 100% 51%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 40 11% 97%;
+    --secondary-foreground: 0 0% 16%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 69 96% 65%;
+    --accent-foreground: 0 0% 16%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 92%;
+    --input: 0 0% 89%;
+    --ring: 217 100% 51%;
+    --chart-1: 217 100% 51%;
+    --chart-2: 217 100% 85%;
+    --chart-3: 69 96% 65%;
+    --chart-4: 0 0% 45%;
+    --chart-5: 0 0% 16%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 16%;
+    --sidebar-primary: 217 100% 51%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 16%;
+    --sidebar-border: 0 0% 92%;
+    --sidebar-ring: 217 100% 51%;
   }
 }
 
@@ -115,7 +120,9 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
+    font-weight: 900;
     letter-spacing: -0.01em;
+    text-wrap: balance;
   }
 
   input, select, textarea, button {
@@ -140,7 +147,7 @@
   animation: scroll 45s linear infinite;
 }
 
-/* Marquee edge fades — tinted for the deep-forest surface, not a light one. */
+/* Marquee edge fades — the mask is surface-independent. */
 .mask-fade-x {
   -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 96px, #000 calc(100% - 96px), transparent 100%);
   mask-image: linear-gradient(90deg, transparent 0, #000 96px, #000 calc(100% - 96px), transparent 100%);
@@ -247,43 +254,48 @@
 
 /* ============================================================
    Nelvin Benefits — brand surface utilities
-   Deep forest foundation · Champagne-gold jewelry · Warm ivory
+
+   These are the class names the whole app already uses, so they are
+   the single lever that re-skins every page. They now resolve to the
+   reference palette: one corporate blue for every accent and CTA,
+   near-black greys for type, white and #F9F8F7 for surfaces, and
+   hairlines instead of heavy borders.
    ============================================================ */
 
 @layer utilities {
-  /* Champagne Gold — the jewelry, never the suit */
-  .text-gold { color: #D6B56D; }
-  .text-gold-soft { color: #E5C77A; }
-  .bg-gold { background-color: #D6B56D; }
-  .bg-gold-soft { background-color: #E5C77A; }
-  .border-gold { border-color: rgba(214, 181, 109, 0.45); }
-  .border-gold-soft { border-color: rgba(214, 181, 109, 0.22); }
-  .ring-gold { --tw-ring-color: rgba(214, 181, 109, 0.55); }
+  /* Corporate Blue — the single accent, mirroring the reference. */
+  .text-gold { color: #0866FF; }
+  .text-gold-soft { color: #2F85FE; }
+  .bg-gold { background-color: #0866FF; }
+  .bg-gold-soft { background-color: #2F85FE; }
+  .border-gold { border-color: rgba(8, 102, 255, 0.45); }
+  .border-gold-soft { border-color: rgba(8, 102, 255, 0.22); }
+  .ring-gold { --tw-ring-color: rgba(8, 102, 255, 0.55); }
 
-  /* Forest surfaces */
-  .bg-forest { background-color: #062B23; }
-  .bg-forest-secondary { background-color: #0A3A2F; }
-  .bg-emerald-black { background-color: #103F35; }
-  .border-forest { border-color: rgba(245, 241, 232, 0.14); }
-  .border-forest-strong { border-color: rgba(245, 241, 232, 0.22); }
+  /* Surfaces */
+  .bg-forest { background-color: #FFFFFF; }
+  .bg-forest-secondary { background-color: #F9F8F7; }
+  .bg-emerald-black { background-color: #FFFFFF; }
+  .border-forest { border-color: rgba(0, 0, 0, 0.08); }
+  .border-forest-strong { border-color: rgba(0, 0, 0, 0.14); }
 
-  /* Warm Ivory typography */
-  .text-ivory { color: #F5F1E8; }
-  .text-ivory-muted { color: rgba(245, 241, 232, 0.72); }
-  .text-ivory-dim { color: rgba(245, 241, 232, 0.52); }
+  /* Body type */
+  .text-ivory { color: #282828; }
+  .text-ivory-muted { color: #484848; }
+  .text-ivory-dim { color: #6B6B6B; }
 
-  /* Subtle abstract geometric line watermark (established, not tribal) */
+  /* Subtle grid watermark, tuned for light surfaces. */
   .bg-lux-grid {
     background-image:
-      linear-gradient(rgba(214, 181, 109, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(214, 181, 109, 0.05) 1px, transparent 1px);
+      linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
     background-size: 56px 56px;
   }
   .bg-lux-diagonal {
     background-image: repeating-linear-gradient(
       120deg,
-      rgba(214, 181, 109, 0.04) 0px,
-      rgba(214, 181, 109, 0.04) 1px,
+      rgba(0, 0, 0, 0.03) 0px,
+      rgba(0, 0, 0, 0.03) 1px,
       transparent 1px,
       transparent 28px
     );
@@ -293,9 +305,8 @@
 /* ============================================================
    Layout system
    Measured on The ENTERTAINER: a single 1200px column, generous
-   96–112px section rhythm, 16px cards, 8px buttons, soft wide
-   shadows and hairline dividers instead of heavy borders.
-   The palette stays Nelvin: forest, champagne gold, warm ivory.
+   96-112px section rhythm, 8px buttons, soft wide shadows and
+   hairline dividers instead of heavy borders.
    ============================================================ */
 
 @layer components {
@@ -312,50 +323,65 @@
     .container-nv { padding-inline: 2rem; }
   }
 
-  /* Vertical rhythm. Alternating primary/secondary keeps the page
+  /* Vertical rhythm. Alternating white / #F9F8F7 keeps the page
      from reading as one flat block. */
   .section-nv {
-    padding-block: 4rem;
+    padding-block: 2.5rem;
   }
   @media (min-width: 768px) {
-    .section-nv { padding-block: 6rem; }
+    .section-nv { padding-block: 4.5rem; }
   }
   @media (min-width: 1024px) {
-    .section-nv { padding-block: 7rem; }
+    .section-nv { padding-block: 6rem; }
+  }
+  /* The reference's tall band rhythm: 96px top, 112px bottom. */
+  .section-nv-lg {
+    padding-block: 2.5rem;
+  }
+  @media (min-width: 768px) {
+    .section-nv-lg { padding-block: 5rem; }
+  }
+  @media (min-width: 1024px) {
+    .section-nv-lg { padding-block: 6rem 7rem; }
   }
 
-  .surface-nv-primary { background-color: #062B23; }
-  .surface-nv-secondary { background-color: #0A3A2F; }
-  .surface-nv-raised { background-color: #103F35; }
+  .surface-nv-primary { background-color: #FFFFFF; }
+  .surface-nv-secondary { background-color: #F9F8F7; }
+  .surface-nv-raised { background-color: #FFFFFF; }
 
   /* Widow-avoidance for the short CTA lines these pages are full of. */
   .text-balance-nv { text-wrap: balance; }
 
-  .shadow-nv-card { box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16); }
-  .shadow-nv-card-hover { box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28); }
-  .shadow-nv-header { box-shadow: 0 4px 24px rgba(0, 0, 0, 0.28); }
+  .shadow-nv-card { box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06); }
+  .shadow-nv-card-hover { box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12); }
+  .shadow-nv-header { box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06); }
 
-  .divide-nv > * + * { border-top: 1px solid rgba(245, 241, 232, 0.10); }
+  .divide-nv > * + * { border-top: 1px solid rgba(0, 0, 0, 0.08); }
 
-  /* Champagne-gold gradient reserved for the brand wordmark. */
   .text-gold-gradient {
-    background-image: linear-gradient(100deg, #B9944C 0%, #E5C77A 42%, #D6B56D 70%, #F0DFAE 100%);
+    background-image: linear-gradient(100deg, #9A6F00 0%, #C99000 45%, #8A6500 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
 
+  /* Brand gold on the blue surfaces: the reference's own accent, which is
+     the only gold with enough luminance to read on corporate blue. */
+  .text-brand-gold {
+    color: #FFCC00;
+  }
+
   .nb-wordmark {
     font-family: var(--font-heading);
-    font-weight: 700;
-    letter-spacing: -0.015em;
+    font-weight: 800;
+    letter-spacing: -0.02em;
     line-height: 1;
   }
 
   /* ---- Shared primitives ------------------------------------
-     The ENTERTAINER repeats one button shape (8px radius, 600–700
-     weight, 15px) and one card shape (16px radius, soft wide
-     shadow). These keep that repetition exact across the app. */
+     The reference repeats one button shape (8px radius, 700 weight,
+     15px) and one card shape (16px radius, soft wide shadow). These
+     keep that repetition exact across the app. */
 
   .btn-nv {
     display: inline-flex;
@@ -364,7 +390,7 @@
     gap: 0.5rem;
     border-radius: 8px;
     font-family: var(--font-body);
-    font-size: 0.8125rem;
+    font-size: 0.9375rem;
     font-weight: 700;
     line-height: 1;
     white-space: nowrap;
@@ -372,51 +398,53 @@
       color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   }
   .btn-nv:focus-visible {
-    outline: 2px solid rgba(214, 181, 109, 0.7);
+    outline: 2px solid rgba(8, 102, 255, 0.7);
     outline-offset: 2px;
   }
 
   .btn-nv-gold {
-    background-color: #D6B56D;
-    color: #062B23;
+    background-color: #0866FF;
+    color: #FFFFFF;
   }
   .btn-nv-gold:hover {
-    background-color: #E5C77A;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+    background-color: #1F4CF4;
+    box-shadow: 0 8px 24px rgba(8, 102, 255, 0.24);
     transform: translateY(-1px);
   }
 
   .btn-nv-outline {
-    border: 1px solid rgba(245, 241, 232, 0.32);
-    color: #F5F1E8;
-    background-color: transparent;
+    border: 1px solid #E3E3E3;
+    color: #282828;
+    background-color: #FFFFFF;
   }
   .btn-nv-outline:hover {
-    border-color: rgba(214, 181, 109, 0.7);
-    color: #E5C77A;
-    background-color: rgba(245, 241, 232, 0.05);
+    border-color: rgba(8, 102, 255, 0.7);
+    color: #0866FF;
+    background-color: rgba(8, 102, 255, 0.04);
   }
 
   .btn-nv-ghost {
-    color: rgba(245, 241, 232, 0.88);
+    color: #484848;
     background-color: transparent;
   }
-  .btn-nv-ghost:hover { color: #E5C77A; }
+  .btn-nv-ghost:hover { color: #0866FF; }
 
   .btn-nv-md { height: 2.75rem; padding-inline: 1.5rem; }
-  .btn-nv-sm { height: 2.375rem; padding-inline: 1rem; font-size: 0.8125rem; }
-  .btn-nv-lg { height: 3rem; padding-inline: 2rem; font-size: 0.875rem; }
+  .btn-nv-sm { height: 2.375rem; padding-inline: 1rem; font-size: 0.875rem; }
+  .btn-nv-lg { height: 3.25rem; padding-inline: 2rem; font-size: 1rem; }
 
   /* 16px radius + soft wide shadow, matching the reference cards. */
   .card-nv {
     border-radius: 16px;
-    background-color: #103F35;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+    background-color: #FFFFFF;
+    border: 1px solid #F1F1F1;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
     transition: box-shadow 0.3s ease, transform 0.3s ease,
       border-color 0.3s ease;
   }
   .card-nv-interactive:hover {
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+    border-color: #E3E3E3;
     transform: translateY(-2px);
   }
 
@@ -425,9 +453,9 @@
     align-items: center;
     gap: 0.5rem;
     border-radius: 9999px;
-    border: 1px solid rgba(214, 181, 109, 0.3);
-    background-color: rgba(214, 181, 109, 0.1);
-    color: #D6B56D;
+    border: 1px solid rgba(8, 102, 255, 0.2);
+    background-color: rgba(8, 102, 255, 0.08);
+    color: #0866FF;
     font-size: 0.6875rem;
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -441,14 +469,14 @@
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: #D6B56D;
+    color: #0866FF;
   }
 
   /* Hairline rule used instead of heavy borders. */
-  .rule-nv { border-top: 1px solid rgba(245, 241, 232, 0.10); }
+  .rule-nv { border-top: 1px solid rgba(0, 0, 0, 0.08); }
 }
 
-/* Solid-gold fallback if background-clip:text is unavailable. */
+/* Solid-blue fallback if background-clip:text is unavailable. */
 @supports not ((-webkit-background-clip: text) or (background-clip: text)) {
-  .text-gold-gradient { color: #D6B56D; }
+  .text-gold-gradient { color: #9A6F00; }
 }

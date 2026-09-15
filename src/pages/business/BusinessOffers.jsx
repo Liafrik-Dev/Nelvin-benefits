@@ -38,20 +38,20 @@ export default function BusinessOffers() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold font-heading text-[#F5F1E8]">Manage Store Offers</h1>
+          <h1 className="text-2xl font-bold font-heading text-[#282828]">Manage Store Offers</h1>
           <p className="text-sm text-ivory-muted mt-1">Create, edit, pause, or archive promotional deals for corporate subscribers.</p>
         </div>
         <Link
           to="/business/offers/new"
-          className="bg-[#062B23] hover:bg-[#0A3A2F] text-[#D6B56D] font-bold text-xs px-4 py-2.5 rounded-xl flex items-center gap-2 shadow-sm transition-colors"
+          className="bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#0866FF] font-bold text-xs px-4 py-2.5 rounded-xl flex items-center gap-2 shadow-sm transition-colors"
         >
-          <Plus className="w-4 h-4 text-[#D6B56D]" /> Create New Offer
+          <Plus className="w-4 h-4 text-[#0866FF]" /> Create New Offer
         </Link>
       </div>
 
-      <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg overflow-hidden shadow-sm">
+      <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg overflow-hidden shadow-sm">
         <table className="w-full text-sm text-left">
-          <thead className="bg-forest-secondary/60 text-ivory-muted text-xs uppercase tracking-wider font-semibold border-b border-white/10">
+          <thead className="bg-[#F9F8F7] text-ivory-muted text-xs uppercase tracking-wider font-semibold border-b border-[#F1F1F1]">
             <tr>
               <th className="px-6 py-3.5">Offer Title</th>
               <th className="px-6 py-3.5">Category</th>
@@ -61,18 +61,18 @@ export default function BusinessOffers() {
               <th className="px-6 py-3.5 text-right">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-white/10">
+          <tbody className="divide-y divide-[#F1F1F1]">
             {items.map((o) => (
-              <tr key={o.id} className="hover:bg-forest-secondary/60 transition-colors">
+              <tr key={o.id} className="hover:bg-[#F9F8F7] transition-colors">
                 <td className="px-6 py-4 font-bold text-ivory flex items-center gap-2">
-                  <Tag className="w-4 h-4 text-[#E5C77A]" /> {o.title}
+                  <Tag className="w-4 h-4 text-[#0866FF]" /> {o.title}
                 </td>
                 <td className="px-6 py-4 text-ivory-muted">{o.category}</td>
-                <td className="px-6 py-4 font-extrabold text-[#E5C77A]">{o.discount_label}</td>
+                <td className="px-6 py-4 font-extrabold text-[#0866FF]">{o.discount_label}</td>
                 <td className="px-6 py-4 font-bold text-ivory">{o.total_redemptions_count || 0}</td>
                 <td className="px-6 py-4">
                   <span className={`text-xs font-bold px-2.5 py-1 rounded-full uppercase ${
-                    o.status === "active" ? "bg-[#0A3A2F] text-[#D6B56D]" : "bg-[#103F35]/70 text-[#D6B56D] ring-1 ring-[#D6B56D]/20"
+                    o.status === "active" ? "bg-[#FFFFFF] text-[#0866FF]" : "bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20"
                   }`}>
                     {o.status || "Active"}
                   </span>
@@ -80,7 +80,7 @@ export default function BusinessOffers() {
                 <td className="px-6 py-4 text-right space-x-2">
                   <button
                     onClick={() => toggleStatus(o.id)}
-                    className="text-xs font-bold text-[#F5F1E8] hover:underline"
+                    className="text-xs font-bold text-[#282828] hover:underline"
                   >
                     {o.status === "active" ? "Pause" : "Activate"}
                   </button>

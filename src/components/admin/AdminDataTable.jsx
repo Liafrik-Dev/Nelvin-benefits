@@ -57,14 +57,14 @@ export default function AdminDataTable({
   const colSpan = columns.length + (setSelected ? 1 : 0) + (renderActions ? 1 : 0);
 
   return (
-    <div className="bg-emerald-black ring-1 ring-white/10 rounded-lg overflow-hidden">
-      <div className="flex flex-col lg:flex-row lg:items-center gap-3 p-4 border-b border-white/10">
+    <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg overflow-hidden">
+      <div className="flex flex-col lg:flex-row lg:items-center gap-3 p-4 border-b border-[#F1F1F1]">
         {setSearch && (
           <input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search records…"
-            className="flex-1 border border-white/12 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#D6B56D]/20"
+            className="flex-1 border border-[#F1F1F1] rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#0866FF]/20"
           />
         )}
         <div className="flex flex-wrap items-center gap-3">
@@ -73,7 +73,7 @@ export default function AdminDataTable({
               key={f.key}
               value={f.value}
               onChange={f.onChange}
-              className="border border-white/12 rounded-lg px-3 py-2 text-sm bg-[#0A3A2F] outline-none"
+              className="border border-[#F1F1F1] rounded-lg px-3 py-2 text-sm bg-[#FFFFFF] outline-none"
             >
               <option value="">{f.label}</option>
               {(f.options || []).map((opt) => (
@@ -85,7 +85,7 @@ export default function AdminDataTable({
           ))}
           <button
             onClick={() => exportToCsv(exportName, sorted, columns)}
-            className="flex items-center gap-1.5 px-3 py-2 text-sm bg-[#0A3A2F]/5 hover:bg-[#0A3A2F]/10 text-ivory rounded-lg whitespace-nowrap"
+            className="flex items-center gap-1.5 px-3 py-2 text-sm bg-[#F4F4F4] hover:bg-[#F4F4F4] text-ivory rounded-lg whitespace-nowrap"
           >
             <Download className="w-3.5 h-3.5" /> Export CSV
           </button>
@@ -94,13 +94,13 @@ export default function AdminDataTable({
       </div>
 
       {setSelected && bulkActions.length > 0 && selected.size > 0 && (
-        <div className="flex flex-wrap items-center gap-2 px-4 py-2 bg-[#0A3A2F] border-b border-white/10">
-          <span className="text-sm text-[#D6B56D] font-medium">{selected.size} selected</span>
+        <div className="flex flex-wrap items-center gap-2 px-4 py-2 bg-[#FFFFFF] border-b border-[#F1F1F1]">
+          <span className="text-sm text-[#0866FF] font-medium">{selected.size} selected</span>
           {bulkActions.map((b, i) => (
             <button
               key={i}
               onClick={() => b.onClick(selected)}
-              className="text-xs px-3 py-1.5 bg-[#0A3A2F] border bg-[#0A3A2F] rounded-md hover:bg-forest-secondary/60"
+              className="text-xs px-3 py-1.5 bg-[#FFFFFF] border bg-[#FFFFFF] rounded-md hover:bg-[#F9F8F7]"
             >
               {b.label}
             </button>
@@ -114,7 +114,7 @@ export default function AdminDataTable({
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
-            <tr className="border-b border-white/10 text-left text-xs uppercase text-ivory-dim tracking-wide">
+            <tr className="border-b border-[#F1F1F1] text-left text-xs uppercase text-ivory-dim tracking-wide">
               {setSelected && (
                 <th className="px-3 py-2 w-8">
                   <input type="checkbox" checked={allSelected} onChange={toggleAll} />
@@ -157,7 +157,7 @@ export default function AdminDataTable({
               paged.map((row) => (
                 <tr
                   key={row.id}
-                  className={`border-b border-gray-50 hover:bg-forest-secondary/60 ${onRowClick ? "cursor-pointer" : ""}`}
+                  className={`border-b border-gray-50 hover:bg-[#F9F8F7] ${onRowClick ? "cursor-pointer" : ""}`}
                   onClick={onRowClick ? () => onRowClick(row) : undefined}
                 >
                   {setSelected && (
@@ -190,7 +190,7 @@ export default function AdminDataTable({
       </div>
 
       {total > pageSize && (
-        <div className="flex items-center justify-between px-4 py-3 border-t border-white/10 text-sm">
+        <div className="flex items-center justify-between px-4 py-3 border-t border-[#F1F1F1] text-sm">
           <span className="text-ivory-muted">
             Page {page + 1} of {totalPages}
           </span>
@@ -198,14 +198,14 @@ export default function AdminDataTable({
             <button
               disabled={page === 0}
               onClick={() => setPage(page - 1)}
-              className="p-1.5 rounded hover:bg-[#0A3A2F]/5 disabled:opacity-40"
+              className="p-1.5 rounded hover:bg-[#F4F4F4] disabled:opacity-40"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
             <button
               disabled={(page + 1) * pageSize >= total}
               onClick={() => setPage(page + 1)}
-              className="p-1.5 rounded hover:bg-[#0A3A2F]/5 disabled:opacity-40"
+              className="p-1.5 rounded hover:bg-[#F4F4F4] disabled:opacity-40"
             >
               <ChevronRight className="w-4 h-4" />
             </button>

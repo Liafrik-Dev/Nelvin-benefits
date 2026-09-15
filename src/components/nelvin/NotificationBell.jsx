@@ -27,17 +27,17 @@ export default function NotificationBell() {
 
   return (
     <div className="relative">
-      <button onClick={handleOpen} className="relative text-white/90 hover:text-white">
+      <button onClick={handleOpen} className="relative text-[#282828] hover:text-[#282828]">
         <Bell className="w-5 h-5" />
         {unreadCount > 0 && (
-          <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#103F35] rounded-full text-[10px] text-white flex items-center justify-center">
+          <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#FFFFFF] rounded-full text-[10px] text-white flex items-center justify-center">
             {unreadCount}
           </span>
         )}
       </button>
       {open && (
-        <div className="absolute right-0 mt-3 w-80 bg-[#0A3A2F] rounded-xl shadow-2xl border border-white/10 max-h-96 overflow-y-auto z-50">
-          <div className="p-3 border-b border-white/10 font-semibold text-sm text-ivory">Notifications</div>
+        <div className="absolute right-0 mt-3 w-80 bg-[#FFFFFF] rounded-xl shadow-2xl border border-[#F1F1F1] max-h-96 overflow-y-auto z-50">
+          <div className="p-3 border-b border-[#F1F1F1] font-semibold text-sm text-ivory">Notifications</div>
           {notifications.length === 0 ? (
             <p className="p-4 text-sm text-ivory-dim">No notifications yet.</p>
           ) : (

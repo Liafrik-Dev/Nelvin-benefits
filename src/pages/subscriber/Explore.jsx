@@ -26,16 +26,16 @@ export default function Explore() {
 
   return (
     <div className="min-h-screen bg-forest">
-      <div className="relative bg-[#062B23] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-[#FFFFFF] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
         <Navbar />
       </div>
       <EmployeeNav />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
-        <div className="bg-emerald-black ring-1 ring-white/10 rounded-xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-3 max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0A3A2F] text-[#E5C77A] text-xs font-bold uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5 text-[#D6B56D]" /> Curated Lifestyle Perks
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFFFFF] text-[#0866FF] text-xs font-bold uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5 text-[#0866FF]" /> Curated Lifestyle Perks
             </div>
             <h1 className="text-2xl sm:text-4xl font-extrabold text-ivory tracking-tight font-heading">
               Explore Top Employee Benefits & Exclusive Deals
@@ -45,10 +45,10 @@ export default function Explore() {
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Link to="/marketplace" className="bg-[#062B23] text-[#D6B56D] font-bold px-5 py-3 rounded-full text-sm hover:bg-[#062B23] transition-colors flex items-center gap-2">
+            <Link to="/marketplace" className="bg-[#FFFFFF] text-[#0866FF] font-bold px-5 py-3 rounded-full text-sm hover:bg-[#FFFFFF] transition-colors flex items-center gap-2">
               Browse Marketplace <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link to="/nearby" className="bg-[#0A3A2F] text-[#E5C77A] font-bold px-5 py-3 rounded-full text-sm hover:bg-[#103F35] transition-colors">
+            <Link to="/nearby" className="bg-[#FFFFFF] text-[#0866FF] font-bold px-5 py-3 rounded-full text-sm hover:bg-[#FFFFFF] transition-colors">
               Find Nearby
             </Link>
           </div>
@@ -58,15 +58,15 @@ export default function Explore() {
         <section className="space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Award className="w-5 h-5 text-[#E5C77A]" />
+              <Award className="w-5 h-5 text-[#0866FF]" />
               <h2 className="text-xl font-bold text-ivory font-heading">Featured & VIP Deals</h2>
             </div>
-            <Link to="/marketplace?filter=featured" className="text-xs font-bold text-[#D6B56D] hover:underline">View All</Link>
+            <Link to="/marketplace?filter=featured" className="text-xs font-bold text-[#0866FF] hover:underline">View All</Link>
           </div>
           {loading ? (
             <div className="h-48 flex items-center justify-center text-ivory-dim">Loading recommendations...</div>
           ) : featured.length === 0 ? (
-            <div className="p-8 bg-emerald-black ring-1 ring-white/10 rounded-lg text-center text-ivory-muted text-sm">
+            <div className="p-8 bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg text-center text-ivory-muted text-sm">
               No featured deals found at the moment.
             </div>
           ) : (
@@ -82,10 +82,10 @@ export default function Explore() {
         <section className="space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Flame className="w-5 h-5 text-[#E5C77A]" />
+              <Flame className="w-5 h-5 text-[#0866FF]" />
               <h2 className="text-xl font-bold text-ivory font-heading">Trending Right Now</h2>
             </div>
-            <Link to="/marketplace?filter=trending" className="text-xs font-bold text-[#D6B56D] hover:underline">View All</Link>
+            <Link to="/marketplace?filter=trending" className="text-xs font-bold text-[#0866FF] hover:underline">View All</Link>
           </div>
           {loading ? (
             <div className="h-48 flex items-center justify-center text-ivory-dim">Loading recommendations...</div>
@@ -102,10 +102,10 @@ export default function Explore() {
         <section className="space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <TrendingUp className="w-5 h-5 text-[#D6B56D]" />
+              <TrendingUp className="w-5 h-5 text-[#0866FF]" />
               <h2 className="text-xl font-bold text-ivory font-heading">High Cashback Perks</h2>
             </div>
-            <Link to="/cashback" className="text-xs font-bold text-[#D6B56D] hover:underline">View Cashback</Link>
+            <Link to="/cashback" className="text-xs font-bold text-[#0866FF] hover:underline">View Cashback</Link>
           </div>
           {loading ? (
             <div className="h-48 flex items-center justify-center text-ivory-dim">Loading...</div>
