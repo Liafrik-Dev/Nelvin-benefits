@@ -22,14 +22,14 @@ export default function PricingSection() {
             loading="lazy"
             className="absolute inset-0 h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-[#F9F8F7]" aria-hidden="true" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0B1B3A]/95 via-[#0B1B3A]/85 to-[#0B1B3A]/60" aria-hidden="true" />
 
           <div className="relative z-10 grid grid-cols-1 items-center gap-10 p-8 sm:p-12 lg:grid-cols-2 lg:p-14">
             <div>
               <h2 className="text-balance-nv text-3xl font-bold font-heading leading-tight tracking-tight text-white sm:text-4xl">
                 Ready to connect your employee experience?
               </h2>
-              <p className="mt-4 max-w-md text-base leading-relaxed text-[#484848]">
+              <p className="mt-4 max-w-md text-base leading-relaxed text-white/85">
                 Join the remarkable organisations putting people at the heart of what
                 they do. Book a free demo today.
               </p>

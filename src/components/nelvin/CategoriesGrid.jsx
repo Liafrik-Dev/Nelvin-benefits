@@ -60,21 +60,21 @@ export default function CategoriesGrid() {
           </div>
 
           {/* Featured panel */}
-          <div className="card-nv mt-6 grid grid-cols-1 gap-8 p-6 sm:p-8 lg:grid-cols-12 lg:items-center lg:gap-10">
-            <div className="relative h-64 overflow-hidden rounded-xl sm:h-72 lg:col-span-5">
+          <div className="card-nv mt-6 grid grid-cols-1 overflow-hidden lg:grid-cols-12 lg:items-stretch">
+            <div className="relative min-h-[16rem] sm:min-h-[20rem] lg:col-span-5 lg:min-h-[24rem]">
               <img
                 src={current.img}
                 alt={current.name}
                 loading="lazy"
-                className="h-full w-full object-cover"
+                className="absolute inset-0 h-full w-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
-              <span className="absolute left-4 top-4 rounded-full bg-gold px-3 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-white">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
+              <span className="absolute left-4 top-4 rounded-full bg-[#0866FF] px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-white">
                 Featured perks
               </span>
             </div>
 
-            <div className="lg:col-span-7">
+            <div className="flex flex-col justify-center p-7 sm:p-9 lg:col-span-7">
               <div className="flex items-center gap-3">
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#FFFFFF] text-gold">
                   <LIcon name={current.icon} className="h-6 w-6" />

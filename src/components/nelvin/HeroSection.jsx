@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   ArrowRight,
@@ -22,12 +22,9 @@ import {
  */
 
 const HERO_VIDEOS = [
-  { id: "savanna-sunset", title: "Savanna at Sunset", url: "https://assets.mixkit.co/videos/preview/mixkit-sunset-in-the-savanna-through-a-tree-5278-large.mp4" },
-  { id: "savanna-aerial", title: "Savanna Aerial", url: "https://assets.mixkit.co/videos/preview/mixkit-area-in-the-savanna-aerial-shot-3880-large.mp4" },
-  { id: "african-plains", title: "African Plains", url: "https://assets.mixkit.co/videos/preview/mixkit-herds-of-african-animals-on-a-vast-plain-11239-large.mp4" },
-  { id: "savanna-lake", title: "Savanna Lake", url: "https://assets.mixkit.co/videos/preview/mixkit-lake-in-a-savanna-at-sunset-5029-large.mp4" },
-  { id: "savanna-horizon", title: "Savanna Horizon", url: "https://assets.mixkit.co/videos/preview/mixkit-sunset-on-the-savanna-seen-behind-the-skyline-5031-large.mp4" },
-  { id: "savanna-tree", title: "Savanna Tree", url: "https://assets.mixkit.co/videos/preview/mixkit-huge-argan-tree-in-the-savanna-4027-large.mp4" },
+  { id: "city", title: "City & Culture", url: "/videos/hero-city.mp4", poster: "/videos/hero-city-poster.jpg" },
+  { id: "people", title: "People & Community", url: "/videos/hero-people.mp4", poster: "/videos/hero-people-poster.jpg" },
+  { id: "landscape", title: "Safari & Landscape", url: "/videos/hero-landscape.mp4", poster: "/videos/hero-landscape-poster.jpg" },
 ];
 
 const LEISURE_PHOTOS = [
@@ -50,12 +47,33 @@ export default function HeroSection() {
   const [city, setCity] = useState("");
   const navigate = useNavigate();
 
+  const videoRef = useRef(null);
+  const [videoFailed, setVideoFailed] = useState(false);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveVideoIndex((prev) => (prev + 1) % HERO_VIDEOS.length);
-    }, 8000);
+    }, 9000);
     return () => clearInterval(interval);
   }, []);
+
+  // Autoplay is only permitted once the element is muted and in view; if the
+  // browser suspends it (tab switch, power saving) we resume on the way back.
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return undefined;
+    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) {
+      v.pause();
+      return undefined;
+    }
+    const resume = () => {
+      v.play().catch(() => {});
+    };
+    resume();
+    document.addEventListener("visibilitychange", resume);
+    return () => document.removeEventListener("visibilitychange", resume);
+  }, [activeVideoIndex]);
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -71,40 +89,54 @@ export default function HeroSection() {
   const ActivePhotoIcon = activePhoto.icon;
 
   return (
-    <section className="relative isolate flex min-h-[92vh] items-center overflow-hidden bg-[#FFFFFF] text-ivory">
+    <section className="relative isolate flex min-h-[92vh] items-center overflow-hidden bg-[#0B0F19] text-white">
       {/* Media band */}
-      <div className="absolute inset-0 z-0 overflow-hidden bg-[#FFFFFF]">
+      <div className="absolute inset-0 z-0 overflow-hidden bg-[#0B0F19]">
         <video
+          ref={videoRef}
           key={HERO_VIDEOS[activeVideoIndex].url}
           autoPlay
           loop
           muted
           playsInline
           preload="auto"
+          poster={HERO_VIDEOS[activeVideoIndex].poster}
           aria-hidden="true"
-          className="h-full w-full scale-105 object-cover opacity-70"
+          onError={() => setVideoFailed(true)}
+          className="h-full w-full scale-105 object-cover"
         >
           <source src={HERO_VIDEOS[activeVideoIndex].url} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-black/55 to-black/25" />
-        <div className="absolute inset-0 bg-lux-diagonal opacity-60" aria-hidden="true" />
+
+        {/* If the clip cannot decode, the poster carries the band instead. */}
+        {videoFailed ? (
+          <img
+            src={HERO_VIDEOS[activeVideoIndex].poster}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        ) : null}
+
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/35" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30" aria-hidden="true" />
       </div>
 
       <div className="relative z-10 container-nv w-full pb-20 pt-32 lg:pb-24 lg:pt-40">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-16">
           {/* Copy column */}
           <div className="animate-fade-up">
-            <span className="chip-nv">
-              <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-white backdrop-blur">
+              <span className="h-1.5 w-1.5 rounded-full bg-brand-gold" />
               Open to everyone
             </span>
 
-            <h1 className="text-balance-nv mt-6 text-4xl font-bold font-heading leading-[1.08] tracking-tight text-ivory sm:text-5xl xl:text-[3.5rem]">
+            <h1 className="text-balance-nv mt-6 text-4xl font-bold font-heading leading-[1.08] tracking-tight text-white sm:text-5xl xl:text-[3.5rem]">
               Perks &amp; savings, built for{" "}
-              <span className="text-gold italic">everyone</span>.
+              <span className="text-brand-gold italic">everyone</span>.
             </h1>
 
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-ivory-muted sm:text-lg">
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
               Daily discounts for individuals, flexible benefits for employees, and
               effortless administration for HR teams — one platform connecting every
               side of the employee benefits story across Africa.
@@ -114,7 +146,7 @@ export default function HeroSection() {
             <form
               onSubmit={handleSearchSubmit}
               role="search"
-              className="mt-8 rounded-2xl border border-[#F1F1F1] bg-[#FFFFFF]/80 p-2 shadow-nv-card backdrop-blur-xl sm:rounded-full"
+              className="mt-8 rounded-2xl border border-white/20 bg-[#FFFFFF] p-2 shadow-nv-card sm:rounded-full"
             >
               <div className="flex flex-col gap-1 sm:flex-row sm:items-center">
                 <div className="flex min-w-0 flex-1 items-center gap-2.5 px-3.5 py-2.5 sm:py-1.5">
@@ -129,7 +161,7 @@ export default function HeroSection() {
                   />
                 </div>
 
-                <div className="hidden h-6 w-px bg-[#F9F8F7] sm:block" />
+                <div className="hidden h-6 w-px bg-[#E3E3E3] sm:block" />
 
                 <div className="flex items-center gap-2.5 px-3.5 py-2.5 sm:w-40 sm:py-1.5">
                   <Tag className="h-4 w-4 shrink-0 text-gold" />
@@ -147,7 +179,7 @@ export default function HeroSection() {
                   </select>
                 </div>
 
-                <div className="hidden h-6 w-px bg-[#F9F8F7] sm:block" />
+                <div className="hidden h-6 w-px bg-[#E3E3E3] sm:block" />
 
                 <div className="flex items-center gap-2.5 px-3.5 py-2.5 sm:w-36 sm:py-1.5">
                   <MapPin className="h-4 w-4 shrink-0 text-gold" />
@@ -170,13 +202,16 @@ export default function HeroSection() {
 
             {/* Secondary CTA */}
             <div className="mt-5 flex flex-wrap items-center gap-3">
-              <Link to="/corporate" className="btn-nv btn-nv-md btn-nv-outline">
-                <Play className="h-3.5 w-3.5 fill-current text-gold" />
+              <Link
+                to="/corporate"
+                className="btn-nv btn-nv-md border border-white/25 bg-white/10 text-white backdrop-blur transition-colors hover:bg-white/20"
+              >
+                <Play className="h-3.5 w-3.5 fill-current text-brand-gold" />
                 Book a corporate demo
               </Link>
               <Link
                 to="/offers"
-                className="btn-nv btn-nv-md btn-nv-ghost group"
+                className="btn-nv btn-nv-md group text-white/90 transition-colors hover:text-white"
               >
                 Browse all offers
                 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
@@ -186,8 +221,8 @@ export default function HeroSection() {
             {/* Trust signals */}
             <ul className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
               {TRUST.map((t) => (
-                <li key={t.label} className="inline-flex items-center gap-2 text-xs font-semibold text-ivory-muted">
-                  <t.icon className="h-4 w-4 text-gold" />
+                <li key={t.label} className="inline-flex items-center gap-2 text-xs font-semibold text-white/80">
+                  <t.icon className="h-4 w-4 text-brand-gold" />
                   {t.label}
                 </li>
               ))}
@@ -204,7 +239,7 @@ export default function HeroSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/15 to-transparent" />
 
-              <span className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-[#E3E3E3] bg-black/55 px-3 py-1.5 text-[11px] font-bold text-ivory backdrop-blur">
+              <span className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/60 px-3 py-1.5 text-[11px] font-bold text-white backdrop-blur">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-gold" />
                 {activePhoto.title}
               </span>
@@ -253,8 +288,8 @@ export default function HeroSection() {
                     aria-pressed={on}
                     className={`flex items-center gap-2 rounded-lg border p-2.5 text-left transition-all ${
                       on
-                        ? "border-gold bg-gold text-white"
-                        : "border-[#F1F1F1] bg-[#F9F8F7] text-ivory-muted hover:border-[#0866FF]/40 hover:text-ivory"
+                        ? "border-brand-gold bg-brand-gold text-[#282828]"
+                        : "border-white/20 bg-white/10 text-white/85 backdrop-blur hover:bg-white/20 hover:text-white"
                     }`}
                   >
                     <Icon className="h-4 w-4 shrink-0" />
@@ -264,8 +299,8 @@ export default function HeroSection() {
               })}
             </div>
 
-            <div className="flex flex-wrap items-center gap-2 rounded-xl border border-[#F1F1F1] bg-[#F9F8F7] p-2.5">
-              <span className="pl-1 pr-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-ivory-dim">
+            <div className="flex flex-wrap items-center gap-2 rounded-xl border border-white/15 bg-black/35 p-2.5 backdrop-blur">
+              <span className="pl-1 pr-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-white/70">
                 Atmosphere
               </span>
               {HERO_VIDEOS.map((vid, idx) => (
@@ -276,8 +311,8 @@ export default function HeroSection() {
                   aria-pressed={activeVideoIndex === idx}
                   className={`inline-flex min-h-8 items-center rounded-full px-3 py-1.5 text-[10px] font-bold transition-colors ${
                     activeVideoIndex === idx
-                      ? "bg-gold text-white"
-                      : "text-ivory-dim hover:text-gold"
+                      ? "bg-brand-gold text-[#282828]"
+                      : "text-white/70 hover:text-white"
                   }`}
                 >
                   {vid.title}
@@ -289,7 +324,7 @@ export default function HeroSection() {
       </div>
 
       {/* Bottom hairline for a crisp edge into the next section */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-px bg-gradient-to-r from-transparent via-[#0866FF]/30 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
     </section>
   );
 }

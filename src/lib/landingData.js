@@ -89,7 +89,7 @@ export const LANDING_AUDIENCES = [
     points: ["Open to everyone for free", "Instant merchant cashbacks", "Daily local & online deals", "Personal digital wallet"],
     to: "/register",
     cta: "Join as Particulier",
-    img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=900&q=80",
+    img: "/images/benifex/audiences/employees.jpg",
   },
   {
     title: "Benefits for Employees",
@@ -98,7 +98,7 @@ export const LANDING_AUDIENCES = [
     points: ["Corporate exclusive deals", "Flexible benefit stipends", "Peer rewards & kudos", "Mental & health wellness"],
     to: "/explore",
     cta: "Explore employee portal",
-    img: "https://images.unsplash.com/photo-1521737711867-e3b97325c3e4?w=900&q=80",
+    img: "/images/benifex/audiences/employees.jpg",
   },
   {
     title: "Benefits for Employers",
@@ -107,7 +107,7 @@ export const LANDING_AUDIENCES = [
     points: ["Effortless administration", "Budgets & eligibility", "Engagement analytics", "Local & global roll-out"],
     to: "/corporate-dashboard",
     cta: "Access HR portal",
-    img: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=900&q=80",
+    img: "/images/benifex/audiences/employers.jpg",
   },
   {
     title: "Benefits for Partners",
@@ -116,7 +116,7 @@ export const LANDING_AUDIENCES = [
     points: ["Publish offers in minutes", "Reach engaged members", "Redemption analytics", "Fast settlements"],
     to: "/business",
     cta: "Merchant Portal",
-    img: "https://images.unsplash.com/photo-1556742049-0aefd9f4d4d1?w=900&q=80",
+    img: "/images/benifex/audiences/partners.jpg",
   },
 ];
 

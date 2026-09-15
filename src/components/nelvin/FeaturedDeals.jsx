@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { SectionHeading } from "@/components/nelvin/Brand";
 
 /**
- * Platform overview tiles — the reference's bento of capability cards.
- * Copy and destinations unchanged; cards now share the 16px/soft-shadow
- * card treatment with the rest of the page.
+ * Explore the platform — every capability in one tabbed section: a rail of
+ * tabs over a single shared detail panel. Copy, labels and destinations are
+ * unchanged from the previous card grid.
  */
 
 const panels = [
@@ -16,7 +16,6 @@ const panels = [
     desc: "Connect all your benefits, wellbeing, reward and recognition so your people have one home for everything.",
     to: "/offers",
     img: "/images/benifex/Recognition2.png",
-    span: "lg:col-span-2",
   },
   {
     label: "Benefits",
@@ -77,6 +76,9 @@ const benefits = [
 ];
 
 export default function FeaturedDeals() {
+  const [activePanel, setActivePanel] = useState(0);
+  const panel = panels[activePanel];
+
   return (
     <section id="explore-platform" className="surface-nv-primary section-nv">
       <div className="container-nv">
@@ -86,33 +88,61 @@ export default function FeaturedDeals() {
           lead="One platform for benefits, discounts, reward, wellbeing and wallet — one home for everything."
         />
 
-        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {panels.map((panel) => (
-            <Link
-              key={panel.title}
-              to={panel.to}
-              className={`group relative flex min-h-64 flex-col justify-end overflow-hidden rounded-2xl border border-[#F1F1F1] bg-[#FFFFFF] p-6 shadow-nv-card transition-shadow hover:shadow-nv-card-hover ${panel.span || ""}`}
-            >
-              <div
-                className="absolute inset-0 bg-cover bg-center opacity-40 transition-opacity duration-500 group-hover:opacity-60"
-                style={{ backgroundImage: `url(${panel.img})` }}
-                aria-hidden="true"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent" />
+        {/* Tab rail — one tab per capability, scrolling horizontally on mobile */}
+        <div
+          className="scrollbar-hide -mx-1 mt-12 flex gap-2 overflow-x-auto px-1 pb-1"
+          role="tablist"
+          aria-label="Platform capabilities"
+        >
+          {panels.map((p, i) => {
+            const on = activePanel === i;
+            return (
+              <button
+                key={p.title}
+                type="button"
+                role="tab"
+                aria-selected={on}
+                onClick={() => setActivePanel(i)}
+                className={`shrink-0 rounded-full px-4 py-2.5 text-xs font-bold transition-colors ${
+                  on
+                    ? "bg-gold text-white shadow-nv-card"
+                    : "border border-[#F1F1F1] bg-[#F9F8F7] text-ivory-muted hover:border-[#0866FF]/35 hover:text-ivory"
+                }`}
+              >
+                {p.label}
+              </button>
+            );
+          })}
+        </div>
 
-              <div className="relative z-10">
-                <span className="inline-block rounded-full bg-[#0866FF]/15 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-gold">
-                  {panel.label}
-                </span>
-                <h3 className="mt-3 text-xl font-bold leading-snug text-white">{panel.title}</h3>
-                <p className="mt-2 text-xs leading-relaxed text-ivory-muted">{panel.desc}</p>
-                <span className="mt-4 inline-flex items-center gap-2 text-xs font-bold text-gold">
-                  Explore
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                </span>
-              </div>
+        {/* Shared detail panel — image runs full-bleed, copy sits beside it */}
+        <div className="card-nv mt-6 grid grid-cols-1 overflow-hidden lg:grid-cols-12">
+          <div className="relative min-h-[17rem] sm:min-h-[20rem] lg:col-span-6 lg:min-h-[27rem]">
+            <img
+              src={panel.img}
+              alt={panel.title}
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div
+              className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-black/25"
+              aria-hidden="true"
+            />
+            <span className="absolute left-5 top-5 rounded-full bg-black/60 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur">
+              {panel.label}
+            </span>
+          </div>
+
+          <div className="flex flex-col justify-center p-7 sm:p-10 lg:col-span-6">
+            <h3 className="text-2xl font-extrabold font-heading leading-snug text-ivory sm:text-3xl">
+              {panel.title}
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-ivory-muted">{panel.desc}</p>
+            <Link to={panel.to} className="btn-nv btn-nv-md btn-nv-gold group mt-7 w-fit">
+              Explore {panel.label}
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
-          ))}
+          </div>
         </div>
 
         <ul className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">

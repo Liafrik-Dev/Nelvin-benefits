@@ -56,17 +56,22 @@ export default function StatsSection() {
           </div>
         </div>
 
-        <div className="relative overflow-hidden rounded-2xl shadow-nv-card ring-1 ring-[#F1F1F1]">
+        <div className="relative h-96 overflow-hidden rounded-2xl shadow-nv-card ring-1 ring-[#F1F1F1] lg:h-[32rem]">
           <img
             src="/images/benifex/africa/south-africa.jpg"
             alt="Colleagues celebrating a reward milestone"
             loading="lazy"
-            className="h-96 w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
-          <div className="absolute inset-x-5 bottom-5 flex items-center gap-3 rounded-xl border border-[#0866FF]/30 bg-[#F9F8F7] p-4 backdrop-blur">
-            <Quote className="h-6 w-6 shrink-0 text-gold" />
-            <p className="text-sm font-bold leading-snug text-ivory">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+
+          <span className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full bg-[#0866FF] px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-white">
+            Member story
+          </span>
+
+          <div className="absolute inset-x-5 bottom-5 flex items-center gap-3 rounded-xl bg-[#FFFFFF] p-4 shadow-nv-card-hover">
+            <Quote className="h-6 w-6 shrink-0 text-[#0866FF]" />
+            <p className="text-sm font-bold leading-snug text-[#282828]">
               "Nelvin cut our benefits admin time by 80% — while engagement tripled."
             </p>
           </div>

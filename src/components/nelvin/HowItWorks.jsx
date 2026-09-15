@@ -43,8 +43,8 @@ function HowItWorksMultiTab() {
         })}
       </div>
 
-      <div className="mt-8 flex flex-col items-center gap-6 md:flex-row md:items-start">
-        <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-[#FFFFFF] text-gold shadow-nv-card">
+      <div className="mt-8 flex flex-col items-center gap-6 md:flex-row md:items-center">
+        <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-[#0866FF]/10 text-gold shadow-nv-card">
           <LIcon name={current.icon} className="h-8 w-8" />
         </span>
         <div className="flex-1 text-center md:text-left">

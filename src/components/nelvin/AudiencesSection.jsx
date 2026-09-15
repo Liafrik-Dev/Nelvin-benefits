@@ -48,21 +48,21 @@ export default function AudiencesSection() {
             })}
           </div>
 
-          <div className="card-nv mt-4 grid grid-cols-1 gap-8 p-6 sm:p-8 md:grid-cols-2 md:items-center">
-            <div className="relative h-60 overflow-hidden rounded-xl">
+          <div className="card-nv mt-4 grid grid-cols-1 overflow-hidden md:grid-cols-2 md:items-stretch">
+            <div className="relative min-h-[18rem] sm:min-h-[22rem]">
               <img
                 src={current.img}
                 alt={current.title}
                 loading="lazy"
-                className="h-full w-full object-cover"
+                className="absolute inset-0 h-full w-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
-              <span className="absolute left-3 top-3 rounded-full bg-gold px-2.5 py-1 text-[9px] font-black uppercase tracking-[0.16em] text-white">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+              <span className="absolute left-4 top-4 rounded-full bg-[#0866FF] px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-white">
                 {current.kicker}
               </span>
             </div>
 
-            <div>
+            <div className="flex flex-col justify-center p-7 sm:p-9">
               <h3 className="text-2xl font-extrabold font-heading text-ivory">{current.title}</h3>
               <p className="mt-3 text-xs leading-relaxed text-ivory-muted">{current.desc}</p>
 
