@@ -154,7 +154,7 @@ export default function Footer() {
       <div className="border-t border-white/20">
         <div className="container-nv flex flex-col items-center justify-between gap-5 py-6 sm:flex-row">
           <p className="text-center text-[15px] font-light text-white sm:text-left">
-            © 2026 NelvinBenefit Africa Ltd. All rights reserved.
+            © 2026 <span className="font-bold text-brand-gold">NelvinBenefit</span> Africa Ltd. All rights reserved.
           </p>
 
           <div className="flex items-center gap-2.5">

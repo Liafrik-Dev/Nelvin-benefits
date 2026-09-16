@@ -167,7 +167,11 @@ export default function AuthForm({ mode = "login" }) {
         {/* Title Header */}
         <div className="space-y-2 text-center">
           <h1 className="font-heading text-2xl font-black tracking-tight text-[#282828] sm:text-3xl">
-            {activeAction === "signup" ? "Create your NelvinBenefit account" : "Welcome back"}
+            {activeAction === "signup" ? (
+              <>Create your <span className="text-gold-gradient">NelvinBenefit</span> account</>
+            ) : (
+              "Welcome back"
+            )}
           </h1>
           <p className="mx-auto max-w-md text-sm text-[#484848]">
             Access your account across Member, HR, or Partner portals in one place.
@@ -268,21 +272,21 @@ export default function AuthForm({ mode = "login" }) {
             {activeAction === "signup" && (
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-1">
-                  <Label className="text-xs font-bold text-[#282828]">First Name</Label>
-                  <Input placeholder="Jane" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="h-11 rounded-xl text-sm" />
+                  <Label htmlFor="auth-first-name" className="text-xs font-bold text-[#282828]">First Name</Label>
+                  <Input id="auth-first-name" autoComplete="given-name" placeholder="Jane" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="h-11 rounded-xl text-sm" />
                   {errors.firstName && <p className="text-[10px] text-rose-600 font-bold">{errors.firstName}</p>}
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-xs font-bold text-[#282828]">Last Name</Label>
-                  <Input placeholder="Doe" value={lastName} onChange={(e) => setLastName(e.target.value)} className="h-11 rounded-xl text-sm" />
+                  <Label htmlFor="auth-last-name" className="text-xs font-bold text-[#282828]">Last Name</Label>
+                  <Input id="auth-last-name" autoComplete="family-name" placeholder="Doe" value={lastName} onChange={(e) => setLastName(e.target.value)} className="h-11 rounded-xl text-sm" />
                   {errors.lastName && <p className="text-[10px] text-rose-600 font-bold">{errors.lastName}</p>}
                 </div>
               </div>
             )}
 
             <div className="space-y-1">
-              <Label className="text-xs font-bold text-[#282828]">Email Address</Label>
-              <Input type="email" placeholder="you@company.com" value={email} onChange={(e) => setEmail(e.target.value)} className="h-11 rounded-xl text-sm" />
+              <Label htmlFor="auth-email" className="text-xs font-bold text-[#282828]">Email Address</Label>
+              <Input id="auth-email" type="email" autoComplete="email" placeholder="you@company.com" value={email} onChange={(e) => setEmail(e.target.value)} className="h-11 rounded-xl text-sm" />
               {errors.email && <p className="text-[10px] text-rose-600 font-bold">{errors.email}</p>}
             </div>
 
@@ -322,8 +326,8 @@ export default function AuthForm({ mode = "login" }) {
 
             {activeAction === "signup" && (
               <div className="space-y-1">
-                <Label className="text-xs font-bold text-[#282828]">Confirm Password</Label>
-                <Input type="password" placeholder="••••••••" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="h-11 rounded-xl text-sm" />
+                <Label htmlFor="auth-confirm-password" className="text-xs font-bold text-[#282828]">Confirm Password</Label>
+                <Input id="auth-confirm-password" type="password" autoComplete="new-password" placeholder="••••••••" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="h-11 rounded-xl text-sm" />
                 {errors.confirmPassword && <p className="text-[10px] text-rose-600 font-bold">{errors.confirmPassword}</p>}
               </div>
             )}

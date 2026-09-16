@@ -92,7 +92,7 @@ export default function BusinessDashboard() {
 
             <Link
               to="/business/offers/new"
-              className="inline-flex items-center gap-2 bg-[#F4F4F4] hover:bg-[#F4F4F4] text-white font-extrabold text-xs px-5 py-3 rounded-full border border-[#E3E3E3] backdrop-blur-md transition-all"
+              className="inline-flex items-center gap-2 bg-[#F4F4F4] hover:bg-[#E9E9E9] text-[#1B4F9C] font-extrabold text-xs px-5 py-3 rounded-full border border-[#E3E3E3] backdrop-blur-md transition-all"
             >
               <Plus className="w-4 h-4 text-[#1B4F9C]" /> Create New Offer
             </Link>
@@ -145,7 +145,7 @@ export default function BusinessDashboard() {
           </div>
         </div>
 
-        <div className="bg-[#FFFFFF] rounded-xl p-6 space-y-3 text-white shadow-2xl relative overflow-hidden border border-[#1B4F9C]/30">
+        <div className="bg-[#FFFFFF] rounded-xl p-6 space-y-3 shadow-2xl relative overflow-hidden border border-[#1B4F9C]/30">
           <div className="flex items-center justify-between">
             <span className="text-xs font-extrabold text-[#484848] uppercase tracking-wider">Pending Payout</span>
             <div className="w-9 h-9 rounded-xl bg-[#1B4F9C]/20 text-[#1B4F9C] flex items-center justify-center">

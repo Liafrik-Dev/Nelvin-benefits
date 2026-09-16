@@ -173,6 +173,23 @@
 }
 
 @layer utilities {
+  /* Horizontal clip reel in the hero: stays scrollable and keeps a slim,
+     unobtrusive bar so the control row does not grow a second line. */
+  .nv-reel {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+  }
+  .nv-reel::-webkit-scrollbar {
+    height: 3px;
+  }
+  .nv-reel::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .nv-reel::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 9999px;
+  }
+
   @keyframes fade-up {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }

@@ -21,12 +21,12 @@ export default function CurrencySelector({ className = "" }) {
   };
 
   return (
-    <div className={`inline-flex items-center gap-1.5 bg-[#F4F4F4] backdrop-blur border border-[#E3E3E3] rounded-lg px-2.5 py-1 text-xs text-white ${className}`}>
+    <div className={`inline-flex items-center gap-1.5 bg-[#F4F4F4] backdrop-blur border border-[#E3E3E3] rounded-lg px-2.5 py-1 text-xs text-[#282828] ${className}`}>
       <Globe className="w-3.5 h-3.5 text-[#1B4F9C]" />
       <select
         value={currency.code}
         onChange={handleChange}
-        className="bg-transparent text-xs font-bold text-white focus:outline-none cursor-pointer"
+        className="bg-transparent text-xs font-bold text-[#282828] focus:outline-none cursor-pointer"
       >
         {CURRENCIES.map((c) => (
           <option key={c.code} value={c.code} className="text-slate-900 font-normal">

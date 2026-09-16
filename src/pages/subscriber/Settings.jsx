@@ -49,7 +49,7 @@ export default function Settings() {
                 type="checkbox"
                 checked={emailNotifs}
                 onChange={(e) => setEmailNotifs(e.target.checked)}
-                className="w-5 h-5 accent-emerald-600 cursor-pointer"
+                className="w-5 h-5 accent-[#1B4F9C] cursor-pointer"
               />
             </div>
             <div className="flex items-center justify-between p-4 bg-[#F9F8F7] rounded-lg">
@@ -61,7 +61,7 @@ export default function Settings() {
                 type="checkbox"
                 checked={pushNotifs}
                 onChange={(e) => setPushNotifs(e.target.checked)}
-                className="w-5 h-5 accent-emerald-600 cursor-pointer"
+                className="w-5 h-5 accent-[#1B4F9C] cursor-pointer"
               />
             </div>
           </div>

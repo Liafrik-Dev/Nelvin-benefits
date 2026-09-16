@@ -61,7 +61,7 @@ export default function Cashback() {
             <button
               onClick={() => setPayoutModal(true)}
               disabled={earnings === 0}
-              className="w-full bg-[#FFFFFF] hover:bg-[#1B4F9C] text-white text-xs font-bold py-2 rounded-xl transition-colors disabled:opacity-50"
+              className="w-full bg-[#F4F4F4] hover:bg-[#1B4F9C] hover:text-white text-[#1B4F9C] text-xs font-bold py-2 rounded-xl transition-colors disabled:opacity-50"
             >
               Transfer to Wallet
             </button>

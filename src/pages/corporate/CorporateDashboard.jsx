@@ -96,7 +96,7 @@ export default function CorporateDashboard() {
   if (!isAuthenticated) return <Navigate to="/login" replace />;
   if (loading) return (
     <div className="min-h-screen bg-[#F9F8F7] flex items-center justify-center">
-      <div className="w-8 h-8 border-4 border-[#F1F1F1] border-t-emerald-600 rounded-full animate-spin" />
+      <div className="w-8 h-8 border-4 border-[#F1F1F1] border-t-[#1B4F9C] rounded-full animate-spin" />
     </div>
   );
 

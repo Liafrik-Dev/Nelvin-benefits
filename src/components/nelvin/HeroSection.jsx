@@ -23,8 +23,16 @@ import {
 
 const HERO_VIDEOS = [
   { id: "city", title: "City & Culture", url: "/videos/hero-city.mp4", poster: "/videos/hero-city-poster.jpg" },
+  { id: "safari", title: "Safari & Landscape", url: "/videos/hero-safari.mp4", poster: "/videos/hero-safari-poster.jpg" },
+  { id: "dining", title: "Dining & Cafés", url: "/videos/hero-dining.mp4", poster: "/videos/hero-dining-poster.jpg" },
   { id: "people", title: "People & Community", url: "/videos/hero-people.mp4", poster: "/videos/hero-people-poster.jpg" },
-  { id: "landscape", title: "Safari & Landscape", url: "/videos/hero-landscape.mp4", poster: "/videos/hero-landscape-poster.jpg" },
+  { id: "stays", title: "Hotels & Stays", url: "/videos/hero-stays.mp4", poster: "/videos/hero-stays-poster.jpg" },
+  { id: "lagos", title: "Lagos Nights", url: "/videos/hero-lagos.mp4", poster: "/videos/hero-lagos-poster.jpg" },
+  { id: "wellness", title: "Fitness & Wellness", url: "/videos/hero-wellness.mp4", poster: "/videos/hero-wellness-poster.jpg" },
+  { id: "travel", title: "Travel & Holidays", url: "/videos/hero-travel.mp4", poster: "/videos/hero-travel-poster.jpg" },
+  { id: "marrakech", title: "Marrakech", url: "/videos/hero-marrakech.mp4", poster: "/videos/hero-marrakech-poster.jpg" },
+  { id: "retail", title: "Shopping & Retail", url: "/videos/hero-retail.mp4", poster: "/videos/hero-retail-poster.jpg" },
+  { id: "landscape", title: "Open Roads", url: "/videos/hero-landscape.mp4", poster: "/videos/hero-landscape-poster.jpg" },
 ];
 
 const LEISURE_PHOTOS = [
@@ -56,6 +64,26 @@ export default function HeroSection() {
     }, 9000);
     return () => clearInterval(interval);
   }, []);
+
+  // Warm the next clip so the band does not flash an empty frame when the
+  // rotation advances. Only the immediate successor is fetched: pulling all
+  // eleven up front would compete with the page's own load.
+  useEffect(() => {
+    const next = HERO_VIDEOS[(activeVideoIndex + 1) % HERO_VIDEOS.length];
+    if (!next) return undefined;
+    const link = document.createElement("link");
+    link.rel = "prefetch";
+    link.as = "video";
+    link.href = next.url;
+    document.head.appendChild(link);
+    return () => link.remove();
+  }, [activeVideoIndex]);
+
+  // A clip that fails to decode must not pin the fallback poster for every
+  // later clip, so the flag is cleared whenever the rotation advances.
+  useEffect(() => {
+    setVideoFailed(false);
+  }, [activeVideoIndex]);
 
   // Autoplay is only permitted once the element is muted and in view; if the
   // browser suspends it (tab switch, power saving) we resume on the way back.
@@ -299,25 +327,30 @@ export default function HeroSection() {
               })}
             </div>
 
-            <div className="flex flex-wrap items-center gap-2 rounded-xl border border-white/15 bg-black/35 p-2.5 backdrop-blur">
-              <span className="pl-1 pr-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-white/70">
+            <div className="flex items-center gap-2 rounded-xl border border-white/15 bg-black/35 p-2.5 backdrop-blur">
+              <span className="shrink-0 pl-1 pr-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-white/70">
                 Atmosphere
               </span>
-              {HERO_VIDEOS.map((vid, idx) => (
-                <button
-                  key={vid.id}
-                  type="button"
-                  onClick={() => setActiveVideoIndex(idx)}
-                  aria-pressed={activeVideoIndex === idx}
-                  className={`inline-flex min-h-8 items-center rounded-full px-3 py-1.5 text-[10px] font-bold transition-colors ${
-                    activeVideoIndex === idx
-                      ? "bg-brand-gold text-[#282828]"
-                      : "text-white/70 hover:text-white"
-                  }`}
-                >
-                  {vid.title}
-                </button>
-              ))}
+              {/* Eleven clips no longer fit one row, so the reel scrolls
+                  horizontally and keeps every clip one tap away. */}
+              <div className="nv-reel flex min-w-0 flex-1 items-center gap-2 overflow-x-auto pb-0.5">
+                {HERO_VIDEOS.map((vid, idx) => (
+                  <button
+                    key={vid.id}
+                    type="button"
+                    onClick={() => setActiveVideoIndex(idx)}
+                    aria-pressed={activeVideoIndex === idx}
+                    aria-label={`Show ${vid.title} background`}
+                    className={`inline-flex min-h-8 shrink-0 items-center rounded-full px-3 py-1.5 text-[10px] font-bold transition-colors ${
+                      activeVideoIndex === idx
+                        ? "bg-brand-gold text-[#282828]"
+                        : "text-white/70 hover:bg-white/10 hover:text-white"
+                    }`}
+                  >
+                    {vid.title}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>

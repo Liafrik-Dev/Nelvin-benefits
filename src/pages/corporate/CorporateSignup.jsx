@@ -104,7 +104,7 @@ function StepCompanyInfo({ form, update, onNext }) {
         <button
           onClick={onNext}
           disabled={!form.name || !form.industry || !form.country || !form.email_domain || !form.billing_contact_name || !form.billing_contact_email}
-          className="inline-flex items-center gap-2 bg-[#1B4F9C] disabled:bg-[#FFFFFF] hover:bg-[#1B4F9C] text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
+          className="inline-flex items-center gap-2 bg-[#1B4F9C] disabled:bg-[#F1F1F1] disabled:text-[#6B6B6B] hover:bg-[#123A78] text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
         >
           Continue <ArrowRight className="w-4 h-4" />
         </button>
@@ -145,7 +145,7 @@ function StepEmployeeCount({ form, update, onNext, onBack }) {
         <button
           onClick={onNext}
           disabled={Number(form.employee_count) < 1}
-          className="inline-flex items-center gap-2 bg-[#1B4F9C] disabled:bg-[#FFFFFF] hover:bg-[#1B4F9C] text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
+          className="inline-flex items-center gap-2 bg-[#1B4F9C] disabled:bg-[#F1F1F1] disabled:text-[#6B6B6B] hover:bg-[#123A78] text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
         >
           Continue <ArrowRight className="w-4 h-4" />
         </button>

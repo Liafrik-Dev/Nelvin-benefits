@@ -63,7 +63,7 @@ export default function FinancialWellness() {
                   step="25"
                   value={requestedAmount}
                   onChange={(e) => setRequestedAmount(Number(e.target.value))}
-                  className="w-full accent-emerald-600 cursor-pointer"
+                  className="w-full accent-[#1B4F9C] cursor-pointer"
                 />
               </div>
 

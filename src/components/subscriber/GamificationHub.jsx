@@ -146,7 +146,7 @@ export default function GamificationHub() {
 
             <button
               type="submit"
-              className="w-full bg-[#FFFFFF] hover:bg-[#F9F8F7] text-white font-semibold py-2.5 rounded-lg transition-all text-sm flex items-center justify-center gap-2"
+              className="w-full bg-[#F4F4F4] hover:bg-[#E9E9E9] text-[#1B4F9C] font-semibold py-2.5 rounded-lg transition-all text-sm flex items-center justify-center gap-2"
             >
               <Gift className="w-4 h-4 text-[#1B4F9C]" /> Send Kudos Points
             </button>

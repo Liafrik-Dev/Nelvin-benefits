@@ -189,7 +189,7 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
           </div>
         </div>
 
-        <div className="bg-[#FFFFFF] rounded-xl p-6 sm:p-8 shadow-2xl text-white space-y-4 border border-[#1B4F9C]/20">
+        <div className="bg-[#FFFFFF] rounded-xl p-6 sm:p-8 shadow-2xl space-y-4 border border-[#1B4F9C]/20">
           <div className="flex items-center justify-between">
             <span className="text-xs font-extrabold uppercase tracking-widest text-[#1B4F9C]">Corporate Subscription</span>
             <span className="text-xs font-bold bg-[#1B4F9C]/10 border border-[#1B4F9C]/30 text-[#1B4F9C] px-3 py-1 rounded-full">
@@ -198,7 +198,7 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
           </div>
 
           <div className="flex items-baseline justify-between">
-            <span className="text-2xl font-black font-heading text-white">{seatsUsed} Seats Allocated</span>
+            <span className="text-2xl font-black font-heading text-[#282828]">{seatsUsed} Seats Allocated</span>
             <span className="text-xs text-[#484848] font-semibold">{seatsPurchased - seatsUsed} Seats Available</span>
           </div>
 

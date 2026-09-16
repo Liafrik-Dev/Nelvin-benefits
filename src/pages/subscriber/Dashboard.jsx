@@ -96,7 +96,7 @@ export default function Dashboard() {
                 </Link>
                 <Link
                   to="/wallet"
-                  className="bg-[#F4F4F4] hover:bg-[#F4F4F4] text-white font-bold text-xs px-5 py-3 rounded-full transition-all border border-[#F1F1F1] backdrop-blur-sm flex items-center gap-2"
+                  className="bg-[#F4F4F4] hover:bg-[#E9E9E9] text-[#1B4F9C] font-bold text-xs px-5 py-3 rounded-full transition-all border border-[#F1F1F1] backdrop-blur-sm flex items-center gap-2"
                 >
                   <Wallet className="w-4 h-4 text-[#1B4F9C]" /> Open Wallet ($320.00)
                 </Link>

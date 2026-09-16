@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Nelvin Benefits — premium lifestyle benefits platform for Africa (subscribers, corporate, vendors, admin).",
+  "description": "Nelvin Benefits \u2014 premium lifestyle benefits platform for Africa (subscribers, corporate, vendors, admin).",
   "engines": {
     "node": ">=20"
   },
@@ -12,7 +12,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "smoke": "node scripts/smoke-db.mjs",
-    "lint:layout": "node scripts/layout-lint.mjs"
+    "lint:layout": "node scripts/layout-lint.mjs",
+    "check:contrast": "node scripts/contrast-fix-check.mjs",
+    "check:routes": "node scripts/route-error-sweep.mjs"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",

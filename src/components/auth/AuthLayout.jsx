@@ -172,7 +172,7 @@ export default function AuthLayout({
         <footer className="border-t border-[#F1F1F1] bg-[#FFFFFF] py-4 text-center text-xs text-[#6B6B6B]">
           <span className="inline-flex items-center justify-center gap-2">
             <ShieldCheck className="h-4 w-4 text-[#1B4F9C]" />
-            NelvinBenefit Platform
+            <span className="text-gold-gradient font-bold">NelvinBenefit</span> Platform
           </span>
         </footer>
       </div>

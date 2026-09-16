@@ -148,7 +148,7 @@ export default function ClaimsPanel({ company }) {
                 <div className="flex gap-2">
                   <button
                     onClick={() => updateStatus(selectedClaim.id, "approved", rejectReason)}
-                    className="flex-1 bg-[#FFFFFF] hover:bg-[#1B4F9C] text-white font-bold text-xs py-2.5 rounded-xl transition-colors"
+                    className="flex-1 bg-[#F4F4F4] hover:bg-[#1B4F9C] hover:text-white text-[#1B4F9C] font-bold text-xs py-2.5 rounded-xl transition-colors"
                   >
                     Approve Claim
                   </button>

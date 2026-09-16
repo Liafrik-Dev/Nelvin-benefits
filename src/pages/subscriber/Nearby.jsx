@@ -65,7 +65,7 @@ export default function Nearby() {
         </div>
 
         {/* Map preview box */}
-        <div className="bg-[#FFFFFF] rounded-xl p-6 sm:p-8 text-white relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="bg-[#FFFFFF] rounded-xl p-6 sm:p-8 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-3 relative z-10 max-w-lg">
             <div className="flex items-center gap-2 text-[#1B4F9C] text-xs font-bold uppercase tracking-wider">
               <Navigation className="w-4 h-4" /> GPS Radar Active

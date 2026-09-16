@@ -85,7 +85,7 @@ export default function Wallet() {
 
         {/* Balance cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-[#FFFFFF] rounded-xl p-6 text-white space-y-4 shadow-sm">
+          <div className="bg-[#FFFFFF] rounded-xl p-6 space-y-4 shadow-sm">
             <div className="flex items-center justify-between">
               <span className="text-xs uppercase font-bold text-[#484848] tracking-wider">Total Balance</span>
               <CreditCard className="w-5 h-5 text-[#1B4F9C]" />

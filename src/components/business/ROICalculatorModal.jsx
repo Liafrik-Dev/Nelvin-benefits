@@ -101,7 +101,7 @@ export default function ROICalculatorModal({ isOpen, onClose }) {
 
         <button
           onClick={onClose}
-          className="w-full bg-[#FFFFFF] hover:bg-[#F9F8F7] text-white font-bold py-2.5 rounded-xl text-sm"
+          className="w-full bg-[#F4F4F4] hover:bg-[#E9E9E9] text-[#1B4F9C] font-bold py-2.5 rounded-xl text-sm"
         >
           Close Calculator
         </button>
