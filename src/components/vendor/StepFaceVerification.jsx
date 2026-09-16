@@ -19,7 +19,7 @@ export default function StepFaceVerification({ form, update, onNext, onBack }) {
     <div className="space-y-6">
       <div className="text-center">
         <div className="w-12 h-12 rounded-lg bg-[#F9F8F7] flex items-center justify-center mx-auto mb-3">
-          <Camera className="w-6 h-6 text-[#0866FF]" />
+          <Camera className="w-6 h-6 text-[#1B4F9C]" />
         </div>
         <h2 className="text-xl font-semibold text-ivory">Take a quick selfie</h2>
         <p className="text-sm text-ivory-muted mt-1.5 max-w-sm mx-auto">
@@ -30,7 +30,7 @@ export default function StepFaceVerification({ form, update, onNext, onBack }) {
       <ul className="text-sm text-ivory-muted space-y-2 max-w-xs mx-auto">
         {["Look directly at the camera", "Good lighting", "No sunglasses or face covering"].map((rule) => (
           <li key={rule} className="flex items-center gap-2">
-            <CheckCircle2 className="w-4 h-4 text-[#0866FF] flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-[#1B4F9C] flex-shrink-0" />
             {rule}
           </li>
         ))}

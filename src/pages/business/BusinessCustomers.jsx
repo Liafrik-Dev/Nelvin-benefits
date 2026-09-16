@@ -18,12 +18,12 @@ export default function BusinessCustomers() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {companies.map((c) => (
           <div key={c.name} className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 space-y-3 shadow-sm">
-            <Building2 className="w-6 h-6 text-[#0866FF]" />
+            <Building2 className="w-6 h-6 text-[#1B4F9C]" />
             <h3 className="font-bold text-ivory text-lg font-heading">{c.name}</h3>
             <div className="pt-2 border-t border-gray-50 text-xs space-y-1 text-ivory-muted">
               <p><span className="font-bold">Active Members:</span> {c.members}</p>
               <p><span className="font-bold">Redemptions:</span> {c.redemptions}</p>
-              <p className="text-[#0866FF] font-bold"><span className="font-bold">Total Sales:</span> {c.revenue}</p>
+              <p className="text-[#1B4F9C] font-bold"><span className="font-bold">Total Sales:</span> {c.revenue}</p>
             </div>
           </div>
         ))}

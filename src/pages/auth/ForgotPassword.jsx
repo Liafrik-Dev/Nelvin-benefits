@@ -53,8 +53,8 @@ export default function ForgotPassword() {
       <div className="rounded-2xl border border-[#E3E3E3] bg-[#FFFFFF] p-6 shadow-nv-card-hover sm:p-8">
         {sent ? (
           <div className="space-y-5 text-center">
-            <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#0866FF]/10">
-              <CheckCircle2 className="h-6 w-6 text-[#0866FF]" />
+            <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#1B4F9C]/10">
+              <CheckCircle2 className="h-6 w-6 text-[#1B4F9C]" />
             </span>
             <p className="text-sm leading-relaxed text-[#484848]">
               If an account exists for <strong className="text-[#282828]">{email}</strong>,
@@ -106,7 +106,7 @@ export default function ForgotPassword() {
             </div>
             <Button
               type="submit"
-              className="h-12 w-full rounded-xl bg-[#0866FF] text-sm font-bold text-white transition-colors hover:bg-[#0556D6]"
+              className="h-12 w-full rounded-xl bg-[#1B4F9C] text-sm font-bold text-white transition-colors hover:bg-[#123A78]"
               disabled={loading}
             >
               {loading ? (

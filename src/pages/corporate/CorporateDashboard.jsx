@@ -104,10 +104,10 @@ export default function CorporateDashboard() {
     return (
       <div className="min-h-screen bg-[#F9F8F7] flex items-center justify-center px-4">
         <div className="max-w-md text-center bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-8 shadow-sm">
-          <Building2 className="w-10 h-10 text-[#0866FF] mx-auto mb-4" />
+          <Building2 className="w-10 h-10 text-[#1B4F9C] mx-auto mb-4" />
           <h1 className="text-xl font-bold text-ivory">No company linked yet</h1>
           <p className="text-sm text-ivory-muted mt-2 mb-6">Sign up your company, or your admin will invite you with your work email.</p>
-          <button onClick={() => navigate("/corporate-signup")} className="bg-[#0866FF] text-white px-6 py-2.5 rounded-full text-sm font-semibold">Sign Up Your Company</button>
+          <button onClick={() => navigate("/corporate-signup")} className="bg-[#1B4F9C] text-white px-6 py-2.5 rounded-full text-sm font-semibold">Sign Up Your Company</button>
         </div>
       </div>
     );
@@ -127,7 +127,7 @@ export default function CorporateDashboard() {
           : "Your payment couldn't be confirmed. Please try again or contact support.";
       action = (
         <div className="flex gap-3 justify-center">
-          {!isLead && <button onClick={() => navigate("/corporate-signup")} className="bg-[#0866FF] text-white px-6 py-2.5 rounded-full text-sm font-semibold">Try again</button>}
+          {!isLead && <button onClick={() => navigate("/corporate-signup")} className="bg-[#1B4F9C] text-white px-6 py-2.5 rounded-full text-sm font-semibold">Try again</button>}
           <button onClick={() => navigate("/")} className="bg-[#F4F4F4] text-ivory px-6 py-2.5 rounded-full text-sm font-semibold">Return home</button>
         </div>
       );
@@ -143,7 +143,7 @@ export default function CorporateDashboard() {
       title = "Confirming your payment…";
       message = "We're verifying your payment. This usually takes a few minutes. You'll get access automatically once confirmed.";
       action = (
-        <button onClick={refresh} className="bg-[#0866FF] text-white px-6 py-2.5 rounded-full text-sm font-semibold inline-flex items-center gap-2">
+        <button onClick={refresh} className="bg-[#1B4F9C] text-white px-6 py-2.5 rounded-full text-sm font-semibold inline-flex items-center gap-2">
           <RefreshCw className="w-4 h-4" /> Refresh
         </button>
       );
@@ -154,9 +154,9 @@ export default function CorporateDashboard() {
           {isRejected || isSuspended ? (
             <Building2 className="w-10 h-10 text-ivory-dim mx-auto mb-4" />
           ) : isLead ? (
-            <Users className="w-10 h-10 text-[#0866FF] mx-auto mb-4" />
+            <Users className="w-10 h-10 text-[#1B4F9C] mx-auto mb-4" />
           ) : (
-            <RefreshCw className="w-10 h-10 text-[#0866FF] mx-auto mb-4 animate-spin" />
+            <RefreshCw className="w-10 h-10 text-[#1B4F9C] mx-auto mb-4 animate-spin" />
           )}
           <h1 className="text-xl font-bold text-ivory">{title}</h1>
           <p className="text-sm text-ivory-muted mt-2 mb-6">{message}</p>
@@ -178,7 +178,7 @@ export default function CorporateDashboard() {
               {company.branding_logo_url || company.logo_url ? (
                 <img src={company.branding_logo_url || company.logo_url} alt="" className="w-10 h-10 rounded-lg object-cover flex-shrink-0" />
               ) : (
-                <div className="w-10 h-10 rounded-lg bg-[#F4F4F4] text-[#0866FF] ring-1 ring-[#0866FF]/25 flex items-center justify-center font-bold flex-shrink-0">{(company.name || "?").slice(0, 1)}</div>
+                <div className="w-10 h-10 rounded-lg bg-[#F4F4F4] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/25 flex items-center justify-center font-bold flex-shrink-0">{(company.name || "?").slice(0, 1)}</div>
               )}
               <div className="min-w-0">
                 <p className="font-bold text-ivory text-sm truncate">{company.name}</p>
@@ -193,7 +193,7 @@ export default function CorporateDashboard() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
           {company.branding_welcome_message && (
             <div className="bg-emerald-black ring-1 ring-[#F1F1F1] border border-transparent rounded-lg p-6">
-              <p className="text-xs uppercase tracking-wider text-[#0866FF] font-semibold mb-1">Welcome</p>
+              <p className="text-xs uppercase tracking-wider text-[#1B4F9C] font-semibold mb-1">Welcome</p>
               <p className="text-ivory">{company.branding_welcome_message}</p>
             </div>
           )}
@@ -217,10 +217,10 @@ export default function CorporateDashboard() {
     return (
       <div className="min-h-screen bg-[#F9F8F7] flex items-center justify-center px-4">
         <div className="max-w-md text-center bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-8 shadow-sm">
-          <Users className="w-10 h-10 text-[#0866FF] mx-auto mb-4" />
+          <Users className="w-10 h-10 text-[#1B4F9C] mx-auto mb-4" />
           <h1 className="text-xl font-bold text-ivory">Thanks — we'll be in touch within 1 business day.</h1>
           <p className="text-sm text-ivory-muted mt-2 mb-6">Our team is reaching out to schedule a call and set up your company dashboard.</p>
-          <button onClick={() => logout(true)} className="bg-[#0866FF] text-white px-6 py-2.5 rounded-full text-sm font-semibold">Back to home</button>
+          <button onClick={() => logout(true)} className="bg-[#1B4F9C] text-white px-6 py-2.5 rounded-full text-sm font-semibold">Back to home</button>
         </div>
       </div>
     );
@@ -248,7 +248,7 @@ export default function CorporateDashboard() {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setIsAssistantOpen(true)}
-              className="inline-flex items-center gap-1.5 bg-[#FFFFFF] hover:bg-[#F9F8F7] text-[#0866FF] px-3 py-1.5 rounded-lg text-xs font-bold transition-all shadow-sm"
+              className="inline-flex items-center gap-1.5 bg-[#FFFFFF] hover:bg-[#F9F8F7] text-[#1B4F9C] px-3 py-1.5 rounded-lg text-xs font-bold transition-all shadow-sm"
             >
               <Bot className="w-4 h-4" /> Smart Copilot
             </button>
@@ -288,10 +288,10 @@ export default function CorporateDashboard() {
           {showWelcome && (
             <div className="mb-4 bg-[#FFFFFF] border border-[#F1F1F1] rounded-lg p-4 flex items-center justify-between gap-3">
               <div>
-                <p className="font-bold text-[#0866FF] text-sm">Welcome to Nelvin, {company.name}!</p>
-                <p className="text-xs text-[#0866FF]">Your corporate benefits dashboard is ready. Invite your team to get started.</p>
+                <p className="font-bold text-[#1B4F9C] text-sm">Welcome to Nelvin, {company.name}!</p>
+                <p className="text-xs text-[#1B4F9C]">Your corporate benefits dashboard is ready. Invite your team to get started.</p>
               </div>
-              <button onClick={dismissWelcome} className="text-[#0866FF] hover:text-[#0866FF] text-xs font-semibold whitespace-nowrap">Dismiss</button>
+              <button onClick={dismissWelcome} className="text-[#1B4F9C] hover:text-[#1B4F9C] text-xs font-semibold whitespace-nowrap">Dismiss</button>
             </div>
           )}
           {tab === "dashboard" && <CorporateDashboardHome company={company} employees={employees} onGoEmployees={() => setTab("employees")} />}

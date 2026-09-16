@@ -186,7 +186,7 @@ export default function Navbar() {
                   onClick={() => { setLangOpen((v) => !v); setMenuKey(null); }}
                   aria-label={t("nav.language")}
                   aria-expanded={langOpen}
-                  className="btn-nv btn-nv-sm gap-1.5 border border-[#F1F1F1] px-3 text-[#282828]/90 hover:border-[#0866FF]/50 hover:text-gold"
+                  className="btn-nv btn-nv-sm gap-1.5 border border-[#F1F1F1] px-3 text-[#282828]/90 hover:border-[#1B4F9C]/50 hover:text-gold"
                 >
                   <Globe className="h-3.5 w-3.5 text-gold" />
                   <span className="uppercase">{lang}</span>
@@ -266,9 +266,9 @@ export default function Navbar() {
                         key={item.title}
                         to={item.to}
                         onClick={() => setMenuKey(null)}
-                        className="group flex items-start gap-3 rounded-xl border border-transparent p-3.5 transition-colors hover:border-[#0866FF]/25 hover:bg-[#F9F8F7]"
+                        className="group flex items-start gap-3 rounded-xl border border-transparent p-3.5 transition-colors hover:border-[#1B4F9C]/25 hover:bg-[#F9F8F7]"
                       >
-                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#0866FF]/20 bg-[#0866FF]/10 text-gold transition-colors group-hover:bg-gold group-hover:text-white">
+                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#1B4F9C]/20 bg-[#1B4F9C]/10 text-gold transition-colors group-hover:bg-gold group-hover:text-white">
                           <ItemIcon className="h-4 w-4" />
                         </span>
                         <span className="min-w-0">
@@ -320,7 +320,7 @@ export default function Navbar() {
                       key={p.title}
                       to={p.to}
                       onClick={() => setMobileOpen(false)}
-                      className="flex flex-col items-center gap-1.5 rounded-xl border border-[#F1F1F1] bg-[#F9F8F7] p-3 text-center transition-colors hover:border-[#0866FF]/40"
+                      className="flex flex-col items-center gap-1.5 rounded-xl border border-[#F1F1F1] bg-[#F9F8F7] p-3 text-center transition-colors hover:border-[#1B4F9C]/40"
                     >
                       <p.icon className="h-4 w-4 text-gold" />
                       <span className="text-[11px] font-bold text-ivory">{p.title}</span>

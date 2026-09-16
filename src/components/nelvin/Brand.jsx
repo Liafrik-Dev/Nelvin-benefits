@@ -21,11 +21,11 @@ export function BrandMark({ size = "md", tone = "default", className = "" }) {
   return (
     <span
       className={`${s.tile} shrink-0 rounded-xl ${
-        inverse ? "bg-white ring-white/40" : "bg-gradient-to-br from-[#0866FF] to-[#1F4CF4] ring-[#0866FF]/25"
+        inverse ? "bg-white ring-white/40" : "bg-gradient-to-br from-[#1B4F9C] to-[#123A78] ring-[#1B4F9C]/25"
       } flex items-center justify-center shadow-nv-card ring-1 ${className}`}
       aria-hidden="true"
     >
-      <span className={`${s.letter} font-black tracking-tighter nb-wordmark ${inverse ? "text-[#0866FF]" : "text-white"}`}>N</span>
+      <span className={`${s.letter} font-black tracking-tighter nb-wordmark ${inverse ? "text-[#1B4F9C]" : "text-white"}`}>N</span>
     </span>
   );
 }
@@ -98,7 +98,7 @@ export function SectionHeading({
   return (
     <div className={`flex flex-col ${alignment} ${align === "center" ? "mx-auto max-w-3xl" : ""} ${className}`}>
       {eyebrow ? (
-        <p className={`mb-3 text-[11px] font-bold uppercase tracking-[0.2em] ${inverse ? "text-white/90" : "text-[#0866FF]"}`}>
+        <p className={`mb-3 text-[11px] font-bold uppercase tracking-[0.2em] ${inverse ? "text-white/90" : "text-[#1B4F9C]"}`}>
           {eyebrow}
         </p>
       ) : null}

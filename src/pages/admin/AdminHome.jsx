@@ -19,11 +19,11 @@ const PIE_COLORS = ["#166534", "#65a30d", "#d97706", "#9333ea", "#0ea5e9", "#ef4
 
 function StatCard({ icon: Icon, label, value, accent = "emerald", to }) {
   const accents = {
-    emerald: "bg-[#FFFFFF] text-[#0866FF]",
-    sky: "bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20",
-    amber: "bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20",
-    violet: "bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20",
-    rose: "bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20",
+    emerald: "bg-[#FFFFFF] text-[#1B4F9C]",
+    sky: "bg-[#F9F8F7] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/20",
+    amber: "bg-[#F9F8F7] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/20",
+    violet: "bg-[#F9F8F7] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/20",
+    rose: "bg-[#F9F8F7] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/20",
     gray: "bg-[#F4F4F4] text-ivory",
   };
   const inner = (
@@ -261,7 +261,7 @@ export default function AdminHome() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-5">
           <div className="flex items-center gap-2 mb-4">
-            <TrendingUp className="w-4 h-4 text-[#0866FF]" />
+            <TrendingUp className="w-4 h-4 text-[#1B4F9C]" />
             <h3 className="font-semibold text-ivory">User Growth</h3>
             <span className="text-xs text-ivory-dim ml-auto">Individual vs Corporate</span>
           </div>
@@ -280,7 +280,7 @@ export default function AdminHome() {
 
         <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-5">
           <div className="flex items-center gap-2 mb-4">
-            <Crown className="w-4 h-4 text-[#0866FF]" />
+            <Crown className="w-4 h-4 text-[#1B4F9C]" />
             <h3 className="font-semibold text-ivory">Membership Sales</h3>
           </div>
           <ResponsiveContainer width="100%" height={240}>
@@ -296,7 +296,7 @@ export default function AdminHome() {
 
         <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-5">
           <div className="flex items-center gap-2 mb-4">
-            <Tag className="w-4 h-4 text-[#0866FF]" />
+            <Tag className="w-4 h-4 text-[#1B4F9C]" />
             <h3 className="font-semibold text-ivory">Offers by Category</h3>
           </div>
           <ResponsiveContainer width="100%" height={240}>
@@ -313,7 +313,7 @@ export default function AdminHome() {
 
         <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-5">
           <div className="flex items-center gap-2 mb-4">
-            <Globe2 className="w-4 h-4 text-[#0866FF]" />
+            <Globe2 className="w-4 h-4 text-[#1B4F9C]" />
             <h3 className="font-semibold text-ivory">Offers by Country</h3>
           </div>
           <ResponsiveContainer width="100%" height={240}>
@@ -330,7 +330,7 @@ export default function AdminHome() {
 
         <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-5 lg:col-span-2">
           <div className="flex items-center gap-2 mb-4">
-            <CreditCard className="w-4 h-4 text-[#0866FF]" />
+            <CreditCard className="w-4 h-4 text-[#1B4F9C]" />
             <h3 className="font-semibold text-ivory">Revenue Overview</h3>
             <span className="text-xs text-ivory-dim ml-auto">Cumulative</span>
           </div>
@@ -357,7 +357,7 @@ export default function AdminHome() {
         <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-5">
           <div className="flex items-center justify-between mb-3">
             <h3 className="font-semibold text-ivory">Recent Registrations</h3>
-            <Link to="/admin/users" className="text-xs text-[#0866FF] font-semibold">View all</Link>
+            <Link to="/admin/users" className="text-xs text-[#1B4F9C] font-semibold">View all</Link>
           </div>
           <ul className="divide-y divide-[#F1F1F1]">
             {recentRegistrations.length === 0 && <li className="py-3 text-sm text-ivory-dim">No users yet.</li>}
@@ -376,7 +376,7 @@ export default function AdminHome() {
         <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-5">
           <div className="flex items-center justify-between mb-3">
             <h3 className="font-semibold text-ivory">Latest Offers</h3>
-            <Link to="/admin/offers" className="text-xs text-[#0866FF] font-semibold">View all</Link>
+            <Link to="/admin/offers" className="text-xs text-[#1B4F9C] font-semibold">View all</Link>
           </div>
           <ul className="divide-y divide-[#F1F1F1]">
             {latestOffers.length === 0 && <li className="py-3 text-sm text-ivory-dim">No offers yet.</li>}
@@ -395,7 +395,7 @@ export default function AdminHome() {
         <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-5">
           <div className="flex items-center justify-between mb-3">
             <h3 className="font-semibold text-ivory">Recent Payments</h3>
-            <Link to="/admin/payments" className="text-xs text-[#0866FF] font-semibold">View all</Link>
+            <Link to="/admin/payments" className="text-xs text-[#1B4F9C] font-semibold">View all</Link>
           </div>
           <ul className="divide-y divide-[#F1F1F1]">
             {recentPayments.length === 0 && <li className="py-3 text-sm text-ivory-dim">No payments yet.</li>}
@@ -419,7 +419,7 @@ export default function AdminHome() {
         <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-5">
           <div className="flex items-center justify-between mb-3">
             <h3 className="font-semibold text-ivory">Recent Reviews</h3>
-            <Link to="/admin/reviews" className="text-xs text-[#0866FF] font-semibold">View all</Link>
+            <Link to="/admin/reviews" className="text-xs text-[#1B4F9C] font-semibold">View all</Link>
           </div>
           <ul className="divide-y divide-[#F1F1F1]">
             {recentReviews.length === 0 && <li className="py-3 text-sm text-ivory-dim">No reviews yet.</li>}

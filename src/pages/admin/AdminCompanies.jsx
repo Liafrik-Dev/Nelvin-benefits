@@ -124,7 +124,7 @@ export default function AdminCompanies() {
     { key: "name", label: "Company", sortable: true,
       render: (c) => (
         <div className="flex items-center gap-2">
-          {c.logo_url ? <img src={c.logo_url} alt="" className="w-8 h-8 rounded-lg object-cover" /> : <div className="w-8 h-8 rounded-lg bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20 flex items-center justify-center text-xs font-bold">{(c.name || "?").slice(0,1)}</div>}
+          {c.logo_url ? <img src={c.logo_url} alt="" className="w-8 h-8 rounded-lg object-cover" /> : <div className="w-8 h-8 rounded-lg bg-[#F9F8F7] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/20 flex items-center justify-center text-xs font-bold">{(c.name || "?").slice(0,1)}</div>}
           <div className="min-w-0">
             <p className="text-sm font-medium text-ivory truncate">{c.name}</p>
             <p className="text-xs text-ivory-dim truncate">{c.industry || "—"}</p>
@@ -150,14 +150,14 @@ export default function AdminCompanies() {
     ) },
     { key: "dashboard_access", label: "Access", sortable: true, render: (c) => (
         c.dashboard_access
-          ? <span className="text-[10px] font-bold uppercase tracking-wide bg-[#F4F4F4] text-[#0866FF] px-2 py-0.5 rounded-full">Active</span>
+          ? <span className="text-[10px] font-bold uppercase tracking-wide bg-[#F4F4F4] text-[#1B4F9C] px-2 py-0.5 rounded-full">Active</span>
           : <span className="text-[10px] font-bold uppercase tracking-wide bg-[#F4F4F4] text-ivory-muted px-2 py-0.5 rounded-full">Locked</span>
     ) },
     { key: "status", label: "Status", sortable: true, render: (c) => (
         <div className="flex flex-wrap items-center gap-1.5">
           <StatusBadge status={c.status} />
           {c.is_corporate_lead && c.status === "pending" && (
-            <span className="text-[10px] font-bold uppercase tracking-wide bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20 px-2 py-0.5 rounded-full">Need Call</span>
+            <span className="text-[10px] font-bold uppercase tracking-wide bg-[#F9F8F7] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/20 px-2 py-0.5 rounded-full">Need Call</span>
           )}
         </div>
     ) },
@@ -205,7 +205,7 @@ export default function AdminCompanies() {
         </div>
         <button
           onClick={() => setEditing({})}
-          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-[#0866FF] hover:bg-[#0866FF] text-white rounded-lg"
+          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white rounded-lg"
         >
           <Plus className="w-4 h-4" /> New company
         </button>
@@ -225,16 +225,16 @@ export default function AdminCompanies() {
             <RowIconBtn title="View employees" Icon={Eye} onClick={() => setViewing(c)} />
             <RowIconBtn title="Edit" Icon={Edit2} onClick={() => setEditing(c)} />
             {!c.dashboard_access && c.status === "pending" && (
-              <RowIconBtn title={c.activation_type === "custom_pricing" ? "Approve application" : "Confirm payment"} Icon={Check} color="text-[#0866FF] hover:text-[#0866FF]" onClick={() => activateCompany(c)} />
+              <RowIconBtn title={c.activation_type === "custom_pricing" ? "Approve application" : "Confirm payment"} Icon={Check} color="text-[#1B4F9C] hover:text-[#1B4F9C]" onClick={() => activateCompany(c)} />
             )}
             {!c.dashboard_access && c.status === "pending" && (
               <RowIconBtn title="Reject" Icon={X} color="text-rose-600 hover:text-rose-700" onClick={() => rejectCompany(c)} />
             )}
             {c.dashboard_access && c.status !== "suspended" && (
-              <RowIconBtn title="Suspend" Icon={Ban} color="text-[#0866FF] hover:text-[#0866FF]" onClick={() => suspendCompany(c)} />
+              <RowIconBtn title="Suspend" Icon={Ban} color="text-[#1B4F9C] hover:text-[#1B4F9C]" onClick={() => suspendCompany(c)} />
             )}
             {c.status === "suspended" && (
-              <RowIconBtn title="Reactivate" Icon={RotateCcw} color="text-[#0866FF] hover:text-[#0866FF]" onClick={() => reactivateCompany(c)} />
+              <RowIconBtn title="Reactivate" Icon={RotateCcw} color="text-[#1B4F9C] hover:text-[#1B4F9C]" onClick={() => reactivateCompany(c)} />
             )}
             <RowIconBtn title="Delete" Icon={Trash2} color="text-rose-600 hover:text-rose-700" onClick={() => removeCompany(c.id)} />
           </div>

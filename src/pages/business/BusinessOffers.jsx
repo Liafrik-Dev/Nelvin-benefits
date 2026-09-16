@@ -43,9 +43,9 @@ export default function BusinessOffers() {
         </div>
         <Link
           to="/business/offers/new"
-          className="bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#0866FF] font-bold text-xs px-4 py-2.5 rounded-xl flex items-center gap-2 shadow-sm transition-colors"
+          className="bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#1B4F9C] font-bold text-xs px-4 py-2.5 rounded-xl flex items-center gap-2 shadow-sm transition-colors"
         >
-          <Plus className="w-4 h-4 text-[#0866FF]" /> Create New Offer
+          <Plus className="w-4 h-4 text-[#1B4F9C]" /> Create New Offer
         </Link>
       </div>
 
@@ -65,14 +65,14 @@ export default function BusinessOffers() {
             {items.map((o) => (
               <tr key={o.id} className="hover:bg-[#F9F8F7] transition-colors">
                 <td className="px-6 py-4 font-bold text-ivory flex items-center gap-2">
-                  <Tag className="w-4 h-4 text-[#0866FF]" /> {o.title}
+                  <Tag className="w-4 h-4 text-[#1B4F9C]" /> {o.title}
                 </td>
                 <td className="px-6 py-4 text-ivory-muted">{o.category}</td>
-                <td className="px-6 py-4 font-extrabold text-[#0866FF]">{o.discount_label}</td>
+                <td className="px-6 py-4 font-extrabold text-[#1B4F9C]">{o.discount_label}</td>
                 <td className="px-6 py-4 font-bold text-ivory">{o.total_redemptions_count || 0}</td>
                 <td className="px-6 py-4">
                   <span className={`text-xs font-bold px-2.5 py-1 rounded-full uppercase ${
-                    o.status === "active" ? "bg-[#FFFFFF] text-[#0866FF]" : "bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20"
+                    o.status === "active" ? "bg-[#FFFFFF] text-[#1B4F9C]" : "bg-[#F9F8F7] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/20"
                   }`}>
                     {o.status || "Active"}
                   </span>

@@ -34,7 +34,7 @@ export default function MyOffers() {
               <h1 className="text-2xl font-bold font-heading text-ivory">Offers You've Used</h1>
               <p className="text-sm text-ivory-dim mt-1">Track every offer you've redeemed and how much you saved</p>
             </div>
-            <span className="bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20 text-xs font-bold px-3 py-1.5 rounded-full whitespace-nowrap">
+            <span className="bg-[#F9F8F7] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/20 text-xs font-bold px-3 py-1.5 rounded-full whitespace-nowrap">
               {redemptions.length} Redeemed
             </span>
           </div>
@@ -46,10 +46,10 @@ export default function MyOffers() {
           ) : (
             <div className="space-y-3">
               {redemptions.map((r, i) => (
-                <div key={r.id} className={`flex items-center justify-between p-4 rounded-xl border ${i === 0 ? "border-[#0866FF]/30 bg-[#FFFFFF]/30" : "border-[#F1F1F1]"}`}>
+                <div key={r.id} className={`flex items-center justify-between p-4 rounded-xl border ${i === 0 ? "border-[#1B4F9C]/30 bg-[#FFFFFF]/30" : "border-[#F1F1F1]"}`}>
                   <div className="flex items-center gap-3">
                     <div className="w-9 h-9 bg-[#FFFFFF] rounded-lg flex items-center justify-center">
-                      <Tag className="w-4 h-4 text-[#0866FF]" />
+                      <Tag className="w-4 h-4 text-[#1B4F9C]" />
                     </div>
                     <div>
                       <p className="font-semibold text-ivory text-sm">{r.business_name}</p>
@@ -61,7 +61,7 @@ export default function MyOffers() {
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-[#0866FF] font-bold text-sm">+₦{(r.savings_amount || 0).toLocaleString()}</p>
+                    <p className="text-[#1B4F9C] font-bold text-sm">+₦{(r.savings_amount || 0).toLocaleString()}</p>
                     <p className="text-xs text-ivory-dim">{new Date(r.created_date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}</p>
                   </div>
                 </div>

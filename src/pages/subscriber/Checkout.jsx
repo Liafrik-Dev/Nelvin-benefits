@@ -107,10 +107,10 @@ export default function Checkout() {
           <Link to="/choose-plan" className="inline-flex items-center gap-1.5 text-[#484848] hover:text-[#282828] text-xs font-medium mb-6 transition-colors">
             <ArrowLeft className="w-3.5 h-3.5" /> Change plan
           </Link>
-          <p className="text-[#0866FF] font-semibold text-xs tracking-[0.15em] uppercase mb-3">Checkout</p>
+          <p className="text-[#1B4F9C] font-semibold text-xs tracking-[0.15em] uppercase mb-3">Checkout</p>
           <h1 className="text-3xl sm:text-4xl font-bold font-heading text-white">Confirm your {plan.name} membership</h1>
         </motion.div>
-        <div className="absolute -top-20 -right-20 w-72 h-72 bg-[#0866FF]/20 rounded-full blur-3xl" />
+        <div className="absolute -top-20 -right-20 w-72 h-72 bg-[#1B4F9C]/20 rounded-full blur-3xl" />
         <div className="absolute -bottom-24 -left-20 w-72 h-72 bg-[#F4F4F4] rounded-full blur-3xl" />
       </div>
 
@@ -125,11 +125,11 @@ export default function Checkout() {
             {status === "done" ? (
               <motion.div key="done" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="text-center py-6">
                 <div className="w-16 h-16 bg-[#F4F4F4] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Check className="w-8 h-8 text-[#0866FF]" />
+                  <Check className="w-8 h-8 text-[#1B4F9C]" />
                 </div>
                 <h2 className="text-2xl font-bold font-heading text-ivory">You're enrolled!</h2>
                 <p className="text-sm text-ivory-muted mt-2">Your {plan.name} membership is pending activation. Redirecting to your dashboard…</p>
-                <div className="flex justify-center mt-4"><Loader2 className="w-5 h-5 animate-spin text-[#0866FF]" /></div>
+                <div className="flex justify-center mt-4"><Loader2 className="w-5 h-5 animate-spin text-[#1B4F9C]" /></div>
               </motion.div>
             ) : (
               <motion.div key="form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
@@ -144,7 +144,7 @@ export default function Checkout() {
                 <ul className="space-y-3 mb-6">
                   {plan.features.map((f, i) => (
                     <li key={i} className="flex items-start gap-2.5 text-sm text-ivory">
-                      <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#0866FF]" /> {f}
+                      <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#1B4F9C]" /> {f}
                     </li>
                   ))}
                 </ul>
@@ -156,14 +156,14 @@ export default function Checkout() {
                 <button
                   onClick={handleConfirm}
                   disabled={status === "processing"}
-                  className="w-full py-3.5 rounded-full font-semibold text-sm bg-[#0866FF] hover:bg-[#0866FF] text-white transition-colors disabled:opacity-70 flex items-center justify-center gap-2"
+                  className="w-full py-3.5 rounded-full font-semibold text-sm bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white transition-colors disabled:opacity-70 flex items-center justify-center gap-2"
                 >
                   {status === "processing"
                     ? <><Loader2 className="w-4 h-4 animate-spin" />Processing…</>
                     : <>Confirm & Pay ${priceAmount}/mo</>}
                 </button>
                 <p className="flex items-center justify-center gap-1.5 text-xs text-ivory-dim mt-4">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#0866FF]" /> Secure checkout · plan verified against the pricing table
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#1B4F9C]" /> Secure checkout · plan verified against the pricing table
                 </p>
               </motion.div>
             )}

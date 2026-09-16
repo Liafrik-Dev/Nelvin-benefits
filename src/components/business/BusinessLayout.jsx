@@ -47,7 +47,7 @@ export default function BusinessLayout() {
           <p className="text-sm text-ivory-muted mb-4">
             Connect a business account to manage offers, redemptions and analytics.
           </p>
-          <Link to="/partner" className="inline-flex items-center font-semibold text-[#0866FF] text-sm">
+          <Link to="/partner" className="inline-flex items-center font-semibold text-[#1B4F9C] text-sm">
             Apply as a partner
           </Link>
         </div>
@@ -64,7 +64,7 @@ export default function BusinessLayout() {
       >
         <div className="h-16 px-5 flex items-center justify-between border-b border-[#F1F1F1]">
           <Link to="/business" className="flex items-center gap-2" onClick={() => setSidebarOpen(false)}>
-            <div className="w-8 h-8 bg-[#0866FF] rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-[#1B4F9C] rounded-lg flex items-center justify-center">
               <span className="text-[#282828] font-bold text-sm">N</span>
             </div>
             <div className="leading-tight">
@@ -86,7 +86,7 @@ export default function BusinessLayout() {
               className={({ isActive }) =>
                 `flex items-center justify-between gap-2 px-3 py-2 rounded-xl text-xs font-semibold transition-colors ${
                   isActive
-                    ? "bg-[#0866FF] text-white"
+                    ? "bg-[#1B4F9C] text-white"
                     : "text-[#282828]/70 hover:bg-[#F4F4F4] hover:text-[#282828]"
                 }`
               }

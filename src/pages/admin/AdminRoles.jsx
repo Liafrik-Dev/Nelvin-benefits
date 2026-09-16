@@ -21,7 +21,7 @@ export default function AdminRoles() {
         {ROLES.map((r) => (
           <div key={r.name} className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-5">
             <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 rounded-xl bg-[#FFFFFF] text-[#0866FF] flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-[#FFFFFF] text-[#1B4F9C] flex items-center justify-center">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <div>

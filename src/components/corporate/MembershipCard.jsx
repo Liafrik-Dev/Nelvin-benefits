@@ -51,7 +51,7 @@ export default function MembershipCard({ employee, company, accent = "#059669", 
               {logoUrl ? (
                 <img src={logoUrl} alt="" className="w-9 h-9 rounded-lg object-cover bg-[#F4F4F4]" />
               ) : (
-                <div className="w-9 h-9 bg-[#FFFFFF]/15 rounded-lg flex items-center justify-center text-[#0866FF] font-bold">
+                <div className="w-9 h-9 bg-[#FFFFFF]/15 rounded-lg flex items-center justify-center text-[#1B4F9C] font-bold">
                   N
                 </div>
               )}
@@ -60,7 +60,7 @@ export default function MembershipCard({ employee, company, accent = "#059669", 
                 <p className="text-sm font-semibold leading-tight">{companyName}</p>
               </div>
             </div>
-            <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-full ${status === "active" ? "bg-[#0866FF]/30 text-ivory" : "bg-rose-400/30 text-rose-50"}`}>
+            <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-full ${status === "active" ? "bg-[#1B4F9C]/30 text-ivory" : "bg-rose-400/30 text-rose-50"}`}>
               {status}
             </span>
           </div>

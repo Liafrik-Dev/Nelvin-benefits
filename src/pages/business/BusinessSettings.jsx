@@ -30,12 +30,12 @@ export default function BusinessSettings() {
 
         <button
           type="submit"
-          className="bg-[#FFFFFF] text-[#0866FF] font-bold px-6 py-2.5 rounded-full text-xs hover:bg-[#FFFFFF] flex items-center gap-2"
+          className="bg-[#FFFFFF] text-[#1B4F9C] font-bold px-6 py-2.5 rounded-full text-xs hover:bg-[#FFFFFF] flex items-center gap-2"
         >
           <Save className="w-3.5 h-3.5" /> Save Settings
         </button>
         {saved && (
-          <span className="text-xs font-bold text-[#0866FF] flex items-center gap-1">
+          <span className="text-xs font-bold text-[#1B4F9C] flex items-center gap-1">
             <CheckCircle className="w-4 h-4" /> Saved
           </span>
         )}

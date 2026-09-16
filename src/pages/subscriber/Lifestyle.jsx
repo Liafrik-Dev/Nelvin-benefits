@@ -29,8 +29,8 @@ export default function Lifestyle() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2 max-w-xl">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F9F8F7] text-[#0866FF] text-xs font-bold uppercase">
-              <Smile className="w-3.5 h-3.5 text-[#0866FF]" /> Family, Travel & Lifestyle
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F9F8F7] text-[#1B4F9C] text-xs font-bold uppercase">
+              <Smile className="w-3.5 h-3.5 text-[#1B4F9C]" /> Family, Travel & Lifestyle
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-ivory font-heading">
               Family & Lifestyle Perks
@@ -41,11 +41,11 @@ export default function Lifestyle() {
           </div>
           <div className="flex gap-3">
             <div className="p-4 bg-[#F9F8F7] rounded-lg text-center">
-              <Baby className="w-6 h-6 text-[#0866FF] mx-auto mb-1" />
+              <Baby className="w-6 h-6 text-[#1B4F9C] mx-auto mb-1" />
               <p className="text-xs font-bold text-ivory">Childcare</p>
             </div>
             <div className="p-4 bg-[#F9F8F7] rounded-lg text-center">
-              <Plane className="w-6 h-6 text-[#0866FF] mx-auto mb-1" />
+              <Plane className="w-6 h-6 text-[#1B4F9C] mx-auto mb-1" />
               <p className="text-xs font-bold text-ivory">Vacations</p>
             </div>
           </div>

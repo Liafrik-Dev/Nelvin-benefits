@@ -84,10 +84,10 @@ export default function AdminOffers() {
     { key: "title", label: "Offer", sortable: true,
       render: (o) => (
         <div className="flex items-center gap-2">
-          {o.image_url ? <img src={o.image_url} alt="" className="w-10 h-10 rounded-lg object-cover" /> : <div className="w-10 h-10 rounded-lg bg-[#F4F4F4] text-[#0866FF] flex items-center justify-center text-xs font-bold">{(o.title || "?").slice(0,1)}</div>}
+          {o.image_url ? <img src={o.image_url} alt="" className="w-10 h-10 rounded-lg object-cover" /> : <div className="w-10 h-10 rounded-lg bg-[#F4F4F4] text-[#1B4F9C] flex items-center justify-center text-xs font-bold">{(o.title || "?").slice(0,1)}</div>}
           <div className="min-w-0">
             <p className="text-sm font-medium text-ivory truncate flex items-center gap-1">
-              {o.title}{o.is_featured && <Star className="w-3.5 h-3.5 text-[#0866FF] fill-[#0866FF]" />}
+              {o.title}{o.is_featured && <Star className="w-3.5 h-3.5 text-[#1B4F9C] fill-[#1B4F9C]" />}
             </p>
             <p className="text-xs text-ivory-dim truncate">{o.business_name}</p>
           </div>
@@ -95,7 +95,7 @@ export default function AdminOffers() {
       ) },
     { key: "category", label: "Category", sortable: true, render: (o) => <span className="text-xs">{o.category || "—"}</span> },
     { key: "country", label: "Location", sortable: true, render: (o) => <span className="text-xs">{o.city ? `${o.city}, ` : ""}{o.country}</span> },
-    { key: "discount_label", label: "Discount", render: (o) => <span className="text-xs font-semibold text-[#0866FF]">{o.discount_label || (o.original_price ? `${o.discount_price || 0} vs ${o.original_price}` : "—")}</span> },
+    { key: "discount_label", label: "Discount", render: (o) => <span className="text-xs font-semibold text-[#1B4F9C]">{o.discount_label || (o.original_price ? `${o.discount_price || 0} vs ${o.original_price}` : "—")}</span> },
     { key: "max_redemptions_per_user", label: "Limit", render: (o) => <span className="text-xs">{o.max_redemptions_per_user || 1}/user{o.total_redemption_limit ? ` · ${o.total_redemptions_count || 0}/${o.total_redemption_limit}` : ""}</span> },
     { key: "membership_requirement", label: "Tier", sortable: true, render: (o) => <StatusBadge status={(o.membership_requirement || "All").toLowerCase()} label={o.membership_requirement || "All"} /> },
     { key: "status", label: "Status", sortable: true, render: (o) => <StatusBadge status={o.status} className="capitalize" /> },
@@ -161,10 +161,10 @@ export default function AdminOffers() {
           <div className="flex items-center justify-end gap-1">
             <RowIconBtn title="Preview" Icon={Eye} onClick={() => setViewing(o)} />
             <RowIconBtn title="Edit" Icon={Edit2} onClick={() => setEditing(o)} />
-            <RowIconBtn title={o.is_featured ? "Unfeature" : "Feature"} Icon={Star} color={o.is_featured ? "text-[#0866FF]" : "text-ivory-dim"} onClick={() => update(o.id, { is_featured: !o.is_featured })} />
-            <RowIconBtn title={o.is_published ? "Unpublish" : "Publish"} Icon={Send} color={o.is_published ? "text-[#0866FF]" : "text-ivory-dim"} onClick={() => update(o.id, { is_published: !o.is_published, status: !o.is_published ? "active" : "inactive" })} />
+            <RowIconBtn title={o.is_featured ? "Unfeature" : "Feature"} Icon={Star} color={o.is_featured ? "text-[#1B4F9C]" : "text-ivory-dim"} onClick={() => update(o.id, { is_featured: !o.is_featured })} />
+            <RowIconBtn title={o.is_published ? "Unpublish" : "Publish"} Icon={Send} color={o.is_published ? "text-[#1B4F9C]" : "text-ivory-dim"} onClick={() => update(o.id, { is_published: !o.is_published, status: !o.is_published ? "active" : "inactive" })} />
             <RowIconBtn title={o.status === "hidden" ? "Unhide" : "Hide"} Icon={EyeOff} color={o.status === "hidden" ? "text-ivory" : "text-ivory-dim"} onClick={() => update(o.id, { status: o.status === "hidden" ? "active" : "hidden" })} />
-            <RowIconBtn title={o.is_archived ? "Restore" : "Archive"} Icon={Archive} color={o.is_archived ? "text-[#0866FF]" : "text-ivory-dim"} onClick={() => update(o.id, { is_archived: !o.is_archived, status: !o.is_archived ? "archived" : "active" })} />
+            <RowIconBtn title={o.is_archived ? "Restore" : "Archive"} Icon={Archive} color={o.is_archived ? "text-[#1B4F9C]" : "text-ivory-dim"} onClick={() => update(o.id, { is_archived: !o.is_archived, status: !o.is_archived ? "archived" : "active" })} />
             <RowIconBtn title="Duplicate" Icon={ClipboardCopy} onClick={() => duplicate(o)} />
             <RowIconBtn title="Delete" Icon={Trash2} color="text-rose-600 hover:text-rose-700" onClick={() => remove(o)} />
           </div>
@@ -222,7 +222,7 @@ export default function AdminOffers() {
                 <div><span className="text-xs text-ivory-dim">Business</span><p>{viewing.business_name}</p></div>
                 <div><span className="text-xs text-ivory-dim">Category</span><p>{viewing.category}</p></div>
                 <div><span className="text-xs text-ivory-dim">Location</span><p>{viewing.city}, {viewing.country}</p></div>
-                <div><span className="text-xs text-ivory-dim">Discount</span><p className="font-semibold text-[#0866FF]">{viewing.discount_label || "—"}</p></div>
+                <div><span className="text-xs text-ivory-dim">Discount</span><p className="font-semibold text-[#1B4F9C]">{viewing.discount_label || "—"}</p></div>
                 <div><span className="text-xs text-ivory-dim">Original price</span><p>{formatMoney(viewing.original_price, "USD")}</p></div>
                 <div><span className="text-xs text-ivory-dim">Discount price</span><p>{formatMoney(viewing.discount_price, "USD")}</p></div>
                 <div><span className="text-xs text-ivory-dim">Expires</span><p>{formatDate(viewing.expires_date)}</p></div>

@@ -58,7 +58,7 @@ export default function TeamsPanel({ company }) {
         </div>
         <button
           onClick={() => setShowModal(true)}
-          className="inline-flex items-center gap-2 bg-[#0866FF] hover:bg-[#0866FF] text-white text-sm font-semibold px-4 py-2 rounded-xl shadow-sm"
+          className="inline-flex items-center gap-2 bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white text-sm font-semibold px-4 py-2 rounded-xl shadow-sm"
         >
           <Plus className="w-4 h-4" /> Create Team
         </button>
@@ -79,7 +79,7 @@ export default function TeamsPanel({ company }) {
             {list.map((t) => (
               <tr key={t.id} className="hover:bg-[#F9F8F7] transition-colors">
                 <td className="px-6 py-4 font-bold text-ivory flex items-center gap-2">
-                  <Users className="w-4 h-4 text-[#0866FF]" /> {t.name}
+                  <Users className="w-4 h-4 text-[#1B4F9C]" /> {t.name}
                 </td>
                 <td className="px-6 py-4 text-ivory-muted font-medium">{t.lead_name || "—"}</td>
                 <td className="px-6 py-4 text-ivory-muted font-bold">{t.member_count} Employees</td>
@@ -89,7 +89,7 @@ export default function TeamsPanel({ company }) {
                   </span>
                 </td>
                 <td className="px-6 py-4 text-right space-x-2">
-                  <button className="text-xs font-bold text-[#0866FF] hover:underline">Edit</button>
+                  <button className="text-xs font-bold text-[#1B4F9C] hover:underline">Edit</button>
                   <button className="text-xs font-bold text-rose-600 hover:underline">Delete</button>
                 </td>
               </tr>
@@ -111,7 +111,7 @@ export default function TeamsPanel({ company }) {
                   placeholder="e.g. Frontend Engineering"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3.5 py-2 border border-[#F1F1F1] rounded-xl text-xs outline-none focus:border-[#0866FF]"
+                  className="w-full px-3.5 py-2 border border-[#F1F1F1] rounded-xl text-xs outline-none focus:border-[#1B4F9C]"
                 />
               </div>
               <div>
@@ -121,7 +121,7 @@ export default function TeamsPanel({ company }) {
                   placeholder="e.g. Sarah Connor"
                   value={lead}
                   onChange={(e) => setLead(e.target.value)}
-                  className="w-full px-3.5 py-2 border border-[#F1F1F1] rounded-xl text-xs outline-none focus:border-[#0866FF]"
+                  className="w-full px-3.5 py-2 border border-[#F1F1F1] rounded-xl text-xs outline-none focus:border-[#1B4F9C]"
                 />
               </div>
               <div className="flex justify-end gap-2 pt-2">
@@ -134,7 +134,7 @@ export default function TeamsPanel({ company }) {
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 text-xs font-bold text-white bg-[#0866FF] rounded-xl hover:bg-[#0866FF]"
+                  className="px-5 py-2 text-xs font-bold text-white bg-[#1B4F9C] rounded-xl hover:bg-[#1B4F9C]"
                 >
                   Save Team
                 </button>

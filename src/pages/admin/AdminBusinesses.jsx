@@ -86,10 +86,10 @@ export default function AdminBusinesses() {
     { key: "business_name", label: "Business", sortable: true,
       render: (b) => (
         <div className="flex items-center gap-2">
-          {b.logo_url ? <img src={b.logo_url} alt="" className="w-8 h-8 rounded-lg object-cover" /> : <div className="w-8 h-8 rounded-lg bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20 flex items-center justify-center text-xs font-bold">{(b.business_name || "?").slice(0, 1)}</div>}
+          {b.logo_url ? <img src={b.logo_url} alt="" className="w-8 h-8 rounded-lg object-cover" /> : <div className="w-8 h-8 rounded-lg bg-[#F9F8F7] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/20 flex items-center justify-center text-xs font-bold">{(b.business_name || "?").slice(0, 1)}</div>}
           <div className="min-w-0">
             <p className="text-sm font-medium text-ivory truncate flex items-center gap-1">
-              {b.business_name}{b.is_featured && <Star className="w-3.5 h-3.5 text-[#0866FF] fill-[#0866FF]" />}
+              {b.business_name}{b.is_featured && <Star className="w-3.5 h-3.5 text-[#1B4F9C] fill-[#1B4F9C]" />}
             </p>
             <p className="text-xs text-ivory-dim truncate">{b.contact_name}</p>
           </div>
@@ -146,7 +146,7 @@ export default function AdminBusinesses() {
         </div>
         <button
           onClick={() => setEditing({ status: "pending" })}
-          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-[#0866FF] hover:bg-[#0866FF] text-white rounded-lg"
+          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white rounded-lg"
         >
           <Plus className="w-4 h-4" /> New business
         </button>
@@ -165,9 +165,9 @@ export default function AdminBusinesses() {
           <div className="flex items-center justify-end gap-1">
             <RowIconBtn title="Preview" Icon={Eye} onClick={() => setViewing(b)} />
             <RowIconBtn title="Edit" Icon={Edit2} onClick={() => setEditing(b)} />
-            <RowIconBtn title={b.is_featured ? "Unfeature" : "Feature"} Icon={Star} color={b.is_featured ? "text-[#0866FF] hover:text-[#0866FF]" : "text-ivory-dim"} onClick={() => toggleFeatured(b)} />
-            <RowIconBtn title={b.verification_status === "verified" ? "Revoke verification" : "Verify"} Icon={BadgeCheck} color={b.verification_status === "verified" ? "text-[#0866FF]" : "text-ivory-dim"} onClick={() => toggleVerified(b)} />
-            <RowIconBtn title={b.is_suspended ? "Unsuspend" : "Suspend"} Icon={Ban} color={b.is_suspended ? "text-[#0866FF]" : "text-[#0866FF]"} onClick={() => toggleSuspended(b)} />
+            <RowIconBtn title={b.is_featured ? "Unfeature" : "Feature"} Icon={Star} color={b.is_featured ? "text-[#1B4F9C] hover:text-[#1B4F9C]" : "text-ivory-dim"} onClick={() => toggleFeatured(b)} />
+            <RowIconBtn title={b.verification_status === "verified" ? "Revoke verification" : "Verify"} Icon={BadgeCheck} color={b.verification_status === "verified" ? "text-[#1B4F9C]" : "text-ivory-dim"} onClick={() => toggleVerified(b)} />
+            <RowIconBtn title={b.is_suspended ? "Unsuspend" : "Suspend"} Icon={Ban} color={b.is_suspended ? "text-[#1B4F9C]" : "text-[#1B4F9C]"} onClick={() => toggleSuspended(b)} />
             <RowIconBtn title="Duplicate" Icon={ClipboardCopy} onClick={() => duplicate(b)} />
             <RowIconBtn title="Delete" Icon={Trash2} color="text-rose-600 hover:text-rose-700" onClick={() => removeBusiness(b)} />
           </div>

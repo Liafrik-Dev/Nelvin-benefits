@@ -63,7 +63,7 @@ export default function AdminMembershipPlans() {
     { key: "name", label: "Plan", sortable: true,
       render: (p) => (
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-[#F4F4F4] text-[#0866FF] flex items-center justify-center text-sm font-bold">{(p.name || "?").slice(0, 1)}</div>
+          <div className="w-8 h-8 rounded-lg bg-[#F4F4F4] text-[#1B4F9C] flex items-center justify-center text-sm font-bold">{(p.name || "?").slice(0, 1)}</div>
           <div className="min-w-0">
             <p className="text-sm font-medium text-ivory truncate">{p.name}</p>
             <p className="text-xs text-ivory-dim truncate">{p.tier || "—"}</p>
@@ -106,7 +106,7 @@ export default function AdminMembershipPlans() {
         </div>
         <button
           onClick={() => setEditing({ currency: "USD", is_active: true, display_order: data.length })}
-          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-[#0866FF] hover:bg-[#0866FF] text-white rounded-lg"
+          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white rounded-lg"
         >
           <Plus className="w-4 h-4" /> New plan
         </button>
@@ -122,7 +122,7 @@ export default function AdminMembershipPlans() {
         exportName={`membership-plans-${Date.now()}.csv`}
         renderActions={(p) => (
           <div className="flex items-center justify-end gap-1">
-            <RowIconBtn title={p.is_active ? "Deactivate" : "Activate"} Icon={Power} color={p.is_active ? "text-[#0866FF]" : "text-ivory-dim"} onClick={() => toggleActive(p)} />
+            <RowIconBtn title={p.is_active ? "Deactivate" : "Activate"} Icon={Power} color={p.is_active ? "text-[#1B4F9C]" : "text-ivory-dim"} onClick={() => toggleActive(p)} />
             <RowIconBtn title="Edit" Icon={Edit2} onClick={() => setEditing(p)} />
             <RowIconBtn title="Delete" Icon={Trash2} color="text-rose-600 hover:text-rose-700" onClick={() => remove(p)} />
           </div>

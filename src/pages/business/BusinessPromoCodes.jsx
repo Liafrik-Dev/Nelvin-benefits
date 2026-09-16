@@ -14,7 +14,7 @@ export default function BusinessPromoCodes() {
           <h1 className="text-2xl font-bold font-heading text-ivory">Promo Code Generator</h1>
           <p className="text-sm text-ivory-muted mt-1">Issue unique promotional discount codes for point-of-sale or online checkout.</p>
         </div>
-        <button className="bg-[#0866FF] text-white font-bold text-xs px-4 py-2 rounded-xl flex items-center gap-2">
+        <button className="bg-[#1B4F9C] text-white font-bold text-xs px-4 py-2 rounded-xl flex items-center gap-2">
           <Plus className="w-4 h-4" /> Generate Code
         </button>
       </div>
@@ -33,10 +33,10 @@ export default function BusinessPromoCodes() {
             {codes.map((c) => (
               <tr key={c.id} className="hover:bg-[#F9F8F7] transition-colors">
                 <td className="px-6 py-4 font-mono font-bold text-ivory">{c.code}</td>
-                <td className="px-6 py-4 font-extrabold text-[#0866FF]">{c.discount}</td>
+                <td className="px-6 py-4 font-extrabold text-[#1B4F9C]">{c.discount}</td>
                 <td className="px-6 py-4 font-semibold text-ivory">{c.uses} / {c.limit} Used</td>
                 <td className="px-6 py-4">
-                  <span className="bg-[#FFFFFF] text-[#0866FF] text-xs font-bold px-2.5 py-1 rounded-full uppercase">{c.status}</span>
+                  <span className="bg-[#FFFFFF] text-[#1B4F9C] text-xs font-bold px-2.5 py-1 rounded-full uppercase">{c.status}</span>
                 </td>
               </tr>
             ))}

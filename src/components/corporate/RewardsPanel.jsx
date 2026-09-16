@@ -41,9 +41,9 @@ export default function RewardsPanel({ company }) {
         </div>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="inline-flex items-center gap-2 bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#0866FF] text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm transition-colors"
+          className="inline-flex items-center gap-2 bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#1B4F9C] text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm transition-colors"
         >
-          <Plus className="w-4 h-4 text-[#0866FF]" /> Issue Points
+          <Plus className="w-4 h-4 text-[#1B4F9C]" /> Issue Points
         </button>
       </div>
 
@@ -51,7 +51,7 @@ export default function RewardsPanel({ company }) {
         <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 space-y-2 shadow-sm">
           <p className="text-xs font-bold text-ivory-dim uppercase">Monthly Recognition Pool</p>
           <p className="text-3xl font-black text-ivory">50,000 Pts</p>
-          <p className="text-xs text-[#0866FF] font-semibold">12,400 Distributed this month</p>
+          <p className="text-xs text-[#1B4F9C] font-semibold">12,400 Distributed this month</p>
         </div>
 
         <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 space-y-2 shadow-sm">
@@ -63,7 +63,7 @@ export default function RewardsPanel({ company }) {
         <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 space-y-2 shadow-sm">
           <p className="text-xs font-bold text-ivory-dim uppercase">Top Recognized Employee</p>
           <p className="text-lg font-bold text-ivory">Pamela Anderson (Designer)</p>
-          <p className="text-xs text-[#0866FF] font-bold flex items-center gap-1">
+          <p className="text-xs text-[#1B4F9C] font-bold flex items-center gap-1">
             <Trophy className="w-3.5 h-3.5" /> 1,450 Points Earned
           </p>
         </div>
@@ -75,10 +75,10 @@ export default function RewardsPanel({ company }) {
           {feed.map((item) => (
             <div key={item.id} className="p-4 bg-[#F9F8F7] rounded-xl flex items-center justify-between text-xs">
               <div>
-                <p className="font-bold text-ivory"><span className="text-[#0866FF] font-extrabold">{item.sender}</span> awarded <span className="text-[#282828] font-extrabold">{item.recipient}</span></p>
+                <p className="font-bold text-ivory"><span className="text-[#1B4F9C] font-extrabold">{item.sender}</span> awarded <span className="text-[#282828] font-extrabold">{item.recipient}</span></p>
                 <p className="text-ivory-muted italic mt-0.5">"{item.reason}"</p>
               </div>
-              <span className="bg-[#0866FF] text-white font-bold px-3 py-1 rounded-full">{item.points} Pts</span>
+              <span className="bg-[#1B4F9C] text-white font-bold px-3 py-1 rounded-full">{item.points} Pts</span>
             </div>
           ))}
         </div>
@@ -127,7 +127,7 @@ export default function RewardsPanel({ company }) {
               </div>
               <button
                 type="submit"
-                className="w-full bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#0866FF] font-bold text-xs py-3 rounded-xl shadow-sm transition-colors"
+                className="w-full bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#1B4F9C] font-bold text-xs py-3 rounded-xl shadow-sm transition-colors"
               >
                 Send Reward Points
               </button>

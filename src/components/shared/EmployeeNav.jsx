@@ -44,7 +44,7 @@ export default function EmployeeNav() {
                 to={item.path}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors ${
                   isActive
-                    ? "bg-[#FFFFFF] text-[#0866FF]"
+                    ? "bg-[#FFFFFF] text-[#1B4F9C]"
                     : "text-ivory-muted hover:bg-[#F4F4F4] hover:text-ivory"
                 }`}
               >

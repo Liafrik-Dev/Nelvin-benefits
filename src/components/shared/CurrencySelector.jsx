@@ -22,7 +22,7 @@ export default function CurrencySelector({ className = "" }) {
 
   return (
     <div className={`inline-flex items-center gap-1.5 bg-[#F4F4F4] backdrop-blur border border-[#E3E3E3] rounded-lg px-2.5 py-1 text-xs text-white ${className}`}>
-      <Globe className="w-3.5 h-3.5 text-[#0866FF]" />
+      <Globe className="w-3.5 h-3.5 text-[#1B4F9C]" />
       <select
         value={currency.code}
         onChange={handleChange}

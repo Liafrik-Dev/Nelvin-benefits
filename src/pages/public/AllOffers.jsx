@@ -44,7 +44,7 @@ export default function AllOffers() {
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="border border-[#F1F1F1] rounded-lg px-4 py-2 text-sm bg-[#FFFFFF] text-ivory outline-none focus:border-[#0866FF]"
+            className="border border-[#F1F1F1] rounded-lg px-4 py-2 text-sm bg-[#FFFFFF] text-ivory outline-none focus:border-[#1B4F9C]"
           >
             <option value="">All Categories</option>
             {CATEGORIES.map((c) => (
@@ -56,7 +56,7 @@ export default function AllOffers() {
           <select
             value={country}
             onChange={(e) => setCountry(e.target.value)}
-            className="border border-[#F1F1F1] rounded-lg px-4 py-2 text-sm bg-[#FFFFFF] text-ivory outline-none focus:border-[#0866FF]"
+            className="border border-[#F1F1F1] rounded-lg px-4 py-2 text-sm bg-[#FFFFFF] text-ivory outline-none focus:border-[#1B4F9C]"
           >
             <option value="">All Countries</option>
             {COUNTRIES.map((c) => (

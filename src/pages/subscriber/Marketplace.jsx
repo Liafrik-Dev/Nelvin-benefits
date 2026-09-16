@@ -52,8 +52,8 @@ export default function Marketplace() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFFFFF] text-[#0866FF] text-xs font-bold uppercase">
-              <ShoppingBag className="w-3.5 h-3.5 text-[#0866FF]" /> Complete Benefits Marketplace
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFFFFF] text-[#1B4F9C] text-xs font-bold uppercase">
+              <ShoppingBag className="w-3.5 h-3.5 text-[#1B4F9C]" /> Complete Benefits Marketplace
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-ivory mt-2 font-heading">
               Employee Marketplace
@@ -68,7 +68,7 @@ export default function Marketplace() {
               placeholder="Search offers, brands, keywords..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-emerald-black ring-1 ring-[#F1F1F1] border border-transparent pl-10 pr-4 py-2.5 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-[#0866FF]/40"
+              className="w-full bg-emerald-black ring-1 ring-[#F1F1F1] border border-transparent pl-10 pr-4 py-2.5 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-[#1B4F9C]/40"
             />
           </div>
         </div>
@@ -84,7 +84,7 @@ export default function Marketplace() {
                 key={c}
                 onClick={() => setSelectedCategory(c)}
                 className={`px-3 py-1 rounded-full text-xs font-semibold transition-colors ${
-                  selectedCategory === c ? "bg-[#FFFFFF] text-[#0866FF]" : "bg-[#F4F4F4] text-ivory-muted hover:bg-[#F4F4F4]"
+                  selectedCategory === c ? "bg-[#FFFFFF] text-[#1B4F9C]" : "bg-[#F4F4F4] text-ivory-muted hover:bg-[#F4F4F4]"
                 }`}
               >
                 {c}
@@ -117,7 +117,7 @@ export default function Marketplace() {
               key={t}
               onClick={() => setSelectedTag(t)}
               className={`px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap transition-colors ${
-                selectedTag === t ? "bg-[#0866FF] text-white" : "bg-emerald-black ring-1 ring-[#F1F1F1] border border-transparent text-ivory-muted hover:bg-[#F9F8F7]"
+                selectedTag === t ? "bg-[#1B4F9C] text-white" : "bg-emerald-black ring-1 ring-[#F1F1F1] border border-transparent text-ivory-muted hover:bg-[#F9F8F7]"
               }`}
             >
               {t}
@@ -139,7 +139,7 @@ export default function Marketplace() {
                 setSelectedCategory("All");
                 setSelectedTag("All");
               }}
-              className="mt-2 text-xs font-bold text-[#0866FF] underline"
+              className="mt-2 text-xs font-bold text-[#1B4F9C] underline"
             >
               Reset Filters
             </button>

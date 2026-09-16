@@ -8,7 +8,7 @@ export const PLANS = [
     features: ["Access basic offers", "3 redemptions / month", "Standard support", "Wallet basics"],
     cta: "Get Started",
     highlight: false,
-    nameColor: "text-[#0866FF]",
+    nameColor: "text-[#1B4F9C]",
   },
   {
     slug: "premium",
@@ -30,6 +30,6 @@ export const PLANS = [
     features: ["Everything in Premium", "Concierge booking service", "Airport lounge access", "Exclusive luxury partners", "Complimentary birthday rewards"],
     cta: "Become VIP",
     highlight: false,
-    nameColor: "text-[#0866FF]",
+    nameColor: "text-[#1B4F9C]",
   },
 ];

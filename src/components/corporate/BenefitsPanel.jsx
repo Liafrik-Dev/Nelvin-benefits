@@ -44,7 +44,7 @@ export default function BenefitsPanel({ company }) {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search offers, brands, categories..."
-          className="w-full pl-10 pr-4 py-2.5 text-sm border border-[#F1F1F1] rounded-lg outline-none focus:border-[#0866FF]/40 focus:ring-2 focus:ring-[#F1F1F1]"
+          className="w-full pl-10 pr-4 py-2.5 text-sm border border-[#F1F1F1] rounded-lg outline-none focus:border-[#1B4F9C]/40 focus:ring-2 focus:ring-[#F1F1F1]"
         />
       </div>
 
@@ -53,7 +53,7 @@ export default function BenefitsPanel({ company }) {
       ) : filtered.length === 0 ? (
         <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-12 text-center">
           <Gift className="w-10 h-10 text-[#282828]/60 mx-auto mb-3" />
-          <p className="text-sm text-ivory-muted">No offers match. Try a different search or <Link to="/offers" className="text-[#0866FF]">browse all offers</Link>.</p>
+          <p className="text-sm text-ivory-muted">No offers match. Try a different search or <Link to="/offers" className="text-[#1B4F9C]">browse all offers</Link>.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

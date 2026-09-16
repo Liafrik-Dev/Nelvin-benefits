@@ -3,7 +3,12 @@ import React from "react";
 /**
  * Partner logo marquee. The reference keeps this banded, quiet and
  * full-bleed with soft edge fades; the previous version faded to a light
- * cream that clashed with the forest surface, so the fade is now a mask.
+ * cream that clashed with the surface, so the fade is now a mask.
+ *
+ * Logos are shown in their own brand colours rather than tinted. A
+ * `brightness-0 invert` filter used to force them all to solid white, which
+ * made every one of them invisible: white marks on the #F9F8F7 band, a
+ * contrast ratio of roughly 1.02:1.
  */
 
 const logos = [
@@ -41,7 +46,7 @@ function LogoRow() {
             src={`/images/benifex/logos/${logo}`}
             alt=""
             loading="lazy"
-            className="h-8 w-auto max-w-[124px] object-contain opacity-55 brightness-0 invert transition-opacity duration-300 hover:opacity-100 sm:h-10"
+            className="h-8 w-auto max-w-[124px] object-contain opacity-80 saturate-[0.9] transition duration-300 hover:opacity-100 hover:saturate-100 sm:h-10"
           />
         </span>
       ))}

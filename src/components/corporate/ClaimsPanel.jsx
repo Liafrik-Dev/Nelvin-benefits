@@ -51,7 +51,7 @@ export default function ClaimsPanel({ company }) {
           onClick={exportCSV}
           className="inline-flex items-center gap-2 px-4 py-2 bg-[#FFFFFF] hover:border border-[#E3E3E3] bg-[#FFFFFF] text-[#282828] font-bold text-xs rounded-xl shadow-sm transition-colors self-start sm:self-auto"
         >
-          <Download className="w-3.5 h-3.5 text-[#0866FF]" /> Export CSV
+          <Download className="w-3.5 h-3.5 text-[#1B4F9C]" /> Export CSV
         </button>
       </div>
 
@@ -72,7 +72,7 @@ export default function ClaimsPanel({ company }) {
               key={st}
               onClick={() => setFilterStatus(st)}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
-                filterStatus === st ? "bg-[#FFFFFF] text-[#0866FF]" : "bg-[#F9F8F7] text-ivory-muted hover:bg-[#F4F4F4]"
+                filterStatus === st ? "bg-[#FFFFFF] text-[#1B4F9C]" : "bg-[#F9F8F7] text-ivory-muted hover:bg-[#F4F4F4]"
               }`}
             >
               {st}
@@ -106,7 +106,7 @@ export default function ClaimsPanel({ company }) {
                 <td className="px-6 py-4">
                   <span className={`text-xs font-bold px-2.5 py-1 rounded-full capitalize ${
                     c.status === "approved" ? "bg-[#FFFFFF] text-ivory" :
-                    c.status === "rejected" ? "bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20" : "bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20"
+                    c.status === "rejected" ? "bg-[#F9F8F7] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/20" : "bg-[#F9F8F7] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/20"
                   }`}>
                     {c.status}
                   </span>
@@ -148,7 +148,7 @@ export default function ClaimsPanel({ company }) {
                 <div className="flex gap-2">
                   <button
                     onClick={() => updateStatus(selectedClaim.id, "approved", rejectReason)}
-                    className="flex-1 bg-[#FFFFFF] hover:bg-[#0866FF] text-white font-bold text-xs py-2.5 rounded-xl transition-colors"
+                    className="flex-1 bg-[#FFFFFF] hover:bg-[#1B4F9C] text-white font-bold text-xs py-2.5 rounded-xl transition-colors"
                   >
                     Approve Claim
                   </button>

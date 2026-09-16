@@ -39,9 +39,9 @@ export default function BudgetsPanel({ company }) {
         </div>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="inline-flex items-center gap-2 bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#0866FF] text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm transition-colors"
+          className="inline-flex items-center gap-2 bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#1B4F9C] text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm transition-colors"
         >
-          <Plus className="w-4 h-4 text-[#0866FF]" /> Add Budget Rule
+          <Plus className="w-4 h-4 text-[#1B4F9C]" /> Add Budget Rule
         </button>
       </div>
 
@@ -52,7 +52,7 @@ export default function BudgetsPanel({ company }) {
             <div key={b.id} className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 space-y-4 shadow-sm">
               <div className="flex items-center justify-between">
                 <span className="text-xs uppercase font-bold text-ivory-dim">{b.period} Cap</span>
-                <span className="text-xs font-bold text-[#0866FF] bg-[#FFFFFF] px-2.5 py-0.5 rounded-full">{pct}% Used</span>
+                <span className="text-xs font-bold text-[#1B4F9C] bg-[#FFFFFF] px-2.5 py-0.5 rounded-full">{pct}% Used</span>
               </div>
               <div>
                 <h3 className="font-bold text-ivory text-lg font-heading">{b.department}</h3>
@@ -98,7 +98,7 @@ export default function BudgetsPanel({ company }) {
               </div>
               <button
                 type="submit"
-                className="w-full bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#0866FF] font-bold text-xs py-3 rounded-xl shadow-sm transition-colors"
+                className="w-full bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#1B4F9C] font-bold text-xs py-3 rounded-xl shadow-sm transition-colors"
               >
                 Save Budget Rule
               </button>

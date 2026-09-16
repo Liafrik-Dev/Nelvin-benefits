@@ -55,7 +55,7 @@ export default function AdminAuditLogs() {
       </div>
       {filtered.length === 0 && !loading ? (
         <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-10 text-center">
-          <div className="inline-flex items-center justify-center w-14 h-14 bg-[#FFFFFF] text-[#0866FF] rounded-lg mb-4">
+          <div className="inline-flex items-center justify-center w-14 h-14 bg-[#FFFFFF] text-[#1B4F9C] rounded-lg mb-4">
             <ScrollText className="w-7 h-7" />
           </div>
           <h2 className="text-lg font-semibold text-ivory">No logged actions yet</h2>

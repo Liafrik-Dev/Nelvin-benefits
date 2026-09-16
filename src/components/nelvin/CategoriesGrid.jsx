@@ -49,7 +49,7 @@ export default function CategoriesGrid() {
                   className={`flex shrink-0 items-center gap-2 rounded-lg px-4 py-3 text-xs font-bold transition-colors ${
                     on
                       ? "bg-gold text-white shadow-nv-card"
-                      : "border border-[#F1F1F1] bg-[#F9F8F7] text-ivory-muted hover:border-[#0866FF]/35 hover:text-ivory"
+                      : "border border-[#F1F1F1] bg-[#F9F8F7] text-ivory-muted hover:border-[#1B4F9C]/35 hover:text-ivory"
                   }`}
                 >
                   <LIcon name={cat.icon} className="h-4 w-4" />
@@ -69,7 +69,7 @@ export default function CategoriesGrid() {
                 className="absolute inset-0 h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
-              <span className="absolute left-4 top-4 rounded-full bg-[#0866FF] px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-white">
+              <span className="absolute left-4 top-4 rounded-full bg-[#1B4F9C] px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-white">
                 Featured perks
               </span>
             </div>

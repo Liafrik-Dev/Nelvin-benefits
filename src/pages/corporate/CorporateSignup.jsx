@@ -51,7 +51,7 @@ function ProgressBar({ step, total }) {
   return (
     <div className="flex items-center justify-center gap-2 mb-8">
       {Array.from({ length: total }).map((_, i) => (
-        <div key={i} className={`h-1 rounded-full transition-all duration-300 ${i <= step ? "w-8 bg-[#0866FF]" : "w-4 bg-[#F4F4F4]"}`} />
+        <div key={i} className={`h-1 rounded-full transition-all duration-300 ${i <= step ? "w-8 bg-[#1B4F9C]" : "w-4 bg-[#F4F4F4]"}`} />
       ))}
     </div>
   );
@@ -104,7 +104,7 @@ function StepCompanyInfo({ form, update, onNext }) {
         <button
           onClick={onNext}
           disabled={!form.name || !form.industry || !form.country || !form.email_domain || !form.billing_contact_name || !form.billing_contact_email}
-          className="inline-flex items-center gap-2 bg-[#0866FF] disabled:bg-[#FFFFFF] hover:bg-[#0866FF] text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
+          className="inline-flex items-center gap-2 bg-[#1B4F9C] disabled:bg-[#FFFFFF] hover:bg-[#1B4F9C] text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
         >
           Continue <ArrowRight className="w-4 h-4" />
         </button>
@@ -126,13 +126,13 @@ function StepEmployeeCount({ form, update, onNext, onBack }) {
             value={form.employee_count}
             onChange={(e) => update("employee_count", e.target.value)}
             placeholder="0"
-            className="text-5xl font-bold font-heading text-[#0866FF] text-center w-full bg-transparent outline-none"
+            className="text-5xl font-bold font-heading text-[#1B4F9C] text-center w-full bg-transparent outline-none"
           />
           <p className="text-xs text-ivory-dim mt-1">employees</p>
         </div>
         <div className="mt-4 grid grid-cols-3 gap-2">
           {[3, 7, 15].map((n) => (
-            <button key={n} onClick={() => update("employee_count", String(n))} className="text-xs py-2 rounded-lg border border-[#F1F1F1] hover:border-[#0866FF]/30 hover:bg-[#FFFFFF] transition-colors">
+            <button key={n} onClick={() => update("employee_count", String(n))} className="text-xs py-2 rounded-lg border border-[#F1F1F1] hover:border-[#1B4F9C]/30 hover:bg-[#FFFFFF] transition-colors">
               {n}
             </button>
           ))}
@@ -145,7 +145,7 @@ function StepEmployeeCount({ form, update, onNext, onBack }) {
         <button
           onClick={onNext}
           disabled={Number(form.employee_count) < 1}
-          className="inline-flex items-center gap-2 bg-[#0866FF] disabled:bg-[#FFFFFF] hover:bg-[#0866FF] text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
+          className="inline-flex items-center gap-2 bg-[#1B4F9C] disabled:bg-[#FFFFFF] hover:bg-[#1B4F9C] text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
         >
           Continue <ArrowRight className="w-4 h-4" />
         </button>
@@ -179,7 +179,7 @@ function StepPricingOrLead({ form, onPick, onBack, submitting }) {
           <button
             onClick={onPick}
             disabled={submitting}
-            className="inline-flex items-center gap-2 bg-[#0866FF] hover:bg-[#0866FF] disabled:opacity-70 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
+            className="inline-flex items-center gap-2 bg-[#1B4F9C] hover:bg-[#1B4F9C] disabled:opacity-70 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
           >
             {submitting ? "Submitting..." : "Submit — we'll be in touch"}
           </button>
@@ -194,11 +194,11 @@ function StepPricingOrLead({ form, onPick, onBack, submitting }) {
   return (
     <div>
       <h2 className="text-2xl font-bold font-heading text-ivory text-center">Pick your plan</h2>
-      <p className="text-sm text-ivory-muted text-center mt-1 mb-8">For {count} employee{count === 1 ? "" : "s"}, you qualify for the <span className="font-semibold text-[#0866FF]">{tier.name}</span> tier.</p>
+      <p className="text-sm text-ivory-muted text-center mt-1 mb-8">For {count} employee{count === 1 ? "" : "s"}, you qualify for the <span className="font-semibold text-[#1B4F9C]">{tier.name}</span> tier.</p>
       <div className="max-w-md mx-auto bg-[#FFFFFF] rounded-lg border-2 border-[#F1F1F1] shadow-sm p-8">
         <div className="flex items-baseline justify-between mb-2">
           <h3 className="font-bold text-lg text-ivory">{tier.name}</h3>
-          <span className="text-xs font-semibold text-[#0866FF] bg-[#FFFFFF] px-3 py-1 rounded-full">{tier.range}</span>
+          <span className="text-xs font-semibold text-[#1B4F9C] bg-[#FFFFFF] px-3 py-1 rounded-full">{tier.range}</span>
         </div>
         <div className="flex items-baseline gap-1 mb-1">
           <span className="text-4xl font-bold font-heading">${tier.monthly}</span>
@@ -206,14 +206,14 @@ function StepPricingOrLead({ form, onPick, onBack, submitting }) {
         </div>
         <p className="text-sm text-ivory-muted mb-4">{tier.desc}</p>
         <div className="bg-[#FFFFFF] rounded-xl p-4 my-6 text-center">
-          <p className="text-xs text-[#0866FF] font-semibold uppercase tracking-wider">Your monthly total</p>
-          <p className="text-3xl font-bold font-heading text-[#0866FF]">${total}<span className="text-sm font-normal text-[#0866FF]">/mo</span></p>
+          <p className="text-xs text-[#1B4F9C] font-semibold uppercase tracking-wider">Your monthly total</p>
+          <p className="text-3xl font-bold font-heading text-[#1B4F9C]">${total}<span className="text-sm font-normal text-[#1B4F9C]">/mo</span></p>
           <p className="text-xs text-ivory-muted mt-1">Billed to {form.billing_contact_email}</p>
         </div>
         <ul className="space-y-2 mb-6">
           {tier.features.map((f, i) => (
             <li key={i} className="flex items-start gap-2 text-sm text-ivory">
-              <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#0866FF]" /> {f}
+              <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#1B4F9C]" /> {f}
             </li>
           ))}
         </ul>
@@ -225,7 +225,7 @@ function StepPricingOrLead({ form, onPick, onBack, submitting }) {
         <button
           onClick={onPick}
           disabled={submitting}
-          className="inline-flex items-center gap-2 bg-[#0866FF] hover:bg-[#0866FF] disabled:opacity-70 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
+          className="inline-flex items-center gap-2 bg-[#1B4F9C] hover:bg-[#1B4F9C] disabled:opacity-70 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
         >
           {submitting ? "Setting up..." : <>Pay & Launch (${total}/mo)</>}
         </button>
@@ -404,7 +404,7 @@ export default function CorporateSignup() {
       <div className="relative bg-[#FFFFFF] pt-24 pb-14 px-4 sm:px-6 lg:px-8">
         <Navbar />
         <div className="max-w-2xl mx-auto text-center">
-          <div className="w-12 h-12 bg-[#0866FF] rounded-xl flex items-center justify-center mx-auto mb-4">
+          <div className="w-12 h-12 bg-[#1B4F9C] rounded-xl flex items-center justify-center mx-auto mb-4">
             <Building2 className="w-6 h-6 text-white" />
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold font-heading text-[#282828]">Sign up your company</h1>
@@ -419,13 +419,13 @@ export default function CorporateSignup() {
             {outcome ? (
               <motion.div key="confirmation" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="text-center py-6">
                 <div className="w-16 h-16 bg-[#F4F4F4] rounded-full flex items-center justify-center mx-auto mb-4">
-                  {outcome.type === "self" ? <Check className="w-8 h-8 text-[#0866FF]" /> : <Phone className="w-8 h-8 text-[#0866FF]" />}
+                  {outcome.type === "self" ? <Check className="w-8 h-8 text-[#1B4F9C]" /> : <Phone className="w-8 h-8 text-[#1B4F9C]" />}
                 </div>
                 {outcome.type === "self" ? (
                   <>
                     <h2 className="text-2xl font-bold font-heading text-ivory">You're all set!</h2>
                     <p className="text-sm text-ivory-muted mt-2 mb-6">Here's your corporate dashboard. Invite your team and they'll auto-join with their {form.email_domain || "company"} email.</p>
-                    <button onClick={() => navigate("/corporate-dashboard")} className="inline-flex items-center gap-2 bg-[#0866FF] hover:bg-[#0866FF] text-white font-semibold px-7 py-3 rounded-full text-sm">
+                    <button onClick={() => navigate("/corporate-dashboard")} className="inline-flex items-center gap-2 bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white font-semibold px-7 py-3 rounded-full text-sm">
                       Go to Dashboard <ArrowRight className="w-4 h-4" />
                     </button>
                   </>

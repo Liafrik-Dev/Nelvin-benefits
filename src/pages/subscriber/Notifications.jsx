@@ -52,8 +52,8 @@ export default function Notifications() {
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
         <div className="flex items-center justify-between border-b border-[#F1F1F1] pb-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFFFFF] text-[#0866FF] text-xs font-bold uppercase">
-              <Bell className="w-3.5 h-3.5 text-[#0866FF]" /> Activity Center
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFFFFF] text-[#1B4F9C] text-xs font-bold uppercase">
+              <Bell className="w-3.5 h-3.5 text-[#1B4F9C]" /> Activity Center
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-ivory mt-2 font-heading">
               Notifications & Alerts

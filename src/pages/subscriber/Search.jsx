@@ -68,7 +68,7 @@ export default function Search() {
               placeholder="Search by brand name, deal title, city, or benefit..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="w-full bg-[#F9F8F7] border border-[#F1F1F1] pl-12 pr-10 py-3.5 rounded-full text-sm font-medium focus:bg-[#FFFFFF] focus:outline-none focus:ring-2 focus:ring-[#0866FF]/40 transition-all"
+              className="w-full bg-[#F9F8F7] border border-[#F1F1F1] pl-12 pr-10 py-3.5 rounded-full text-sm font-medium focus:bg-[#FFFFFF] focus:outline-none focus:ring-2 focus:ring-[#1B4F9C]/40 transition-all"
             />
             {query && (
               <button onClick={() => setQuery("")} className="absolute right-4 top-1/2 -translate-y-1/2 text-ivory-dim hover:text-ivory-muted">

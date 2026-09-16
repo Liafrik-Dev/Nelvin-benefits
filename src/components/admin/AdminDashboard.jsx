@@ -161,7 +161,7 @@ export default function AdminDashboard() {
                 <button
                   key={s.key}
                   onClick={() => setStatusFilter(s.key)}
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${statusFilter === s.key ? "bg-[#0866FF] text-white" : "bg-emerald-black ring-1 ring-[#F1F1F1] border border-transparent text-ivory-muted"}`}
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${statusFilter === s.key ? "bg-[#1B4F9C] text-white" : "bg-emerald-black ring-1 ring-[#F1F1F1] border border-transparent text-ivory-muted"}`}
                 >
                   {s.label} ({counts[s.key]})
                 </button>
@@ -175,7 +175,7 @@ export default function AdminDashboard() {
                   <div className="flex-1 cursor-pointer min-w-0" onClick={() => setSelectedApp(app)}>
                     <p className="font-semibold text-ivory flex items-center gap-2">
                       {app.business_name}
-                      {app.published_offer_id && <Check className="w-4 h-4 text-[#0866FF]" />}
+                      {app.published_offer_id && <Check className="w-4 h-4 text-[#1B4F9C]" />}
                     </p>
                     <p className="text-xs text-ivory-muted truncate">{app.contact_name} · {app.email} · {app.category} · {app.country}</p>
                     {app.status === "rejected" && app.rejection_reason && (
@@ -185,9 +185,9 @@ export default function AdminDashboard() {
                   <div className="flex items-center gap-2 flex-shrink-0">
                     <span
                       className={`text-xs font-semibold px-3 py-1 rounded-full ${
-                        app.status === "approved" ? "bg-[#F4F4F4] text-[#0866FF] ring-1 ring-[#0866FF]/25"
-                        : app.status === "rejected" ? "bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20"
-                        : "bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20"
+                        app.status === "approved" ? "bg-[#F4F4F4] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/25"
+                        : app.status === "rejected" ? "bg-[#F9F8F7] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/20"
+                        : "bg-[#F9F8F7] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/20"
                       }`}
                     >
                       {app.status}

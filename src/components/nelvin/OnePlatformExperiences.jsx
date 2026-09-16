@@ -36,7 +36,7 @@ function WindowFrame({ label, badge, children }) {
       <div className={`flex items-center justify-between gap-3 border-b ${LINE} bg-[#F9F8F7] px-4 py-3`}>
         <p className="truncate text-xs font-bold text-[#282828]">{label}</p>
         {badge ? (
-          <span className="shrink-0 rounded-full bg-[#0866FF]/12 px-2.5 py-1 text-[10px] font-extrabold text-[#0866FF]">
+          <span className="shrink-0 rounded-full bg-[#1B4F9C]/12 px-2.5 py-1 text-[10px] font-extrabold text-[#1B4F9C]">
             {badge}
           </span>
         ) : null}
@@ -54,13 +54,13 @@ function EmployeeMock() {
   ];
   return (
     <PhoneFrame>
-      <div className="bg-[#0866FF] px-4 pb-4 pt-3">
+      <div className="bg-[#1B4F9C] px-4 pb-4 pt-3">
         <div className="flex items-center justify-between gap-3">
           <div className="min-w-0">
             <p className="text-[10px] font-semibold text-white/80">Good morning</p>
             <p className="truncate text-sm font-extrabold text-white">Ada Okafor</p>
           </div>
-          <span className="shrink-0 rounded-full bg-white px-2.5 py-1 text-[11px] font-extrabold text-[#0866FF]">
+          <span className="shrink-0 rounded-full bg-white px-2.5 py-1 text-[11px] font-extrabold text-[#1B4F9C]">
             ₦2,450
           </span>
         </div>
@@ -70,7 +70,7 @@ function EmployeeMock() {
         <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#6B6B6B]">Today&rsquo;s pick</p>
         <div className="mt-2 flex items-center justify-between gap-3 rounded-lg bg-[#F9F8F7] p-3">
           <p className="text-xs font-bold text-[#282828]">2-for-1 suya night</p>
-          <ArrowRight className="h-3.5 w-3.5 shrink-0 text-[#0866FF]" />
+          <ArrowRight className="h-3.5 w-3.5 shrink-0 text-[#1B4F9C]" />
         </div>
       </div>
 
@@ -83,7 +83,7 @@ function EmployeeMock() {
             </div>
             <span
               className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-[10px] font-extrabold ${
-                o.tone === "blue" ? "bg-[#0866FF] text-white" : "bg-[#0866FF]/12 text-[#0866FF]"
+                o.tone === "blue" ? "bg-[#1B4F9C] text-white" : "bg-[#1B4F9C]/12 text-[#1B4F9C]"
               }`}
             >
               {o.n[0]}
@@ -99,7 +99,7 @@ function EmployeeMock() {
           { l: "Rewards", on: false },
           { l: "Profile", on: false },
         ].map((t) => (
-          <span key={t.l} className={`text-[11px] font-bold ${t.on ? "text-[#0866FF]" : "text-[#6B6B6B]"}`}>
+          <span key={t.l} className={`text-[11px] font-bold ${t.on ? "text-[#1B4F9C]" : "text-[#6B6B6B]"}`}>
             {t.l}
           </span>
         ))}
@@ -129,16 +129,16 @@ function EmployerMock() {
         <div className={`mt-3 rounded-lg border ${LINE} p-3`}>
           <div className="flex items-center justify-between">
             <p className="text-[11px] font-bold text-[#282828]">Budget utilisation</p>
-            <p className="text-[11px] font-extrabold text-[#0866FF]">66%</p>
+            <p className="text-[11px] font-extrabold text-[#1B4F9C]">66%</p>
           </div>
           <div className="mt-2 h-2 overflow-hidden rounded-full bg-[#F1F1F1]">
-            <div className="h-full w-2/3 rounded-full bg-[#0866FF]" />
+            <div className="h-full w-2/3 rounded-full bg-[#1B4F9C]" />
           </div>
         </div>
 
         <div className={`mt-2 flex items-center justify-between rounded-lg border ${LINE} p-3`}>
           <p className="text-[11px] font-bold text-[#282828]">Top programme</p>
-          <span className="text-[11px] font-extrabold text-[#0866FF]">Meal + Fitness</span>
+          <span className="text-[11px] font-extrabold text-[#1B4F9C]">Meal + Fitness</span>
         </div>
       </div>
     </WindowFrame>
@@ -154,7 +154,7 @@ function PartnerMock() {
             <p className="text-[11px] font-bold text-[#282828]">Redemptions today</p>
             <p className="text-lg font-extrabold text-[#282828]">342</p>
           </div>
-          <span className="rounded-full bg-[#0866FF]/12 px-2.5 py-1 text-[10px] font-extrabold text-[#0866FF]">
+          <span className="rounded-full bg-[#1B4F9C]/12 px-2.5 py-1 text-[10px] font-extrabold text-[#1B4F9C]">
             +18%
           </span>
         </div>
@@ -162,14 +162,14 @@ function PartnerMock() {
         <div className={`mt-3 rounded-lg border ${LINE} p-3`}>
           <p className="text-[11px] font-bold text-[#282828]">Campaign reach</p>
           <div className="mt-2 h-2 overflow-hidden rounded-full bg-[#F1F1F1]">
-            <div className="h-full w-4/5 rounded-full bg-[#0866FF]" />
+            <div className="h-full w-4/5 rounded-full bg-[#1B4F9C]" />
           </div>
           <p className="mt-1.5 text-[10px] font-semibold text-[#6B6B6B]">18,240 members reached</p>
         </div>
 
         <div className={`mt-2 flex items-center justify-between rounded-lg border ${LINE} p-3`}>
           <span className="text-[11px] font-bold text-[#282828]">Settle balance</span>
-          <span className="text-[11px] font-extrabold text-[#0866FF]">₦1.6M due</span>
+          <span className="text-[11px] font-extrabold text-[#1B4F9C]">₦1.6M due</span>
         </div>
       </div>
     </WindowFrame>
@@ -197,7 +197,7 @@ function AdminMock() {
 
         <div className={`mt-3 flex items-center justify-between rounded-lg border ${LINE} p-3`}>
           <p className="text-[11px] font-bold text-[#282828]">Compliance &amp; audit</p>
-          <span className="inline-flex items-center gap-1 text-[11px] font-extrabold text-[#0866FF]">
+          <span className="inline-flex items-center gap-1 text-[11px] font-extrabold text-[#1B4F9C]">
             <Check className="h-3.5 w-3.5" /> All green
           </span>
         </div>
@@ -243,7 +243,7 @@ export default function OnePlatformExperiences() {
         className="absolute inset-0 opacity-70"
         style={{
           backgroundImage:
-            "radial-gradient(60% 60% at 18% 8%, rgba(8,102,255,0.06) 0%, transparent 60%), radial-gradient(50% 50% at 92% 92%, rgba(8,102,255,0.05) 0%, transparent 55%)",
+            "radial-gradient(60% 60% at 18% 8%, rgba(27,79,156,0.06) 0%, transparent 60%), radial-gradient(50% 50% at 92% 92%, rgba(27,79,156,0.05) 0%, transparent 55%)",
         }}
         aria-hidden="true"
       />
@@ -272,7 +272,7 @@ export default function OnePlatformExperiences() {
                 onClick={() => setActive(item.id)}
                 className={`flex items-center justify-center gap-2 rounded-xl px-3 py-3 text-xs font-bold transition-colors ${
                   on
-                    ? "bg-[#0866FF] text-white shadow-nv-card"
+                    ? "bg-[#1B4F9C] text-white shadow-nv-card"
                     : "text-[#484848] hover:bg-white hover:text-[#282828]"
                 }`}
               >
@@ -285,7 +285,7 @@ export default function OnePlatformExperiences() {
 
         <div className="mt-12 grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-[#0866FF]/20 bg-[#0866FF]/8 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#0866FF]">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#1B4F9C]/20 bg-[#1B4F9C]/8 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#1B4F9C]">
               <Icon className="h-3.5 w-3.5" />
               {ex.name}
             </span>
@@ -298,8 +298,8 @@ export default function OnePlatformExperiences() {
             <ul className="mt-6 space-y-3">
               {ex.points.map((p) => (
                 <li key={p} className="flex items-center gap-3 text-sm text-[#282828]">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#0866FF]/12">
-                    <Check className="h-3 w-3 text-[#0866FF]" />
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#1B4F9C]/12">
+                    <Check className="h-3 w-3 text-[#1B4F9C]" />
                   </span>
                   {p}
                 </li>
@@ -314,7 +314,7 @@ export default function OnePlatformExperiences() {
 
           <div className="flex items-center justify-center">
             <div className="relative w-full max-w-lg">
-              <div className="absolute -inset-6 rounded-[3rem] bg-[#0866FF]/10 blur-2xl" aria-hidden="true" />
+              <div className="absolute -inset-6 rounded-[3rem] bg-[#1B4F9C]/10 blur-2xl" aria-hidden="true" />
               <div className="relative">
                 <Mock />
               </div>

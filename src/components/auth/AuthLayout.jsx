@@ -30,13 +30,42 @@ export default function AuthLayout({
 
   return (
     <div className="flex min-h-screen flex-col bg-[#F9F8F7] font-sans lg:flex-row">
-      {/* ---------- Brand panel: dark, media-free, desktop only ---------- */}
+      {/* ---------- Brand panel: savanna footage, desktop only ---------- */}
       <aside className="relative hidden w-full overflow-hidden bg-[#0B1B3A] lg:flex lg:w-[44%] xl:w-[42%]">
+        {/* Savanna backdrop. Decorative only, so it is hidden from assistive
+            tech and skipped entirely when the visitor prefers reduced motion —
+            the poster frame stands in, keeping the panel from going flat. */}
+        <video
+          className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
+          poster="/videos/auth-savanna-poster.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+        >
+          <source src="/videos/auth-savanna.mp4" type="video/mp4" />
+        </video>
+
+        {/* Sits under the video too, so reduced-motion visitors still get a
+            backdrop rather than bare panel blue. */}
+        <img
+          src="/videos/auth-savanna-poster.jpg"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 hidden h-full w-full object-cover motion-reduce:block"
+        />
+
+        {/* The panel colour at high coverage is what keeps white type legible
+            over moving footage; the blue tint is kept light on purpose so the
+            savanna stays recognisable rather than reading as a flat blue slab. */}
+        <div className="absolute inset-0 bg-[#0B1B3A]/80" aria-hidden="true" />
         <div
-          className="absolute inset-0 opacity-90"
+          className="absolute inset-0"
           style={{
             backgroundImage:
-              "radial-gradient(60% 50% at 15% 10%, rgba(8,102,255,0.45) 0%, transparent 60%), radial-gradient(50% 45% at 90% 85%, rgba(255,204,0,0.18) 0%, transparent 55%)",
+              "linear-gradient(180deg, rgba(11,27,58,0.80) 0%, rgba(11,27,58,0.45) 42%, rgba(11,27,58,0.88) 100%)",
           }}
           aria-hidden="true"
         />
@@ -86,10 +115,10 @@ export default function AuthLayout({
             </div>
             {/* The brand panel already carries the wordmark on desktop. */}
             <nav className="hidden items-center gap-7 text-sm font-semibold text-[#484848] lg:flex">
-              <RouterLink to="/offers" className="transition-colors hover:text-[#0866FF]">Discounts</RouterLink>
-              <RouterLink to="/corporate" className="transition-colors hover:text-[#0866FF]">Pricing</RouterLink>
-              <RouterLink to="/support" className="transition-colors hover:text-[#0866FF]">Contact</RouterLink>
-              <RouterLink to="/partner" className="transition-colors hover:text-[#0866FF]">Request a Brand</RouterLink>
+              <RouterLink to="/offers" className="transition-colors hover:text-[#1B4F9C]">Discounts</RouterLink>
+              <RouterLink to="/corporate" className="transition-colors hover:text-[#1B4F9C]">Pricing</RouterLink>
+              <RouterLink to="/support" className="transition-colors hover:text-[#1B4F9C]">Contact</RouterLink>
+              <RouterLink to="/partner" className="transition-colors hover:text-[#1B4F9C]">Request a Brand</RouterLink>
             </nav>
 
             <div className="flex items-center gap-3">
@@ -108,12 +137,12 @@ export default function AuthLayout({
             {hasHeading ? (
               <div className="mb-7 text-center">
                 {Icon ? (
-                  <span className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#0866FF]/10 text-[#0866FF]">
+                  <span className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#1B4F9C]/10 text-[#1B4F9C]">
                     <Icon className="h-5 w-5" />
                   </span>
                 ) : null}
                 {eyebrow ? (
-                  <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.18em] text-[#0866FF]">
+                  <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.18em] text-[#1B4F9C]">
                     {eyebrow}
                   </p>
                 ) : null}
@@ -133,7 +162,7 @@ export default function AuthLayout({
             {children}
 
             {footer ? (
-              <div className="mt-6 text-center text-sm text-[#484848] [&_a]:font-semibold [&_a]:text-[#0866FF] [&_a:hover]:underline">
+              <div className="mt-6 text-center text-sm text-[#484848] [&_a]:font-semibold [&_a]:text-[#1B4F9C] [&_a:hover]:underline">
                 {footer}
               </div>
             ) : null}
@@ -142,7 +171,7 @@ export default function AuthLayout({
 
         <footer className="border-t border-[#F1F1F1] bg-[#FFFFFF] py-4 text-center text-xs text-[#6B6B6B]">
           <span className="inline-flex items-center justify-center gap-2">
-            <ShieldCheck className="h-4 w-4 text-[#0866FF]" />
+            <ShieldCheck className="h-4 w-4 text-[#1B4F9C]" />
             NelvinBenefit Platform
           </span>
         </footer>

@@ -25,15 +25,15 @@ export default function BusinessPayouts() {
         </div>
         <button
           onClick={() => setBankModal(true)}
-          className="bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#0866FF] text-xs font-bold px-4 py-2.5 rounded-xl inline-flex items-center gap-2 shadow-sm transition-colors self-start sm:self-auto"
+          className="bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#1B4F9C] text-xs font-bold px-4 py-2.5 rounded-xl inline-flex items-center gap-2 shadow-sm transition-colors self-start sm:self-auto"
         >
-          <Building2 className="w-4 h-4 text-[#0866FF]" /> Edit Bank Details
+          <Building2 className="w-4 h-4 text-[#1B4F9C]" /> Edit Bank Details
         </button>
       </div>
 
       <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 shadow-sm flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 bg-[#FFFFFF] text-[#0866FF] rounded-lg flex items-center justify-center">
+          <div className="w-12 h-12 bg-[#FFFFFF] text-[#1B4F9C] rounded-lg flex items-center justify-center">
             <Building2 className="w-6 h-6" />
           </div>
           <div>
@@ -60,13 +60,13 @@ export default function BusinessPayouts() {
             <tbody className="divide-y divide-[#F1F1F1]">
               {payouts.map((p) => (
                 <tr key={p.id} className="hover:bg-[#F9F8F7] transition-colors">
-                  <td className="px-6 py-4 font-black text-[#0866FF] text-base">{p.netAmount}</td>
+                  <td className="px-6 py-4 font-black text-[#1B4F9C] text-base">{p.netAmount}</td>
                   <td className="px-6 py-4 font-bold text-ivory">{p.gross}</td>
                   <td className="px-6 py-4 text-ivory-muted">{p.commission}</td>
                   <td className="px-6 py-4 text-xs text-ivory-muted">{p.date}</td>
                   <td className="px-6 py-4">
                     <span className={`text-xs font-bold px-2.5 py-1 rounded-full uppercase ${
-                      p.status === "paid" ? "bg-[#FFFFFF] text-[#0866FF]" : "bg-[#F9F8F7] text-[#0866FF]"
+                      p.status === "paid" ? "bg-[#FFFFFF] text-[#1B4F9C]" : "bg-[#F9F8F7] text-[#1B4F9C]"
                     }`}>
                       {p.status}
                     </span>
@@ -110,7 +110,7 @@ export default function BusinessPayouts() {
               </div>
               <button
                 type="submit"
-                className="w-full bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#0866FF] font-bold text-xs py-3 rounded-xl transition-colors"
+                className="w-full bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#1B4F9C] font-bold text-xs py-3 rounded-xl transition-colors"
               >
                 Save Settlement Account
               </button>

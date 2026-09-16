@@ -71,16 +71,16 @@ export default function Dashboard() {
 
         {/* Premium Welcome & Tier Hero Banner */}
         <div className="relative rounded-xl bg-gradient-to-r from-black via-[#FFFFFF] to-black text-white p-6 sm:p-8 md:p-10 shadow-2xl border border-[#F1F1F1] overflow-hidden">
-          <div className="absolute right-0 top-0 bottom-0 w-1/2 opacity-10 bg-[radial-gradient(#0866FF_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-1/2 opacity-10 bg-[radial-gradient(#1B4F9C_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
             <div className="lg:col-span-2 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F4F4F4] text-[#0866FF] border border-[#0866FF]/30 text-xs font-black tracking-wider uppercase backdrop-blur-md">
-                <Crown className="w-3.5 h-3.5 text-[#0866FF]" /> Premium Gold Member
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F4F4F4] text-[#1B4F9C] border border-[#1B4F9C]/30 text-xs font-black tracking-wider uppercase backdrop-blur-md">
+                <Crown className="w-3.5 h-3.5 text-[#1B4F9C]" /> Premium Gold Member
               </div>
 
               <h1 className="text-3xl sm:text-4xl font-extrabold font-heading tracking-tight leading-tight">
-                Hello, <span className="text-[#0866FF]">{user?.full_name?.split(" ")[0] || "Valued Member"}</span>! 👋
+                Hello, <span className="text-[#1B4F9C]">{user?.full_name?.split(" ")[0] || "Valued Member"}</span>! 👋
               </h1>
 
               <p className="text-[#282828] text-sm sm:text-base max-w-xl leading-relaxed">
@@ -90,7 +90,7 @@ export default function Dashboard() {
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <Link
                   to="/explore"
-                  className="bg-[#0866FF] hover:bg-[#0866FF] text-white font-extrabold text-xs px-5 py-3 rounded-full transition-all shadow-lg shadow-[#0866FF]/20 flex items-center gap-2"
+                  className="bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white font-extrabold text-xs px-5 py-3 rounded-full transition-all shadow-lg shadow-[#1B4F9C]/20 flex items-center gap-2"
                 >
                   <Zap className="w-4 h-4" /> Discover New Perks
                 </Link>
@@ -98,7 +98,7 @@ export default function Dashboard() {
                   to="/wallet"
                   className="bg-[#F4F4F4] hover:bg-[#F4F4F4] text-white font-bold text-xs px-5 py-3 rounded-full transition-all border border-[#F1F1F1] backdrop-blur-sm flex items-center gap-2"
                 >
-                  <Wallet className="w-4 h-4 text-[#0866FF]" /> Open Wallet ($320.00)
+                  <Wallet className="w-4 h-4 text-[#1B4F9C]" /> Open Wallet ($320.00)
                 </Link>
               </div>
             </div>
@@ -107,21 +107,21 @@ export default function Dashboard() {
             <div className="bg-[#F4F4F4] border border-[#F1F1F1] rounded-lg p-6 backdrop-blur-xl space-y-4 shadow-inner">
               <div className="flex items-center justify-between border-b border-[#F1F1F1] pb-3">
                 <span className="text-xs font-extrabold text-[#484848] uppercase tracking-wider">Benefit Allowance</span>
-                <span className="text-xs font-bold text-[#0866FF] bg-[#0866FF]/10 px-2.5 py-0.5 rounded-full border border-[#0866FF]/30">Active</span>
+                <span className="text-xs font-bold text-[#1B4F9C] bg-[#1B4F9C]/10 px-2.5 py-0.5 rounded-full border border-[#1B4F9C]/30">Active</span>
               </div>
 
               <div className="space-y-1">
-                <p className="text-3xl font-black font-heading text-[#0866FF]">$450.00</p>
+                <p className="text-3xl font-black font-heading text-[#1B4F9C]">$450.00</p>
                 <p className="text-[11px] text-[#484848]">Flexible Monthly Allowance (Refreshes in 12 days)</p>
               </div>
 
               <div className="w-full bg-[#F4F4F4] rounded-full h-2 overflow-hidden">
-                <div className="bg-gradient-to-r from-[#0866FF] to-[#0866FF] h-full rounded-full" style={{ width: "72%" }} />
+                <div className="bg-gradient-to-r from-[#1B4F9C] to-[#1B4F9C] h-full rounded-full" style={{ width: "72%" }} />
               </div>
 
               <div className="flex justify-between items-center text-[11px] font-semibold text-[#282828] pt-1">
                 <span>$324.00 Spent</span>
-                <span className="text-[#0866FF]">$126.00 Remaining</span>
+                <span className="text-[#1B4F9C]">$126.00 Remaining</span>
               </div>
             </div>
           </div>
@@ -131,7 +131,7 @@ export default function Dashboard() {
         <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-6 sm:p-8 shadow-xl space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#F1F1F1] pb-5">
             <div>
-              <div className="flex items-center gap-2 text-xs font-black uppercase text-[#0866FF] tracking-wider mb-1">
+              <div className="flex items-center gap-2 text-xs font-black uppercase text-[#1B4F9C] tracking-wider mb-1">
                 <TrendingUp className="w-4 h-4" /> Savings Analytics
               </div>
               <h2 className="text-xl sm:text-2xl font-bold font-heading text-ivory">
@@ -145,7 +145,7 @@ export default function Dashboard() {
               </span>
               <Link
                 to="/benefits"
-                className="text-xs font-extrabold text-[#0866FF] hover:text-[#282828] transition-colors flex items-center gap-1"
+                className="text-xs font-extrabold text-[#1B4F9C] hover:text-[#282828] transition-colors flex items-center gap-1"
               >
                 View Full History <ChevronRight className="w-4 h-4" />
               </Link>
@@ -159,7 +159,7 @@ export default function Dashboard() {
                 <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fontSize: 11, fontWeight: 700, fill: "#6B7280" }} />
                 <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: "#6B7280" }} tickFormatter={(v) => `$${v}`} />
                 <Tooltip
-                  cursor={{ fill: "rgba(8, 102, 255, 0.04)" }}
+                  cursor={{ fill: "rgba(27, 79, 156, 0.04)" }}
                   contentStyle={{
                     backgroundColor: "#FFFFFF",
                     borderRadius: "16px",
@@ -170,7 +170,7 @@ export default function Dashboard() {
                   }}
                   formatter={(value) => [`$${value}`, "Savings"]}
                 />
-                <Bar dataKey="savings" fill="#0866FF" radius={[8, 8, 8, 8]} barSize={36} />
+                <Bar dataKey="savings" fill="#1B4F9C" radius={[8, 8, 8, 8]} barSize={36} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -190,16 +190,16 @@ export default function Dashboard() {
             className="group bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 flex flex-col justify-between hover:shadow-xl hover:border-[#F1F1F1]/40 transition-all duration-300 space-y-4"
           >
             <div className="flex items-center justify-between">
-              <div className="w-12 h-12 rounded-lg bg-[#FFFFFF] text-[#0866FF] flex items-center justify-center group-hover:scale-110 group-hover:bg-[#0866FF] group-hover:text-[#282828] transition-all">
+              <div className="w-12 h-12 rounded-lg bg-[#FFFFFF] text-[#1B4F9C] flex items-center justify-center group-hover:scale-110 group-hover:bg-[#1B4F9C] group-hover:text-[#282828] transition-all">
                 <Tag className="w-6 h-6" />
               </div>
-              <Sparkles className="w-4 h-4 text-[#0866FF] group-hover:rotate-12 transition-transform" />
+              <Sparkles className="w-4 h-4 text-[#1B4F9C] group-hover:rotate-12 transition-transform" />
             </div>
             <div>
-              <h3 className="font-bold text-ivory group-hover:text-[#0866FF] transition-colors">Marketplace Offers</h3>
+              <h3 className="font-bold text-ivory group-hover:text-[#1B4F9C] transition-colors">Marketplace Offers</h3>
               <p className="text-xs text-ivory-muted mt-1">Explore 500+ global brands & local discounts.</p>
             </div>
-            <span className="text-xs font-extrabold text-[#0866FF] flex items-center gap-1 pt-1">
+            <span className="text-xs font-extrabold text-[#1B4F9C] flex items-center gap-1 pt-1">
               Browse Now <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </span>
           </Link>
@@ -209,18 +209,18 @@ export default function Dashboard() {
             className="group bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all duration-300 text-left space-y-4"
           >
             <div className="flex items-center justify-between">
-              <div className="w-12 h-12 rounded-lg bg-[#F9F8F7] text-[#0866FF] flex items-center justify-center group-hover:scale-110 group-hover:bg-[#FFFFFF] group-hover:text-[#282828] transition-all">
+              <div className="w-12 h-12 rounded-lg bg-[#F9F8F7] text-[#1B4F9C] flex items-center justify-center group-hover:scale-110 group-hover:bg-[#FFFFFF] group-hover:text-[#282828] transition-all">
                 <Wallet className="w-6 h-6" />
               </div>
-              <span className="text-[10px] font-black uppercase tracking-wider bg-[#F9F8F7] text-[#0866FF] px-2 py-0.5 rounded-full">Wallet</span>
+              <span className="text-[10px] font-black uppercase tracking-wider bg-[#F9F8F7] text-[#1B4F9C] px-2 py-0.5 rounded-full">Wallet</span>
             </div>
             <div>
-              <h3 className="font-bold text-ivory group-hover:text-[#0866FF] transition-colors">
+              <h3 className="font-bold text-ivory group-hover:text-[#1B4F9C] transition-colors">
                 {walletMsg ? "Instant Top Up!" : "Top Up Allowance"}
               </h3>
               <p className="text-xs text-ivory-muted mt-1">Manage corporate debit card & cashbacks.</p>
             </div>
-            <span className="text-xs font-extrabold text-[#0866FF] flex items-center gap-1 pt-1">
+            <span className="text-xs font-extrabold text-[#1B4F9C] flex items-center gap-1 pt-1">
               {walletMsg ? "Feature Active!" : "Manage Card"} <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </span>
           </button>
@@ -230,18 +230,18 @@ export default function Dashboard() {
             className="group bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 flex flex-col justify-between hover:shadow-xl hover:border-rose-400 transition-all duration-300 text-left space-y-4"
           >
             <div className="flex items-center justify-between">
-              <div className="w-12 h-12 rounded-lg bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20 flex items-center justify-center group-hover:scale-110 group-hover:bg-[#FFFFFF] group-hover:text-[#282828] transition-all">
+              <div className="w-12 h-12 rounded-lg bg-[#F9F8F7] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/20 flex items-center justify-center group-hover:scale-110 group-hover:bg-[#FFFFFF] group-hover:text-[#282828] transition-all">
                 {copied ? <Check className="w-6 h-6" /> : <UserPlus className="w-6 h-6" />}
               </div>
-              <span className="text-[10px] font-black uppercase tracking-wider bg-[#F9F8F7] text-[#0866FF] px-2 py-0.5 rounded-full">+50 Points</span>
+              <span className="text-[10px] font-black uppercase tracking-wider bg-[#F9F8F7] text-[#1B4F9C] px-2 py-0.5 rounded-full">+50 Points</span>
             </div>
             <div>
-              <h3 className="font-bold text-ivory group-hover:text-[#0866FF] transition-colors">
+              <h3 className="font-bold text-ivory group-hover:text-[#1B4F9C] transition-colors">
                 {copied ? "Link Copied!" : "Invite Coworkers"}
               </h3>
               <p className="text-xs text-ivory-muted mt-1">Share referral link and earn bonus rewards.</p>
             </div>
-            <span className="text-xs font-extrabold text-[#0866FF] flex items-center gap-1 pt-1">
+            <span className="text-xs font-extrabold text-[#1B4F9C] flex items-center gap-1 pt-1">
               {copied ? "Ready to Paste!" : "Copy Invite Link"} <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </span>
           </button>
@@ -251,10 +251,10 @@ export default function Dashboard() {
             className="group bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 flex flex-col justify-between hover:shadow-xl hover:border-[#F1F1F1] transition-all duration-300 space-y-4"
           >
             <div className="flex items-center justify-between">
-              <div className="w-12 h-12 rounded-lg bg-[#F4F4F4] text-[#282828] flex items-center justify-center group-hover:scale-110 group-hover:bg-[#FFFFFF] group-hover:text-[#0866FF] transition-all">
+              <div className="w-12 h-12 rounded-lg bg-[#F4F4F4] text-[#282828] flex items-center justify-center group-hover:scale-110 group-hover:bg-[#FFFFFF] group-hover:text-[#1B4F9C] transition-all">
                 <Gift className="w-6 h-6" />
               </div>
-              <Crown className="w-4 h-4 text-[#0866FF]" />
+              <Crown className="w-4 h-4 text-[#1B4F9C]" />
             </div>
             <div>
               <h3 className="font-bold text-ivory group-hover:text-[#282828] transition-colors">Digital Vouchers</h3>

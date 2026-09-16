@@ -85,7 +85,7 @@ export default function DepartmentsPanel({ company, employees, onChanged }) {
             <button key={p} onClick={() => { setForm((s) => ({ ...s, name: p })); setShowAdd(true); }}
               className="text-xs bg-[#F4F4F4] hover:bg-[#F4F4F4] text-ivory px-3 py-2 rounded-lg">+ {p}</button>
           ))}
-          <button onClick={() => setShowAdd(true)} className="inline-flex items-center gap-2 bg-[#0866FF] hover:bg-[#0866FF] text-white text-sm font-semibold px-4 py-2 rounded-lg">
+          <button onClick={() => setShowAdd(true)} className="inline-flex items-center gap-2 bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white text-sm font-semibold px-4 py-2 rounded-lg">
             <Plus className="w-4 h-4" /> Add Department
           </button>
         </div>
@@ -140,7 +140,7 @@ export default function DepartmentsPanel({ company, employees, onChanged }) {
                 <span className="w-3 h-3 rounded-full" style={{ background: d.color }} />
                 <span className="text-sm text-ivory flex-1">{d.name}</span>
                 <span className="text-xs text-ivory-muted">{d.count} emp · </span>
-                <span className="text-sm font-bold text-[#0866FF]">${d.sav.toLocaleString()}</span>
+                <span className="text-sm font-bold text-[#1B4F9C]">${d.sav.toLocaleString()}</span>
               </div>
             ))}
           </div>
@@ -151,13 +151,13 @@ export default function DepartmentsPanel({ company, employees, onChanged }) {
         <Modal title="Add department" onClose={() => setShowAdd(false)}>
           <form onSubmit={create} className="space-y-3">
             <Field label="Department name">
-              <input required value={form.name} onChange={(e) => setForm((s) => ({ ...s, name: e.target.value }))} placeholder="Marketing" className="w-full px-3 py-2 text-sm border border-[#F1F1F1] rounded-lg outline-none focus:border-[#0866FF]/40" />
+              <input required value={form.name} onChange={(e) => setForm((s) => ({ ...s, name: e.target.value }))} placeholder="Marketing" className="w-full px-3 py-2 text-sm border border-[#F1F1F1] rounded-lg outline-none focus:border-[#1B4F9C]/40" />
             </Field>
             <Field label="Head email (optional)">
-              <input type="email" value={form.head_email} onChange={(e) => setForm((s) => ({ ...s, head_email: e.target.value }))} placeholder="head@acme.com" className="w-full px-3 py-2 text-sm border border-[#F1F1F1] rounded-lg outline-none focus:border-[#0866FF]/40" />
+              <input type="email" value={form.head_email} onChange={(e) => setForm((s) => ({ ...s, head_email: e.target.value }))} placeholder="head@acme.com" className="w-full px-3 py-2 text-sm border border-[#F1F1F1] rounded-lg outline-none focus:border-[#1B4F9C]/40" />
             </Field>
             <Field label="Description (optional)">
-              <textarea value={form.description} onChange={(e) => setForm((s) => ({ ...s, description: e.target.value }))} rows={2} className="w-full px-3 py-2 text-sm border border-[#F1F1F1] rounded-lg outline-none focus:border-[#0866FF]/40" />
+              <textarea value={form.description} onChange={(e) => setForm((s) => ({ ...s, description: e.target.value }))} rows={2} className="w-full px-3 py-2 text-sm border border-[#F1F1F1] rounded-lg outline-none focus:border-[#1B4F9C]/40" />
             </Field>
             <div>
               <label className="block text-xs font-semibold text-ivory-muted mb-1.5">Tag color</label>
@@ -167,7 +167,7 @@ export default function DepartmentsPanel({ company, employees, onChanged }) {
                 ))}
               </div>
             </div>
-            <button type="submit" className="w-full bg-[#0866FF] hover:bg-[#0866FF] text-white font-semibold py-2.5 rounded-lg text-sm">Save department</button>
+            <button type="submit" className="w-full bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white font-semibold py-2.5 rounded-lg text-sm">Save department</button>
           </form>
         </Modal>
       )}

@@ -14,9 +14,34 @@ import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp
 import { useAuth } from "@/lib/AuthContext";
 import { setPendingPlan, resolvePostAuthPath } from "@/lib/planPersistence";
 
+/**
+ * The portal that matches the account's real role.
+ *
+ * The role tabs above the form are a convenience for sign-up, but they used to
+ * drive the post-login destination too. A subscriber who happened to have the
+ * "Partner" tab selected was therefore sent to /business and met with
+ * "Business access required" — with the session already live, so going back to
+ * /login redirected them to /dashboard. Login looked broken.
+ *
+ * The account's own role wins. The selected tab is only a fallback for the odd
+ * case where an account somehow carries no role at all.
+ */
+function destinationForRole(user, tab) {
+  // Supabase exposes the profile role under user_metadata; the local store
+  // keeps it at the top level.
+  const role = user?.role || user?.user_metadata?.role;
+  if (role === "business" || role === "partner") return "/business";
+  if (role === "hr_admin" || role === "corporate") return "/corporate-dashboard";
+  if (role) return resolvePostAuthPath();
+
+  if (tab === "business") return "/business";
+  if (tab === "hr_admin") return "/corporate-dashboard";
+  return resolvePostAuthPath();
+}
+
 export default function AuthForm({ mode = "login" }) {
   const isRegister = mode === "register";
-  const { isAuthenticated, isLoadingAuth } = useAuth();
+  const { user, isAuthenticated, isLoadingAuth } = useAuth();
 
   const [activeTab, setActiveTab] = useState("subscriber");
   const [activeAction, setActiveAction] = useState(isRegister ? "signup" : "login");
@@ -40,15 +65,9 @@ export default function AuthForm({ mode = "login" }) {
 
   useEffect(() => {
     if (!isLoadingAuth && isAuthenticated) {
-      if (activeTab === "business") {
-        window.location.href = "/business";
-      } else if (activeTab === "hr_admin") {
-        window.location.href = "/corporate-dashboard";
-      } else {
-        window.location.href = resolvePostAuthPath();
-      }
+      window.location.href = destinationForRole(user, activeTab);
     }
-  }, [isLoadingAuth, isAuthenticated, activeTab]);
+  }, [isLoadingAuth, isAuthenticated, activeTab, user]);
 
   const validate = () => {
     const e = {};
@@ -87,17 +106,13 @@ export default function AuthForm({ mode = "login" }) {
         const res = await db.auth.register({ email, password, role: activeTab });
         if (res?.session) {
           // Email confirmation disabled — session is live; go straight in.
-          if (activeTab === "business") window.location.href = "/business";
-          else if (activeTab === "hr_admin") window.location.href = "/corporate-dashboard";
-          else window.location.href = resolvePostAuthPath();
+          window.location.href = destinationForRole(res?.user, activeTab);
         } else {
           setShowOtp(true);
         }
       } else {
-        await db.auth.loginViaEmailPassword(email, password);
-        if (activeTab === "business") window.location.href = "/business";
-        else if (activeTab === "hr_admin") window.location.href = "/corporate-dashboard";
-        else window.location.href = resolvePostAuthPath();
+        const res = await db.auth.loginViaEmailPassword(email, password);
+        window.location.href = destinationForRole(res?.user, activeTab);
       }
     } catch (err) {
       setServerError(err.message || (activeAction === "signup" ? "Registration failed" : "Invalid credentials"));
@@ -113,6 +128,7 @@ export default function AuthForm({ mode = "login" }) {
       const result = await db.auth.verifyOtp({ email, otpCode });
       if (result?.access_token) db.auth.setToken(result.access_token);
       try { await db.auth.updateMe({ first_name: firstName, last_name: lastName, role: activeTab }); } catch {}
+      // The tab is the source of truth here: the role was just written from it.
       if (activeTab === "business") window.location.href = "/business";
       else if (activeTab === "hr_admin") window.location.href = "/corporate-dashboard";
       else window.location.href = resolvePostAuthPath();
@@ -137,7 +153,7 @@ export default function AuthForm({ mode = "login" }) {
               </InputOTPGroup>
             </InputOTP>
           </div>
-          <Button className="h-12 w-full rounded-xl bg-[#0866FF] font-bold text-white transition-colors hover:bg-[#0556D6]" onClick={handleVerify} disabled={loading || otpCode.length < 6}>
+          <Button className="h-12 w-full rounded-xl bg-[#1B4F9C] font-bold text-white transition-colors hover:bg-[#123A78]" onClick={handleVerify} disabled={loading || otpCode.length < 6}>
             {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Verify & Access Portal"}
           </Button>
         </div>
@@ -181,7 +197,7 @@ export default function AuthForm({ mode = "login" }) {
                   onClick={() => setActiveTab(id)}
                   className={`flex items-center justify-center gap-1.5 rounded-lg px-2 py-2.5 transition-colors ${
                     on
-                      ? "bg-[#0866FF] text-white shadow-nv-card"
+                      ? "bg-[#1B4F9C] text-white shadow-nv-card"
                       : "text-[#484848] hover:bg-white hover:text-[#282828]"
                   }`}
                 >
@@ -204,7 +220,7 @@ export default function AuthForm({ mode = "login" }) {
                   onClick={() => setActiveAction(id)}
                   className={`border-b-2 pb-1 font-heading text-sm font-black transition-colors ${
                     activeAction === id
-                      ? "border-[#0866FF] text-[#282828]"
+                      ? "border-[#1B4F9C] text-[#282828]"
                       : "border-transparent text-[#6B6B6B] hover:text-[#484848]"
                   }`}
                 >
@@ -212,7 +228,7 @@ export default function AuthForm({ mode = "login" }) {
                 </button>
               ))}
             </div>
-            <span className="shrink-0 rounded border border-[#0866FF]/30 bg-[#0866FF]/10 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-[#0866FF]">
+            <span className="shrink-0 rounded border border-[#1B4F9C]/30 bg-[#1B4F9C]/10 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-[#1B4F9C]">
               {activeTab === "subscriber" ? "Particulier" : activeTab === "hr_admin" ? "HR Portal" : "Partner"}
             </span>
           </div>
@@ -276,7 +292,7 @@ export default function AuthForm({ mode = "login" }) {
                 {activeAction === "login" ? (
                   <Link
                     to="/forgot-password"
-                    className="text-[11px] font-bold text-[#0866FF] hover:underline"
+                    className="text-[11px] font-bold text-[#1B4F9C] hover:underline"
                   >
                     Forgot password?
                   </Link>
@@ -315,7 +331,7 @@ export default function AuthForm({ mode = "login" }) {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full h-11 rounded-xl bg-[#0866FF] text-sm font-extrabold text-white shadow-nv-card transition-colors hover:bg-[#0556D6]"
+              className="w-full h-11 rounded-xl bg-[#1B4F9C] text-sm font-extrabold text-white shadow-nv-card transition-colors hover:bg-[#123A78]"
             >
               {loading ? (
                 <Loader2 className="w-4 h-4 animate-spin" />

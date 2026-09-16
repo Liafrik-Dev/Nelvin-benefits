@@ -42,7 +42,7 @@ export default function AfricaMena() {
     <section id="africa" className="surface-nv-primary section-nv relative overflow-hidden">
       <div
         className="absolute inset-0 opacity-70"
-        style={{ backgroundImage: "radial-gradient(50% 50% at 88% 12%, rgba(8,102,255,0.06) 0%, transparent 60%), radial-gradient(45% 45% at 8% 92%, rgba(8,102,255,0.05) 0%, transparent 55%)" }}
+        style={{ backgroundImage: "radial-gradient(50% 50% at 88% 12%, rgba(27,79,156,0.06) 0%, transparent 60%), radial-gradient(45% 45% at 8% 92%, rgba(27,79,156,0.05) 0%, transparent 55%)" }}
         aria-hidden="true"
       />
       <div className="relative z-10 container-nv grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-16">
@@ -59,9 +59,9 @@ export default function AfricaMena() {
             {LANDING_AFRICA_POINTS.map((pt) => (
               <div
                 key={pt.title}
-                className="flex items-start gap-3 rounded-xl border border-[#EDEDED] bg-[#F9F8F7] p-3.5 transition-colors hover:border-[#0866FF]/35"
+                className="flex items-start gap-3 rounded-xl border border-[#EDEDED] bg-[#F9F8F7] p-3.5 transition-colors hover:border-[#1B4F9C]/35"
               >
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#0866FF]/12">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#1B4F9C]/12">
                   <LIcon name={pt.icon} className="h-4 w-4 text-gold" />
                 </span>
                 <div className="min-w-0">
@@ -77,14 +77,14 @@ export default function AfricaMena() {
               <Link
                 key={c}
                 to={`/country/${c.toLowerCase().replace(/\s+/g, "-")}`}
-                className="inline-flex min-h-9 items-center rounded-full border border-[#0866FF]/25 bg-[#0866FF]/10 px-4 py-2 text-[11px] font-bold text-gold transition-colors hover:bg-gold hover:text-white"
+                className="inline-flex min-h-9 items-center rounded-full border border-[#1B4F9C]/25 bg-[#1B4F9C]/10 px-4 py-2 text-[11px] font-bold text-gold transition-colors hover:bg-gold hover:text-white"
               >
                 {c}
               </Link>
             ))}
             <Link
               to="/offers"
-              className="inline-flex min-h-9 items-center rounded-full border border-[#F1F1F1] px-4 py-2 text-[11px] font-bold text-ivory-muted transition-colors hover:border-[#0866FF]/40 hover:text-gold"
+              className="inline-flex min-h-9 items-center rounded-full border border-[#F1F1F1] px-4 py-2 text-[11px] font-bold text-ivory-muted transition-colors hover:border-[#1B4F9C]/40 hover:text-gold"
             >
               +46 more
             </Link>

@@ -18,7 +18,7 @@ export default function GetTheApp() {
         loading="lazy"
         className="absolute inset-0 h-full w-full object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0B1B3A]/95 via-[#0866FF]/80 to-[#0866FF]/55" aria-hidden="true" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0B1B3A]/95 via-[#1B4F9C]/80 to-[#1B4F9C]/55" aria-hidden="true" />
 
       <div className="relative z-10 container-nv py-16 lg:py-20">
         <div className="flex flex-col items-center justify-between gap-8 lg:flex-row">

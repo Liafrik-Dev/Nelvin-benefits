@@ -66,7 +66,7 @@ export default function AdminLayout() {
           <p className="text-sm text-ivory-muted mb-4">
             Your account does not have permission to view the admin backend.
           </p>
-          <Link to="/" className="inline-flex items-center gap-1 text-sm text-[#0866FF] font-semibold">
+          <Link to="/" className="inline-flex items-center gap-1 text-sm text-[#1B4F9C] font-semibold">
             <ChevronLeft className="w-4 h-4" /> Back to site
           </Link>
         </div>
@@ -154,7 +154,7 @@ export default function AdminLayout() {
             <Avatar
               user={user}
               className="w-9 h-9"
-              fallbackClassName="bg-[#0866FF] text-white font-semibold text-sm"
+              fallbackClassName="bg-[#1B4F9C] text-white font-semibold text-sm"
             />
             <button
               onClick={() => logout(true)}

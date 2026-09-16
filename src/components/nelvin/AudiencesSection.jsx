@@ -57,7 +57,7 @@ export default function AudiencesSection() {
                 className="absolute inset-0 h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-              <span className="absolute left-4 top-4 rounded-full bg-[#0866FF] px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-white">
+              <span className="absolute left-4 top-4 rounded-full bg-[#1B4F9C] px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-white">
                 {current.kicker}
               </span>
             </div>
@@ -69,7 +69,7 @@ export default function AudiencesSection() {
               <ul className="mt-5 space-y-2.5">
                 {current.points.map((pt) => (
                   <li key={pt} className="flex items-center gap-2.5 text-xs font-medium text-ivory">
-                    <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#0866FF]/15">
+                    <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#1B4F9C]/15">
                       <Check className="h-3 w-3 text-gold" />
                     </span>
                     {pt}

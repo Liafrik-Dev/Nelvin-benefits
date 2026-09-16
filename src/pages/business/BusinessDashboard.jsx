@@ -65,12 +65,12 @@ export default function BusinessDashboard() {
     <div className="space-y-8 font-sans text-[#282828]">
       {/* Premium Store Partner Header */}
       <div className="rounded-xl bg-gradient-to-r from-black via-[#FFFFFF] to-black text-white p-6 sm:p-8 shadow-2xl border border-[#F1F1F1] relative overflow-hidden">
-        <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-10 bg-[radial-gradient(#0866FF_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-10 bg-[radial-gradient(#1B4F9C_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F4F4F4] text-[#0866FF] border border-[#0866FF]/30 text-xs font-black tracking-wider uppercase backdrop-blur-md">
-              <Store className="w-3.5 h-3.5 text-[#0866FF]" /> Verified Merchant Partner
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F4F4F4] text-[#1B4F9C] border border-[#1B4F9C]/30 text-xs font-black tracking-wider uppercase backdrop-blur-md">
+              <Store className="w-3.5 h-3.5 text-[#1B4F9C]" /> Verified Merchant Partner
             </div>
 
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-heading tracking-tight text-white">
@@ -78,14 +78,14 @@ export default function BusinessDashboard() {
             </h1>
 
             <p className="text-[#282828] text-xs sm:text-sm max-w-xl flex items-center gap-2">
-              <MapPin className="w-3.5 h-3.5 text-[#0866FF]" /> 3 Active Locations · <Users className="w-3.5 h-3.5 text-[#0866FF]" /> 1,240 Corporate Customers Reached
+              <MapPin className="w-3.5 h-3.5 text-[#1B4F9C]" /> 3 Active Locations · <Users className="w-3.5 h-3.5 text-[#1B4F9C]" /> 1,240 Corporate Customers Reached
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
             <Link
               to="/business/qr-codes"
-              className="inline-flex items-center gap-2 bg-[#0866FF] hover:bg-[#0866FF] text-white font-extrabold text-xs px-5 py-3 rounded-full shadow-lg shadow-[#0866FF]/20 transition-all"
+              className="inline-flex items-center gap-2 bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white font-extrabold text-xs px-5 py-3 rounded-full shadow-lg shadow-[#1B4F9C]/20 transition-all"
             >
               <QrCode className="w-4 h-4" /> Scan QR Redemption
             </Link>
@@ -94,7 +94,7 @@ export default function BusinessDashboard() {
               to="/business/offers/new"
               className="inline-flex items-center gap-2 bg-[#F4F4F4] hover:bg-[#F4F4F4] text-white font-extrabold text-xs px-5 py-3 rounded-full border border-[#E3E3E3] backdrop-blur-md transition-all"
             >
-              <Plus className="w-4 h-4 text-[#0866FF]" /> Create New Offer
+              <Plus className="w-4 h-4 text-[#1B4F9C]" /> Create New Offer
             </Link>
           </div>
         </div>
@@ -105,13 +105,13 @@ export default function BusinessDashboard() {
         <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-6 space-y-3 shadow-xl hover:shadow-2xl transition-shadow">
           <div className="flex items-center justify-between">
             <span className="text-xs font-extrabold text-ivory-dim uppercase tracking-wider">Active Offers</span>
-            <div className="w-9 h-9 rounded-xl bg-[#FFFFFF] text-[#0866FF] flex items-center justify-center">
+            <div className="w-9 h-9 rounded-xl bg-[#FFFFFF] text-[#1B4F9C] flex items-center justify-center">
               <Tag className="w-5 h-5" />
             </div>
           </div>
           <div>
             <p className="text-3xl font-black font-heading text-ivory">{stats.activeOffers}</p>
-            <p className="text-xs text-[#0866FF] font-extrabold flex items-center gap-1 mt-1">
+            <p className="text-xs text-[#1B4F9C] font-extrabold flex items-center gap-1 mt-1">
               <TrendingUp className="w-3.5 h-3.5" /> 2 Pending Admin Approval
             </p>
           </div>
@@ -120,13 +120,13 @@ export default function BusinessDashboard() {
         <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-6 space-y-3 shadow-xl hover:shadow-2xl transition-shadow">
           <div className="flex items-center justify-between">
             <span className="text-xs font-extrabold text-ivory-dim uppercase tracking-wider">Total Redemptions</span>
-            <div className="w-9 h-9 rounded-xl bg-[#F9F8F7] text-[#0866FF] flex items-center justify-center">
+            <div className="w-9 h-9 rounded-xl bg-[#F9F8F7] text-[#1B4F9C] flex items-center justify-center">
               <TicketCheck className="w-5 h-5" />
             </div>
           </div>
           <div>
             <p className="text-3xl font-black font-heading text-ivory">{stats.totalRedemptions}</p>
-            <p className="text-xs text-[#0866FF] font-extrabold flex items-center gap-1 mt-1">
+            <p className="text-xs text-[#1B4F9C] font-extrabold flex items-center gap-1 mt-1">
               +24% vs last month
             </p>
           </div>
@@ -135,7 +135,7 @@ export default function BusinessDashboard() {
         <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-6 space-y-3 shadow-xl hover:shadow-2xl transition-shadow">
           <div className="flex items-center justify-between">
             <span className="text-xs font-extrabold text-ivory-dim uppercase tracking-wider">Gross Revenue</span>
-            <div className="w-9 h-9 rounded-xl bg-[#FFFFFF] text-[#0866FF] flex items-center justify-center">
+            <div className="w-9 h-9 rounded-xl bg-[#FFFFFF] text-[#1B4F9C] flex items-center justify-center">
               <DollarSign className="w-5 h-5" />
             </div>
           </div>
@@ -145,15 +145,15 @@ export default function BusinessDashboard() {
           </div>
         </div>
 
-        <div className="bg-[#FFFFFF] rounded-xl p-6 space-y-3 text-white shadow-2xl relative overflow-hidden border border-[#0866FF]/30">
+        <div className="bg-[#FFFFFF] rounded-xl p-6 space-y-3 text-white shadow-2xl relative overflow-hidden border border-[#1B4F9C]/30">
           <div className="flex items-center justify-between">
             <span className="text-xs font-extrabold text-[#484848] uppercase tracking-wider">Pending Payout</span>
-            <div className="w-9 h-9 rounded-xl bg-[#0866FF]/20 text-[#0866FF] flex items-center justify-center">
+            <div className="w-9 h-9 rounded-xl bg-[#1B4F9C]/20 text-[#1B4F9C] flex items-center justify-center">
               <ArrowUpRight className="w-5 h-5" />
             </div>
           </div>
           <div>
-            <p className="text-3xl font-black font-heading text-[#0866FF]">${stats.payoutPending.toLocaleString()}</p>
+            <p className="text-3xl font-black font-heading text-[#1B4F9C]">${stats.payoutPending.toLocaleString()}</p>
             <p className="text-xs text-[#484848] font-medium mt-1">Scheduled payout: Friday, Sep 15</p>
           </div>
         </div>
@@ -163,7 +163,7 @@ export default function BusinessDashboard() {
       <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-6 sm:p-8 shadow-xl space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#F1F1F1] pb-5">
           <div>
-            <div className="flex items-center gap-2 text-xs font-black uppercase text-[#0866FF] tracking-wider mb-1">
+            <div className="flex items-center gap-2 text-xs font-black uppercase text-[#1B4F9C] tracking-wider mb-1">
               <TrendingUp className="w-4 h-4" /> Store Analytics
             </div>
             <h2 className="text-xl sm:text-2xl font-bold font-heading text-ivory">
@@ -175,7 +175,7 @@ export default function BusinessDashboard() {
             <button
               onClick={() => setActiveTab("overview")}
               className={`px-4 py-1.5 rounded-full text-xs font-extrabold transition-all ${
-                activeTab === "overview" ? "bg-[#FFFFFF] text-[#0866FF]" : "text-ivory-muted hover:text-ivory"
+                activeTab === "overview" ? "bg-[#FFFFFF] text-[#1B4F9C]" : "text-ivory-muted hover:text-ivory"
               }`}
             >
               Revenue ($)
@@ -183,7 +183,7 @@ export default function BusinessDashboard() {
             <button
               onClick={() => setActiveTab("volume")}
               className={`px-4 py-1.5 rounded-full text-xs font-extrabold transition-all ${
-                activeTab === "volume" ? "bg-[#FFFFFF] text-[#0866FF]" : "text-ivory-muted hover:text-ivory"
+                activeTab === "volume" ? "bg-[#FFFFFF] text-[#1B4F9C]" : "text-ivory-muted hover:text-ivory"
               }`}
             >
               Volume (Qty)
@@ -199,11 +199,11 @@ export default function BusinessDashboard() {
                 <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fontSize: 11, fontWeight: 700, fill: "#6B7280" }} />
                 <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: "#6B7280" }} tickFormatter={(v) => `$${v}`} />
                 <Tooltip
-                  cursor={{ fill: "rgba(8, 102, 255, 0.04)" }}
+                  cursor={{ fill: "rgba(27, 79, 156, 0.04)" }}
                   contentStyle={{ backgroundColor: "#FFFFFF", borderRadius: "16px", border: "none", color: "#282828" }}
                   formatter={(v) => [`$${v}`, "Gross Revenue"]}
                 />
-                <Bar dataKey="sales" fill="#0866FF" radius={[8, 8, 0, 0]} barSize={40} />
+                <Bar dataKey="sales" fill="#1B4F9C" radius={[8, 8, 0, 0]} barSize={40} />
               </BarChart>
             ) : (
               <LineChart data={chartData}>
@@ -214,7 +214,7 @@ export default function BusinessDashboard() {
                   contentStyle={{ backgroundColor: "#FFFFFF", borderRadius: "16px", border: "none", color: "#282828" }}
                   formatter={(v) => [`${v} redemptions`, "Volume"]}
                 />
-                <Line type="monotone" dataKey="redemptions" stroke="#0866FF" strokeWidth={3} dot={{ r: 4, fill: "#FFFFFF" }} />
+                <Line type="monotone" dataKey="redemptions" stroke="#1B4F9C" strokeWidth={3} dot={{ r: 4, fill: "#FFFFFF" }} />
               </LineChart>
             )}
           </ResponsiveContainer>
@@ -228,7 +228,7 @@ export default function BusinessDashboard() {
             <h2 className="text-lg sm:text-xl font-bold text-ivory font-heading">Recent Customer Redemptions</h2>
             <p className="text-xs text-ivory-muted mt-0.5">Live feed of corporate members redeeming offers at your outlets.</p>
           </div>
-          <Link to="/business/redemptions" className="text-xs font-extrabold text-[#0866FF] hover:text-[#282828] flex items-center gap-1">
+          <Link to="/business/redemptions" className="text-xs font-extrabold text-[#1B4F9C] hover:text-[#282828] flex items-center gap-1">
             View All Log <ChevronRight className="w-4 h-4" />
           </Link>
         </div>
@@ -237,13 +237,13 @@ export default function BusinessDashboard() {
           {recentRedemptions.map((r) => (
             <div key={r.id} className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-[#F9F8F7]/80 p-3 rounded-lg transition-colors">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-[#FFFFFF] text-[#0866FF] font-black text-sm flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 rounded-lg bg-[#FFFFFF] text-[#1B4F9C] font-black text-sm flex items-center justify-center shrink-0">
                   {r.customer.charAt(0)}
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
                     <p className="font-extrabold text-sm text-ivory">{r.customer}</p>
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#FFFFFF] text-[#0866FF] text-[10px] font-extrabold">
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#FFFFFF] text-[#1B4F9C] text-[10px] font-extrabold">
                       <CheckCircle2 className="w-3 h-3" /> Verified
                     </span>
                   </div>
@@ -261,7 +261,7 @@ export default function BusinessDashboard() {
                   </p>
                 </div>
                 <div className="text-right">
-                  <p className="font-black text-base text-[#0866FF]">{r.amount}</p>
+                  <p className="font-black text-base text-[#1B4F9C]">{r.amount}</p>
                   <p className="text-[11px] text-ivory-muted">{r.offer}</p>
                 </div>
               </div>

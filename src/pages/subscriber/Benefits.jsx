@@ -57,17 +57,17 @@ export default function Benefits() {
     <div className="min-h-screen bg-forest">
       <div className="relative bg-[#FFFFFF] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
         <Navbar />
-        <p className="max-w-5xl mx-auto text-[#0866FF] font-semibold text-sm">Benefits</p>
+        <p className="max-w-5xl mx-auto text-[#1B4F9C] font-semibold text-sm">Benefits</p>
       </div>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 pb-16">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 mb-4">
           <div className="flex items-center gap-4">
-            <Avatar user={user} className="w-14 h-14" fallbackClassName="bg-[#0866FF] text-white font-bold text-lg" />
+            <Avatar user={user} className="w-14 h-14" fallbackClassName="bg-[#1B4F9C] text-white font-bold text-lg" />
             <div>
               <div className="flex items-center gap-2">
                 <h1 className="text-xl font-bold text-ivory">{user?.full_name || "Member"}</h1>
-                <span className="bg-[#F4F4F4] text-[#0866FF] ring-1 ring-[#0866FF]/25 text-xs font-semibold px-2.5 py-0.5 rounded-full">
+                <span className="bg-[#F4F4F4] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/25 text-xs font-semibold px-2.5 py-0.5 rounded-full">
                   {user?.role === "admin" ? "Admin" : "Free Member"}
                 </span>
               </div>
@@ -78,7 +78,7 @@ export default function Benefits() {
             <button onClick={handleExport} className="flex items-center gap-2 border border-[#F1F1F1] rounded-full px-4 py-2 text-sm font-semibold text-ivory hover:bg-[#F9F8F7]">
               <Download className="w-4 h-4" /> Export Report
             </button>
-            <Link to="/choose-plan" className="bg-[#0866FF] hover:bg-[#0866FF] text-white rounded-full px-5 py-2 text-sm font-semibold">
+            <Link to="/choose-plan" className="bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white rounded-full px-5 py-2 text-sm font-semibold">
               Upgrade Plan
             </Link>
           </div>
@@ -88,7 +88,7 @@ export default function Benefits() {
           <p className="text-xs tracking-wider uppercase text-[#737373] mb-3">Lifetime Savings</p>
           <p className="text-4xl sm:text-5xl font-bold text-white font-heading">₦{lifetimeSavings.toLocaleString()}</p>
           <div className="flex flex-wrap items-center gap-4 mt-3 text-sm">
-            <span className="text-[#0866FF] flex items-center gap-1">
+            <span className="text-[#1B4F9C] flex items-center gap-1">
               <ArrowUpRight className="w-4 h-4" /> {changePct}% vs last month
             </span>
             <span className="text-[#484848]">🔥 {redemptions.filter((r) => new Date(r.created_date) >= thisMonthStart).length} offers redeemed this month</span>
@@ -97,7 +97,7 @@ export default function Benefits() {
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-5">
-            <Calendar className="w-5 h-5 text-[#0866FF] mb-3" />
+            <Calendar className="w-5 h-5 text-[#1B4F9C] mb-3" />
             <p className="text-xs text-ivory-dim uppercase tracking-wide">This Month</p>
             <p className="text-xl font-bold text-ivory">₦{thisMonth.toLocaleString()}</p>
           </div>
@@ -107,19 +107,19 @@ export default function Benefits() {
             <p className="text-xl font-bold text-ivory">₦{lastMonth.toLocaleString()}</p>
           </div>
           <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-5">
-            <BarChart3 className="w-5 h-5 text-[#0866FF] mb-3" />
+            <BarChart3 className="w-5 h-5 text-[#1B4F9C] mb-3" />
             <p className="text-xs text-ivory-dim uppercase tracking-wide">This Year</p>
             <p className="text-xl font-bold text-ivory">₦{thisYear.toLocaleString()}</p>
           </div>
           <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-5">
-            <CheckCircle2 className="w-5 h-5 text-[#0866FF] mb-3" />
+            <CheckCircle2 className="w-5 h-5 text-[#1B4F9C] mb-3" />
             <p className="text-xs text-ivory-dim uppercase tracking-wide">Total Redeemed</p>
             <p className="text-xl font-bold text-ivory">{redemptions.length} offers</p>
           </div>
         </div>
 
         <div className="mt-6">
-          <Link to="/my-offers" className="text-[#0866FF] font-semibold text-sm hover:underline">
+          <Link to="/my-offers" className="text-[#1B4F9C] font-semibold text-sm hover:underline">
             View all redeemed offers →
           </Link>
         </div>

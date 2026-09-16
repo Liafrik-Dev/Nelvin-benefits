@@ -67,7 +67,7 @@ export default function AdminNotifications() {
         <p className="text-sm text-ivory-muted mt-1">Send system (in-app) and email notifications to specific audiences.</p>
       </div>
 
-      <div className="bg-[#F9F8F7] border border-[#0866FF]/25 rounded-xl px-4 py-3 mb-6 text-sm text-[#0866FF]">
+      <div className="bg-[#F9F8F7] border border-[#1B4F9C]/25 rounded-xl px-4 py-3 mb-6 text-sm text-[#1B4F9C]">
         Email notifications require SendEmail integration credits, which are currently exhausted. They will resume after credits reset on 2026-09-01 or with a higher tier. System (in-app) notifications work immediately.
       </div>
 
@@ -80,14 +80,14 @@ export default function AdminNotifications() {
               <button
                 type="button"
                 onClick={() => set("channel", "system")}
-                className={`px-4 py-2 text-sm rounded-lg border ${form.channel === "system" ? "bg-[#FFFFFF] border-[#F1F1F1] text-[#0866FF]" : "bg-[#FFFFFF] border-[#F1F1F1] text-ivory-muted"}`}
+                className={`px-4 py-2 text-sm rounded-lg border ${form.channel === "system" ? "bg-[#FFFFFF] border-[#F1F1F1] text-[#1B4F9C]" : "bg-[#FFFFFF] border-[#F1F1F1] text-ivory-muted"}`}
               >
                 System (in-app)
               </button>
               <button
                 type="button"
                 onClick={() => set("channel", "email")}
-                className={`px-4 py-2 text-sm rounded-lg border ${form.channel === "email" ? "bg-[#FFFFFF] border-[#F1F1F1] text-[#0866FF]" : "bg-[#FFFFFF] border-[#F1F1F1] text-ivory-muted"}`}
+                className={`px-4 py-2 text-sm rounded-lg border ${form.channel === "email" ? "bg-[#FFFFFF] border-[#F1F1F1] text-[#1B4F9C]" : "bg-[#FFFFFF] border-[#F1F1F1] text-ivory-muted"}`}
               >
                 Email
               </button>
@@ -95,7 +95,7 @@ export default function AdminNotifications() {
           </div>
           <div>
             <label className="text-sm font-medium text-ivory block mb-1.5">Audience</label>
-            <select value={form.audience} onChange={(e) => set("audience", e.target.value)} className="w-full border border-[#F1F1F1] rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#0866FF]/20">
+            <select value={form.audience} onChange={(e) => set("audience", e.target.value)} className="w-full border border-[#F1F1F1] rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#1B4F9C]/20">
               <option value="all">All Users</option>
               <option value="specific_users">Specific Users (by email)</option>
               <option value="businesses">Businesses</option>
@@ -142,12 +142,12 @@ export default function AdminNotifications() {
           <button
             onClick={sendServer}
             disabled={sending}
-            className="bg-[#0866FF] hover:bg-[#0866FF] text-white rounded-full px-5 py-2.5 text-sm font-semibold flex items-center gap-2 disabled:opacity-50"
+            className="bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white rounded-full px-5 py-2.5 text-sm font-semibold flex items-center gap-2 disabled:opacity-50"
           >
             {sending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
             Send {form.channel === "email" ? "email" : "notification"}
           </button>
-          {sent > 0 && <p className="text-xs text-[#0866FF]">{sent} notifications delivered this session.</p>}
+          {sent > 0 && <p className="text-xs text-[#1B4F9C]">{sent} notifications delivered this session.</p>}
         </div>
 
         <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6">

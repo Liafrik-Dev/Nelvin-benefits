@@ -12,7 +12,7 @@ export default function Newsletter() {
   return (
     <section className="surface-nv-primary section-nv">
       <div className="container-nv">
-        <div className="mx-auto max-w-3xl rounded-2xl border border-[#0866FF]/20 bg-[#FFFFFF] p-8 text-center shadow-nv-card sm:p-12">
+        <div className="mx-auto max-w-3xl rounded-2xl border border-[#1B4F9C]/20 bg-[#FFFFFF] p-8 text-center shadow-nv-card sm:p-12">
           <span className="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-[#FFFFFF]">
             <Mail className="h-5 w-5 text-gold" />
           </span>

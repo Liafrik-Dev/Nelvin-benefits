@@ -25,7 +25,7 @@ export default function MembershipPanel({ company, employees }) {
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ivory-dim" />
               <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search name, email, or NV-ID..."
-                className="w-full pl-10 pr-4 py-2.5 text-sm border border-[#F1F1F1] rounded-lg outline-none focus:border-[#0866FF]/40 focus:ring-2 focus:ring-[#F1F1F1]" />
+                className="w-full pl-10 pr-4 py-2.5 text-sm border border-[#F1F1F1] rounded-lg outline-none focus:border-[#1B4F9C]/40 focus:ring-2 focus:ring-[#F1F1F1]" />
             </div>
           </div>
           <div className="max-h-[560px] overflow-y-auto divide-y divide-[#F1F1F1]">
@@ -34,14 +34,14 @@ export default function MembershipPanel({ company, employees }) {
             ) : filtered.map((e) => (
               <button key={e.id} onClick={() => setSelected(e)}
                 className={`w-full text-left p-3 flex items-center gap-3 hover:bg-[#F9F8F7] ${selected?.id === e.id ? "bg-[#FFFFFF]/40" : ""}`}>
-                <div className="w-8 h-8 rounded-full bg-[#F4F4F4] text-[#0866FF] ring-1 ring-[#0866FF]/25 flex items-center justify-center text-xs font-bold">
+                <div className="w-8 h-8 rounded-full bg-[#F4F4F4] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/25 flex items-center justify-center text-xs font-bold">
                   {(e.user_name || e.user_email || "?").slice(0, 1).toUpperCase()}
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium text-ivory truncate">{e.user_name || e.user_email}</p>
                   <p className="text-xs text-ivory-dim truncate">{e.department || "—"} · <span className="font-mono">{e.subscriber_id || "no ID"}</span></p>
                 </div>
-                <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-full ${e.status === "active" ? "bg-[#F4F4F4] text-[#0866FF] ring-1 ring-[#0866FF]/25" : "bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20"}`}>{e.status}</span>
+                <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-full ${e.status === "active" ? "bg-[#F4F4F4] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/25" : "bg-[#F9F8F7] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/20"}`}>{e.status}</span>
               </button>
             ))}
           </div>

@@ -28,7 +28,7 @@ export default function UploadCard({ label, hint, fileUrl, onUploaded, accept = 
         {uploading ? (
           <Loader2 className="w-4 h-4 text-ivory-dim animate-spin" />
         ) : fileUrl ? (
-          <CheckCircle2 className="w-5 h-5 text-[#0866FF]" />
+          <CheckCircle2 className="w-5 h-5 text-[#1B4F9C]" />
         ) : (
           <UploadCloud className="w-4 h-4 text-ivory-dim" />
         )}

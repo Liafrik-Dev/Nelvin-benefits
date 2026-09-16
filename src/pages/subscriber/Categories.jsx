@@ -64,7 +64,7 @@ export default function Categories() {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         <div>
-          <span className="text-xs font-bold text-[#0866FF] uppercase tracking-wider bg-[#FFFFFF] px-3 py-1 rounded-full">Explore By Category</span>
+          <span className="text-xs font-bold text-[#1B4F9C] uppercase tracking-wider bg-[#FFFFFF] px-3 py-1 rounded-full">Explore By Category</span>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-ivory mt-2 font-heading">
             Benefit Categories
           </h1>
@@ -89,7 +89,7 @@ export default function Categories() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
                       <span className="font-bold text-sm font-heading">{cat.name}</span>
-                      <div className="w-8 h-8 rounded-xl bg-[#F4F4F4] backdrop-blur flex items-center justify-center text-[#0866FF]">
+                      <div className="w-8 h-8 rounded-xl bg-[#F4F4F4] backdrop-blur flex items-center justify-center text-[#1B4F9C]">
                         <IconComp className="w-4 h-4" />
                       </div>
                     </div>
@@ -99,7 +99,7 @@ export default function Categories() {
                     <p className="text-xs text-ivory-muted line-clamp-2">
                       {cat.description || "Exclusive corporate offers and employee savings in this category."}
                     </p>
-                    <div className="pt-3 border-t border-gray-50 flex items-center justify-between text-xs font-bold text-[#0866FF]">
+                    <div className="pt-3 border-t border-gray-50 flex items-center justify-between text-xs font-bold text-[#1B4F9C]">
                       <span>{cat.count || 12}+ Perks Available</span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </div>

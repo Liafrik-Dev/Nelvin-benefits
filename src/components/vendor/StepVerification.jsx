@@ -16,7 +16,7 @@ export default function StepVerification({ form, update, onNext, onBack }) {
     <div className="space-y-6">
       <div className="text-center">
         <div className="w-12 h-12 rounded-lg bg-[#FFFFFF] flex items-center justify-center mx-auto mb-3">
-          <ShieldCheck className="w-6 h-6 text-[#0866FF]" />
+          <ShieldCheck className="w-6 h-6 text-[#1B4F9C]" />
         </div>
         <h2 className="text-xl font-semibold text-ivory">Verify that you own or represent this business</h2>
         <p className="text-sm text-ivory-muted mt-1.5 max-w-sm mx-auto">

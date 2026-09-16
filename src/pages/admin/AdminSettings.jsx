@@ -102,7 +102,7 @@ export default function AdminSettings() {
           <button
             onClick={save}
             disabled={saving}
-            className="bg-[#0866FF] hover:bg-[#0866FF] text-white rounded-full px-5 py-2.5 text-sm font-semibold flex items-center gap-2 disabled:opacity-50"
+            className="bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white rounded-full px-5 py-2.5 text-sm font-semibold flex items-center gap-2 disabled:opacity-50"
           >
             {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
             {saved ? "Saved!" : "Save settings"}
@@ -138,7 +138,7 @@ function Input({ type = "text", ...props }) {
   return (
     <input
       type={type}
-      className="w-full border border-[#F1F1F1] rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#0866FF]/20"
+      className="w-full border border-[#F1F1F1] rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#1B4F9C]/20"
       {...props}
     />
   );

@@ -64,7 +64,7 @@ export default function AdminDataTable({
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search records…"
-            className="flex-1 border border-[#F1F1F1] rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#0866FF]/20"
+            className="flex-1 border border-[#F1F1F1] rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#1B4F9C]/20"
           />
         )}
         <div className="flex flex-wrap items-center gap-3">
@@ -95,7 +95,7 @@ export default function AdminDataTable({
 
       {setSelected && bulkActions.length > 0 && selected.size > 0 && (
         <div className="flex flex-wrap items-center gap-2 px-4 py-2 bg-[#FFFFFF] border-b border-[#F1F1F1]">
-          <span className="text-sm text-[#0866FF] font-medium">{selected.size} selected</span>
+          <span className="text-sm text-[#1B4F9C] font-medium">{selected.size} selected</span>
           {bulkActions.map((b, i) => (
             <button
               key={i}

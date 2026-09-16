@@ -88,7 +88,7 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0866FF] text-white">
+    <footer className="bg-[#1B4F9C] text-white">
       {/* Brand + app block */}
       <div className="container-nv py-10 lg:py-12">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,300px)_minmax(0,1fr)] lg:gap-16">
@@ -165,7 +165,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.label}
-                className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/30 text-white transition-colors hover:border-white hover:bg-white hover:text-[#0866FF]"
+                className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/30 text-white transition-colors hover:border-white hover:bg-white hover:text-[#1B4F9C]"
               >
                 <s.icon className="h-3.5 w-3.5" />
               </a>

@@ -122,7 +122,7 @@ export default function BusinessCreateOffer() {
                 type="number"
                 value={form.savings_amount}
                 onChange={(e) => setForm({ ...form, savings_amount: Number(e.target.value) })}
-                className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl px-3 py-2 text-xs font-bold text-[#0866FF]"
+                className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl px-3 py-2 text-xs font-bold text-[#1B4F9C]"
               />
             </div>
           </div>
@@ -133,14 +133,14 @@ export default function BusinessCreateOffer() {
               rows={3}
               value={form.description}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
-              className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl p-3 text-xs outline-none focus:border-[#0866FF]"
+              className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl p-3 text-xs outline-none focus:border-[#1B4F9C]"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-[#FFFFFF] text-[#0866FF] font-bold py-3 rounded-full text-xs hover:bg-[#FFFFFF] transition-colors shadow-sm"
+            className="w-full bg-[#FFFFFF] text-[#1B4F9C] font-bold py-3 rounded-full text-xs hover:bg-[#FFFFFF] transition-colors shadow-sm"
           >
             {loading ? "Submitting..." : "Submit Offer for Review"}
           </button>

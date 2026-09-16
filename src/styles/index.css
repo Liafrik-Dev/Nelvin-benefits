@@ -25,7 +25,7 @@
     --popover-foreground: 0 0% 16%;
 
     /* Corporate Blue — every CTA, link accent and the footer. */
-    --primary: 217 100% 51%;
+    --primary: 217 70% 36%;
     --primary-foreground: 0 0% 100%;
 
     /* Off-white section surface — the #F9F8F7 bands. */
@@ -45,9 +45,9 @@
     /* Hairline borders — #F4F4F4 / #E3E3E3, never heavy. */
     --border: 0 0% 92%;
     --input: 0 0% 89%;
-    --ring: 217 100% 51%;
+    --ring: 217 70% 36%;
 
-    --chart-1: 217 100% 51%;
+    --chart-1: 217 70% 36%;
     --chart-2: 217 100% 85%;
     --chart-3: 69 96% 65%;
     --chart-4: 0 0% 45%;
@@ -63,12 +63,12 @@
 
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 0 0% 16%;
-    --sidebar-primary: 217 100% 51%;
+    --sidebar-primary: 217 70% 36%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 96%;
     --sidebar-accent-foreground: 0 0% 16%;
     --sidebar-border: 0 0% 92%;
-    --sidebar-ring: 217 100% 51%;
+    --sidebar-ring: 217 70% 36%;
   }
 
   /* The reference ships a single light theme. Keep .dark identical so a
@@ -80,7 +80,7 @@
     --card-foreground: 0 0% 16%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 16%;
-    --primary: 217 100% 51%;
+    --primary: 217 70% 36%;
     --primary-foreground: 0 0% 100%;
     --secondary: 40 11% 97%;
     --secondary-foreground: 0 0% 16%;
@@ -92,20 +92,20 @@
     --destructive-foreground: 0 0% 100%;
     --border: 0 0% 92%;
     --input: 0 0% 89%;
-    --ring: 217 100% 51%;
-    --chart-1: 217 100% 51%;
+    --ring: 217 70% 36%;
+    --chart-1: 217 70% 36%;
     --chart-2: 217 100% 85%;
     --chart-3: 69 96% 65%;
     --chart-4: 0 0% 45%;
     --chart-5: 0 0% 16%;
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 0 0% 16%;
-    --sidebar-primary: 217 100% 51%;
+    --sidebar-primary: 217 70% 36%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 96%;
     --sidebar-accent-foreground: 0 0% 16%;
     --sidebar-border: 0 0% 92%;
-    --sidebar-ring: 217 100% 51%;
+    --sidebar-ring: 217 70% 36%;
   }
 }
 
@@ -264,13 +264,13 @@
 
 @layer utilities {
   /* Corporate Blue — the single accent, mirroring the reference. */
-  .text-gold { color: #0866FF; }
-  .text-gold-soft { color: #2F85FE; }
-  .bg-gold { background-color: #0866FF; }
-  .bg-gold-soft { background-color: #2F85FE; }
-  .border-gold { border-color: rgba(8, 102, 255, 0.45); }
-  .border-gold-soft { border-color: rgba(8, 102, 255, 0.22); }
-  .ring-gold { --tw-ring-color: rgba(8, 102, 255, 0.55); }
+  .text-gold { color: #1B4F9C; }
+  .text-gold-soft { color: #3A6FB8; }
+  .bg-gold { background-color: #1B4F9C; }
+  .bg-gold-soft { background-color: #3A6FB8; }
+  .border-gold { border-color: rgba(27, 79, 156, 0.45); }
+  .border-gold-soft { border-color: rgba(27, 79, 156, 0.22); }
+  .ring-gold { --tw-ring-color: rgba(27, 79, 156, 0.55); }
 
   /* Surfaces */
   .bg-forest { background-color: #FFFFFF; }
@@ -407,17 +407,17 @@
       color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   }
   .btn-nv:focus-visible {
-    outline: 2px solid rgba(8, 102, 255, 0.7);
+    outline: 2px solid rgba(27, 79, 156, 0.7);
     outline-offset: 2px;
   }
 
   .btn-nv-gold {
-    background-color: #0866FF;
+    background-color: #1B4F9C;
     color: #FFFFFF;
   }
   .btn-nv-gold:hover {
-    background-color: #1F4CF4;
-    box-shadow: 0 8px 24px rgba(8, 102, 255, 0.24);
+    background-color: #123A78;
+    box-shadow: 0 8px 24px rgba(27, 79, 156, 0.24);
     transform: translateY(-1px);
   }
 
@@ -427,16 +427,16 @@
     background-color: #FFFFFF;
   }
   .btn-nv-outline:hover {
-    border-color: rgba(8, 102, 255, 0.7);
-    color: #0866FF;
-    background-color: rgba(8, 102, 255, 0.04);
+    border-color: rgba(27, 79, 156, 0.7);
+    color: #1B4F9C;
+    background-color: rgba(27, 79, 156, 0.04);
   }
 
   .btn-nv-ghost {
     color: #484848;
     background-color: transparent;
   }
-  .btn-nv-ghost:hover { color: #0866FF; }
+  .btn-nv-ghost:hover { color: #1B4F9C; }
 
   .btn-nv-md { height: 2.75rem; padding-inline: 1.5rem; }
   .btn-nv-sm { height: 2.375rem; padding-inline: 1rem; font-size: 0.875rem; }
@@ -462,9 +462,9 @@
     align-items: center;
     gap: 0.5rem;
     border-radius: 9999px;
-    border: 1px solid rgba(8, 102, 255, 0.2);
-    background-color: rgba(8, 102, 255, 0.08);
-    color: #0866FF;
+    border: 1px solid rgba(27, 79, 156, 0.2);
+    background-color: rgba(27, 79, 156, 0.08);
+    color: #1B4F9C;
     font-size: 0.6875rem;
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -478,7 +478,7 @@
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: #0866FF;
+    color: #1B4F9C;
   }
 
   /* Hairline rule used instead of heavy borders. */

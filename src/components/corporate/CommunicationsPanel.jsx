@@ -13,7 +13,7 @@ export default function CommunicationsPanel({ company }) {
 
       <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 space-y-4 shadow-sm max-w-2xl">
         <h3 className="font-bold text-ivory text-base font-heading flex items-center gap-2">
-          <Megaphone className="w-5 h-5 text-[#0866FF]" /> Send Broadcast Announcement
+          <Megaphone className="w-5 h-5 text-[#1B4F9C]" /> Send Broadcast Announcement
         </h3>
         <div>
           <label className="block text-xs font-bold text-ivory mb-1">Target Department</label>
@@ -30,10 +30,10 @@ export default function CommunicationsPanel({ company }) {
             value={announcement}
             onChange={(e) => setAnnouncement(e.target.value)}
             placeholder="Write your company update..."
-            className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl p-3 text-xs outline-none focus:border-[#0866FF]"
+            className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl p-3 text-xs outline-none focus:border-[#1B4F9C]"
           />
         </div>
-        <button className="bg-[#0866FF] hover:bg-[#0866FF] text-white font-bold px-6 py-2.5 rounded-xl text-xs flex items-center gap-2">
+        <button className="bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white font-bold px-6 py-2.5 rounded-xl text-xs flex items-center gap-2">
           <Send className="w-4 h-4" /> Broadcast Message
         </button>
       </div>

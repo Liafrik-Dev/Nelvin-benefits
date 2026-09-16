@@ -83,7 +83,7 @@ export default function AdminEditModal({
                   <select
                     value={val}
                     onChange={(e) => set(f.key, e.target.value)}
-                    className="w-full border border-[#F1F1F1] rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#0866FF]/20"
+                    className="w-full border border-[#F1F1F1] rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#1B4F9C]/20"
                   >
                     <option value="">—</option>
                     {f.options.map((opt) => (
@@ -103,7 +103,7 @@ export default function AdminEditModal({
                     value={val}
                     onChange={(e) => set(f.key, e.target.value)}
                     rows={4}
-                    className="w-full border border-[#F1F1F1] rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#0866FF]/20"
+                    className="w-full border border-[#F1F1F1] rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#1B4F9C]/20"
                   />
                 </div>
               );
@@ -132,7 +132,7 @@ export default function AdminEditModal({
                     placeholder="https://"
                     value={val}
                     onChange={(e) => set(f.key, e.target.value)}
-                    className="w-full border border-[#F1F1F1] rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#0866FF]/20"
+                    className="w-full border border-[#F1F1F1] rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#1B4F9C]/20"
                   />
                   {f.help && <p className="text-xs text-ivory-dim mt-1">{f.help}</p>}
                 </div>
@@ -147,7 +147,7 @@ export default function AdminEditModal({
                   onChange={(e) =>
                     set(f.key, f.type === "number" ? Number(e.target.value) : e.target.value)
                   }
-                  className="w-full border border-[#F1F1F1] rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#0866FF]/20"
+                  className="w-full border border-[#F1F1F1] rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-[#1B4F9C]/20"
                 />
               </div>
             );
@@ -173,7 +173,7 @@ export default function AdminEditModal({
             <button
               onClick={save}
               disabled={saving}
-              className="px-4 py-2 text-sm font-semibold bg-[#0866FF] hover:bg-[#0866FF] text-white rounded-lg flex items-center gap-2 disabled:opacity-50"
+              className="px-4 py-2 text-sm font-semibold bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white rounded-lg flex items-center gap-2 disabled:opacity-50"
             >
               {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
               {isNew ? "Create" : "Save"}

@@ -13,9 +13,9 @@ const DEFAULT_ACTIONS = [
 
 function Button({ onClick, children, tone = "ghost", disabled }) {
   const tones = {
-    ghost: "bg-[#FFFFFF] text-[#282828] ring-1 ring-[#F1F1F1] hover:bg-[#FFFFFF] hover:text-[#0866FF]",
-    success: "bg-[#FFFFFF] text-ivory ring-1 ring-[#0866FF]/25 hover:bg-[#0866FF] hover:text-[#282828]",
-    danger: "bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20 hover:bg-red-600 hover:text-[#282828]",
+    ghost: "bg-[#FFFFFF] text-[#282828] ring-1 ring-[#F1F1F1] hover:bg-[#FFFFFF] hover:text-[#1B4F9C]",
+    success: "bg-[#FFFFFF] text-ivory ring-1 ring-[#1B4F9C]/25 hover:bg-[#1B4F9C] hover:text-[#282828]",
+    danger: "bg-[#F9F8F7] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/20 hover:bg-red-600 hover:text-[#282828]",
   };
   return (
     <button
@@ -30,7 +30,7 @@ function Button({ onClick, children, tone = "ghost", disabled }) {
 
 function Value({ value }) {
   if (value === null || value === undefined || value === "" ) return <span className="text-[#282828]/35">—</span>;
-  if (typeof value === "boolean") return value ? <span className="text-[#0866FF] font-semibold">Yes</span> : <span className="text-red-500 font-semibold">No</span>;
+  if (typeof value === "boolean") return value ? <span className="text-[#1B4F9C] font-semibold">Yes</span> : <span className="text-red-500 font-semibold">No</span>;
   return <span>{String(value)}</span>;
 }
 
@@ -38,12 +38,12 @@ function StatusBadge({ status }) {
   const map = {
     active: ["bg-[#F4F4F4] text-[#4EA11E]", "Active"],
     approved: ["bg-[#F4F4F4] text-[#4EA11E]", "Approved"],
-    pending: ["bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20", "Pending"],
+    pending: ["bg-[#F9F8F7] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/20", "Pending"],
     rejected: ["bg-[#F9F8F7] text-red-600", "Rejected"],
     suspended: ["bg-[#F9F8F7] text-red-600", "Suspended"],
     inactive: ["bg-[#F4F4F4] text-ivory-muted", "Inactive"],
     draft: ["bg-[#F4F4F4] text-ivory-muted", "Draft"],
-    redeemed: ["bg-[#F4F4F4] text-[#0866FF]", "Redeemed"],
+    redeemed: ["bg-[#F4F4F4] text-[#1B4F9C]", "Redeemed"],
     default: ["bg-[#F4F4F4] text-ivory", String(status || "—").toUpperCase()],
   };
   const [bg, txt] = map[status] || map.default;
@@ -210,7 +210,7 @@ export default function ResourceTable({
             {loading ? (
               <tr>
                 <td colSpan={columns.length + 1} className="px-4 py-12 text-center text-sm text-[#282828]/50">
-                  <Loader2 className="w-6 h-6 animate-spin mx-auto mb-2 text-[#0866FF]" />
+                  <Loader2 className="w-6 h-6 animate-spin mx-auto mb-2 text-[#1B4F9C]" />
                   Loading {entityLabel}...
                 </td>
               </tr>
@@ -266,7 +266,7 @@ export default function ResourceTable({
             <button
               key={i}
               onClick={() => setPage(i + 1)}
-              className={`w-8 h-8 rounded-lg text-xs font-bold transition-colors ${page === i + 1 ? "bg-[#FFFFFF] text-[#0866FF]" : "text-[#282828]/60 hover:bg-[#F9F8F7]"}`}
+              className={`w-8 h-8 rounded-lg text-xs font-bold transition-colors ${page === i + 1 ? "bg-[#FFFFFF] text-[#1B4F9C]" : "text-[#282828]/60 hover:bg-[#F9F8F7]"}`}
             >
               {i + 1}
             </button>

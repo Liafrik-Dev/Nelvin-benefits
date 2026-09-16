@@ -18,13 +18,13 @@ export default function ROICalculatorModal({ isOpen, onClose }) {
       <div className="bg-[#FFFFFF] rounded-lg max-w-lg w-full p-6 space-y-6 shadow-2xl relative animate-in fade-in zoom-in-95">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-ivory-dim hover:text-[#0866FF] p-1 rounded-lg"
+          className="absolute top-4 right-4 text-ivory-dim hover:text-[#1B4F9C] p-1 rounded-lg"
         >
           <X className="w-5 h-5" />
         </button>
 
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-[#FFFFFF] text-[#0866FF] flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-[#FFFFFF] text-[#1B4F9C] flex items-center justify-center">
             <Calculator className="w-5 h-5" />
           </div>
           <div>
@@ -75,25 +75,25 @@ export default function ROICalculatorModal({ isOpen, onClose }) {
 
         {/* Results Card */}
         <div className="border border-[#E3E3E3] bg-[#FFFFFF] text-[#282828] p-5 rounded-xl space-y-3">
-          <div className="flex items-center gap-2 text-xs font-bold text-[#0866FF]">
+          <div className="flex items-center gap-2 text-xs font-bold text-[#1B4F9C]">
             <Sparkles className="w-4 h-4" /> Projected Monthly Metrics
           </div>
 
           <div className="grid grid-cols-2 gap-4 pt-1">
             <div>
-              <span className="text-[11px] text-[#0866FF] block">Est. Redemptions</span>
+              <span className="text-[11px] text-[#1B4F9C] block">Est. Redemptions</span>
               <span className="text-xl font-extrabold text-white">{estimatedRedemptions} claims</span>
             </div>
             <div>
-              <span className="text-[11px] text-[#0866FF] block">Gross Sales Volume</span>
-              <span className="text-xl font-extrabold text-[#0866FF]">€{totalGrossVolume.toLocaleString()}</span>
+              <span className="text-[11px] text-[#1B4F9C] block">Gross Sales Volume</span>
+              <span className="text-xl font-extrabold text-[#1B4F9C]">€{totalGrossVolume.toLocaleString()}</span>
             </div>
             <div>
-              <span className="text-[11px] text-[#0866FF] block">Employee Savings</span>
-              <span className="text-lg font-bold text-[#0866FF]">€{estimatedSavings.toLocaleString()}</span>
+              <span className="text-[11px] text-[#1B4F9C] block">Employee Savings</span>
+              <span className="text-lg font-bold text-[#1B4F9C]">€{estimatedSavings.toLocaleString()}</span>
             </div>
             <div>
-              <span className="text-[11px] text-[#0866FF] block">Merchant Net Sales</span>
+              <span className="text-[11px] text-[#1B4F9C] block">Merchant Net Sales</span>
               <span className="text-lg font-bold text-white">€{estimatedPartnerPayout.toLocaleString()}</span>
             </div>
           </div>

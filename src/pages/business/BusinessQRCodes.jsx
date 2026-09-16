@@ -26,7 +26,7 @@ export default function BusinessQRCodes() {
       </div>
 
       <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 space-y-6 shadow-sm">
-        <div className="w-16 h-16 rounded-lg bg-[#FFFFFF] text-[#0866FF] flex items-center justify-center mx-auto">
+        <div className="w-16 h-16 rounded-lg bg-[#FFFFFF] text-[#1B4F9C] flex items-center justify-center mx-auto">
           <QrCode className="w-8 h-8" />
         </div>
 
@@ -45,7 +45,7 @@ export default function BusinessQRCodes() {
 
           <button
             type="submit"
-            className="w-full bg-[#FFFFFF] text-[#0866FF] font-bold py-3 rounded-full text-xs hover:bg-[#FFFFFF] transition-colors shadow-sm"
+            className="w-full bg-[#FFFFFF] text-[#1B4F9C] font-bold py-3 rounded-full text-xs hover:bg-[#FFFFFF] transition-colors shadow-sm"
           >
             Verify & Redeem Offer
           </button>
@@ -53,14 +53,14 @@ export default function BusinessQRCodes() {
 
         {result && (
           <div className="p-4 bg-[#FFFFFF] border border-[#F1F1F1] rounded-lg space-y-2 text-xs">
-            <div className="flex items-center gap-2 text-[#0866FF] font-bold text-sm">
-              <CheckCircle2 className="w-5 h-5 text-[#0866FF]" /> Valid Voucher Code!
+            <div className="flex items-center gap-2 text-[#1B4F9C] font-bold text-sm">
+              <CheckCircle2 className="w-5 h-5 text-[#1B4F9C]" /> Valid Voucher Code!
             </div>
             <div className="space-y-1 text-ivory pt-1">
               <p><span className="font-bold">Customer:</span> {result.customer}</p>
               <p><span className="font-bold">Member Status:</span> {result.tier}</p>
               <p><span className="font-bold">Offer:</span> {result.offer}</p>
-              <p className="text-sm font-extrabold text-[#0866FF]"><span className="font-bold">Discount:</span> {result.discountAmount}</p>
+              <p className="text-sm font-extrabold text-[#1B4F9C]"><span className="font-bold">Discount:</span> {result.discountAmount}</p>
             </div>
           </div>
         )}

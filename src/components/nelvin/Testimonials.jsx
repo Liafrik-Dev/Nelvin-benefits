@@ -41,10 +41,10 @@ export default function Testimonials() {
               key={t.name}
               className="card-nv card-nv-interactive flex flex-col p-7"
             >
-              <Quote className="mb-5 h-8 w-8 text-[#0866FF]/30" />
+              <Quote className="mb-5 h-8 w-8 text-[#1B4F9C]/30" />
               <div className="mb-4 flex items-center gap-1" aria-label="Rated 5 out of 5">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-[#0866FF] text-[#0866FF]" />
+                  <Star key={i} className="h-4 w-4 fill-[#1B4F9C] text-[#1B4F9C]" />
                 ))}
               </div>
               <blockquote className="flex-1 text-sm leading-relaxed text-ivory-muted">
@@ -55,7 +55,7 @@ export default function Testimonials() {
                   src={t.img}
                   alt=""
                   loading="lazy"
-                  className="h-11 w-11 rounded-full object-cover ring-2 ring-[#0866FF]/40"
+                  className="h-11 w-11 rounded-full object-cover ring-2 ring-[#1B4F9C]/40"
                 />
                 <div>
                   <p className="text-sm font-extrabold text-ivory">{t.name}</p>

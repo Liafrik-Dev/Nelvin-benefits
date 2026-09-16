@@ -94,7 +94,7 @@ export default function AnalyticsPanel({ company, employees }) {
       ) : (
         <>
           <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 mb-6 flex items-center gap-4">
-            <div className="w-14 h-14 rounded-xl bg-[#F4F4F4] text-[#0866FF] ring-1 ring-[#0866FF]/25 flex items-center justify-center"><Users className="w-6 h-6" /></div>
+            <div className="w-14 h-14 rounded-xl bg-[#F4F4F4] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/25 flex items-center justify-center"><Users className="w-6 h-6" /></div>
             <div>
               <p className="text-xs text-ivory-dim font-semibold uppercase tracking-wider">Employee Engagement</p>
               <p className="text-3xl font-bold font-heading text-ivory">{engagement}%</p>
@@ -104,7 +104,7 @@ export default function AnalyticsPanel({ company, employees }) {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6">
-              <div className="flex items-center gap-2 mb-3"><TrendingUp className="w-4 h-4 text-[#0866FF]" /><h3 className="font-semibold text-ivory">Monthly Usage</h3></div>
+              <div className="flex items-center gap-2 mb-3"><TrendingUp className="w-4 h-4 text-[#1B4F9C]" /><h3 className="font-semibold text-ivory">Monthly Usage</h3></div>
               <div className="h-56">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={months}>
@@ -134,7 +134,7 @@ export default function AnalyticsPanel({ company, employees }) {
             </div>
 
             <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6">
-              <div className="flex items-center gap-2 mb-3"><PieIcon className="w-4 h-4 text-[#0866FF]" /><h3 className="font-semibold text-ivory">Top Categories</h3></div>
+              <div className="flex items-center gap-2 mb-3"><PieIcon className="w-4 h-4 text-[#1B4F9C]" /><h3 className="font-semibold text-ivory">Top Categories</h3></div>
               <div className="h-56">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>

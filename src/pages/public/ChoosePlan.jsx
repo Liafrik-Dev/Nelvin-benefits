@@ -37,13 +37,13 @@ export default function ChoosePlan() {
           <Link to="/" className="mb-6 inline-flex min-h-8 items-center gap-1.5 py-1 text-xs font-medium text-[#484848] transition-colors hover:text-[#282828]">
             <ArrowLeft className="w-3.5 h-3.5" /> Back to home
           </Link>
-          <p className="text-[#0866FF] font-semibold text-xs tracking-[0.15em] uppercase mb-3">Membership</p>
+          <p className="text-[#1B4F9C] font-semibold text-xs tracking-[0.15em] uppercase mb-3">Membership</p>
           <h1 className="text-3xl sm:text-5xl font-bold font-heading text-[#282828]">Choose your savings plan.</h1>
           <p className="text-[#484848] mt-4 max-w-lg mx-auto">
             From casual weekend spenders to luxury travellers — there's a Nelvin plan built for you.
           </p>
         </motion.div>
-        <div className="absolute -top-20 -right-20 w-72 h-72 bg-[#0866FF]/20 rounded-full blur-3xl" />
+        <div className="absolute -top-20 -right-20 w-72 h-72 bg-[#1B4F9C]/20 rounded-full blur-3xl" />
         <div className="absolute -bottom-24 -left-20 w-72 h-72 bg-[#F4F4F4] rounded-full blur-3xl" />
       </div>
 
@@ -61,7 +61,7 @@ export default function ChoosePlan() {
                 whileHover={{ y: -6 }}
                 className={`rounded-lg p-8 relative transition-shadow ${
                   plan.highlight
-                    ? "bg-[#0866FF] text-white shadow-2xl md:-mt-4 md:pb-10"
+                    ? "bg-[#1B4F9C] text-white shadow-2xl md:-mt-4 md:pb-10"
                     : "bg-white ring-1 ring-[#F1F1F1] border border-transparent hover:shadow-xl"
                 } ${isSelected ? "ring-2 ring-amber-400" : ""}`}
               >
@@ -81,7 +81,7 @@ export default function ChoosePlan() {
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((f, j) => (
                     <li key={j} className="flex items-start gap-2.5 text-sm">
-                      <Check className={`w-4 h-4 mt-0.5 flex-shrink-0 ${plan.highlight ? "text-white" : "text-[#0866FF]"}`} />
+                      <Check className={`w-4 h-4 mt-0.5 flex-shrink-0 ${plan.highlight ? "text-white" : "text-[#1B4F9C]"}`} />
                       <span>{f}</span>
                     </li>
                   ))}
@@ -90,8 +90,8 @@ export default function ChoosePlan() {
                   onClick={() => handlePick(plan)}
                   className={`w-full py-3 rounded-full font-semibold text-sm transition-colors block text-center ${
                     plan.highlight
-                      ? "bg-[#FFFFFF] text-[#0866FF] hover:bg-[#F4F4F4]"
-                      : "bg-[#0866FF] text-white hover:bg-[#0866FF]"
+                      ? "bg-[#FFFFFF] text-[#1B4F9C] hover:bg-[#F4F4F4]"
+                      : "bg-[#1B4F9C] text-white hover:bg-[#1B4F9C]"
                   }`}
                 >
                   {plan.cta}

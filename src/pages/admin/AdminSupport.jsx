@@ -123,8 +123,8 @@ export default function AdminSupport() {
         onRowClick={setViewing}
         renderActions={(t) => (
           <div className="flex items-center justify-end gap-1">
-            <RowIconBtn title="Reply" Icon={Reply} color="text-[#0866FF]" onClick={() => reply(t)} />
-            <RowIconBtn title="Close" Icon={Check} color="text-[#0866FF]" onClick={() => close(t)} />
+            <RowIconBtn title="Reply" Icon={Reply} color="text-[#1B4F9C]" onClick={() => reply(t)} />
+            <RowIconBtn title="Close" Icon={Check} color="text-[#1B4F9C]" onClick={() => close(t)} />
             <RowIconBtn title="Archive" Icon={Ban} color="text-ivory-muted" onClick={() => archive(t)} />
             <RowIconBtn title="Delete" Icon={Trash2} color="text-rose-600 hover:text-rose-700" onClick={() => remove(t)} />
           </div>
@@ -196,7 +196,7 @@ export default function AdminSupport() {
               )}
             </div>
             <div className="mt-6 flex gap-2">
-              <button onClick={() => reply(viewing)} className="flex-1 bg-[#0866FF] hover:bg-[#0866FF] text-white rounded-lg py-2 text-sm font-semibold">Reply</button>
+              <button onClick={() => reply(viewing)} className="flex-1 bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white rounded-lg py-2 text-sm font-semibold">Reply</button>
               <button onClick={() => { setEditing(viewing); setViewing(null); }} className="px-3 py-2 border border-[#F1F1F1] rounded-lg text-sm">Manage</button>
             </div>
           </div>

@@ -67,7 +67,7 @@ export default function BusinessProfile() {
               rows={3}
               value={profile.description}
               onChange={(e) => setProfile({ ...profile, description: e.target.value })}
-              className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl p-3 text-xs outline-none focus:border-[#0866FF]"
+              className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl p-3 text-xs outline-none focus:border-[#1B4F9C]"
             />
           </div>
 
@@ -95,12 +95,12 @@ export default function BusinessProfile() {
           <div className="pt-3 flex items-center justify-between">
             <button
               type="submit"
-              className="bg-[#FFFFFF] text-[#0866FF] font-bold px-6 py-2.5 rounded-full text-xs hover:bg-[#FFFFFF] flex items-center gap-2"
+              className="bg-[#FFFFFF] text-[#1B4F9C] font-bold px-6 py-2.5 rounded-full text-xs hover:bg-[#FFFFFF] flex items-center gap-2"
             >
               <Save className="w-3.5 h-3.5" /> Save Changes
             </button>
             {saved && (
-              <span className="text-xs font-bold text-[#0866FF] flex items-center gap-1">
+              <span className="text-xs font-bold text-[#1B4F9C] flex items-center gap-1">
                 <CheckCircle className="w-4 h-4" /> Store profile updated
               </span>
             )}

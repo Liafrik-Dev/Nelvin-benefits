@@ -106,7 +106,7 @@ export default function FeaturedDeals() {
                 className={`shrink-0 rounded-full px-4 py-2.5 text-xs font-bold transition-colors ${
                   on
                     ? "bg-gold text-white shadow-nv-card"
-                    : "border border-[#F1F1F1] bg-[#F9F8F7] text-ivory-muted hover:border-[#0866FF]/35 hover:text-ivory"
+                    : "border border-[#F1F1F1] bg-[#F9F8F7] text-ivory-muted hover:border-[#1B4F9C]/35 hover:text-ivory"
                 }`}
               >
                 {p.label}

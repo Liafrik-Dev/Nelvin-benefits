@@ -10,7 +10,7 @@ export default function AdminAnalytics() {
         <p className="text-sm text-ivory-muted mt-1">Visitors, page views, offer clicks, redemptions, growth & country performance.</p>
       </div>
       <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-10 text-center">
-        <div className="inline-flex items-center justify-center w-14 h-14 bg-[#FFFFFF] text-[#0866FF] rounded-lg mb-4">
+        <div className="inline-flex items-center justify-center w-14 h-14 bg-[#FFFFFF] text-[#1B4F9C] rounded-lg mb-4">
           <BarChart3 className="w-7 h-7" />
         </div>
         <h2 className="text-lg font-semibold text-ivory">Scheduled for Phase 3</h2>

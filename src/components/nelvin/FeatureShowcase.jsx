@@ -111,7 +111,7 @@ export default function FeatureShowcase() {
                   <ul className="mt-6 grid max-w-md grid-cols-1 gap-x-4 gap-y-2.5 sm:grid-cols-2">
                     {f.points.map((pt) => (
                       <li key={pt} className="flex items-center gap-2 text-sm text-ivory-muted">
-                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#0866FF]/15">
+                        <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#1B4F9C]/15">
                           <Check className="h-3 w-3 text-gold" />
                         </span>
                         {pt}

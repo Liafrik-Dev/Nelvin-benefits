@@ -23,7 +23,7 @@ export default function HRAssistantDrawer({ isOpen, onClose }) {
           {/* Header */}
           <div className="flex items-center justify-between border-b border-[#F1F1F1] pb-4">
             <div className="flex items-center gap-2">
-              <div className="w-9 h-9 rounded-xl bg-[#FFFFFF] text-[#0866FF] flex items-center justify-center">
+              <div className="w-9 h-9 rounded-xl bg-[#FFFFFF] text-[#1B4F9C] flex items-center justify-center">
                 <Bot className="w-5 h-5" />
               </div>
               <div>
@@ -33,7 +33,7 @@ export default function HRAssistantDrawer({ isOpen, onClose }) {
             </div>
             <button
               onClick={onClose}
-              className="p-1 rounded-lg text-ivory-dim hover:text-[#0866FF] hover:bg-[#FFFFFF]"
+              className="p-1 rounded-lg text-ivory-dim hover:text-[#1B4F9C] hover:bg-[#FFFFFF]"
             >
               <X className="w-5 h-5" />
             </button>
@@ -42,20 +42,20 @@ export default function HRAssistantDrawer({ isOpen, onClose }) {
           {/* AI Insights & Budget Suggestions */}
           <div className="p-4 bg-forest-secondary rounded-xl border border-[#F1F1F1]/10 space-y-3">
             <div className="flex items-center gap-1.5 text-xs font-bold text-[#282828]">
-              <Sparkles className="w-4 h-4 text-[#0866FF]" />
+              <Sparkles className="w-4 h-4 text-[#1B4F9C]" />
               Smart Budget Recommendation
             </div>
             <p className="text-xs text-ivory-dim leading-relaxed">
               Based on employee usage data in <strong>Wellness & Gym</strong>, reallocating 15% of unused Food budget will increase employee benefit adoption by <strong>+24%</strong>.
             </p>
-            <button className="text-xs font-bold text-[#282828] underline hover:text-[#0866FF]">
+            <button className="text-xs font-bold text-[#282828] underline hover:text-[#1B4F9C]">
               Apply Budget Optimization
             </button>
           </div>
 
           {/* Onboarding Automations */}
           <div className="space-y-3 border-t border-[#F1F1F1] pt-4">
-            <h4 className="text-xs font-bold text-[#0866FF] uppercase tracking-wider">
+            <h4 className="text-xs font-bold text-[#1B4F9C] uppercase tracking-wider">
               Automated Benefit Rules
             </h4>
 
@@ -79,7 +79,7 @@ export default function HRAssistantDrawer({ isOpen, onClose }) {
 
           {/* Export Report Generator */}
           <div className="space-y-3 border-t border-[#F1F1F1] pt-4">
-            <h4 className="text-xs font-bold text-[#0866FF] uppercase tracking-wider">
+            <h4 className="text-xs font-bold text-[#1B4F9C] uppercase tracking-wider">
               Export Comprehensive HR Report
             </h4>
 
@@ -115,7 +115,7 @@ export default function HRAssistantDrawer({ isOpen, onClose }) {
           <button
             onClick={handleExport}
             disabled={downloading}
-            className="w-full bg-[#FFFFFF] hover:bg-[#F9F8F7] text-[#0866FF] font-bold py-3 rounded-xl transition-all text-sm flex items-center justify-center gap-2"
+            className="w-full bg-[#FFFFFF] hover:bg-[#F9F8F7] text-[#1B4F9C] font-bold py-3 rounded-xl transition-all text-sm flex items-center justify-center gap-2"
           >
             {downloading ? (
               <span>Generating Report...</span>

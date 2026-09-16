@@ -86,7 +86,7 @@ export default function Profile() {
           <h1 className="text-2xl font-bold font-heading text-ivory mb-6">Profile</h1>
           <div className="space-y-4">
             <div className="flex items-center gap-4">
-              <Avatar user={user} className="w-20 h-20" fallbackClassName="bg-[#0866FF] text-white font-bold text-2xl" />
+              <Avatar user={user} className="w-20 h-20" fallbackClassName="bg-[#1B4F9C] text-white font-bold text-2xl" />
               <div className="flex flex-col gap-2">
                 <input ref={fileRef} type="file" accept="image/jpeg,image/png,image/webp" onChange={handleFile} className="hidden" />
                 <button
@@ -113,7 +113,7 @@ export default function Profile() {
               <input
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                className="w-full border border-[#F1F1F1] rounded-xl px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-[#0866FF]/25"
+                className="w-full border border-[#F1F1F1] rounded-xl px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-[#1B4F9C]/25"
               />
             </div>
             <div>
@@ -123,7 +123,7 @@ export default function Profile() {
             <button
               onClick={handleSave}
               disabled={saving}
-              className="bg-[#0866FF] hover:bg-[#0866FF] text-white rounded-full px-6 py-2.5 text-sm font-semibold flex items-center gap-2"
+              className="bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white rounded-full px-6 py-2.5 text-sm font-semibold flex items-center gap-2"
             >
               {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
               {saved ? "Saved!" : "Save changes"}

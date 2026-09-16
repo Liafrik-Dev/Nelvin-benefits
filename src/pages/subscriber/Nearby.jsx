@@ -37,8 +37,8 @@ export default function Nearby() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFFFFF] text-[#0866FF] text-xs font-bold uppercase">
-              <MapPin className="w-3.5 h-3.5 text-[#0866FF]" /> Geolocation & Local Perks
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFFFFF] text-[#1B4F9C] text-xs font-bold uppercase">
+              <MapPin className="w-3.5 h-3.5 text-[#1B4F9C]" /> Geolocation & Local Perks
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-ivory font-heading">
               Nearby Benefits & Store Deals
@@ -54,7 +54,7 @@ export default function Nearby() {
                 onClick={() => setSelectedCity(city)}
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                   selectedCity === city
-                    ? "bg-[#FFFFFF] text-[#0866FF] shadow-sm"
+                    ? "bg-[#FFFFFF] text-[#1B4F9C] shadow-sm"
                     : "text-ivory-muted hover:text-ivory"
                 }`}
               >
@@ -67,7 +67,7 @@ export default function Nearby() {
         {/* Map preview box */}
         <div className="bg-[#FFFFFF] rounded-xl p-6 sm:p-8 text-white relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-3 relative z-10 max-w-lg">
-            <div className="flex items-center gap-2 text-[#0866FF] text-xs font-bold uppercase tracking-wider">
+            <div className="flex items-center gap-2 text-[#1B4F9C] text-xs font-bold uppercase tracking-wider">
               <Navigation className="w-4 h-4" /> GPS Radar Active
             </div>
             <h2 className="text-xl sm:text-2xl font-bold font-heading">
@@ -78,7 +78,7 @@ export default function Nearby() {
             </p>
           </div>
           <div className="relative z-10 flex items-center gap-3 bg-[#F4F4F4] backdrop-blur border border-[#E3E3E3] p-4 rounded-lg">
-            <Store className="w-8 h-8 text-[#0866FF]" />
+            <Store className="w-8 h-8 text-[#1B4F9C]" />
             <div>
               <p className="text-sm font-bold">{filteredOffers.length} Verified Spots</p>
               <p className="text-xs text-[#484848]">Within {selectedCity} Metro Area</p>

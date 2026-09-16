@@ -43,9 +43,9 @@ export default function BusinessRedemptions() {
         </div>
         <button
           onClick={() => setScanModal(true)}
-          className="bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#0866FF] text-xs font-bold px-4 py-2.5 rounded-xl inline-flex items-center gap-2 shadow-sm transition-colors"
+          className="bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#1B4F9C] text-xs font-bold px-4 py-2.5 rounded-xl inline-flex items-center gap-2 shadow-sm transition-colors"
         >
-          <QrCode className="w-4 h-4 text-[#0866FF]" /> Scan / Validate Voucher
+          <QrCode className="w-4 h-4 text-[#1B4F9C]" /> Scan / Validate Voucher
         </button>
       </div>
 
@@ -69,7 +69,7 @@ export default function BusinessRedemptions() {
                 </td>
                 <td className="px-6 py-4 font-semibold text-ivory">{r.offer}</td>
                 <td className="px-6 py-4 font-mono font-bold text-ivory">{r.code}</td>
-                <td className="px-6 py-4 font-extrabold text-[#0866FF]">{r.amount}</td>
+                <td className="px-6 py-4 font-extrabold text-[#1B4F9C]">{r.amount}</td>
                 <td className="px-6 py-4 text-xs text-ivory-muted">{r.date}</td>
               </tr>
             ))}
@@ -83,7 +83,7 @@ export default function BusinessRedemptions() {
             <button onClick={() => setScanModal(false)} className="absolute top-4 right-4 text-ivory-dim hover:text-ivory-muted">
               <X className="w-5 h-5" />
             </button>
-            <div className="w-12 h-12 bg-[#FFFFFF] rounded-lg flex items-center justify-center mx-auto text-[#0866FF]">
+            <div className="w-12 h-12 bg-[#FFFFFF] rounded-lg flex items-center justify-center mx-auto text-[#1B4F9C]">
               <QrCode className="w-6 h-6" />
             </div>
             <h3 className="font-bold text-lg text-[#282828]">Validate Customer Voucher</h3>
@@ -100,13 +100,13 @@ export default function BusinessRedemptions() {
                 className="w-full text-center font-mono font-bold text-sm tracking-widest p-3 border border-[#F1F1F1] rounded-xl focus:border-[#F1F1F1] focus:outline-none uppercase"
               />
               {scanSuccess ? (
-                <div className="p-3 bg-[#FFFFFF] text-[#0866FF] rounded-xl text-xs font-bold flex items-center justify-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#0866FF]" /> Voucher Validated!
+                <div className="p-3 bg-[#FFFFFF] text-[#1B4F9C] rounded-xl text-xs font-bold flex items-center justify-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#1B4F9C]" /> Voucher Validated!
                 </div>
               ) : (
                 <button
                   type="submit"
-                  className="w-full bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#0866FF] font-bold text-xs py-3 rounded-xl transition-colors"
+                  className="w-full bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#1B4F9C] font-bold text-xs py-3 rounded-xl transition-colors"
                 >
                   Verify Code
                 </button>

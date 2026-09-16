@@ -73,7 +73,7 @@ export default function OfferUsagePanel({ company, employees }) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6">
               <div className="flex items-center gap-2 mb-3">
-                <TrendingUp className="w-4 h-4 text-[#0866FF]" />
+                <TrendingUp className="w-4 h-4 text-[#1B4F9C]" />
                 <h3 className="font-semibold text-ivory">Top Categories</h3>
               </div>
               <div className="h-64">

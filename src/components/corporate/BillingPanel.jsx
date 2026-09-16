@@ -106,8 +106,8 @@ export default function BillingPanel({ company, onChanged }) {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6">
-          <h3 className="font-semibold text-ivory mb-3 flex items-center gap-2"><Receipt className="w-4 h-4 text-[#0866FF]" /> Current Plan</h3>
-          <p className="text-2xl font-bold text-[#0866FF]">{company.membership_tier || "—"}</p>
+          <h3 className="font-semibold text-ivory mb-3 flex items-center gap-2"><Receipt className="w-4 h-4 text-[#1B4F9C]" /> Current Plan</h3>
+          <p className="text-2xl font-bold text-[#1B4F9C]">{company.membership_tier || "—"}</p>
           <p className="text-sm text-ivory-muted mt-1">{isLead ? "Custom enterprise plan, manually approved after a sales call." : "Self-serve tier, billed per seat per month."}</p>
 
           <div className="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
@@ -122,12 +122,12 @@ export default function BillingPanel({ company, onChanged }) {
 
           {!isLead && (
             <div className="mt-6 bg-[#FFFFFF] rounded-lg p-4">
-              <p className="text-xs text-[#0866FF] uppercase tracking-wider font-semibold">Add seats</p>
+              <p className="text-xs text-[#1B4F9C] uppercase tracking-wider font-semibold">Add seats</p>
               <div className="flex items-center gap-2 mt-2">
-                <button onClick={() => setSeats((s) => Math.max(0, s - 1))} className="p-2 bg-[#FFFFFF] rounded-lg border border-[#F1F1F1] text-[#0866FF]"><Minus className="w-3.5 h-3.5" /></button>
+                <button onClick={() => setSeats((s) => Math.max(0, s - 1))} className="p-2 bg-[#FFFFFF] rounded-lg border border-[#F1F1F1] text-[#1B4F9C]"><Minus className="w-3.5 h-3.5" /></button>
                 <input type="number" min="0" value={seats} onChange={(e) => setSeats(Math.max(0, Number(e.target.value)))} className="w-16 text-center px-2 py-1.5 text-sm border border-[#F1F1F1] rounded-lg" />
-                <button onClick={() => setSeats((s) => s + 1)} className="p-2 bg-[#FFFFFF] rounded-lg border border-[#F1F1F1] text-[#0866FF]"><Plus className="w-3.5 h-3.5" /></button>
-                <button onClick={addSeats} disabled={addingSeats || seats < 1} className="ml-2 inline-flex items-center gap-1.5 bg-[#0866FF] hover:bg-[#0866FF] text-white text-sm font-semibold px-4 py-2 rounded-lg disabled:opacity-50">
+                <button onClick={() => setSeats((s) => s + 1)} className="p-2 bg-[#FFFFFF] rounded-lg border border-[#F1F1F1] text-[#1B4F9C]"><Plus className="w-3.5 h-3.5" /></button>
+                <button onClick={addSeats} disabled={addingSeats || seats < 1} className="ml-2 inline-flex items-center gap-1.5 bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white text-sm font-semibold px-4 py-2 rounded-lg disabled:opacity-50">
                   <ArrowUpCircle className="w-4 h-4" /> Add {seats} seat{seats === 1 ? "" : "s"}
                 </button>
               </div>
@@ -137,7 +137,7 @@ export default function BillingPanel({ company, onChanged }) {
 
           {isLead && (
             <div className="mt-6 bg-[#F9F8F7] rounded-lg p-4">
-              <p className="text-sm text-[#0866FF]">To adjust seats, change renewal date, or invoices, contact <a href="mailto:Nelvin23@proton.me" className="font-semibold underline">Nelvin23@proton.me</a>.</p>
+              <p className="text-sm text-[#1B4F9C]">To adjust seats, change renewal date, or invoices, contact <a href="mailto:Nelvin23@proton.me" className="font-semibold underline">Nelvin23@proton.me</a>.</p>
             </div>
           )}
         </div>
@@ -158,7 +158,7 @@ export default function BillingPanel({ company, onChanged }) {
                   </div>
                   <div className="flex items-center gap-3">
                     <span className="text-sm font-bold text-ivory">${(p.amount || 0).toLocaleString()}</span>
-                    <button onClick={() => downloadInvoice(p)} className="text-xs text-[#0866FF] hover:text-[#0866FF] flex items-center gap-1"><Download className="w-3.5 h-3.5" /> Invoice</button>
+                    <button onClick={() => downloadInvoice(p)} className="text-xs text-[#1B4F9C] hover:text-[#1B4F9C] flex items-center gap-1"><Download className="w-3.5 h-3.5" /> Invoice</button>
                   </div>
                 </div>
               ))}

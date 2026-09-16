@@ -29,8 +29,8 @@ export default function Wellness() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2 max-w-xl">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20 text-xs font-bold uppercase">
-              <HeartPulse className="w-3.5 h-3.5 text-[#0866FF]" /> Employee Well-being Portal
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F9F8F7] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/20 text-xs font-bold uppercase">
+              <HeartPulse className="w-3.5 h-3.5 text-[#1B4F9C]" /> Employee Well-being Portal
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-ivory font-heading">
               Health, Gyms & Mental Wellness
@@ -41,12 +41,12 @@ export default function Wellness() {
           </div>
           <div className="flex gap-3">
             <div className="p-4 bg-[#FFFFFF] rounded-lg text-center">
-              <Dumbbell className="w-6 h-6 text-[#0866FF] mx-auto mb-1" />
+              <Dumbbell className="w-6 h-6 text-[#1B4F9C] mx-auto mb-1" />
               <p className="text-xs font-bold text-ivory">Gym Access</p>
               <p className="text-[10px] text-ivory-muted">250+ Venues</p>
             </div>
             <div className="p-4 bg-[#F9F8F7] rounded-lg text-center">
-              <Activity className="w-6 h-6 text-[#0866FF] mx-auto mb-1" />
+              <Activity className="w-6 h-6 text-[#1B4F9C] mx-auto mb-1" />
               <p className="text-xs font-bold text-ivory">Telehealth</p>
               <p className="text-[10px] text-ivory-muted">24/7 On-Call</p>
             </div>

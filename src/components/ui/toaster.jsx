@@ -10,8 +10,8 @@ const ICONS = {
 }
 
 const ACCENTS = {
-  default: "border-[#F1F1F1] text-[#0866FF]",
-  success: "border-[#F1F1F1] text-[#0866FF]",
+  default: "border-[#F1F1F1] text-[#1B4F9C]",
+  success: "border-[#F1F1F1] text-[#1B4F9C]",
   destructive: "border-rose-400/30 text-rose-300",
 }
 
@@ -38,7 +38,7 @@ export function Toaster() {
             </div>
             <button
               onClick={() => dismiss(t.id)}
-              className="text-ivory-dim hover:text-[#0866FF] shrink-0"
+              className="text-ivory-dim hover:text-[#1B4F9C] shrink-0"
               aria-label="Dismiss notification"
             >
               <X className="h-4 w-4" />

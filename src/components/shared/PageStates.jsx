@@ -4,7 +4,7 @@ import { SearchX, Loader2, Inbox } from "lucide-react";
 export function LoadingState({ label = "Loading data..." }) {
   return (
     <div className="flex flex-col items-center justify-center gap-3 py-16 text-[#282828]/50">
-      <Loader2 className="w-7 h-7 animate-spin text-[#0866FF]" />
+      <Loader2 className="w-7 h-7 animate-spin text-[#1B4F9C]" />
       <p className="text-sm font-medium">{label}</p>
     </div>
   );
@@ -14,7 +14,7 @@ export function EmptyState({ icon: Icon = Inbox, title = "Nothing here yet", des
   return (
     <div className="flex flex-col items-center justify-center text-center py-14 px-4">
       <span className="w-14 h-14 rounded-lg bg-forest-secondary ring-1 ring-[#E3E3E3]/10 flex items-center justify-center mb-4">
-        <Icon className="w-6 h-6 text-[#0866FF]" />
+        <Icon className="w-6 h-6 text-[#1B4F9C]" />
       </span>
       <h3 className="text-base font-bold text-[#282828]">{title}</h3>
       {desc && <p className="text-sm text-[#282828]/55 mt-1 max-w-sm">{desc}</p>}
@@ -47,7 +47,7 @@ export function PageHeader({ kicker, title, desc, action }) {
   return (
     <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
       <div>
-        {kicker && <p className="text-[#0866FF] font-bold text-xs tracking-[0.2em] uppercase mb-2">{kicker}</p>}
+        {kicker && <p className="text-[#1B4F9C] font-bold text-xs tracking-[0.2em] uppercase mb-2">{kicker}</p>}
         <h1 className="text-2xl sm:text-3xl font-bold font-heading text-[#282828] tracking-tight leading-tight">{title}</h1>
         {desc && <p className="mt-2 text-sm text-[#282828]/55 leading-relaxed max-w-2xl">{desc}</p>}
       </div>
@@ -58,9 +58,9 @@ export function PageHeader({ kicker, title, desc, action }) {
 
 export function StatCard({ label, value, icon: Icon, trend, tone = "dark" }) {
   const tones = {
-    dark: { bg: "bg-[#FFFFFF]", label: "text-[#737373]", value: "text-[#0866FF]" },
+    dark: { bg: "bg-[#FFFFFF]", label: "text-[#737373]", value: "text-[#1B4F9C]" },
     green: { bg: "bg-[#FFFFFF]", label: "text-[#737373]", value: "text-white" },
-    lime: { bg: "bg-[#0866FF]", label: "text-[#282828]/60", value: "text-[#282828]" },
+    lime: { bg: "bg-[#1B4F9C]", label: "text-[#282828]/60", value: "text-[#282828]" },
     purple: { bg: "bg-[#FFFFFF]", label: "text-[#737373]", value: "text-white" },
   }[tone];
   return (
@@ -70,7 +70,7 @@ export function StatCard({ label, value, icon: Icon, trend, tone = "dark" }) {
         <Icon className={`w-4 h-4 ${tones.label}`} />
       </div>
       <p className={`mt-2 text-2xl font-bold tracking-tight ${tones.value}`}>{value}</p>
-      {trend && <p className="mt-1 text-[11px] font-semibold text-[#0866FF]">{trend}</p>}
+      {trend && <p className="mt-1 text-[11px] font-semibold text-[#1B4F9C]">{trend}</p>}
     </div>
   );
 }

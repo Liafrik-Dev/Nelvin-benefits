@@ -78,7 +78,7 @@ export default function OfferCard({ offer }) {
           {offer.city || "Lagos"}, {offer.country || "Nigeria"}
         </p>
 
-        <span className="block rounded-lg bg-gold py-2.5 text-center text-sm font-semibold text-white transition-colors group-hover:bg-[#0866FF]">
+        <span className="block rounded-lg bg-gold py-2.5 text-center text-sm font-semibold text-white transition-colors group-hover:bg-[#1B4F9C]">
           View offer
         </span>
       </div>

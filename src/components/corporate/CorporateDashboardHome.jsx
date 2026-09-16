@@ -90,12 +90,12 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
     <div className="space-y-8 font-sans text-[#282828]">
       {/* Company Banner Header */}
       <div className="relative rounded-xl overflow-hidden bg-gradient-to-r from-black via-[#FFFFFF] to-black text-white p-6 sm:p-8 md:p-10 shadow-2xl border border-[#F1F1F1]">
-        <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-15 bg-[radial-gradient(#0866FF_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-15 bg-[radial-gradient(#1B4F9C_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
         <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F4F4F4] text-[#0866FF] border border-[#0866FF]/30 text-xs font-extrabold tracking-wider uppercase backdrop-blur-md">
-              <Building2 className="w-3.5 h-3.5 text-[#0866FF]" /> {company.name || "Enterprise Portal"}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F4F4F4] text-[#1B4F9C] border border-[#1B4F9C]/30 text-xs font-extrabold tracking-wider uppercase backdrop-blur-md">
+              <Building2 className="w-3.5 h-3.5 text-[#1B4F9C]" /> {company.name || "Enterprise Portal"}
             </div>
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-black font-heading tracking-tight text-white">
               HR Benefits Management Dashboard
@@ -107,7 +107,7 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
 
           <button
             onClick={onGoEmployees}
-            className="bg-[#0866FF] hover:bg-[#0866FF] text-white font-extrabold px-6 py-3 rounded-full text-xs transition-all shadow-lg shadow-[#0866FF]/20 flex items-center gap-2 shrink-0"
+            className="bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white font-extrabold px-6 py-3 rounded-full text-xs transition-all shadow-lg shadow-[#1B4F9C]/20 flex items-center gap-2 shrink-0"
           >
             <UserPlus className="w-4 h-4" /> Invite Employees
           </button>
@@ -116,12 +116,12 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
 
       {/* Metric Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
-        <StatCard icon={Users} label="Total Workforce" value={loading ? "—" : total || 18} accent="bg-[#FFFFFF] text-[#0866FF]" />
-        <StatCard icon={UserCheck} label="Active Users" value={loading ? "—" : active || 16} accent="bg-[#FFFFFF] text-[#0866FF]" />
-        <StatCard icon={Gift} label="Redemptions" value={loading ? "—" : redemptions.length || 142} accent="bg-[#FFFFFF] text-[#0866FF]" />
-        <StatCard icon={Wallet} label="Total Savings" value={loading ? "—" : `$${(totalSavings || 12450).toLocaleString()}`} accent="bg-[#FFFFFF] text-[#0866FF]" />
-        <StatCard icon={Crown} label="Active Offers" value={loading ? "—" : (Array.isArray(offers) && offers.length ? offers.length : 24)} accent="bg-[#FFFFFF] text-[#0866FF]" />
-        <StatCard icon={Globe} label="Coverage" value={loading ? "—" : `${countriesTouched} Regions`} accent="bg-[#FFFFFF] text-[#0866FF]" />
+        <StatCard icon={Users} label="Total Workforce" value={loading ? "—" : total || 18} accent="bg-[#FFFFFF] text-[#1B4F9C]" />
+        <StatCard icon={UserCheck} label="Active Users" value={loading ? "—" : active || 16} accent="bg-[#FFFFFF] text-[#1B4F9C]" />
+        <StatCard icon={Gift} label="Redemptions" value={loading ? "—" : redemptions.length || 142} accent="bg-[#FFFFFF] text-[#1B4F9C]" />
+        <StatCard icon={Wallet} label="Total Savings" value={loading ? "—" : `$${(totalSavings || 12450).toLocaleString()}`} accent="bg-[#FFFFFF] text-[#1B4F9C]" />
+        <StatCard icon={Crown} label="Active Offers" value={loading ? "—" : (Array.isArray(offers) && offers.length ? offers.length : 24)} accent="bg-[#FFFFFF] text-[#1B4F9C]" />
+        <StatCard icon={Globe} label="Coverage" value={loading ? "—" : `${countriesTouched} Regions`} accent="bg-[#FFFFFF] text-[#1B4F9C]" />
       </div>
 
       {/* Interactive Charts */}
@@ -129,7 +129,7 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
         <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-6 sm:p-8 shadow-xl space-y-4">
           <div className="flex items-start justify-between border-b border-[#F1F1F1] pb-4">
             <div>
-              <div className="flex items-center gap-2 text-xs font-black uppercase text-[#0866FF] tracking-wider mb-1">
+              <div className="flex items-center gap-2 text-xs font-black uppercase text-[#1B4F9C] tracking-wider mb-1">
                 <TrendingUp className="w-4 h-4" /> Engagement Metrics
               </div>
               <h3 className="font-bold text-lg text-ivory font-heading">Monthly Employee Redemptions</h3>
@@ -142,7 +142,7 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
                 <XAxis dataKey="label" tick={{ fontSize: 11, fontWeight: 700, fill: "#9ca3af" }} axisLine={false} tickLine={false} />
                 <YAxis tick={{ fontSize: 11, fill: "#9ca3af" }} axisLine={false} tickLine={false} allowDecimals={false} />
                 <Tooltip contentStyle={{ backgroundColor: "#FFFFFF", borderRadius: "12px", border: "none", color: "#282828" }} />
-                <Line type="monotone" dataKey="count" stroke="#0866FF" strokeWidth={3} dot={{ r: 4, fill: "#FFFFFF" }} />
+                <Line type="monotone" dataKey="count" stroke="#1B4F9C" strokeWidth={3} dot={{ r: 4, fill: "#FFFFFF" }} />
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -151,7 +151,7 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
         <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-6 sm:p-8 shadow-xl space-y-4">
           <div className="flex items-start justify-between border-b border-[#F1F1F1] pb-4">
             <div>
-              <div className="flex items-center gap-2 text-xs font-black uppercase text-[#0866FF] tracking-wider mb-1">
+              <div className="flex items-center gap-2 text-xs font-black uppercase text-[#1B4F9C] tracking-wider mb-1">
                 <PieChartIcon className="w-4 h-4" /> Department Insights
               </div>
               <h3 className="font-bold text-lg text-ivory font-heading">Corporate Savings by Department</h3>
@@ -164,7 +164,7 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
                 <XAxis dataKey="name" tick={{ fontSize: 10, fontWeight: 700, fill: "#9ca3af" }} axisLine={false} tickLine={false} />
                 <YAxis tick={{ fontSize: 11, fill: "#9ca3af" }} axisLine={false} tickLine={false} tickFormatter={(v) => `$${v}`} />
                 <Tooltip contentStyle={{ backgroundColor: "#FFFFFF", borderRadius: "12px", border: "none", color: "#282828" }} formatter={(v) => [`$${v}`, "Savings"]} />
-                <Bar dataKey="value" fill="#0866FF" radius={[8, 8, 0, 0]} barSize={32} />
+                <Bar dataKey="value" fill="#1B4F9C" radius={[8, 8, 0, 0]} barSize={32} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -181,18 +181,18 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
               className="w-full flex items-center justify-between p-4 rounded-lg bg-[#F9F8F7] hover:bg-[#FFFFFF] hover:text-[#282828] transition-all text-left group border border-[#F1F1F1]"
             >
               <span className="flex items-center gap-3">
-                <UserPlus className="w-5 h-5 text-[#0866FF] group-hover:text-[#0866FF]" />
+                <UserPlus className="w-5 h-5 text-[#1B4F9C] group-hover:text-[#1B4F9C]" />
                 <span className="text-xs font-bold">Invite New Employees & Sync HRIS</span>
               </span>
-              <ArrowRight className="w-4 h-4 text-ivory-dim group-hover:text-[#0866FF] group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 text-ivory-dim group-hover:text-[#1B4F9C] group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         </div>
 
-        <div className="bg-[#FFFFFF] rounded-xl p-6 sm:p-8 shadow-2xl text-white space-y-4 border border-[#0866FF]/20">
+        <div className="bg-[#FFFFFF] rounded-xl p-6 sm:p-8 shadow-2xl text-white space-y-4 border border-[#1B4F9C]/20">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-extrabold uppercase tracking-widest text-[#0866FF]">Corporate Subscription</span>
-            <span className="text-xs font-bold bg-[#0866FF]/10 border border-[#0866FF]/30 text-[#0866FF] px-3 py-1 rounded-full">
+            <span className="text-xs font-extrabold uppercase tracking-widest text-[#1B4F9C]">Corporate Subscription</span>
+            <span className="text-xs font-bold bg-[#1B4F9C]/10 border border-[#1B4F9C]/30 text-[#1B4F9C] px-3 py-1 rounded-full">
               {company.membership_tier || "Enterprise Tier"}
             </span>
           </div>
@@ -203,11 +203,11 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
           </div>
 
           <div className="w-full bg-[#F4F4F4] rounded-full h-3 overflow-hidden">
-            <div className="bg-gradient-to-r from-[#0866FF] to-[#0866FF] h-full rounded-full transition-all duration-500" style={{ width: `${seatPercentage}%` }} />
+            <div className="bg-gradient-to-r from-[#1B4F9C] to-[#1B4F9C] h-full rounded-full transition-all duration-500" style={{ width: `${seatPercentage}%` }} />
           </div>
 
           <p className="text-xs text-[#484848] pt-1">
-            Need to add seats or activate dedicated Account Manager support? Contact <a href="mailto:Nelvin23@proton.me" className="text-[#0866FF] font-bold underline">Nelvin23@proton.me</a>
+            Need to add seats or activate dedicated Account Manager support? Contact <a href="mailto:Nelvin23@proton.me" className="text-[#1B4F9C] font-bold underline">Nelvin23@proton.me</a>
           </p>
         </div>
       </div>

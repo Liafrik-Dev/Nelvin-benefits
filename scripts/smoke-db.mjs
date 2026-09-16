@@ -106,10 +106,19 @@ check("UploadFile no-file returns file_url", "file_url" in up);
 
 // --- auth flow ---
 check("auth.isAuthenticated initial false", (await db.auth.isAuthenticated()) === false);
-await db.auth.loginViaEmailPassword("admin@nelvinbenefits.com", "demo");
+
+// Create the demo account through the real registration path first. The store
+// no longer ships with a pre-seeded user, so logging in against a hard-coded
+// one failed with a 401 and took the whole suite down with it.
+const demoEmail = "admin@nelvinbenefits.com";
+const demoPassword = "demo123";
+await db.auth.register({ email: demoEmail, password: demoPassword, role: "subscriber" });
+await db.auth.logout();
+
+await db.auth.loginViaEmailPassword(demoEmail, demoPassword);
 check("auth.isAuthenticated after login", (await db.auth.isAuthenticated()) === true);
 const me = await db.auth.me();
-check("auth.me returns user", !!me && me.email === "admin@nelvinbenefits.com");
+check("auth.me returns user", !!me && me.email === demoEmail);
 
 await db.auth.updateMe({ full_name: "New Demo User" });
 const me2 = await db.auth.me();

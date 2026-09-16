@@ -101,10 +101,10 @@ export default function ApplicationReviewPanel({
 
               {publishedOffer && (
                 <div className="mt-4 p-3 rounded-xl bg-[#FFFFFF] border border-[#F1F1F1]">
-                  <p className="text-xs text-[#0866FF] font-semibold mb-1 flex items-center gap-1">
+                  <p className="text-xs text-[#1B4F9C] font-semibold mb-1 flex items-center gap-1">
                     <BadgeCheck className="w-3.5 h-3.5" /> Published as live offer
                   </p>
-                  <Link to={`/offer/${publishedOffer.id}`} target="_blank" className="text-xs text-[#0866FF] underline flex items-center gap-1">
+                  <Link to={`/offer/${publishedOffer.id}`} target="_blank" className="text-xs text-[#1B4F9C] underline flex items-center gap-1">
                     View live offer <ExternalLink className="w-3 h-3" />
                   </Link>
                 </div>
@@ -125,7 +125,7 @@ export default function ApplicationReviewPanel({
                     <button
                       disabled={busy}
                       onClick={async () => { setBusy(true); await onApprovePublish(app); setBusy(false); }}
-                      className="w-full bg-[#0866FF] text-white py-3 rounded-full font-medium text-sm hover:bg-[#0866FF] disabled:opacity-50 flex items-center justify-center gap-2"
+                      className="w-full bg-[#1B4F9C] text-white py-3 rounded-full font-medium text-sm hover:bg-[#1B4F9C] disabled:opacity-50 flex items-center justify-center gap-2"
                     >
                       <Check className="w-4 h-4" /> Approve & Publish
                     </button>
@@ -133,7 +133,7 @@ export default function ApplicationReviewPanel({
                     <button
                       disabled={busy}
                       onClick={async () => { setBusy(true); await onUnpublish(app); setBusy(false); }}
-                      className="w-full bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20 py-3 rounded-full font-medium text-sm hover:bg-[#F9F8F7] disabled:opacity-50"
+                      className="w-full bg-[#F9F8F7] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/20 py-3 rounded-full font-medium text-sm hover:bg-[#F9F8F7] disabled:opacity-50"
                     >
                       Unpublish (move back to pending)
                     </button>

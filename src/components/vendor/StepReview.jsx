@@ -61,13 +61,13 @@ export default function StepReview({ form, confirmed, setConfirmed, onBack, onSu
           ].map(([label, url]) =>
             url ? (
               <div key={label} className="flex items-center gap-2 text-sm text-ivory">
-                <FileCheck2 className="w-4 h-4 text-[#0866FF] flex-shrink-0" />
+                <FileCheck2 className="w-4 h-4 text-[#1B4F9C] flex-shrink-0" />
                 {label}
               </div>
             ) : null
           )}
         </div>
-        <p className="text-xs text-ivory-dim mt-3">Verification Status: <span className="text-[#0866FF] font-medium">Pending Review</span></p>
+        <p className="text-xs text-ivory-dim mt-3">Verification Status: <span className="text-[#1B4F9C] font-medium">Pending Review</span></p>
       </div>
 
       <label className="flex items-start gap-3 cursor-pointer">

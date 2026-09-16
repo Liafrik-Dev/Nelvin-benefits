@@ -42,18 +42,18 @@ export default function BusinessSupport() {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Explain your inquiry..."
-            className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl p-3 text-xs outline-none focus:border-[#0866FF]"
+            className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl p-3 text-xs outline-none focus:border-[#1B4F9C]"
           />
         </div>
 
         <button
           type="submit"
-          className="w-full bg-[#FFFFFF] text-[#0866FF] font-bold py-3 rounded-full text-xs hover:bg-[#FFFFFF] flex items-center justify-center gap-2"
+          className="w-full bg-[#FFFFFF] text-[#1B4F9C] font-bold py-3 rounded-full text-xs hover:bg-[#FFFFFF] flex items-center justify-center gap-2"
         >
           <Send className="w-3.5 h-3.5" /> Submit Merchant Ticket
         </button>
         {submitted && (
-          <p className="text-xs font-bold text-[#0866FF] text-center flex items-center justify-center gap-1">
+          <p className="text-xs font-bold text-[#1B4F9C] text-center flex items-center justify-center gap-1">
             <CheckCircle2 className="w-4 h-4" /> Ticket submitted to Nelvin Partner Desk!
           </p>
         )}

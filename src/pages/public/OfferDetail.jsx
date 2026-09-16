@@ -129,7 +129,7 @@ export default function OfferDetail() {
             <p className="font-semibold text-ivory">{offer.business_name}</p>
             <div className="flex items-center gap-3 text-sm text-ivory-dim mt-2">
               <span className="flex items-center gap-1">
-                <Star className="w-3.5 h-3.5 fill-[#0866FF] text-[#0866FF]" />
+                <Star className="w-3.5 h-3.5 fill-[#1B4F9C] text-[#1B4F9C]" />
                 {offer.rating} ({offer.reviews})
               </span>
             </div>
@@ -145,19 +145,19 @@ export default function OfferDetail() {
             )}
             {offer.savings_amount > 0 && (
               <div className="mt-4 bg-[#FFFFFF] rounded-xl p-4 flex items-center gap-2">
-                <Tag className="w-4 h-4 text-[#0866FF]" />
-                <span className="text-sm font-semibold text-[#0866FF]">Save ₦{offer.savings_amount.toLocaleString()}</span>
+                <Tag className="w-4 h-4 text-[#1B4F9C]" />
+                <span className="text-sm font-semibold text-[#1B4F9C]">Save ₦{offer.savings_amount.toLocaleString()}</span>
               </div>
             )}
             {redeemed ? (
-              <div className="mt-6 bg-[#0866FF] text-white rounded-full py-3 text-center font-semibold text-sm flex items-center justify-center gap-2">
+              <div className="mt-6 bg-[#1B4F9C] text-white rounded-full py-3 text-center font-semibold text-sm flex items-center justify-center gap-2">
                 <CheckCircle2 className="w-4 h-4" /> Redeemed!
               </div>
             ) : (
               <button
                 onClick={handleRedeem}
                 disabled={redeeming}
-                className="mt-6 w-full bg-[#0866FF] hover:bg-[#0866FF] text-white rounded-full py-3 font-semibold text-sm"
+                className="mt-6 w-full bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white rounded-full py-3 font-semibold text-sm"
               >
                 {redeeming ? "Redeeming..." : isAuthenticated ? "Redeem Now" : "Log in to Redeem"}
               </button>

@@ -51,8 +51,8 @@ export default function Favorites() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         <div className="flex items-center justify-between border-b border-[#F1F1F1] pb-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F9F8F7] text-[#0866FF] ring-1 ring-[#0866FF]/20 text-xs font-bold uppercase">
-              <Heart className="w-3.5 h-3.5 text-[#0866FF] fill-[#0866FF]" /> Saved Perks
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F9F8F7] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/20 text-xs font-bold uppercase">
+              <Heart className="w-3.5 h-3.5 text-[#1B4F9C] fill-[#1B4F9C]" /> Saved Perks
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-ivory mt-2 font-heading">
               Your Favorite Benefits
@@ -68,7 +68,7 @@ export default function Favorites() {
           <div className="h-64 flex items-center justify-center text-ivory-dim">Loading favorites...</div>
         ) : offers.length === 0 ? (
           <div className="bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl p-12 text-center space-y-4 max-w-md mx-auto">
-            <div className="w-16 h-16 rounded-lg bg-[#F9F8F7] text-[#0866FF] flex items-center justify-center mx-auto">
+            <div className="w-16 h-16 rounded-lg bg-[#F9F8F7] text-[#1B4F9C] flex items-center justify-center mx-auto">
               <Heart className="w-8 h-8" />
             </div>
             <h3 className="text-lg font-bold text-ivory font-heading">No favorite deals yet</h3>
@@ -84,7 +84,7 @@ export default function Favorites() {
                 <button
                   onClick={() => removeFavorite(offer.id)}
                   title="Remove from favorites"
-                  className="absolute top-3 right-3 z-20 w-8 h-8 bg-[#F4F4F4] backdrop-blur rounded-full flex items-center justify-center text-[#0866FF] hover:bg-[#0866FF] hover:text-[#282828] transition-colors shadow-sm"
+                  className="absolute top-3 right-3 z-20 w-8 h-8 bg-[#F4F4F4] backdrop-blur rounded-full flex items-center justify-center text-[#1B4F9C] hover:bg-[#1B4F9C] hover:text-[#282828] transition-colors shadow-sm"
                 >
                   <Trash2 className="w-4 h-4" />
                 </button>
