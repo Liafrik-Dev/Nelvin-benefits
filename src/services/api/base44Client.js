@@ -249,10 +249,21 @@ async function supabaseSyncProfile() {
   if (error || !data) {
     const email = user.email || "";
     const name = user.user_metadata?.full_name || user.user_metadata?.name || null;
-    const fallbackRole =
-      email.endsWith("nelvinbenefits.com") || email.endsWith("@nelvin.app")
-        ? "admin"
-        : user.user_metadata?.role || "subscriber";
+    // Match the exact domain, not a suffix: "…nelvinbenefits.com" would also
+    // match attacker-controlled lookalikes such as evilnelvinbenefits.com.
+    const domain = email.split("@")[1]?.toLowerCase() || "";
+    const staffDomain = domain === "nelvinbenefits.com" || domain === "nelvin.app";
+    // Self-selected role at signup decides between the member, partner and HR
+    // portals, so it is honoured — but only for the non-privileged set.
+    // Anything else (admin/founder/staff) is ignored rather than trusted, since
+    // user_metadata is client-supplied and would otherwise be a route to admin.
+    const SIGNUP_ROLES = ["subscriber", "business", "hr_admin"];
+    const requested = String(user.user_metadata?.role || "");
+    const fallbackRole = staffDomain
+      ? "admin"
+      : SIGNUP_ROLES.includes(requested)
+        ? requested
+        : "subscriber";
     const { data: inserted, error: insErr } = await supabase
       .from("users")
       .upsert(

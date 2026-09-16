@@ -60,6 +60,26 @@ Ce document recense les points à traiter lors des prochaines itérations. Rien 
 
 
 
+## 8. Durcissement auth restant
+
+- **`0001_init.sql` : policy `users update own or admin` sans `WITH CHECK`.**
+  La clause `USING` valide la ligne *avant* écriture ; sans `WITH CHECK`, un
+  utilisateur pouvait réécrire sa propre ligne, y compris `role`. Le trigger de
+  `supabase/migrations/0002_fix_role_escalation.sql` ferme le cas, mais la
+  policy gagnerait à être explicite :
+  `with check (auth.uid() = id or public.is_admin())`.
+- **Policies admin fondées sur `is_admin()`, qui lit `public.users`.** Un
+  `role` modifiable rendait le helper auto-autorisant. `is_admin()` est
+  maintenant `security invoker` + `search_path` figé, et ignore les comptes
+  suspendus — mais toute future policy admin devrait être relue sous cet angle.
+- **`/corporate-dashboard` n'a pas de garde de rôle** côté route : un
+  particulier y accède et voit « No company linked yet » au lieu d'un refus.
+  Aucune fuite de données (le portail exige `user.company_id`), mais le message
+  est trompeur. À aligner sur `AdminLayout`/`BusinessLayout`.
+- Pas de `.env` dans ce dépôt : l'app tourne sur le backend de secours
+  `localStorage` (`fallbackDb`). Les correctifs ci-dessus visent Supabase, qui
+  est le backend réel en production.
+
 ## Résumé
 
 | Dette | Impact | Effort |
@@ -69,3 +89,5 @@ Ce document recense les points à traiter lors des prochaines itérations. Rien 
 | Fallback read-only | Pas de données en dev isolé | Moyen (adapter réel) |
 | Bundle index ~1 MB | Chargement initial sur réseaux lents | Moyen (lazy d'illustrations/animations, revue imgs) |
 | Renommage nelvin→marketing | Clarté | Faible (refactor imports) |
+| Garde de rôle sur `/corporate-dashboard` | Message trompeur, pas de fuite | Faible |
+| `WITH CHECK` explicite sur les policies `users` | Défense en profondeur (trigger déjà en place) | Faible |

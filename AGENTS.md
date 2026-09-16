@@ -79,3 +79,26 @@ Keep changes focused and leave the existing routes, data and copy alone — this
 codebase has had visual redesigns layered onto working functionality, and
 rewriting a component wholesale tends to drop behaviour that the portals depend
 on.
+
+## Auth & privilege model
+
+Roles live in one place: `public.users.role`. The client reads it from there and
+never infers privilege from client-supplied values.
+
+- `supabaseSyncProfile` matches staff domains **exactly** (`nelvinbenefits.com`,
+  `nelvin.app`). A suffix match would also accept lookalikes such as
+  `evilnelvinbenefits.com`.
+- `user_metadata.role` is set by the browser at signup, so it is only honoured
+  for the non-privileged `SIGNUP_ROLES` allowlist (`subscriber`, `business`,
+  `hr_admin`). `admin`/`founder`/`staff` are ignored, never trusted.
+- 0002 adds a `BEFORE UPDATE` trigger on `public.users` refusing changes to
+  `role`, `status`, `is_suspended`, `membership_status` and `email` unless the
+  caller already passes `is_admin()` **as of the old row**. It runs before the
+  write, so a caller cannot name themselves admin in the same statement —
+  which is exactly how the 0001 self-reference was exploitable.
+- Don't replace that trigger with column-level `REVOKE`s: `AdminUsers.jsx`
+  legitimately writes `role`/`is_suspended` through the authenticated client,
+  and column grants cannot be conditioned on the caller's role.
+
+`scripts/role-assignment-check.mjs` guards the first two rules. Run it after
+touching `supabaseSyncProfile`.
