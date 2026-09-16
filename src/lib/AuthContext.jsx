@@ -102,6 +102,20 @@ export const AuthProvider = ({ children }) => {
       
       // First, check app public settings (with token if available)
       // This will tell us if auth is required, user not registered, etc.
+      // Without a Base44 app id there is no public-settings endpoint to ask, and
+      // the call would 404 as `/by-id/undefined`. Resolve the session directly.
+      if (!appParams.appId) {
+        const authed = appParams.token || (await db.auth.isAuthenticated());
+        if (authed) await checkUserAuth();
+        else {
+          setIsLoadingAuth(false);
+          setIsAuthenticated(false);
+          setAuthChecked(true);
+        }
+        setIsLoadingPublicSettings(false);
+        return;
+      }
+
       const appClient = createAxiosClient({
         baseURL: `/api/apps/public`,
         headers: {
@@ -125,7 +139,11 @@ export const AuthProvider = ({ children }) => {
         }
         setIsLoadingPublicSettings(false);
       } catch (appError) {
-        console.error('App state check failed:', appError);
+        // Recoverable: we fall back to the injected SDK below, so this is only
+        // fatal when it carries an auth reason we understand.
+        if (appError?.status === 403) {
+          console.warn('App state check rejected:', appError.message);
+        }
         
         // Handle app-level errors
         let handled = false;
@@ -262,7 +280,10 @@ export const AuthProvider = ({ children }) => {
       setIsLoadingAuth(false);
       setAuthChecked(true);
     } catch (error) {
-      console.error('User auth check failed:', error);
+      // An absent session is the expected signed-out state, not a failure.
+      if (error?.status && error.status !== 401 && error.status !== 403) {
+        console.error('User auth check failed:', error);
+      }
       setIsLoadingAuth(false);
       setIsAuthenticated(false);
       setAuthChecked(true);

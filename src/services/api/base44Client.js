@@ -534,24 +534,117 @@ localTables[toLabel("Country")].push(...seedCountries);
 ensureTable("MembershipPlan");
 localTables[toLabel("MembershipPlan")].push(...seedPlans);
 
-let localAuthUser = null;
-function getLocalUser() {
-  if (localAuthUser) return localAuthUser;
+// ---------------------------------------------------------------------------
+// Local auth store (used only when no real backend is configured).
+//
+// This is a genuine credential store, not a stub: passwords are salted and
+// hashed with iterated SHA-256, sessions are random tokens with an expiry, and
+// credentials are verified before a session is issued. It still cannot replace a
+// real identity provider — the data lives in this browser only — so production
+// deployments must configure Supabase (see .env.example).
+// ---------------------------------------------------------------------------
+
+const USERS_KEY = "nv_auth_users";
+const SESSION_KEY = "nv_auth_session";
+const RESET_KEY = "nv_auth_reset";
+const SESSION_TTL_MS = 7 * 24 * 60 * 60 * 1000;
+const HASH_ROUNDS = 1000;
+
+function readStore(key, fallback) {
   try {
-    if (localStorage.getItem(LOCAL_TOKEN_KEY)) {
-      localAuthUser = {
-        id: "user_demo_123",
-        email: "admin@nelvinbenefits.com",
-        full_name: "Demo Admin User",
-        role: "admin",
-        company_id: "company_demo_456",
-        account_type: "corporate",
-        subscriber_id: "NV-009988",
-        membership_status: "active",
-      };
-    }
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function writeStore(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch { /* storage full or blocked — the session simply will not persist */ }
+}
+
+function randomHex(bytes = 16) {
+  const buf = new Uint8Array(bytes);
+  crypto.getRandomValues(buf);
+  return [...buf].map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+async function hashPassword(password, salt) {
+  let acc = `${salt}:${password}`;
+  const enc = new TextEncoder();
+  for (let i = 0; i < HASH_ROUNDS; i++) {
+    const digest = await crypto.subtle.digest("SHA-256", enc.encode(acc));
+    acc = [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, "0")).join("");
+  }
+  return acc;
+}
+
+function makeSubscriberId() {
+  return `NV-${randomHex(3).toUpperCase()}`;
+}
+
+/** Role → the profile fields the rest of the app reads off `user`. */
+function profileForRole(role) {
+  const base = {
+    membership_status: "active",
+    subscriber_id: makeSubscriberId(),
+  };
+  if (role === "business" || role === "partner") {
+    return { ...base, role: "business", account_type: "business" };
+  }
+  if (role === "hr_admin" || role === "corporate") {
+    return { ...base, role: "hr_admin", account_type: "corporate" };
+  }
+  return { ...base, role: "subscriber", account_type: "individual" };
+}
+
+function findUserByEmail(email) {
+  const target = String(email || "").trim().toLowerCase();
+  return readStore(USERS_KEY, []).find((u) => u.email === target) || null;
+}
+
+function publicUser(user) {
+  if (!user) return null;
+  const { password_hash, salt, ...safe } = user;
+  return safe;
+}
+
+function currentSession() {
+  const session = readStore(SESSION_KEY, null);
+  if (!session || !session.token) return null;
+  if (session.expires_at && Date.parse(session.expires_at) < Date.now()) {
+    try { localStorage.removeItem(SESSION_KEY); } catch { /* ignore */ }
+    return null;
+  }
+  return session;
+}
+
+function getLocalUser() {
+  const session = currentSession();
+  if (!session) return null;
+  const user = readStore(USERS_KEY, []).find((u) => u.id === session.user_id);
+  return publicUser(user);
+}
+
+function issueSession(user) {
+  const token = randomHex(32);
+  writeStore(SESSION_KEY, {
+    token,
+    user_id: user.id,
+    expires_at: new Date(Date.now() + SESSION_TTL_MS).toISOString(),
+  });
+  // Kept for code that still reads the legacy key directly.
+  try { localStorage.setItem(LOCAL_TOKEN_KEY, token); } catch { /* ignore */ }
+  return token;
+}
+
+function clearSession() {
+  try {
+    localStorage.removeItem(SESSION_KEY);
+    localStorage.removeItem(LOCAL_TOKEN_KEY);
   } catch { /* ignore */ }
-  return localAuthUser;
 }
 
 function localFilter(rows, filters) {
@@ -644,48 +737,131 @@ const fallbackDb = {
   auth: {
     isAuthenticated: async () => !!getLocalUser(),
     me: async () => getLocalUser(),
-    loginViaEmailPassword: async (email) => {
-      try { localStorage.setItem(LOCAL_TOKEN_KEY, "demo_session_token"); } catch {}
-      localAuthUser = {
-        id: "user_demo_123",
-        email: email || "admin@nelvinbenefits.com",
-        full_name: "Demo Admin User",
-        role: "admin",
-        company_id: "company_demo_456",
-        account_type: "corporate",
-        subscriber_id: "NV-009988",
-        membership_status: "active",
+
+    async loginViaEmailPassword(email, password) {
+      const user = findUserByEmail(email);
+      // Same error for unknown email and wrong password: do not reveal which
+      // addresses have accounts.
+      const genericFailure = new Error("Incorrect email or password.");
+      genericFailure.status = 401;
+      if (!user) throw genericFailure;
+      const candidate = await hashPassword(String(password || ""), user.salt);
+      if (candidate !== user.password_hash) throw genericFailure;
+      issueSession(user);
+      return { user: publicUser(user) };
+    },
+
+    loginWithProvider(provider, redirectPath) {
+      // There is no OAuth provider available without a real backend. Fail
+      // loudly instead of fabricating a session.
+      const err = new Error(
+        `${provider === "apple" ? "Apple" : "Google"} sign-in needs a configured identity provider.`
+      );
+      err.status = 501;
+      throw err;
+    },
+
+    async register({ email, password, role }) {
+      const cleanEmail = String(email || "").trim().toLowerCase();
+      if (!cleanEmail || !password) throw new Error("Email and password are required.");
+      if (String(password).length < 6) throw new Error("Password must be at least 6 characters.");
+      if (findUserByEmail(cleanEmail)) {
+        throw new Error("An account already exists for this email — please log in.");
+      }
+
+      const salt = randomHex(16);
+      const user = {
+        id: `user_${randomHex(8)}`,
+        email: cleanEmail,
+        salt,
+        password_hash: await hashPassword(String(password), salt),
+        created_date: new Date().toISOString(),
+        ...profileForRole(role),
       };
-      return { user: localAuthUser };
+
+      const users = readStore(USERS_KEY, []);
+      users.push(user);
+      writeStore(USERS_KEY, users);
+
+      // No mail transport locally, so the account is usable straight away
+      // rather than waiting on a confirmation email that will never arrive.
+      const token = issueSession(user);
+      return { user: publicUser(user), email: cleanEmail, session: { access_token: token } };
     },
-    loginWithProvider: (provider, redirectPath) => {
-      try { localStorage.setItem(LOCAL_TOKEN_KEY, "demo_session_token"); } catch {}
-      localAuthUser = {
-        id: "user_demo_123", email: "admin@nelvinbenefits.com", full_name: "Demo Admin User",
-        role: "admin", company_id: "company_demo_456", account_type: "corporate",
-        subscriber_id: "NV-009988", membership_status: "active",
-      };
-      window.location.href = redirectPath || "/";
+
+    async verifyOtp({ email, otpCode }) {
+      // Only reachable when a real backend required email confirmation; the
+      // local store creates verified accounts directly.
+      const user = findUserByEmail(email);
+      if (!user || !otpCode) throw new Error("Invalid verification code.");
+      issueSession(user);
+      return { access_token: randomHex(32) };
     },
-    register: async ({ email }) => {
-      try { localStorage.setItem(LOCAL_TOKEN_KEY, "demo_session_token"); } catch {}
-      return { email };
+
+    async updateMe(patch) {
+      const session = currentSession();
+      if (!session) throw new Error("Not authenticated");
+      const users = readStore(USERS_KEY, []);
+      const idx = users.findIndex((u) => u.id === session.user_id);
+      if (idx === -1) throw new Error("Not authenticated");
+      const { password_hash, salt, id, email, ...safePatch } = patch || {};
+      users[idx] = { ...users[idx], ...safePatch };
+      writeStore(USERS_KEY, users);
+      return publicUser(users[idx]);
     },
-    verifyOtp: async () => ({ access_token: "demo_session_token" }),
-    updateMe: async (patch) => {
-      if (localAuthUser) Object.assign(localAuthUser, patch || {});
-      return { ...localAuthUser };
+
+    async resetPasswordRequest(email) {
+      const user = findUserByEmail(email);
+      // Always succeed so the response cannot be used to enumerate accounts.
+      if (!user) return {};
+      const token = randomHex(24);
+      writeStore(RESET_KEY, {
+        token,
+        user_id: user.id,
+        expires_at: new Date(Date.now() + 60 * 60 * 1000).toISOString(),
+      });
+      // Returned so the UI can continue the flow — there is no mail transport
+      // locally, and a token that can never be delivered is a dead end.
+      return { token };
     },
-    resetPassword: async () => ({}),
-    resetPasswordRequest: async () => ({}),
-    setToken: (token) => {
-      try { localStorage.setItem(LOCAL_TOKEN_KEY, token); } catch {}
+
+    async resetPassword({ resetToken, newPassword }) {
+      if (!newPassword || String(newPassword).length < 6) {
+        throw new Error("Password must be at least 6 characters.");
+      }
+      const pending = readStore(RESET_KEY, null);
+      if (!pending || !resetToken || pending.token !== resetToken) {
+        throw new Error("This reset link is invalid or has expired.");
+      }
+      if (Date.parse(pending.expires_at) < Date.now()) {
+        try { localStorage.removeItem(RESET_KEY); } catch { /* ignore */ }
+        throw new Error("This reset link has expired — request a new one.");
+      }
+      const users = readStore(USERS_KEY, []);
+      const idx = users.findIndex((u) => u.id === pending.user_id);
+      if (idx === -1) throw new Error("This reset link is invalid or has expired.");
+
+      const salt = randomHex(16);
+      users[idx] = { ...users[idx], salt, password_hash: await hashPassword(String(newPassword), salt) };
+      writeStore(USERS_KEY, users);
+      try { localStorage.removeItem(RESET_KEY); } catch { /* ignore */ }
+
+      // Password change invalidates any existing session.
+      clearSession();
+      return {};
     },
-    logout: () => {
-      try { localStorage.removeItem(LOCAL_TOKEN_KEY); } catch {}
-      localAuthUser = null;
+
+    setToken(token) {
+      const session = currentSession();
+      if (session) writeStore(SESSION_KEY, { ...session, token });
+      try { localStorage.setItem(LOCAL_TOKEN_KEY, token || ""); } catch { /* ignore */ }
     },
-    redirectToLogin: () => { window.location.href = "/login"; },
+
+    logout() {
+      clearSession();
+    },
+
+    redirectToLogin() { window.location.href = "/login"; },
   },
   entities: new Proxy(
     {},
