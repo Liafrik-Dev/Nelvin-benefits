@@ -2,7 +2,7 @@ import { Suspense, lazy } from 'react';
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PageNotFound from '@/pages/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import { LanguageProvider } from '@/lib/i18n';
@@ -132,7 +132,9 @@ const AuthenticatedApp = () => {
       <Route path="/partner" element={<VendorOnboarding />} />
       <Route path="/choose-plan" element={<ChoosePlan />} />
       <Route path="/corporate" element={<Corporate />} />
-      <Route element={<ProtectedRoute unauthenticatedElement={<Navigate to="/login" replace />} />}>
+      {/* No unauthenticatedElement: ProtectedRoute's own redirect carries the
+          attempted destination in returnTo so login can send the visitor back. */}
+      <Route element={<ProtectedRoute />}>
         {/* Subscriber / Employee Portal */}
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/explore" element={<Explore />} />

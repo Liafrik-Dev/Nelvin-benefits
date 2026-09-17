@@ -3,7 +3,7 @@ import { db } from "@/services/api/base44Client";
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 
 import { useAuth } from "@/lib/AuthContext";
-import { formatDate } from "@/lib/adminUtils";
+import { formatDate, accountTypeOf, accountTypeLabel } from "@/lib/adminUtils";
 import AdminDataTable from "@/components/admin/AdminDataTable";
 import AdminEditModal from "@/components/admin/AdminEditModal";
 import StatusBadge from "@/components/admin/StatusBadge";
@@ -53,7 +53,7 @@ export default function AdminUsers() {
 
   const filtered = useMemo(() => {
     let arr = data;
-    if (filterAccountType) arr = arr.filter((u) => (u.account_type || (u.company_id ? "corporate" : "individual")) === filterAccountType);
+    if (filterAccountType) arr = arr.filter((u) => accountTypeOf(u) === filterAccountType);
     if (filterRole) arr = arr.filter((u) => u.role === filterRole);
     if (filterStatus) arr = arr.filter((u) => (u.status || "active") === filterStatus);
     if (search) {
@@ -107,7 +107,7 @@ export default function AdminUsers() {
     { key: "role", label: "Role", sortable: true,
       render: (u) => <StatusBadge status={u.role} label={u.role} className="capitalize" /> },
     { key: "account_type", label: "Account", sortable: true,
-      render: (u) => <StatusBadge status={u.account_type || (u.company_id ? "corporate" : "individual")} label={u.account_type === "corporate" ? "Corporate" : "Individual"} /> },
+      render: (u) => <StatusBadge status={accountTypeOf(u)} label={accountTypeLabel(u)} /> },
     { key: "plan_tier", label: "Membership", sortable: true,
       render: (u) => u.plan_tier ? <StatusBadge status={u.plan_tier.toLowerCase()} label={u.plan_tier} /> : <span className="text-xs text-ivory-dim">—</span> },
     { key: "company_id", label: "Company",
@@ -137,6 +137,7 @@ export default function AdminUsers() {
       options: [
         { value: "individual", label: "Individual" },
         { value: "corporate", label: "Corporate" },
+        { value: "business", label: "Business" },
       ] },
     { key: "company_id", label: "Company ID (corporate)", type: "text" },
     { key: "plan_tier", label: "Plan Tier", type: "select",
@@ -214,6 +215,7 @@ export default function AdminUsers() {
             options: [
               { value: "individual", label: "Individual" },
               { value: "corporate", label: "Corporate" },
+              { value: "business", label: "Business" },
             ] },
           { key: "role", label: "Role", value: filterRole, onChange: (e) => setFilterRole(e.target.value),
             options: [

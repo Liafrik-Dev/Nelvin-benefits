@@ -14,7 +14,11 @@
     "smoke": "node scripts/smoke-db.mjs",
     "lint:layout": "node scripts/layout-lint.mjs",
     "check:contrast": "node scripts/contrast-fix-check.mjs",
-    "check:routes": "node scripts/route-error-sweep.mjs"
+    "check:routes": "node scripts/route-error-sweep.mjs",
+    "check:auth": "node scripts/auth-flow-check.mjs",
+    "check:auth-redirect": "node scripts/auth-redirect-check.mjs",
+    "check:roles": "node scripts/role-assignment-check.mjs",
+    "check:escalation": "node scripts/role-escalation-check.mjs"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",

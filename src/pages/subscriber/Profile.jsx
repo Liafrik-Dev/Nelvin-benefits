@@ -20,7 +20,15 @@ export default function Profile() {
 
   const handleSave = async () => {
     setSaving(true);
-    await db.auth.updateMe({ full_name: fullName });
+    // Keep the parts in step with the combined name: signup writes both, and a
+    // profile that only ever updated full_name drifted out of sync with the
+    // first/last name shown on HR rosters and membership cards.
+    const parts = fullName.trim().split(/\s+/).filter(Boolean);
+    await db.auth.updateMe({
+      full_name: fullName.trim(),
+      first_name: parts[0] || "",
+      last_name: parts.slice(1).join(" ") || "",
+    });
     await checkUserAuth();
     setSaving(false);
     setSaved(true);

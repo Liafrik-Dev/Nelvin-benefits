@@ -1,5 +1,26 @@
 // Shared helpers for the admin backend
 
+/**
+ * The account type as the admin UI should present it.
+ *
+ * Signup writes `individual`, `corporate` or `business`; a user with no stored
+ * type is inferred from whether they are linked to a company. Reading
+ * `account_type === "corporate"` alone mislabelled every business/partner
+ * account as an individual, so all three call sites share this one helper.
+ */
+export function accountTypeOf(u) {
+  const stored = String(u?.account_type || "").toLowerCase();
+  if (stored === "corporate" || stored === "business" || stored === "individual") return stored;
+  return u?.company_id ? "corporate" : "individual";
+}
+
+const ACCOUNT_TYPE_LABELS = { individual: "Individual", corporate: "Corporate", business: "Business" };
+
+export function accountTypeLabel(u) {
+  const t = accountTypeOf(u);
+  return ACCOUNT_TYPE_LABELS[t] || "Individual";
+}
+
 export function exportToCsv(filename, rows, columns) {
   const headerLine = columns.map((c) => `"${(c.csvLabel || c.label || c.key || "").toString().replace(/"/g, '""')}"`).join(",");
   const body = rows

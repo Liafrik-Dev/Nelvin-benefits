@@ -2,7 +2,7 @@ import { db } from "@/services/api/base44Client";
 
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 
-import { formatDate, formatMoney } from "@/lib/adminUtils";
+import { formatDate, formatMoney, accountTypeOf, accountTypeLabel } from "@/lib/adminUtils";
 import AdminDataTable from "@/components/admin/AdminDataTable";
 import AdminEditModal from "@/components/admin/AdminEditModal";
 import StatusBadge from "@/components/admin/StatusBadge";
@@ -203,7 +203,7 @@ export default function AdminPayments() {
               <div className="grid grid-cols-2 gap-3">
                 <div><span className="text-xs text-ivory-dim">Invoice</span><p className="font-medium">{viewing.invoice_number || "—"}</p></div>
                 <div><span className="text-xs text-ivory-dim">Reference</span><p>{viewing.reference || "—"}</p></div>
-                <div><span className="text-xs text-ivory-dim">Type</span><p><StatusBadge status={viewing.account_type || "individual"} label={viewing.account_type} className="capitalize" /></p></div>
+                <div><span className="text-xs text-ivory-dim">Type</span><p><StatusBadge status={accountTypeOf(viewing)} label={accountTypeLabel(viewing)} /></p></div>
                 <div><span className="text-xs text-ivory-dim">Status</span><p><StatusBadge status={viewing.status} className="capitalize" /></p></div>
                 <div><span className="text-xs text-ivory-dim">Amount</span><p className="font-semibold">{formatMoney(viewing.amount, viewing.currency || "USD")}</p></div>
                 <div><span className="text-xs text-ivory-dim">Method</span><p>{viewing.payment_method || "—"}</p></div>

@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 
 import { useAuth } from "@/lib/AuthContext";
-import { formatMoney, formatDate } from "@/lib/adminUtils";
+import { formatMoney, formatDate, accountTypeOf, accountTypeLabel } from "@/lib/adminUtils";
 import StatusBadge from "@/components/admin/StatusBadge";
 
 const PIE_COLORS = ["#166534", "#65a30d", "#d97706", "#9333ea", "#0ea5e9", "#ef4444", "#14b8a6", "#f59e0b"];
@@ -83,8 +83,8 @@ export default function AdminHome() {
 
   const stats = useMemo(() => {
     const { users, companies, businesses, offers, redemptions, payments, reviews } = data;
-    const individual = users.filter((u) => (u.account_type || "individual") === "individual").length;
-    const corporate = users.filter((u) => u.account_type === "corporate").length;
+    const individual = users.filter((u) => accountTypeOf(u) === "individual").length;
+    const corporate = users.filter((u) => accountTypeOf(u) === "corporate").length;
     const activeUsers = users.filter((u) => !u.is_suspended && (u.status || "active") === "active").length;
     const premiumMembers = users.filter((u) =>
       ["Silver", "Gold", "Platinum", "Enterprise"].includes(u.plan_tier || u.membership_plan_id || "")
@@ -133,8 +133,8 @@ export default function AdminHome() {
         }).length;
       return {
         label: d.toLocaleString("en-US", { month: "short" }),
-        individual: inMonth(data.users, (u) => (u.account_type || "individual") === "individual"),
-        corporate: inMonth(data.users, (u) => u.account_type === "corporate"),
+        individual: inMonth(data.users, (u) => accountTypeOf(u) === "individual"),
+        corporate: inMonth(data.users, (u) => accountTypeOf(u) === "corporate"),
       };
     });
   }, [data.users]);
@@ -367,7 +367,7 @@ export default function AdminHome() {
                   <p className="text-sm font-medium text-ivory truncate">{u.full_name || u.email}</p>
                   <p className="text-xs text-ivory-dim truncate">{u.email}</p>
                 </div>
-                <StatusBadge status={u.account_type || "individual"} label={u.account_type === "corporate" ? "Corporate" : "Individual"} />
+                <StatusBadge status={accountTypeOf(u)} label={accountTypeLabel(u)} />
               </li>
             ))}
           </ul>

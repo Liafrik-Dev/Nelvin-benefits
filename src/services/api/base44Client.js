@@ -15,6 +15,8 @@
  * backends directly. See docs/BASE44_DEPENDENCIES.md.
  */
 
+import { loginUrlWithReturnTo } from "@/lib/authReturnTo";
+
 const LOCAL_TOKEN_KEY = "nv_auth_token";
 
 const hasSupabaseConfig = () =>
@@ -248,7 +250,9 @@ async function supabaseSyncProfile() {
     .maybeSingle();
   if (error || !data) {
     const email = user.email || "";
-    const name = user.user_metadata?.full_name || user.user_metadata?.name || null;
+    const meta = user.user_metadata || {};
+    const names = nameFields(meta.first_name, meta.last_name);
+    const name = names.full_name || meta.full_name || meta.name || null;
     // Match the exact domain, not a suffix: "…nelvinbenefits.com" would also
     // match attacker-controlled lookalikes such as evilnelvinbenefits.com.
     const domain = email.split("@")[1]?.toLowerCase() || "";
@@ -271,8 +275,9 @@ async function supabaseSyncProfile() {
           id: user.id,
           email,
           full_name: name,
+          ...names,
           role: fallbackRole,
-          account_type: fallbackRole === "admin" ? "corporate" : "individual",
+          account_type: fallbackRole === "business" ? "business" : fallbackRole === "hr_admin" ? "corporate" : "individual",
           membership_status: "active",
           membership_tier: "Free",
           created_at: new Date().toISOString(),
@@ -350,12 +355,18 @@ function makeSupabaseBackend() {
         });
         if (error) throw new Error(error.message);
       },
-      async register({ email, password, role }) {
+      async register({ email, password, role, firstName, lastName }) {
         const supabase = await getSupabase();
+        const names = nameFields(firstName, lastName);
         const { data, error } = await supabase.auth.signUp({
           email,
           password,
-          options: { data: { role: role || "subscriber" } },
+          options: {
+            // The name rides in user_metadata so supabaseSyncProfile can seed the
+            // profile row on the first authenticated load (and after an OAuth
+            // round trip, where the profile may not exist yet).
+            data: { role: role || "subscriber", ...names },
+          },
         });
         if (error) throw new Error(error.message);
         if (data?.user?.identities?.length === 0) {
@@ -428,7 +439,7 @@ function makeSupabaseBackend() {
         try { localStorage.removeItem(LOCAL_TOKEN_KEY); } catch {}
       },
       redirectToLogin() {
-        window.location.href = "/login";
+        window.location.href = loginUrlWithReturnTo();
       },
     },
     users: {
@@ -594,6 +605,26 @@ async function hashPassword(password, salt) {
 
 function makeSubscriberId() {
   return `NV-${randomHex(3).toUpperCase()}`;
+}
+
+/**
+ * Name fields shared by every signup path.
+ *
+ * The signup form asks for a first and last name and the whole app renders
+ * `full_name`, but registration used to discard both — new members were greeted
+ * as "Valued Member" and HR rosters showed blanks. Derive `full_name` from the
+ * parts so every existing reader keeps working, and only write the key when a
+ * name was actually supplied (a patch must never blank an existing profile).
+ */
+function nameFields(firstName, lastName) {
+  const first = String(firstName || "").trim();
+  const last = String(lastName || "").trim();
+  const out = {};
+  if (first) out.first_name = first;
+  if (last) out.last_name = last;
+  const full = [first, last].filter(Boolean).join(" ");
+  if (full) out.full_name = full;
+  return out;
 }
 
 /** Role → the profile fields the rest of the app reads off `user`. */
@@ -772,7 +803,7 @@ const fallbackDb = {
       throw err;
     },
 
-    async register({ email, password, role }) {
+    async register({ email, password, role, firstName, lastName }) {
       const cleanEmail = String(email || "").trim().toLowerCase();
       if (!cleanEmail || !password) throw new Error("Email and password are required.");
       if (String(password).length < 6) throw new Error("Password must be at least 6 characters.");
@@ -787,6 +818,7 @@ const fallbackDb = {
         salt,
         password_hash: await hashPassword(String(password), salt),
         created_date: new Date().toISOString(),
+        ...nameFields(firstName, lastName),
         ...profileForRole(role),
       };
 
@@ -815,7 +847,11 @@ const fallbackDb = {
       const users = readStore(USERS_KEY, []);
       const idx = users.findIndex((u) => u.id === session.user_id);
       if (idx === -1) throw new Error("Not authenticated");
-      const { password_hash, salt, id, email, ...safePatch } = patch || {};
+      // `role` is not self-serviceable. The Supabase path already strips it, but
+      // the fallback store accepted it, so any signed-in member could call
+      // updateMe({ role: "admin" }) and be treated as an admin on the next read.
+      // The role is set at registration and only an admin may change it.
+      const { password_hash, salt, id, email, role, ...safePatch } = patch || {};
       users[idx] = { ...users[idx], ...safePatch };
       writeStore(USERS_KEY, users);
       return publicUser(users[idx]);
@@ -872,7 +908,7 @@ const fallbackDb = {
       clearSession();
     },
 
-    redirectToLogin() { window.location.href = "/login"; },
+    redirectToLogin() { window.location.href = loginUrlWithReturnTo(); },
   },
   entities: new Proxy(
     {},

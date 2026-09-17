@@ -20,7 +20,7 @@ export default function StepVerification({ form, update, onNext, onBack }) {
         </div>
         <h2 className="text-xl font-semibold text-ivory">Verify that you own or represent this business</h2>
         <p className="text-sm text-ivory-muted mt-1.5 max-w-sm mx-auto">
-          To keep NelvinBenefits trusted across Africa, every business completes a quick verification before offers go live.
+          To keep NelvinBenefit trusted across Africa, every business completes a quick verification before offers go live.
         </p>
       </div>
 

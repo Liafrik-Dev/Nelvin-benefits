@@ -13,6 +13,7 @@ import AppleIcon from "@/components/shared/AppleIcon";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 import { useAuth } from "@/lib/AuthContext";
 import { setPendingPlan, resolvePostAuthPath } from "@/lib/planPersistence";
+import { requestedReturnTo, canAccessPath } from "@/lib/authReturnTo";
 
 /**
  * The portal that matches the account's real role.
@@ -27,9 +28,15 @@ import { setPendingPlan, resolvePostAuthPath } from "@/lib/planPersistence";
  * case where an account somehow carries no role at all.
  */
 function destinationForRole(user, tab) {
+  // An explicit returnTo (a deep link the visitor followed before being asked to
+  // sign in) is honoured ahead of the role default, but only when their role can
+  // actually open it — otherwise they would land straight on a refusal page.
+  const returnTo = requestedReturnTo();
+  const role = user?.role || user?.user_metadata?.role;
+  if (returnTo && canAccessPath(role, returnTo)) return returnTo;
+
   // Supabase exposes the profile role under user_metadata; the local store
   // keeps it at the top level.
-  const role = user?.role || user?.user_metadata?.role;
   if (role === "business" || role === "partner") return "/business";
   if (role === "hr_admin" || role === "corporate") return "/corporate-dashboard";
   if (role) return resolvePostAuthPath();
@@ -103,7 +110,7 @@ export default function AuthForm({ mode = "login" }) {
     setLoading(true);
     try {
       if (activeAction === "signup") {
-        const res = await db.auth.register({ email, password, role: activeTab });
+        const res = await db.auth.register({ email, password, role: activeTab, firstName, lastName });
         if (res?.session) {
           // Email confirmation disabled — session is live; go straight in.
           window.location.href = destinationForRole(res?.user, activeTab);
@@ -127,7 +134,17 @@ export default function AuthForm({ mode = "login" }) {
     try {
       const result = await db.auth.verifyOtp({ email, otpCode });
       if (result?.access_token) db.auth.setToken(result.access_token);
-      try { await db.auth.updateMe({ first_name: firstName, last_name: lastName, role: activeTab }); } catch {}
+      // Carry the name through the email-confirmation path too, and keep the
+      // derived full_name in step with the parts the rest of the app renders.
+      const fullName = [firstName, lastName].map((s) => s.trim()).filter(Boolean).join(" ");
+      try {
+        await db.auth.updateMe({
+          first_name: firstName,
+          last_name: lastName,
+          ...(fullName ? { full_name: fullName } : {}),
+          role: activeTab,
+        });
+      } catch {}
       // The tab is the source of truth here: the role was just written from it.
       if (activeTab === "business") window.location.href = "/business";
       else if (activeTab === "hr_admin") window.location.href = "/corporate-dashboard";

@@ -4,6 +4,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { Navigate, useNavigate, Link } from "react-router-dom";
 
 import { useAuth } from "@/lib/AuthContext";
+import { loginUrlWithReturnTo } from "@/lib/authReturnTo";
 import MembershipCard from "@/components/corporate/MembershipCard";
 import CorporateDashboardHome from "@/components/corporate/CorporateDashboardHome";
 import EmployeesPanel from "@/components/corporate/EmployeesPanel";
@@ -93,7 +94,7 @@ export default function CorporateDashboard() {
   const refresh = async () => { await checkUserAuth(); setRefreshKey((k) => k + 1); };
 
   if (isLoadingAuth) return <div className="min-h-screen bg-[#F9F8F7]" />;
-  if (!isAuthenticated) return <Navigate to="/login" replace />;
+  if (!isAuthenticated) return <Navigate to={loginUrlWithReturnTo()} replace />;
   if (loading) return (
     <div className="min-h-screen bg-[#F9F8F7] flex items-center justify-center">
       <div className="w-8 h-8 border-4 border-[#F1F1F1] border-t-[#1B4F9C] rounded-full animate-spin" />
