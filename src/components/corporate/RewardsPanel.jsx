@@ -41,7 +41,7 @@ export default function RewardsPanel({ company }) {
         </div>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="inline-flex items-center gap-2 bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#1B4F9C] text-xs font-bold px-4 py-2.5 rounded-xl shadow-sm transition-colors"
+          className="inline-flex items-center gap-2 bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#1B4F9C] text-xs font-bold px-4 py-2.5 rounded-full shadow-sm transition-colors"
         >
           <Plus className="w-4 h-4 text-[#1B4F9C]" /> Issue Points
         </button>
@@ -127,7 +127,7 @@ export default function RewardsPanel({ company }) {
               </div>
               <button
                 type="submit"
-                className="w-full bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#1B4F9C] font-bold text-xs py-3 rounded-xl shadow-sm transition-colors"
+                className="w-full bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#1B4F9C] font-bold text-xs py-3 rounded-full shadow-sm transition-colors"
               >
                 Send Reward Points
               </button>

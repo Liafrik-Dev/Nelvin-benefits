@@ -67,7 +67,7 @@ function ActionMenu({ row, actions, onAction }) {
             <button
               key={a.key}
               onClick={() => { setOpen(false); onAction(a.key, row); }}
-              className="w-full flex items-center gap-2 px-2.5 py-2 text-[11px] font-semibold text-[#282828]/75 hover:bg-[#F9F8F7] hover:text-[#282828] rounded-lg transition-colors"
+              className="w-full flex items-center gap-2 px-2.5 py-2 text-[11px] font-semibold text-[#282828]/75 hover:bg-[#F9F8F7] hover:text-[#282828] rounded-full transition-colors"
             >
               <a.icon className="w-3.5 h-3.5" />
               {a.label}
@@ -181,13 +181,13 @@ export default function ResourceTable({
         )}
         <div className="flex items-center gap-2">
           {onExport && (
-            <button onClick={exportRows} className="inline-flex items-center gap-1.5 h-10 px-3 rounded-xl bg-[#FFFFFF] ring-1 ring-[#F1F1F1] text-xs font-semibold text-[#282828] hover:bg-[#FFFFFF] transition-colors">
+            <button onClick={exportRows} className="inline-flex items-center gap-1.5 h-10 px-3 rounded-full bg-[#FFFFFF] ring-1 ring-[#F1F1F1] text-xs font-semibold text-[#282828] hover:bg-[#FFFFFF] transition-colors">
               <Download className="w-3.5 h-3.5" />
               Export
             </button>
           )}
           {onRetry && (
-            <button onClick={onRetry} className="inline-flex items-center gap-1.5 h-10 px-3 rounded-xl bg-[#FFFFFF] ring-1 ring-[#F1F1F1] text-xs font-semibold text-[#282828] hover:bg-[#FFFFFF] transition-colors">
+            <button onClick={onRetry} className="inline-flex items-center gap-1.5 h-10 px-3 rounded-full bg-[#FFFFFF] ring-1 ring-[#F1F1F1] text-xs font-semibold text-[#282828] hover:bg-[#FFFFFF] transition-colors">
               <RefreshCw className="w-3.5 h-3.5" />
             </button>
           )}
@@ -258,7 +258,7 @@ export default function ResourceTable({
           <button
             disabled={page === 1}
             onClick={() => setPage((p) => Math.max(1, p - 1))}
-            className="w-8 h-8 rounded-lg ring-1 ring-[#E3E3E3]/10 disabled:opacity-40 hover:bg-[#F9F8F7] flex items-center justify-center text-[#282828]/60"
+            className="w-8 h-8 rounded-full ring-1 ring-[#E3E3E3]/10 disabled:opacity-40 hover:bg-[#F9F8F7] flex items-center justify-center text-[#282828]/60"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
@@ -266,7 +266,7 @@ export default function ResourceTable({
             <button
               key={i}
               onClick={() => setPage(i + 1)}
-              className={`w-8 h-8 rounded-lg text-xs font-bold transition-colors ${page === i + 1 ? "bg-[#FFFFFF] text-[#1B4F9C]" : "text-[#282828]/60 hover:bg-[#F9F8F7]"}`}
+              className={`w-8 h-8 rounded-full text-xs font-bold transition-colors ${page === i + 1 ? "bg-[#FFFFFF] text-[#1B4F9C]" : "text-[#282828]/60 hover:bg-[#F9F8F7]"}`}
             >
               {i + 1}
             </button>
@@ -274,7 +274,7 @@ export default function ResourceTable({
           <button
             disabled={page === pages}
             onClick={() => setPage((p) => Math.min(pages, p + 1))}
-            className="w-8 h-8 rounded-lg ring-1 ring-[#E3E3E3]/10 disabled:opacity-40 hover:bg-[#F9F8F7] flex items-center justify-center text-[#282828]/60"
+            className="w-8 h-8 rounded-full ring-1 ring-[#E3E3E3]/10 disabled:opacity-40 hover:bg-[#F9F8F7] flex items-center justify-center text-[#282828]/60"
           >
             <ChevronRight className="w-4 h-4" />
           </button>

@@ -132,7 +132,7 @@ function StepEmployeeCount({ form, update, onNext, onBack }) {
         </div>
         <div className="mt-4 grid grid-cols-3 gap-2">
           {[3, 7, 15].map((n) => (
-            <button key={n} onClick={() => update("employee_count", String(n))} className="text-xs py-2 rounded-lg border border-[#F1F1F1] hover:border-[#1B4F9C]/30 hover:bg-[#FFFFFF] transition-colors">
+            <button key={n} onClick={() => update("employee_count", String(n))} className="text-xs py-2 rounded-full border border-[#F1F1F1] hover:border-[#1B4F9C]/30 hover:bg-[#FFFFFF] transition-colors">
               {n}
             </button>
           ))}

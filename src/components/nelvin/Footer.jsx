@@ -102,14 +102,14 @@ export default function Footer() {
             <div className="mt-6 flex flex-col gap-2">
               <a
                 href="#"
-                className="inline-flex h-10 w-fit items-center gap-2 rounded-lg border border-white/25 bg-white/10 px-3 text-[15px] font-normal text-white transition-colors hover:border-white/50 hover:bg-white/20"
+                className="inline-flex h-10 w-fit items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 text-[15px] font-normal text-white transition-colors hover:border-white/50 hover:bg-white/20"
               >
                 <AppleIcon className="h-4 w-4" />
                 App Store
               </a>
               <a
                 href="#"
-                className="inline-flex h-10 w-fit items-center gap-2 rounded-lg border border-white/25 bg-white/10 px-3 text-[15px] font-normal text-white transition-colors hover:border-white/50 hover:bg-white/20"
+                className="inline-flex h-10 w-fit items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 text-[15px] font-normal text-white transition-colors hover:border-white/50 hover:bg-white/20"
               >
                 <GoogleIcon className="h-4 w-4" />
                 Google Play

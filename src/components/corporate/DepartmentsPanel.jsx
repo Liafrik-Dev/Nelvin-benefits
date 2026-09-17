@@ -83,9 +83,9 @@ export default function DepartmentsPanel({ company, employees, onChanged }) {
         <div className="flex gap-2">
           {PRESET.filter((p) => !items.some((i) => i.name === p)).slice(0, 3).map((p) => (
             <button key={p} onClick={() => { setForm((s) => ({ ...s, name: p })); setShowAdd(true); }}
-              className="text-xs bg-[#F4F4F4] hover:bg-[#F4F4F4] text-ivory px-3 py-2 rounded-lg">+ {p}</button>
+              className="text-xs bg-[#F4F4F4] hover:bg-[#F4F4F4] text-ivory px-3 py-2 rounded-full">+ {p}</button>
           ))}
-          <button onClick={() => setShowAdd(true)} className="inline-flex items-center gap-2 bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white text-sm font-semibold px-4 py-2 rounded-lg">
+          <button onClick={() => setShowAdd(true)} className="inline-flex items-center gap-2 bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white text-sm font-semibold px-4 py-2 rounded-full">
             <Plus className="w-4 h-4" /> Add Department
           </button>
         </div>
@@ -167,7 +167,7 @@ export default function DepartmentsPanel({ company, employees, onChanged }) {
                 ))}
               </div>
             </div>
-            <button type="submit" className="w-full bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white font-semibold py-2.5 rounded-lg text-sm">Save department</button>
+            <button type="submit" className="w-full bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white font-semibold py-2.5 rounded-full text-sm">Save department</button>
           </form>
         </Modal>
       )}

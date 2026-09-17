@@ -170,7 +170,7 @@ export default function AuthForm({ mode = "login" }) {
               </InputOTPGroup>
             </InputOTP>
           </div>
-          <Button className="h-12 w-full rounded-xl bg-[#1B4F9C] font-bold text-white transition-colors hover:bg-[#123A78]" onClick={handleVerify} disabled={loading || otpCode.length < 6}>
+          <Button className="h-12 w-full rounded-full bg-[#1B4F9C] font-bold text-white transition-colors hover:bg-[#123A78]" onClick={handleVerify} disabled={loading || otpCode.length < 6}>
             {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Verify & Access Portal"}
           </Button>
         </div>
@@ -199,7 +199,7 @@ export default function AuthForm({ mode = "login" }) {
         <div className="mx-auto max-w-md space-y-5 rounded-2xl border border-[#E3E3E3] bg-[#FFFFFF] p-6 shadow-nv-card-hover sm:p-8">
           {/* Role Tabs */}
           <div
-            className="grid grid-cols-3 gap-1.5 rounded-xl border border-[#F1F1F1] bg-[#F9F8F7] p-1.5 text-center text-xs font-extrabold"
+            className="grid grid-cols-3 gap-1.5 rounded-full border border-[#F1F1F1] bg-[#F9F8F7] p-1.5 text-center text-xs font-extrabold"
             role="tablist"
             aria-label="Account type"
           >
@@ -216,7 +216,7 @@ export default function AuthForm({ mode = "login" }) {
                   role="tab"
                   aria-selected={on}
                   onClick={() => setActiveTab(id)}
-                  className={`flex items-center justify-center gap-1.5 rounded-lg px-2 py-2.5 transition-colors ${
+                  className={`flex items-center justify-center gap-1.5 rounded-full px-2 py-2.5 transition-colors ${
                     on
                       ? "bg-[#1B4F9C] text-white shadow-nv-card"
                       : "text-[#484848] hover:bg-white hover:text-[#282828]"
@@ -270,7 +270,7 @@ export default function AuthForm({ mode = "login" }) {
                 type="button"
                 variant="outline"
                 onClick={() => handleProvider(id)}
-                className="h-11 rounded-xl border-[#E3E3E3] text-xs font-bold text-[#282828]"
+                className="h-11 rounded-full border-[#E3E3E3] text-xs font-bold text-[#282828]"
               >
                 <Icon className="mr-2 h-4 w-4" /> {label}
               </Button>
@@ -352,7 +352,7 @@ export default function AuthForm({ mode = "login" }) {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full h-11 rounded-xl bg-[#1B4F9C] text-sm font-extrabold text-white shadow-nv-card transition-colors hover:bg-[#123A78]"
+              className="w-full h-11 rounded-full bg-[#1B4F9C] text-sm font-extrabold text-white shadow-nv-card transition-colors hover:bg-[#123A78]"
             >
               {loading ? (
                 <Loader2 className="w-4 h-4 animate-spin" />

@@ -54,13 +54,13 @@ export default function GamificationHub() {
   return (
     <div className="bg-[#FFFFFF] border border-[#F1F1F1]/10 rounded-lg p-6 shadow-sm space-y-6">
       {/* Header Banner */}
-      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-gradient-to-r from-black to-[#FFFFFF] text-white p-6 rounded-xl">
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-gradient-to-r from-[#0B2447] via-[#1B4F9C] to-[#123A78] text-white p-6 rounded-xl">
         <div className="space-y-1">
           <div className="flex items-center gap-2">
-            <Trophy className="w-6 h-6 text-[#1B4F9C]" />
+            <Trophy className="w-6 h-6 text-brand-gold" />
             <h3 className="text-xl font-bold">Gamification & Peer Kudos</h3>
           </div>
-          <p className="text-sm text-[#1B4F9C]/80">
+          <p className="text-sm text-white/80">
             Recognize your colleagues with points and level up your status.
           </p>
         </div>
@@ -146,7 +146,7 @@ export default function GamificationHub() {
 
             <button
               type="submit"
-              className="w-full bg-[#F4F4F4] hover:bg-[#E9E9E9] text-[#1B4F9C] font-semibold py-2.5 rounded-lg transition-all text-sm flex items-center justify-center gap-2"
+              className="w-full bg-[#F4F4F4] hover:bg-[#E9E9E9] text-[#1B4F9C] font-semibold py-2.5 rounded-full transition-all text-sm flex items-center justify-center gap-2"
             >
               <Gift className="w-4 h-4 text-[#1B4F9C]" /> Send Kudos Points
             </button>

@@ -14,7 +14,7 @@ export default function BusinessLocations() {
           <h1 className="text-2xl font-bold font-heading text-ivory">Store Branches & Locations</h1>
           <p className="text-sm text-ivory-muted mt-1">Manage physical store branches where members can redeem in-person perks.</p>
         </div>
-        <button className="bg-[#1B4F9C] text-white font-bold text-xs px-4 py-2 rounded-xl flex items-center gap-2">
+        <button className="bg-[#1B4F9C] text-white font-bold text-xs px-4 py-2 rounded-full flex items-center gap-2">
           <Plus className="w-4 h-4" /> Add Branch
         </button>
       </div>

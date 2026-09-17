@@ -14,7 +14,7 @@ export default function BusinessAnalytics() {
         </div>
         <button
           onClick={() => setIsCalcOpen(true)}
-          className="bg-[#FFFFFF] hover:bg-[#F9F8F7] text-[#1B4F9C] font-bold text-xs px-4 py-2.5 rounded-xl inline-flex items-center gap-2 shadow-sm transition-all"
+          className="bg-[#FFFFFF] hover:bg-[#F9F8F7] text-[#1B4F9C] font-bold text-xs px-4 py-2.5 rounded-full inline-flex items-center gap-2 shadow-sm transition-all"
         >
           <Calculator className="w-4 h-4" /> Simulate Partner ROI
         </button>

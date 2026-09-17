@@ -88,7 +88,7 @@ export default function UserMenu() {
 
   return (
     <div ref={btnRef} className="relative">
-      <button onClick={toggle} className="flex items-center gap-1" aria-label="Open account menu">
+      <button onClick={toggle} className="flex items-center gap-1 rounded-full p-0.5 transition-colors hover:bg-[#F9F8F7]" aria-label="Open account menu">
         <Avatar user={user} />
         <ChevronDown className="w-4 h-4 text-[#282828]" />
       </button>

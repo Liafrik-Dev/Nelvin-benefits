@@ -314,7 +314,7 @@ export default function HeroSection() {
                     type="button"
                     onClick={() => setActivePhotoIndex(i)}
                     aria-pressed={on}
-                    className={`flex items-center gap-2 rounded-lg border p-2.5 text-left transition-all ${
+                    className={`flex items-center gap-2 rounded-full border p-2.5 text-left transition-all ${
                       on
                         ? "border-brand-gold bg-brand-gold text-[#282828]"
                         : "border-white/20 bg-white/10 text-white/85 backdrop-blur hover:bg-white/20 hover:text-white"

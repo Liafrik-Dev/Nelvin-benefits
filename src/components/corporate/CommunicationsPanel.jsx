@@ -33,7 +33,7 @@ export default function CommunicationsPanel({ company }) {
             className="w-full bg-[#F9F8F7] border border-[#F1F1F1] rounded-xl p-3 text-xs outline-none focus:border-[#1B4F9C]"
           />
         </div>
-        <button className="bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white font-bold px-6 py-2.5 rounded-xl text-xs flex items-center gap-2">
+        <button className="bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white font-bold px-6 py-2.5 rounded-full text-xs flex items-center gap-2">
           <Send className="w-4 h-4" /> Broadcast Message
         </button>
       </div>

@@ -46,7 +46,7 @@ export default function CategoriesGrid() {
                   role="tab"
                   aria-selected={on}
                   onClick={() => setActiveCategory(idx)}
-                  className={`flex shrink-0 items-center gap-2 rounded-lg px-4 py-3 text-xs font-bold transition-colors ${
+                  className={`flex shrink-0 items-center gap-2 rounded-full px-4 py-3 text-xs font-bold transition-colors ${
                     on
                       ? "bg-gold text-white shadow-nv-card"
                       : "border border-[#F1F1F1] bg-[#F9F8F7] text-ivory-muted hover:border-[#1B4F9C]/35 hover:text-ivory"

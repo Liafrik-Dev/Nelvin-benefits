@@ -540,21 +540,47 @@ const seedPlans = [
   { name: "Enterprise", tier: "enterprise", price_monthly: 0, price_yearly: 0, currency: "USD", description: "For businesses", benefits: "Custom plans, analytics, SSO", is_corporate: true, display_order: 5, is_active: true, seats_included: 100 },
 ];
 
+const LOCAL_DB_KEY = "nv_local_db";
+
+// Seeded rows get a stable id derived from their position. That lets the seed
+// be rebuilt on every load (so content edits ship to returning visitors) while
+// staying distinguishable from rows the user created, which are kept.
+const seedTables = {
+  [toLabel("Offer")]: seedOffers.map((r, i) => ({ ...r, id: `seed_offer_${i}` })),
+  [toLabel("Category")]: seedCategories.map((r, i) => ({ ...r, id: `seed_category_${i}` })),
+  [toLabel("Country")]: seedCountries.map((r, i) => ({ ...r, id: `seed_country_${i}` })),
+  [toLabel("MembershipPlan")]: seedPlans.map((r, i) => ({ ...r, id: `seed_plan_${i}` })),
+};
+
 const localTables = {};
 const ensureTable = (name) => {
   const key = toLabel(name);
-  if (!localTables[key]) localTables[key] = [];
+  if (!localTables[key]) localTables[key] = seedTables[key] ? [...seedTables[key]] : [];
   return localTables[key];
 };
 
-ensureTable("Offer");
-localTables[toLabel("Offer")].push(...seedOffers);
-ensureTable("Category");
-localTables[toLabel("Category")].push(...seedCategories);
-ensureTable("Country");
-localTables[toLabel("Country")].push(...seedCountries);
-ensureTable("MembershipPlan");
-localTables[toLabel("MembershipPlan")].push(...seedPlans);
+function loadLocalTables() {
+  let stored = {};
+  try {
+    const raw = localStorage.getItem(LOCAL_DB_KEY);
+    if (raw) stored = JSON.parse(raw) || {};
+  } catch {
+    stored = {};
+  }
+  for (const [key, rows] of Object.entries(stored)) {
+    if (!Array.isArray(rows)) continue;
+    const userRows = rows.filter((r) => r && !String(r.id).startsWith("seed_"));
+    localTables[key] = [...(seedTables[key] || []), ...userRows];
+  }
+}
+
+function flushLocalTables() {
+  try {
+    localStorage.setItem(LOCAL_DB_KEY, JSON.stringify(localTables));
+  } catch { /* storage full or blocked — the write stays in memory */ }
+}
+
+if (typeof window !== "undefined") loadLocalTables();
 
 // ---------------------------------------------------------------------------
 // Local auth store (used only when no real backend is configured).
@@ -743,6 +769,7 @@ function makeLocalEntity(name) {
         ...data,
       };
       ensureTable(tableName).push(row);
+      flushLocalTables();
       return row;
     },
     async update(id, patch) {
@@ -750,16 +777,19 @@ function makeLocalEntity(name) {
       const idx = table.findIndex((r) => r.id === id);
       if (idx >= 0) {
         table[idx] = { ...table[idx], ...patch, updated_date: new Date().toISOString() };
+        flushLocalTables();
         return table[idx];
       }
       const row = { id, ...patch, created_date: new Date().toISOString(), updated_date: new Date().toISOString() };
       table.push(row);
+      flushLocalTables();
       return row;
     },
     async delete(id) {
       const table = ensureTable(tableName);
       const idx = table.findIndex((r) => r.id === id);
       if (idx >= 0) table.splice(idx, 1);
+      flushLocalTables();
     },
     async bulkUpdate(items) {
       for (const item of items || []) {

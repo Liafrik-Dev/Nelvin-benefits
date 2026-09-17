@@ -185,7 +185,7 @@ export default function Wallet() {
                       type="button"
                       key={amt}
                       onClick={() => setTopUpAmount(amt)}
-                      className={`py-2.5 rounded-xl font-bold text-sm border ${
+                      className={`py-2.5 rounded-full font-bold text-sm border ${
                         topUpAmount === amt ? "bg-[#FFFFFF] text-[#1B4F9C] border-[#F1F1F1]" : "bg-[#F9F8F7] border-[#F1F1F1] text-ivory"
                       }`}
                     >

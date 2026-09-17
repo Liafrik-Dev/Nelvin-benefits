@@ -166,14 +166,14 @@ export default function AdminEditModal({
           <div className="flex items-center gap-2 ml-auto">
             <button
               onClick={onClose}
-              className="px-4 py-2 text-sm font-medium text-ivory-muted hover:bg-[#F4F4F4] rounded-lg"
+              className="px-4 py-2 text-sm font-medium text-ivory-muted hover:bg-[#F4F4F4] rounded-full"
             >
               Cancel
             </button>
             <button
               onClick={save}
               disabled={saving}
-              className="px-4 py-2 text-sm font-semibold bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white rounded-lg flex items-center gap-2 disabled:opacity-50"
+              className="px-4 py-2 text-sm font-semibold bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white rounded-full flex items-center gap-2 disabled:opacity-50"
             >
               {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
               {isNew ? "Create" : "Save"}

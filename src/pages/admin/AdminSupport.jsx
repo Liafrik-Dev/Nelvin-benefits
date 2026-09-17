@@ -196,8 +196,8 @@ export default function AdminSupport() {
               )}
             </div>
             <div className="mt-6 flex gap-2">
-              <button onClick={() => reply(viewing)} className="flex-1 bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white rounded-lg py-2 text-sm font-semibold">Reply</button>
-              <button onClick={() => { setEditing(viewing); setViewing(null); }} className="px-3 py-2 border border-[#F1F1F1] rounded-lg text-sm">Manage</button>
+              <button onClick={() => reply(viewing)} className="flex-1 bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white rounded-full py-2 text-sm font-semibold">Reply</button>
+              <button onClick={() => { setEditing(viewing); setViewing(null); }} className="px-3 py-2 border border-[#F1F1F1] rounded-full text-sm">Manage</button>
             </div>
           </div>
         </div>

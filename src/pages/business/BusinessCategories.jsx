@@ -15,7 +15,7 @@ export default function BusinessCategories() {
           <h1 className="text-2xl font-bold font-heading text-ivory">Store Categories</h1>
           <p className="text-sm text-ivory-muted mt-1">Organize your store products into custom subcategories.</p>
         </div>
-        <button className="bg-[#1B4F9C] text-white font-bold text-xs px-4 py-2 rounded-xl flex items-center gap-2">
+        <button className="bg-[#1B4F9C] text-white font-bold text-xs px-4 py-2 rounded-full flex items-center gap-2">
           <Plus className="w-4 h-4" /> Add Category
         </button>
       </div>

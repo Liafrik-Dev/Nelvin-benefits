@@ -75,7 +75,7 @@ export default function Settings() {
                 <p className="font-bold text-xs text-ivory">Password</p>
                 <p className="text-[11px] text-ivory-muted">Last changed 3 months ago</p>
               </div>
-              <button type="button" className="text-xs font-bold text-[#1B4F9C] underline">Change Password</button>
+              <button type="button" className="rounded-full border border-[#F1F1F1] px-3 py-1 text-xs font-bold text-[#1B4F9C] transition-colors hover:border-[#1B4F9C]/40 hover:bg-[#F9F8F7]">Change Password</button>
             </div>
           </div>
 

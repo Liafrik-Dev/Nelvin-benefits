@@ -18,7 +18,7 @@ export default function ROICalculatorModal({ isOpen, onClose }) {
       <div className="bg-[#FFFFFF] rounded-lg max-w-lg w-full p-6 space-y-6 shadow-2xl relative animate-in fade-in zoom-in-95">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-ivory-dim hover:text-[#1B4F9C] p-1 rounded-lg"
+          className="absolute top-4 right-4 text-ivory-dim hover:text-[#1B4F9C] p-1 rounded-full"
         >
           <X className="w-5 h-5" />
         </button>
@@ -101,7 +101,7 @@ export default function ROICalculatorModal({ isOpen, onClose }) {
 
         <button
           onClick={onClose}
-          className="w-full bg-[#F4F4F4] hover:bg-[#E9E9E9] text-[#1B4F9C] font-bold py-2.5 rounded-xl text-sm"
+          className="w-full bg-[#F4F4F4] hover:bg-[#E9E9E9] text-[#1B4F9C] font-bold py-2.5 rounded-full text-sm"
         >
           Close Calculator
         </button>

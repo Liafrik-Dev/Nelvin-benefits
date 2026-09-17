@@ -80,14 +80,14 @@ export default function AdminNotifications() {
               <button
                 type="button"
                 onClick={() => set("channel", "system")}
-                className={`px-4 py-2 text-sm rounded-lg border ${form.channel === "system" ? "bg-[#FFFFFF] border-[#F1F1F1] text-[#1B4F9C]" : "bg-[#FFFFFF] border-[#F1F1F1] text-ivory-muted"}`}
+                className={`px-4 py-2 text-sm rounded-full border ${form.channel === "system" ? "bg-[#FFFFFF] border-[#F1F1F1] text-[#1B4F9C]" : "bg-[#FFFFFF] border-[#F1F1F1] text-ivory-muted"}`}
               >
                 System (in-app)
               </button>
               <button
                 type="button"
                 onClick={() => set("channel", "email")}
-                className={`px-4 py-2 text-sm rounded-lg border ${form.channel === "email" ? "bg-[#FFFFFF] border-[#F1F1F1] text-[#1B4F9C]" : "bg-[#FFFFFF] border-[#F1F1F1] text-ivory-muted"}`}
+                className={`px-4 py-2 text-sm rounded-full border ${form.channel === "email" ? "bg-[#FFFFFF] border-[#F1F1F1] text-[#1B4F9C]" : "bg-[#FFFFFF] border-[#F1F1F1] text-ivory-muted"}`}
               >
                 Email
               </button>

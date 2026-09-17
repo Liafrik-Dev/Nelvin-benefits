@@ -23,7 +23,7 @@ export default function AudiencesSection() {
 
         <div className="mx-auto mt-12 max-w-4xl">
           <div
-            className="grid grid-cols-2 gap-1.5 rounded-xl border border-[#F1F1F1] bg-[#F9F8F7] p-1.5 sm:grid-cols-4"
+            className="grid grid-cols-2 gap-1.5 rounded-full border border-[#F1F1F1] bg-[#F9F8F7] p-1.5 sm:grid-cols-4"
             role="tablist"
             aria-label="Audiences"
           >
@@ -36,7 +36,7 @@ export default function AudiencesSection() {
                   role="tab"
                   aria-selected={on}
                   onClick={() => setActiveTab(idx)}
-                  className={`rounded-lg px-3 py-2.5 text-xs font-bold transition-colors ${
+                  className={`rounded-full px-3 py-2.5 text-xs font-bold transition-colors ${
                     on
                       ? "bg-gold text-white shadow-nv-card"
                       : "text-ivory-muted hover:bg-[#F9F8F7] hover:text-ivory"

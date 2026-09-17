@@ -61,7 +61,7 @@ export default function Cashback() {
             <button
               onClick={() => setPayoutModal(true)}
               disabled={earnings === 0}
-              className="w-full bg-[#F4F4F4] hover:bg-[#1B4F9C] hover:text-white text-[#1B4F9C] text-xs font-bold py-2 rounded-xl transition-colors disabled:opacity-50"
+              className="w-full bg-[#F4F4F4] hover:bg-[#1B4F9C] hover:text-white text-[#1B4F9C] text-xs font-bold py-2 rounded-full transition-colors disabled:opacity-50"
             >
               Transfer to Wallet
             </button>
@@ -99,7 +99,7 @@ export default function Cashback() {
             ) : (
               <button
                 onClick={handleTransfer}
-                className="w-full bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#1B4F9C] font-bold text-xs py-3 rounded-xl transition-colors"
+                className="w-full bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#1B4F9C] font-bold text-xs py-3 rounded-full transition-colors"
               >
                 Confirm Instant Transfer
               </button>

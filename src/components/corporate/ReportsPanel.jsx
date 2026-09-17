@@ -173,10 +173,10 @@ export default function ReportsPanel({ company, employees }) {
         )}
 
         <div className="mt-6 flex gap-3 flex-wrap">
-          <button onClick={() => downloadCsv(buildRows())} disabled={loading} className="inline-flex items-center gap-2 bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white text-sm font-semibold px-4 py-2 rounded-lg">
+          <button onClick={() => downloadCsv(buildRows())} disabled={loading} className="inline-flex items-center gap-2 bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white text-sm font-semibold px-4 py-2 rounded-full">
             <FileSpreadsheet className="w-4 h-4" /> Download CSV
           </button>
-          <button onClick={() => downloadPdf(buildRows())} disabled={loading || generating} className="inline-flex items-center gap-2 bg-emerald-black ring-1 ring-[#F1F1F1] border border-transparent hover:bg-[#F9F8F7] text-ivory text-sm font-semibold px-4 py-2 rounded-lg">
+          <button onClick={() => downloadPdf(buildRows())} disabled={loading || generating} className="inline-flex items-center gap-2 bg-emerald-black ring-1 ring-[#F1F1F1] border border-transparent hover:bg-[#F9F8F7] text-ivory text-sm font-semibold px-4 py-2 rounded-full">
             <Download className="w-4 h-4" /> {generating ? "Building…" : "Download PDF"}
           </button>
         </div>

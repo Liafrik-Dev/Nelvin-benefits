@@ -249,11 +249,11 @@ export default function CorporateDashboard() {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setIsAssistantOpen(true)}
-              className="inline-flex items-center gap-1.5 bg-[#FFFFFF] hover:bg-[#F9F8F7] text-[#1B4F9C] px-3 py-1.5 rounded-lg text-xs font-bold transition-all shadow-sm"
+              className="inline-flex items-center gap-1.5 bg-[#FFFFFF] hover:bg-[#F9F8F7] text-[#1B4F9C] px-3 py-1.5 rounded-full text-xs font-bold transition-all shadow-sm"
             >
               <Bot className="w-4 h-4" /> Smart Copilot
             </button>
-            <button onClick={refresh} title="Refresh" className="p-2 rounded-lg text-ivory-dim hover:text-ivory hover:bg-[#F4F4F4]"><RefreshCw className="w-4 h-4" /></button>
+            <button onClick={refresh} title="Refresh" className="p-2 rounded-full text-ivory-dim hover:text-ivory hover:bg-[#F4F4F4]"><RefreshCw className="w-4 h-4" /></button>
             <Link to="/" className="text-xs text-ivory-muted hover:text-ivory px-3 py-1">View site</Link>
             <button onClick={() => logout(true)} className="text-xs text-ivory-muted hover:text-ivory flex items-center gap-1 px-2 py-1"><LogOut className="w-3.5 h-3.5" /> Sign out</button>
           </div>
@@ -265,7 +265,7 @@ export default function CorporateDashboard() {
           <nav className="space-y-1 sticky top-20 max-h-[calc(100vh-100px)] overflow-y-auto pr-2 scrollbar-hide">
             {TABS.map((t) => (
               <button key={t.id} onClick={() => setTab(t.id)}
-                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-medium transition-colors ${
+                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-full text-xs font-medium transition-colors ${
                   tab === t.id ? "bg-[#FFFFFF] text-ivory font-bold" : "text-ivory-muted hover:bg-[#F4F4F4] hover:text-ivory"
                 }`}>
                 <t.icon className="w-4 h-4" /> {t.label}
@@ -277,7 +277,7 @@ export default function CorporateDashboard() {
         <div className="lg:hidden flex gap-1 -mx-4 px-4 pb-3 overflow-x-auto border-b border-[#F1F1F1] mb-4 scrollbar-hide">
           {TABS.map((t) => (
             <button key={t.id} onClick={() => setTab(t.id)}
-              className={`flex-shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${
+              className={`flex-shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium transition-colors ${
                 tab === t.id ? "bg-[#FFFFFF] text-ivory font-bold" : "text-ivory-muted bg-[#F4F4F4]"
               }`}>
               <t.icon className="w-3.5 h-3.5" /> {t.label}

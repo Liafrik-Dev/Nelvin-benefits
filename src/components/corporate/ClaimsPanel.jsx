@@ -49,7 +49,7 @@ export default function ClaimsPanel({ company }) {
         </div>
         <button
           onClick={exportCSV}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-[#FFFFFF] hover:border border-[#E3E3E3] bg-[#FFFFFF] text-[#282828] font-bold text-xs rounded-xl shadow-sm transition-colors self-start sm:self-auto"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-[#FFFFFF] hover:border border-[#E3E3E3] bg-[#FFFFFF] text-[#282828] font-bold text-xs rounded-full shadow-sm transition-colors self-start sm:self-auto"
         >
           <Download className="w-3.5 h-3.5 text-[#1B4F9C]" /> Export CSV
         </button>
@@ -71,7 +71,7 @@ export default function ClaimsPanel({ company }) {
             <button
               key={st}
               onClick={() => setFilterStatus(st)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
+              className={`px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
                 filterStatus === st ? "bg-[#FFFFFF] text-[#1B4F9C]" : "bg-[#F9F8F7] text-ivory-muted hover:bg-[#F4F4F4]"
               }`}
             >
@@ -148,13 +148,13 @@ export default function ClaimsPanel({ company }) {
                 <div className="flex gap-2">
                   <button
                     onClick={() => updateStatus(selectedClaim.id, "approved", rejectReason)}
-                    className="flex-1 bg-[#F4F4F4] hover:bg-[#1B4F9C] hover:text-white text-[#1B4F9C] font-bold text-xs py-2.5 rounded-xl transition-colors"
+                    className="flex-1 bg-[#F4F4F4] hover:bg-[#1B4F9C] hover:text-white text-[#1B4F9C] font-bold text-xs py-2.5 rounded-full transition-colors"
                   >
                     Approve Claim
                   </button>
                   <button
                     onClick={() => updateStatus(selectedClaim.id, "rejected", rejectReason)}
-                    className="flex-1 bg-rose-950/50 hover:bg-rose-900/60 text-rose-200 ring-1 ring-rose-400/30 font-bold text-xs py-2.5 rounded-xl transition-colors"
+                    className="flex-1 bg-rose-950/50 hover:bg-rose-900/60 text-rose-200 ring-1 ring-rose-400/30 font-bold text-xs py-2.5 rounded-full transition-colors"
                   >
                     Reject Claim
                   </button>

@@ -86,7 +86,7 @@ export default function Vouchers() {
                   </div>
                   <button
                     onClick={() => copyCode(v.promo_code || v.redemption_code || "NV-PROMO-77", v.id)}
-                    className="p-2 bg-emerald-black ring-1 ring-[#F1F1F1] rounded-xl text-ivory-muted hover:text-[#1B4F9C] hover:border-[#1B4F9C]/40 transition-colors"
+                    className="p-2 bg-emerald-black ring-1 ring-[#F1F1F1] rounded-full text-ivory-muted hover:text-[#1B4F9C] hover:border-[#1B4F9C]/40 transition-colors"
                   >
                     {copiedId === v.id ? <Check className="w-4 h-4 text-[#1B4F9C]" /> : <Copy className="w-4 h-4" />}
                   </button>
@@ -95,7 +95,7 @@ export default function Vouchers() {
                 <div className="flex items-center justify-between text-xs text-ivory-muted pt-2 border-t border-gray-50">
                   <button
                     onClick={() => setActiveQRModal(v)}
-                    className="font-bold text-[#282828] hover:underline flex items-center gap-1"
+                    className="flex items-center gap-1 rounded-full border border-[#F1F1F1] px-3 py-1 font-bold text-[#282828] transition-colors hover:border-[#1B4F9C]/40 hover:bg-[#F9F8F7]"
                   >
                     <Eye className="w-3.5 h-3.5" /> View Barcode QR
                   </button>

@@ -125,10 +125,10 @@ export default function PowerfulModules() {
                   role="tab"
                   aria-selected={on}
                   onClick={() => setActiveTabId(tab.id)}
-                  className={`-mb-px whitespace-nowrap border-b-2 px-4 py-4 text-sm font-bold transition-colors ${
+                  className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-bold transition-colors ${
                     on
-                      ? "border-gold text-gold"
-                      : "border-transparent text-ivory-dim hover:text-ivory"
+                      ? "bg-gold/10 text-gold ring-1 ring-gold/30"
+                      : "text-ivory-dim hover:bg-[#F9F8F7] hover:text-ivory"
                   }`}
                 >
                   {tab.label}

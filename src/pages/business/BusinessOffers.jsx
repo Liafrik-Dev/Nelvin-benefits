@@ -43,7 +43,7 @@ export default function BusinessOffers() {
         </div>
         <Link
           to="/business/offers/new"
-          className="bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#1B4F9C] font-bold text-xs px-4 py-2.5 rounded-xl flex items-center gap-2 shadow-sm transition-colors"
+          className="bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#1B4F9C] font-bold text-xs px-4 py-2.5 rounded-full flex items-center gap-2 shadow-sm transition-colors"
         >
           <Plus className="w-4 h-4 text-[#1B4F9C]" /> Create New Offer
         </Link>

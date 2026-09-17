@@ -23,7 +23,7 @@ function MediaRow({ label, src }) {
   return (
     <div className="mb-2">
       <p className="text-[11px] uppercase tracking-wider text-ivory-dim mb-1">{label}</p>
-      <a href={src} target="_blank" rel="noopener noreferrer" className="block w-full h-28 rounded-lg overflow-hidden border border-[#F1F1F1] bg-[#F9F8F7]">
+      <a href={src} target="_blank" rel="noopener noreferrer" className="block w-full h-28 rounded-full overflow-hidden border border-[#F1F1F1] bg-[#F9F8F7]">
         <img src={src} alt={label} className="w-full h-full object-cover" />
       </a>
     </div>
@@ -84,7 +84,7 @@ export default function ApplicationReviewPanel({
                   <p className="text-[11px] uppercase tracking-wider text-ivory-dim mb-2">Business images</p>
                   <div className="grid grid-cols-2 gap-2">
                     {app.business_image_urls.map((url, i) => (
-                      <a key={i} href={url} target="_blank" rel="noopener noreferrer" className="block h-24 rounded-lg overflow-hidden border border-[#F1F1F1] bg-[#F9F8F7]">
+                      <a key={i} href={url} target="_blank" rel="noopener noreferrer" className="block h-24 rounded-full overflow-hidden border border-[#F1F1F1] bg-[#F9F8F7]">
                         <img src={url} alt="business" className="w-full h-full object-cover" />
                       </a>
                     ))}
@@ -161,7 +161,7 @@ export default function ApplicationReviewPanel({
                     <button
                       disabled={busy}
                       onClick={async () => { setBusy(true); await onReject(app, reason); setRejectMode(false); setReason(""); setBusy(false); }}
-                      className="flex-1 py-3 rounded-lg font-medium text-sm bg-rose-950/50 text-rose-200 ring-1 ring-rose-400/30 hover:bg-rose-900/60 disabled:opacity-50"
+                      className="flex-1 py-3 rounded-full font-medium text-sm bg-rose-950/50 text-rose-200 ring-1 ring-rose-400/30 hover:bg-rose-900/60 disabled:opacity-50"
                     >Confirm reject</button>
                   </div>
                 </div>

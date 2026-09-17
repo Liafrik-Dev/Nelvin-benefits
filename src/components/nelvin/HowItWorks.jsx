@@ -17,7 +17,7 @@ function HowItWorksMultiTab() {
   return (
     <div className="card-nv mx-auto mt-12 max-w-4xl p-6 sm:p-8">
       <div
-        className="grid grid-cols-2 gap-1.5 rounded-xl border border-[#F1F1F1] bg-[#F9F8F7] p-1.5 sm:grid-cols-4"
+        className="grid grid-cols-2 gap-1.5 rounded-full border border-[#F1F1F1] bg-[#F9F8F7] p-1.5 sm:grid-cols-4"
         role="tablist"
         aria-label="Implementation steps"
       >
@@ -30,7 +30,7 @@ function HowItWorksMultiTab() {
               role="tab"
               aria-selected={on}
               onClick={() => setActiveStep(idx)}
-              className={`flex items-center justify-center gap-2 rounded-lg px-3 py-2.5 text-xs font-bold transition-colors ${
+              className={`flex items-center justify-center gap-2 rounded-full px-3 py-2.5 text-xs font-bold transition-colors ${
                 on
                   ? "bg-gold text-white shadow-nv-card"
                   : "text-ivory-muted hover:bg-[#F9F8F7] hover:text-ivory"

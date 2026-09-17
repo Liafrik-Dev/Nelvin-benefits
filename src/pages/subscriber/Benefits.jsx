@@ -86,7 +86,7 @@ export default function Benefits() {
 
         <div className="bg-[#FFFFFF] rounded-lg p-8 mb-4">
           <p className="text-xs tracking-wider uppercase text-[#737373] mb-3">Lifetime Savings</p>
-          <p className="text-4xl sm:text-5xl font-bold text-white font-heading">₦{lifetimeSavings.toLocaleString()}</p>
+          <p className="text-4xl sm:text-5xl font-bold text-[#1B4F9C] font-heading">₦{lifetimeSavings.toLocaleString()}</p>
           <div className="flex flex-wrap items-center gap-4 mt-3 text-sm">
             <span className="text-[#1B4F9C] flex items-center gap-1">
               <ArrowUpRight className="w-4 h-4" /> {changePct}% vs last month

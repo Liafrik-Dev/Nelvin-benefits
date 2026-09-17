@@ -64,35 +64,35 @@ export default function BusinessDashboard() {
   return (
     <div className="space-y-8 font-sans text-[#282828]">
       {/* Premium Store Partner Header */}
-      <div className="rounded-xl bg-gradient-to-r from-black via-[#FFFFFF] to-black text-white p-6 sm:p-8 shadow-2xl border border-[#F1F1F1] relative overflow-hidden">
+      <div className="rounded-xl bg-gradient-to-r from-[#0B2447] via-[#1B4F9C] to-[#123A78] text-white p-6 sm:p-8 shadow-2xl border border-[#F1F1F1] relative overflow-hidden">
         <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-10 bg-[radial-gradient(#1B4F9C_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F4F4F4] text-[#1B4F9C] border border-[#1B4F9C]/30 text-xs font-black tracking-wider uppercase backdrop-blur-md">
-              <Store className="w-3.5 h-3.5 text-[#1B4F9C]" /> Verified Merchant Partner
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-brand-gold border border-brand-gold/40 text-xs font-black tracking-wider uppercase backdrop-blur-md">
+              <Store className="w-3.5 h-3.5 text-brand-gold" /> Verified Merchant Partner
             </div>
 
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-heading tracking-tight text-white">
               Gourmet Bistro & Retail Hub
             </h1>
 
-            <p className="text-[#282828] text-xs sm:text-sm max-w-xl flex items-center gap-2">
-              <MapPin className="w-3.5 h-3.5 text-[#1B4F9C]" /> 3 Active Locations · <Users className="w-3.5 h-3.5 text-[#1B4F9C]" /> 1,240 Corporate Customers Reached
+            <p className="text-white/80 text-xs sm:text-sm max-w-xl flex items-center gap-2">
+              <MapPin className="w-3.5 h-3.5 text-brand-gold" /> 3 Active Locations · <Users className="w-3.5 h-3.5 text-brand-gold" /> 1,240 Corporate Customers Reached
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
             <Link
               to="/business/qr-codes"
-              className="inline-flex items-center gap-2 bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white font-extrabold text-xs px-5 py-3 rounded-full shadow-lg shadow-[#1B4F9C]/20 transition-all"
+              className="inline-flex items-center gap-2 bg-brand-gold hover:brightness-110 text-[#0B2447] font-extrabold text-xs px-5 py-3 rounded-full shadow-lg shadow-black/20 transition-all"
             >
               <QrCode className="w-4 h-4" /> Scan QR Redemption
             </Link>
 
             <Link
               to="/business/offers/new"
-              className="inline-flex items-center gap-2 bg-[#F4F4F4] hover:bg-[#E9E9E9] text-[#1B4F9C] font-extrabold text-xs px-5 py-3 rounded-full border border-[#E3E3E3] backdrop-blur-md transition-all"
+              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-extrabold text-xs px-5 py-3 rounded-full border border-white/25 backdrop-blur-md transition-all"
             >
               <Plus className="w-4 h-4 text-[#1B4F9C]" /> Create New Offer
             </Link>

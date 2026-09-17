@@ -198,9 +198,9 @@ export default function EmployeesPanel({ company, employees, onChanged }) {
           <p className="text-sm text-ivory-muted mt-1">{items.length} total · {items.filter((e) => e.status === "active").length} active</p>
         </div>
         <div className="flex gap-2 flex-wrap">
-          <button onClick={() => setShowInvite(true)} className="inline-flex items-center gap-2 bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white text-sm font-semibold px-4 py-2 rounded-lg"><UserPlus className="w-4 h-4" /> Invite</button>
-          <button onClick={() => setCsvMode(true)} className="inline-flex items-center gap-2 bg-emerald-black ring-1 ring-[#F1F1F1] border border-transparent hover:bg-[#F9F8F7] text-ivory text-sm font-semibold px-4 py-2 rounded-lg"><Upload className="w-4 h-4" /> CSV</button>
-          <button onClick={exportCsv} className="inline-flex items-center gap-2 bg-emerald-black ring-1 ring-[#F1F1F1] border border-transparent hover:bg-[#F9F8F7] text-ivory text-sm font-semibold px-4 py-2 rounded-lg"><Download className="w-4 h-4" /> Export</button>
+          <button onClick={() => setShowInvite(true)} className="inline-flex items-center gap-2 bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white text-sm font-semibold px-4 py-2 rounded-full"><UserPlus className="w-4 h-4" /> Invite</button>
+          <button onClick={() => setCsvMode(true)} className="inline-flex items-center gap-2 bg-emerald-black ring-1 ring-[#F1F1F1] border border-transparent hover:bg-[#F9F8F7] text-ivory text-sm font-semibold px-4 py-2 rounded-full"><Upload className="w-4 h-4" /> CSV</button>
+          <button onClick={exportCsv} className="inline-flex items-center gap-2 bg-emerald-black ring-1 ring-[#F1F1F1] border border-transparent hover:bg-[#F9F8F7] text-ivory text-sm font-semibold px-4 py-2 rounded-full"><Download className="w-4 h-4" /> Export</button>
         </div>
       </div>
 
@@ -289,7 +289,7 @@ export default function EmployeesPanel({ company, employees, onChanged }) {
                 placeholder="Lagos HQ / Remote" className="w-full px-3 py-2 text-sm border border-[#F1F1F1] rounded-lg outline-none focus:border-[#1B4F9C]/40 focus:ring-2 focus:ring-[#F1F1F1]" />
             </Field>
             <p className="text-xs text-ivory-dim">They'll get a Nelvin invite and auto-join this company when they sign up with their email. A subscriber ID is auto-issued for them.</p>
-            <button type="submit" className="w-full bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white font-semibold py-2.5 rounded-lg text-sm">Send invitation</button>
+            <button type="submit" className="w-full bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white font-semibold py-2.5 rounded-full text-sm">Send invitation</button>
           </form>
         </Modal>
       )}
@@ -317,7 +317,7 @@ export default function EmployeesPanel({ company, employees, onChanged }) {
               <Field label="Manager name"><input value={edit.manager_name || ""} onChange={(e) => setEdit({ ...edit, manager_name: e.target.value })} className="w-full px-3 py-2 text-sm border border-[#F1F1F1] rounded-lg outline-none focus:border-[#1B4F9C]/40" /></Field>
               <Field label="Employee ID (internal)"><input value={edit.employee_id || ""} onChange={(e) => setEdit({ ...edit, employee_id: e.target.value })} className="w-full px-3 py-2 text-sm border border-[#F1F1F1] rounded-lg outline-none focus:border-[#1B4F9C]/40" /></Field>
             </div>
-            <button onClick={saveEdit} className="w-full bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white font-semibold py-2.5 rounded-lg text-sm">Save</button>
+            <button onClick={saveEdit} className="w-full bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white font-semibold py-2.5 rounded-full text-sm">Save</button>
           </div>
         </Modal>
       )}

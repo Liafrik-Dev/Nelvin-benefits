@@ -25,7 +25,7 @@ export default function BusinessPayouts() {
         </div>
         <button
           onClick={() => setBankModal(true)}
-          className="bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#1B4F9C] text-xs font-bold px-4 py-2.5 rounded-xl inline-flex items-center gap-2 shadow-sm transition-colors self-start sm:self-auto"
+          className="bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#1B4F9C] text-xs font-bold px-4 py-2.5 rounded-full inline-flex items-center gap-2 shadow-sm transition-colors self-start sm:self-auto"
         >
           <Building2 className="w-4 h-4 text-[#1B4F9C]" /> Edit Bank Details
         </button>
@@ -110,7 +110,7 @@ export default function BusinessPayouts() {
               </div>
               <button
                 type="submit"
-                className="w-full bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#1B4F9C] font-bold text-xs py-3 rounded-xl transition-colors"
+                className="w-full bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#1B4F9C] font-bold text-xs py-3 rounded-full transition-colors"
               >
                 Save Settlement Account
               </button>

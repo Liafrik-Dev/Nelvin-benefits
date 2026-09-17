@@ -135,7 +135,7 @@ export default function NotificationsPanel({ company }) {
 
           <div className="flex items-center justify-between">
             <p className="text-xs text-ivory-dim">Delivered in-app to all matching employees. Email delivery resumes when workspace credits reset (currently blocked).</p>
-            <button type="submit" disabled={sending} className="inline-flex items-center gap-2 bg-[#1B4F9C] hover:bg-[#1B4F9C] disabled:opacity-70 text-white text-sm font-semibold px-5 py-2.5 rounded-lg">
+            <button type="submit" disabled={sending} className="inline-flex items-center gap-2 bg-[#1B4F9C] hover:bg-[#1B4F9C] disabled:opacity-70 text-white text-sm font-semibold px-5 py-2.5 rounded-full">
               <Send className="w-4 h-4" /> {sending ? "Sending…" : "Send"}
             </button>
           </div>

@@ -222,13 +222,13 @@ export default function AdminPayments() {
             </div>
             <div className="mt-6 flex gap-2">
               {viewing.status === "pending" && (
-                <button onClick={() => { approve(viewing); setViewing(null); }} className="flex-1 bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white rounded-lg py-2 text-sm font-semibold">Approve</button>
+                <button onClick={() => { approve(viewing); setViewing(null); }} className="flex-1 bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white rounded-full py-2 text-sm font-semibold">Approve</button>
               )}
               {viewing.status === "completed" && (
-                <button onClick={() => { refund(viewing); setViewing(null); }} className="flex-1 bg-[#F9F8F7] text-rose-200 ring-1 ring-rose-400/25 rounded-lg py-2 text-sm font-semibold">Refund</button>
+                <button onClick={() => { refund(viewing); setViewing(null); }} className="flex-1 bg-[#F9F8F7] text-rose-200 ring-1 ring-rose-400/25 rounded-full py-2 text-sm font-semibold">Refund</button>
               )}
               {viewing.status === "pending" && (
-                <button onClick={() => { cancel(viewing); setViewing(null); }} className="flex-1 bg-[#F9F8F7] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/20 rounded-lg py-2 text-sm font-semibold">Cancel</button>
+                <button onClick={() => { cancel(viewing); setViewing(null); }} className="flex-1 bg-[#F9F8F7] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/20 rounded-full py-2 text-sm font-semibold">Cancel</button>
               )}
             </div>
           </div>

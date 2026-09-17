@@ -20,14 +20,16 @@ export default defineConfig({
   },
   server: {
     port: 5173,
+    host: true,
+    allowedHosts: [".prod-runtime.all-hands.dev", "localhost", "127.0.0.1"],
   },
   preview: {
     host: true,
-    allowedHosts: [
-      "work-1-czudbexgkfnbhvgn.prod-runtime.all-hands.dev",
-      "work-2-czudbexgkfnbhvgn.prod-runtime.all-hands.dev",
-      "localhost",
-      "127.0.0.1",
-    ],
+    // A leading dot matches the domain and all of its subdomains. The runtime
+    // hostname changes on every session (work-1-<random>.prod-runtime…), so a
+    // hardcoded entry is guaranteed to go stale and Vite then answers every
+    // request with "Blocked request. This host is not allowed." — which takes
+    // the whole app, login included, offline until someone edits this file.
+    allowedHosts: [".prod-runtime.all-hands.dev", "localhost", "127.0.0.1"],
   },
 });

@@ -14,7 +14,7 @@ export default function CampaignsPanel({ company }) {
           <h1 className="text-2xl font-bold font-heading text-ivory">Internal Wellness Campaigns</h1>
           <p className="text-sm text-ivory-muted mt-1">Run engagement initiatives and benefit uptake challenges for employees.</p>
         </div>
-        <button className="inline-flex items-center gap-2 bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white text-sm font-semibold px-4 py-2 rounded-xl shadow-sm">
+        <button className="inline-flex items-center gap-2 bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white text-sm font-semibold px-4 py-2 rounded-full shadow-sm">
           <Plus className="w-4 h-4" /> New Campaign
         </button>
       </div>

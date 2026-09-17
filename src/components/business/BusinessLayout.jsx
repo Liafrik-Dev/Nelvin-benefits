@@ -101,7 +101,7 @@ export default function BusinessLayout() {
         <div className="p-3 border-t border-[#F1F1F1]">
           <button
             onClick={() => { logout(); navigate("/"); }}
-            className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold text-[#484848] hover:bg-[#F4F4F4] hover:text-[#282828] transition-colors"
+            className="w-full flex items-center gap-2 px-3 py-2 rounded-full text-xs font-semibold text-[#484848] hover:bg-[#F4F4F4] hover:text-[#282828] transition-colors"
           >
             <LogOut className="w-4 h-4" />
             Sign out

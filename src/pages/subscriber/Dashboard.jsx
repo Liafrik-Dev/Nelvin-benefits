@@ -70,35 +70,35 @@ export default function Dashboard() {
         <EmployeeNav />
 
         {/* Premium Welcome & Tier Hero Banner */}
-        <div className="relative rounded-xl bg-gradient-to-r from-black via-[#FFFFFF] to-black text-white p-6 sm:p-8 md:p-10 shadow-2xl border border-[#F1F1F1] overflow-hidden">
+        <div className="relative rounded-xl bg-gradient-to-r from-[#0B2447] via-[#1B4F9C] to-[#123A78] text-white p-6 sm:p-8 md:p-10 shadow-2xl border border-[#F1F1F1] overflow-hidden">
           <div className="absolute right-0 top-0 bottom-0 w-1/2 opacity-10 bg-[radial-gradient(#1B4F9C_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
             <div className="lg:col-span-2 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F4F4F4] text-[#1B4F9C] border border-[#1B4F9C]/30 text-xs font-black tracking-wider uppercase backdrop-blur-md">
-                <Crown className="w-3.5 h-3.5 text-[#1B4F9C]" /> Premium Gold Member
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-brand-gold border border-brand-gold/40 text-xs font-black tracking-wider uppercase backdrop-blur-md">
+                <Crown className="w-3.5 h-3.5 text-brand-gold" /> Premium Gold Member
               </div>
 
               <h1 className="text-3xl sm:text-4xl font-extrabold font-heading tracking-tight leading-tight">
-                Hello, <span className="text-[#1B4F9C]">{user?.full_name?.split(" ")[0] || "Valued Member"}</span>! 👋
+                Hello, <span className="text-brand-gold">{user?.full_name?.split(" ")[0] || "Valued Member"}</span>! 👋
               </h1>
 
-              <p className="text-[#282828] text-sm sm:text-base max-w-xl leading-relaxed">
+              <p className="text-white/80 text-sm sm:text-base max-w-xl leading-relaxed">
                 You have saved <strong className="text-white">${totalSaved + 140}</strong> this month with your employer-sponsored Nelvin benefits package.
               </p>
 
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <Link
                   to="/explore"
-                  className="bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white font-extrabold text-xs px-5 py-3 rounded-full transition-all shadow-lg shadow-[#1B4F9C]/20 flex items-center gap-2"
+                  className="bg-brand-gold hover:brightness-110 text-[#0B2447] font-extrabold text-xs px-5 py-3 rounded-full transition-all shadow-lg shadow-black/20 flex items-center gap-2"
                 >
                   <Zap className="w-4 h-4" /> Discover New Perks
                 </Link>
                 <Link
                   to="/wallet"
-                  className="bg-[#F4F4F4] hover:bg-[#E9E9E9] text-[#1B4F9C] font-bold text-xs px-5 py-3 rounded-full transition-all border border-[#F1F1F1] backdrop-blur-sm flex items-center gap-2"
+                  className="bg-white/10 hover:bg-white/20 text-white font-bold text-xs px-5 py-3 rounded-full transition-all border border-white/25 backdrop-blur-sm flex items-center gap-2"
                 >
-                  <Wallet className="w-4 h-4 text-[#1B4F9C]" /> Open Wallet ($320.00)
+                  <Wallet className="w-4 h-4 text-brand-gold" /> Open Wallet ($320.00)
                 </Link>
               </div>
             </div>
@@ -206,7 +206,7 @@ export default function Dashboard() {
 
           <button
             onClick={() => setWalletMsg(true)}
-            className="group bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all duration-300 text-left space-y-4"
+            className="group bg-emerald-black ring-1 ring-[#F1F1F1] rounded-full p-6 flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all duration-300 text-left space-y-4"
           >
             <div className="flex items-center justify-between">
               <div className="w-12 h-12 rounded-lg bg-[#F9F8F7] text-[#1B4F9C] flex items-center justify-center group-hover:scale-110 group-hover:bg-[#FFFFFF] group-hover:text-[#282828] transition-all">
@@ -227,7 +227,7 @@ export default function Dashboard() {
 
           <button
             onClick={handleInvite}
-            className="group bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 flex flex-col justify-between hover:shadow-xl hover:border-rose-400 transition-all duration-300 text-left space-y-4"
+            className="group bg-emerald-black ring-1 ring-[#F1F1F1] rounded-full p-6 flex flex-col justify-between hover:shadow-xl hover:border-rose-400 transition-all duration-300 text-left space-y-4"
           >
             <div className="flex items-center justify-between">
               <div className="w-12 h-12 rounded-lg bg-[#F9F8F7] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/20 flex items-center justify-center group-hover:scale-110 group-hover:bg-[#FFFFFF] group-hover:text-[#282828] transition-all">

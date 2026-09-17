@@ -52,15 +52,15 @@ export default function Rewards() {
         <GamificationHub />
 
         {/* Header KPI */}
-        <div className="bg-gradient-to-r from-black to-black rounded-xl p-6 sm:p-8 text-white shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="bg-gradient-to-r from-[#0B2447] via-[#1B4F9C] to-[#123A78] rounded-xl p-6 sm:p-8 text-white shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#1B4F9C]/15 text-[#1B4F9C] ring-1 ring-[#1B4F9C]/25 text-xs font-bold uppercase">
-              <Trophy className="w-3.5 h-3.5 text-[#1B4F9C]" /> Recognition & Rewards Portal
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-brand-gold ring-1 ring-brand-gold/40 text-xs font-bold uppercase">
+              <Trophy className="w-3.5 h-3.5 text-brand-gold" /> Recognition & Rewards Portal
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold font-heading">
               Peer Praise & Achievement Points
             </h1>
-            <p className="text-[#484848] text-sm">Earn recognition points from colleagues and redeem them for gift vouchers or perks.</p>
+            <p className="text-white/80 text-sm">Earn recognition points from colleagues and redeem them for gift vouchers or perks.</p>
           </div>
 
           <div className="bg-[#F4F4F4] backdrop-blur border border-[#E3E3E3] p-6 rounded-lg text-center min-w-[200px]">

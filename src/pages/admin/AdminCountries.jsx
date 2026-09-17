@@ -104,7 +104,7 @@ export default function AdminCountries() {
         </div>
         <button
           onClick={() => setEditing({})}
-          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white rounded-lg"
+          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white rounded-full"
         >
           <Plus className="w-4 h-4" /> New country
         </button>

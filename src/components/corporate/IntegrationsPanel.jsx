@@ -24,7 +24,7 @@ export default function IntegrationsPanel({ company }) {
               <h3 className="font-bold text-ivory text-base font-heading">{a.name}</h3>
               <p className="text-xs text-ivory-muted">{a.category}</p>
             </div>
-            <button className={`px-4 py-2 rounded-xl text-xs font-bold ${
+            <button className={`px-4 py-2 rounded-full text-xs font-bold ${
               a.connected ? "bg-[#FFFFFF] text-ivory" : "bg-[#F4F4F4] text-ivory hover:bg-[#F4F4F4]"
             }`}>
               {a.connected ? "Connected" : "Connect App"}

@@ -52,7 +52,7 @@ export default function Nearby() {
               <button
                 key={city}
                 onClick={() => setSelectedCity(city)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
                   selectedCity === city
                     ? "bg-[#FFFFFF] text-[#1B4F9C] shadow-sm"
                     : "text-ivory-muted hover:text-ivory"

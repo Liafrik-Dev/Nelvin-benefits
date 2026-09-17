@@ -124,10 +124,10 @@ export default function BillingPanel({ company, onChanged }) {
             <div className="mt-6 bg-[#FFFFFF] rounded-lg p-4">
               <p className="text-xs text-[#1B4F9C] uppercase tracking-wider font-semibold">Add seats</p>
               <div className="flex items-center gap-2 mt-2">
-                <button onClick={() => setSeats((s) => Math.max(0, s - 1))} className="p-2 bg-[#FFFFFF] rounded-lg border border-[#F1F1F1] text-[#1B4F9C]"><Minus className="w-3.5 h-3.5" /></button>
+                <button onClick={() => setSeats((s) => Math.max(0, s - 1))} className="p-2 bg-[#FFFFFF] rounded-full border border-[#F1F1F1] text-[#1B4F9C]"><Minus className="w-3.5 h-3.5" /></button>
                 <input type="number" min="0" value={seats} onChange={(e) => setSeats(Math.max(0, Number(e.target.value)))} className="w-16 text-center px-2 py-1.5 text-sm border border-[#F1F1F1] rounded-lg" />
-                <button onClick={() => setSeats((s) => s + 1)} className="p-2 bg-[#FFFFFF] rounded-lg border border-[#F1F1F1] text-[#1B4F9C]"><Plus className="w-3.5 h-3.5" /></button>
-                <button onClick={addSeats} disabled={addingSeats || seats < 1} className="ml-2 inline-flex items-center gap-1.5 bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white text-sm font-semibold px-4 py-2 rounded-lg disabled:opacity-50">
+                <button onClick={() => setSeats((s) => s + 1)} className="p-2 bg-[#FFFFFF] rounded-full border border-[#F1F1F1] text-[#1B4F9C]"><Plus className="w-3.5 h-3.5" /></button>
+                <button onClick={addSeats} disabled={addingSeats || seats < 1} className="ml-2 inline-flex items-center gap-1.5 bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white text-sm font-semibold px-4 py-2 rounded-full disabled:opacity-50">
                   <ArrowUpCircle className="w-4 h-4" /> Add {seats} seat{seats === 1 ? "" : "s"}
                 </button>
               </div>

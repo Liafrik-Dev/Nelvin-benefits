@@ -91,13 +91,13 @@ export default function MembershipCard({ employee, company, accent = "#059669", 
 
       {downloadable && (
         <div className="flex gap-2">
-          <button onClick={downloadCard} className="inline-flex items-center gap-2 text-xs bg-[#FFFFFF] text-ivory font-semibold px-3 py-2 rounded-lg hover:bg-[#F4F4F4]">
+          <button onClick={downloadCard} className="inline-flex items-center gap-2 text-xs bg-[#FFFFFF] text-ivory font-semibold px-3 py-2 rounded-full hover:bg-[#F4F4F4]">
             <Download className="w-3.5 h-3.5" /> Download Card
           </button>
           <a
             href={qrUrl}
             download={`${subscriberId || "nelvin"}-qr.png`}
-            className="inline-flex items-center gap-2 text-xs bg-[#F4F4F4] text-ivory font-semibold px-3 py-2 rounded-lg hover:bg-[#F4F4F4]"
+            className="inline-flex items-center gap-2 text-xs bg-[#F4F4F4] text-ivory font-semibold px-3 py-2 rounded-full hover:bg-[#F4F4F4]"
           >
             <QrIcon className="w-3.5 h-3.5" /> QR Code
           </a>

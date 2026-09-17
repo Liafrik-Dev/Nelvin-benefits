@@ -89,25 +89,25 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
   return (
     <div className="space-y-8 font-sans text-[#282828]">
       {/* Company Banner Header */}
-      <div className="relative rounded-xl overflow-hidden bg-gradient-to-r from-black via-[#FFFFFF] to-black text-white p-6 sm:p-8 md:p-10 shadow-2xl border border-[#F1F1F1]">
+      <div className="relative rounded-xl overflow-hidden bg-gradient-to-r from-[#0B2447] via-[#1B4F9C] to-[#123A78] text-white p-6 sm:p-8 md:p-10 shadow-2xl border border-[#F1F1F1]">
         <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-15 bg-[radial-gradient(#1B4F9C_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
         <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F4F4F4] text-[#1B4F9C] border border-[#1B4F9C]/30 text-xs font-extrabold tracking-wider uppercase backdrop-blur-md">
-              <Building2 className="w-3.5 h-3.5 text-[#1B4F9C]" /> {company.name || "Enterprise Portal"}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-brand-gold border border-brand-gold/40 text-xs font-extrabold tracking-wider uppercase backdrop-blur-md">
+              <Building2 className="w-3.5 h-3.5 text-brand-gold" /> {company.name || "Enterprise Portal"}
             </div>
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-black font-heading tracking-tight text-white">
               HR Benefits Management Dashboard
             </h1>
-            <p className="text-[#282828] text-xs sm:text-sm max-w-xl">
+            <p className="text-white/80 text-xs sm:text-sm max-w-xl">
               Empowering {company.employee_count || total || 18} employees with corporate wellness budgets, rewards, and lifestyle discounts.
             </p>
           </div>
 
           <button
             onClick={onGoEmployees}
-            className="bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white font-extrabold px-6 py-3 rounded-full text-xs transition-all shadow-lg shadow-[#1B4F9C]/20 flex items-center gap-2 shrink-0"
+            className="bg-brand-gold hover:brightness-110 text-[#0B2447] font-extrabold px-6 py-3 rounded-full text-xs transition-all shadow-lg shadow-black/20 flex items-center gap-2 shrink-0"
           >
             <UserPlus className="w-4 h-4" /> Invite Employees
           </button>
@@ -178,7 +178,7 @@ export default function CorporateDashboardHome({ company, employees, onGoEmploye
           <div className="space-y-3">
             <button
               onClick={onGoEmployees}
-              className="w-full flex items-center justify-between p-4 rounded-lg bg-[#F9F8F7] hover:bg-[#FFFFFF] hover:text-[#282828] transition-all text-left group border border-[#F1F1F1]"
+              className="w-full flex items-center justify-between p-4 rounded-full bg-[#F9F8F7] hover:bg-[#FFFFFF] hover:text-[#282828] transition-all text-left group border border-[#F1F1F1]"
             >
               <span className="flex items-center gap-3">
                 <UserPlus className="w-5 h-5 text-[#1B4F9C] group-hover:text-[#1B4F9C]" />

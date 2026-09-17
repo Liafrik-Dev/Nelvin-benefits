@@ -85,7 +85,7 @@ export default function AdminDataTable({
           ))}
           <button
             onClick={() => exportToCsv(exportName, sorted, columns)}
-            className="flex items-center gap-1.5 px-3 py-2 text-sm bg-[#F4F4F4] hover:bg-[#F4F4F4] text-ivory rounded-lg whitespace-nowrap"
+            className="flex items-center gap-1.5 px-3 py-2 text-sm bg-[#F4F4F4] hover:bg-[#F4F4F4] text-ivory rounded-full whitespace-nowrap"
           >
             <Download className="w-3.5 h-3.5" /> Export CSV
           </button>
@@ -100,7 +100,7 @@ export default function AdminDataTable({
             <button
               key={i}
               onClick={() => b.onClick(selected)}
-              className="text-xs px-3 py-1.5 bg-[#FFFFFF] border bg-[#FFFFFF] rounded-md hover:bg-[#F9F8F7]"
+              className="text-xs px-3 py-1.5 bg-[#FFFFFF] border bg-[#FFFFFF] rounded-full hover:bg-[#F9F8F7]"
             >
               {b.label}
             </button>

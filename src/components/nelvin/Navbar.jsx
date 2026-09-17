@@ -206,7 +206,7 @@ export default function Navbar() {
                           key={lng.code}
                           type="button"
                           onClick={() => { setLang(lng.code); setLangOpen(false); }}
-                          className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-xs font-semibold text-[#282828]/90 transition-colors hover:bg-[#F9F8F7] hover:text-gold"
+                          className="flex w-full items-center justify-between rounded-full px-3 py-2 text-left text-xs font-semibold text-[#282828]/90 transition-colors hover:bg-[#F9F8F7] hover:text-gold"
                         >
                           <span>{lng.label}</span>
                           {lang === lng.code && <Check className="h-3.5 w-3.5 text-gold" />}

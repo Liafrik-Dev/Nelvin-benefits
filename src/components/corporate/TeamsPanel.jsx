@@ -58,7 +58,7 @@ export default function TeamsPanel({ company }) {
         </div>
         <button
           onClick={() => setShowModal(true)}
-          className="inline-flex items-center gap-2 bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white text-sm font-semibold px-4 py-2 rounded-xl shadow-sm"
+          className="inline-flex items-center gap-2 bg-[#1B4F9C] hover:bg-[#1B4F9C] text-white text-sm font-semibold px-4 py-2 rounded-full shadow-sm"
         >
           <Plus className="w-4 h-4" /> Create Team
         </button>
@@ -128,13 +128,13 @@ export default function TeamsPanel({ company }) {
                 <button
                   type="button"
                   onClick={() => setShowModal(false)}
-                  className="px-4 py-2 text-xs font-bold text-ivory-muted hover:bg-[#F4F4F4] rounded-xl"
+                  className="px-4 py-2 text-xs font-bold text-ivory-muted hover:bg-[#F4F4F4] rounded-full"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 text-xs font-bold text-white bg-[#1B4F9C] rounded-xl hover:bg-[#1B4F9C]"
+                  className="px-5 py-2 text-xs font-bold text-white bg-[#1B4F9C] rounded-full hover:bg-[#1B4F9C]"
                 >
                   Save Team
                 </button>

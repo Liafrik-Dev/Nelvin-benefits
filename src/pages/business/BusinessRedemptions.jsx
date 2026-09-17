@@ -43,7 +43,7 @@ export default function BusinessRedemptions() {
         </div>
         <button
           onClick={() => setScanModal(true)}
-          className="bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#1B4F9C] text-xs font-bold px-4 py-2.5 rounded-xl inline-flex items-center gap-2 shadow-sm transition-colors"
+          className="bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#1B4F9C] text-xs font-bold px-4 py-2.5 rounded-full inline-flex items-center gap-2 shadow-sm transition-colors"
         >
           <QrCode className="w-4 h-4 text-[#1B4F9C]" /> Scan / Validate Voucher
         </button>
@@ -106,7 +106,7 @@ export default function BusinessRedemptions() {
               ) : (
                 <button
                   type="submit"
-                  className="w-full bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#1B4F9C] font-bold text-xs py-3 rounded-xl transition-colors"
+                  className="w-full bg-[#FFFFFF] hover:bg-[#FFFFFF] text-[#1B4F9C] font-bold text-xs py-3 rounded-full transition-colors"
                 >
                   Verify Code
                 </button>

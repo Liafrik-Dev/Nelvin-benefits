@@ -256,7 +256,7 @@ export default function OnePlatformExperiences() {
         />
 
         <div
-          className="mx-auto mt-12 grid max-w-3xl grid-cols-2 gap-1.5 rounded-2xl border border-[#F1F1F1] bg-[#F9F8F7] p-1.5 sm:grid-cols-4"
+          className="mx-auto mt-12 grid max-w-3xl grid-cols-2 gap-1.5 rounded-full border border-[#F1F1F1] bg-[#F9F8F7] p-1.5 sm:grid-cols-4"
           role="tablist"
           aria-label="Platform experiences"
         >
@@ -270,7 +270,7 @@ export default function OnePlatformExperiences() {
                 role="tab"
                 aria-selected={on}
                 onClick={() => setActive(item.id)}
-                className={`flex items-center justify-center gap-2 rounded-xl px-3 py-3 text-xs font-bold transition-colors ${
+                className={`flex items-center justify-center gap-2 rounded-full px-3 py-3 text-xs font-bold transition-colors ${
                   on
                     ? "bg-[#1B4F9C] text-white shadow-nv-card"
                     : "text-[#484848] hover:bg-white hover:text-[#282828]"

@@ -33,7 +33,7 @@ export default function HRAssistantDrawer({ isOpen, onClose }) {
             </div>
             <button
               onClick={onClose}
-              className="p-1 rounded-lg text-ivory-dim hover:text-[#1B4F9C] hover:bg-[#FFFFFF]"
+              className="p-1 rounded-full text-ivory-dim hover:text-[#1B4F9C] hover:bg-[#FFFFFF]"
             >
               <X className="w-5 h-5" />
             </button>
@@ -87,7 +87,7 @@ export default function HRAssistantDrawer({ isOpen, onClose }) {
               <button
                 type="button"
                 onClick={() => setReportFormat("pdf")}
-                className={`p-3 rounded-lg border text-xs font-bold flex items-center justify-center gap-2 transition-all ${
+                className={`p-3 rounded-full border text-xs font-bold flex items-center justify-center gap-2 transition-all ${
                   reportFormat === "pdf"
                     ? "border-[#F1F1F1] border border-[#E3E3E3] bg-[#FFFFFF] text-[#282828]"
                     : "border-[#F1F1F1] text-ivory-muted hover:bg-[#FFFFFF]"
@@ -98,7 +98,7 @@ export default function HRAssistantDrawer({ isOpen, onClose }) {
               <button
                 type="button"
                 onClick={() => setReportFormat("csv")}
-                className={`p-3 rounded-lg border text-xs font-bold flex items-center justify-center gap-2 transition-all ${
+                className={`p-3 rounded-full border text-xs font-bold flex items-center justify-center gap-2 transition-all ${
                   reportFormat === "csv"
                     ? "border-[#F1F1F1] border border-[#E3E3E3] bg-[#FFFFFF] text-[#282828]"
                     : "border-[#F1F1F1] text-ivory-muted hover:bg-[#FFFFFF]"
@@ -115,7 +115,7 @@ export default function HRAssistantDrawer({ isOpen, onClose }) {
           <button
             onClick={handleExport}
             disabled={downloading}
-            className="w-full bg-[#FFFFFF] hover:bg-[#F9F8F7] text-[#1B4F9C] font-bold py-3 rounded-xl transition-all text-sm flex items-center justify-center gap-2"
+            className="w-full bg-[#FFFFFF] hover:bg-[#F9F8F7] text-[#1B4F9C] font-bold py-3 rounded-full transition-all text-sm flex items-center justify-center gap-2"
           >
             {downloading ? (
               <span>Generating Report...</span>

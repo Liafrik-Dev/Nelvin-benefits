@@ -405,7 +405,7 @@
   }
 
   /* ---- Shared primitives ------------------------------------
-     The reference repeats one button shape (8px radius, 700 weight,
+     The reference repeats one button shape (fully-rounded pill, 700 weight,
      15px) and one card shape (16px radius, soft wide shadow). These
      keep that repetition exact across the app. */
 
@@ -414,7 +414,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    border-radius: 8px;
+    border-radius: 9999px;
     font-family: var(--font-body);
     font-size: 0.9375rem;
     font-weight: 700;

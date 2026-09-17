@@ -109,7 +109,7 @@ export default function CompanySettingsPanel({ company, onChanged }) {
 
       <div className="flex flex-wrap gap-1 mb-6 border-b border-[#F1F1F1] pb-2">
         {[["profile", "Profile"], ["branding", "Branding"], ["sso", "SSO"], ["audit", "Audit Trail"]].map(([id, label]) => (
-          <button key={id} onClick={() => setTab(id)} className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${tab === id ? "bg-[#FFFFFF] text-ivory" : "text-ivory-muted hover:bg-[#F4F4F4]"}`}>
+          <button key={id} onClick={() => setTab(id)} className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${tab === id ? "bg-[#FFFFFF] text-ivory" : "text-ivory-muted hover:bg-[#F4F4F4]"}`}>
             {label}
           </button>
         ))}
@@ -207,7 +207,7 @@ export default function CompanySettingsPanel({ company, onChanged }) {
         )}
 
         <div className="mt-6 max-w-3xl">
-          <button type="submit" disabled={saving} className="inline-flex items-center gap-2 bg-[#1B4F9C] hover:bg-[#1B4F9C] disabled:opacity-70 text-white font-semibold px-5 py-2.5 rounded-lg text-sm">
+          <button type="submit" disabled={saving} className="inline-flex items-center gap-2 bg-[#1B4F9C] hover:bg-[#1B4F9C] disabled:opacity-70 text-white font-semibold px-5 py-2.5 rounded-full text-sm">
             <Save className="w-4 h-4" /> {saving ? "Saving..." : "Save changes"}
           </button>
         </div>
