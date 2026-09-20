@@ -95,6 +95,27 @@ export const AuthProvider = ({ children }) => {
     checkAppState();
   }, []);
 
+  /**
+   * Re-validate when the browser restores this page from its back-forward cache.
+   *
+   * Signing out navigates away, but the signed-in page is kept in memory and
+   * the back button restores it verbatim — React state, DOM and all — without
+   * re-running any effect. The visitor therefore saw the previous user's name
+   * and protected content again after signing out, which leaks data on a shared
+   * device. A bfcache restore fires `pageshow` with `persisted: true`, so
+   * re-checking the session there closes the hole.
+   */
+  useEffect(() => {
+    const onPageShow = (event) => {
+      if (!event.persisted) return;
+      checkUserAuth();
+    };
+    window.addEventListener("pageshow", onPageShow);
+    return () => window.removeEventListener("pageshow", onPageShow);
+    // checkUserAuth only reads module-level state and stable setters.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const checkAppState = async () => {
     try {
       setIsLoadingPublicSettings(true);

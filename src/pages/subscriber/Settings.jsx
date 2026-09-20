@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useAuth } from "@/lib/AuthContext";
 import Navbar from "@/components/nelvin/Navbar";
 import Footer from "@/components/nelvin/Footer";
@@ -75,7 +76,12 @@ export default function Settings() {
                 <p className="font-bold text-xs text-ivory">Password</p>
                 <p className="text-[11px] text-ivory-muted">Last changed 3 months ago</p>
               </div>
-              <button type="button" className="rounded-full border border-[#F1F1F1] px-3 py-1 text-xs font-bold text-[#1B4F9C] transition-colors hover:border-[#1B4F9C]/40 hover:bg-[#F9F8F7]">Change Password</button>
+              <Link
+                to="/forgot-password"
+                className="inline-flex items-center rounded-full border border-[#F1F1F1] px-3 py-1 text-xs font-bold text-[#1B4F9C] transition-colors hover:border-[#1B4F9C]/40 hover:bg-[#F9F8F7]"
+              >
+                Change Password
+              </Link>
             </div>
           </div>
 
