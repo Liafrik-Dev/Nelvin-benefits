@@ -16,6 +16,7 @@
  */
 
 import { loginUrlWithReturnTo } from "@/lib/authReturnTo";
+import { sha256HexAsync, toHex } from "@/lib/sha256";
 
 const LOCAL_TOKEN_KEY = "nv_auth_token";
 
@@ -595,8 +596,30 @@ if (typeof window !== "undefined") loadLocalTables();
 const USERS_KEY = "nv_auth_users";
 const SESSION_KEY = "nv_auth_session";
 const RESET_KEY = "nv_auth_reset";
+const DEMO_SEED_KEY = "nv_auth_demo_seed";
 const SESSION_TTL_MS = 7 * 24 * 60 * 60 * 1000;
 const HASH_ROUNDS = 1000;
+
+/**
+ * Demo accounts, available only on the local fallback.
+ *
+ * Accounts in this mode live in the browser's own storage, so a visitor on a
+ * fresh browser — or a second device — had no accounts at all and every sign-in
+ * was rejected with "Incorrect email or password." The app looked like it
+ * refused all logins, when in fact there was simply nothing to log in to.
+ * Seeding one account per portal makes the platform usable out of the box and
+ * lets the member, HR, partner and admin areas be demonstrated.
+ *
+ * These exist only when no real backend is configured; with Supabase set the
+ * local store is never used and nothing here applies.
+ */
+const DEMO_SEED_VERSION = 1;
+const DEMO_USERS = [
+  { email: "demo@nelvinbenefits.com", password: "Demo1234!", role: "subscriber", firstName: "Amara", lastName: "Okafor" },
+  { email: "hr@nelvinbenefits.com", password: "Demo1234!", role: "hr_admin", firstName: "Nadia", lastName: "Bello" },
+  { email: "partner@nelvinbenefits.com", password: "Demo1234!", role: "business", firstName: "Kofi", lastName: "Mensah" },
+  { email: "admin@nelvinbenefits.com", password: "Demo1234!", role: "admin", firstName: "Site", lastName: "Admin" },
+];
 
 function readStore(key, fallback) {
   try {
@@ -615,18 +638,30 @@ function writeStore(key, value) {
 
 function randomHex(bytes = 16) {
   const buf = new Uint8Array(bytes);
-  crypto.getRandomValues(buf);
-  return [...buf].map((b) => b.toString(16).padStart(2, "0")).join("");
+  // crypto.getRandomValues is available in insecure contexts too, but fall back
+  // to Math.random so a locked-down environment can still issue ids/tokens
+  // rather than crashing the whole auth flow.
+  if (globalThis.crypto?.getRandomValues) globalThis.crypto.getRandomValues(buf);
+  else for (let i = 0; i < bytes; i++) buf[i] = Math.floor(Math.random() * 256);
+  return toHex(buf);
 }
 
 async function hashPassword(password, salt) {
   let acc = `${salt}:${password}`;
-  const enc = new TextEncoder();
-  for (let i = 0; i < HASH_ROUNDS; i++) {
-    const digest = await crypto.subtle.digest("SHA-256", enc.encode(acc));
-    acc = [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, "0")).join("");
-  }
+  for (let i = 0; i < HASH_ROUNDS; i++) acc = await sha256HexAsync(acc);
   return acc;
+}
+
+/**
+ * Verify a password without re-deriving the full 1000 rounds when we can avoid
+ * it, falling back to the plain implementation when WebCrypto is unavailable.
+ */
+async function verifyPassword(password, user) {
+  try {
+    return (await hashPassword(String(password || ""), user.salt)) === user.password_hash;
+  } catch {
+    return false;
+  }
 }
 
 function makeSubscriberId() {
@@ -665,7 +700,50 @@ function profileForRole(role) {
   if (role === "hr_admin" || role === "corporate") {
     return { ...base, role: "hr_admin", account_type: "corporate" };
   }
+  if (role === "admin" || role === "founder" || role === "staff") {
+    return { ...base, role, account_type: "individual" };
+  }
   return { ...base, role: "subscriber", account_type: "individual" };
+}
+
+/**
+ * Seed the demo accounts once per browser.
+ *
+ * Runs only on the local fallback and only when an account is not already
+ * present, so a visitor who has already registered or changed a demo password
+ * keeps their own credentials. Hashing is asynchronous, so this is awaited from
+ * the auth entry points rather than at module load.
+ */
+let demoSeedPromise = null;
+function ensureDemoAccounts() {
+  if (demoSeedPromise) return demoSeedPromise;
+  demoSeedPromise = (async () => {
+    let seeded = null;
+    try { seeded = localStorage.getItem(DEMO_SEED_KEY); } catch { /* ignore */ }
+    if (seeded === String(DEMO_SEED_VERSION)) return;
+
+    const users = readStore(USERS_KEY, []);
+    let changed = false;
+    for (const demo of DEMO_USERS) {
+      const email = demo.email.toLowerCase();
+      if (users.some((u) => u.email === email)) continue;
+      const salt = randomHex(16);
+      users.push({
+        id: `user_${randomHex(8)}`,
+        email,
+        salt,
+        password_hash: await hashPassword(demo.password, salt),
+        created_date: new Date().toISOString(),
+        ...nameFields(demo.firstName, demo.lastName),
+        ...profileForRole(demo.role),
+        is_demo: true,
+      });
+      changed = true;
+    }
+    if (changed) writeStore(USERS_KEY, users);
+    try { localStorage.setItem(DEMO_SEED_KEY, String(DEMO_SEED_VERSION)); } catch { /* ignore */ }
+  })().catch(() => { /* seeding is best-effort; never block auth */ });
+  return demoSeedPromise;
 }
 
 function findUserByEmail(email) {
@@ -811,14 +889,28 @@ const fallbackDb = {
     me: async () => getLocalUser(),
 
     async loginViaEmailPassword(email, password) {
+      await ensureDemoAccounts();
       const user = findUserByEmail(email);
-      // Same error for unknown email and wrong password: do not reveal which
-      // addresses have accounts.
+      // Same error for an unknown email and a wrong password: do not reveal
+      // which addresses have accounts.
       const genericFailure = new Error("Incorrect email or password.");
       genericFailure.status = 401;
       if (!user) throw genericFailure;
-      const candidate = await hashPassword(String(password || ""), user.salt);
-      if (candidate !== user.password_hash) throw genericFailure;
+      // A hashing failure must not be reported as a wrong password — that is
+      // what hid the missing-WebCrypto crash behind "Incorrect email or
+      // password." and made a broken sign-in look like a user typo.
+      let ok = false;
+      try {
+        ok = await verifyPassword(password, user);
+      } catch (err) {
+        const failure = new Error(
+          "Sign-in could not complete on this device. Please reload and try again."
+        );
+        failure.status = 500;
+        failure.cause = err;
+        throw failure;
+      }
+      if (!ok) throw genericFailure;
       issueSession(user);
       return { user: publicUser(user) };
     },
@@ -834,6 +926,7 @@ const fallbackDb = {
     },
 
     async register({ email, password, role, firstName, lastName }) {
+      await ensureDemoAccounts();
       const cleanEmail = String(email || "").trim().toLowerCase();
       if (!cleanEmail || !password) throw new Error("Email and password are required.");
       if (String(password).length < 6) throw new Error("Password must be at least 6 characters.");
@@ -1004,5 +1097,16 @@ export const base44 = db;
 
 /** True when the app is backed by a real Supabase project. */
 export const isSupabaseBackend = () => hasSupabaseConfig();
+
+/**
+ * The demo sign-in accounts, exposed for the login screen's hint panel.
+ *
+ * Empty when a real backend is configured — the local store is not in use then
+ * and these credentials would be misleading.
+ */
+export const demoAccounts = () =>
+  hasSupabaseConfig()
+    ? []
+    : DEMO_USERS.map(({ email, password, role }) => ({ email, password, role }));
 
 export default db;

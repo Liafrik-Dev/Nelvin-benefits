@@ -1,4 +1,4 @@
-import { db } from "@/services/api/base44Client";
+import { db, demoAccounts } from "@/services/api/base44Client";
 
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Lock, User, Loader2, ArrowRight, Building2, Store, Eye, EyeOff } from "lucide-react";
+import { Lock, User, Loader2, ArrowRight, Building2, Store, Eye, EyeOff, Info } from "lucide-react";
 import AuthLayout from "@/components/auth/AuthLayout";
 import GoogleIcon from "@/components/shared/GoogleIcon";
 import AppleIcon from "@/components/shared/AppleIcon";
@@ -364,6 +364,40 @@ export default function AuthForm({ mode = "login" }) {
               )}
             </Button>
           </form>
+
+          {/* Demo credentials.
+              Accounts live in this browser only when no backend is configured,
+              so without this hint a visitor has no way to know what to type and
+              every sign-in looks rejected. Hidden entirely on a real backend
+              (Supabase), where demoAccounts() returns an empty list. */}
+          {activeAction === "login" && demoAccounts().length > 0 && (
+            <div className="rounded-xl border border-[#F1F1F1] bg-[#F9F8F7] p-3.5 text-left">
+              <p className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.14em] text-[#6B6B6B]">
+                <Info className="h-3 w-3 text-[#1B4F9C]" aria-hidden="true" /> Demo accounts
+              </p>
+              <p className="mt-1.5 text-[11px] leading-relaxed text-[#6B6B6B]">
+                No backend is configured, so accounts live in this browser. Use one
+                of these to explore, or create your own account.
+              </p>
+              <div className="mt-2.5 space-y-1">
+                {demoAccounts().map(({ email, password, role }) => (
+                  <button
+                    key={email}
+                    type="button"
+                    onClick={() => { setEmail(email); setPassword(password); setServerError(""); }}
+                    className="flex w-full items-center justify-between gap-3 rounded-lg px-2.5 py-1.5 text-left transition-colors hover:bg-white"
+                    title="Use these credentials"
+                  >
+                    <span className="text-[11px] font-bold text-[#282828]">{email}</span>
+                    <span className="shrink-0 text-[10px] font-bold uppercase tracking-wider text-[#1B4F9C]">{role}</span>
+                  </button>
+                ))}
+              </div>
+              <p className="mt-2 text-[10px] text-[#6B6B6B]">
+                Password for all: <strong className="font-bold text-[#484848]">Demo1234!</strong> — click a row to fill the form.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </AuthLayout>
