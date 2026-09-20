@@ -18,6 +18,12 @@ console, you are on backend 3. That fallback is a real credential store: salted,
 iterated SHA-256 password hashes, random session tokens with a 7-day expiry.
 It still is not an identity provider — the data lives in that browser only.
 
+Backend 3 seeds one demo account per portal (password `Demo1234!`) so a fresh
+browser can be exercised without a backend: `demo@` (subscriber), `hr@`
+(hr_admin), `partner@` (business), `admin@`. They are seeded by
+`ensureDemoAccounts` and listed on the login screen, click-to-fill. Seeding is
+skipped whenever Supabase is configured, where this store is never used.
+
 ## Commands
 
 ```bash
@@ -28,10 +34,15 @@ node scripts/smoke-db.mjs             # local db adapter API shape
 node scripts/categories-check.mjs     # category images load and are distinct
 node scripts/layout-lint.mjs          # no horizontal overflow at 3 breakpoints
 node scripts/auth-redirect-check.mjs  # login routes to the account's real portal
+node scripts/role-assignment-check.mjs # role allowlist and admin trigger rules
+node scripts/auth-flow-check.mjs       # end-to-end login/register/reset flow
+node scripts/route-error-sweep.mjs     # every route renders without errors
+node scripts/sha256-check.mjs          # password hashing correctness
 ```
 
-The last three need a preview server on `:4173` first. Override with
-`PREVIEW_URL=...`. `scripts/auth-redirect-check.mjs` needs `/usr/bin/chromium`.
+Most of these need a server on `:4173` first. Override with `PREVIEW_URL=...`;
+`route-error-sweep.mjs` and `auth-flow-check.mjs` also take a URL argument.
+They need `/usr/bin/chromium`.
 
 ## Things that have bitten us
 
@@ -40,6 +51,18 @@ incognito context gets an *empty* store, so an account registered in one context
 does not exist in the next and every login returns 401. Use one shared context
 and clear only `nv_auth_session` / `nv_auth_token` between phases to simulate
 signing out. A per-phase context will make a working login look broken.
+
+**`crypto.subtle` is undefined outside a secure context, and that looks like a
+wrong password.** WebCrypto is only exposed over HTTPS, on `localhost`, and on
+`file://`. Served over plain HTTP on a LAN address — a colleague's machine, a
+phone, a container IP — `crypto.subtle` is `undefined`, so a bare
+`crypto.subtle.digest` throws on every password hash. Registration failed
+outright and login reported "Incorrect email or password.", because the throw
+happened before the comparison. `src/lib/sha256.js` provides a pure-JS SHA-256
+used only when WebCrypto is missing; the native digest is still preferred. Never
+let a hashing failure surface as a credential error — that masking is what hid
+this bug. `scripts/sha256-check.mjs` pins the fallback against NIST vectors,
+block boundaries (55–64 bytes, where the padding rule changes) and `node:crypto`.
 
 **A live session redirects `/login` to `/dashboard`.** Tests that need to reach
 the login page must clear the session keys first, or assert against the
