@@ -39,6 +39,9 @@ function destinationForRole(user, tab) {
   // keeps it at the top level.
   if (role === "business" || role === "partner") return "/business";
   if (role === "hr_admin" || role === "corporate") return "/corporate-dashboard";
+  // Staff roles have their own console; without this they fell through to the
+  // member dashboard, which an admin can open but which is not their home.
+  if (role === "admin" || role === "founder" || role === "staff") return "/admin";
   if (role) return resolvePostAuthPath();
 
   if (tab === "business") return "/business";
