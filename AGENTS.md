@@ -125,3 +125,20 @@ never infers privilege from client-supplied values.
 
 `scripts/role-assignment-check.mjs` guards the first two rules. Run it after
 touching `supabaseSyncProfile`.
+## Entity names map to plural Supabase tables
+
+`toLabel()` lower-cases and snake-cases an entity name, which yields the
+**singular** form (`User` -> `user`, `VendorApplication` -> `vendor_application`).
+The migrations create **plural** tables (`users`, `vendor_applications`). Before
+`supabaseTable()` the Supabase path queried tables that do not exist: every
+query fell through `isMissingTable()` into the seeded local store, so the app
+looked like it worked while never reaching the backend, and the HR onboarding
+path (`Company` / `Employee`) silently read the local seed instead of real rows.
+
+Always resolve a table through `supabaseTable(entity)` inside
+`makeSupabaseEntity()`; never hand `toLabel()` its output. The mapping and the
+migration table names are kept in step: the 25 entities cover all 25 tables.
+
+`scripts/smoke-db.mjs` must register an address outside the seeded demo set
+(`admin@nelvinbenefits.com` and friends), or registration aborts with
+"An account already exists for this email" before any assertion runs.

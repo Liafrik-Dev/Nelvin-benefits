@@ -8,6 +8,7 @@ import { Star, MapPin, Clock, Tag, CheckCircle2, ArrowLeft } from "lucide-react"
 import Navbar from "@/components/nelvin/Navbar";
 import Footer from "@/components/nelvin/Footer";
 import { toast } from "@/components/ui/use-toast";
+import { makeVoucherCode } from "@/lib/voucherCode";
 
 export default function OfferDetail() {
   const { offerId } = useParams();
@@ -16,6 +17,7 @@ export default function OfferDetail() {
   const [offer, setOffer] = useState(null);
   const [loading, setLoading] = useState(true);
   const [redeeming, setRedeeming] = useState(false);
+  const [voucherCode, setVoucherCode] = useState("");
   const [redeemed, setRedeemed] = useState(false);
 
   useEffect(() => {
@@ -40,6 +42,7 @@ export default function OfferDetail() {
       navigateToLogin();
       return;
     }
+    const voucherCode = makeVoucherCode();
     await db.entities.Redemption.create({
       offer_id: offer.id,
       offer_title: offer.title,
@@ -49,8 +52,13 @@ export default function OfferDetail() {
       country: offer.country,
       user_id: user.id,
       company_id: user.company_id || "",
+      // Without a code the confirmation told members to "show your QR code
+      // in-store" while there was nothing for the merchant to scan or type.
+      redemption_code: voucherCode,
+      code_used: false,
       status: "issued",
     });
+    setVoucherCode(voucherCode);
     await db.entities.Notification.create({
       title: "Offer redeemed",
       message: `You redeemed "${offer.title}" at ${offer.business_name}.`,
@@ -63,7 +71,7 @@ export default function OfferDetail() {
     db.integrations.Core.SendEmail({
       to: user.email,
       subject: "Your Nelvin offer is confirmed",
-      body: `Hi ${user.full_name || "there"},\n\nYou've successfully redeemed "${offer.title}" at ${offer.business_name}. Show this confirmation or your QR code in-store.\n\nHappy saving!\nThe Nelvin Team`,
+      body: `Hi ${user.full_name || "there"},\n\nYou've successfully redeemed "${offer.title}" at ${offer.business_name}.\n\nYour voucher code is ${voucherCode}. Show this code at the till.\n\nHappy saving!\nThe Nelvin Team`,
     });
     if (typeof window !== "undefined" && "Notification" in window) {
       if (window.Notification.permission === "granted") {
@@ -150,8 +158,16 @@ export default function OfferDetail() {
               </div>
             )}
             {redeemed ? (
-              <div className="mt-6 bg-[#1B4F9C] text-white rounded-full py-3 text-center font-semibold text-sm flex items-center justify-center gap-2">
-                <CheckCircle2 className="w-4 h-4" /> Redeemed!
+              <div className="mt-6 space-y-3">
+                <div className="bg-[#1B4F9C] text-white rounded-full py-3 text-center font-semibold text-sm flex items-center justify-center gap-2">
+                  <CheckCircle2 className="w-4 h-4" /> Redeemed!
+                </div>
+                {voucherCode && (
+                  <div className="bg-[#F9F8F7] ring-1 ring-[#F1F1F1] rounded-xl p-4 text-center">
+                    <p className="text-xs text-ivory-muted">Show this code at the till</p>
+                    <p className="font-mono font-bold text-xl tracking-widest text-[#282828] mt-1">{voucherCode}</p>
+                  </div>
+                )}
               </div>
             ) : (
               <button

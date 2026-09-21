@@ -62,6 +62,49 @@ function toLabel(entity) {
     .toLowerCase();
 }
 
+// Postgres tables are plural, the entity names are singular: `User` lives in
+// `users`, not `user`. Deriving the table with toLabel therefore pointed every
+// query at a table that does not exist, and the missing-table fallback quietly
+// served the demo seed instead — so real Supabase rows were never read.
+// Listed explicitly rather than pluralised with rules: the y -> ies cases
+// (company/category/country) are easy to get subtly wrong, and a wrong guess
+// here fails silently in exactly the same way.
+const TABLES = {
+  user: "users",
+  company: "companies",
+  offer: "offers",
+  category: "categories",
+  country: "countries",
+  membershipplan: "membership_plans",
+  employee: "employees",
+  department: "departments",
+  team: "teams",
+  location: "locations",
+  redemption: "redemptions",
+  favorite: "favorites",
+  review: "reviews",
+  notification: "notifications",
+  supportticket: "support_tickets",
+  payment: "payments",
+  auditlog: "audit_logs",
+  vendorapplication: "vendor_applications",
+  analyticsevent: "analytics_events",
+  benefit: "benefits",
+  allowance: "allowances",
+  claim: "claims",
+  platformsetting: "platform_settings",
+  promocode: "promo_codes",
+  campaign: "campaigns",
+};
+
+/**
+ * The Supabase/Postgres table backing an entity. Falls back to the naive
+ * singular name so an entity missing from TABLES is obvious rather than silent.
+ */
+function supabaseTable(entity) {
+  return TABLES[toLabel(entity).replace(/_/g, "")] || toLabel(entity);
+}
+
 function hydrateRow(row) {
   if (!row) return row;
   const out = { ...row };
@@ -156,7 +199,7 @@ function pickWritable(rows) {
 }
 
 function makeSupabaseEntity(entity) {
-  const table = toLabel(entity);
+  const table = supabaseTable(entity);
 
   async function doFilter(filters = {}, sort, limit) {
     const supabase = await getSupabase();
@@ -324,6 +367,7 @@ function makeSupabaseBackend() {
     "Employee", "Department", "Team", "Location", "Redemption", "Favorite",
     "Review", "Notification", "SupportTicket", "Payment", "AuditLog",
     "VendorApplication", "AnalyticsEvent", "Benefit", "Allowance", "Claim",
+    "PlatformSetting", "PromoCode", "Campaign",
   ];
   for (const name of ENTITIES) {
     entities[name] = makeSupabaseEntity(name);

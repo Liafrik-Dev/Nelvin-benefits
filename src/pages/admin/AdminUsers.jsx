@@ -1,9 +1,10 @@
 import { db } from "@/services/api/base44Client";
 
 import React, { useState, useEffect, useMemo, useCallback } from "react";
-
+import { useSearchParams } from "react-router-dom";
 import { useAuth } from "@/lib/AuthContext";
 import { formatDate, accountTypeOf, accountTypeLabel } from "@/lib/adminUtils";
+import { ROLE_OPTIONS, roleLabel } from "@/lib/roles";
 import AdminDataTable from "@/components/admin/AdminDataTable";
 import AdminEditModal from "@/components/admin/AdminEditModal";
 import StatusBadge from "@/components/admin/StatusBadge";
@@ -19,6 +20,7 @@ function RowIconBtn({ title, onClick, Icon, color = "text-ivory-muted hover:text
 
 export default function AdminUsers() {
   const { user: adminUser } = useAuth();
+  const [searchParams] = useSearchParams();
   const [data, setData] = useState([]);
   const [companies, setCompanies] = useState([]);
   const [plans, setPlans] = useState([]);
@@ -26,7 +28,8 @@ export default function AdminUsers() {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState({ key: "created_date", dir: "desc" });
   const [filterAccountType, setFilterAccountType] = useState("");
-  const [filterRole, setFilterRole] = useState("");
+  // Seeded from ?role= so the Roles page can deep-link into a filtered list.
+  const [filterRole, setFilterRole] = useState(() => searchParams.get("role") || "");
   const [filterStatus, setFilterStatus] = useState("");
   const [selected, setSelected] = useState(new Set());
   const [editing, setEditing] = useState(null);
@@ -105,7 +108,7 @@ export default function AdminUsers() {
     { key: "email", label: "Email", sortable: true,
       render: (u) => <span className="text-xs text-ivory-muted">{u.email}</span> },
     { key: "role", label: "Role", sortable: true,
-      render: (u) => <StatusBadge status={u.role} label={u.role} className="capitalize" /> },
+      render: (u) => <StatusBadge status={u.role} label={roleLabel(u.role)} /> },
     { key: "account_type", label: "Account", sortable: true,
       render: (u) => <StatusBadge status={accountTypeOf(u)} label={accountTypeLabel(u)} /> },
     { key: "plan_tier", label: "Membership", sortable: true,
@@ -125,14 +128,7 @@ export default function AdminUsers() {
     { key: "city", label: "City", type: "text" },
     { key: "photo_url", label: "Photo URL (or data URL)", type: "url", help: "Profile photo. JPG/PNG/WebP." },
     { key: "role", label: "Role", type: "select",
-      options: [
-        { value: "founder", label: "Founder" },
-        { value: "admin", label: "Admin" },
-        { value: "staff", label: "Staff" },
-        { value: "vendor", label: "Vendor" },
-        { value: "subscriber", label: "Subscriber" },
-        { value: "user", label: "User (legacy)" },
-      ] },
+      options: ROLE_OPTIONS },
     { key: "account_type", label: "Account Type", type: "select",
       options: [
         { value: "individual", label: "Individual" },
@@ -218,14 +214,7 @@ export default function AdminUsers() {
               { value: "business", label: "Business" },
             ] },
           { key: "role", label: "Role", value: filterRole, onChange: (e) => setFilterRole(e.target.value),
-            options: [
-              { value: "founder", label: "Founder" },
-              { value: "admin", label: "Admin" },
-              { value: "staff", label: "Staff" },
-              { value: "vendor", label: "Vendor" },
-              { value: "subscriber", label: "Subscriber" },
-              { value: "user", label: "User (legacy)" },
-            ] },
+            options: ROLE_OPTIONS },
           { key: "status", label: "Status", value: filterStatus, onChange: (e) => setFilterStatus(e.target.value),
             options: [
               { value: "active", label: "Active" },

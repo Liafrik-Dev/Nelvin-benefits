@@ -36,15 +36,15 @@ const NAV = [
   { label: "Categories", path: "/admin/categories", icon: LayoutDashboard },
   { label: "Countries", path: "/admin/countries", icon: Globe2 },
   { label: "Membership Plans", path: "/admin/membership-plans", icon: Crown },
-  { label: "Reviews", path: "/admin/reviews", icon: Star, phase: "Phase 2" },
-  { label: "Notifications", path: "/admin/notifications", icon: Bell, phase: "Phase 2" },
+  { label: "Reviews", path: "/admin/reviews", icon: Star },
+  { label: "Notifications", path: "/admin/notifications", icon: Bell },
   { label: "Payments", path: "/admin/payments", icon: CreditCard },
-  { label: "Support Tickets", path: "/admin/support", icon: LifeBuoy, phase: "Phase 2" },
-  { label: "Analytics", path: "/admin/analytics", icon: BarChart3, phase: "Phase 3" },
+  { label: "Support Tickets", path: "/admin/support", icon: LifeBuoy },
+  { label: "Analytics", path: "/admin/analytics", icon: BarChart3 },
   { label: "Settings", path: "/admin/settings", icon: Settings },
-  { label: "Admin Roles & Permissions", path: "/admin/roles", icon: ShieldCheck, phase: "Phase 3" },
-  { label: "Audit Logs", path: "/admin/audit-logs", icon: ScrollText, phase: "Phase 3" },
-  { label: "Backups", path: "/admin/backups", icon: DatabaseBackup, phase: "Phase 3" },
+  { label: "Admin Roles & Permissions", path: "/admin/roles", icon: ShieldCheck },
+  { label: "Audit Logs", path: "/admin/audit-logs", icon: ScrollText },
+  { label: "Backups", path: "/admin/backups", icon: DatabaseBackup },
 ];
 
 function adminAllowed(user) {
@@ -112,11 +112,6 @@ export default function AdminLayout() {
                 <item.icon className="w-4 h-4" />
                 {item.label}
               </span>
-              {item.phase && (
-                <span className="text-[10px] uppercase tracking-wide text-ivory-dim bg-[#F9F8F7] px-1.5 py-0.5 rounded">
-                  {item.phase}
-                </span>
-              )}
             </NavLink>
           ))}
         </nav>

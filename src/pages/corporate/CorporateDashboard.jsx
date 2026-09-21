@@ -60,6 +60,12 @@ const TABS = [
   { id: "roles", label: "Roles & Permissions", icon: Shield },
 ];
 
+function corporateAllowed(user) {
+  const r = (user?.role || "").toLowerCase();
+  return r === "hr_admin" || r === "corporate" || r === "admin" || r === "founder";
+}
+
+
 export default function CorporateDashboard() {
   const { user, isAuthenticated, isLoadingAuth, logout, checkUserAuth } = useAuth();
   const navigate = useNavigate();
@@ -95,6 +101,28 @@ export default function CorporateDashboard() {
 
   if (isLoadingAuth) return <div className="min-h-screen bg-[#F9F8F7]" />;
   if (!isAuthenticated) return <Navigate to={loginUrlWithReturnTo()} replace />;
+
+  // Without this the page fell through to the "No company linked yet" panel for
+  // any signed-in visitor, so a subscriber who deep-linked here was told to sign
+  // their company up instead of being sent back. Same roles as canAccessPath()
+  // and the other portal guards.
+  if (!corporateAllowed(user)) {
+    return (
+      <div className="min-h-screen bg-[#F9F8F7] flex items-center justify-center px-4">
+        <div className="max-w-md text-center bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-8 shadow-sm">
+          <Building2 className="w-10 h-10 text-[#1B4F9C] mx-auto mb-4" />
+          <h1 className="text-xl font-bold text-ivory">Corporate access required</h1>
+          <p className="text-sm text-ivory-muted mt-2 mb-6">
+            This portal is for company accounts. Sign in with your work email, or ask your HR admin for an invitation.
+          </p>
+          <div className="flex items-center justify-center gap-3">
+            <Link to="/corporate" className="text-sm font-semibold text-[#1B4F9C]">Learn about corporate plans</Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (loading) return (
     <div className="min-h-screen bg-[#F9F8F7] flex items-center justify-center">
       <div className="w-8 h-8 border-4 border-[#F1F1F1] border-t-[#1B4F9C] rounded-full animate-spin" />

@@ -110,7 +110,11 @@ check("auth.isAuthenticated initial false", (await db.auth.isAuthenticated()) ==
 // Create the demo account through the real registration path first. The store
 // no longer ships with a pre-seeded user, so logging in against a hard-coded
 // one failed with a 401 and took the whole suite down with it.
-const demoEmail = "admin@nelvinbenefits.com";
+//
+// The address must not collide with the seeded demo accounts
+// (`admin@nelvinbenefits.com` and friends): registration then fails with
+// "An account already exists for this email" before any assertion runs.
+const demoEmail = "smoke.runner@example.com";
 const demoPassword = "demo123";
 await db.auth.register({ email: demoEmail, password: demoPassword, role: "subscriber" });
 await db.auth.logout();
