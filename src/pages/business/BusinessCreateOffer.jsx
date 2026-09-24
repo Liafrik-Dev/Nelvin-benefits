@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { db } from "@/services/api/base44Client";
+import { db } from "@/services/api/dataClient";
 import { useAuth } from "@/lib/AuthContext";
 import OfferCard from "@/components/nelvin/OfferCard";
 import { Tag, Plus, CheckCircle2 } from "lucide-react";

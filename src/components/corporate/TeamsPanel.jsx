@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { db } from "@/services/api/base44Client";
+import { db } from "@/services/api/dataClient";
 import { Users, Plus, Edit, Trash2, Search, CheckCircle } from "lucide-react";
 
 export default function TeamsPanel({ company }) {

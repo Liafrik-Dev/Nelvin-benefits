@@ -22,7 +22,7 @@ Ce document recense les points à traiter lors des prochaines itérations. Rien 
 
 ## 3. Fallback Base44 read-only
 
-- Le fallback en mémoire (`src/services/api/base44Client.js`) rend l'UI renderable hors Base44 mais renvoie des données vides→ ne pas l'utiliser pour valider le métier..
+- Le fallback en mémoire (`src/services/api/dataClient.js`) rend l'UI renderable hors Base44 mais renvoie des données vides→ ne pas l'utiliser pour valider le métier..
 - À remplacer par un adapter Supabase/PostgreSQL/API propriétaire lors de la migration(BASE44_DEPENDENCIES.md**.
 
 

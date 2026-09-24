@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { db } from "@/services/api/base44Client";
+import { db } from "@/services/api/dataClient";
 import { useAuth } from "@/lib/AuthContext";
 
 // Resolves which business record the signed-in partner owns.

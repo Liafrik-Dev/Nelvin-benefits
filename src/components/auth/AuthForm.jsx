@@ -1,4 +1,4 @@
-import { db, demoAccounts } from "@/services/api/base44Client";
+import { db, demoAccounts } from "@/services/api/dataClient";
 
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -100,7 +100,14 @@ export default function AuthForm({ mode = "login" }) {
   const handleProvider = (provider) => {
     setServerError("");
     try {
-      db.auth.loginWithProvider(provider, resolvePostAuthPath());
+      // A visitor who followed a deep link (e.g. "Subscribe" on an offer page)
+      // before being asked to sign in has a `?returnTo=` on this page. The
+      // email/password path honours it via destinationForRole(); social login
+      // was always sending everyone to resolvePostAuthPath() (dashboard/
+      // checkout) instead, silently dropping them back on the wrong page after
+      // a Google/Apple sign-in. Role-based access is rechecked once the
+      // session is live (destinationForRole runs again in the effect below).
+      db.auth.loginWithProvider(provider, requestedReturnTo() || resolvePostAuthPath());
     } catch (err) {
       setServerError(`${provider === "apple" ? "Apple" : "Google"} sign-in failed — ${err.message || "try again"}`);
     }

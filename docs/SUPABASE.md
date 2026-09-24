@@ -22,7 +22,7 @@ VITE_SUPABASE_URL=https://xxxxxxxx.supabase.co
 VITE_SUPABASE_ANON_KEY=eyJhbGciOi...
 ```
 
-> Quand ces deux variables sont présentes, `src/services/api/base44Client.js`
+> Quand ces deux variables sont présentes, `src/services/api/dataClient.js`
 > bascule automatiquement sur le backend Supabase (l'ensemble des méthodes
 > `db.entities.*`, `db.auth.*` et `db.integrations.*` est mappé sur PostgREST/Auth/Storage).
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { db } from "@/services/api/base44Client";
+import { db } from "@/services/api/dataClient";
 import { MapPin, Plus, Building2 } from "lucide-react";
 
 export default function LocationsPanel({ company }) {

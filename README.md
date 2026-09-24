@@ -9,7 +9,7 @@
 | Frontend | React 19 + Vite 7 |
 | Styling | Tailwind CSS + design tokens centralisés |
 | Routing | React Router v7 (routes publiques, subscriber, corporate, vendor, admin) |
-| Data / Auth | Base44 SDK ( DB + auth + integraciones) — abstraction dans `src/services/api/base44Client.js` |
+| Data / Auth | Base44 SDK ( DB + auth + integraciones) — abstraction dans `src/services/api/dataClient.js` |
 | Mise en cache | TanStack Query (`src/lib/query-client.js`) |
 | UI kit | Radix UI + lucide-react + shadcn-style components |
 | i18n | Système léger maison (`@/lib/i18n`) — **fr, en, de, es, sw, ig, yo** |
@@ -103,7 +103,7 @@ Voir `docs/ARCHITECTURE.md`.
 
 ## Dépendances Base44
 
-Le frontend ne dépend pas directement du runtime Base44**: tout passe par `src/services/api/base44Client.js` (singleton `db`**), ce qui permet de remplacer Base44 plus tard par Supabase/PostgreSQL/API propriétaire sans toucher aux pages. Voir `docs/BASE44_DEPENDENCIES.md`.
+Le frontend ne dépend pas directement du runtime Base44**: tout passe par `src/services/api/dataClient.js` (singleton `db`**), ce qui permet de remplacer Base44 plus tard par Supabase/PostgreSQL/API propriétaire sans toucher aux pages. Voir `docs/BASE44_DEPENDENCIES.md`.
 
 ---
 

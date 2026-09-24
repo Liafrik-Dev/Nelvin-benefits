@@ -4,7 +4,7 @@
 // never fail the operation that triggered them — the user's save already
 // succeeded — so every failure is swallowed here rather than at each call site.
 
-import { db } from "@/services/api/base44Client";
+import { db } from "@/services/api/dataClient";
 
 /**
  * Record one admin/staff action.

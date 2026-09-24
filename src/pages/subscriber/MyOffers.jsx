@@ -1,4 +1,4 @@
-import { db } from "@/services/api/base44Client";
+import { db } from "@/services/api/dataClient";
 
 import React, { useState, useEffect } from "react";
 import { Tag, MapPin } from "lucide-react";

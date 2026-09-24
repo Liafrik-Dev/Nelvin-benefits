@@ -12,7 +12,7 @@
 
 ## Backend
 
-La couche données (`src/services/api/base44Client.js`) choisit le backend dans cet ordre :
+La couche données (`src/services/api/dataClient.js`) choisit le backend dans cet ordre :
 
 1. **Supabase** — dès que `VITE_SUPABASE_URL` et `VITE_SUPABASE_ANON_KEY` sont renseignés
    (auth + PostgreSQL + Storage). C'est le backend de production recommandé.

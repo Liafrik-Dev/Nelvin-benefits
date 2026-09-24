@@ -1,4 +1,4 @@
-import { db } from "@/services/api/base44Client";
+import { db } from "@/services/api/dataClient";
 
 import React, { useState } from "react";
 import { UploadCloud, CheckCircle2, Loader2 } from "lucide-react";

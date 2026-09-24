@@ -1136,8 +1136,6 @@ function resolveBackend() {
 /** The active database client (Supabase when configured, else Base44 host SDK, else local). */
 export const db = resolveBackend();
 
-/** Alias kept for backwards compatibility with code that named the import `base44`. */
-export const base44 = db;
 
 /** True when the app is backed by a real Supabase project. */
 export const isSupabaseBackend = () => hasSupabaseConfig();

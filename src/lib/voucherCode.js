@@ -3,7 +3,7 @@
 // Format matches the NV-#### shape the UI already used in its placeholders, so
 // existing copy and screenshots stay accurate. The random source prefers
 // crypto.getRandomValues and falls back to Math.random in locked-down
-// environments (same trade-off as the session-id helper in base44Client).
+// environments (same trade-off as the session-id helper in dataClient).
 
 const ALPHABET = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ"; // no 0/O/1/I — read aloud at a till
 

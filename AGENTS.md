@@ -6,7 +6,7 @@ Vite + React SPA for an employee-benefits platform. Public landing page under
 `src/components/nelvin/`, authenticated portals (subscriber / HR / partner) under
 `src/pages/` and `src/components/{admin,business,corporate}/`.
 
-`src/services/api/base44Client.js` is the single data adapter. It has three
+`src/services/api/dataClient.js` is the single data adapter. It has three
 backends, chosen at runtime:
 
 1. Supabase, when configured in `.env`.

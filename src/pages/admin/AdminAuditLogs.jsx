@@ -1,4 +1,4 @@
-import { db } from "@/services/api/base44Client";
+import { db } from "@/services/api/dataClient";
 
 import React, { useState, useEffect, useCallback } from "react";
 import { ScrollText, Loader2, RefreshCw } from "lucide-react";

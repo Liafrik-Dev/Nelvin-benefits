@@ -2,7 +2,7 @@
 
 ## Vue d'ensemble
 
-Application **SPA Vite + React 19** hébergée statiquement. Le backend et l'authentification sont assurés par la plateforme **Base44** (base de données + auth + intégraciones), consommée uniquement à travers l'abstraction `src/services/api/base44Client.js`.
+Application **SPA Vite + React 19** hébergée statiquement. Le backend et l'authentification sont assurés par la plateforme **Base44** (base de données + auth + intégraciones), consommée uniquement à travers l'abstraction `src/services/api/dataClient.js`.
 
 ## Arborescence src
 
@@ -31,7 +31,7 @@ src/
 ├── features/           → logique métier par domaine (auth, users, companies, offers, memberships, payments, redemptions, reviews, notifications, support, analytics)
 ├── hooks/              → hooks React réutilisables
 ├── services/
-│   ├── api/            → base44Client (SEUL point d'accès Base44)
+│   ├── api/            → dataClient (SEUL point d'accès Base44)
 │   ├── auth/          → logique d'authentification
 │   ├── payments/      → logique de paiement
 │   └── storage/       → persistance locale
@@ -71,7 +71,7 @@ Les protections sont appliquées côté frontend (routes par rôle**; la sécuri
 
 1. Legacy(Base44 host): le runtime injecte `globalThis.__B44_DB__` avant le boot du bundle.
 2. `src/lib/app-params.js` lit/bootstrap les paramètres Base44.
-3. Tous les composants utilisent `import { db } from "@/services/api/base44Client"` (jamais la globale directement**.
+3. Tous les composants utilisent `import { db } from "@/services/api/dataClient"` (jamais la globale directement**.
 4. Hors Base44, un fallback read-only en mémoire rend l'UI renderable.
 
 ## i18n
@@ -83,7 +83,7 @@ Les protections sont appliquées côté frontend (routes par rôle**; la sécuri
 
 ## Décisions remarquables
 
-- **Seam Base44 unique**: `src/services/api/base44Client.js` — tout le frontend passe par `db`; future migration Supabase/PostgreSQL = remplacer ce fichier uniquement.
+- **Seam Base44 unique**: `src/services/api/dataClient.js` — tout le frontend passe par `db`; future migration Supabase/PostgreSQL = remplacer ce fichier uniquement.
 
 - **Contenu données non-i18n volontairement**: les noms de catégories servent de clés de filtrage pour les offres Base44 (`o.category === activeName`); les traduire casserait le filtrage. Le contenu administratif/métier (offres, plans) reste dans sa langue source.
 

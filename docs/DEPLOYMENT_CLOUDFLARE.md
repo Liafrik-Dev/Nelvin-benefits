@@ -94,7 +94,7 @@ Puis dans Pages: **Create project → connecter le repo GitHub → branche `main
 
 ## Etapes futures possibles (hors scope
 
-- Migrer le backend vers Cloudflare Workers (Hono/Fresh…) + D1/Postgres/KV/R2 tout en gardant `src/services/api/base44Client.js` comme seule interface à réécrire.
+- Migrer le backend vers Cloudflare Workers (Hono/Fresh…) + D1/Postgres/KV/R2 tout en gardant `src/services/api/dataClient.js` comme seule interface à réécrire.
 
 - Cloudflare Access pour protéger les routes admin réellement.
 

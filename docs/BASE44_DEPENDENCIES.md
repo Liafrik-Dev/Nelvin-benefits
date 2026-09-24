@@ -9,7 +9,7 @@ Nelvin Benefits est hébergé sur la plateforme **Base44** et l'en consomme pour
 Tout l'accès passe par:
 
 ```
-src/services/api/base44Client.js
+src/services/api/dataClient.js
 ```
 
 Ce module:
@@ -29,7 +29,7 @@ Ce module:
 
 .
 
-**Règle d'or**: aucun composant, page, hook ni feature ne doit importer `globalThis.__B44_DB__` directement. Importer `db` depuis `@/services/api/base44Client`.
+**Règle d'or**: aucun composant, page, hook ni feature ne doit importer `globalThis.__B44_DB__` directement. Importer `db` depuis `@/services/api/dataClient`.
 
 ## Surface utilisée
 
@@ -62,7 +62,7 @@ Les imports concrets se trouvent principalement dans `src/services/`, `src/featu
 
 | Item | Statut |
 |---|---|
-| Abstraction centralisée | ✅ `src/services/api/base44Client.js` |
+| Abstraction centralisée | ✅ `src/services/api/dataClient.js` |
 | Interdiction d'accès direct à la globale | ✅ (documentée dans le module) |
 | Migration API par domaine | 🟡 À compléter |
 | Composants restants import de `db` | 🟡 (`FeaturedDeals.jsx` etc.) |
