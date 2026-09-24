@@ -337,7 +337,31 @@ async function supabaseSyncProfile() {
         .select("*")
         .eq("id", user.id)
         .maybeSingle();
-      return hydrateRow(fetched);
+      if (fetched) return hydrateRow(fetched);
+      // The Supabase Auth session is real (`user` above is truthy) — the
+      // failure is purely in our own `users` table (RLS policy, missing
+      // table/columns, network hiccup…). Returning null here used to make
+      // this indistinguishable from "not signed in": checkUserAuth() treats
+      // a null result as a normal signed-out state, so a visitor who typed
+      // the right password was silently bounced straight back to /login
+      // right after a successful sign-in, with no error ever surfaced.
+      // Synthesize a minimal profile from the auth user instead, so a
+      // genuinely authenticated visitor gets into the app; the real cause
+      // is still visible in the console for whoever configured the backend.
+      console.error(
+        "Signed in but the users-table profile could not be read or created — " +
+          "check RLS policies / table schema. Falling back to a minimal profile."
+      );
+      return {
+        id: user.id,
+        email,
+        full_name: name,
+        ...names,
+        role: fallbackRole,
+        account_type: fallbackRole === "business" ? "business" : fallbackRole === "hr_admin" ? "corporate" : "individual",
+        membership_status: "active",
+        membership_tier: "Free",
+      };
     }
     return hydrateRow(inserted);
   }
