@@ -32,7 +32,7 @@ export default function EmployeeNav() {
   const location = useLocation();
 
   return (
-    <div className="bg-emerald-black border-b border-[#F1F1F1] shadow-sm sticky top-[72px] z-30">
+    <div className="bg-emerald-black border-b border-[#F1F1F1] shadow-sm sticky top-16 lg:top-20 z-30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
         <div className="flex items-center gap-1 overflow-x-auto py-2.5 scrollbar-hide flex-1">
           {EMPLOYEE_NAV_ITEMS.map((item) => {
