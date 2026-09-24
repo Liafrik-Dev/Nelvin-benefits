@@ -17,9 +17,9 @@ const LOGO_SRC = "/images/brand/nelvin-logo-horizontal.png";
 const LOGO_ASPECT = 2143 / 684; // width / height of the source artwork
 
 const SIZES = {
-  sm: { tile: "h-8 w-8", wordH: "h-6", tag: "text-[9px]" },
-  md: { tile: "h-10 w-10", wordH: "h-8", tag: "text-[10px]" },
-  lg: { tile: "h-12 w-12", wordH: "h-10", tag: "text-[11px]" },
+  sm: { tile: "h-8 w-8", wordH: "h-9", tag: "text-[9px]" },
+  md: { tile: "h-10 w-10", wordH: "h-12", tag: "text-[10px]" },
+  lg: { tile: "h-12 w-12", wordH: "h-16", tag: "text-[11px]" },
 };
 
 /** Square icon mark — used in nav collapsed states, avatars, app chrome. */

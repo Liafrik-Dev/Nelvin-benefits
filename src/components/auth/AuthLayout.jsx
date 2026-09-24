@@ -71,7 +71,7 @@ export default function AuthLayout({
         />
 
         <div className="relative z-10 flex w-full flex-col justify-between p-10 xl:p-14">
-          <BrandLogo size="md" tagline="Perks for Everyone" tone="inverse" />
+          <BrandLogo size="lg" tone="inverse" />
 
           <div>
             <h2 className="font-heading text-3xl font-black leading-tight tracking-tight text-white xl:text-4xl">
@@ -111,7 +111,7 @@ export default function AuthLayout({
         <header className="sticky top-0 z-50 border-b border-[#F1F1F1] bg-[#FFFFFF]/90 backdrop-blur-md">
           <div className="flex h-16 items-center justify-between gap-4 px-5 sm:px-8">
             <div className="lg:hidden">
-              <BrandLogo size="sm" tagline="Perks for Everyone" />
+              <BrandLogo size="md" />
             </div>
             {/* The brand panel already carries the wordmark on desktop. */}
             <nav className="hidden items-center gap-7 text-sm font-semibold text-[#484848] lg:flex">

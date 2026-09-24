@@ -138,7 +138,7 @@ export default function Navbar() {
         <div className="container-nv">
           <div className="flex h-16 items-center gap-3 lg:h-20 lg:gap-6">
             {/* Brand */}
-            <BrandLogo size="sm" tagline="Perks for Everyone" className="shrink-0" />
+            <BrandLogo size="md" className="shrink-0" />
 
             {/* Primary navigation — mirrors the reference's flat link row */}
             <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Main">
