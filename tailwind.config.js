@@ -32,6 +32,8 @@ export default {
         ivory: {
           DEFAULT: "#282828",
           warm: "#282828",
+          muted: "#484848",
+          dim: "#737373",
         },
         corporate: {
           DEFAULT: "#0866FF",

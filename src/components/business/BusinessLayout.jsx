@@ -64,9 +64,7 @@ export default function BusinessLayout() {
       >
         <div className="h-16 px-5 flex items-center justify-between border-b border-[#F1F1F1]">
           <Link to="/business" className="flex items-center gap-2" onClick={() => setSidebarOpen(false)}>
-            <div className="w-8 h-8 bg-[#1B4F9C] rounded-lg flex items-center justify-center">
-              <span className="text-[#282828] font-bold text-sm">N</span>
-            </div>
+            <img src="/images/brand/nelvin-icon.png" alt="" aria-hidden="true" className="w-8 h-8 object-contain" />
             <div className="leading-tight">
               <span className="font-bold font-heading block">Nelvin Business</span>
               <span className="text-[10px] text-[#737373]">Partner Hub</span>

@@ -84,9 +84,7 @@ export default function AdminLayout() {
       >
         <div className="h-16 px-5 flex items-center justify-between border-b border-[#F1F1F1]">
           <Link to="/admin" className="flex items-center gap-2" onClick={() => setSidebarOpen(false)}>
-            <div className="w-8 h-8 bg-[#FFFFFF] rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">N</span>
-            </div>
+            <img src="/images/brand/nelvin-icon.png" alt="" aria-hidden="true" className="w-8 h-8 object-contain" />
             <span className="font-bold text-ivory font-heading">Nelvin Admin</span>
           </Link>
           <button className="lg:hidden text-ivory-dim" onClick={() => setSidebarOpen(false)}>

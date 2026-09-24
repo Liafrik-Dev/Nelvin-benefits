@@ -4,36 +4,38 @@ import { Link } from "react-router-dom";
 /**
  * Brand primitives shared by the public surfaces.
  *
- * The NelvinBenefit wordmark renders in brand gold everywhere it appears,
- * in the two shades that keep it legible on light and on blue surfaces.
+ * Renders the real NelvinBenefits artwork: a square icon mark
+ * (public/images/brand/nelvin-icon.png) for compact spots, and the full
+ * horizontal lockup (public/images/brand/nelvin-logo-horizontal.png,
+ * icon + wordmark baked into one image) everywhere the full logo is shown.
+ * Both are transparent gold-on-white and read fine on light or on the
+ * brand-blue surfaces, so `tone` no longer needs to swap artwork.
  */
 
+const ICON_SRC = "/images/brand/nelvin-icon.png";
+const LOGO_SRC = "/images/brand/nelvin-logo-horizontal.png";
+const LOGO_ASPECT = 2143 / 684; // width / height of the source artwork
+
 const SIZES = {
-  sm: { tile: "h-8 w-8", letter: "text-sm", word: "text-lg", tag: "text-[9px]" },
-  md: { tile: "h-10 w-10", letter: "text-lg", word: "text-2xl", tag: "text-[10px]" },
-  lg: { tile: "h-12 w-12", letter: "text-xl", word: "text-3xl", tag: "text-[11px]" },
+  sm: { tile: "h-8 w-8", wordH: "h-6", tag: "text-[9px]" },
+  md: { tile: "h-10 w-10", wordH: "h-8", tag: "text-[10px]" },
+  lg: { tile: "h-12 w-12", wordH: "h-10", tag: "text-[11px]" },
 };
 
-/** Gold monogram tile — the compact mark used in nav, footer and app chrome. */
+/** Square icon mark — used in nav collapsed states, avatars, app chrome. */
 export function BrandMark({ size = "md", tone = "default", className = "" }) {
   const s = SIZES[size] || SIZES.md;
-  const inverse = tone === "inverse";
   return (
-    <span
-      className={`${s.tile} shrink-0 rounded-xl ${
-        inverse ? "bg-white ring-white/40" : "bg-gradient-to-br from-[#1B4F9C] to-[#123A78] ring-[#1B4F9C]/25"
-      } flex items-center justify-center shadow-nv-card ring-1 ${className}`}
+    <img
+      src={ICON_SRC}
+      alt=""
       aria-hidden="true"
-    >
-      <span className={`${s.letter} font-black tracking-tighter nb-wordmark ${inverse ? "text-[#1B4F9C]" : "text-white"}`}>N</span>
-    </span>
+      className={`${s.tile} shrink-0 object-contain ${className}`}
+    />
   );
 }
 
-/**
- * Full wordmark. `NelvinBenefit` reads as one gold unit; the tagline is
- * optional so the same component works in the header and the footer.
- */
+/** The full "icon + NelvinBenefits" wordmark image, with an optional tagline. */
 export function BrandWordmark({
   size = "md",
   tagline = null,
@@ -45,9 +47,12 @@ export function BrandWordmark({
   const s = SIZES[size] || SIZES.md;
   return (
     <Tag className={`flex flex-col ${className}`} {...rest}>
-      <span className={`${s.word} nb-wordmark ${tone === "inverse" ? "text-brand-gold" : "text-gold-gradient"}`}>
-        NelvinBenefit
-      </span>
+      <img
+        src={LOGO_SRC}
+        alt="NelvinBenefits"
+        className={`${s.wordH} object-contain object-left`}
+        style={{ width: "auto", aspectRatio: LOGO_ASPECT }}
+      />
       {tagline ? (
         <span className={`${s.tag} mt-0.5 font-bold uppercase tracking-[0.18em] ${tone === "inverse" ? "text-white" : "text-[#484848]"}`}>
           {tagline}
@@ -70,11 +75,10 @@ export function BrandLogo({
     <Link
       to={to}
       onClick={onClick}
-      aria-label="NelvinBenefit — home"
+      aria-label="NelvinBenefits — home"
       className={`group flex items-center gap-2.5 ${className}`}
     >
-      <BrandMark size={size} tone={tone} className="transition-transform duration-200 group-hover:scale-105" />
-      <BrandWordmark size={size} tagline={tagline} tone={tone} />
+      <BrandWordmark size={size} tagline={tagline} tone={tone} className="transition-transform duration-200 group-hover:scale-105" />
     </Link>
   );
 }
