@@ -43,21 +43,41 @@ export default function OfferDetail() {
       return;
     }
     const voucherCode = makeVoucherCode();
-    await db.entities.Redemption.create({
-      offer_id: offer.id,
-      offer_title: offer.title,
-      business_name: offer.business_name,
-      business_id: offer.business_id || "",
-      savings_amount: offer.savings_amount || 0,
-      country: offer.country,
-      user_id: user.id,
-      company_id: user.company_id || "",
-      // Without a code the confirmation told members to "show your QR code
-      // in-store" while there was nothing for the merchant to scan or type.
-      redemption_code: voucherCode,
-      code_used: false,
-      status: "issued",
-    });
+    try {
+      await db.entities.Redemption.create({
+        offer_id: offer.id,
+        offer_title: offer.title,
+        business_name: offer.business_name,
+        business_id: offer.business_id || "",
+        savings_amount: offer.savings_amount || 0,
+        country: offer.country,
+        user_id: user.id,
+        company_id: user.company_id || "",
+        // Without a code the confirmation told members to "show your QR code
+        // in-store" while there was nothing for the merchant to scan or type.
+        redemption_code: voucherCode,
+        code_used: false,
+        status: "issued",
+      });
+    } catch (err) {
+      setRedeeming(false);
+      const isFreeIndividual = !user.company_id && (!user.membership_tier || user.membership_tier.toLowerCase() === "free");
+      if (isFreeIndividual) {
+        toast({
+          title: "Upgrade required",
+          description: "This offer is for paying members. Upgrade your plan to redeem it.",
+          variant: "destructive",
+        });
+        navigate("/choose-plan");
+      } else {
+        toast({
+          title: "Couldn't redeem this offer",
+          description: "It may be expired, no longer available, or you've already redeemed it.",
+          variant: "destructive",
+        });
+      }
+      return;
+    }
     setVoucherCode(voucherCode);
     await db.entities.Notification.create({
       title: "Offer redeemed",
