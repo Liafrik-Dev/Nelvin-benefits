@@ -42,9 +42,9 @@ const LEISURE_PHOTOS = [
 ];
 
 const TRUST = [
-  { icon: ShieldCheck, label: "Enterprise ISO security" },
-  { icon: TrendingUp, label: "20K+ vetted merchant partners" },
-  { icon: Sparkles, label: "500K+ active perks" },
+  { icon: ShieldCheck, label: "Bank-grade data isolation" },
+  { icon: TrendingUp, label: "Merchant vetting on every listing" },
+  { icon: Sparkles, label: "Built to scale across Africa" },
 ];
 
 export default function HeroSection() {
@@ -282,23 +282,9 @@ export default function HeroSection() {
                     {activePhoto.discount}
                   </p>
                 </div>
-                <div className="flex shrink-0 -space-x-2">
-                  {[
-                    "https://randomuser.me/api/portraits/women/44.jpg",
-                    "https://randomuser.me/api/portraits/men/32.jpg",
-                    "https://randomuser.me/api/portraits/women/68.jpg",
-                  ].map((u) => (
-                    <img
-                      key={u}
-                      src={u}
-                      alt=""
-                      loading="lazy"
-                      className="h-8 w-8 rounded-full border-2 border-[#F1F1F1] object-cover"
-                    />
-                  ))}
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#F1F1F1] bg-gold text-[10px] font-black text-white">
-                    50K
-                  </span>
+                <div className="flex shrink-0 items-center gap-2 rounded-full border border-[#F1F1F1] bg-white px-3 py-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+                  <span className="text-[10px] font-black text-ivory">New offers added weekly</span>
                 </div>
               </div>
             </div>

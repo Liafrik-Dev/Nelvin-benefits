@@ -10,8 +10,10 @@ const PHOTOS = [
   { src: "/images/benifex/africa/kenya.jpg", label: "Nairobi, Kenya" },
   { src: "/images/benifex/africa/morocco.jpg", label: "Marrakech, Morocco" },
   { src: "/images/benifex/africa/egypt.jpg", label: "Cairo, Egypt" },
-  { src: "/images/benifex/africa/south-africa.jpg", label: "Cape Town, South Africa" },
+  { src: "/images/benifex/africa/south-africa.jpg", label: "Cape Town, South Africa", tall: true },
   { src: "/images/benifex/africa/tanzania.jpg", label: "Zanzibar, Tanzania" },
+  { src: "/images/benifex/africa/ghana.jpg", label: "Accra, Ghana" },
+  { src: "/images/benifex/africa/rwanda.jpg", label: "Kigali, Rwanda" },
 ];
 
 const COUNTRIES = ["Nigeria", "Kenya", "Egypt", "Morocco", "South Africa", "Ghana", "Tanzania", "Rwanda"];
@@ -98,26 +100,13 @@ export default function AfricaMena() {
             ))}
           </div>
 
-          <blockquote className="mt-6 rounded-2xl border border-[#F1F1F1] bg-[#FFFFFF] p-6 shadow-nv-card">
+          <div className="mt-6 rounded-2xl border border-[#F1F1F1] bg-[#FFFFFF] p-6 shadow-nv-card">
             <Quote className="h-7 w-7 text-gold" />
-            <p className="mt-3 text-sm italic leading-relaxed text-ivory-muted">
-              "Nelvin let us roll out benefits in 12 African markets in six weeks —
-              localised payments, currencies and deals — something our old provider
-              couldn't do in two years."
+            <p className="mt-3 text-sm font-bold leading-relaxed text-ivory">
+              One platform, one integration, built to work the same way in every
+              market we launch — local currencies, local merchants, local languages.
             </p>
-            <footer className="mt-5 flex items-center gap-3">
-              <img
-                src="https://randomuser.me/api/portraits/women/65.jpg"
-                alt=""
-                loading="lazy"
-                className="h-10 w-10 rounded-full object-cover ring-2 ring-gold"
-              />
-              <div>
-                <p className="text-xs font-extrabold text-[#282828]">Amina Okafor</p>
-                <p className="text-[10px] text-ivory-dim">Head of Total Rewards, Pan-African Bank</p>
-              </div>
-            </footer>
-          </blockquote>
+          </div>
         </div>
       </div>
     </section>

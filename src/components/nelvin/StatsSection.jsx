@@ -1,12 +1,24 @@
 import React from "react";
-import { Star, Quote } from "lucide-react";
+import { ShieldCheck, Globe2, Users2, Layers } from "lucide-react";
 import { SectionHeading } from "@/components/nelvin/Brand";
-import { LANDING_STATS } from "@/lib/landingData";
 
 /**
- * Proof band — measured stats on one side, a real photograph carrying a
- * pull-quote on the other, matching the reference's split proof section.
+ * Proof band. The stats here used to be traction numbers — "500K+ exclusive
+ * offers", "20K+ partner brands", "4.8/5 average rating" — plus an anonymous
+ * 5-star quote over a randomuser.me stock photo. The database has zero
+ * offers, zero approved businesses and zero reviews today (pre-launch), so
+ * every one of those was fabricated. Reframed as what's actually true right
+ * now: platform capability and coverage design, not invented usage numbers.
+ * Swap this back to real, measured stats once there's real traffic to
+ * report.
  */
+const CAPABILITIES = [
+  { icon: Globe2, value: "54", label: "African countries supported" },
+  { icon: Layers, value: "18", label: "Discount categories live" },
+  { icon: Users2, value: "4", label: "Tailored account types" },
+  { icon: ShieldCheck, value: "100%", label: "Tenant-isolated by design" },
+];
+
 export default function StatsSection() {
   return (
     <section className="surface-nv-raised section-nv relative overflow-hidden">
@@ -19,13 +31,13 @@ export default function StatsSection() {
         <div>
           <SectionHeading
             align="left"
-            eyebrow="The numbers"
-            title={<>Trusted by HR teams and loved by members.</>}
+            eyebrow="Built for scale"
+            title={<>Designed for HR teams, ready for members.</>}
             className="max-w-lg"
           />
 
           <div className="mt-10 grid grid-cols-2 gap-4">
-            {LANDING_STATS.map((s) => (
+            {CAPABILITIES.map((s) => (
               <div
                 key={s.label}
                 className="rounded-xl border border-[#F1F1F1] bg-[#F9F8F7] p-5 backdrop-blur"
@@ -36,43 +48,29 @@ export default function StatsSection() {
             ))}
           </div>
 
-          <div className="mt-10 flex items-center gap-4">
-            <img
-              src="https://randomuser.me/api/portraits/women/79.jpg"
-              alt=""
-              loading="lazy"
-              className="h-12 w-12 rounded-full object-cover ring-2 ring-gold"
-            />
-            <div>
-              <div className="flex items-center gap-1" aria-label="Rated 5 out of 5">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-3.5 w-3.5 fill-[#1B4F9C] text-[#1B4F9C]" />
-                ))}
-              </div>
-              <p className="mt-1 max-w-xs text-[11px] text-ivory-muted">
-                "The easiest rollout we've ever done — our members adopted it in days, not months."
-              </p>
-            </div>
-          </div>
+          <p className="mt-8 max-w-md text-sm leading-relaxed text-ivory-muted">
+            Nelvin is onboarding its first merchant partners now — every listing is
+            vetted before it goes live, so members only ever see real, working deals.
+          </p>
         </div>
 
         <div className="relative h-96 overflow-hidden rounded-2xl shadow-nv-card ring-1 ring-[#F1F1F1] lg:h-[32rem]">
           <img
             src="/images/benifex/africa/south-africa.jpg"
-            alt="Colleagues celebrating a reward milestone"
+            alt="Cape Town, South Africa"
             loading="lazy"
             className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
 
           <span className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full bg-[#1B4F9C] px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] text-white">
-            Member story
+            Cape Town, South Africa
           </span>
 
           <div className="absolute inset-x-5 bottom-5 flex items-center gap-3 rounded-xl bg-[#FFFFFF] p-4 shadow-nv-card-hover">
-            <Quote className="h-6 w-6 shrink-0 text-[#1B4F9C]" />
+            <Globe2 className="h-6 w-6 shrink-0 text-[#1B4F9C]" />
             <p className="text-sm font-bold leading-snug text-[#282828]">
-              "Nelvin cut our benefits admin time by 80% — while engagement tripled."
+              One platform, built to work the same way in every market we launch.
             </p>
           </div>
         </div>
