@@ -81,6 +81,7 @@ const AdminPendingBusinesses = lazy(() => import('@/pages/admin/AdminPendingBusi
 const AdminOffers = lazy(() => import('@/pages/admin/AdminOffers'));
 const AdminPendingOffers = lazy(() => import('@/pages/admin/AdminPendingOffers'));
 const AdminCategories = lazy(() => import('@/pages/admin/AdminCategories'));
+const AdminPartnerLogos = lazy(() => import('@/pages/admin/AdminPartnerLogos'));
 const AdminCountries = lazy(() => import('@/pages/admin/AdminCountries'));
 const AdminMembershipPlans = lazy(() => import('@/pages/admin/AdminMembershipPlans'));
 const AdminPayments = lazy(() => import('@/pages/admin/AdminPayments'));
@@ -194,6 +195,7 @@ const AuthenticatedApp = () => {
           <Route path="/admin/offers" element={<AdminOffers />} />
           <Route path="/admin/pending-offers" element={<AdminPendingOffers />} />
           <Route path="/admin/categories" element={<AdminCategories />} />
+          <Route path="/admin/partner-logos" element={<AdminPartnerLogos />} />
           <Route path="/admin/countries" element={<AdminCountries />} />
           <Route path="/admin/membership-plans" element={<AdminMembershipPlans />} />
           <Route path="/admin/reviews" element={<AdminReviews />} />

@@ -95,6 +95,7 @@ const TABLES = {
   platformsetting: "platform_settings",
   promocode: "promo_codes",
   campaign: "campaigns",
+  partnerlogo: "partner_logos",
 };
 
 /**
@@ -391,7 +392,7 @@ function makeSupabaseBackend() {
     "Employee", "Department", "Team", "Location", "Redemption", "Favorite",
     "Review", "Notification", "SupportTicket", "Payment", "AuditLog",
     "VendorApplication", "AnalyticsEvent", "Benefit", "Allowance", "Claim",
-    "PlatformSetting", "PromoCode", "Campaign",
+    "PlatformSetting", "PromoCode", "Campaign", "PartnerLogo",
   ];
   for (const name of ENTITIES) {
     entities[name] = makeSupabaseEntity(name);

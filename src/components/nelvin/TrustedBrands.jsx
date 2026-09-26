@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ShoppingBag, Utensils, Plane, HeartPulse, Dumbbell, Smartphone, Home, Car, Shirt, GraduationCap, Sparkles, Baby, PawPrint, Wallet, Wifi, Leaf, Hotel, Film } from "lucide-react";
+import { db } from "@/services/api/dataClient";
 
 /**
  * Trust strip. This used to scroll 23 real companies' logos (Microsoft-
@@ -11,10 +12,10 @@ import { ShoppingBag, Utensils, Plane, HeartPulse, Dumbbell, Smartphone, Home, C
  *
  * There are zero approved vendors in the database today — pre-launch, any
  * "partner logo" shown here would be just as fabricated as the ones that
- * were removed. So instead of client logos, this scrolls the real thing
- * Nelvin already has: its own category coverage. True today, no placeholder
- * brand needed, and it'll make sense to swap in real merchant logos here
- * once the first ones are approved.
+ * were removed. So this checks the partner_logos table (managed from
+ * Admin > Partner Logos) first: if at least one active real partner has
+ * been added there, their logos scroll here instead. Until then, it falls
+ * back to the real thing Nelvin already has — its own category coverage.
  */
 
 const CATEGORIES = [
@@ -51,19 +52,60 @@ function CategoryRow() {
   );
 }
 
-export default function TrustedBrands() {
+function PartnerLogoRow({ logos }) {
   return (
-    <section className="surface-nv-secondary py-12 lg:py-16" aria-label="Categories on Nelvin">
+    <>
+      {logos.map((p) => (
+        <span key={p.id} className="flex shrink-0 items-center justify-center">
+          {p.website_url ? (
+            <a href={p.website_url} target="_blank" rel="noreferrer">
+              <img src={p.logo_url} alt={p.name} loading="lazy" className="h-9 w-auto max-w-[130px] object-contain opacity-85 transition hover:opacity-100 sm:h-11" />
+            </a>
+          ) : (
+            <img src={p.logo_url} alt={p.name} loading="lazy" className="h-9 w-auto max-w-[130px] object-contain opacity-85 transition hover:opacity-100 sm:h-11" />
+          )}
+        </span>
+      ))}
+    </>
+  );
+}
+
+export default function TrustedBrands() {
+  const [partnerLogos, setPartnerLogos] = useState(null); // null = still loading
+
+  useEffect(() => {
+    let cancelled = false;
+    db.entities.PartnerLogo.filter({ is_active: true }, "display_order", 100)
+      .then((rows) => { if (!cancelled) setPartnerLogos(rows || []); })
+      .catch(() => { if (!cancelled) setPartnerLogos([]); });
+    return () => { cancelled = true; };
+  }, []);
+
+  const hasRealPartners = Array.isArray(partnerLogos) && partnerLogos.length > 0;
+
+  return (
+    <section className="surface-nv-secondary py-12 lg:py-16" aria-label={hasRealPartners ? "Trusted by" : "Categories on Nelvin"}>
       <div className="container-nv">
         <p className="text-balance-nv text-center text-[11px] font-bold uppercase tracking-[0.2em] text-ivory-dim">
-          One platform, every category your people already spend on
+          {hasRealPartners
+            ? "Join the merchants already reaching thousands of members"
+            : "One platform, every category your people already spend on"}
         </p>
       </div>
 
       <div className="mask-fade-x relative mt-9 overflow-hidden">
-        <div className="flex w-max animate-scroll-slow items-center gap-3">
-          <CategoryRow />
-          <CategoryRow />
+        <div className={`flex w-max animate-scroll-slow items-center ${hasRealPartners ? "gap-10 sm:gap-16" : "gap-3"}`}>
+          {hasRealPartners ? (
+            <>
+              <PartnerLogoRow logos={partnerLogos} />
+              <PartnerLogoRow logos={partnerLogos} />
+            </>
+          ) : (
+            <>
+              <CategoryRow />
+              <CategoryRow />
+            </>
+          )}
         </div>
       </div>
     </section>
