@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, LayoutGrid, Gift, Wallet, Tag, Award, Smartphone, HeartPulse, Sparkles } from "lucide-react";
 import { SectionHeading } from "@/components/nelvin/Brand";
 
 /**
  * Explore the platform — every capability in one tabbed section: a rail of
- * tabs over a single shared detail panel. Copy, labels and destinations are
- * unchanged from the previous card grid.
+ * tabs over a single shared detail panel. Copy and labels are unchanged from
+ * the previous card grid; the visual panel used to show a competitor's own
+ * product screenshots (the same handful reused across unrelated tabs), which
+ * read as neither professional nor original. Replaced with a custom icon +
+ * gradient treatment, one distinct look per capability, in Nelvin's palette.
  */
 
 const panels = [
@@ -15,56 +18,72 @@ const panels = [
     title: "One home for everything at work",
     desc: "Connect all your benefits, wellbeing, reward and recognition so your people have one home for everything.",
     to: "/offers",
-    img: "/images/benifex/Recognition2.png",
+    icon: LayoutGrid,
+    from: "from-[#1B4F9C]",
+    to2: "to-[#123A78]",
   },
   {
     label: "Benefits",
     title: "Run, manage and administer engaging benefits",
     desc: "Engaging employee benefits made effortless.",
     to: "/benefits",
-    img: "/images/benifex/benefits-page-your-benefits.png",
+    icon: Gift,
+    from: "from-[#B8860B]",
+    to2: "to-[#7A5A05]",
   },
   {
     label: "Wallet",
     title: "Give every member exactly what they want",
     desc: "Card-based allowances with ultimate flexibility.",
     to: "/choose-plan",
-    img: "/images/benifex/Discounts.png",
+    icon: Wallet,
+    from: "from-[#123A78]",
+    to2: "to-[#0B2650]",
   },
   {
     label: "Discounts",
     title: "Global savings on global brands",
     desc: "Instantly increase post-payroll value.",
     to: "/offers",
-    img: "/images/benifex/Discounts.png",
+    icon: Tag,
+    from: "from-[#7A5A05]",
+    to2: "to-[#4A3603]",
   },
   {
     label: "Reward & recognition",
     title: "Shine a light on great work",
     desc: "Celebrate the incredible things happening across your organisation.",
     to: "/corporate",
-    img: "/images/benifex/recognition-page-prove-the-impact.png",
+    icon: Award,
+    from: "from-[#1B4F9C]",
+    to2: "to-[#0B2650]",
   },
   {
     label: "Mobile",
     title: "Anywhere, anytime rewards",
     desc: "In the office, remote, or on the go.",
     to: "/",
-    img: "/images/benifex/Recognition2.png",
+    icon: Smartphone,
+    from: "from-[#123A78]",
+    to2: "to-[#1B4F9C]",
   },
   {
     label: "Wellbeing",
     title: "Enhanced wellbeing for every member",
     desc: "Customised and guided support.",
     to: "/benefits",
-    img: "/images/benifex/benefits-page-your-benefits.png",
+    icon: HeartPulse,
+    from: "from-[#B8860B]",
+    to2: "to-[#123A78]",
   },
   {
     label: "AI-powered benefits",
     title: "Next-generation engagement",
     desc: "Transformative, AI-driven technology for your people.",
     to: "/offers",
-    img: "/images/benifex/Recognition2.png",
+    icon: Sparkles,
+    from: "from-[#0B2650]",
+    to2: "to-[#7A5A05]",
   },
 ];
 
@@ -76,8 +95,9 @@ const benefits = [
 ];
 
 export default function FeaturedDeals() {
-  const [activePanel, setActivePanel] = useState(0);
+  const [activePanel, setActivePanel] = React.useState(0);
   const panel = panels[activePanel];
+  const Icon = panel.icon;
 
   return (
     <section id="explore-platform" className="surface-nv-primary section-nv">
@@ -115,20 +135,11 @@ export default function FeaturedDeals() {
           })}
         </div>
 
-        {/* Shared detail panel — image runs full-bleed, copy sits beside it */}
+        {/* Shared detail panel — icon visual runs full-bleed, copy sits beside it */}
         <div className="card-nv mt-6 grid grid-cols-1 overflow-hidden lg:grid-cols-12">
-          <div className="relative min-h-[17rem] sm:min-h-[20rem] lg:col-span-6 lg:min-h-[27rem]">
-            <img
-              src={panel.img}
-              alt={panel.title}
-              loading="lazy"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-            <div
-              className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-black/25"
-              aria-hidden="true"
-            />
-            <span className="absolute left-5 top-5 rounded-full bg-black/60 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur">
+          <div className={`relative flex min-h-[17rem] items-center justify-center bg-gradient-to-br ${panel.from} ${panel.to2} sm:min-h-[20rem] lg:col-span-6 lg:min-h-[27rem]`}>
+            <Icon className="h-24 w-24 text-white/90 sm:h-32 sm:w-32" strokeWidth={1.25} />
+            <span className="absolute left-5 top-5 rounded-full bg-black/25 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur">
               {panel.label}
             </span>
           </div>

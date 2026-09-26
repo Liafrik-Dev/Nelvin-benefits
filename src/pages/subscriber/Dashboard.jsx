@@ -206,7 +206,7 @@ export default function Dashboard() {
 
           <button
             onClick={() => setWalletMsg(true)}
-            className="group bg-emerald-black ring-1 ring-[#F1F1F1] rounded-full p-6 flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all duration-300 text-left space-y-4"
+            className="group bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 flex flex-col justify-between hover:shadow-xl hover:border-amber-400 transition-all duration-300 text-left space-y-4"
           >
             <div className="flex items-center justify-between">
               <div className="w-12 h-12 rounded-lg bg-[#F9F8F7] text-[#1B4F9C] flex items-center justify-center group-hover:scale-110 group-hover:bg-[#FFFFFF] group-hover:text-[#282828] transition-all">
@@ -227,7 +227,7 @@ export default function Dashboard() {
 
           <button
             onClick={handleInvite}
-            className="group bg-emerald-black ring-1 ring-[#F1F1F1] rounded-full p-6 flex flex-col justify-between hover:shadow-xl hover:border-rose-400 transition-all duration-300 text-left space-y-4"
+            className="group bg-emerald-black ring-1 ring-[#F1F1F1] rounded-lg p-6 flex flex-col justify-between hover:shadow-xl hover:border-rose-400 transition-all duration-300 text-left space-y-4"
           >
             <div className="flex items-center justify-between">
               <div className="w-12 h-12 rounded-lg bg-[#F9F8F7] text-[#1B4F9C] ring-1 ring-[#1B4F9C]/20 flex items-center justify-center group-hover:scale-110 group-hover:bg-[#FFFFFF] group-hover:text-[#282828] transition-all">

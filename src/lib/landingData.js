@@ -44,11 +44,11 @@ export const LANDING_EXPERIENCES = [
     to: "/business",
   },
   {
-    id: "admin",
-    name: "Super Admin",
-    desc: "The command centre for platform operators: users, compliance, payments and global config.",
-    points: ["Users & companies", "Offers & categories moderation", "Payments & settlements", "Audit logs & compliance"],
-    to: "/admin",
+    id: "individual",
+    name: "Individual / Particulier App",
+    desc: "For anyone, not just employees — a free account with paid plans that unlock cashback, vouchers and daily deals.",
+    points: ["Open to everyone", "Instant merchant cashbacks", "Daily local & online deals", "Personal digital wallet"],
+    to: "/explore",
   },
 ];
 

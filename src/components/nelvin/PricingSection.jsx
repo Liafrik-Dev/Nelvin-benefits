@@ -15,14 +15,8 @@ export default function PricingSection() {
   return (
     <section className="surface-nv-primary section-nv">
       <div className="container-nv">
-        <div className="relative overflow-hidden rounded-2xl">
-          <img
-            src="/images/benifex/footer-banner-v2.jpg"
-            alt=""
-            loading="lazy"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0B1B3A]/95 via-[#0B1B3A]/85 to-[#0B1B3A]/60" aria-hidden="true" />
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#123A78] via-[#0B2650] to-[#1B4F9C]">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0B1B3A]/60 via-[#0B1B3A]/30 to-transparent" aria-hidden="true" />
 
           <div className="relative z-10 grid grid-cols-1 items-center gap-10 p-8 sm:p-12 lg:grid-cols-2 lg:p-14">
             <div>

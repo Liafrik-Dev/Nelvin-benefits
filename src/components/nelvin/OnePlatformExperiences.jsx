@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Check, ArrowRight, Smartphone, Building2, Store, ShieldCheck } from "lucide-react";
+import { Check, ArrowRight, Smartphone, Building2, Store, UserRound } from "lucide-react";
 import { LANDING_EXPERIENCES } from "@/lib/landingData";
 import { SectionHeading } from "@/components/nelvin/Brand";
 
@@ -176,18 +176,18 @@ function PartnerMock() {
   );
 }
 
-function AdminMock() {
-  const kpis = [
-    { l: "Users", v: "486,120" },
-    { l: "Companies", v: "3,402" },
-    { l: "Active offers", v: "512,800" },
-    { l: "Settlements", v: "₦94.5M" },
+function IndividualMock() {
+  const perks = [
+    { l: "This month's cashback", v: "₦8,420" },
+    { l: "Active plan", v: "Premium" },
+    { l: "Vouchers claimed", v: "6" },
+    { l: "Savings to date", v: "₦142,300" },
   ];
   return (
-    <WindowFrame label="Super Admin · Nelvin OS" badge="Platform">
+    <WindowFrame label="My Nelvin · Chidinma A." badge="Premium">
       <div className="p-4">
         <div className="grid grid-cols-2 gap-2">
-          {kpis.map((s) => (
+          {perks.map((s) => (
             <div key={s.l} className={`rounded-lg border ${LINE} bg-[#F9F8F7] p-3`}>
               <p className="text-base font-extrabold text-[#282828]">{s.v}</p>
               <p className="mt-0.5 text-[10px] font-bold uppercase tracking-wide text-[#6B6B6B]">{s.l}</p>
@@ -196,9 +196,9 @@ function AdminMock() {
         </div>
 
         <div className={`mt-3 flex items-center justify-between rounded-lg border ${LINE} p-3`}>
-          <p className="text-[11px] font-bold text-[#282828]">Compliance &amp; audit</p>
+          <p className="text-[11px] font-bold text-[#282828]">Nearby deal</p>
           <span className="inline-flex items-center gap-1 text-[11px] font-extrabold text-[#1B4F9C]">
-            <Check className="h-3.5 w-3.5" /> All green
+            <Check className="h-3.5 w-3.5" /> 25% off today
           </span>
         </div>
       </div>
@@ -210,14 +210,14 @@ const MOCKS = {
   employee: EmployeeMock,
   employer: EmployerMock,
   partner: PartnerMock,
-  admin: AdminMock,
+  individual: IndividualMock,
 };
 
 const TAB_ICONS = {
   employee: Smartphone,
   employer: Building2,
   partner: Store,
-  admin: ShieldCheck,
+  individual: UserRound,
 };
 
 export default function OnePlatformExperiences() {
@@ -252,7 +252,7 @@ export default function OnePlatformExperiences() {
         <SectionHeading
           eyebrow="One platform"
           title={<>Multiple experiences. One beautiful platform.</>}
-          lead="Four tailored experiences, powered by the same engine — members, employers, partners and platform operators each get their own home."
+          lead="Four tailored experiences, powered by the same engine — employees, employers, partners and individuals each get their own home."
         />
 
         <div
