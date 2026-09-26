@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle2, Layers, Zap } from "lucide-react";
+import { ArrowRight, CheckCircle2, Sparkles, Gift, Wallet, BarChart3, Code2, ShieldCheck } from "lucide-react";
 import { SectionHeading } from "@/components/nelvin/Brand";
 
 /**
  * Module explorer — the reference groups platform capability into a
- * horizontal tab rail over one shared detail panel. Copy is unchanged; the
- * structure, spacing and surfaces follow the reference.
+ * horizontal tab rail over one shared detail panel. Copy is unchanged bar
+ * two fixes below; the structure, spacing and surfaces follow the reference.
+ *
+ * The panel image used to be one of four photos pulled from Pinterest
+ * ("From Klickpin.com..." filenames) — one of them a real, branded Radisson
+ * hotel promotional photo, all four of uncertain licence for a commercial
+ * site — labelled "Live platform view" even though none of them were a
+ * screenshot of anything Nelvin built. Replaced with a custom icon+gradient
+ * treatment per module and an honest label.
  */
 
 const MODULE_TABS = [
@@ -22,7 +29,9 @@ const MODULE_TABS = [
       "Localized merchant matching across Africa and MENA regions",
     ],
     link: "/explore",
-    image: "/images/assets/From Klickpin.com- 4603664114519569792-pin-id-4603664114519569792.jpg",
+    icon: Sparkles,
+    from: "from-[#1B4F9C]",
+    to2: "to-[#0B2650]",
   },
   {
     id: "rewards",
@@ -36,7 +45,9 @@ const MODULE_TABS = [
       "Managerial recognition budgets with real-time telemetry",
     ],
     link: "/rewards",
-    image: "/images/assets/From Klickpin.com- 1024498615375273129-pin-id-1024498615375273129.jpg",
+    icon: Gift,
+    from: "from-[#B8860B]",
+    to2: "to-[#7A5A05]",
   },
   {
     id: "wallet",
@@ -50,7 +61,9 @@ const MODULE_TABS = [
       "Multi-currency support across NGN, KES, EGP, AED, and USD",
     ],
     link: "/wallet",
-    image: "/images/benifex/africa/nigeria.jpg",
+    icon: Wallet,
+    from: "from-[#123A78]",
+    to2: "to-[#1B4F9C]",
   },
   {
     id: "analytics",
@@ -64,7 +77,9 @@ const MODULE_TABS = [
       "Employee satisfaction survey integration and eNPS tracking",
     ],
     link: "/corporate-dashboard",
-    image: "/images/assets/From Klickpin.com- 492229434296406338-pin-id-492229434296406338.jpg",
+    icon: BarChart3,
+    from: "from-[#7A5A05]",
+    to2: "to-[#4A3603]",
   },
   {
     id: "developer",
@@ -78,7 +93,9 @@ const MODULE_TABS = [
       "Automated employee onboarding and offboarding roster sync",
     ],
     link: "/corporate-dashboard",
-    image: "/images/assets/From Klickpin.com- 122160208638482683-pin-id-122160208638482683.jpg",
+    icon: Code2,
+    from: "from-[#0B2650]",
+    to2: "to-[#123A78]",
   },
   {
     id: "security",
@@ -86,19 +103,22 @@ const MODULE_TABS = [
     title: "Enterprise Bank-Grade Security",
     subtitle: "Top-tier data privacy and regulatory compliance built into every transaction.",
     points: [
-      "ISO 27001 & SOC 2 Type II certified infrastructure",
-      "Full GDPR & NDPR data compliance with local data residency",
+      "Security practices aligned with ISO 27001 and SOC 2 principles",
+      "GDPR & NDPR-aware data handling, with regional residency options",
       "End-to-end 256-bit AES encryption for wallet and personal data",
       "Comprehensive audit logs and role-based access controls (RBAC)",
     ],
     link: "/settings",
-    image: "/images/benifex/africa/morocco.jpg",
+    icon: ShieldCheck,
+    from: "from-[#123A78]",
+    to2: "to-[#0B2650]",
   },
 ];
 
 export default function PowerfulModules() {
   const [activeTabId, setActiveTabId] = useState("ai");
   const activeTab = MODULE_TABS.find((t) => t.id === activeTabId) || MODULE_TABS[0];
+  const Icon = activeTab.icon;
 
   return (
     <section id="modules" className="surface-nv-secondary section-nv border-y border-[#F1F1F1]">
@@ -141,24 +161,18 @@ export default function PowerfulModules() {
         {/* Detail panel */}
         <div className="card-nv mt-8 grid grid-cols-1 items-center gap-8 p-6 sm:p-10 lg:grid-cols-12 lg:gap-12">
           <div className="relative lg:col-span-6">
-            <div className="group relative aspect-[16/11] w-full overflow-hidden rounded-xl border border-[#F1F1F1] bg-[#FFFFFF]">
-              <img
-                src={activeTab.image}
-                alt={activeTab.title}
-                loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+            <div className={`group relative flex aspect-[16/11] w-full items-center justify-center overflow-hidden rounded-xl border border-[#F1F1F1] bg-gradient-to-br ${activeTab.from} ${activeTab.to2}`}>
+              <Icon className="h-20 w-20 text-white/90 transition-transform duration-700 group-hover:scale-105 sm:h-28 sm:w-28" strokeWidth={1.25} />
 
               <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-4 rounded-xl border border-[#F1F1F1] bg-[#F9F8F7] p-4 backdrop-blur">
                 <div className="min-w-0">
                   <span className="block text-[10px] font-bold uppercase tracking-[0.16em] text-gold">
-                    Live platform view
+                    Module
                   </span>
                   <p className="mt-1 truncate text-xs font-bold text-ivory sm:text-sm">{activeTab.title}</p>
                 </div>
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gold text-white">
-                  <Zap className="h-4 w-4" />
+                  <Icon className="h-4 w-4" />
                 </span>
               </div>
             </div>
